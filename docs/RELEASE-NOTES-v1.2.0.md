@@ -13,8 +13,7 @@ realization and verification evidence.
 Cumulative coverage: **224 lessons, 62 branches, 15 guided paths, 24 numerical
 labs and 76 historical or dated milestones.**
 
-This edition preserves that overall scope and adds device-adaptive delivery,
-deeper memory and packaging decisions, and a new licensing boundary.
+Earlier releases were pulled and replaced by v1.2.0, an upgraded and more comprehensive atlas.
 
 ## Device-adaptive learning
 
@@ -25,19 +24,35 @@ equations, comparisons and process explanations accommodate narrow screens.
 Touch controls are enlarged, model interaction is explicit, and paused,
 offscreen or hidden scenes suspend rendering.
 
-## Expanded coverage and depth
+## Connected scientific and engineering coverage
 
-Fourteen new lessons connect HBM stack height, conditional assembly yield,
+The curriculum follows devices and arithmetic through chip design, verification,
+wafer fabrication, advanced packaging, processing-unit architectures and custom
+silicon. It connects manufacturing capacity and allocation to data-center and
+AI infrastructure, orbital compute, reliability, economics and model–machine
+relationships. The CRG bridge follows seven computation-to-realization
+boundaries and the evidence needed to qualify a working system.
+
+Anatomy, Process and Connections views expose constituent parts, successive
+process states and typed relationships. The field guide combines mechanisms,
+prerequisites, formal mathematics, specifications, interfaces, tradeoffs and
+knowledge checks. Historical breakthroughs and dated evidence connect the
+engineering account to its primary sources.
+
+Memory and integration lessons connect HBM stack height, conditional assembly yield,
 thermal paths, TC-NCF, MR-MUF and hybrid bonding to HBF access contracts,
 prefetching, working-set placement, training, prefill/decode, MoE, hall
 constraints and qualification. Distinct manufacturing routes have their own
-process playback. A guided memory-realization path connects the additions to
-the existing wafer, package, model and CRG material.
+process playback. A guided memory-realization path connects wafer, package,
+model and CRG material.
 
-Three new interactive labs explore HBM stack construction, inference memory
-placement and a token's memory/compute/communication path. Models state units,
-assumptions and limits. Announced HBF specification ranges are distinguished
-from measured system results and shipping evidence.
+Twenty-four numerical labs span device behavior, matrix arithmetic, performance
+bounds, thermal resistance, attention, memory and scaling; wafer and package
+processes; capacity queues, dataflow and collectives; hall and orbital budgets;
+custom-silicon economics and reliability. They include HBM stack construction,
+inference memory placement and a token's memory/compute/communication path.
+Models state units, assumptions and limits. Announced HBF specification ranges
+are distinguished from measured system results and shipping evidence.
 
 ## Software and content licensing
 
@@ -60,7 +75,8 @@ relationships and evidence provenance. All 31 numerical/process/math tests
 and four portable asset, metadata, film and license checks passed.
 
 Chrome viewport emulation checked phone, tablet, landscape and desktop layouts.
-All three new labs were exercised at 320px and 390px, including working controls,
+The HBM stack, inference placement and token-path labs were exercised at 320px
+and 390px, including working controls,
 formal mathematics and contained dialogs. Process views, lesson focus, model
 activation/pause/suspension, comparisons, glossary and license links were checked.
 A production-only dialog-positioning issue was found and fixed during testing.

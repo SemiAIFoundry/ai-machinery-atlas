@@ -6,13 +6,24 @@ Future corrections and compatible additions will be recorded here.
 
 ## 1.2.0 — 2026-09-06
 
-- Adds phone reading mode, accessible contents and menus, tablet layout, touch-safe model interaction and rendering suspension.
-- Deepens HBM stack and bonding, HBF read-tier behavior, workload memory placement and memory-to-hall qualification with source-linked lessons and route-specific process playback.
-- Adds HBM stack, inference working-set placement and token-path numerical labs with explicit assumptions and numerical boundary tests.
-- Changes atlas-owned software and original content to the AI Machinery Atlas Research and Noncommercial License 1.0. Academic, public-interest research, personal and hobby use remain permitted with attribution; commercial use requires a separate written license. Third-party terms remain unchanged.
-- Withdraws earlier published release pages and packaged downloads at the publisher’s direction. Earlier copies retain their accompanying permissions; historical entries below describe their original release state.
+AI Machinery Atlas connects the machinery of AI from atoms and transistors through chip design, fabrication, packaging, processing architectures, infrastructure, software and intelligence. This reference edition contains **224 lessons, 62 branches, 15 guided paths, 24 numerical labs and 76 historical or dated milestones**.
 
-See [release notes](docs/RELEASE-NOTES-v1.2.0.md) and [licensing transition](docs/LICENSING-TRANSITION.md).
+Earlier releases were pulled and replaced by v1.2.0, an upgraded and more comprehensive atlas.
+
+- Device-adaptive delivery includes a phone reading mode, searchable contents and menus, adaptable tablet panes, enlarged touch controls, and an explicitly opened model workspace. Paused, hidden and offscreen models suspend rendering.
+- Procedural 3D assemblies support selection, orbit and zoom, exploded views, isolation and translucent inspection. Anatomy, Process and Connections views link parts, manufacturing steps and typed relationships across scales.
+- The field guide connects mechanisms, prerequisites, formal mathematics, units, assumptions, specifications, interfaces, tradeoffs, knowledge checks and primary references. Evidence distinguishes observed results, dated reports, announcements, forecasts, research and illustrative models.
+- Fabrication, packaging and memory coverage includes wafer processing, HBM stack height and thermal/yield limits, TC-NCF, MR-MUF, hybrid bonding, HBF read-tier behavior, workload memory placement and memory-to-hall qualification. Manufacturing routes have distinct process playback.
+- Processing-unit architectures, custom silicon, capacity constraints, global infrastructure, orbital compute, model–machine relationships, reliability and economics extend the journey from devices to deployed AI systems.
+- The Communication Theory of Computation Realization (CRG) bridge connects seven computation-to-realization boundaries, chip-design process playback and an evidence loop from simulation through workload qualification. Its approximately 55-year research claim is attributed to its source.
+- Numerical labs cover device behavior, matrix arithmetic, performance bounds, thermal behavior, attention, memory, scaling, wafer and package processes, capacity, dataflow, communication, hall and orbital budgets, custom-silicon economics and reliability. HBM stack construction, inference placement and token-path labs expose assumptions and numerical boundaries.
+- Search, shareable lesson/view URLs and browser-local learning progress support independent study. The Ascent provides a standalone cinematic companion. The portable React and Vite build supports domain-root and subdirectory hosting.
+- Atlas-owned software and original content use the AI Machinery Atlas Research and Noncommercial License 1.0. Academic, public-interest research, personal and hobby use are permitted with attribution; commercial use requires a separate written license. Third-party materials retain their own terms.
+
+See the [release notes](docs/RELEASE-NOTES-v1.2.0.md) for validation outcomes and downloads, and the [release guide](docs/RELEASING.md) for future updates.
+
+<details>
+<summary>Archived release notes</summary>
 
 ## 1.1.1 — 2026-09-06
 
@@ -47,3 +58,5 @@ Initial public release of AI Machinery Atlas by Semi AI Foundry, LLC.
 - Portable React and Vite static build, with support for root and subdirectory hosting.
 - MIT licensing for original project work, separate third-party notices, and contribution and release documentation.
 - Direct live demo and standalone film links, versioned downloads, and a documented policy for future software and content releases.
+
+</details>

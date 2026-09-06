@@ -6,34 +6,35 @@ A 3D learning platform for the machinery behind modern AI: atoms and electronic 
 
 The atlas pairs a component field guide with selectable, procedural 3D assemblies, formal equations, numerical labs, and cited history. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI. The project is a connected account of how matter, devices, circuits, architectures, infrastructure, software, training, inference, and evaluation become useful intelligence. The CRG bridge connects computation intent with chip design, physical realization, and verification evidence.
 
-**Current release: [v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0).** This edition preserves the full atoms-to-intelligence scope and adds device-adaptive learning, deeper memory and packaging decisions, and three interactive systems labs.
+**Current release: [v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0).** A comprehensive reference edition with device-adaptive learning, connected scientific and engineering coverage, and interactive systems labs.
 
 **Software and original content: academic, public-interest research, personal and hobby use permitted with attribution. Commercial use requires a separate written license from Semi AI Foundry, LLC.** Read the [Research and Noncommercial License](LICENSE) and [commercial-use guidance](COMMERCIAL_LICENSE.md). The software is source-available.
 
 **Current scope:** 224 lessons · 62 branches · 15 guided paths · 24 numerical labs · 76 historical and dated milestones.
 
-## v1.2.0 coverage and delivery addendum
-
-- A reading-first phone layout, searchable contents drawer, accessible secondary destinations, larger touch controls, adaptable tablet panes, and an explicitly activated model workspace preserve the learning content across device sizes.
-- Models render on demand when paused and suspend when hidden or offscreen. Equations retain mathematical notation and local text alternatives; narrow comparisons and process explanations adapt to reading space.
-- A focused memory and integration learning sequence examines HBM stack height, thermal/yield limits, TCB/TC-NCF, MR-MUF, hybrid bonding, HBF read-tier contracts, prefetching, working-set placement, training/prefill/decode/MoE, and propagation into hall capacity and qualification.
-- Three numerical labs let learners build an illustrative HBM stack, place an inference working set, and follow a token through memory, compute and communication. Assumptions and effective-rate limits remain visible; results are not product forecasts.
-- Product announcements, standards specifications, research demonstrations and measured deployment evidence remain explicitly distinguished. The original journeys, science, history and *The Ascent* remain part of the same atlas.
-
-## v1.1.0 coverage addendum
-
-The September 2026 **v1.1.0** expansion retains the original v1.0.0 curriculum and adds deeper, source-linked treatment of the physical and systems layers. The following records the v1.1.0 baseline retained in this edition, including the original 97 lessons and the 113 lessons added in v1.1.0:
+## What the atlas covers
 
 | Resource | Coverage |
 | --- | --- |
-| 210 connected component lessons | Mechanisms, process states, scientific relations, assumptions, contextual specifications, interfaces, tradeoffs, checks, and primary references |
-| 57 branches in six navigation bands | Matter and fabrication; circuits and architecture; packaging and machines; connected infrastructure; executable software; learning and intelligence |
-| 14 guided paths and journeys | The five original journeys remain, joined by fabrication, package, infrastructure, model–machine, and computation-to-realization traversals |
-| 21 numerical labs | The original labs remain, with wafer yield, patterning, CMP, assembly yield, HBM intensity, capacity queues, dataflow, model memory, collectives, hall work, orbital budgets, custom-silicon economics, reliability, and scaling metrics |
-| 73 historical and dated milestones | Selected breakthroughs and source-dated infrastructure events linked to lessons and primary references |
+| 224 connected lessons | Mechanisms, process states, formal equations, assumptions, contextual specifications, interfaces, engineering tradeoffs, knowledge checks, and primary references |
+| 62 branches in six navigation bands | Matter and fabrication; circuits and architecture; packaging and machines; connected infrastructure; executable software; learning and intelligence |
+| 15 guided paths | Connected journeys through AI foundations, fabrication, packaging, memory realization, infrastructure, model–machine relationships, and computation-to-realization boundaries |
+| 24 numerical labs | Transistor behavior, matrix multiplication, roofline bounds, thermal resistance, attention, KV memory and scaling; wafer yield, patterning, CMP, assembly yield, HBM intensity and stack construction; capacity queues, dataflow, model memory and inference placement, collectives and token paths; hall work, orbital budgets, custom-silicon economics and reliability |
+| 76 historical and dated milestones | Selected breakthroughs and source-dated infrastructure events linked to lessons and primary references |
 | CRG realization bridge | A source-labeled seven-boundary graph from computation intent through chip design, wafer, package, system operation, and verification evidence |
+| The Ascent | A standalone cinematic companion tracing attention and early GPT systems toward the AI frontier |
 
-These additions extend the same learning loop used throughout the atlas: inspect a mechanism, state the assumptions, follow its interfaces, test a small model, compare it with evidence, and carry the constraint into the next scale. The added coverage is deliberately explicit about what is measured, what is synthetic, what is configuration-specific, and what remains unknown.
+The physical and systems curriculum follows chip design and verification through fabrication, wafer processing, advanced packaging, HBM and HBF, processing-unit architectures, and custom silicon. It examines manufacturing and capacity constraints alongside global infrastructure, orbital compute, reliability, economics, and the relationship between models and machines.
+
+Memory and integration coverage connects HBM stack height, thermal and yield limits, TCB/TC-NCF, MR-MUF and hybrid bonding to HBF read-tier contracts, prefetching, working-set placement, training, prefill, decode and MoE. Process playback follows distinct manufacturing routes; numerical labs carry memory and communication constraints into system capacity and hall qualification.
+
+The learning loop is consistent across scales: inspect a mechanism, state the assumptions, follow its interfaces, test a small model, compare it with evidence, and carry the constraint into the next scale. Product announcements, standards specifications, research demonstrations and measured deployment evidence retain their source, scope and date.
+
+## Learning across devices
+
+Phones open with readable lessons, searchable contents, accessible menus and an explicitly activated model workspace. Tablets use adaptable panes; larger screens place the field guide beside the model. Touch controls, comparison cards, equations and process explanations accommodate narrow screens.
+
+Models render on demand when paused and suspend when hidden or offscreen. Formal mathematics includes units, assumptions and text alternatives. The workbench exposes numerical inputs, effective-rate limits and model boundaries so learners can inspect how a result changes.
 
 ## Explore
 
@@ -78,7 +79,9 @@ All runtime scripts, fonts, and narration ship locally; reference links still le
 
 ## Releases and updates
 
-The application and educational content are versioned together. [Release v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0) is the current release. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the cumulative project history.
+The application and educational content are versioned together. [Release v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0) is the current release. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. See the [release notes](docs/RELEASE-NOTES-v1.2.0.md) and [changelog](CHANGELOG.md) for current coverage and validation.
+
+Earlier releases were pulled and replaced by v1.2.0, an upgraded and more comprehensive atlas.
 
 Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Active releases use fixed source tags, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
 
