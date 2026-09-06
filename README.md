@@ -1,14 +1,16 @@
 # AI Machinery Atlas
 
-An interactive learning platform for the machinery behind modern AI: atoms and electronic states, semiconductor fabrication, transistors, arithmetic, memory, packages, computers, infrastructure, executable software, and learning systems.
+A 3D learning platform for the machinery behind modern AI: atoms and electronic states, transistors, arithmetic, chip design and fabrication, packaging and HBM, processing architectures, computers and infrastructure, executable software, and learning systems.
 
 **[Live demo](https://semiaifoundry.com/ai-atlas/)** · **[Watch The Ascent](https://semiaifoundry.com/ai-atlas/ascent.html)** · **[SemiAIFoundry](https://semiaifoundry.com/)** · **[License](LICENSE)** · **[Third-party notices](THIRD_PARTY_NOTICES.md)**
 
-The atlas pairs a component field guide with selectable, procedural 3D assemblies. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI. The project remains a connected account of how matter, devices, circuits, architectures, infrastructure, software, training, inference, and evaluation become useful intelligence; the v1.1.0 hardware expansion adds depth without narrowing that scope.
+The atlas pairs a component field guide with selectable, procedural 3D assemblies, formal equations, numerical labs, and cited history. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI. The project is a connected account of how matter, devices, circuits, architectures, infrastructure, software, training, inference, and evaluation become useful intelligence. The CRG bridge connects computation intent with chip design, physical realization, and verification evidence.
+
+**Current release: [v1.1.1](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.1).** This documentation and metadata revision clarifies the complete project scope and the cumulative coverage introduced in v1.1.0. It adds no lessons or scientific models beyond v1.1.0.
 
 ## v1.1.0 coverage addendum
 
-The September 2026 **v1.1.0** release retains the original v1.0.0 curriculum and adds deeper, source-linked treatment of the physical and systems layers:
+The September 2026 **v1.1.0** expansion retains the original v1.0.0 curriculum and adds deeper, source-linked treatment of the physical and systems layers. The following are cumulative totals in v1.1.1, including the original 97 lessons and the 113 lessons added in v1.1.0:
 
 | Resource | Coverage |
 | --- | --- |
@@ -64,7 +66,7 @@ All runtime scripts, fonts, and narration ship locally; reference links still le
 
 ## Releases and updates
 
-The application and educational content are versioned together. [Release v1.1.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.0) is the current compatible expansion; [v1.0.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.0.0) remains a fixed reference tag. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the release record.
+The application and educational content are versioned together. [Release v1.1.1](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.1) is the current documentation and metadata revision of the [v1.1.0 expansion](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.0). The v1.1.0 and [v1.0.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.0.0) tags and their published artifacts remain fixed. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the release record.
 
 Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Each release preserves a fixed source tag, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
 

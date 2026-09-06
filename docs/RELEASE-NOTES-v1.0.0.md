@@ -25,8 +25,8 @@ Original source and educational content are available under MIT, copyright **Sem
 
 Future corrections receive patch versions; additional compatible lessons, models, or features receive minor versions; incompatible changes receive major versions. Published tags and artifacts remain fixed.
 
-## Additive working edition
+## Subsequent release addendum
 
-The public `v1.0.0` tag and its downloadable archives remain immutable. The current `main` working edition adds the deep fabrication, packaging, HBM, processing-unit, infrastructure, orbital, model–machine, and CRG computation-to-realization modules described in `CHANGELOG.md`; the next release number will be selected after compatibility and content review.
+The public `v1.0.0` tag and its downloadable archives remain immutable. The [v1.1.0 expansion](RELEASE-NOTES-v1.1.0.md) added deeper fabrication, chip design, packaging, HBM, processing-unit, infrastructure, orbital, model–machine, and CRG computation-to-realization coverage while retaining the original curriculum and film. The [v1.1.1 revision](RELEASE-NOTES-v1.1.1.md) clarifies the project description and cumulative coverage in documentation and metadata. This addendum describes later releases; it does not change the contents of the v1.0.0 artifacts.
 
 Copyright © 2026 Semi AI Foundry, LLC.

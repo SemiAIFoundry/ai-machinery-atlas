@@ -11,7 +11,7 @@ The atlas continues to teach the complete path from atoms and electronic states 
 ## v1.1.0 coverage addendum
 
 - Deepened the atomic-to-system path through wafer fabrication, chip design, packaging, HBM, processing-unit architectures, halls, data centers, orbital scenarios, model execution, and evaluation.
-- Added 210 connected lessons across 57 branches, 14 guided paths, 21 numerical workbench labs, and 73 dated milestones while retaining every v1.0.0 lesson and journey.
+- Expanded to 210 connected lessons (113 added) across 57 branches, 14 guided paths, 21 numerical workbench labs, and 73 dated milestones while retaining every v1.0.0 lesson and journey.
 - Added the Communication Theory of Computation Realization (CRG) bridge: a source-labeled seven-boundary graph from computation intent through architecture, chip design, physical build, system operation, and evidence.
 - Added formal KaTeX/MathML equations, typed relationship navigation, URL state, architecture specimen comparisons, and explicit limits around conceptual geometry, vendor values, scaling claims, and Astra.
 
