@@ -52,7 +52,7 @@ Create two separate archives:
 1. A **source archive**, including the lockfile, documentation, licenses, and test sources, but excluding `node_modules/`, `dist/`, private hosting configuration, and caches.
 2. A **static-site archive**, containing the built `dist/` files and the notices needed for the bundled assets. Its entry point should be `index.html` at the archive root.
 
-Use versioned names such as `ai-machinery-atlas-v1.0.0-source.zip` and `ai-machinery-atlas-v1.0.0-static.zip`. Produce SHA-256 checksums for the final archives and verify them after copying. Include the exact source commit once the release repository exists.
+Use versioned names such as `ai-machinery-atlas-<version>-source.zip` and `ai-machinery-atlas-<version>-static.zip`. Produce SHA-256 checksums for the final archives and verify them after copying. Include the exact source commit once the release repository exists.
 
 Review the unpacked source archive in a clean directory: the documented install, test, and build commands should work without access to the original workspace. Verify that no private project IDs, credentials, or absolute local paths have been exported.
 

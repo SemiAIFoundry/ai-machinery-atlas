@@ -4,11 +4,11 @@ An interactive learning platform for the machinery behind modern AI: atoms and e
 
 **[Live demo](https://semiaifoundry.com/ai-atlas/)** · **[Watch The Ascent](https://semiaifoundry.com/ai-atlas/ascent.html)** · **[SemiAIFoundry](https://semiaifoundry.com/)** · **[License](LICENSE)** · **[Third-party notices](THIRD_PARTY_NOTICES.md)**
 
-The atlas pairs a component field guide with selectable, procedural 3D assemblies. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI.
+The atlas pairs a component field guide with selectable, procedural 3D assemblies. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI. The project remains a connected account of how matter, devices, circuits, architectures, infrastructure, software, training, inference, and evaluation become useful intelligence; the v1.1.0 hardware expansion adds depth without narrowing that scope.
 
-## Explore
+## v1.1.0 coverage addendum
 
-The September 2026 working edition retains the original v1.0.0 curriculum and adds the first deep hardware-and-realization slice:
+The September 2026 **v1.1.0** release retains the original v1.0.0 curriculum and adds deeper, source-linked treatment of the physical and systems layers:
 
 | Resource | Coverage |
 | --- | --- |
@@ -18,6 +18,10 @@ The September 2026 working edition retains the original v1.0.0 curriculum and ad
 | 21 numerical labs | The original labs remain, with wafer yield, patterning, CMP, assembly yield, HBM intensity, capacity queues, dataflow, model memory, collectives, hall work, orbital budgets, custom-silicon economics, reliability, and scaling metrics |
 | 73 historical and dated milestones | Selected breakthroughs and source-dated infrastructure events linked to lessons and primary references |
 | CRG realization bridge | A source-labeled seven-boundary graph from computation intent through chip design, wafer, package, system operation, and verification evidence |
+
+These additions extend the same learning loop used throughout the atlas: inspect a mechanism, state the assumptions, follow its interfaces, test a small model, compare it with evidence, and carry the constraint into the next scale. The added coverage is deliberately explicit about what is measured, what is synthetic, what is configuration-specific, and what remains unknown.
+
+## Explore
 
 Choose a branch, select a component in the scene or component list, and use **Learn**, **Science**, **Specs**, and **Connections** to investigate it. Drag to orbit, scroll to zoom, separate an assembly with **Explode**, or focus on a part with **Isolate**. Search with the search button or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd>.
 
@@ -60,7 +64,7 @@ All runtime scripts, fonts, and narration ship locally; reference links still le
 
 ## Releases and updates
 
-The application and educational content are versioned together. [Release v1.0.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.0.0) is the first public release and remains a fixed reference tag. This additive working edition is maintained on `main` while the next compatibility decision is made; it does not rewrite the published v1.0.0 source or assets. Browse the [changelog](CHANGELOG.md) for the current additions. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build.
+The application and educational content are versioned together. [Release v1.1.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.0) is the current compatible expansion; [v1.0.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.0.0) remains a fixed reference tag. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the release record.
 
 Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Each release preserves a fixed source tag, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
 

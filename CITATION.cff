@@ -6,7 +6,7 @@ abstract: "A human-directed, AI-assisted interactive learning platform connectin
 authors:
   - name: "Semi AI Foundry, LLC"
     website: "https://semiaifoundry.com/"
-version: 1.0.0
+version: 1.1.0
 date-released: 2026-09-06
 url: "https://semiaifoundry.com/ai-atlas/"
 repository-code: "https://github.com/SemiAIFoundry/ai-machinery-atlas"
