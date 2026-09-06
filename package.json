@@ -1,8 +1,8 @@
 {
   "name": "ai-machinery-atlas",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
-  "description": "An interactive learning atlas of AI machinery, from silicon and transistors to systems, models, and evaluation.",
+  "description": "A 3D atoms-to-intelligence atlas of chip design, fabrication, packaging, HBM, architectures, infrastructure, models, and CRG, with formal mathematics, numerical labs, cited history, and The Ascent film.",
   "license": "MIT",
   "author": "Semi AI Foundry, LLC",
   "homepage": "https://semiaifoundry.com/ai-atlas/",

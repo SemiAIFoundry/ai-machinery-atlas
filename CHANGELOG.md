@@ -4,6 +4,16 @@
 
 Future corrections and compatible additions will be recorded here.
 
+## 1.1.1 — 2026-09-06
+
+Documentation, metadata, and release-link revision of v1.1.0:
+
+- Updated the project description and citation metadata to reflect the full 3D atoms-to-intelligence learning platform, including chip design, fabrication, packaging, HBM, architectures, infrastructure, models, the CRG realization bridge, formal mathematics, numerical labs, cited history, and *The Ascent*.
+- Refreshed GitHub's About description to 210 lessons and added the canonical live-demo website link.
+- Clarified that 210 lessons, 57 branches, 14 guided paths, 21 numerical labs, and 73 milestones are cumulative coverage. The 113 additional lessons were introduced in v1.1.0; this patch adds no lessons or scientific models.
+- Kept the overall project scope prominent in the README and release notes, with an addendum describing the expanded areas and depth.
+- Updated current-release references and corrected the historical notes in the current source tree. Previously published v1.0.0 and v1.1.0 tags and artifacts remain unchanged.
+
 ## 1.1.0 — 2026-09-06
 
 Compatible expansion of the v1.0.0 reference release:
