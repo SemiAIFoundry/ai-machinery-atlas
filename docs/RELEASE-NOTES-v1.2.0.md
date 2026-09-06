@@ -49,12 +49,8 @@ a separate written license from Semi AI Foundry, LLC.** This applies to the
 software itself as well as its original curriculum, scenes, labs and companion
 materials. Third-party licenses remain unchanged.
 
-Earlier v1.0.0, v1.1.0 and v1.1.1 GitHub releases, their assets and release tags
-were withdrawn at the publisher's direction. Website copies of their download
-archives are removed with this deployment. Historical source notices and
-previously granted permissions are not retroactively changed. See the
-[transition record](LICENSING-TRANSITION.md) and
-[commercial-use guidance](../COMMERCIAL_LICENSE.md).
+See the [commercial-use guidance](../COMMERCIAL_LICENSE.md) for permitted uses
+and commercial licensing inquiries.
 
 ## Validation
 

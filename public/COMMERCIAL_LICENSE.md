@@ -29,6 +29,4 @@ Identify the planned deployment, audience, modifications, redistribution and
 commercial purpose. Public access or a source download does not itself grant
 commercial rights. The license text governs; this summary does not replace it.
 
-Third-party components keep their own licenses. Earlier copies were offered
-under their accompanying terms; this release does not retroactively withdraw
-those permissions. See [the transition record](LICENSING-TRANSITION.md).
+Third-party components keep their own licenses.

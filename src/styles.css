@@ -232,3 +232,5 @@
  .timeline>div{grid-template-columns:44px minmax(0,1fr);gap:6px;margin-left:0}
  .film-modal iframe{height:70dvh;min-height:320px}
 }
+
+.about-body h3{font-size:17px;line-height:1.5;font-weight:600;color:#d0e8e9;margin:24px 0 8px}.about-body p{font-size:16px}.about-body strong{color:#c9e6e1;font-weight:600}

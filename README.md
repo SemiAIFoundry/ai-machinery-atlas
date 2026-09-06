@@ -8,7 +8,7 @@ The atlas pairs a component field guide with selectable, procedural 3D assemblie
 
 **Current release: [v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0).** This edition preserves the full atoms-to-intelligence scope and adds device-adaptive learning, deeper memory and packaging decisions, and three interactive systems labs.
 
-**Software and original content: academic, public-interest research, personal and hobby use permitted with attribution. Commercial use requires a separate written license from Semi AI Foundry, LLC.** Read the [Research and Noncommercial License](LICENSE) and [commercial-use guidance](COMMERCIAL_LICENSE.md). The software is source-available; it is not offered under MIT in this release.
+**Software and original content: academic, public-interest research, personal and hobby use permitted with attribution. Commercial use requires a separate written license from Semi AI Foundry, LLC.** Read the [Research and Noncommercial License](LICENSE) and [commercial-use guidance](COMMERCIAL_LICENSE.md). The software is source-available.
 
 **Current scope:** 224 lessons · 62 branches · 15 guided paths · 24 numerical labs · 76 historical and dated milestones.
 
@@ -79,8 +79,6 @@ All runtime scripts, fonts, and narration ship locally; reference links still le
 ## Releases and updates
 
 The application and educational content are versioned together. [Release v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0) is the current release. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the cumulative project history.
-
-The earlier v1.0.0, v1.1.0 and v1.1.1 release pages and packaged downloads have been withdrawn as part of the licensing transition. Historical source notices record the terms of earlier copies; withdrawal does not retroactively revoke permissions previously granted. See the [transition record](docs/LICENSING-TRANSITION.md).
 
 Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Active releases use fixed source tags, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
 
