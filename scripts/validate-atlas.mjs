@@ -3,7 +3,7 @@ import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const base=process.cwd();const ts=(await import('typescript')).default;
 const baseline=JSON.parse(fs.readFileSync('src/lib/data/records.json','utf8'));
-const packs=['fabrication','architecture','infrastructure','crg'].map(n=>JSON.parse(fs.readFileSync('src/lib/data/'+n+'.json','utf8')));
+const packs=['fabrication','architecture','infrastructure','crg','infrastructure-depth'].map(n=>JSON.parse(fs.readFileSync('src/lib/data/'+n+'.json','utf8')));
 const data=[...baseline,...packs.flatMap(p=>p.lessons)];
 let src=fs.readFileSync('src/lib/atlas.ts','utf8')
  .replace(/import (\w+) from '(\.\/data\/[^']+\.json)';/g,(_,name,path)=>'const '+name+'='+fs.readFileSync('src/lib/'+path,'utf8')+';')

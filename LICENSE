@@ -1,21 +1,176 @@
-MIT License
+# AI Machinery Atlas Research and Noncommercial License 1.0
 
-Copyright (c) 2026 Semi AI Foundry, LLC
+Copyright (c) 2026 Semi AI Foundry, LLC.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+AI Machinery Atlas is source-available under the PolyForm Noncommercial
+License 1.0.0 below, together with the Atlas Scope, Commercial-Use and
+Attribution Conditions at the end of this file. All are part of the license.
+This is a custom noncommercial license, not the unmodified PolyForm license
+and not an OSI-approved open-source license.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Academic teaching, public-interest research, personal study, experimentation,
+and hobby use are permitted without charge subject to these terms.
+Commercialization requires a separate written license from Semi AI Foundry,
+LLC before commercial use begins. See COMMERCIAL_LICENSE.md.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+The licensor and copyright owner is Semi AI Foundry, LLC. The licensed work
+includes the atlas-owned software, source and object code, documentation,
+original curriculum, curation, diagrams, procedural scenes, numerical labs,
+and companion-film materials distributed with this release. References to
+"software" below include this licensed work. Separately identified third-party
+materials retain their own licenses; see THIRD_PARTY_NOTICES.md.
+
+## Base terms: PolyForm Noncommercial License 1.0.0
+
+https://polyformproject.org/licenses/noncommercial/1.0.0
+
+## Acceptance
+
+In order to get any license under these terms, you must agree to them as both
+strict obligations and conditions to all your licenses.
+
+## Copyright License
+
+The licensor grants you a copyright license for the software to do everything
+you might do with the software that would otherwise infringe the licensor's
+copyright in it for any permitted purpose. However, you may only distribute the
+software according to Distribution License and make changes or new works based
+on the software according to Changes and New Works License.
+
+## Distribution License
+
+The licensor grants you an additional copyright license to distribute copies of
+the software. Your license to distribute covers distributing the software with
+changes and new works permitted by Changes and New Works License.
+
+## Notices
+
+You must ensure that anyone who gets a copy of any part of the software from you
+also gets a copy of these terms or the URL for them above, as well as copies of
+any plain-text lines beginning with `Required Notice:` that the licensor
+provided with the software. For example:
+
+> Required Notice: Copyright Yoyodyne, Inc. (http://example.com)
+
+## Changes and New Works License
+
+The licensor grants you an additional copyright license to make changes and new
+works based on the software for any permitted purpose.
+
+## Patent License
+
+The licensor grants you a patent license for the software that covers patent
+claims the licensor can license, or becomes able to license, that you would
+infringe by using the software.
+
+## Noncommercial Purposes
+
+Any noncommercial purpose is a permitted purpose.
+
+## Personal Uses
+
+Personal use for research, experiment, and testing for the benefit of public
+knowledge, personal study, private entertainment, hobby projects, amateur
+pursuits, or religious observance, without any anticipated commercial
+application, is use for a permitted purpose.
+
+## Noncommercial Organizations
+
+Use by any charitable organization, educational institution, public research
+organization, public safety or health organization, environmental protection
+organization, or government institution is use for a permitted purpose
+regardless of the source of funding or obligations resulting from the funding.
+
+## Fair Use
+
+You may have "fair use" rights for the software under the law. These terms do
+not limit them.
+
+## No Other Rights
+
+These terms do not allow you to sublicense or transfer any of your licenses to
+anyone else, or prevent the licensor from granting licenses to anyone else.
+These terms do not imply any other licenses.
+
+## Patent Defense
+
+If you make any written claim that the software infringes or contributes to
+infringement of any patent, your patent license for the software granted under
+these terms ends immediately. If your company makes such a claim, your patent
+license ends immediately for work on behalf of your company.
+
+## Violations
+
+The first time you are notified in writing that you have violated any of these
+terms, or done anything with the software not covered by your licenses, your
+licenses can nonetheless continue if you come into full compliance with these
+terms, and take practical steps to correct past violations, within 32 days of
+receiving notice. Otherwise, all your licenses end immediately.
+
+## No Liability
+
+As far as the law allows, the software comes as is, without any warranty or
+condition, and the licensor will not be liable to you for any damages arising
+out of these terms or the use or nature of the software, under any kind of legal
+claim.
+
+## Definitions
+
+The licensor is the individual or entity offering these terms, and the software
+is the software the licensor makes available under these terms.
+
+You refers to the individual or entity agreeing to these terms.
+
+Your company is any legal entity, sole proprietorship, or other kind of
+organization that you work for, plus all organizations that have control over,
+are under the control of, or are under common control with that organization.
+Control means ownership of substantially all the assets of an entity, or the
+power to direct its management and policies by vote, contract, or otherwise.
+Control can be direct or indirect.
+
+Your licenses are all the licenses granted to you for the software.
+
+Use means anything you do with the software requiring one of your licenses.
+
+© PolyForm Project Inc.
+
+## Atlas Scope, Commercial-Use and Attribution Conditions
+
+These conditions apply to every permission granted for AI Machinery Atlas.
+If they conflict with a permission in the base terms, these conditions control.
+
+1. Academic teaching, academic or public-interest research, personal study,
+   experimentation, testing for public knowledge, and hobby projects are
+   permitted when they do not commercialize the licensed work or use it in
+   support of a commercial product, service, or activity. Ordinary tuition or
+   research funding alone does not make otherwise permitted academic teaching
+   or public-interest research commercial. An institution's status alone does
+   not permit it to commercialize the licensed work.
+2. Commercial use is not permitted without a separate written commercial
+   license from Semi AI Foundry, LLC. This includes use by or for a business in
+   commercial activity; commercial production or staging deployments; paid
+   consulting, managed services, or customer deliverables; incorporation in,
+   distribution with, or operation of a commercial product or service;
+   internal operations or training in support of revenue-generating activity;
+   resale, paid redistribution, white-label offerings, sublicensing, or other
+   commercial exploitation of the licensed work. Using the licensed software
+   or content to train, evaluate, or improve a commercial AI product or service
+   also requires a separate written commercial license. These conditions do
+   not limit fair use or other rights that do not require this license.
+3. Every copy, substantial portion, modified version, or redistribution must
+   retain this complete license, the Required Notice supplied in NOTICE, and
+   applicable third-party notices. The URL of the PolyForm base terms alone
+   is not a substitute for this complete license and its added conditions.
+4. Every public research paper, report, presentation, benchmark, dataset, or
+   software release that materially uses the licensed work must identify
+   "AI Machinery Atlas, developed by Semi AI Foundry, LLC", the version used
+   where reasonably available, and https://semiaifoundry.com/ai-atlas/ or the
+   release repository URL. Attribution must not suggest endorsement.
+5. No rights to third-party materials, engineering facts, ideas, or trademarks
+   are created or expanded by this license. Third-party permissions remain
+   governed by their own terms.
+
+These terms apply to the work offered under this license. They do not purport
+to withdraw permissions already granted under licenses accompanying earlier
+copies. Withdrawal of an earlier release from distribution is not retroactive
+revocation of those permissions.

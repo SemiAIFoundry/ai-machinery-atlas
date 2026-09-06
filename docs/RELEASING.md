@@ -12,11 +12,11 @@ Version the application and its educational content together as MAJOR.MINOR.PATC
 
 Keep an Unreleased section in `CHANGELOG.md`. Each release records software changes and content changes separately, the reference date, actual validation outcomes and limitations, a fixed source tag, and SHA-256 checksums. Update `package.json`, both root version fields in `package-lock.json`, `CITATION.cff`, the in-app download link, and release notes together. Cite the specific version used for teaching or research.
 
-Publish a draft only after its source and static archives match the tagged source. Once public, do not move its tag or replace its assets; corrections get a new version. The live demo follows the current public release, while older versioned archives remain available.
+Publish a draft only after its source and static archives match the tagged source. Once public, do not move its tag or replace its assets; corrections get a new version. The live demo follows the current public release, while retained older archives keep their original notices. The publisher may explicitly withdraw release pages and downloadable archives; record withdrawals in the licensing transition and changelog without representing them as retroactive revocation.
 
 ## 1. Review the source
 
-Confirm the package contains the application source, dependency lockfile, tests, build configuration, MIT license, third-party notices, and documentation. Exclude dependency folders, caches, local paths, credentials, private Sites metadata, and unrelated workspace files.
+Confirm the package contains the application source, dependency lockfile, tests, build configuration, Research and Noncommercial License, NOTICE, commercial-use guidance, third-party notices, and documentation. Exclude dependency folders, caches, local paths, credentials, private Sites metadata, and unrelated workspace files.
 
 Review the version in `package.json`, `CHANGELOG.md`, and `CITATION.cff`. Keep the citation URL pointed at the canonical atlas. Keep the verified repository URL synchronized across the README, package metadata, and citation metadata.
 
@@ -70,4 +70,4 @@ For GitHub Pages, select the repository’s supported Pages publication method a
 
 For SemiAIFoundry, the canonical atlas location is `https://semiaifoundry.com/ai-atlas/`. Its host may apply a route-specific content security policy to support the React scene controls and embedded film. Validate that policy without broadening unrelated pages’ permissions.
 
-Keep the previous deployment or release artifact available until the new deployment is confirmed. Update external links only after the new destination is live.
+Keep a private rollback artifact until the new deployment is confirmed; do not republish withdrawn releases. Update external links only after the new destination is live.

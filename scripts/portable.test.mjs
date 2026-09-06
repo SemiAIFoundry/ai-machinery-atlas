@@ -44,7 +44,7 @@ test('the standalone app retains base-relative film navigation and portable meta
   assert.match(read('src/Atlas.tsx'), /window\.location\.hash/);
   assert.match(read('vite.config.ts'), /base:'\.\/'/);
   const packageJson = JSON.parse(read('package.json'));
-  assert.equal(packageJson.license, 'MIT');
+  assert.equal(packageJson.license, 'SEE LICENSE IN LICENSE');
   assert.match(packageJson.version, /^\d+\.\d+\.\d+$/);
   assert.equal(JSON.parse(read('package-lock.json')).packages[''].version, packageJson.version);
   assert.ok(read('CITATION.cff').includes('version: ' + packageJson.version));
@@ -54,7 +54,11 @@ test('the standalone app retains base-relative film navigation and portable meta
 });
 
 test('source and static distributions retain exact license texts', () => {
-  assert.match(read('LICENSE'), /MIT License/);
+  assert.match(read('LICENSE'), /AI Machinery Atlas Research and Noncommercial License 1\.0/);
+  assert.match(read('LICENSE'), /Commercial use is not permitted/);
+  assert.equal(read('NOTICE'), read(resolve(dist, 'NOTICE.txt')));
+  assert.ok(existsSync(resolve(dist, 'COMMERCIAL_LICENSE.md')));
+  assert.ok(existsSync(resolve(dist, 'LICENSING-TRANSITION.md')));
   assert.equal(read('LICENSE'), read(resolve(dist, 'LICENSE.txt')));
   for (const item of JSON.parse(read('license-inventory.json'))) {
     const text = readFileSync(item.file);

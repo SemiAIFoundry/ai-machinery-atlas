@@ -4,6 +4,16 @@
 
 Future corrections and compatible additions will be recorded here.
 
+## 1.2.0 — 2026-09-06
+
+- Adds phone reading mode, accessible contents and menus, tablet layout, touch-safe model interaction and rendering suspension.
+- Deepens HBM stack and bonding, HBF read-tier behavior, workload memory placement and memory-to-hall qualification with source-linked lessons and route-specific process playback.
+- Adds HBM stack, inference working-set placement and token-path numerical labs with explicit assumptions and numerical boundary tests.
+- Changes atlas-owned software and original content to the AI Machinery Atlas Research and Noncommercial License 1.0. Academic, public-interest research, personal and hobby use remain permitted with attribution; commercial use requires a separate written license. Third-party terms remain unchanged.
+- Withdraws earlier published release pages and packaged downloads at the publisher’s direction. Earlier copies retain their accompanying permissions; historical entries below describe their original release state.
+
+See [release notes](docs/RELEASE-NOTES-v1.2.0.md) and [licensing transition](docs/LICENSING-TRANSITION.md).
+
 ## 1.1.1 — 2026-09-06
 
 Documentation, metadata, and release-link revision of v1.1.0:

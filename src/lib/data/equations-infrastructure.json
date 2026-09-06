@@ -1,1 +1,565 @@
-{}
+{
+  "hbm-stack-height-budget": [
+    {
+      "latex": "H=t_{\\mathrm{base}}+N t_{\\mathrm{die}}+J t_{\\mathrm{bond}}+t_{\\mathrm{cap}}",
+      "variables": [
+        {
+          "symbol": "H",
+          "meaning": "Modeled stack height",
+          "unit": "µm"
+        },
+        {
+          "symbol": "tbase",
+          "meaning": "Base structure thickness",
+          "unit": "µm"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Number of memory dies",
+          "unit": "count"
+        },
+        {
+          "symbol": "tdie",
+          "meaning": "Memory die thickness",
+          "unit": "µm"
+        },
+        {
+          "symbol": "J",
+          "meaning": "Counted bond lines",
+          "unit": "count"
+        },
+        {
+          "symbol": "tbond",
+          "meaning": "Thickness per bond line",
+          "unit": "µm"
+        },
+        {
+          "symbol": "tcap",
+          "meaning": "Top allowance in this model",
+          "unit": "µm"
+        }
+      ]
+    },
+    {
+      "latex": "C=N C_{\\mathrm{die}},\\qquad B=\\frac{w r\\eta}{8}",
+      "variables": [
+        {
+          "symbol": "C",
+          "meaning": "Stack capacity",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Cdie",
+          "meaning": "Usable capacity per memory die",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "w",
+          "meaning": "Number of data bits transferred in parallel",
+          "unit": "bits/transfer"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Transfers per second per data pin",
+          "unit": "transfers/s"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Payload efficiency",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Usable interface bandwidth",
+          "unit": "bytes/s"
+        }
+      ]
+    }
+  ],
+  "hbm-stack-thermal-yield": [
+    {
+      "latex": "T_i-T_{\\mathrm{coolant}}=\\sum_j R_{ij}P_j",
+      "variables": [
+        {
+          "symbol": "Ti",
+          "meaning": "Temperature at inspected location i",
+          "unit": "°C"
+        },
+        {
+          "symbol": "Tcoolant",
+          "meaning": "Specified coolant boundary temperature",
+          "unit": "°C"
+        },
+        {
+          "symbol": "Rij",
+          "meaning": "Thermal coupling from source j to location i",
+          "unit": "K/W"
+        },
+        {
+          "symbol": "Pj",
+          "meaning": "Heat dissipated at source j",
+          "unit": "W"
+        }
+      ]
+    },
+    {
+      "latex": "Y_{\\mathrm{assembly}}\\approx y_{\\mathrm{joint}}^{J}",
+      "variables": [
+        {
+          "symbol": "Yassembly",
+          "meaning": "Probability a screened input set survives modeled assembly",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "yjoint",
+          "meaning": "Conditional aggregate pass probability per interface",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "J",
+          "meaning": "Modeled interfaces",
+          "unit": "count"
+        }
+      ]
+    }
+  ],
+  "hbm-tc-ncf-route": [
+    {
+      "latex": "t_{\\mathrm{stack}}\\approx N(t_{\\mathrm{align}}+t_{\\mathrm{bond}})+t_{\\mathrm{handling}}",
+      "variables": [
+        {
+          "symbol": "tstack",
+          "meaning": "Serial tool occupancy per stack",
+          "unit": "s"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Placements in the modeled route",
+          "unit": "count"
+        },
+        {
+          "symbol": "talign",
+          "meaning": "Alignment/placement time per die",
+          "unit": "s"
+        },
+        {
+          "symbol": "tbond",
+          "meaning": "Bond occupancy time per die",
+          "unit": "s"
+        },
+        {
+          "symbol": "thandling",
+          "meaning": "Other occupied handling time per stack",
+          "unit": "s"
+        }
+      ]
+    }
+  ],
+  "hbm-mr-muf-route": [
+    {
+      "latex": "Q=\\frac{K a}{t_{\\mathrm{cycle}}}",
+      "variables": [
+        {
+          "symbol": "Q",
+          "meaning": "Processed stacks per unit time",
+          "unit": "stacks/s"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Stacks processed per modeled batch",
+          "unit": "stacks"
+        },
+        {
+          "symbol": "a",
+          "meaning": "Productive-time fraction",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "tcycle",
+          "meaning": "Occupied batch cycle time",
+          "unit": "s"
+        }
+      ]
+    }
+  ],
+  "hbm-hybrid-bond-route": [
+    {
+      "latex": "A_{\\mathrm{overlap}}=\\max(0,w-|d_x|)\\max(0,w-|d_y|)",
+      "variables": [
+        {
+          "symbol": "Aoverlap",
+          "meaning": "Geometric overlap area",
+          "unit": "µm²"
+        },
+        {
+          "symbol": "w",
+          "meaning": "Square pad side length",
+          "unit": "µm"
+        },
+        {
+          "symbol": "dx",
+          "meaning": "Relative offset in x",
+          "unit": "µm"
+        },
+        {
+          "symbol": "dy",
+          "meaning": "Relative offset in y",
+          "unit": "µm"
+        }
+      ]
+    }
+  ],
+  "hbm-bonding-process-selection": [
+    {
+      "latex": "c_{\\mathrm{good}}=\\frac{c_{\\mathrm{input}}+c_{\\mathrm{process}}+c_{\\mathrm{test}}}{Y}",
+      "variables": [
+        {
+          "symbol": "cgood",
+          "meaning": "Average modeled cost per accepted stack",
+          "unit": "currency/stack"
+        },
+        {
+          "symbol": "cinput",
+          "meaning": "Screened components cost per starting set",
+          "unit": "currency/set"
+        },
+        {
+          "symbol": "cprocess",
+          "meaning": "Assembly cost per starting set",
+          "unit": "currency/set"
+        },
+        {
+          "symbol": "ctest",
+          "meaning": "Inspection/test cost per starting set",
+          "unit": "currency/set"
+        },
+        {
+          "symbol": "Y",
+          "meaning": "Accepted stacks per starting set",
+          "unit": "fraction"
+        }
+      ]
+    }
+  ],
+  "hbf-read-tier-contract": [
+    {
+      "latex": "t_{\\mathrm{transfer}}\\geq\\frac{V}{B}",
+      "variables": [
+        {
+          "symbol": "ttransfer",
+          "meaning": "Bulk transfer time lower bound",
+          "unit": "s"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Required payload volume",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Assumed usable read bandwidth",
+          "unit": "bytes/s"
+        }
+      ]
+    }
+  ],
+  "hbf-latency-prefetch": [
+    {
+      "latex": "B_{\\mathrm{useful}}\\leq B_{\\mathrm{physical}}\\frac{u}{g}",
+      "variables": [
+        {
+          "symbol": "Buseful",
+          "meaning": "Rate of useful bytes consumed",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "Bphysical",
+          "meaning": "Actual transferred payload rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "u",
+          "meaning": "Useful bytes from a transaction",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Fetched bytes per transaction",
+          "unit": "bytes"
+        }
+      ]
+    },
+    {
+      "latex": "Q_{\\mathrm{flight}}\\geq B_{\\mathrm{target}}L",
+      "variables": [
+        {
+          "symbol": "Qflight",
+          "meaning": "Required outstanding payload",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Btarget",
+          "meaning": "Target transfer rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Request-to-completion latency",
+          "unit": "s"
+        }
+      ]
+    }
+  ],
+  "memory-working-set-placement": [
+    {
+      "latex": "\\sum_i x_{i,k}S_i+O_k\\leq C_k",
+      "variables": [
+        {
+          "symbol": "xi,k",
+          "meaning": "Resident fraction/copy indicator of object i in tier k",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Si",
+          "meaning": "Object size at its stored precision",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Ok",
+          "meaning": "Workspace, staging and metadata overhead",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Ck",
+          "meaning": "Usable tier capacity",
+          "unit": "bytes"
+        }
+      ]
+    }
+  ],
+  "training-tier-placement": [
+    {
+      "latex": "M_{\\mathrm{state}}=P(b_w+b_g+b_m+b_o)+A+O",
+      "variables": [
+        {
+          "symbol": "Mstate",
+          "meaning": "Live model/training memory estimate",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Parameter count",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "bw",
+          "meaning": "Stored weight bytes per parameter",
+          "unit": "bytes/parameter"
+        },
+        {
+          "symbol": "bg",
+          "meaning": "Gradient bytes per parameter",
+          "unit": "bytes/parameter"
+        },
+        {
+          "symbol": "bm",
+          "meaning": "Separate master-weight bytes per parameter",
+          "unit": "bytes/parameter"
+        },
+        {
+          "symbol": "bo",
+          "meaning": "Optimizer-state bytes per parameter",
+          "unit": "bytes/parameter"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Retained live activations",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "O",
+          "meaning": "Other live workspace and metadata",
+          "unit": "bytes"
+        }
+      ]
+    }
+  ],
+  "prefill-decode-tier-placement": [
+    {
+      "latex": "M_{\\mathrm{KV}}=2LH_{\\mathrm{KV}}db\\sum_s T_s",
+      "variables": [
+        {
+          "symbol": "MKV",
+          "meaning": "Raw live KV payload",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Layers retaining KV",
+          "unit": "count"
+        },
+        {
+          "symbol": "Hkv",
+          "meaning": "KV heads per layer",
+          "unit": "count"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Values per KV head",
+          "unit": "count"
+        },
+        {
+          "symbol": "b",
+          "meaning": "Bytes per stored value",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Ts",
+          "meaning": "Stored tokens in sequence s",
+          "unit": "tokens"
+        }
+      ]
+    },
+    {
+      "latex": "t_{\\mathrm{restore}}\\geq L_{\\mathrm{path}}+\\frac{V}{B_{\\mathrm{path}}}",
+      "variables": [
+        {
+          "symbol": "trestore",
+          "meaning": "State-restoration time",
+          "unit": "s"
+        },
+        {
+          "symbol": "Lpath",
+          "meaning": "Path setup/completion delay",
+          "unit": "s"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Bytes restored",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Bpath",
+          "meaning": "Sustained path payload bandwidth",
+          "unit": "bytes/s"
+        }
+      ]
+    }
+  ],
+  "moe-expert-tier-placement": [
+    {
+      "latex": "V_{\\mathrm{miss}}=\\sum_{e\\in\\mathcal{M}}P_e b_e",
+      "variables": [
+        {
+          "symbol": "Vmiss",
+          "meaning": "Transferred expert-weight bytes",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Distinct expert cache misses in the window",
+          "unit": "set"
+        },
+        {
+          "symbol": "Pe",
+          "meaning": "Parameters in missing expert e",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "be",
+          "meaning": "Stored bytes per parameter",
+          "unit": "bytes/parameter"
+        }
+      ]
+    }
+  ],
+  "memory-to-hall-propagation": [
+    {
+      "latex": "R\\leq\\min\\left(\\frac{F}{f},\\frac{B_{\\mathrm{mem}}}{v_{\\mathrm{mem}}},\\frac{B_{\\mathrm{net}}}{v_{\\mathrm{net}}}\\right)",
+      "variables": [
+        {
+          "symbol": "R",
+          "meaning": "Completed defined work units per second",
+          "unit": "work/s"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Usable compute rate",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Operations per work unit",
+          "unit": "operations/work"
+        },
+        {
+          "symbol": "Bmem",
+          "meaning": "Usable memory bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "vmem",
+          "meaning": "Memory bytes per work unit",
+          "unit": "bytes/work"
+        },
+        {
+          "symbol": "Bnet",
+          "meaning": "Usable network bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "vnet",
+          "meaning": "Network bytes per work unit",
+          "unit": "bytes/work"
+        }
+      ]
+    },
+    {
+      "latex": "e=\\frac{P_{\\mathrm{IT}}\\,\\mathrm{PUE}}{R_{\\mathrm{accepted}}}",
+      "variables": [
+        {
+          "symbol": "e",
+          "meaning": "Facility energy per accepted work unit",
+          "unit": "J/work"
+        },
+        {
+          "symbol": "PIT",
+          "meaning": "Mean IT equipment power",
+          "unit": "W"
+        },
+        {
+          "symbol": "PUE",
+          "meaning": "Facility/IT energy ratio for that interval",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Raccepted",
+          "meaning": "Accepted work rate",
+          "unit": "work/s"
+        }
+      ]
+    }
+  ],
+  "memory-system-qualification": [
+    {
+      "latex": "W_{\\mathrm{retained}}=W_{\\mathrm{executed}}-W_{\\mathrm{discarded}}",
+      "variables": [
+        {
+          "symbol": "Wretained",
+          "meaning": "Correct work retained after validation and recovery",
+          "unit": "work units"
+        },
+        {
+          "symbol": "Wexecuted",
+          "meaning": "Work executed in the measured interval",
+          "unit": "work units"
+        },
+        {
+          "symbol": "Wdiscarded",
+          "meaning": "Executed work not retained as valid output",
+          "unit": "work units"
+        }
+      ]
+    }
+  ]
+}
