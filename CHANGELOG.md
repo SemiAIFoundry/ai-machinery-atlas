@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-Changes after v1.0.0 will be recorded here.
+Additive work after the fixed v1.0.0 reference tag:
+
+- Expanded the curriculum to 210 connected lessons across 57 branches, while retaining all 97 original lessons, 26 original branches, five original journeys, seven original labs, and 41 original milestones.
+- Added deep fabrication, packaging, HBM, processing-unit, custom-silicon, capacity, global infrastructure, orbital, model–machine, reliability, and economics coverage with dated sources and explicit scope.
+- Added the Communication Theory of Computation Realization (CRG) module: seven computation-to-realization boundaries, chip-design process playback, a source-labeled approximately 55-year research claim, and an evidence loop from simulation through workload qualification.
+- Added formal KaTeX/MathML equation rendering with units/assumptions, 14 additional quantitative workbench labs, typed relationship navigation, versioned URL state, and architecture specimen comparisons.
+- Kept the public v1.0.0 tag and its downloadable assets immutable; this section records the additive `main` working edition until a future release number is selected.
 
 ## 1.0.0 — 2026-09-06
 

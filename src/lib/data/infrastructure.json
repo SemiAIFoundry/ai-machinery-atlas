@@ -1,0 +1,3348 @@
+{
+  "chapters": [
+    {
+      "id": "deep-interface-budgets",
+      "band": 3,
+      "name": "Interface compatibility and electrical budgets",
+      "parent": "Chip-to-hall integration",
+      "scene": "signal-power",
+      "scale": "Micrometers of package wiring to board-scale links; schematic",
+      "title": "Interface compatibility and electrical budgets",
+      "summary": "Define protocol, physical compatibility, signal integrity and supply margins.",
+      "ids": [
+        "die-link-compatibility",
+        "pcie-cxl-semantics",
+        "interface-signal-eye",
+        "power-integrity-budget"
+      ],
+      "question": "Why can matching connector names still fail to produce a working link?",
+      "read": "Follow the interface contract from bits to voltage and timing."
+    },
+    {
+      "id": "deep-rack-fabrics",
+      "band": 3,
+      "name": "Rack anatomy and network fabrics",
+      "parent": "Chip-to-hall integration",
+      "scene": "rack-system",
+      "scale": "Package to rack and cluster; named reference geometry",
+      "title": "Rack anatomy and network fabrics",
+      "summary": "Distinguish compute, scale-up, scale-out, optics and management paths.",
+      "ids": [
+        "rack-reference-anatomy",
+        "scaleup-scaleout-boundaries",
+        "fabric-collective-traffic",
+        "optical-cpo-placement"
+      ],
+      "question": "Which fabric carries this transfer?",
+      "read": "Keep data paths separate from power and cooling overlays."
+    },
+    {
+      "id": "deep-power-heat",
+      "band": 4,
+      "name": "Electricity and heat transport",
+      "parent": "Data-center physical systems",
+      "scene": "signal-power",
+      "scale": "Chip voltage rails to facility heat rejection",
+      "title": "Electricity and heat transport",
+      "summary": "Track conversions, dynamic loads, coolant loops and final heat rejection.",
+      "ids": [
+        "rack-power-conversion",
+        "rack-dynamic-power",
+        "coolant-loop-separation",
+        "facility-heat-rejection"
+      ],
+      "question": "Where does electrical input become heat, and where does that heat leave?",
+      "read": "Use independent current, heat and coolant quantities."
+    },
+    {
+      "id": "deep-capacity-readiness",
+      "band": 4,
+      "name": "Capacity, ramps and commissioning",
+      "parent": "Data-center physical systems",
+      "scene": "capacity-flow",
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "title": "Capacity, ramps and commissioning",
+      "summary": "Convert compatible supplies and readiness states into useful deployment bounds.",
+      "ids": [
+        "grid-interconnection-readiness",
+        "cluster-commissioning-gates",
+        "compatible-supply-capacity",
+        "production-ramp-allocation"
+      ],
+      "question": "Which required input or readiness gate is binding now?",
+      "read": "Separate processing, waiting, qualification, allocation and operation."
+    },
+    {
+      "id": "deep-useful-operation",
+      "band": 4,
+      "name": "Scheduling, storage and retained work",
+      "parent": "Data-center operations",
+      "scene": "hall-system",
+      "scale": "Job allocation across nodes, storage tiers and recovery time",
+      "title": "Scheduling, storage and retained work",
+      "summary": "Connect available resources to admitted jobs and durable useful progress.",
+      "ids": [
+        "topology-job-admission",
+        "checkpoint-retained-work",
+        "storage-input-checkpoint-path"
+      ],
+      "question": "How much completed work survives delays and failures?",
+      "read": "Measure resource placement, input readiness and recovery costs."
+    },
+    {
+      "id": "deep-global-resources",
+      "band": 4,
+      "name": "Global evidence and resource accounting",
+      "parent": "Global AI infrastructure",
+      "scene": "world-network",
+      "scale": "Facility phases to region and world; geography schematic",
+      "title": "Global evidence and resource accounting",
+      "summary": "Compare geography, forecasts, energy, water and access using compatible boundaries.",
+      "ids": [
+        "capacity-phase-geography",
+        "energy-forecast-boundaries",
+        "water-boundary-accounting",
+        "regional-siting-access"
+      ],
+      "question": "What exactly does a capacity or energy headline count?",
+      "read": "Use dated phase records and explicit denominators before aggregation."
+    },
+    {
+      "id": "deep-orbital-physics",
+      "band": 4,
+      "name": "Orbital evidence and physical budgets",
+      "parent": "Frontier infrastructure",
+      "scene": "orbital-system",
+      "scale": "Spacecraft to proposed constellation; orbital geometry schematic",
+      "title": "Orbital evidence and physical budgets",
+      "summary": "Separate demonstrations from proposals while closing solar, thermal and link budgets.",
+      "ids": [
+        "orbital-evidence-status",
+        "orbital-solar-storage",
+        "orbital-radiator-budget",
+        "orbital-link-contacts"
+      ],
+      "question": "Which workload could fit the available energy, heat rejection and contact time?",
+      "read": "Change compute only after specifying its complete spacecraft support loads."
+    },
+    {
+      "id": "deep-orbital-service",
+      "band": 4,
+      "name": "Orbital reliability and lifecycle economics",
+      "parent": "Frontier infrastructure",
+      "scene": "orbital-system",
+      "scale": "Payload electronics to fleet and lifecycle; conditional scenarios",
+      "title": "Orbital reliability and lifecycle economics",
+      "summary": "Account for radiation, replacement, launch and accepted service over time.",
+      "ids": [
+        "orbital-radiation-recovery",
+        "orbital-replacement-mass",
+        "orbital-lifecycle-economics"
+      ],
+      "question": "What turns a flight demonstration into a sustainable computing service?",
+      "read": "Track error detection, replacement mass and useful results, with unknowns visible."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "die-link-compatibility",
+      "level": "infrastructure",
+      "name": "Die-to-die links and UCIe compatibility",
+      "shortName": "Die-to-die links and UCIe compatibility",
+      "role": "Defines what adjacent chiplets must agree on to exchange useful data.",
+      "description": "A package link connects separately manufactured logic regions through short wires and interfaces. A common standard can define electrical behavior, link training and supported protocols, but compatibility still depends on the selected package class, widths, rates and implementation options. UCIe’s public explanation describes negotiation of operating parameters during initialization. The physical link must also fit the package routing and power budget. A label saying UCIe therefore identifies a framework for interoperability rather than proving that any two purchased chiplets can be assembled together without additional design and qualification work.",
+      "specs": [
+        {
+          "label": "Compatibility levels",
+          "value": "Physical, link and protocol",
+          "context": "Agreement is required at every implemented layer."
+        },
+        {
+          "label": "Bandwidth density",
+          "value": "Bytes/s per edge length",
+          "context": "Specify the direction and usable interface edge in a comparison."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Chiplet transmitter",
+          "direction": "in",
+          "signal": "Encoded data and link-control information"
+        },
+        {
+          "name": "Chiplet receiver",
+          "direction": "out",
+          "signal": "Validated data delivered to the supported protocol"
+        }
+      ],
+      "tradeoff": "Standardized interfaces improve reuse but reserve area, power and routing that a highly specialized link may optimize differently.",
+      "whyAI": "Chiplet-based accelerators depend on reliable data exchange before their separate arithmetic and memory resources form a useful device.",
+      "related": [
+        "package-substrate",
+        "interposer",
+        "interface-signal-eye"
+      ],
+      "sources": [
+        {
+          "title": "Introduction to UCIe webinar: Q&A recap",
+          "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap"
+        }
+      ],
+      "scale": "Micrometers of package wiring to board-scale links; schematic",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Interface compatibility and electrical budgets",
+      "mechanism": [
+        "Choose compatible package and electrical options before committing bump locations.",
+        "Match protocol support and the meaning of data, control and error responses.",
+        "Train the link and negotiate the supported operating parameters.",
+        "Verify routing losses, timing and supply noise over intended conditions.",
+        "Qualify the integrated package rather than inferring compatibility from individual component labels."
+      ],
+      "misconception": "A shared interface name is necessary evidence of a common framework, not sufficient proof of a qualified product combination.",
+      "check": {
+        "question": "What must match beyond a connector or standard name?",
+        "options": [
+          "Physical options and supported protocol behavior",
+          "Only the marketing color",
+          "Only the total transistor count"
+        ],
+        "answer": 0,
+        "explanation": "Electrical and logical compatibility must coexist with package routing and operating margins."
+      },
+      "science": [
+        {
+          "title": "Usable link rate",
+          "equation": "Buseful = Nlane r η / 8",
+          "explanation": "Nlane is lane count, r effective bits/s per lane and η payload efficiency; Buseful is bytes/s in the stated direction.",
+          "assumptions": "No lane double-counting; bidirectional aggregate rates require a separate label."
+        }
+      ],
+      "prerequisites": [
+        "interposer",
+        "package-substrate"
+      ],
+      "learningObjective": "Separate die-link standardization from implementation compatibility and qualification.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic interface: 16 lanes at 8 Gbit/s with 80% payload efficiency yield 12.8 GB/s one way. Summing the reverse direction would describe a different aggregate metric.",
+      "evidenceNotes": "The example does not claim a UCIe configuration. Public initialization guidance supplies the mechanism; vendor interoperability test results remain configuration-specific."
+    },
+    {
+      "id": "pcie-cxl-semantics",
+      "level": "infrastructure",
+      "name": "PCIe and CXL: transport versus memory semantics",
+      "shortName": "PCIe and CXL",
+      "role": "Distinguishes peripheral data transfer from supported coherent memory operations.",
+      "description": "PCI Express provides a widely used physical and protocol foundation for host devices. CXL builds on a PCIe physical foundation while adding defined cache and memory semantics alongside I/O. This enables supported devices to participate in coherent access or expose memory through specific host/device roles. It does not make distant memory equivalent to local DRAM: requests still cross links, queues and controllers. Software, firmware and device generation determine what is actually enabled. A diagram should show both the physical route and the ownership or coherence behavior, because equal link rates do not imply identical programming semantics.",
+      "specs": [
+        {
+          "label": "Protocol roles",
+          "value": "CXL.io, CXL.cache and CXL.mem",
+          "context": "Supported roles depend on device type and version."
+        },
+        {
+          "label": "Memory expansion",
+          "value": "Additional addressable capacity",
+          "context": "Capacity does not guarantee local-memory latency or bandwidth."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Host requests",
+          "direction": "in",
+          "signal": "I/O transactions or supported coherent memory operations"
+        },
+        {
+          "name": "Device or attached memory",
+          "direction": "out",
+          "signal": "Completions, data and coherence responses"
+        }
+      ],
+      "tradeoff": "Expanded or shared memory can improve capacity utilization while exposing link latency and management complexity.",
+      "whyAI": "Model state that does not fit near an accelerator may use a larger memory tier, but traffic-sensitive operations need a measured access budget.",
+      "related": [
+        "pcie-interface",
+        "ddr-memory",
+        "die-link-compatibility"
+      ],
+      "sources": [
+        {
+          "title": "Compute Express Link 2.0 Specification Now Available",
+          "url": "https://computeexpresslink.org/blog/compute-express-link-2-0-specification-now-available-2374/"
+        }
+      ],
+      "scale": "Micrometers of package wiring to board-scale links; schematic",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Interface compatibility and electrical budgets",
+      "mechanism": [
+        "Identify host and device roles and the CXL version supported by both endpoints.",
+        "Separate ordinary I/O transactions from enabled cache or memory protocol operations.",
+        "Map memory ownership and address translation consistently across the system.",
+        "Trace requests through physical links and controllers despite a convenient software address model.",
+        "Measure the intended workload before treating expanded memory as a substitute for nearby capacity."
+      ],
+      "misconception": "Coherence supplies consistency rules; it does not erase physical distance or guarantee identical access cost.",
+      "check": {
+        "question": "What does adding CXL memory establish most directly?",
+        "options": [
+          "Automatic HBM bandwidth for every request",
+          "An enabled additional memory resource with defined access semantics",
+          "The same latency as every CPU cache"
+        ],
+        "answer": 1,
+        "explanation": "Actual access time and rate remain properties of the complete implemented path."
+      },
+      "science": [
+        {
+          "title": "Two-tier access estimate",
+          "equation": "Lavg = pLnear + (1−p)Lfar",
+          "explanation": "p is the near-access fraction and latency values are seconds/access.",
+          "assumptions": "Simple average without overlap or queueing; a dependent chain or tail metric needs additional analysis."
+        }
+      ],
+      "prerequisites": [
+        "pcie-interface",
+        "ddr-memory"
+      ],
+      "learningObjective": "Explain why physical transport, coherent semantics and memory performance are distinct.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic placement: moving a rarely accessed 10 GB table to a larger tier may free nearby memory for hot state. Moving a repeatedly streamed hot tensor can instead increase runtime despite identical total capacity.",
+      "evidenceNotes": "CXL 2.0 is a historical teaching disclosure. No latest-generation support, universal latency or arbitrary platform compatibility is asserted."
+    },
+    {
+      "id": "interface-signal-eye",
+      "level": "infrastructure",
+      "name": "Signal integrity, timing and the eye diagram",
+      "shortName": "Signal integrity, timing and the eye diagram",
+      "role": "Tests whether a receiver can distinguish transmitted symbols under actual channel conditions.",
+      "description": "A digital link uses analog voltages or currents to encode symbols. Wires, connectors and package transitions attenuate and distort those signals; neighboring activity and supply noise add interference. A receiver needs enough voltage separation and timing margin to decide correctly. An eye diagram overlays many symbol intervals to reveal the available opening, while bit-error measurements test actual outcomes under stated conditions. Equalization can compensate for some channel loss but adds complexity and power. The IBM BoW interface study is a concrete example of signal and power analysis tied to a particular package implementation.",
+      "specs": [
+        {
+          "label": "Eye opening",
+          "value": "Voltage and time margin",
+          "context": "Volts and seconds at a stated measurement point."
+        },
+        {
+          "label": "Error rate",
+          "value": "Errors / tested bits",
+          "context": "Test duration and statistical confidence matter, especially with no observed errors."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Transmitter and channel",
+          "direction": "in",
+          "signal": "Symbols distorted by channel loss, reflections and crosstalk"
+        },
+        {
+          "name": "Receiver decision",
+          "direction": "out",
+          "signal": "Recovered symbols and observed error events"
+        }
+      ],
+      "tradeoff": "Higher signaling rate or denser routing can raise bandwidth while reducing margin; equalization and extra spacing cost power or area.",
+      "whyAI": "Correct arithmetic is useless if package or network links corrupt data, retry excessively or fail under high simultaneous activity.",
+      "related": [
+        "interconnect",
+        "die-link-compatibility",
+        "power-integrity-budget"
+      ],
+      "sources": [
+        {
+          "title": "Signal and Power Integrity Design and Analysis for BoW Interface for Chiplet Integration on Advanced Packaging",
+          "url": "https://research.ibm.com/publications/signal-and-power-integrity-design-and-analysis-for-bunch-of-wires-bow-interface-for-chiplet-integration-on-advanced-packaging"
+        }
+      ],
+      "scale": "Micrometers of package wiring to board-scale links; schematic",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Interface compatibility and electrical budgets",
+      "mechanism": [
+        "Define the channel, symbol rate, receiver requirements and environmental conditions.",
+        "Model or measure loss and reflections through each physical transition.",
+        "Include aggressor activity, timing jitter and supply noise in the margin analysis.",
+        "Inspect the received eye and measure errors with a documented test pattern and duration.",
+        "Adjust routing, termination or equalization and repeat integrated testing over operating corners."
+      ],
+      "misconception": "An ideal square-wave drawing is not a measured signal; zero errors in a short test does not prove a zero error probability.",
+      "check": {
+        "question": "Why can a link pass alone but fail beside busy neighbors?",
+        "options": [
+          "Bits change their mathematical definition",
+          "Channel behavior never depends on activity",
+          "Crosstalk or shared supply noise can reduce margin"
+        ],
+        "answer": 2,
+        "explanation": "Neighboring transitions can disturb voltage or timing even though the intended logical data is unchanged."
+      },
+      "science": [
+        {
+          "title": "Unit interval",
+          "equation": "UI = 1 / Rsymbol",
+          "explanation": "Rsymbol is symbols/s and UI is seconds/symbol. Multi-level signaling may encode multiple bits per symbol.",
+          "assumptions": "Symbol rate and bit rate must not be conflated; coding and overhead affect payload rate."
+        }
+      ],
+      "prerequisites": [
+        "interconnect",
+        "clock"
+      ],
+      "learningObjective": "Relate digital error behavior to analog channel and timing margins.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic 10 Gsymbol/s link has a 100 ps unit interval. A 20 ps total timing uncertainty consumes one fifth of that interval before considering the receiver’s own requirements.",
+      "evidenceNotes": "IBM’s numerical geometry results are not transferred to this example. Eye limits and test confidence must be specified for the actual interface."
+    },
+    {
+      "id": "power-integrity-budget",
+      "level": "infrastructure",
+      "name": "Power integrity and transient voltage margin",
+      "shortName": "Power integrity and transient voltage margin",
+      "role": "Keeps the voltage at a chip within its operating window during changing current demand.",
+      "description": "A voltage regulator supplies a target rail, but the chip sees that rail through resistive and inductive paths. A large current step can create both steady voltage drop and transient droop. Decoupling capacitors provide nearby charge while the regulator responds, yet their connections and resonances matter. Package power routing, board planes and regulator control must therefore be designed together. Power integrity differs from the facility’s annual energy budget: the critical event may last a tiny fraction of a second. A system can have ample nameplate power and still suffer timing errors or protective shutdowns during a fast load change.",
+      "specs": [
+        {
+          "label": "Voltage margin",
+          "value": "Volts at the consuming rail",
+          "context": "Upstream supply voltage does not establish die-local voltage."
+        },
+        {
+          "label": "Impedance target",
+          "value": "Allowed voltage change / current change",
+          "context": "Ohms over a frequency range, not one DC resistance alone."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Regulator and distribution",
+          "direction": "in",
+          "signal": "Supply current through resistive/inductive paths"
+        },
+        {
+          "name": "Chip rail",
+          "direction": "out",
+          "signal": "Voltage with ripple, droop and recovery behavior"
+        }
+      ],
+      "tradeoff": "More capacitance and wider power paths can improve margin but consume space; aggressive load changes may require coordinated power control.",
+      "whyAI": "Synchronized accelerator activity can create rapid current changes, making electrical dynamics relevant even when average power fits the rack budget.",
+      "related": [
+        "voltage-regulator",
+        "package-substrate",
+        "rack-dynamic-power"
+      ],
+      "sources": [
+        {
+          "title": "Signal and Power Integrity Design and Analysis for BoW Interface for Chiplet Integration on Advanced Packaging",
+          "url": "https://research.ibm.com/publications/signal-and-power-integrity-design-and-analysis-for-bunch-of-wires-bow-interface-for-chiplet-integration-on-advanced-packaging"
+        },
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        }
+      ],
+      "scale": "Micrometers of package wiring to board-scale links; schematic",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Interface compatibility and electrical budgets",
+      "mechanism": [
+        "Define the allowed rail-voltage window and representative current transients.",
+        "Account for resistance and inductance from regulator through board and package to the load.",
+        "Place effective decoupling close enough to supply charge during fast demand changes.",
+        "Analyze regulator response and resonances across the relevant frequency range.",
+        "Measure rail behavior under realistic simultaneous activity rather than only steady average load."
+      ],
+      "misconception": "PSU capacity, energy consumption and local transient voltage margin are different quantities.",
+      "check": {
+        "question": "Which measurement directly tests a fast supply-droop hypothesis?",
+        "options": [
+          "Time-resolved voltage at the relevant rail during a load step",
+          "Annual electricity spend",
+          "The package’s exterior color"
+        ],
+        "answer": 0,
+        "explanation": "The hypothesis concerns local voltage over time, so the measurement must preserve that location and timescale."
+      },
+      "science": [
+        {
+          "title": "Transient droop terms",
+          "equation": "ΔV ≈ I R + L(dI/dt)",
+          "explanation": "I is amperes, R ohms, L henries and dI/dt amperes/s; ΔV is volts.",
+          "assumptions": "A simple path model; decoupling, regulator dynamics and distributed resonances need fuller analysis."
+        }
+      ],
+      "prerequisites": [
+        "voltage-regulator",
+        "interconnect"
+      ],
+      "learningObjective": "Separate steady power capacity from local dynamic voltage delivery.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic path: 100 A through 0.2 mΩ produces 20 mV resistive drop. A fast current step adds an inductive term, so checking only the DC drop can miss the limiting event.",
+      "evidenceNotes": "Values are illustrative and not operating limits for an AI package. Qualified rail tolerances and regulator behavior are product-specific."
+    },
+    {
+      "id": "rack-reference-anatomy",
+      "level": "infrastructure",
+      "name": "A documented rack as a system boundary",
+      "shortName": "A documented rack as a system boundary",
+      "role": "Connects compute trays, switches, management, power and cooling in one named reference.",
+      "description": "A rack-scale accelerator system contains more than GPUs. Compute trays hold CPUs, accelerators, local memory and peripheral devices; switches connect an acceleration domain; management controllers support configuration and recovery. Power shelves and busbars distribute electricity, while manifolds deliver coolant to selected components. NVIDIA’s DGX GB rack guide supplies a concrete NVL72 reference with distinct compute and switch trays. The reference is useful because its interfaces are documented, not because every AI installation uses this design. Selecting a tray should preserve its identity while the view changes between physical assembly, network communication, electricity and heat.",
+      "specs": [
+        {
+          "label": "Named boundary",
+          "value": "DGX GB NVL72 rack reference",
+          "context": "Preserve generation and system configuration in any numeric card."
+        },
+        {
+          "label": "Independent services",
+          "value": "Compute, data, management, power and cooling",
+          "context": "A working data link does not establish readiness of the other services."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Facility services",
+          "direction": "in",
+          "signal": "Electrical supply, coolant, cluster and management networks"
+        },
+        {
+          "name": "Rack workload resources",
+          "direction": "out",
+          "signal": "Connected compute with telemetry and cooling paths"
+        }
+      ],
+      "tradeoff": "Rack integration increases local connectivity but concentrates service and facility requirements; maintenance may need coordinated management of many components.",
+      "whyAI": "Useful capacity depends on the entire rack operating correctly, including networking and peripheral components that do not perform matrix multiplication.",
+      "related": [
+        "rack",
+        "compute-tray",
+        "nvlink-switch",
+        "rack-power-conversion"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        }
+      ],
+      "scale": "Package to rack and cluster; named reference geometry",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Rack anatomy and network fabrics",
+      "mechanism": [
+        "Identify the documented compute trays and their CPU/accelerator roles.",
+        "Trace the switch and cable paths that form the rack’s acceleration domain.",
+        "Locate separate management access for telemetry, recovery and configuration.",
+        "Follow power and coolant distribution without confusing their connections with data cables.",
+        "Verify the rack’s complete configuration and service dependencies before assigning workload capacity."
+      ],
+      "misconception": "A rack described as one large AI machine is not literally one GPU die or one unlimited coherent memory.",
+      "check": {
+        "question": "Why preserve a named reference configuration?",
+        "options": [
+          "A rack name determines model quality",
+          "Its counts and interfaces have a defined evidence boundary",
+          "Every future rack must match it"
+        ],
+        "answer": 1,
+        "explanation": "A reference makes the anatomy auditable while leaving alternatives and later revisions distinct."
+      },
+      "science": [
+        {
+          "title": "Component consistency",
+          "equation": "Ngpu = Ntray × Ngpu/tray",
+          "explanation": "Counts are dimensionless hardware quantities; they do not establish tokens/s.",
+          "assumptions": "A uniform documented tray configuration; spare, disabled or service-reserved resources require separate accounting."
+        }
+      ],
+      "prerequisites": [
+        "rack",
+        "compute-tray"
+      ],
+      "learningObjective": "Read a rack as converging physical and operational subsystems.",
+      "workstream": "W09",
+      "visualFamily": "rack-system",
+      "engineeringExample": "The documented 18 compute trays with four GPUs each account for 72 GPUs. This reconciles an inventory; it does not predict workload throughput, allocated capacity or electrical draw under every load.",
+      "evidenceNotes": "The exact tray count is source-reported in the claims ledger. Mixed cooling and power details are specific to the reference, not universal rack standards."
+    },
+    {
+      "id": "scaleup-scaleout-boundaries",
+      "level": "infrastructure",
+      "name": "Scale-up, scale-out and management fabrics",
+      "shortName": "Scale-up, scale-out and management fabrics",
+      "role": "Assigns each traffic class to its actual interconnect and resource boundary.",
+      "description": "Scale-up links connect tightly coupled accelerators within a selected domain, while scale-out networks join nodes or domains into larger clusters. Storage and management traffic may use separate fabrics even when cables or switches look similar. The distinction describes roles and locality, not a universal distance threshold or protocol monopoly. A collective can cross both domains, encountering different bandwidth, latency and contention. The NVIDIA rack documentation separates acceleration, cluster and management paths in a concrete implementation. A correct visualization follows the selected message across those boundaries and states whether any displayed bandwidth is one-way, bidirectional or an aggregate over many ports.",
+      "specs": [
+        {
+          "label": "Traffic roles",
+          "value": "Tensor exchange, storage and management",
+          "context": "Roles may share equipment but require separate accounting."
+        },
+        {
+          "label": "Bandwidth boundary",
+          "value": "Port, link, cut or fabric aggregate",
+          "context": "A sum of ports is not a single flow’s achievable rate."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Accelerator communication",
+          "direction": "in",
+          "signal": "Partial tensors, gradients or routed activations"
+        },
+        {
+          "name": "Local and remote fabric",
+          "direction": "out",
+          "signal": "Messages crossing the required topology boundaries"
+        }
+      ],
+      "tradeoff": "Tightly connected local domains can accelerate frequent exchanges; spreading a job across domains may add capacity while exposing slower or contended cuts.",
+      "whyAI": "Model parallelism depends on where communication occurs, making topology placement as consequential as the number of accelerators allocated.",
+      "related": [
+        "nvlink-port",
+        "leaf-switch",
+        "spine-switch",
+        "fabric-collective-traffic"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Networking",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/networking.html"
+        },
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        }
+      ],
+      "scale": "Package to rack and cluster; named reference geometry",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Rack anatomy and network fabrics",
+      "mechanism": [
+        "Identify endpoints and the traffic’s purpose before choosing its route.",
+        "Mark the local acceleration domain and the links that leave it.",
+        "Trace every switch or network boundary required by the communication.",
+        "Keep storage and management dependencies visible even if they are not on the main tensor path.",
+        "Compare useful flow rates and congestion at the relevant cut rather than adding every advertised port rate."
+      ],
+      "misconception": "Scale-up and scale-out are roles in a system topology; neither label alone establishes coherence, latency or unlimited scaling.",
+      "check": {
+        "question": "What best predicts the limit for traffic moving between two rack groups?",
+        "options": [
+          "The sum of all ports inside both groups",
+          "The count of management controllers",
+          "The useful capacity of the cut those messages cross"
+        ],
+        "answer": 2,
+        "explanation": "Every required cross-group byte must traverse the connecting cut, regardless of unused local links."
+      },
+      "science": [
+        {
+          "title": "Topology cut bound",
+          "equation": "T ≥ Qcut / Bcut",
+          "explanation": "Qcut is bytes crossing a defined cut and Bcut sustainable bytes/s across it.",
+          "assumptions": "A traffic bound before synchronization and queueing; parallel links count only if the routing can use them."
+        }
+      ],
+      "prerequisites": [
+        "leaf-switch",
+        "nvlink-switch"
+      ],
+      "learningObjective": "Distinguish traffic roles and bandwidth aggregation boundaries in a cluster.",
+      "workstream": "W09",
+      "visualFamily": "rack-system",
+      "engineeringExample": "Synthetic topology: abundant rack-local bandwidth cannot hide a 10 GB transfer across a 100 GB/s inter-rack cut, which alone takes at least 100 ms.",
+      "evidenceNotes": "The example is synthetic. Protocol choice and placement depend on the actual system; no universal NVLink-versus-Ethernet performance ordering is implied."
+    },
+    {
+      "id": "fabric-collective-traffic",
+      "level": "infrastructure",
+      "name": "Collective traffic and congestion",
+      "shortName": "Collective traffic and congestion",
+      "role": "Coordinates distributed tensor exchanges while accounting for topology and contention.",
+      "description": "A collective describes communication among a group of participants. All-reduce combines values and returns the result to all ranks; all-gather assembles distributed pieces; reduce-scatter combines values while leaving different output pieces on different ranks. Libraries such as NCCL choose implementations suited to message size and topology. The logical collective is not identical to one physical link transfer. Congestion, competing storage traffic and poorly placed ranks can reduce useful bandwidth, while many small exchanges expose latency. Correct diagnosis follows both the operation’s semantics and the actual traffic schedule, including any communication that overlaps computation.",
+      "specs": [
+        {
+          "label": "Message size",
+          "value": "Bytes per participating rank",
+          "context": "Do not confuse one rank’s input with total wire traffic."
+        },
+        {
+          "label": "Effective bandwidth",
+          "value": "Useful bytes/s under the chosen algorithm",
+          "context": "Line rate omits protocol and contention losses."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Rank-local tensors",
+          "direction": "in",
+          "signal": "Values requiring collection, distribution or reduction"
+        },
+        {
+          "name": "Collective output",
+          "direction": "out",
+          "signal": "Correctly placed combined or gathered tensors"
+        }
+      ],
+      "tradeoff": "Algorithms with fewer phases can help small messages, while larger transfers reward bandwidth-efficient routing; the best choice changes with topology.",
+      "whyAI": "Synchronized training and tensor-parallel inference repeatedly wait for collective results, turning network behavior into model-step or token latency.",
+      "related": [
+        "nccl",
+        "parallelism",
+        "scaleup-scaleout-boundaries"
+      ],
+      "sources": [
+        {
+          "title": "NCCL User Guide: Collective Operations",
+          "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html"
+        }
+      ],
+      "scale": "Package to rack and cluster; named reference geometry",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Rack anatomy and network fabrics",
+      "mechanism": [
+        "Define the collective and the tensor bytes supplied by each rank.",
+        "Choose rank placement and an implementation suited to the topology.",
+        "Map the collective phases onto actual links and identify shared cuts.",
+        "Measure effective bandwidth, phase latency and exposed synchronization under competing traffic.",
+        "Change placement, scheduling or algorithm only after identifying the binding network behavior."
+      ],
+      "misconception": "A 400 Gbit/s port is not a measured 400 GB/s collective, and bidirectional rates cannot be silently used as one-way payload bandwidth.",
+      "check": {
+        "question": "What is 400 Gbit/s in raw decimal bytes/s?",
+        "options": [
+          "50 GB/s before overhead",
+          "400 GB/s",
+          "3,200 GB/s"
+        ],
+        "answer": 0,
+        "explanation": "Eight bits form one byte; useful payload rate is lower when coding, protocol and contention losses apply."
+      },
+      "science": [
+        {
+          "title": "Ideal ring all-reduce",
+          "equation": "T ≈ 2(n−1)α + 2(n−1)S/(nB)",
+          "explanation": "n is ranks, α seconds per step, S bytes/rank and B effective bytes/s.",
+          "assumptions": "A simplified ring model with equal links; topology, pipelining, overlap and congestion can change actual timing."
+        }
+      ],
+      "prerequisites": [
+        "nccl",
+        "leaf-switch"
+      ],
+      "learningObjective": "Connect collective semantics to a bounded physical traffic model.",
+      "workstream": "W09",
+      "visualFamily": "rack-system",
+      "engineeringExample": "Synthetic eight-rank ring with 1 GiB/rank and 50 GB/s effective bandwidth has about 37.6 ms of bandwidth time plus 14 latency terms. Using raw line rate as effective bandwidth would be optimistic.",
+      "evidenceNotes": "This is a teaching algorithm, not a claim that NCCL always chooses a ring. Rank placement and software version belong with any measured result."
+    },
+    {
+      "id": "optical-cpo-placement",
+      "level": "infrastructure",
+      "name": "Optical transceivers and co-packaged optics",
+      "shortName": "Optical transceivers and co-packaged optics",
+      "role": "Changes where electrical signals become optical while retaining a complete link budget.",
+      "description": "An optical link converts electrical data into modulated light, transports it through fiber and recovers an electrical signal at the destination. Pluggable transceivers put much of this conversion near a front-panel connector. Co-packaged optics moves optical engines closer to the switching silicon, shortening some high-speed electrical paths. The change can alter power, signal loss, thermal design, fiber attachment and serviceability. NVIDIA’s 2025 photonics announcement provides a named example. Optical networking is distinct from optical arithmetic: carrying tensor bytes with light does not mean the neural-network multiplication occurs in the optical link.",
+      "specs": [
+        {
+          "label": "Conversion boundary",
+          "value": "Electrical-to-optical placement",
+          "context": "Near-package engines and pluggable modules have different maintenance paths."
+        },
+        {
+          "label": "Optical budget",
+          "value": "Transmit power minus channel losses",
+          "context": "Use a stated receiver requirement and wavelength; watts and dB describe different quantities."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Switch electrical data",
+          "direction": "in",
+          "signal": "Serialized symbols and control to an optical engine"
+        },
+        {
+          "name": "Fiber receiver",
+          "direction": "out",
+          "signal": "Recovered payload after optical transport and detection"
+        }
+      ],
+      "tradeoff": "Shorter electrical paths can help signaling efficiency, while tighter packaging makes thermal isolation, fiber assembly and replacement planning more consequential.",
+      "whyAI": "Large accelerator fabrics need many reliable links; link power and serviceability affect useful cluster uptime and infrastructure overhead.",
+      "related": [
+        "optics",
+        "leaf-switch",
+        "interface-signal-eye"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA Announces Spectrum-X Photonics, Co-Packaged Optics Networking Switches",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories"
+        }
+      ],
+      "scale": "Package to rack and cluster; named reference geometry",
+      "kind": "architecture",
+      "branch": "Chip-to-hall integration",
+      "subbranch": "Rack anatomy and network fabrics",
+      "mechanism": [
+        "Locate the optical conversion relative to the switch or accelerator silicon.",
+        "Budget electrical loss before the optical engine and optical loss through the fiber path.",
+        "Account for laser supply, modulation, detection and any required signal processing.",
+        "Design thermal paths and fiber attachment for the selected package arrangement.",
+        "Evaluate full-link energy and field replacement behavior under the intended system conditions."
+      ],
+      "misconception": "Co-packaged optics changes integration and communication; it is not proof of photonic AI computation or zero link energy.",
+      "check": {
+        "question": "Which consideration becomes more closely tied to package design with CPO?",
+        "options": [
+          "The number of model parameters per token",
+          "Fiber attachment and optical-engine thermal integration",
+          "The tokenizer’s vocabulary"
+        ],
+        "answer": 1,
+        "explanation": "Moving optical engines into the package couples their assembly and thermal environment to the switching silicon."
+      },
+      "science": [
+        {
+          "title": "Simple optical margin",
+          "equation": "Margin_dB = Ptx_dBm − Loss_dB − Prequired_dBm",
+          "explanation": "Terms use logarithmic optical-power units; a positive result is remaining link margin.",
+          "assumptions": "A bounded link-budget model; dispersion, noise, nonlinearities and transient effects may require additional analysis."
+        }
+      ],
+      "prerequisites": [
+        "optics",
+        "interface-signal-eye"
+      ],
+      "learningObjective": "Explain the physical tradeoffs of moving optical conversion closer to silicon.",
+      "workstream": "W09",
+      "visualFamily": "rack-system",
+      "engineeringExample": "Synthetic budget: 0 dBm launch, 6 dB path loss and a −10 dBm receiver requirement leave 4 dB margin. Extra connector loss consumes margin even if the advertised bit rate stays unchanged.",
+      "evidenceNotes": "No vendor promotional efficiency multiplier is used. The announcement establishes a design direction and date, not a universal measured CPO advantage."
+    },
+    {
+      "id": "rack-power-conversion",
+      "level": "infrastructure",
+      "name": "Rack power conversion and distribution",
+      "shortName": "Rack power conversion and distribution",
+      "role": "Moves electrical energy from facility supply through conversion stages to low-voltage chip rails.",
+      "description": "Facility electricity reaches a rack through distribution equipment and power supplies, then travels through busbars, board connections and local voltage regulators. Each stage has a voltage, current, capacity and conversion efficiency. The DGX GB reference describes power shelves converting AC to nominal rack DC, but other racks use different arrangements. Nameplate capacity includes redundancy and does not equal measured consumption. At the chip, low voltage implies high current for a given power, increasing the importance of short, low-resistance paths. A power-flow view must label its measurement location before turning watts into an estimate of available compute resources.",
+      "specs": [
+        {
+          "label": "Power boundary",
+          "value": "Facility input, rack input or chip rail",
+          "context": "Do not compare values from different locations as equivalent."
+        },
+        {
+          "label": "Capacity versus draw",
+          "value": "Installed PSU rating versus measured load",
+          "context": "Redundant supplies provide resilience and headroom, not automatic consumption."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Facility electrical feed",
+          "direction": "in",
+          "signal": "AC power under distribution and redundancy constraints"
+        },
+        {
+          "name": "Chip voltage rails",
+          "direction": "out",
+          "signal": "Regulated DC with conversion losses and transient limits"
+        }
+      ],
+      "tradeoff": "Higher distribution voltage reduces current for a given power, while conversion close to the chip adds efficiency and thermal requirements.",
+      "whyAI": "Accelerator deployment needs suitable distribution and regulation, not only enough annual electricity or enough power-supply labels.",
+      "related": [
+        "power-supply",
+        "power-shelf",
+        "voltage-regulator",
+        "power-integrity-budget"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        }
+      ],
+      "scale": "Chip voltage rails to facility heat rejection",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Electricity and heat transport",
+      "mechanism": [
+        "Mark every conversion stage and its electrical measurement boundary.",
+        "Calculate current from power and voltage for the path being evaluated.",
+        "Apply stage efficiency once and account for the associated local heat.",
+        "Check redundancy and operating headroom separately from normal workload draw.",
+        "Verify final rail quality and rack acceptance under representative load changes."
+      ],
+      "misconception": "Adding PSU nameplate ratings does not establish typical rack power, especially when supplies provide redundant capacity.",
+      "check": {
+        "question": "Why does a low-voltage rail require large current at high power?",
+        "options": [
+          "Low voltage creates energy",
+          "Current and voltage are the same quantity",
+          "Power equals voltage times current"
+        ],
+        "answer": 2,
+        "explanation": "For fixed delivered power, reducing voltage increases the required current and its associated distribution challenges."
+      },
+      "science": [
+        {
+          "title": "Conversion accounting",
+          "equation": "Pout = ηPin; I = P/V",
+          "explanation": "Power is watts, η dimensionless efficiency, current amperes and voltage volts.",
+          "assumptions": "Steady average values at a specified stage; AC power factor and transient behavior need additional treatment."
+        }
+      ],
+      "prerequisites": [
+        "power-supply",
+        "voltage-regulator"
+      ],
+      "learningObjective": "Distinguish conversion losses, redundancy and measured consumption.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic regulator: supplying 1 kW at 1 V requires 1,000 A on that rail. At 90% efficiency its input is about 1.11 kW, leaving about 111 W of conversion loss to remove.",
+      "evidenceNotes": "The numeric example is not a product rail specification. Documented rack DC and approximate rack power are source-scoped in the claims ledger."
+    },
+    {
+      "id": "rack-dynamic-power",
+      "level": "infrastructure",
+      "name": "Dynamic load, reserve and power control",
+      "shortName": "Dynamic load, reserve and power control",
+      "role": "Accounts for changes in electrical demand over timescales from chip activity to facility operation.",
+      "description": "AI workloads alternate between arithmetic, communication, memory movement and idle intervals. Their electrical demand changes accordingly, and synchronized jobs can align changes across many devices. Power supplies, local decoupling, rack distribution and facility controls respond on different timescales. A daily energy total cannot reveal a fast voltage event, while a brief peak does not define annual energy. Power capping or workload scheduling can limit demand but may change completion time or service latency. The IEA discusses emerging power-system challenges from AI growth; a local engineering model must still use measured waveforms and the actual facility response.",
+      "specs": [
+        {
+          "label": "Timescale",
+          "value": "Fast transient, workload interval and billing period",
+          "context": "Measurements need sufficient temporal resolution for the question."
+        },
+        {
+          "label": "Reserve",
+          "value": "Available response beyond committed demand",
+          "context": "Specify electrical capacity, energy duration and control latency separately."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Synchronized workload activity",
+          "direction": "in",
+          "signal": "Time-varying current and power requests"
+        },
+        {
+          "name": "Power-control response",
+          "direction": "out",
+          "signal": "Regulated supply, caps or shifted work"
+        }
+      ],
+      "tradeoff": "Power limits can improve electrical predictability and capacity sharing while reducing peak throughput or extending job duration.",
+      "whyAI": "Useful AI work depends on surviving demand changes without excessive throttling, errors or interruptions.",
+      "related": [
+        "power-integrity-budget",
+        "ups",
+        "scheduler"
+      ],
+      "sources": [
+        {
+          "title": "Key Questions on Energy and AI: Executive Summary",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+        },
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        }
+      ],
+      "scale": "Chip voltage rails to facility heat rejection",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Electricity and heat transport",
+      "mechanism": [
+        "Record load at the timescale needed to observe the suspected event.",
+        "Separate local voltage dynamics from rack and facility power changes.",
+        "Estimate how many jobs can align their demand and what reserve can respond in time.",
+        "Apply caps or scheduling controls and measure their effect on useful results.",
+        "Integrate power over time for energy accounting without losing peak and recovery information."
+      ],
+      "misconception": "An average megawatt figure cannot prove adequate transient response, and a short peak is not a continuous energy demand.",
+      "check": {
+        "question": "What additional quantity is needed to turn power into energy?",
+        "options": [
+          "The duration or time history",
+          "Only the GPU model name",
+          "The number of Ethernet ports"
+        ],
+        "answer": 0,
+        "explanation": "Energy integrates power over an interval, so both demand and time matter."
+      },
+      "science": [
+        {
+          "title": "Energy integral",
+          "equation": "E = ∫P(t)dt",
+          "explanation": "With P in MW and time in hours, E is MWh.",
+          "assumptions": "Metering boundary remains fixed; coarse samples can miss peaks even when the integral is approximately correct."
+        }
+      ],
+      "prerequisites": [
+        "power-supply",
+        "scheduler"
+      ],
+      "learningObjective": "Match power measurements and controls to their relevant timescales.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic workload draws 1 MW for ten minutes and 0.5 MW for twenty minutes. It uses about 0.333 MWh over the half hour, while its peak remains 1 MW rather than the 0.667 MW average.",
+      "evidenceNotes": "No universal AI load waveform is assumed. Real simultaneous behavior and control response need facility and device telemetry."
+    },
+    {
+      "id": "coolant-loop-separation",
+      "level": "infrastructure",
+      "name": "Cold plates, manifolds and separated coolant loops",
+      "shortName": "Cold plates, manifolds and separated coolant loops",
+      "role": "Transports heat through controlled fluid circuits without treating circulation as consumption.",
+      "description": "A cold plate conducts chip heat into a fluid. A rack manifold distributes that fluid among components, and a coolant distribution unit can exchange heat with a separate facility loop. Separating loops allows different pressure, chemistry and service requirements on each side. Heat captured by liquid may be only part of rack heat; fans and room air still handle other components in many systems. The NVIDIA rack guide explicitly describes mixed cooling. Fluid flow, temperature rise and pressure drop determine transport capability, while the facility’s final heat-rejection method determines how much energy or water is consumed beyond the rack.",
+      "specs": [
+        {
+          "label": "Transport rate",
+          "value": "Mass flow × specific heat × temperature rise",
+          "context": "Heat rate in watts; flow is not consumed water."
+        },
+        {
+          "label": "Loop boundary",
+          "value": "IT-side fluid versus facility-side fluid",
+          "context": "A heat exchanger transfers heat without requiring fluid mixing."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Chip and component heat",
+          "direction": "in",
+          "signal": "Conducted heat entering cold plates or air paths"
+        },
+        {
+          "name": "Facility heat exchanger",
+          "direction": "out",
+          "signal": "Heat carried in a controlled secondary loop"
+        }
+      ],
+      "tradeoff": "Greater flow can reduce temperature rise but increases pumping requirements; hotter coolant can aid heat rejection while narrowing component thermal margin.",
+      "whyAI": "Dense accelerator racks require sufficient heat transport before their installed arithmetic can operate continuously.",
+      "related": [
+        "coldplate",
+        "cdu",
+        "facility-heat-rejection"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        },
+        {
+          "title": "Cooling Water Efficiency Opportunities for Federal Data Centers",
+          "url": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+        }
+      ],
+      "scale": "Chip voltage rails to facility heat rejection",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Electricity and heat transport",
+      "mechanism": [
+        "Identify which components transfer heat to liquid and which remain on an air path.",
+        "Follow thermal interfaces into the cold plate and measure inlet and outlet temperatures.",
+        "Distribute fluid through manifolds while respecting pressure and chemistry requirements.",
+        "Exchange heat with the facility circuit through the specified CDU arrangement.",
+        "Balance captured heat, residual air heat and pump demand before declaring cooling readiness."
+      ],
+      "misconception": "Liters per minute circulating through a closed loop are not liters of water consumed by the facility.",
+      "check": {
+        "question": "What happens when heat load rises at fixed flow and fluid properties?",
+        "options": [
+          "The heat exchanger stops needing a sink",
+          "The required fluid temperature rise increases",
+          "The circulating water disappears"
+        ],
+        "answer": 1,
+        "explanation": "The energy balance requires greater temperature gain unless another variable or heat path changes."
+      },
+      "science": [
+        {
+          "title": "Single-phase heat transport",
+          "equation": "Q̇ = ṁ cp ΔT",
+          "explanation": "Q̇ is watts, ṁ kg/s, cp J/(kg·K) and ΔT kelvin.",
+          "assumptions": "Single-phase fluid with approximately constant properties; pressure limits and local thermal resistances are separate constraints."
+        }
+      ],
+      "prerequisites": [
+        "coldplate",
+        "cdu"
+      ],
+      "learningObjective": "Separate thermal transport, loop ownership and water consumption.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic water loop carrying 100 kW with a 10 K rise and cp ≈ 4,180 J/(kg·K) needs about 2.39 kg/s. This is circulating mass flow, not a consumption estimate.",
+      "evidenceNotes": "This is a heat-balance example, not a qualified coolant recipe. Product-specific pressure, chemistry and temperature limits remain required."
+    },
+    {
+      "id": "facility-heat-rejection",
+      "level": "infrastructure",
+      "name": "Facility heat rejection and cooling tradeoffs",
+      "shortName": "Facility heat rejection and cooling tradeoffs",
+      "role": "Transfers collected heat to the outdoor environment under weather-dependent limits.",
+      "description": "Liquid cooling moves heat away from chips, but the heat must still leave the facility. Dry coolers exchange heat with outdoor air; evaporative systems use water evaporation; chillers can lift heat to a higher rejection temperature when ambient conditions demand it. Actual systems combine these methods and change operating modes with weather and load. Heat-exchanger approach temperatures and fan, pump or compressor energy affect usable capacity. The Department of Energy’s cooling guidance connects water and energy choices. A favorable annual efficiency figure cannot establish performance on the hottest design day or reveal which watershed supplies consumptive water.",
+      "specs": [
+        {
+          "label": "Ultimate sink",
+          "value": "Outdoor air and/or evaporative rejection",
+          "context": "Internal liquid transport is upstream of the final sink."
+        },
+        {
+          "label": "Operating condition",
+          "value": "Weather, load and supply temperature",
+          "context": "Efficiency and capacity vary with the stated condition."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Facility heat loop",
+          "direction": "in",
+          "signal": "Heat collected from IT and cooling equipment"
+        },
+        {
+          "name": "Environment",
+          "direction": "out",
+          "signal": "Rejected heat, evaporation where used and auxiliary demand"
+        }
+      ],
+      "tradeoff": "Dry rejection can reduce direct water use but may require more area or electricity in hot conditions; evaporative operation adds local water demand.",
+      "whyAI": "Heat-rejection limits can cap sustained cluster operation even when rack cold plates and electrical capacity are installed.",
+      "related": [
+        "cooling-plant",
+        "coolant-loop-separation",
+        "water-boundary-accounting"
+      ],
+      "sources": [
+        {
+          "title": "Cooling Water Efficiency Opportunities for Federal Data Centers",
+          "url": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+        }
+      ],
+      "scale": "Chip voltage rails to facility heat rejection",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Electricity and heat transport",
+      "mechanism": [
+        "Sum the heat reaching the facility system, including auxiliary equipment included in the boundary.",
+        "Choose the rejection route and identify its dependence on dry-bulb or wet-bulb conditions.",
+        "Account for heat-exchanger temperature approaches and the required coolant supply temperature.",
+        "Calculate fan, pump or compressor demand at the actual operating point.",
+        "Check water availability, seasonal limits and fallback modes before assigning continuous cooling capacity."
+      ],
+      "misconception": "Direct liquid cooling does not necessarily mean evaporative cooling, zero water use or free heat rejection.",
+      "check": {
+        "question": "Why can cooling capacity vary with weather?",
+        "options": [
+          "Heat stops being conserved outdoors",
+          "GPU count changes the atmospheric constants",
+          "The available temperature difference and evaporation conditions change"
+        ],
+        "answer": 2,
+        "explanation": "Heat rejection depends on the environmental sink and equipment operating point, not merely on installed component count."
+      },
+      "science": [
+        {
+          "title": "Chiller performance",
+          "equation": "COP = Q̇removed / Pelec",
+          "explanation": "Both heat removed and electrical input are watts; COP is dimensionless.",
+          "assumptions": "A specified operating point; auxiliary loads and heat-rejection equipment must be included or excluded explicitly."
+        }
+      ],
+      "prerequisites": [
+        "cooling-plant",
+        "coolant-loop-separation"
+      ],
+      "learningObjective": "Connect rack heat transport to a weather- and resource-dependent final rejection system.",
+      "workstream": "W09",
+      "visualFamily": "signal-power",
+      "engineeringExample": "Synthetic chiller removing 1 MW with 0.2 MW electrical input has COP 5. Its condenser must reject about 1.2 MW when that compressor input enters the same heat path.",
+      "evidenceNotes": "COP and water values are not manufacturer defaults. Local climate, equipment selection and accounting boundaries determine actual performance."
+    },
+    {
+      "id": "grid-interconnection-readiness",
+      "level": "infrastructure",
+      "name": "Grid interconnection and deliverable electrical capacity",
+      "shortName": "Grid interconnection and deliverable electrical capacity",
+      "role": "Connects facility demand to location-specific network, equipment and operating readiness.",
+      "description": "A site’s proposed demand must fit a real electricity network at a real location. Interconnection planning examines service arrangements and required infrastructure rather than treating a national generation total as locally available power. Substations, transformers, transmission and distribution work have their own schedules, while load forecasts assess how much proposed demand is likely to materialize. PJM’s 2026 methodology discusses screening large-load requests and adjusting forecasts. A signed capacity agreement, completed electrical equipment and permission to operate are different states. Backup energy and demand response can support operation but do not automatically replace a continuous grid connection.",
+      "specs": [
+        {
+          "label": "Power versus energy",
+          "value": "MW capacity and MWh duration",
+          "context": "A backup device’s discharge rating does not establish how long it can support the site."
+        },
+        {
+          "label": "Geographic boundary",
+          "value": "Specific connection and service territory",
+          "context": "Regional generation totals cannot be assigned freely to a campus."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Facility load request",
+          "direction": "in",
+          "signal": "Demand profile, location and proposed operating date"
+        },
+        {
+          "name": "Electrical service readiness",
+          "direction": "out",
+          "signal": "Completed connection with defined capacity and operating conditions"
+        }
+      ],
+      "tradeoff": "A site with favorable land or fiber may need longer electrical upgrades; on-site support equipment adds cost and operational dependencies.",
+      "whyAI": "Accelerators cannot deliver sustained workload capacity until electrical service and the corresponding facility systems are actually ready.",
+      "related": [
+        "power-supply",
+        "ups",
+        "cluster-commissioning-gates"
+      ],
+      "sources": [
+        {
+          "title": "PJM’s Updated 20-Year Forecast Continues To See Significant Long-Term Load Growth",
+          "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/"
+        }
+      ],
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Capacity, ramps and commissioning",
+      "mechanism": [
+        "Define the facility load boundary and the expected time-dependent demand.",
+        "Identify the required grid connection and screen the project against duplicate or speculative requests.",
+        "Track studies, service commitments and required network or substation work separately.",
+        "Verify equipment installation and operational acceptance before assigning deliverable capacity.",
+        "Model backup duration and demand-response constraints without treating them as unlimited continuous supply."
+      ],
+      "misconception": "An announced megawatt connection or generation project is not proof that a specific hall can draw that power today.",
+      "check": {
+        "question": "A battery supports 10 MW and stores 20 MWh usable energy. What is its ideal duration at full output?",
+        "options": [
+          "Two hours",
+          "Twenty hours",
+          "An unlimited period"
+        ],
+        "answer": 0,
+        "explanation": "Duration is usable energy divided by output power, before losses and reserve requirements."
+      },
+      "science": [
+        {
+          "title": "Backup duration",
+          "equation": "t = Eusable / Pload",
+          "explanation": "Eusable is MWh, Pload MW and t hours.",
+          "assumptions": "Constant load and already-usable energy; conversion losses, degradation and reserve can shorten duration."
+        }
+      ],
+      "prerequisites": [
+        "ups",
+        "power-supply"
+      ],
+      "learningObjective": "Separate proposed demand, local electrical service and backup duration.",
+      "workstream": "W09",
+      "visualFamily": "capacity-flow",
+      "engineeringExample": "Synthetic commissioning plan has racks arriving in March and a required transformer accepted in June. The electrical readiness gate can delay operation despite the earlier hardware delivery.",
+      "evidenceNotes": "PJM is one regional example, not global interconnection law. The source’s inconsistent winter headline is excluded; no unverified local queue position is claimed."
+    },
+    {
+      "id": "cluster-commissioning-gates",
+      "level": "infrastructure",
+      "name": "Commissioning a usable AI cluster",
+      "shortName": "Commissioning a usable AI cluster",
+      "role": "Requires accepted electrical, thermal, network, software and operational behavior together.",
+      "description": "A completed building or powered shell is only one stage of an AI facility. Installed racks must pass electrical and cooling checks, networks must form the intended topology, storage must deliver inputs and checkpoints, and software must execute representative jobs reliably. Commissioning tests these interactions rather than merely inventorying components. Acceptance should include fault handling and service recovery appropriate to the system. The NVIDIA guide separates configuration, health checks and hardware services, providing one concrete operational reference. A dated readiness model can show partial progress while retaining the distinction between installed equipment and capacity that has actually been admitted for useful work.",
+      "specs": [
+        {
+          "label": "Readiness state",
+          "value": "Installed, tested, accepted and schedulable",
+          "context": "These are evidence-bearing stages rather than synonyms."
+        },
+        {
+          "label": "Acceptance workload",
+          "value": "Representative end-to-end task",
+          "context": "A component self-test cannot establish full application behavior."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Installed infrastructure",
+          "direction": "in",
+          "signal": "Racks, electrical service, cooling, network and software"
+        },
+        {
+          "name": "Accepted cluster resources",
+          "direction": "out",
+          "signal": "Healthy, configured resources available to an authorized scheduler"
+        }
+      ],
+      "tradeoff": "Comprehensive integration tests take time and resources, but skipping them can transfer failures into expensive production runs.",
+      "whyAI": "A fleet of delivered accelerators can yield little useful compute while network, thermal or software acceptance remains incomplete.",
+      "related": [
+        "management-controller",
+        "scheduler",
+        "grid-interconnection-readiness"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        },
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Networking",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/networking.html"
+        }
+      ],
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Capacity, ramps and commissioning",
+      "mechanism": [
+        "Reconcile installed equipment with its documented configuration and service connections.",
+        "Verify electrical and thermal operation across representative load conditions.",
+        "Check fabric topology, storage access, firmware and driver compatibility.",
+        "Run end-to-end workload and recovery exercises that cross subsystem boundaries.",
+        "Record accepted scope and admit only the corresponding healthy resources into production scheduling."
+      ],
+      "misconception": "Installed GPU count is not the same as commissioned or available GPU count.",
+      "check": {
+        "question": "Why might a healthy accelerator remain unavailable for jobs?",
+        "options": [
+          "The installed count automatically includes every service",
+          "A required fabric or cooling acceptance gate is incomplete",
+          "Healthy hardware always bypasses commissioning"
+        ],
+        "answer": 1,
+        "explanation": "Useful operation requires the complete dependency set, so one healthy component cannot substitute for missing system readiness."
+      },
+      "science": [
+        {
+          "title": "Readiness conjunction",
+          "equation": "Ready = Electrical ∧ Thermal ∧ Fabric ∧ Software ∧ Operations",
+          "explanation": "Each term is an evidence-backed Boolean for the stated scope and date.",
+          "assumptions": "A simplified acceptance model; products can require additional gates and partial phases need separate records."
+        }
+      ],
+      "prerequisites": [
+        "rack",
+        "management-controller"
+      ],
+      "learningObjective": "Explain why subsystem readiness gates determine usable cluster capacity.",
+      "workstream": "W09",
+      "visualFamily": "capacity-flow",
+      "engineeringExample": "Synthetic hall has 100 installed racks, but only 80 with accepted cooling and 70 in an accepted fabric domain. At most 70 can pass both bounds, and only if those accepted sets overlap appropriately.",
+      "evidenceNotes": "The set-overlap qualification matters: taking minima assumes compatible resources. This lesson supplies an educational gate model, not a manufacturer acceptance procedure."
+    },
+    {
+      "id": "compatible-supply-capacity",
+      "level": "infrastructure",
+      "name": "Compatible supply and converging bottlenecks",
+      "shortName": "Compatible supply and converging bottlenecks",
+      "role": "Converts independently manufactured inputs into a common finished-system basis.",
+      "description": "Accelerator packages require compatible logic dies, memory stacks, substrates and integration capacity to arrive together. HBM is manufactured and assembled on its own path before package integration. Facility deployment adds boards, racks, electrical service, cooling and software readiness. Counts from these stages use different units and cannot simply be added. A bill of materials converts each usable input into a possible number of finished units. The smallest compatible supply then bounds output for the chosen interval. TSMC’s packaging descriptions illustrate the convergence, while the laboratory model must keep screening, assembly yield and qualification as distinct steps.",
+      "specs": [
+        {
+          "label": "Common denominator",
+          "value": "Finished units per stated interval",
+          "context": "Wafer starts, stacks and racks require conversion before comparison."
+        },
+        {
+          "label": "Input quality basis",
+          "value": "Raw, screened or qualified",
+          "context": "Applying an earlier yield again to screened inputs double-counts losses."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Compatible screened inputs",
+          "direction": "in",
+          "signal": "Logic, HBM stacks, substrates and assembly slots"
+        },
+        {
+          "name": "Finished system output",
+          "direction": "out",
+          "signal": "Packages or racks surviving the explicitly modeled stages"
+        }
+      ],
+      "tradeoff": "Building inventory of one input may reduce later delay but ties up capital and does not compensate for a missing compatible component.",
+      "whyAI": "Logic-wafer expansion cannot independently establish AI deployment capacity when memory, packaging or powered-rack readiness binds.",
+      "related": [
+        "hbm-stack",
+        "package-substrate",
+        "cluster-commissioning-gates"
+      ],
+      "sources": [
+        {
+          "title": "TSMC CoWoS technology",
+          "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+        },
+        {
+          "title": "TSMC 2025 Annual Report",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf"
+        }
+      ],
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Capacity, ramps and commissioning",
+      "mechanism": [
+        "Select a concrete bill of materials and finished-system boundary.",
+        "Convert each available qualified input into equivalent finished units.",
+        "Identify compatibility restrictions rather than pooling unrelated generations or package types.",
+        "Apply only the remaining assembly/test losses to already-screened input quantities.",
+        "Compare the resulting output with downstream rack and facility readiness during the same period."
+      ],
+      "misconception": "HBM does not appear after package manufacture; its own manufacturing branch converges with logic and package materials.",
+      "check": {
+        "question": "If each package needs four HBM stacks, what can 400 compatible good stacks support before later losses?",
+        "options": [
+          "400 complete packages regardless of design",
+          "1,600 packages",
+          "At most 100 packages"
+        ],
+        "answer": 2,
+        "explanation": "The bill of materials converts stack count into a compatible finished-package bound."
+      },
+      "science": [
+        {
+          "title": "Converging supply bound",
+          "equation": "Ncomplete ≤ mini ⌊Si / bi⌋",
+          "explanation": "Si is usable input-i units and bi input-i units per finished product; Ncomplete counts finished products.",
+          "assumptions": "Inputs are compatible and coavailable; later yield, timing and set overlap require additional treatment."
+        }
+      ],
+      "prerequisites": [
+        "hbm-stack",
+        "package-substrate"
+      ],
+      "learningObjective": "Convert supply quantities to one finished-unit basis without yield double counting.",
+      "workstream": "W09",
+      "visualFamily": "capacity-flow",
+      "engineeringExample": "Synthetic package needs one logic die, four HBM stacks and one substrate. Supplies of 150, 400 and 120 good units respectively bound assembly starts at 100, before any new assembly losses.",
+      "evidenceNotes": "No vendor capacity, queue or HBM wafer-intensity number is invented. Synthetic inputs are explicitly screened, avoiding repeated raw-die yield penalties."
+    },
+    {
+      "id": "production-ramp-allocation",
+      "level": "infrastructure",
+      "name": "Production ramps, inventory and allocation",
+      "shortName": "Production ramps, inventory and allocation",
+      "role": "Tracks time-dependent output and distinguishes qualified supply from a customer’s accessible share.",
+      "description": "A capacity announcement describes a plan or installed capability, while output ramps as equipment, process performance and qualification mature. Inventory can buffer delays, but repeated visits and queued work make factory cycle time longer than processing time. A finished product may then be reserved, contracted or allocated to a different customer. TSMC’s annual report describes customer-linked capacity planning without revealing private allocation shares. An educational model should therefore show physical output and access as separate ledgers. Increasing a nominal monthly capacity input must not instantly create finished inventory before its lead time and qualification gates have elapsed.",
+      "specs": [
+        {
+          "label": "Three time concepts",
+          "value": "Processing, waiting and qualification delay",
+          "context": "All can affect first usable output without representing the same work."
+        },
+        {
+          "label": "Supply versus access",
+          "value": "Qualified production and allocated units",
+          "context": "Physical existence does not establish availability to a particular buyer."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Capacity plan and incoming inventory",
+          "direction": "in",
+          "signal": "Time-varying starts, lead times and screening assumptions"
+        },
+        {
+          "name": "Allocated qualified supply",
+          "direction": "out",
+          "signal": "Finished units released to a defined destination and date"
+        }
+      ],
+      "tradeoff": "Inventory improves resilience to some delays but consumes resources and can become mismatched when designs change; conservative ramps reduce overcommitment.",
+      "whyAI": "Hardware availability for a training program depends on arrival dates and allocation, not merely on a supplier’s eventual nameplate capacity.",
+      "related": [
+        "compatible-supply-capacity",
+        "capacity-phase-geography",
+        "scheduler"
+      ],
+      "sources": [
+        {
+          "title": "TSMC 2025 Annual Report",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf"
+        }
+      ],
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "kind": "architecture",
+      "branch": "Data-center physical systems",
+      "subbranch": "Capacity, ramps and commissioning",
+      "mechanism": [
+        "Represent the announced or installed capability separately from actual starts and completed units.",
+        "Delay output by processing and waiting time, with qualification as its own release gate.",
+        "Update inventory as compatible inputs arrive and finished products consume them.",
+        "Allocate qualified output using explicit scenario rules rather than guessing confidential customer shares.",
+        "Compare the time-dependent delivered result with the intended deployment schedule and identify the current bottleneck."
+      ],
+      "misconception": "Capex is not production volume, and supplier capacity does not identify a customer’s allocated share.",
+      "check": {
+        "question": "Why can a capacity increase fail to improve next week’s deliveries?",
+        "options": [
+          "Lead time, qualification or another input can delay output",
+          "Capacity and inventory are always identical",
+          "All reservations disappear when a tool arrives"
+        ],
+        "answer": 0,
+        "explanation": "A change in possible starts takes time to propagate and may encounter another required input or release gate."
+      },
+      "science": [
+        {
+          "title": "Inventory conservation",
+          "equation": "I(t+1) = I(t) + arrivals(t) − consumption(t)",
+          "explanation": "Every term counts the same compatible item over the same time step.",
+          "assumptions": "No hidden scrap or rework; those flows must be explicitly added when modeled."
+        }
+      ],
+      "prerequisites": [
+        "compatible-supply-capacity"
+      ],
+      "learningObjective": "Model ramps and allocation without treating future capacity as immediate inventory.",
+      "workstream": "W09",
+      "visualFamily": "capacity-flow",
+      "engineeringExample": "Synthetic three-week lead time means extra starts in week one cannot become completed supply until week four at the earliest. A customer allocated half that output receives only that half, even if total factory output is larger.",
+      "evidenceNotes": "Allocation fractions and delays are synthetic. TSMC source material supports planning roles, not confidential queues, customer shares or current unit-per-month estimates."
+    },
+    {
+      "id": "topology-job-admission",
+      "level": "infrastructure",
+      "name": "Job admission, topology and resource fragmentation",
+      "shortName": "Job admission, topology and resource fragmentation",
+      "role": "Places complete jobs onto compatible resources while balancing utilization and service goals.",
+      "description": "A distributed job needs a compatible set of devices, enough local memory and the connections required by its partitioning. Having many free devices across a cluster does not guarantee that a sufficiently connected group is available. A scheduler considers resource requests, placement, reservations and policy; Slurm’s topology guide shows how connectivity can inform selection. The broad concept of admitting a parallel job together is distinct from Slurm’s particular time-sliced gang-scheduling feature. Fragmentation, priority and reserved headroom can all leave physically healthy hardware temporarily idle. Useful scheduling therefore balances job completion and service targets rather than maximizing a single occupancy number.",
+      "specs": [
+        {
+          "label": "Resource request",
+          "value": "Devices, memory, topology and duration",
+          "context": "A count alone omits important compatibility constraints."
+        },
+        {
+          "label": "Utilization versus goodput",
+          "value": "Busy resources versus useful accepted work",
+          "context": "Unproductive retries or deadline misses can inflate activity."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Queued jobs and policy",
+          "direction": "in",
+          "signal": "Required resources, priorities and placement constraints"
+        },
+        {
+          "name": "Admitted allocation",
+          "direction": "out",
+          "signal": "A compatible job resource set and execution start"
+        }
+      ],
+      "tradeoff": "Tight placement can improve communication while increasing queue wait; backfilling smaller jobs uses gaps but must respect promised reservations.",
+      "whyAI": "Model shards that fit individually can still wait because their group cannot be placed on a suitable topology.",
+      "related": [
+        "scheduler",
+        "parallelism",
+        "scaleup-scaleout-boundaries"
+      ],
+      "sources": [
+        {
+          "title": "Slurm Topology Guide",
+          "url": "https://slurm.schedmd.com/topology.html"
+        }
+      ],
+      "scale": "Job allocation across nodes, storage tiers and recovery time",
+      "kind": "architecture",
+      "branch": "Data-center operations",
+      "subbranch": "Scheduling, storage and retained work",
+      "mechanism": [
+        "Specify each job’s complete resource and communication requirements.",
+        "Identify healthy free resources with compatible memory and software configurations.",
+        "Evaluate whether the required connected group exists under current reservations.",
+        "Choose admission and placement according to explicit completion-time or latency objectives.",
+        "Measure wait time, fragmentation and useful progress before changing scheduling policy."
+      ],
+      "misconception": "An idle device is not always wasted capacity; it may be an unusable fragment or reserved headroom for a defined service target.",
+      "check": {
+        "question": "Why can an eight-device job wait while eight devices are free?",
+        "options": [
+          "The scheduler cannot count beyond seven",
+          "The free devices may not form a compatible required topology",
+          "Device counts automatically guarantee placement"
+        ],
+        "answer": 1,
+        "explanation": "Memory, software and connectivity constraints can prevent a collection of free devices from forming a valid allocation."
+      },
+      "science": [
+        {
+          "title": "Allocation feasibility",
+          "equation": "Feasible(job) = count ∧ memory ∧ compatibility ∧ topology ∧ policy",
+          "explanation": "Each term is a Boolean constraint for the requested allocation.",
+          "assumptions": "A pedagogical constraint model; real schedulers also handle failures, priorities, time and implementation-specific resources."
+        }
+      ],
+      "prerequisites": [
+        "scheduler",
+        "parallelism"
+      ],
+      "learningObjective": "Explain resource fragmentation and distinguish policy from physical capacity.",
+      "workstream": "W09",
+      "visualFamily": "hall-system",
+      "engineeringExample": "Synthetic cluster has four free devices in each of two slow-linked domains. An eight-device job requiring one local domain waits, while two independent four-device jobs may fit immediately.",
+      "evidenceNotes": "No real user queue or reservation is inferred. Slurm’s named gang-scheduling implementation is not conflated with generic simultaneous parallel-job admission."
+    },
+    {
+      "id": "checkpoint-retained-work",
+      "level": "infrastructure",
+      "name": "Checkpointing, failure and retained useful work",
+      "shortName": "Checkpointing, failure and retained useful work",
+      "role": "Balances checkpoint overhead against lost progress and recovery delay.",
+      "description": "Long jobs must preserve enough state to resume after interruption. A recovery checkpoint includes the model and other required training state in a consistent version. Writing it consumes time and bandwidth; saving less often increases expected recomputation after failure. Restoring also takes time, and a local checkpoint may disappear with the node unless it has reached an adequate durability tier. Google Cloud’s goodput discussion connects checkpointing and elastic recovery to useful progress. This is distinct from activation checkpointing, which recomputes forward intermediates to save working memory during a step rather than providing durable restart protection.",
+      "specs": [
+        {
+          "label": "Recovery cost",
+          "value": "Detection, restart, restore and replay",
+          "context": "All are time losses at the job boundary."
+        },
+        {
+          "label": "Checkpoint validity",
+          "value": "Consistent and sufficiently durable state",
+          "context": "A partial or local-only file may not survive the relevant failure."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Consistent job state",
+          "direction": "in",
+          "signal": "Parameters, optimizer, progress and required random state"
+        },
+        {
+          "name": "Restartable checkpoint",
+          "direction": "out",
+          "signal": "Versioned durable state with completion evidence"
+        }
+      ],
+      "tradeoff": "Frequent checkpoints reduce expected lost progress but add write overhead and storage pressure; less frequent saves do the reverse.",
+      "whyAI": "Busy accelerators can repeatedly redo lost work, so retained progress is a better operational measure than raw activity alone.",
+      "related": [
+        "checkpoint",
+        "storage",
+        "storage-input-checkpoint-path"
+      ],
+      "sources": [
+        {
+          "title": "Elastic training and optimized checkpointing improve ML Goodput",
+          "url": "https://cloud.google.com/blog/products/ai-machine-learning/elastic-training-and-optimized-checkpointing-improve-ml-goodput"
+        }
+      ],
+      "scale": "Job allocation across nodes, storage tiers and recovery time",
+      "kind": "architecture",
+      "branch": "Data-center operations",
+      "subbranch": "Scheduling, storage and retained work",
+      "mechanism": [
+        "Identify all state needed to resume the intended computation consistently.",
+        "Take a coordinated snapshot or use a supported asynchronous consistency method.",
+        "Write and verify checkpoint completion at the tier that survives the chosen failure scope.",
+        "Detect interruption, select a valid checkpoint and restore compatible resources.",
+        "Measure retained progress after replay and tune checkpoint intervals against observed interruption behavior."
+      ],
+      "misconception": "An attempted checkpoint is not a durable checkpoint, and activation rematerialization is not a recovery mechanism.",
+      "check": {
+        "question": "What should a useful-work metric exclude after a restart?",
+        "options": [
+          "All completed progress before the checkpoint",
+          "Only the final output token",
+          "Work that was lost and had to be repeated"
+        ],
+        "answer": 2,
+        "explanation": "Repeated computation consumes resources without advancing the retained state beyond progress already achieved."
+      },
+      "science": [
+        {
+          "title": "Simple checkpoint loss fraction",
+          "equation": "L ≈ C/τ + λτ/2 + λR",
+          "explanation": "C is checkpoint seconds, τ interval seconds, λ failures/s and R recovery seconds.",
+          "assumptions": "Rare independent failures, uniform failure timing and no overlapping checkpoint overhead; correlated failures need a richer model."
+        }
+      ],
+      "prerequisites": [
+        "checkpoint",
+        "storage"
+      ],
+      "learningObjective": "Explain the trade between checkpoint overhead, replay and durable goodput.",
+      "workstream": "W09",
+      "visualFamily": "hall-system",
+      "engineeringExample": "Synthetic interval 600 s and checkpoint cost 12 s spends 2% of time saving before failures. An interruption uniformly within an interval loses about 300 s of work on average, plus restart and restore time.",
+      "evidenceNotes": "Failure rates and times are synthetic. Provider-reported speedups are not imported as defaults; real failure correlation and checkpoint durability require operational evidence."
+    },
+    {
+      "id": "storage-input-checkpoint-path",
+      "level": "infrastructure",
+      "name": "Storage paths for datasets and checkpoints",
+      "shortName": "Storage paths for datasets and checkpoints",
+      "role": "Coordinates persistent data, local caching and durable state transfer without confusing their roles.",
+      "description": "Training input and recovery checkpoints use the same storage hierarchy for different purposes. Inputs may be read from a shared file system or object store, cached on local NVMe and transformed in host memory before reaching accelerators. Checkpoints move in the opposite direction and must satisfy a durability requirement. The DGX GB storage guide describes local caching and shared storage as separate tiers. A fast local cache can accelerate repeated reads while doing nothing for the first uncached read or for durability after node failure. Small-file metadata, decompression and bursty checkpoint writes can each limit a system that advertises high sequential bandwidth.",
+      "specs": [
+        {
+          "label": "Input readiness",
+          "value": "Decoded useful samples/s",
+          "context": "Raw storage bytes/s does not include parsing and preprocessing."
+        },
+        {
+          "label": "Durability scope",
+          "value": "Local cache versus surviving shared copy",
+          "context": "The relevant failure domain determines whether a copy is sufficient."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Shared data and persistent state",
+          "direction": "in",
+          "signal": "Dataset objects, files and valid checkpoints"
+        },
+        {
+          "name": "Compute-ready batches or durable saves",
+          "direction": "out",
+          "signal": "Prepared inputs and verified state transfers"
+        }
+      ],
+      "tradeoff": "Local caching reduces repeated network traffic but duplicates data and consumes capacity; shared durability can create burst pressure when many ranks save together.",
+      "whyAI": "An accelerator can stall waiting for input or recovery even when its HBM and arithmetic are idle and healthy.",
+      "related": [
+        "nvme-storage",
+        "storage",
+        "checkpoint"
+      ],
+      "sources": [
+        {
+          "title": "NVIDIA DGX GB Rack Scale Systems: Storage",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/storage.html"
+        }
+      ],
+      "scale": "Job allocation across nodes, storage tiers and recovery time",
+      "kind": "architecture",
+      "branch": "Data-center operations",
+      "subbranch": "Scheduling, storage and retained work",
+      "mechanism": [
+        "Locate the authoritative dataset and decide which repeated reads can benefit from caching.",
+        "Measure metadata, decoding and preprocessing along with byte transfer rates.",
+        "Prefetch only within a buffer budget that does not displace more valuable state.",
+        "Stage checkpoint writes and verify when they become durable for the intended failure scope.",
+        "Observe input starvation and checkpoint bursts together when sizing shared links and storage tiers."
+      ],
+      "misconception": "A striped local cache can be fast without being durable, and a cached second read does not describe initial dataset-loading performance.",
+      "check": {
+        "question": "Why should first-read and repeated-read timings be separated?",
+        "options": [
+          "The first may fetch shared data while later reads hit local cache",
+          "All reads always use the same physical path",
+          "Caching changes the number of training labels"
+        ],
+        "answer": 0,
+        "explanation": "A cache changes the route and traffic, so the measurements describe different operating conditions."
+      },
+      "science": [
+        {
+          "title": "Input pipeline rate",
+          "equation": "Ruseful ≤ min(Rstorage, Rdecode, Rprepare, Rtransfer)",
+          "explanation": "Each term is converted to the same useful samples/s denominator.",
+          "assumptions": "Steady streaming with sufficient buffers; burstiness, shared contention and variable sample sizes require additional modeling."
+        }
+      ],
+      "prerequisites": [
+        "storage",
+        "nvme-storage"
+      ],
+      "learningObjective": "Distinguish input caching, preprocessing throughput and checkpoint durability.",
+      "workstream": "W09",
+      "visualFamily": "hall-system",
+      "engineeringExample": "Synthetic pipeline reads 200 samples/s but decodes only 120 samples/s. Doubling raw storage bandwidth leaves the prepared-input bound at 120 samples/s until decoding improves.",
+      "evidenceNotes": "The route is representative and does not imply every platform uses the same file system or host staging. Cache and checkpoint behaviors are configuration-specific."
+    },
+    {
+      "id": "capacity-phase-geography",
+      "level": "infrastructure",
+      "name": "Facility phases and geographical evidence",
+      "shortName": "Facility phases and geographical evidence",
+      "role": "Keeps physical sites, organizational names and development stages distinct before counting capacity.",
+      "description": "A cloud region, campus, building, availability zone and project phase are different entities. One campus can operate an early phase while constructing another and announcing a third. Different organizations may describe the same physical capacity as owner, operator, cloud provider or customer, creating double-counting risk. The Stargate and India hub announcements illustrate why dated status belongs to a specific phase and amount. A global map should preserve source date, checked date and power boundary rather than converting every headline into operating megawatts. Counts of factories or access centers require their own definitions and cannot be treated as equal-sized facilities.",
+      "specs": [
+        {
+          "label": "Status vocabulary",
+          "value": "Operating, commissioning, construction, planned and retired",
+          "context": "Apply status to a dated phase rather than an entire ambiguous name."
+        },
+        {
+          "label": "Entity identity",
+          "value": "Physical site versus service or organization",
+          "context": "Shared ownership and customer claims can refer to one installation."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Operator and public records",
+          "direction": "in",
+          "signal": "Dates, identities, capacities and explicit status statements"
+        },
+        {
+          "name": "Curated phase record",
+          "direction": "out",
+          "signal": "Comparable evidence with unknown boundaries retained"
+        }
+      ],
+      "tradeoff": "A smaller verified map is more interpretable than a large collection of incompatible announcements, though it must state its incomplete coverage.",
+      "whyAI": "Available AI service depends on the operating phase and access arrangement, not on the largest planned campus headline.",
+      "related": [
+        "production-ramp-allocation",
+        "regional-siting-access",
+        "cluster-commissioning-gates"
+      ],
+      "sources": [
+        {
+          "title": "Five new Stargate sites",
+          "url": "https://openai.com/index/five-new-stargate-sites/"
+        },
+        {
+          "title": "Google AI Hub construction milestone in India",
+          "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+        },
+        {
+          "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+          "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+        }
+      ],
+      "scale": "Facility phases to region and world; geography schematic",
+      "kind": "architecture",
+      "branch": "Global AI infrastructure",
+      "subbranch": "Global evidence and resource accounting",
+      "mechanism": [
+        "Resolve the physical site and identify any separately dated construction or operating phases.",
+        "Identify each organization’s role without counting the same hardware again under another name.",
+        "Attach capacity only to the phase and status directly supported by the source.",
+        "Preserve unspecified IT/facility boundaries and distinguish checked date from the reported event date.",
+        "Aggregate only compatible non-overlapping records and display the census’s coverage limits."
+      ],
+      "misconception": "A planned gigawatt campus is not a gigawatt of operating compute, and an access antenna is not an equivalent data-center building.",
+      "check": {
+        "question": "How should a partly operating campus with an announced expansion be recorded?",
+        "options": [
+          "As two unrelated copies of the same total",
+          "As separate phases with their own status and capacity",
+          "As fully operating at its final planned size"
+        ],
+        "answer": 1,
+        "explanation": "Phase records preserve real progress while preventing planned and operating quantities from being merged."
+      },
+      "science": [
+        {
+          "title": "Status-scoped aggregation",
+          "equation": "Cstatus(t) = Σp Cp(t)·1[statusp(t)=status]",
+          "explanation": "Cp is compatible capacity for non-overlapping phase p at time t; the indicator selects one status.",
+          "assumptions": "Only sum identical units and power boundaries; unknown amounts remain excluded or explicitly unresolved."
+        }
+      ],
+      "prerequisites": [
+        "cluster-commissioning-gates"
+      ],
+      "learningObjective": "Build a capacity record that preserves geography, identity, phase and evidence status.",
+      "workstream": "W10",
+      "visualFamily": "world-network",
+      "engineeringExample": "Synthetic campus has 20 MW operating and a separate 80 MW planned expansion. Its operating total remains 20 MW; 100 MW describes combined eventual scope only if both figures use the same boundary.",
+      "evidenceNotes": "The asset supplies evidence methods and a few public cases, not a complete world census. Root’s facility dataset carries the selected geographical records."
+    },
+    {
+      "id": "energy-forecast-boundaries",
+      "level": "infrastructure",
+      "name": "Energy forecasts, geography and measurement boundaries",
+      "shortName": "Energy forecasts, geography and measurement boundaries",
+      "role": "Distinguishes estimated electricity use from conditional demand projections.",
+      "description": "Electricity demand reports combine observations, estimates and scenarios. A global all-data-center forecast includes many uses beyond AI, while an AI-focused subset requires its own definition. The IEA’s April 2026 update and LBNL’s June 2026 US report differ in geography, publication timing and methodology. Their totals cannot be added or treated as competing measurements of the same scope. Historical forecast revisions are useful evidence about changing assumptions, but an older projection should not silently replace a newer one. Power is an instantaneous rate; annual energy integrates changing load, including non-IT overhead when the report’s boundary includes it.",
+      "specs": [
+        {
+          "label": "Units",
+          "value": "MW power and MWh/TWh energy",
+          "context": "1 TWh equals one million MWh; time is essential."
+        },
+        {
+          "label": "Status",
+          "value": "Estimated baseline versus forecast scenario",
+          "context": "Both need source date, observation year and scope."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Metering, shipment and scenario inputs",
+          "direction": "in",
+          "signal": "Defined geography, device mix and operating assumptions"
+        },
+        {
+          "name": "Demand estimate or forecast",
+          "direction": "out",
+          "signal": "Scoped energy with period and uncertainty"
+        }
+      ],
+      "tradeoff": "Broader forecasts help planning but hide local grid and workload constraints; granular estimates need more uncertain input data.",
+      "whyAI": "AI buildout affects electricity systems, but no annual energy total provides a universal conversion into model throughput or capability.",
+      "related": [
+        "rack-dynamic-power",
+        "water-boundary-accounting",
+        "grid-interconnection-readiness"
+      ],
+      "sources": [
+        {
+          "title": "Key Questions on Energy and AI: Executive Summary",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+        },
+        {
+          "title": "United States Data Center Energy Usage Report: 2025 Update",
+          "url": "https://bies.lbl.gov/publications/united-states-data-center-energy-2025"
+        }
+      ],
+      "scale": "Facility phases to region and world; geography schematic",
+      "kind": "architecture",
+      "branch": "Global AI infrastructure",
+      "subbranch": "Global evidence and resource accounting",
+      "mechanism": [
+        "Identify the report date, geography and whether AI is the whole scope or a subset.",
+        "Separate estimated historical demand from projected future demand.",
+        "Check whether the measure includes cooling and other facility loads.",
+        "Compare revisions only after aligning definitions and explaining changed assumptions.",
+        "Keep local deliverability and useful workload capacity separate from broad annual electricity totals."
+      ],
+      "misconception": "A global data-center forecast is not an AI-only measurement, and a 2030 scenario is not observed consumption.",
+      "check": {
+        "question": "Why can a US report not be added to a global total?",
+        "options": [
+          "US electricity uses different physical units",
+          "Forecasts can never discuss regions",
+          "The global scope already includes the United States"
+        ],
+        "answer": 2,
+        "explanation": "The geographies overlap, so adding them double-counts the US contribution."
+      },
+      "science": [
+        {
+          "title": "Energy from average power",
+          "equation": "E = Pavg × Δt",
+          "explanation": "Pavg in GW and Δt in hours gives GWh; divide by 1,000 for TWh.",
+          "assumptions": "Average must cover the same interval and boundary; installed or contracted peak power is not Pavg."
+        }
+      ],
+      "prerequisites": [
+        "rack-dynamic-power"
+      ],
+      "learningObjective": "Read a dated demand forecast without confusing geography, AI scope or power and energy.",
+      "workstream": "W10",
+      "visualFamily": "world-network",
+      "engineeringExample": "Synthetic constant 1 GW load over 8,760 hours uses 8.76 TWh. A 1 GW nameplate facility does not necessarily use that energy because its average operating load can be lower.",
+      "evidenceNotes": "IEA baseline and projection are separate claim records. LBNL’s laboratory abstract was retrieved; inaccessible full-report methodology is not represented as independently rechecked."
+    },
+    {
+      "id": "water-boundary-accounting",
+      "level": "infrastructure",
+      "name": "Water withdrawal, consumption and cooling circulation",
+      "shortName": "Water withdrawal, consumption and cooling circulation",
+      "role": "Accounts for local water effects with a defined physical and energy denominator.",
+      "description": "Cooling water can circulate repeatedly, be withdrawn from a source and returned, or be consumed through evaporation and other losses. These are different quantities. Site water usage effectiveness divides an explicitly defined water amount by IT energy over the same interval, while electricity generation can create additional off-site water impacts. The Department of Energy explains water-efficiency measures and cooling-system tradeoffs. Annual averages can conceal seasonal stress and local basin conditions. A replenishment or matching claim is also distinct from water being physically available at the same place and time when a cooling system needs it.",
+      "specs": [
+        {
+          "label": "Water categories",
+          "value": "Withdrawal, return, consumption and circulation",
+          "context": "Volumes require a stated boundary and interval."
+        },
+        {
+          "label": "WUE denominator",
+          "value": "Liters per IT kWh when defined that way",
+          "context": "Do not silently substitute facility kWh or coolant L/min."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Source water and cooling operation",
+          "direction": "in",
+          "signal": "Makeup flow, evaporation, discharge and supply conditions"
+        },
+        {
+          "name": "Water ledger",
+          "direction": "out",
+          "signal": "Consumed and returned volumes with local context"
+        }
+      ],
+      "tradeoff": "Reducing direct water consumption can increase electricity demand under some cooling choices; local basin conditions determine the significance of either tradeoff.",
+      "whyAI": "High-density computing needs thermal service, but chip efficiency alone does not establish a site’s water impact.",
+      "related": [
+        "coolant-loop-separation",
+        "facility-heat-rejection",
+        "energy-forecast-boundaries"
+      ],
+      "sources": [
+        {
+          "title": "Cooling Water Efficiency Opportunities for Federal Data Centers",
+          "url": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+        }
+      ],
+      "scale": "Facility phases to region and world; geography schematic",
+      "kind": "architecture",
+      "branch": "Global AI infrastructure",
+      "subbranch": "Global evidence and resource accounting",
+      "mechanism": [
+        "Draw the water-system boundary and distinguish closed-loop circulation from external makeup.",
+        "Measure withdrawal and return flows to identify the consumed amount under the chosen definition.",
+        "Match water and IT-energy intervals when calculating site WUE.",
+        "Account for electricity-related water separately using a documented regional method.",
+        "Inspect seasonal and basin conditions instead of treating one annual ratio as a complete impact measure."
+      ],
+      "misconception": "A large closed-loop flow rate does not mean that amount of water is consumed, and low site water use does not prove zero indirect water impact.",
+      "check": {
+        "question": "Which quantity belongs in a site consumption-per-IT-energy ratio?",
+        "options": [
+          "Consumed liters and IT kWh over the same interval",
+          "Circulating liters/minute divided by chip count",
+          "Only the annual rainfall total"
+        ],
+        "answer": 0,
+        "explanation": "A meaningful ratio requires compatible consumption and energy boundaries over an aligned period."
+      },
+      "science": [
+        {
+          "title": "Consumption-based WUE",
+          "equation": "WUE = Vconsumed / EIT",
+          "explanation": "Vconsumed is liters and EIT kWh, giving L/kWh.",
+          "assumptions": "This explicitly selected definition must match the source; some reporting frameworks use different water scopes."
+        }
+      ],
+      "prerequisites": [
+        "coolant-loop-separation"
+      ],
+      "learningObjective": "Distinguish physical water flows and calculate a correctly scoped WUE.",
+      "workstream": "W10",
+      "visualFamily": "world-network",
+      "engineeringExample": "Synthetic 10 MW IT load running 24 hours uses 240,000 kWh. At an explicitly assumed 0.2 L/kWh consumption ratio, the corresponding consumption is 48,000 L/day, independent of the much larger circulating flow.",
+      "evidenceNotes": "The WUE value is synthetic. No operator’s water performance, basin availability or regulatory compliance is inferred from this calculation."
+    },
+    {
+      "id": "regional-siting-access",
+      "level": "infrastructure",
+      "name": "Siting, regional infrastructure and access to compute",
+      "shortName": "Siting, regional infrastructure and access to compute",
+      "role": "Connects location choices to service paths, resources and who can actually use capacity.",
+      "description": "Data-center siting combines electricity readiness, fiber routes, latency, climate, water, staffing and the needs of its users. A project can improve connectivity or electrical infrastructure while remaining under construction. Google’s India hub announcement explicitly links the site with surrounding infrastructure work, while EuroHPC’s gigafactory call describes a public access and procurement mechanism. These are different evidence categories from private installed hardware. A regional comparison should distinguish owner, operator and access model, then show tradeoffs without assuming that announced investment equals completed equipment or that nearby compute is automatically available to every local user.",
+      "specs": [
+        {
+          "label": "Access states",
+          "value": "Owned, reserved, allocated and available",
+          "context": "Physical capacity and user access are separate ledgers."
+        },
+        {
+          "label": "Location objective",
+          "value": "Latency, readiness, resilience and resources",
+          "context": "Weights belong to an explicit scenario, not a universal ranking."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Workload and regional requirements",
+          "direction": "in",
+          "signal": "User locations, resource limits and access needs"
+        },
+        {
+          "name": "Siting/access decision",
+          "direction": "out",
+          "signal": "A bounded choice with evidence-backed tradeoffs"
+        }
+      ],
+      "tradeoff": "Proximity can reduce network delay while a different region may have earlier power availability; access rules and reservations can dominate physical nearness.",
+      "whyAI": "Useful compute capacity depends on admission and data paths, so geographical expansion matters through more than building counts.",
+      "related": [
+        "capacity-phase-geography",
+        "grid-interconnection-readiness",
+        "topology-job-admission"
+      ],
+      "sources": [
+        {
+          "title": "Google AI Hub construction milestone in India",
+          "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+        },
+        {
+          "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+          "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+        }
+      ],
+      "scale": "Facility phases to region and world; geography schematic",
+      "kind": "architecture",
+      "branch": "Global AI infrastructure",
+      "subbranch": "Global evidence and resource accounting",
+      "mechanism": [
+        "Define the users, data paths and service objectives that location must support.",
+        "Compare actual electrical, network and cooling readiness for the same time horizon.",
+        "Identify physical operators and the mechanism through which users receive compute access.",
+        "Model resource and latency tradeoffs with explicitly chosen scenario weights.",
+        "Keep construction announcements, funding commitments and operational service evidence separate."
+      ],
+      "misconception": "Investment dollars are not operating megawatts, and public access programs do not imply every listed facility is already commissioned.",
+      "check": {
+        "question": "Which question distinguishes accessible capacity from physical capacity?",
+        "options": [
+          "How many countries appear in the press release?",
+          "Who can obtain an allocation, under what conditions and date?",
+          "How large is the site’s sign?"
+        ],
+        "answer": 1,
+        "explanation": "Access depends on reservations, procurement and admission policy beyond the presence of equipment."
+      },
+      "science": [
+        {
+          "title": "Conditional site score",
+          "equation": "Score = Σi wi zi",
+          "explanation": "zi is a normalized scenario metric and wi a declared preference weight; the score is dimensionless.",
+          "assumptions": "A teaching decision aid, not an objective scientific ranking; normalization and uncertain inputs must be visible."
+        }
+      ],
+      "prerequisites": [
+        "capacity-phase-geography",
+        "scheduler"
+      ],
+      "learningObjective": "Explain siting and access tradeoffs without equating investment, geography and available service.",
+      "workstream": "W10",
+      "visualFamily": "world-network",
+      "engineeringExample": "Synthetic choice: Site A offers lower network delay but opens a year later; Site B opens sooner with a longer path. A batch-training user and an interactive-serving user can reasonably choose differently.",
+      "evidenceNotes": "No jurisdiction-specific legal advice or exhaustive regional census is provided. Public project and procurement statements support dated examples only."
+    },
+    {
+      "id": "orbital-evidence-status",
+      "level": "infrastructure",
+      "name": "Orbital computing evidence ladder",
+      "shortName": "Orbital computing evidence ladder",
+      "role": "Separates onboard processing, flight demonstrations, laboratory tests and proposed services.",
+      "description": "Computing in orbit spans different kinds of evidence. A payload can process its own sensor data, demonstrate an accelerator on a small mission or form part of a proposed distributed service. Starcloud reports an H100 flight and nanoGPT training demonstration, while Google’s Suncatcher study combines laboratory experiments and a proposed architecture. NASA’s TBIRD establishes an on-orbit communication result, not a compute-cluster result. Each supports a bounded statement. A scaled scenario must separately close energy, thermal, link, reliability and lifecycle budgets rather than treating one successful operation in orbit as proof of a continuously available commercial data center.",
+      "specs": [
+        {
+          "label": "Evidence categories",
+          "value": "Flight, bench test, simulation, plan and scenario",
+          "context": "Use the category associated with the specific result."
+        },
+        {
+          "label": "Service boundary",
+          "value": "One demonstrated task versus ongoing accepted work",
+          "context": "Availability, failure recovery and access require additional evidence."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Project result or proposal",
+          "direction": "in",
+          "signal": "Measured or reported task under dated conditions"
+        },
+        {
+          "name": "Bounded conclusion",
+          "direction": "out",
+          "signal": "What was demonstrated and what remains unresolved"
+        }
+      ],
+      "tradeoff": "Small missions test assumptions affordably, but scaling changes heat rejection, communication, replacement and fleet-level failure exposure.",
+      "whyAI": "Onboard inference can reduce downlink demand for space-generated data; ground-user services have different ingress, latency and economic requirements.",
+      "related": [
+        "orbital-solar-storage",
+        "orbital-link-contacts",
+        "orbital-lifecycle-economics"
+      ],
+      "sources": [
+        {
+          "title": "Starcloud-1",
+          "url": "https://www.starcloud.com/starcloud-1"
+        },
+        {
+          "title": "Exploring a space-based, scalable AI infrastructure system design",
+          "url": "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/"
+        },
+        {
+          "title": "NASA’s Record-Breaking Laser Demo Completes Mission",
+          "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/nasas-record-breaking-laser-demo-completes-mission/"
+        }
+      ],
+      "scale": "Spacecraft to proposed constellation; orbital geometry schematic",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital evidence and physical budgets",
+      "mechanism": [
+        "Name the payload, task, date and physical test environment.",
+        "Distinguish provider-reported outcomes from independently measured or published evidence.",
+        "List which subsystem constraints the demonstration actually exercised.",
+        "Keep proposed mission dates and constellation illustrations in planned or research states.",
+        "Evaluate the next scale using separate physical and operational budgets."
+      ],
+      "misconception": "Works in orbit is not equivalent to qualified, economical, continuously available fleet-scale service.",
+      "check": {
+        "question": "What does a ground optical bench test directly establish?",
+        "options": [
+          "A completed orbital network deployment",
+          "A universal orbital computing cost",
+          "Behavior of the tested ground link under its conditions"
+        ],
+        "answer": 2,
+        "explanation": "The environment and system boundary constrain the conclusion; flight pointing, contact and reliability require additional evidence."
+      },
+      "science": [
+        {
+          "title": "Service readiness model",
+          "equation": "ServiceReady = Compute ∧ Energy ∧ Thermal ∧ Links ∧ Reliability ∧ Operations",
+          "explanation": "Each term is a supported capability for the same workload and operating envelope.",
+          "assumptions": "A conceptual gate model, not a certification or a prediction of commercial viability."
+        }
+      ],
+      "prerequisites": [
+        "serving",
+        "rack"
+      ],
+      "learningObjective": "Classify orbital claims by evidence type and the capability actually tested.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic evidence exercise: a ten-minute inference run verifies that workload on that payload for that interval. It does not establish one-year availability, a sustained ground-data path or fleet replacement cost.",
+      "evidenceNotes": "Starcloud’s page has inconsistent Gemini/Gemma wording, so only its H100 and nanoGPT statements are used. No universal first-AI-in-space claim is made."
+    },
+    {
+      "id": "orbital-solar-storage",
+      "level": "infrastructure",
+      "name": "Orbital solar generation and eclipse storage",
+      "shortName": "Orbital solar generation and eclipse storage",
+      "role": "Balances payload and spacecraft energy through sunlight, eclipse and degradation.",
+      "description": "A solar-powered spacecraft must supply computation plus communications, control, thermal transport and other bus loads. Solar array output depends on illuminated area, conversion efficiency, orientation and degradation. An orbit with favorable sunlight can reduce eclipse demand, but sunlight is not the same as usable electricity and a sun-synchronous orbit is not automatically eclipse-free. Batteries cover intervals when generation falls below load and must later be recharged with losses included. NASA’s power-system guidance treats dynamic operating conditions and eclipse as design inputs. A compute scenario therefore needs a time-dependent energy ledger before declaring its solar area sufficient.",
+      "specs": [
+        {
+          "label": "Generated versus payload power",
+          "value": "Total bus electricity and IT load",
+          "context": "Do not assign all array output to accelerators."
+        },
+        {
+          "label": "Storage capacity",
+          "value": "Usable Wh or kWh",
+          "context": "Nameplate energy differs from allowable usable energy after reserve and losses."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Sunlight and array geometry",
+          "direction": "in",
+          "signal": "Irradiance, orientation and conversion conditions"
+        },
+        {
+          "name": "Spacecraft electrical bus",
+          "direction": "out",
+          "signal": "Power shared by payload, support loads and battery charging"
+        }
+      ],
+      "tradeoff": "Larger arrays add generation and mass, while longer battery-supported operation adds storage mass and cycling requirements.",
+      "whyAI": "An accelerator payload can run continuously only if its complete spacecraft energy budget survives the worst relevant operating interval.",
+      "related": [
+        "orbital-evidence-status",
+        "orbital-radiator-budget",
+        "power-supply"
+      ],
+      "sources": [
+        {
+          "title": "Small Spacecraft Technology State of the Art 2024 report",
+          "url": "https://www.nasa.gov/wp-content/uploads/2025/02/soa-2024.pdf"
+        }
+      ],
+      "scale": "Spacecraft to proposed constellation; orbital geometry schematic",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital evidence and physical budgets",
+      "mechanism": [
+        "Specify orbit, sunlight intervals and array orientation rather than assuming continuous full illumination.",
+        "Convert incident sunlight to electrical output using explicit efficiency and degradation factors.",
+        "Subtract communications, control and thermal-system loads before assigning compute power.",
+        "Integrate battery charging and discharging through eclipse with usable-energy and efficiency limits.",
+        "Check both average energy balance and the worst low-generation interval."
+      ],
+      "misconception": "Space sunlight is an energy input that needs collection and conversion; it does not eliminate array, storage or support-system costs.",
+      "check": {
+        "question": "Why can average solar power exceed average load while a design still fail?",
+        "options": [
+          "Its battery may not cover the longest deficit interval",
+          "Average power automatically guarantees all times",
+          "Computers use no power in eclipse"
+        ],
+        "answer": 0,
+        "explanation": "Time-dependent deficits can exhaust storage even when the orbit-average energy balance appears positive."
+      },
+      "science": [
+        {
+          "title": "Solar power budget",
+          "equation": "Psolar = S A η g",
+          "explanation": "S is irradiance W/m², A active area m², η conversion efficiency and g an orientation/degradation factor.",
+          "assumptions": "Instantaneous illuminated condition; sunlight duty cycle and storage losses require time integration."
+        }
+      ],
+      "prerequisites": [
+        "orbital-evidence-status",
+        "power-supply"
+      ],
+      "learningObjective": "Build a spacecraft energy budget that includes support loads and eclipse storage.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic array with 1,361 W/m² irradiance, 10 m² active area, 30% efficiency and factor 0.8 generates about 3.27 kW while illuminated. A 1 kW bus load leaves about 2.27 kW before charging losses and other reserves.",
+      "evidenceNotes": "The irradiance is a representative near-Earth physical input; all design factors and area are synthetic. No orbit-wide generation or payload efficiency is asserted."
+    },
+    {
+      "id": "orbital-radiator-budget",
+      "level": "infrastructure",
+      "name": "Radiators, view factors and orbital heat rejection",
+      "shortName": "Radiators, view factors and orbital heat rejection",
+      "role": "Rejects spacecraft waste heat through radiation while accounting for absorbed environmental heat.",
+      "description": "Inside a spacecraft, conduction and fluid systems can move heat from electronics to a radiator. Outside, vacuum removes the ordinary air-convection path, so radiation is essential. A radiator emits according to temperature, area and emissivity, but also absorbs sunlight and radiation from Earth or nearby structures. Its view of the heat sink matters. NASA’s thermal-control guidance organizes this energy balance. Raising radiator temperature can reduce required emitting area while demanding higher allowable component temperatures or better heat transport. The coldness of deep space therefore does not make cooling free or guarantee that a dense compute payload can reject its heat.",
+      "specs": [
+        {
+          "label": "Area definition",
+          "value": "Emitting surface area in m²",
+          "context": "Two panel sides count only if both have useful unobstructed views."
+        },
+        {
+          "label": "Temperature boundary",
+          "value": "Radiator versus chip junction",
+          "context": "Thermal resistance creates a temperature difference between them."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Internal heat transport",
+          "direction": "in",
+          "signal": "Payload and bus waste heat conducted to radiators"
+        },
+        {
+          "name": "Radiative environment",
+          "direction": "out",
+          "signal": "Net emitted heat after absorbed environmental inputs"
+        }
+      ],
+      "tradeoff": "Higher radiator temperature reduces area but consumes component thermal margin; shielding a radiator from sunlight constrains geometry and orientation.",
+      "whyAI": "Nearly all consumed electrical power ultimately becomes heat, coupling compute intensity to radiator area and spacecraft mass.",
+      "related": [
+        "orbital-solar-storage",
+        "thermal-interface",
+        "orbital-replacement-mass"
+      ],
+      "sources": [
+        {
+          "title": "Small Spacecraft State of the Art: Thermal Control",
+          "url": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/"
+        }
+      ],
+      "scale": "Spacecraft to proposed constellation; orbital geometry schematic",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital evidence and physical budgets",
+      "mechanism": [
+        "Sum the payload and support heat entering the thermal system.",
+        "Trace thermal resistance from chip junction through transport hardware to the emitting surface.",
+        "Determine emissivity and unobstructed views, including absorbed Sun and Earth heat.",
+        "Calculate net radiative rejection at allowable radiator temperature.",
+        "Add geometric and operational margins before treating ideal emitting area as a spacecraft design."
+      ],
+      "misconception": "Vacuum does not carry heat away by air convection; an unobstructed cold view and adequate radiating area are required.",
+      "check": {
+        "question": "Why is ideal black-space radiator area only a lower bound?",
+        "options": [
+          "All emitting surfaces work equally in sunlight",
+          "Real radiators absorb environmental heat and have imperfect views",
+          "Space radiators have no temperature"
+        ],
+        "answer": 1,
+        "explanation": "Absorbed heat and obstructed views reduce net rejection, increasing the area or temperature required."
+      },
+      "science": [
+        {
+          "title": "Ideal radiative balance",
+          "equation": "Q̇net = εσA(Tr⁴−Ts⁴) − Q̇absorbed",
+          "explanation": "ε is emissivity, σ≈5.67×10⁻⁸ W/(m²K⁴), temperatures are kelvin and heat rates watts.",
+          "assumptions": "Simple effective-sink model; real multiple view factors and spectral absorptivity require a more detailed balance."
+        }
+      ],
+      "prerequisites": [
+        "orbital-solar-storage",
+        "thermal-interface"
+      ],
+      "learningObjective": "Calculate an ideal radiation bound while recognizing environmental and transport constraints.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic ideal radiator at 300 K and emissivity 0.9 emits about 413 W/m² toward a negligible-temperature sink. Rejecting 1 MW then requires about 2,419 m² of emitting area before absorbed heat and margins.",
+      "evidenceNotes": "This is not a qualified megawatt spacecraft design. Panel mass, deployment, transport gradients, two-sided views and environmental loads remain separate inputs."
+    },
+    {
+      "id": "orbital-link-contacts",
+      "level": "infrastructure",
+      "name": "Orbital optical links and contact budgets",
+      "shortName": "Orbital optical links and contact budgets",
+      "role": "Separates inter-satellite exchange from ground-data delivery and sustained useful service.",
+      "description": "Orbital compute needs at least two communication budgets: exchanges inside a distributed cluster and transfers to or from ground users. Optical links require acquisition, pointing, sufficient received power and an available path. Ground links add weather and contact-window constraints. NASA’s TBIRD demonstrated high-rate orbital downlink during particular passes, while Suncatcher’s disclosed high-rate result was a short ground bench path. Peak bit rate cannot be multiplied by a full day unless the link is actually usable for that whole interval. Data placement matters: processing a space-generated image locally may avoid much more traffic than serving a ground-resident training dataset.",
+      "specs": [
+        {
+          "label": "Rates and volumes",
+          "value": "Bits/s, bytes/contact and contact duty cycle",
+          "context": "Peak, bidirectional aggregate and sustained payload are distinct."
+        },
+        {
+          "label": "Latency path",
+          "value": "Actual slant range and route",
+          "context": "Altitude alone is only a special geometric lower-bound input."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Spacecraft or ground data",
+          "direction": "in",
+          "signal": "Datasets, activations, prompts and telemetry"
+        },
+        {
+          "name": "Available optical path",
+          "direction": "out",
+          "signal": "Delivered useful bytes with pointing and contact constraints"
+        }
+      ],
+      "tradeoff": "Closer inter-satellite spacing can help link budgets but constrains formation flying; more ground stations can improve contact coverage while adding infrastructure.",
+      "whyAI": "Distributed training needs sustained exchanges, while compact inference outputs can tolerate much smaller ground-data budgets.",
+      "related": [
+        "orbital-evidence-status",
+        "optics",
+        "orbital-radiation-recovery"
+      ],
+      "sources": [
+        {
+          "title": "NASA’s Record-Breaking Laser Demo Completes Mission",
+          "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/nasas-record-breaking-laser-demo-completes-mission/"
+        },
+        {
+          "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+          "url": "https://arxiv.org/html/2511.19468v2"
+        }
+      ],
+      "scale": "Spacecraft to proposed constellation; orbital geometry schematic",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital evidence and physical budgets",
+      "mechanism": [
+        "Separate intra-cluster traffic from ground ingress, outputs and operational telemetry.",
+        "Calculate link power and pointing requirements for the actual range and apertures.",
+        "Model contact windows, weather and payload efficiency before integrating delivered bytes.",
+        "Add propagation, routing, queueing and processing to the latency path.",
+        "Check whether the workload’s data generation and consumption rates fit both communication budgets."
+      ],
+      "misconception": "A five-minute burst demonstration does not establish continuous daily service at its peak rate.",
+      "check": {
+        "question": "What changes when a link is available only one quarter of the time?",
+        "options": [
+          "Its peak bit rate must quadruple automatically",
+          "A byte becomes four bits",
+          "Its long-term average delivery bound falls unless other links fill the gaps"
+        ],
+        "answer": 2,
+        "explanation": "Contact duty cycle reduces integrated delivery independently of the instantaneous rate while the link is active."
+      },
+      "science": [
+        {
+          "title": "Contact payload and propagation",
+          "equation": "Q ≤ η R tcontact / 8; Tprop = d/c",
+          "explanation": "R is bits/s, tcontact seconds, η payload efficiency, Q bytes, d meters and c≈3×10⁸ m/s.",
+          "assumptions": "Use actual contact availability and path length; pointing, weather, coding and queueing are separate effects."
+        }
+      ],
+      "prerequisites": [
+        "optics",
+        "orbital-evidence-status"
+      ],
+      "learningObjective": "Compare peak link rate, delivered contact volume and end-to-end latency.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic continuous 200 Gbit/s for 300 s has a 7.5 TB raw upper bound. NASA’s 4.8 TB demonstrated pass is a measured delivered quantity and must remain separate from that ideal calculation.",
+      "evidenceNotes": "TBIRD was an orbital communication demonstration; Suncatcher’s 800 Gbit/s one-way result was on a ground bench. Neither alone qualifies a fleet-scale compute network."
+    },
+    {
+      "id": "orbital-radiation-recovery",
+      "level": "infrastructure",
+      "name": "Radiation effects, detection and recovery",
+      "shortName": "Radiation effects, detection and recovery",
+      "role": "Connects mission-specific particle exposure to device behavior and retained workload correctness.",
+      "description": "Space radiation can accumulate damage over time or trigger immediate effects from individual particles. Total ionizing dose, displacement damage and single-event effects are different mechanisms and need different tests. A corrected memory error, a reboot, silent corruption and permanent damage also have different operational consequences. NASA’s radiation guidance emphasizes the environment and device response; Suncatcher provides a specific accelerator test example with important limits. Shielding changes exposure but adds mass and does not eliminate every particle mechanism. A useful computing service must detect unacceptable output changes and recover state, not merely keep an accelerator powered after irradiation.",
+      "specs": [
+        {
+          "label": "Dose versus event rate",
+          "value": "rad(Si) or Gy versus events/time",
+          "context": "Accumulated dose is not a count of single-event upsets."
+        },
+        {
+          "label": "Failure classes",
+          "value": "Corrected, detected, silent and destructive",
+          "context": "Each requires a different mitigation and evidence path."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Mission radiation environment",
+          "direction": "in",
+          "signal": "Particle spectrum, shielding and time-dependent exposure"
+        },
+        {
+          "name": "Reliable workload state",
+          "direction": "out",
+          "signal": "Detected/corrected results or controlled restart"
+        }
+      ],
+      "tradeoff": "Shielding and redundancy improve some margins but add mass, power and complexity; error detection also consumes resources and may miss some failures.",
+      "whyAI": "Silent corruption can spoil model state without an obvious crash, so application checks and durable recovery matter beyond hardware survival.",
+      "related": [
+        "orbital-replacement-mass",
+        "checkpoint-retained-work",
+        "dram-die"
+      ],
+      "sources": [
+        {
+          "title": "Space Environments Testbed: What is space radiation?",
+          "url": "https://lws-set.gsfc.nasa.gov/space_radiation.html"
+        },
+        {
+          "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+          "url": "https://arxiv.org/html/2511.19468v2"
+        }
+      ],
+      "scale": "Payload electronics to fleet and lifecycle; conditional scenarios",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital reliability and lifecycle economics",
+      "mechanism": [
+        "Define orbit, shielding geometry and expected particle environment for the mission.",
+        "Test dose accumulation and single-event susceptibility with methods suited to the device and failure mechanism.",
+        "Separate memory, logic and host-system responses rather than generalizing from one subsystem.",
+        "Apply detection, correction and recovery appropriate to the consequences of each error class.",
+        "Scale event expectations and retained-work loss to fleet size while preserving test limitations."
+      ],
+      "misconception": "Surviving a total-dose test does not prove immunity to single events or silent data corruption in an entire mission.",
+      "check": {
+        "question": "Why must silent corruption be distinguished from a reboot?",
+        "options": [
+          "It can change results without triggering obvious recovery",
+          "It always consumes no energy",
+          "It is identical to accumulated dose"
+        ],
+        "answer": 0,
+        "explanation": "A reboot is visible; undetected wrong state can propagate through a long computation unless higher-level checks catch it."
+      },
+      "science": [
+        {
+          "title": "Simple fleet event expectation",
+          "equation": "Nevents = Ndevices λ t",
+          "explanation": "λ is events/(device·time), t uses the same time unit and Nevents is expected count.",
+          "assumptions": "Independent constant-rate approximation; correlated solar events and heterogeneous devices violate the simplest model."
+        }
+      ],
+      "prerequisites": [
+        "checkpoint",
+        "dram-die"
+      ],
+      "learningObjective": "Separate radiation mechanisms, measured test limits and workload-level recovery.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic fleet of 1,000 devices with one relevant event per device-year expects about 1,000 events/year. Even a low individual rate can require substantial monitoring and recovery capacity at scale.",
+      "evidenceNotes": "The source test reported HBM irregularities at a lower dose than its maximum single-chip test. Neither threshold is a universal orbital qualification limit."
+    },
+    {
+      "id": "orbital-replacement-mass",
+      "level": "infrastructure",
+      "name": "Launch, replacement and end-of-life mass",
+      "shortName": "Launch, replacement and end-of-life mass",
+      "role": "Accounts for a computing fleet’s support mass and continuing lifecycle logistics.",
+      "description": "An orbital payload launches with solar arrays, radiators, structure, communications, control and other support equipment. The relevant mass therefore includes far more than accelerator boards. Hardware degrades, fails or becomes obsolete, and physical repair may be limited by the mission design. A fleet needs spares, replenishment flights and a planned retirement path. NASA’s deorbit guidance describes physical disposal approaches whose suitability depends on orbit and spacecraft capabilities. Replacement cadence affects both sustained useful capacity and recurring launch demand. A low launch price per kilogram does not remove the need to manufacture, integrate and deploy every replacement system.",
+      "specs": [
+        {
+          "label": "Mass basis",
+          "value": "kg per usable payload kW or system",
+          "context": "Specify what support equipment is included."
+        },
+        {
+          "label": "Lifetime",
+          "value": "Years of useful service",
+          "context": "Technical survival and economical software usefulness can differ."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Spacecraft bill of materials",
+          "direction": "in",
+          "signal": "Payload, power, thermal, link and control mass"
+        },
+        {
+          "name": "Fleet lifecycle flow",
+          "direction": "out",
+          "signal": "Initial deployment, replacement, spares and retirement"
+        }
+      ],
+      "tradeoff": "Larger support systems can improve power or thermal margins while increasing launch demand; longer service life reduces replacements but can retain obsolete hardware.",
+      "whyAI": "Orbital compute economics depend on replacing the entire supported payload, not merely comparing chip power against a terrestrial electricity bill.",
+      "related": [
+        "orbital-radiator-budget",
+        "orbital-solar-storage",
+        "orbital-lifecycle-economics"
+      ],
+      "sources": [
+        {
+          "title": "Small Spacecraft State of the Art: Deorbit Systems",
+          "url": "https://www.nasa.gov/smallsat-institute/sst-soa/deorbit-systems/"
+        },
+        {
+          "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+          "url": "https://arxiv.org/html/2511.19468v2"
+        }
+      ],
+      "scale": "Payload electronics to fleet and lifecycle; conditional scenarios",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital reliability and lifecycle economics",
+      "mechanism": [
+        "Build a mass budget that includes all support systems required by the workload.",
+        "Define useful life, expected degradation and replacement policy.",
+        "Translate desired sustained capacity into initial and recurring launched mass.",
+        "Account for launch availability, deployment failures and spare capacity.",
+        "Plan retirement or disposal using the actual orbit and vehicle capability, preserving jurisdiction-specific requirements for separate review."
+      ],
+      "misconception": "Accelerator mass alone is not spacecraft mass, and reaching orbit once does not establish a sustainable replacement cadence.",
+      "check": {
+        "question": "If total fleet mass stays fixed and useful life halves, what happens to ideal annual replacement mass?",
+        "options": [
+          "It becomes independent of mass",
+          "It doubles",
+          "It halves"
+        ],
+        "answer": 1,
+        "explanation": "A steady fleet needs the same total mass replaced over half the interval."
+      },
+      "science": [
+        {
+          "title": "Replacement-flow model",
+          "equation": "Mfleet = Ppayload m; Mreplace/year ≈ Mfleet / L",
+          "explanation": "Ppayload is kW, m kg/kW and L years; mass flows are kg/year.",
+          "assumptions": "Steady fleet with uniform lifetime; failures, spare inventory, growth and disposal hardware add requirements."
+        }
+      ],
+      "prerequisites": [
+        "orbital-solar-storage",
+        "orbital-radiator-budget"
+      ],
+      "learningObjective": "Estimate full-system deployment and replacement mass with explicit lifetime assumptions.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic 1 MW payload at 20 kg per payload kW implies 20,000 kg supported fleet mass. A five-year useful life gives about 4,000 kg/year steady replacement before failures, spares or growth.",
+      "evidenceNotes": "Mass and lifetime are hypothetical, not current spacecraft specifications. No present launcher capability or regulatory disposal deadline is asserted."
+    },
+    {
+      "id": "orbital-lifecycle-economics",
+      "level": "infrastructure",
+      "name": "Orbital lifecycle economics and workload fit",
+      "shortName": "Orbital lifecycle economics and workload fit",
+      "role": "Compares complete useful service under conditional launch and support assumptions.",
+      "description": "An orbital computing proposal must pay for spacecraft, payloads, launch, ground infrastructure, operations, replacements and lost work. Solar energy availability can change operating inputs but does not erase those costs. Suncatcher’s launch-price analysis is explicitly conditional and incomplete as a total economic study; its projected future launch input must not be presented as a current quote. A fair terrestrial comparison uses the same accepted workload, quality and service targets. Space-generated data reduction and ground-user interactive services can produce very different communication costs. A scenario should show which assumptions make the budget close and which unresolved constraint prevents a useful service.",
+      "specs": [
+        {
+          "label": "Economic boundary",
+          "value": "Complete lifecycle per accepted result",
+          "context": "Launch-only cost is a component, not total cost of ownership."
+        },
+        {
+          "label": "Scenario status",
+          "value": "Conditional assumptions and sensitivity",
+          "context": "Future prices and fleet-scale availability require explicit uncertainty."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Physical and operational budgets",
+          "direction": "in",
+          "signal": "Mass, power, thermal, links, lifetime and service quality"
+        },
+        {
+          "name": "Conditional service economics",
+          "direction": "out",
+          "signal": "Cost per accepted result and unresolved bottlenecks"
+        }
+      ],
+      "tradeoff": "An attractive launch assumption can be outweighed by ground-data traffic, short lifetime, low availability or expensive thermal support.",
+      "whyAI": "AI workload fit determines useful results; no universal dollar-per-kW or MW-to-token factor can compare all terrestrial and orbital systems.",
+      "related": [
+        "orbital-replacement-mass",
+        "orbital-link-contacts",
+        "orbital-evidence-status"
+      ],
+      "sources": [
+        {
+          "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+          "url": "https://arxiv.org/html/2511.19468v2"
+        }
+      ],
+      "scale": "Payload electronics to fleet and lifecycle; conditional scenarios",
+      "kind": "architecture",
+      "branch": "Frontier infrastructure",
+      "subbranch": "Orbital reliability and lifecycle economics",
+      "mechanism": [
+        "Choose a concrete workload and matching terrestrial service baseline.",
+        "Close energy, thermal and link budgets before assigning sustained useful throughput.",
+        "Include complete initial and recurring costs with a consistent lifetime and accounting boundary.",
+        "Apply availability and accepted-result criteria without double-counting utilization already in measured throughput.",
+        "Vary uncertain launch, mass, lifetime and service assumptions and identify where the preferred option changes."
+      ],
+      "misconception": "Comparing launch-only annualized cost to a terrestrial electricity bill is not a full system-cost comparison.",
+      "check": {
+        "question": "Which denominator makes an orbital and terrestrial comparison meaningful?",
+        "options": [
+          "Only nameplate electrical power",
+          "Only peak accelerator FLOPS",
+          "Equivalent accepted workload results under matched conditions"
+        ],
+        "answer": 2,
+        "explanation": "Useful service depends on quality, latency and availability, so identical power or peak arithmetic need not deliver identical outcomes."
+      },
+      "science": [
+        {
+          "title": "Launch-only annualization",
+          "equation": "Claunch = plaunch m / L",
+          "explanation": "plaunch is currency/kg, m kg per payload kW and L useful years; result is currency/(payload kW·year).",
+          "assumptions": "Only launch amortization; excludes spacecraft, ground, operations, financing, failures and other lifecycle costs."
+        }
+      ],
+      "prerequisites": [
+        "orbital-replacement-mass",
+        "orbital-link-contacts"
+      ],
+      "learningObjective": "Evaluate conditional orbital economics without promoting launch assumptions into complete-system conclusions.",
+      "workstream": "W12",
+      "visualFamily": "orbital-system",
+      "engineeringExample": "Synthetic $500/kg, 20 kg per payload kW and five-year life yields $2,000/(payload kW·year) for launch alone. Doubling mass doubles that component; no token rate or total ownership cost follows from it.",
+      "evidenceNotes": "The example is synthetic. The source’s mid-2030s launch-price projection is forecast evidence, not a current market price or a completed feasibility demonstration."
+    }
+  ],
+  "milestones": [
+    {
+      "year": 2020,
+      "title": "CXL 2.0 specification announced",
+      "significance": "The disclosure distinguishes I/O, cache and memory roles on a PCIe physical foundation.",
+      "source": {
+        "title": "Compute Express Link 2.0 Specification Now Available",
+        "url": "https://computeexpresslink.org/blog/compute-express-link-2-0-specification-now-available-2374/"
+      },
+      "component": "pcie-cxl-semantics",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2023,
+      "title": "BoW signal/power-integrity study published",
+      "significance": "The ECTC study links a chiplet interface to package-specific electrical analysis.",
+      "source": {
+        "title": "Signal and Power Integrity Design and Analysis for BoW Interface for Chiplet Integration on Advanced Packaging",
+        "url": "https://research.ibm.com/publications/signal-and-power-integrity-design-and-analysis-for-bunch-of-wires-bow-interface-for-chiplet-integration-on-advanced-packaging"
+      },
+      "component": "interface-signal-eye",
+      "eventType": "publication"
+    },
+    {
+      "year": 2023,
+      "title": "TBIRD high-rate orbital pass demonstrated",
+      "significance": "The June pass provides a measured contact-volume example distinct from continuous service.",
+      "source": {
+        "title": "NASA’s Record-Breaking Laser Demo Completes Mission",
+        "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/nasas-record-breaking-laser-demo-completes-mission/"
+      },
+      "component": "orbital-link-contacts",
+      "eventType": "demonstration"
+    },
+    {
+      "year": 2025,
+      "title": "NVIDIA CPO networking announced",
+      "significance": "The announcement supplies a named shift in optical-engine placement and integration responsibilities.",
+      "source": {
+        "title": "NVIDIA Announces Spectrum-X Photonics, Co-Packaged Optics Networking Switches",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories"
+      },
+      "component": "optical-cpo-placement",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2025,
+      "title": "Starcloud-1 compute demonstration reported",
+      "significance": "Provider-reported flight work supplies a bounded compute example, without proving fleet-scale service.",
+      "source": {
+        "title": "Starcloud-1",
+        "url": "https://www.starcloud.com/starcloud-1"
+      },
+      "component": "orbital-evidence-status",
+      "eventType": "demonstration"
+    },
+    {
+      "year": 2025,
+      "title": "Google announces orbital research and prototype plan",
+      "significance": "The planned learning mission separates a future flight objective from existing ground analysis.",
+      "source": {
+        "title": "Exploring a space-based, scalable AI infrastructure system design",
+        "url": "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/"
+      },
+      "component": "orbital-evidence-status",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "IEA energy-and-AI outlook updated",
+      "significance": "The April report updates estimated baselines and conditional global demand projections.",
+      "source": {
+        "title": "Key Questions on Energy and AI: Executive Summary",
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+      },
+      "component": "energy-forecast-boundaries",
+      "eventType": "publication"
+    },
+    {
+      "year": 2026,
+      "title": "India AI hub groundbreaking announced",
+      "significance": "The construction milestone connects a computing site with surrounding power and network development.",
+      "source": {
+        "title": "Google AI Hub construction milestone in India",
+        "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+      },
+      "component": "regional-siting-access",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "EuroHPC gigafactory call launched",
+      "significance": "The procurement process illustrates future deployment scope and public access arrangements.",
+      "source": {
+        "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+      },
+      "component": "capacity-phase-geography",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "Suncatcher study revised",
+      "significance": "Version 2 is a pinned research reference for orbital system assumptions, ground tests and unresolved constraints.",
+      "source": {
+        "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+        "url": "https://arxiv.org/html/2511.19468v2"
+      },
+      "component": "orbital-lifecycle-economics",
+      "eventType": "publication"
+    }
+  ],
+  "claims": [
+    {
+      "id": "infra-claim-rack-count",
+      "title": "NVL72 reference GPU count",
+      "statement": "The NVIDIA hardware guide describes 18 compute trays with four GPUs each in an NVL72 rack, totaling 72 GPUs.",
+      "sourceId": "infra-src-rack",
+      "lessonIds": [
+        "rack-reference-anatomy"
+      ],
+      "status": "reported",
+      "metric": "GPU inventory",
+      "value": 72,
+      "unit": "GPUs",
+      "denominator": "per documented NVL72 rack",
+      "period": "Guide updated 3 March 2026",
+      "scope": "Named rack hardware configuration",
+      "limitations": "Inventory is not allocated capacity, measured throughput or one physical GPU die.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-rack-power",
+      "title": "Documented approximate rack consumption",
+      "statement": "The NVIDIA guide describes rack consumption as approximately 120 kW.",
+      "sourceId": "infra-src-rack",
+      "lessonIds": [
+        "rack-power-conversion"
+      ],
+      "status": "reported",
+      "metric": "Approximate rack electrical consumption",
+      "value": 120,
+      "unit": "kW",
+      "denominator": "per documented DGX GB reference rack",
+      "period": "Guide updated 3 March 2026",
+      "scope": "Rack consumption, separate from chip TDP and facility input",
+      "limitations": "Approximate configuration-specific value; PSU nameplate sum and actual workload draw differ.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-iea-baseline",
+      "title": "IEA estimated 2025 electricity demand",
+      "statement": "IEA’s April 2026 report estimates 485 TWh of worldwide data-center electricity demand in 2025.",
+      "sourceId": "infra-src-iea",
+      "lessonIds": [
+        "energy-forecast-boundaries"
+      ],
+      "status": "reported",
+      "metric": "Estimated annual electricity demand",
+      "value": 485,
+      "unit": "TWh",
+      "denominator": "global all-data-center total",
+      "period": "2025 baseline; report 16 April 2026",
+      "scope": "All data centers, with AI-focused facilities a subset",
+      "limitations": "Estimated baseline, not an AI-only meter total or available power capacity.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-iea-projection",
+      "title": "IEA central 2030 projection",
+      "statement": "IEA’s April 2026 central projection is 950 TWh of worldwide data-center electricity demand in 2030.",
+      "sourceId": "infra-src-iea",
+      "lessonIds": [
+        "energy-forecast-boundaries"
+      ],
+      "status": "forecast",
+      "metric": "Projected annual electricity demand",
+      "value": 950,
+      "unit": "TWh",
+      "denominator": "global all-data-center total",
+      "period": "2030 central projection; report 16 April 2026",
+      "scope": "Same broad report scope as the separately labeled 2025 baseline",
+      "limitations": "Conditional projection, not observed consumption; not additive with US-only LBNL estimates.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-euro-call",
+      "title": "EuroHPC gigafactory procurement scope",
+      "statement": "The July 2026 EuroHPC call seeks up to seven AI gigafactories through a future selection process.",
+      "sourceId": "infra-src-eurohpc",
+      "lessonIds": [
+        "capacity-phase-geography",
+        "regional-siting-access"
+      ],
+      "status": "announced",
+      "metric": "Maximum call scope",
+      "value": 7,
+      "unit": "gigafactories",
+      "denominator": "procurement call",
+      "period": "30 July 2026 announcement",
+      "scope": "Proposed procurement scope, not operating facility count",
+      "limitations": "Do not combine with 19 AI factories being implemented or 13 access/support antennas as equivalent operating sites.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-starcloud-flight",
+      "title": "Starcloud-1 reported accelerator demonstration",
+      "statement": "Starcloud reports a November 2025 launch carrying an H100 and a December 2025 nanoGPT training demonstration.",
+      "sourceId": "infra-src-starcloud",
+      "lessonIds": [
+        "orbital-evidence-status"
+      ],
+      "status": "reported",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "Named flight demonstrator",
+      "period": "November–December 2025, reported on living project page",
+      "scope": "Provider-reported payload and task",
+      "limitations": "Not independent fleet reliability, commercial service scale or first-AI-in-space verification; ambiguous Gemini/Gemma wording omitted.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-orbital-bench",
+      "title": "Suncatcher ground optical bench result",
+      "statement": "The study reports 800 Gbit/s one-way transfer on a short free-space bench path, with 1.6 Tbit/s labeled bidirectional.",
+      "sourceId": "infra-src-suncatcher",
+      "lessonIds": [
+        "orbital-link-contacts"
+      ],
+      "status": "research",
+      "metric": "Ground-bench one-way bit rate",
+      "value": 800,
+      "unit": "Gbit/s",
+      "denominator": "one direction of tested short free-space path",
+      "period": "Study v2 revised 17 June 2026",
+      "scope": "Laboratory link, not orbital deployment",
+      "limitations": "Bidirectional aggregate is a different metric; does not establish ground contact availability or a flight-qualified network.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-tbird-rate",
+      "title": "TBIRD demonstrated peak downlink rate",
+      "statement": "NASA reports a 200 Gbit/s peak downlink rate in the TBIRD demonstration.",
+      "sourceId": "infra-src-tbird",
+      "lessonIds": [
+        "orbital-link-contacts"
+      ],
+      "status": "reported",
+      "metric": "Peak demonstrated downlink bit rate",
+      "value": 200,
+      "unit": "Gbit/s",
+      "denominator": "one orbital downlink",
+      "period": "June 2023 result; NASA report September 2024",
+      "scope": "Peak within an on-orbit communication demonstration",
+      "limitations": "Not a continuous daily rate; contact duration and useful delivered volume are separately recorded.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-tbird-volume",
+      "title": "TBIRD delivered bytes in one pass",
+      "statement": "NASA reports 4.8 TB of error-free data delivered in one five-minute pass in June 2023.",
+      "sourceId": "infra-src-tbird",
+      "lessonIds": [
+        "orbital-link-contacts"
+      ],
+      "status": "reported",
+      "metric": "Delivered contact payload",
+      "value": 4.8,
+      "unit": "TB",
+      "denominator": "one five-minute pass",
+      "period": "June 2023 result; NASA report September 2024",
+      "scope": "Measured pass payload as reported by NASA",
+      "limitations": "Distinct from multiplying peak bit rate by the full contact duration; not all-day sustained service.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-radiation-limit",
+      "title": "Suncatcher radiation-test qualifications",
+      "statement": "The study reports HBM-test irregularities after about 2 krad(Si), while other tests continued to a 15 krad(Si) maximum on one chip.",
+      "sourceId": "infra-src-suncatcher",
+      "lessonIds": [
+        "orbital-radiation-recovery"
+      ],
+      "status": "research",
+      "metric": "Reported onset of HBM stress-test irregularities",
+      "value": 2,
+      "unit": "krad(Si)",
+      "denominator": "tested device and specified proton-beam conditions",
+      "period": "Study v2 revised 17 June 2026",
+      "scope": "Test-specific subsystem response",
+      "limitations": "Maximum-dose survival is not complete mission qualification or single-event immunity; one-chip sample and test scope limit generalization.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-launch-forecast",
+      "title": "Conditional launch-price projection",
+      "statement": "The study projects launch prices near or below $200/kg by the mid-2030s under learning-curve and launch-growth assumptions.",
+      "sourceId": "infra-src-suncatcher",
+      "lessonIds": [
+        "orbital-lifecycle-economics"
+      ],
+      "status": "forecast",
+      "metric": "Conditional future launch price",
+      "value": 200,
+      "unit": "USD/kg",
+      "denominator": "mass launched to LEO under the study assumptions",
+      "period": "Mid-2030s projection in June 2026 study",
+      "scope": "Launch component only",
+      "limitations": "Not a current price, guaranteed forecast or complete system-cost comparison; spacecraft and operational costs remain outside this component.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-prototype-plan",
+      "title": "Google’s dated prototype-mission plan",
+      "statement": "Google’s November 2025 announcement targets two prototype satellites with Planet for early 2027.",
+      "sourceId": "infra-src-google-orbit",
+      "lessonIds": [
+        "orbital-evidence-status"
+      ],
+      "status": "announced",
+      "metric": "Planned prototype count",
+      "value": 2,
+      "unit": "satellites",
+      "denominator": "named learning mission",
+      "period": "Announcement 4 November 2025; target early 2027",
+      "scope": "Planned mission at source date",
+      "limitations": "No launch completion inferred; simulation and bench evidence remain separate.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-tsmc-planning",
+      "title": "Capacity planning versus customer allocation",
+      "statement": "TSMC’s 2025 annual report describes planning capacity with customers and their customers.",
+      "sourceId": "infra-src-tsmc",
+      "lessonIds": [
+        "production-ramp-allocation"
+      ],
+      "status": "reported",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "Company capacity-planning role",
+      "period": "2025 annual-report period, published 2026",
+      "scope": "Provider description of planning process",
+      "limitations": "Does not reveal customer queues, allocated shares or a transferable package-output-per-month default.",
+      "checkedOn": "2026-09-06"
+    }
+  ],
+  "sources": [
+    {
+      "id": "infra-src-ucie",
+      "title": "Introduction to UCIe webinar: Q&A recap",
+      "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+      "publisher": "UCIe Consortium",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Link initialization, packaging and interoperability discussion",
+      "scope": "Die-to-die compatibility; no arbitrary vendor pairing asserted."
+    },
+    {
+      "id": "infra-src-cxl",
+      "title": "Compute Express Link 2.0 Specification Now Available",
+      "url": "https://computeexpresslink.org/blog/compute-express-link-2-0-specification-now-available-2374/",
+      "publisher": "CXL Consortium",
+      "published": "2020-12-02",
+      "checkedOn": "2026-09-06",
+      "locator": "CXL.io, CXL.cache and CXL.mem roles",
+      "scope": "Historical protocol disclosure, not latest-generation claim."
+    },
+    {
+      "id": "infra-src-si",
+      "title": "Signal and Power Integrity Design and Analysis for BoW Interface for Chiplet Integration on Advanced Packaging",
+      "url": "https://research.ibm.com/publications/signal-and-power-integrity-design-and-analysis-for-bunch-of-wires-bow-interface-for-chiplet-integration-on-advanced-packaging",
+      "publisher": "IBM Research",
+      "published": "2023",
+      "checkedOn": "2026-09-06",
+      "locator": "ECTC 2023 publication abstract",
+      "scope": "Specific interface study motivates budgets; no numeric results transferred to arbitrary geometry."
+    },
+    {
+      "id": "infra-src-rack",
+      "title": "NVIDIA DGX GB Rack Scale Systems: Hardware",
+      "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html",
+      "publisher": "NVIDIA",
+      "published": "2026-03-03",
+      "checkedOn": "2026-09-06",
+      "locator": "Rack Configuration, Compute Trays, Power Shelves",
+      "scope": "Documented NVL72 reference; power approximate and configuration-specific."
+    },
+    {
+      "id": "infra-src-net",
+      "title": "NVIDIA DGX GB Rack Scale Systems: Networking",
+      "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/networking.html",
+      "publisher": "NVIDIA",
+      "published": "2026-03-03",
+      "checkedOn": "2026-09-06",
+      "locator": "Compute, storage and management network roles",
+      "scope": "Named rack system; topology and traffic roles are not universal."
+    },
+    {
+      "id": "infra-src-nccl",
+      "title": "NCCL User Guide: Collective Operations",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+      "publisher": "NVIDIA",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "AllReduce, AllGather and ReduceScatter semantics",
+      "scope": "Collective meaning; algorithm and performance depend on topology and implementation."
+    },
+    {
+      "id": "infra-src-cpo",
+      "title": "NVIDIA Announces Spectrum-X Photonics, Co-Packaged Optics Networking Switches",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories",
+      "publisher": "NVIDIA",
+      "published": "2025-03-18",
+      "checkedOn": "2026-09-06",
+      "locator": "CPO product announcement and industry integration roles",
+      "scope": "Announced design; promotional power/resiliency multipliers omitted."
+    },
+    {
+      "id": "infra-src-doe-water",
+      "title": "Cooling Water Efficiency Opportunities for Federal Data Centers",
+      "url": "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers",
+      "publisher": "US Department of Energy",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Water usage effectiveness, cooling-tower and energy-water discussion",
+      "scope": "Definitions and engineering mechanisms; no universal site WUE or PUE default."
+    },
+    {
+      "id": "infra-src-pjm",
+      "title": "PJM’s Updated 20-Year Forecast Continues To See Significant Long-Term Load Growth",
+      "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+      "publisher": "PJM",
+      "published": "2026-01-14",
+      "checkedOn": "2026-09-06",
+      "locator": "Large-load screening and forecast revisions",
+      "scope": "Regional load planning; an inconsistent winter numeric headline is deliberately omitted."
+    },
+    {
+      "id": "infra-src-tsmc",
+      "title": "TSMC 2025 Annual Report",
+      "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+      "publisher": "TSMC",
+      "published": "2026",
+      "checkedOn": "2026-09-06",
+      "locator": "Letter to shareholders: capacity planning and advanced packaging",
+      "scope": "Provider annual report; no customer allocation share or production-rate default inferred."
+    },
+    {
+      "id": "infra-src-cowos",
+      "title": "TSMC CoWoS technology",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+      "publisher": "TSMC",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "CoWoS-S/R/L integration descriptions",
+      "scope": "Convergence of logic, memory and package routes; not every accelerator uses CoWoS."
+    },
+    {
+      "id": "infra-src-slurm",
+      "title": "Slurm Topology Guide",
+      "url": "https://slurm.schedmd.com/topology.html",
+      "publisher": "SchedMD",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Topology-aware resource selection",
+      "scope": "Scheduling mechanism; not claims about a particular user queue."
+    },
+    {
+      "id": "infra-src-checkpoint",
+      "title": "Elastic training and optimized checkpointing improve ML Goodput",
+      "url": "https://cloud.google.com/blog/products/ai-machine-learning/elastic-training-and-optimized-checkpointing-improve-ml-goodput",
+      "publisher": "Google Cloud",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Recovery and useful-work accounting",
+      "scope": "Provider method discussion; configuration-specific performance claims omitted."
+    },
+    {
+      "id": "infra-src-storage",
+      "title": "NVIDIA DGX GB Rack Scale Systems: Storage",
+      "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/storage.html",
+      "publisher": "NVIDIA",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Local and shared storage guidance",
+      "scope": "Specific reference architecture, not all storage tiers measured at one rate."
+    },
+    {
+      "id": "infra-src-iea",
+      "title": "Key Questions on Energy and AI: Executive Summary",
+      "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+      "publisher": "IEA",
+      "published": "2026-04-16",
+      "checkedOn": "2026-09-06",
+      "locator": "Data-center demand baseline and 2030 outlook",
+      "scope": "Global all-data-center demand; estimates and forecasts distinct."
+    },
+    {
+      "id": "infra-src-lbnl",
+      "title": "United States Data Center Energy Usage Report: 2025 Update",
+      "url": "https://bies.lbl.gov/publications/united-states-data-center-energy-2025",
+      "publisher": "Lawrence Berkeley National Laboratory",
+      "published": "2026-06",
+      "checkedOn": "2026-09-06",
+      "locator": "Laboratory publication abstract and bibliographic date",
+      "scope": "US-only update; original full report retrieval remains restricted, so abstract-supported scope only."
+    },
+    {
+      "id": "infra-src-eurohpc",
+      "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+      "publisher": "EuroHPC JU",
+      "published": "2026-07-30",
+      "checkedOn": "2026-09-06",
+      "locator": "Call scope, AI factory and antenna counts, selection schedule",
+      "scope": "Procurement and implementation status; not operating power totals."
+    },
+    {
+      "id": "infra-src-stargate",
+      "title": "Five new Stargate sites",
+      "url": "https://openai.com/index/five-new-stargate-sites/",
+      "publisher": "OpenAI",
+      "published": "2025-09-23; updated 2025-10-22",
+      "checkedOn": "2026-09-06",
+      "locator": "Site and planned-capacity status paragraphs",
+      "scope": "Dated operator plans and partial operation; capacity power boundary unspecified."
+    },
+    {
+      "id": "infra-src-india",
+      "title": "Google AI Hub construction milestone in India",
+      "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+      "publisher": "Google",
+      "published": "2026-04-28",
+      "checkedOn": "2026-09-06",
+      "locator": "Visakhapatnam groundbreaking and coupled infrastructure projects",
+      "scope": "Construction announcement; no commissioned MW or spent-capital total inferred."
+    },
+    {
+      "id": "infra-src-nasa-thermal",
+      "title": "Small Spacecraft State of the Art: Thermal Control",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+      "publisher": "NASA",
+      "published": "2026-05-18",
+      "checkedOn": "2026-09-06",
+      "locator": "Thermal energy balance, radiation and environmental heat",
+      "scope": "Small-spacecraft mechanism reference; not a qualified megawatt radiator design."
+    },
+    {
+      "id": "infra-src-suncatcher",
+      "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+      "url": "https://arxiv.org/html/2511.19468v2",
+      "publisher": "Google authors / arXiv",
+      "published": "2026-06-17",
+      "checkedOn": "2026-09-06",
+      "locator": "System proposal, bench links, radiation experiment and economics assumptions",
+      "scope": "Research study: laboratory, simulated, proposed and forecast inputs separated."
+    },
+    {
+      "id": "infra-src-google-orbit",
+      "title": "Exploring a space-based, scalable AI infrastructure system design",
+      "url": "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/",
+      "publisher": "Google Research",
+      "published": "2025-11-04",
+      "checkedOn": "2026-09-06",
+      "locator": "Prototype mission plans and research scope",
+      "scope": "Two prototypes targeted for early 2027 at announcement date; not a launch result."
+    },
+    {
+      "id": "infra-src-starcloud",
+      "title": "Starcloud-1",
+      "url": "https://www.starcloud.com/starcloud-1",
+      "publisher": "Starcloud",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "November launch and December compute demonstration narrative",
+      "scope": "Provider-reported demonstrator; model-name inconsistency avoided by using nanoGPT/H100 statements only."
+    },
+    {
+      "id": "infra-src-tbird",
+      "title": "NASA’s Record-Breaking Laser Demo Completes Mission",
+      "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/nasas-record-breaking-laser-demo-completes-mission/",
+      "publisher": "NASA",
+      "published": "2024-09-25; updated 2024-09-26",
+      "checkedOn": "2026-09-06",
+      "locator": "June 2023 pass result and September 2024 mission completion",
+      "scope": "On-orbit communication demonstration; peak rate and delivered contact bytes distinct."
+    },
+    {
+      "id": "infra-src-nasa-power",
+      "title": "Small Spacecraft Technology State of the Art 2024 report",
+      "url": "https://www.nasa.gov/wp-content/uploads/2025/02/soa-2024.pdf",
+      "publisher": "NASA",
+      "published": "2025-02",
+      "checkedOn": "2026-09-06",
+      "locator": "Electrical power systems chapter: solar generation, battery storage and eclipse",
+      "scope": "Small-spacecraft power mechanisms; no megawatt fleet performance inferred."
+    },
+    {
+      "id": "infra-src-nasa-radiation",
+      "title": "Space Environments Testbed: What is space radiation?",
+      "url": "https://lws-set.gsfc.nasa.gov/space_radiation.html",
+      "publisher": "NASA Goddard",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "TID, displacement damage and single-event effects categories",
+      "scope": "Mechanism and mission-specific environment distinctions."
+    },
+    {
+      "id": "infra-src-nasa-deorbit",
+      "title": "Small Spacecraft State of the Art: Deorbit Systems",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/deorbit-systems/",
+      "publisher": "NASA",
+      "published": "Undated living reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Disposal mechanisms and demonstrated systems",
+      "scope": "Physical lifecycle planning; no jurisdictional regulatory deadline reproduced."
+    }
+  ]
+}

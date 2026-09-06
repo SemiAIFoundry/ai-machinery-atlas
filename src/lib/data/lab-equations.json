@@ -1,0 +1,16 @@
+{
+  "wafer": "\\begin{aligned}Y_{\\mathrm{P}}&=e^{-AD}\\\\Y_{\\mathrm{C}}&=\\left(1+\\frac{AD}{\\alpha}\\right)^{-\\alpha},\\quad\\alpha=3\\end{aligned}",
+  "pattern": "\\mathrm{CD}\\approx\\frac{k_1\\lambda}{\\mathrm{NA}},\\qquad\\mathrm{DOF}\\approx\\frac{k_2\\lambda}{\\mathrm{NA}^{2}}",
+  "cmp": "h_{\\mathrm{res}}=\\max\\!\\left(0,h_0-Rt\\right)",
+  "assembly": "N_{\\mathrm{out}}=N_{\\mathrm{screened}}\\,Y_{\\mathrm{stage}}^{n}\\,Y_{\\mathrm{final}}",
+  "hbm": "\\begin{aligned}I_{\\mathrm{geometric}}&=\\frac{D_{\\mathrm{norm}}\\,r_A}{Y}\\\\I_{\\mathrm{empirical}}&=D_{\\mathrm{norm}}\\,r_{\\mathrm{output}}\\end{aligned}",
+  "capacity": "Q_{\\mathrm{good}}=Y_{\\mathrm{final}}\\min\\!\\left(\\frac{Q_L}{n_L},\\frac{Q_H}{n_H},Q_I,Q_S,Q_A\\right)",
+  "dataflow": "F=2n^3,\\qquad M_{\\mathrm{tiled}}=\\left(2n^2\\left\\lceil\\frac nt\\right\\rceil+n^2\\right)b",
+  "footprint": "M_W=\\frac{N_p\\,b_W}{8},\\qquad M_{\\mathrm{KV}}=2BLTH_{\\mathrm{KV}}d_hs",
+  "network": "t_{\\mathrm{ring}}\\approx\\frac{2(p-1)}p\\frac{M}{\\beta}+2(p-1)\\alpha",
+  "hall": "P_{\\mathrm{IT}}=\\frac{P_{\\mathrm{facility}}}{\\mathrm{PUE}},\\qquad R=N_{\\mathrm{ready}}\\,u\\,r",
+  "orbital": "\\begin{aligned}q_{\\mathrm{net}}&=\\varepsilon\\sigma T^4-q_{\\mathrm{absorbed}}\\\\ A_{\\mathrm{rad}}&=\\frac{P}{q_{\\mathrm{net}}},\\quad q_{\\mathrm{net}}>0\\\\D_{\\mathrm{day}}&=\\frac{r_{\\mathrm{link}}\\,t_{\\mathrm{contact}}}{8}\\end{aligned}",
+  "economics": "C_{\\mathrm{unit}}=\\frac{C_{\\mathrm{wafer}}/N_{\\mathrm{good}}+C_{\\mathrm{assembly}}}{Y_{\\mathrm{package}}}+\\frac{C_{\\mathrm{NRE}}+C_{\\mathrm{software}}}{V}",
+  "recovery": "f_{\\mathrm{overhead}}\\approx\\frac{t_c}{\\tau}+\\frac{\\tau/2+t_r}{\\mathrm{MTBF}}",
+  "memory-growth": "I(t)=r_{2\\,\\mathrm{yr}}^{\\,t/(2\\,\\mathrm{yr})}"
+}

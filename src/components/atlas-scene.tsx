@@ -4,10 +4,10 @@ import * as T from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { buildModel } from '@/lib/scene-models';
 import { byId } from '@/lib/atlas';
-type Props={level:string;records:{id:string;name:string}[];selected:string;onSelect:(id:string)=>void;explode:number;isolate:boolean;reset:number;running?:boolean;labels?:boolean;xray?:boolean;signal?:number};
+type Props={level:string;records:{id:string;name:string}[];selected:string;onSelect:(id:string)=>void;explode:number;isolate:boolean;reset:number;running?:boolean;labels?:boolean;xray?:boolean;signal?:number;overlay?:string};
 export default function AtlasScene(props:Props){
  const host=useRef<HTMLDivElement>(null),live=useRef(props);useEffect(()=>{live.current=props;},[props]);const [error,setError]=useState('');
- const variant=['materials','transistor','bit-memory'].includes(props.level)?props.selected:'';
+ const variant=props.selected;
  useEffect(()=>{
   const initial=live.current;const el=host.current!;let renderer:T.WebGLRenderer;
   try{renderer=new T.WebGLRenderer({antialias:true,alpha:true,powerPreference:'high-performance'});}catch{queueMicrotask(()=>setError('3D is unavailable in this browser. Every lesson, component, specification, and lab remains available in the field guide.'));return;}
@@ -18,7 +18,7 @@ export default function AtlasScene(props:Props){
   const model=buildModel(props.level,initial.selected,initial.records.map(r=>r.id));scene.add(model.root);model.root.updateMatrixWorld(true);
   const size=model.boxBounds.getSize(new T.Vector3());let viewReady=false,frame=0,lastReset=initial.reset,last=performance.now(),time=0,needs=true;
   const grid=new T.GridHelper(50,80,0x264353,0x142633);grid.position.y=-size.y/2-.6;scene.add(grid);
-  function fit(){const aspect=Math.max(.55,el.clientWidth/el.clientHeight);const extent=Math.max(size.x/aspect,size.y,size.z*.75,5);const distance=extent/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))*1.33;camera.position.copy(new T.Vector3(1,.84,1.35).normalize().multiplyScalar(distance));controls.target.set(0,.4,0);controls.update();}
+  function fit(){const aspect=Math.max(.55,el.clientWidth/el.clientHeight);const extent=Math.max(size.x/aspect,size.y,size.z*.75,5);const distance=extent/(2*Math.tan(T.MathUtils.degToRad(camera.fov/2)))*(initial.signal===undefined?1.4:1.75);camera.position.copy(new T.Vector3(1,.84,1.35).normalize().multiplyScalar(distance));controls.target.set(0,.4,0);controls.update();}
   const overlay=document.createElement('div');overlay.className='model-labels';el.appendChild(overlay);const labels:{button:HTMLButtonElement;group:T.Group;anchor:T.Vector3}[]=[];const seen=new Set<string>();
   for(const group of model.groups){const id=group.userData.id;if(seen.has(id)||!byId[id])continue;seen.add(id);const button=document.createElement('button');button.className='model-label';button.textContent=byId[id].shortName||byId[id].name;button.title=byId[id].name;button.onclick=()=>live.current.onSelect(id);overlay.appendChild(button);const bounds=new T.Box3().setFromObject(group),anchor=bounds.getCenter(new T.Vector3());anchor.y=bounds.max.y+.3;group.worldToLocal(anchor);labels.push({button,group,anchor});}
   const ray=new T.Raycaster(),mouse=new T.Vector2();let down=[0,0];const start=(e:PointerEvent)=>{down=[e.clientX,e.clientY];};function visible(o:T.Object3D):boolean{return o.visible&&(!o.parent||visible(o.parent));}
@@ -30,7 +30,7 @@ export default function AtlasScene(props:Props){
    if(lastReset!==p.reset){fit();lastReset=p.reset;}
    for(const group of model.groups){const target=group.userData.base.clone().addScaledVector(group.userData.spread,p.explode/100);group.position.lerp(target,motion?1:.14);group.visible=!p.isolate||group.userData.id===p.selected;group.traverse(o=>{if(o instanceof T.Mesh&&o.material instanceof T.MeshStandardMaterial){const selected=group.userData.id===p.selected;o.material.emissive.setHex(selected?0x193e3b:0);o.material.emissiveIntensity=selected?.8:0;if(o.material.userData.baseOpacity===undefined)o.material.userData.baseOpacity=o.material.opacity;const base=o.material.userData.baseOpacity;o.material.opacity=p.xray?(selected?Math.min(base,.7):Math.min(base,.13)):base;o.material.depthWrite=base>.2&&!p.xray;}});}
    for(const f of model.flows){for(let i=0;i<7;i++){const a=(time*.15+i/7)%1;const v=f.curve.getPoint(a);mx.compose(v,new T.Quaternion(),new T.Vector3(.046,.046,.046));f.dots.setMatrixAt(i,mx);}f.dots.instanceMatrix.needsUpdate=true;f.dots.visible=p.running!==false;}
-   controls.update();if(!document.hidden||needs){renderer.render(scene,camera);needs=false;}
+   model.update?.(p.signal,p.overlay,time);controls.update();if(!document.hidden||needs){renderer.render(scene,camera);needs=false;}
    for(const item of labels){const pos=item.group.localToWorld(item.anchor.clone()).project(camera);const isSelected=item.group.userData.id===p.selected;item.button.classList.toggle('active',isSelected);item.button.style.display=(p.labels!==false&&visible(item.group)&&pos.z<1&&pos.z>-1)?'block':'none';item.button.style.left=`${(pos.x*.5+.5)*el.clientWidth}px`;item.button.style.top=`${(-pos.y*.5+.5)*el.clientHeight}px`;item.button.style.zIndex=isSelected?'4':'3';}
   }frame=requestAnimationFrame(tick);
   return()=>{cancelAnimationFrame(frame);resize.disconnect();controls.dispose();renderer.domElement.removeEventListener('pointerdown',start);renderer.domElement.removeEventListener('pointerup',pick);const geometries=new Set<T.BufferGeometry>(),materials=new Set<T.Material>();scene.traverse(o=>{if(o instanceof T.Mesh||o instanceof T.LineSegments){geometries.add(o.geometry);(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>materials.add(m));}});geometries.forEach(g=>g.dispose());materials.forEach(m=>m.dispose());renderer.dispose();el.replaceChildren();};

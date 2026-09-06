@@ -1,0 +1,135 @@
+[
+  {
+    "id": "abilene",
+    "name": "Stargate \u00b7 Abilene",
+    "region": "Texas, United States",
+    "lat": 32.45,
+    "lon": -99.73,
+    "status": "mixed",
+    "statusDate": "2025-09-23",
+    "description": "The cited update reports early workloads at the Abilene site within a larger continuing buildout.",
+    "capacity": "Phased site; aggregate operating MW not established here",
+    "capacityBoundary": "Site-level operational state; excludes the wider Stargate pipeline",
+    "source": {
+      "title": "OpenAI \u00b7 Five new Stargate sites",
+      "url": "https://openai.com/index/five-new-stargate-sites/"
+    },
+    "limitations": "Early operation does not imply completion of all planned phases.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  },
+  {
+    "id": "lordstown",
+    "name": "Stargate \u00b7 Lordstown",
+    "region": "Ohio, United States",
+    "lat": 41.17,
+    "lon": -80.86,
+    "status": "planned",
+    "statusDate": "2025-09-23",
+    "description": "A publicly announced location in the U.S. Stargate expansion.",
+    "capacity": "No site-specific operating capacity asserted",
+    "capacityBoundary": "Individual announced location; do not add again to program totals",
+    "source": {
+      "title": "OpenAI \u00b7 Five new Stargate sites",
+      "url": "https://openai.com/index/five-new-stargate-sites/"
+    },
+    "limitations": "Announcement snapshot; commissioning requires a later source.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  },
+  {
+    "id": "norway",
+    "name": "Stargate Norway",
+    "region": "Narvik region, Norway",
+    "lat": 68.44,
+    "lon": 17.43,
+    "status": "planned",
+    "statusDate": "2025-07-31",
+    "description": "A disclosed European AI-infrastructure initiative with staged development targets.",
+    "capacity": "230 MW initial plan; further expansion ambitions are separate",
+    "capacityBoundary": "Announced facility plan, not verified operating IT load",
+    "source": {
+      "title": "OpenAI \u00b7 Introducing Stargate Norway",
+      "url": "https://openai.com/index/introducing-stargate-norway/"
+    },
+    "limitations": "This dated announcement does not establish actual operation by a later target date.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  },
+  {
+    "id": "uae",
+    "name": "Stargate UAE",
+    "region": "Abu Dhabi, United Arab Emirates",
+    "lat": 24.45,
+    "lon": 54.38,
+    "status": "planned",
+    "statusDate": "2025-05-22",
+    "description": "A planned Stargate cluster within a larger UAE\u2013U.S. AI campus initiative.",
+    "capacity": "1 GW announced cluster; 200 MW phase targeted for 2026",
+    "capacityBoundary": "Cluster and phase are nested, not additive",
+    "source": {
+      "title": "OpenAI \u00b7 Introducing Stargate UAE",
+      "url": "https://openai.com/index/introducing-stargate-uae/"
+    },
+    "limitations": "Target date is not commissioning evidence. The wider campus has a different boundary.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  },
+  {
+    "id": "vizag",
+    "name": "Google AI hub \u00b7 Visakhapatnam",
+    "region": "Andhra Pradesh, India",
+    "lat": 17.69,
+    "lon": 83.22,
+    "status": "construction",
+    "statusDate": "2026-04-28",
+    "description": "Google reported groundbreaking and the start of the construction phase.",
+    "capacity": "Operating IT capacity not asserted in this card",
+    "capacityBoundary": "Hub construction milestone; investment is not a power measurement",
+    "source": {
+      "title": "Google \u00b7 AI hub construction milestone",
+      "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+    },
+    "limitations": "Construction progress and future power readiness require separate verification.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  },
+  {
+    "id": "fairwater",
+    "name": "Microsoft Fairwater \u00b7 Wisconsin",
+    "region": "Mount Pleasant, Wisconsin, United States",
+    "lat": 42.71,
+    "lon": -87.89,
+    "status": "construction",
+    "statusDate": "2025-09-18",
+    "description": "Microsoft described final construction phases and a target to come online in early 2026.",
+    "capacity": "No verified current operating MW asserted",
+    "capacityBoundary": "Wisconsin campus; excludes other Fairwater locations",
+    "source": {
+      "title": "Microsoft \u00b7 Made in Wisconsin",
+      "url": "https://blogs.microsoft.com/on-the-issues/2025/09/18/made-in-wisconsin-the-worlds-most-powerful-ai-datacenter/"
+    },
+    "limitations": "Historical status snapshot. A target in this source does not establish completion.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  },
+  {
+    "id": "eurohpc",
+    "name": "EuroHPC AI gigafactories program",
+    "region": "European Union \u00b7 program marker",
+    "lat": 50.85,
+    "lon": 4.35,
+    "status": "planned",
+    "statusDate": "2026-07-30",
+    "description": "A procurement call is an institutional step toward proposed large AI facilities.",
+    "capacity": "Program opportunity; no built facility counted",
+    "capacityBoundary": "Program-level marker at Brussels, not a facility location",
+    "source": {
+      "title": "EuroHPC \u00b7 AI gigafactories call",
+      "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+    },
+    "limitations": "Selection and construction are subsequent stages. Do not count this marker as a data center.",
+    "checkedOn": "2026-09-06",
+    "locationPrecision": "Approximate city/region marker; not a facility footprint"
+  }
+]
