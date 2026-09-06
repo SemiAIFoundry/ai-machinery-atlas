@@ -4,7 +4,7 @@
   "private": true,
   "description": "An interactive learning atlas of AI machinery, from silicon and transistors to systems, models, and evaluation.",
   "license": "MIT",
-  "author": "SemiAIFoundry",
+  "author": "Semi AI Foundry, LLC",
   "homepage": "https://semiaifoundry.com/ai-atlas/",
   "type": "module",
   "engines": {
