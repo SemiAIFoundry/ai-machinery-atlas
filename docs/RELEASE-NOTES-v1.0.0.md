@@ -25,4 +25,8 @@ Original source and educational content are available under MIT, copyright **Sem
 
 Future corrections receive patch versions; additional compatible lessons, models, or features receive minor versions; incompatible changes receive major versions. Published tags and artifacts remain fixed.
 
+## Additive working edition
+
+The public `v1.0.0` tag and its downloadable archives remain immutable. The current `main` working edition adds the deep fabrication, packaging, HBM, processing-unit, infrastructure, orbital, model–machine, and CRG computation-to-realization modules described in `CHANGELOG.md`; the next release number will be selected after compatibility and content review.
+
 Copyright © 2026 Semi AI Foundry, LLC.

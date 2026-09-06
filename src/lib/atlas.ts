@@ -1,9 +1,21 @@
 import raw from './data/records.json';
-export type RecordEntry={id:string;level:string;name:string;shortName:string;role:string;description:string;specs:{label:string;value:string;context:string}[];interfaces:{name:string;direction:string;signal:string}[];tradeoff:string;whyAI:string;related:string[];sources:{title:string;url:string}[];scale:string;kind:string;mechanism:string[];misconception:string;check:{question:string;options:string[];answer:number;explanation:string};science?:{title:string;equation:string;explanation:string;assumptions:string}[];history?:{year:string|number;title:string;significance:string;source:{title:string;url:string}}[]};
-export const records=raw as RecordEntry[];
+import fabrication from './data/fabrication.json';
+import architecture from './data/architecture.json';
+import infrastructure from './data/infrastructure.json';
+import crg from './data/crg.json';
+import {legacyEnrichments} from './legacy-enrichments';
+export const contentPacks=[fabrication,architecture,infrastructure,crg];
+export type RecordEntry={branch?:string;subbranch?:string;prerequisites?:string[];learningObjective?:string;workstream?:string;visualFamily?:string;engineeringExample?:string;evidenceNotes?:string;id:string;level:string;name:string;shortName:string;role:string;description:string;specs:{label:string;value:string;context:string}[];interfaces:{name:string;direction:string;signal:string}[];tradeoff:string;whyAI:string;related:string[];sources:{title:string;url:string}[];scale:string;kind:string;mechanism:string[];misconception:string;check:{question:string;options:string[];answer:number;explanation:string};science?:{title:string;equation:string;explanation:string;assumptions:string}[];history?:{year:string|number;title:string;significance:string;source:{title:string;url:string}}[]};
+export const records=[...raw.map(r=>({...r,...legacyEnrichments[r.id]})),...contentPacks.flatMap(p=>p.lessons as unknown as RecordEntry[])] as RecordEntry[];
 export const byId=Object.fromEntries(records.map(r=>[r.id,r]));
+export type RelationKind='prerequisite'|'related'|'part-of'|'assembled-into'|'executes'|'limited-by';
+export type AtlasRelation={from:string;to:string;kind:RelationKind;label:string};
+export const relationshipEdges:AtlasRelation[]=records.flatMap(r=>[
+ ...(r.prerequisites||[]).filter(id=>byId[id]&&id!==r.id).map(id=>({from:id,to:r.id,kind:'prerequisite' as const,label:'builds into'})),
+ ...r.related.filter(id=>byId[id]&&id!==r.id).map(id=>({from:r.id,to:id,kind:'related' as const,label:'related mechanism'}))
+]);
 export const bands=[{name:'Matter & fabrication',range:'Å → nm',color:'#a8b9fc'},{name:'Circuits & architecture',range:'nm → mm',color:'#7ce1d5'},{name:'Packaging & machines',range:'mm → m',color:'#ffc38b'},{name:'Connected infrastructure',range:'m → km',color:'#8eb8ff'},{name:'Executable software',range:'Operations & state',color:'#d1a3ef'},{name:'Learning & intelligence',range:'Representations & behavior',color:'#f1a9c1'}];
-export const chapters=[
+export const originalChapters=[
  {id:'atomic',band:0,name:'Atoms & crystal structure',scene:'atomic',scale:'10⁻¹⁰–10⁻⁹ m',title:'Where the machinery begins',summary:'Electronic states become bonds. Bonds become a crystal.',ids:'silicon-atom crystal-lattice',question:'How does matter acquire useful electronic behavior?',read:'The spheres indicate lattice sites. Bonds show neighboring relationships; electron clouds represent probability, not planetary orbits.'},
  {id:'materials',band:0,name:'Bands, carriers & materials',scene:'materials',scale:'Atomic → device scale',title:'Engineering the carriers',summary:'Energy bands, dopants, junctions, conductors, and insulators.',ids:'energy-bands doping pn-junction copper-conductor dielectric',question:'Why can a semiconductor switch while a wire conducts?',read:'Vertical separation in a band diagram represents energy. Carrier markers and junction regions are conceptual, not drawn to a geometric scale.'},
  {id:'fabrication',band:0,name:'Wafer fabrication',scene:'fabrication',scale:'300 mm wafer → nanoscale patterns',title:'A machine made by layers',summary:'Pattern, deposit, remove, planarize, and repeat.',ids:'silicon-wafer lithography cmp',question:'How do we manufacture billions of devices together?',read:'A wafer contains repeated die sites. The upper layers illustrate pattern transfer and surface processing; the visible grid is a sample, not a die count.'},
@@ -31,11 +43,25 @@ export const chapters=[
  {id:'learning',band:5,name:'Learning & scaling',scene:'training',scale:'Examples → parameter updates',title:'Build capability through learning',summary:'Data, loss, optimization, feedback, and resource allocation.',ids:'training-data loss-optimizer post-training scaling-laws',question:'What changes between an untrained and a useful network?',read:'Forward computation produces a loss; backward derivatives guide an update. Scaling is an empirical relationship, not a guaranteed timetable for AGI.'},
  {id:'agent',band:5,name:'Agent systems & the frontier',scene:'agent',scale:'Model → environment',title:'The thinking machine as a system',summary:'Tools, observations, memory, evaluation, and open questions.',ids:'tool-loop evaluation astra',question:'What must be assembled around a model for reliable work?',read:'The model sits inside an execution-and-observation loop. Published capabilities are separated from undisclosed architecture and future possibilities.'},
 ].map(c=>({...c,ids:c.ids.split(' ')}));
+export type Chapter=typeof originalChapters[number]&{parent?:string};
+export const chapters:Chapter[]=[...originalChapters,...contentPacks.flatMap(p=>p.chapters) as Chapter[]].sort((a,b)=>a.band-b.band);
 export const chapterFor=(id:string)=>chapters.find(c=>c.ids.includes(id))??chapters[0];
-export const journeys=[
+export const originalJourneys=[
  {id:'foundation',name:'From matter to a machine',subtitle:'Build the conceptual foundation, one scale at a time.',ids:'silicon-atom crystal-lattice doping mosfet inverter mac tensor-core gpu-die compute-baseboard rack tool-loop'.split(' ')},
  {id:'manufacture',name:'How it is made',subtitle:'Follow fabrication, interconnect, bonding, and assembly.',ids:'silicon-wafer lithography gate-stack cmp interconnect microbump interposer package-substrate compute-baseboard'.split(' ')},
  {id:'token',name:'Follow one token',subtitle:'Connect a model operation to physical arithmetic and memory.',ids:'tokenizer embedding attention kernel tensor-core register-file hbm-stack kv-cache output-head'.split(' ')},
  {id:'energy',name:'Follow the energy',subtitle:'From electrical supply to useful switching and rejected heat.',ids:'ups power-shelf power-supply voltage-regulator mosfet thermal-interface coldplate cdu cooling-plant'.split(' ')},
  {id:'training',name:'Follow a training step',subtitle:'Data, gradients, communication, and an updated model.',ids:'storage training-data loss-optimizer tensor-core parallelism nccl checkpoint scaling-laws evaluation'.split(' ')},
 ];
+
+const path=(id:string,name:string,subtitle:string,ids:string[])=>({id,name,subtitle,ids:[...new Set(ids)].filter(x=>byId[x])});
+export const journeys=[...originalJourneys,
+ path('two-wafers','Two wafers to one AI system','Follow converging logic and memory production into an operating workload.',['silicon-wafer','lithography','mosfet','interconnect','dram-die','through-silicon-via','hbm-stack','interposer','microbump','package-substrate','gpu-die','compute-baseboard','rack','cdu','compiler','serving']),
+ path('one-byte','Follow one byte','Storage, host memory, HBM, local memory, arithmetic and the network.',['storage','nvme-storage','ddr-memory','hbm-stack','hbm-controller','l2-cache','shared-sram','register-file','tensor-core','nccl']),
+ path('one-watt','Follow one watt','From facility power to switching, temperature rise and heat rejection.',['ups','power-supply','power-shelf','voltage-regulator','mosfet','thermal-interface','heat-spreader','coldplate','cdu','cooling-plant']),
+ path('manufacturing-order','Follow one manufacturing order','Design, production readiness, shared resources and allocation.',records.filter(r=>['W04','W08','W10'].includes(r.workstream||'')).map(r=>r.id)),
+ path('waiting','Why the accelerator is waiting','Find the memory, input, scheduling or communication constraint.',['storage','host-cpu','hbm-controller','l2-cache','scheduler','parallelism','nccl','checkpoint','evaluation']),
+ path('architecture-choice','Choose an architecture','Relate a workload to control, dataflow, locality and specialization.',records.filter(r=>r.workstream==='W07').map(r=>r.id)),
+ path('model-to-hall','From a model to a hall','Turn a workload into memory, network, power and operating requirements.',['embedding','attention','moe','kv-cache','quantization','compiler','kernel','parallelism','hbm-stack','rack','cdu','storage']),
+ path('orbital','Could this workload run in orbit?','Close the energy, thermal, communications and reliability budgets.',records.filter(r=>r.workstream==='W12').map(r=>r.id)),
+ path('computation-realization','Computation to physical realization','Carry one computational intent through CRG’s representation, architecture, chip, package, system and evidence boundaries.',records.filter(r=>r.workstream==='CRG').map(r=>r.id))].filter(j=>j.ids.length);

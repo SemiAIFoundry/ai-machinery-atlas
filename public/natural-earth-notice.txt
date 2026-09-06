@@ -1,0 +1,4 @@
+Natural Earth 1:110m land polygons. Public domain.
+Source: https://github.com/nvkelso/natural-earth-vector
+Terms: https://www.naturalearthdata.com/about/terms-of-use/
+Retrieved 2026-09-06.

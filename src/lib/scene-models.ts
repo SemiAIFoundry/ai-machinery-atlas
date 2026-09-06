@@ -1,7 +1,9 @@
 import * as T from 'three';
+import {buildDeepModel,deepFamilies} from './deep-models.ts';
 export type NodeGroup=T.Group&{userData:{id:string;base:T.Vector3;spread:T.Vector3;label:T.Vector3}};
 export type Flow={curve:T.CatmullRomCurve3;dots:T.InstancedMesh;color:number};
 export function buildModel(level:string,selected:string,ids:string[]){
+ if(deepFamilies.includes(level))return buildDeepModel(level,selected);
  const root=new T.Group(),groups:NodeGroup[]=[],flows:Flow[]=[];const teal=0x74dbcf,gold=0xfac08c,violet=0xa29ddd,blue=0x719ecb,copper=0xc8895b,dark=0x244b51;
  const boxGeo=new T.BoxGeometry(1,1,1),ballGeo=new T.SphereGeometry(1,16,12),mats=new Map<number,T.MeshStandardMaterial>();
  function mat(c:number){if(!mats.has(c))mats.set(c,new T.MeshStandardMaterial({color:c,metalness:.45,roughness:.36,transparent:true}));return mats.get(c)!;}
@@ -86,5 +88,5 @@ export function buildModel(level:string,selected:string,ids:string[]){
  // Records representing processes or functional concepts can be explored independently even if they are not physical subassemblies.
  if(groups.length===0){const q=g(selected);tiles(q,8,8,[-1.4,0,-1.4],.4,teal,3,.2);}
  const boxBounds=new T.Box3().setFromObject(root),center=boxBounds.getCenter(new T.Vector3());root.position.sub(center);
- return {root,groups,flows,center,boxBounds};
+ return {root,groups,flows,center,boxBounds,update:undefined as undefined|((step:number|undefined,overlay:string|undefined,time:number)=>void)};
 }
