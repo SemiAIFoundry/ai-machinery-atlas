@@ -2,6 +2,18 @@
 
 This guide describes how to turn the portable source package into a reviewable GitHub release and static deployment. The release repository is [SemiAIFoundry/ai-machinery-atlas](https://github.com/SemiAIFoundry/ai-machinery-atlas).
 
+## Version policy
+
+Version the application and its educational content together as MAJOR.MINOR.PATCH.
+
+- **Patch:** defect fixes, factual corrections, citation updates, and notice corrections.
+- **Minor:** new lessons, scientific models, guided paths, or compatible features.
+- **Major:** incompatible navigation, saved-progress, data-format, or embedding changes. Describe migrations explicitly.
+
+Keep an Unreleased section in `CHANGELOG.md`. Each release records software changes and content changes separately, the reference date, actual validation outcomes and limitations, a fixed source tag, and SHA-256 checksums. Update `package.json`, both root version fields in `package-lock.json`, `CITATION.cff`, the in-app download link, and release notes together. Cite the specific version used for teaching or research.
+
+Publish a draft only after its source and static archives match the tagged source. Once public, do not move its tag or replace its assets; corrections get a new version. The live demo follows the current public release, while older versioned archives remain available.
+
 ## 1. Review the source
 
 Confirm the package contains the application source, dependency lockfile, tests, build configuration, MIT license, third-party notices, and documentation. Exclude dependency folders, caches, local paths, credentials, private Sites metadata, and unrelated workspace files.

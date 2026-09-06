@@ -2,7 +2,7 @@
 
 An interactive learning platform for the machinery behind modern AI: atoms and electronic states, semiconductor fabrication, transistors, arithmetic, memory, packages, computers, infrastructure, executable software, and learning systems.
 
-**[Explore the atlas](https://semiaifoundry.com/ai-atlas/)** · **[SemiAIFoundry](https://semiaifoundry.com/)** · **[License](LICENSE)** · **[Third-party notices](THIRD_PARTY_NOTICES.md)**
+**[Live demo](https://semiaifoundry.com/ai-atlas/)** · **[Watch The Ascent](https://semiaifoundry.com/ai-atlas/ascent.html)** · **[SemiAIFoundry](https://semiaifoundry.com/)** · **[License](LICENSE)** · **[Third-party notices](THIRD_PARTY_NOTICES.md)**
 
 The atlas pairs a component field guide with selectable, procedural 3D assemblies. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI.
 
@@ -57,6 +57,12 @@ Serve the files over HTTP or HTTPS. Opening `index.html` directly through `file:
 
 All runtime scripts, fonts, and narration ship locally; reference links still lead to their external sources. Retain the generated asset paths and license notices. Check your host’s content security policy against the atlas, its generated style attributes, and the companion film. A policy inherited from a text-only page can block these features. See [release instructions](docs/RELEASING.md) for the verification checklist.
 
+## Releases and updates
+
+The application and educational content are versioned together. [Release v1.0.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.0.0) is the first public release. Download its source or ready-to-host static build, or browse the [changelog](CHANGELOG.md). The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published edition.
+
+Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Each release preserves a fixed source tag, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
+
 ## Contribute
 
 Corrections, clearer models, additional primary references, and improvements to accessibility are welcome. Read [CONTRIBUTING.md](CONTRIBUTING.md) before changing the curriculum or adding a hardware specification. Source and issues are hosted at [SemiAIFoundry/ai-machinery-atlas](https://github.com/SemiAIFoundry/ai-machinery-atlas).
@@ -69,6 +75,6 @@ This is a human-directed, AI-assisted project. Its concept, scope, and iterative
 
 Interaction design was inspired by [ashemag’s Human Atlas](https://github.com/ashemag/human-atlas). The AI curriculum and component geometry were created for this atlas. The companion film includes generated narration using Kokoro’s `af_heart` voice and a procedural score.
 
-Atlas-owned source and original content are available under the [MIT License](LICENSE). Dependencies, fonts, generated UI primitives, and other third-party materials retain their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Linked papers, documentation, trademarks, and product names are not relicensed by this project. Attribution does not imply endorsement.
+Copyright © 2026 Semi AI Foundry, LLC. Atlas-owned source and original content are available under the [MIT License](LICENSE). Dependencies, fonts, generated UI primitives, and other third-party materials retain their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Linked papers, documentation, trademarks, and product names are not relicensed by this project. Attribution does not imply endorsement.
 
 For citation metadata, see [CITATION.cff](CITATION.cff).

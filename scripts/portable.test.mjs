@@ -45,7 +45,9 @@ test('the standalone app retains base-relative film navigation and portable meta
   assert.match(read('vite.config.ts'), /base:'\.\/'/);
   const packageJson = JSON.parse(read('package.json'));
   assert.equal(packageJson.license, 'MIT');
-  assert.equal(packageJson.version, '1.0.0');
+  assert.match(packageJson.version, /^\d+\.\d+\.\d+$/);
+  assert.equal(JSON.parse(read('package-lock.json')).packages[''].version, packageJson.version);
+  assert.ok(read('CITATION.cff').includes('version: ' + packageJson.version));
   for (const file of walk(dist).filter(file => /\.(html|css|js|json|md|txt)$/.test(file))) {
     assert.doesNotMatch(read(file), /appgprj_[a-z0-9]+|\/Users\/birtukan|git\.chatgpt-team\.site|siwc_bypass_bearer_token/);
   }

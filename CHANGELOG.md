@@ -1,8 +1,12 @@
 # Changelog
 
+## Unreleased
+
+Changes after v1.0.0 will be recorded here.
+
 ## 1.0.0 — 2026-09-06
 
-Initial portable release edition of AI Machinery Atlas, prepared for publication through SemiAIFoundry.
+Initial public release of AI Machinery Atlas by Semi AI Foundry, LLC.
 
 - 97 component lessons across 26 branches and six navigation bands, connecting material science, semiconductor devices, computing infrastructure, software, and AI systems.
 - Procedural 3D assemblies with component selection, orbit and zoom, exploded views, isolation, and translucent inspection.
@@ -12,5 +16,4 @@ Initial portable release edition of AI Machinery Atlas, prepared for publication
 - Search, fragment links, browser-local learning progress, and the companion film *The Ascent*.
 - Portable React and Vite static build, with support for root and subdirectory hosting.
 - MIT licensing for original project work, separate third-party notices, and contribution and release documentation.
-
-This entry describes the source package edition. It does not attest that a GitHub repository, tag, or hosted release has already been created.
+- Direct live demo and standalone film links, versioned downloads, and a documented policy for future software and content releases.

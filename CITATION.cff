@@ -4,7 +4,7 @@ type: software
 title: "AI Machinery Atlas"
 abstract: "A human-directed, AI-assisted interactive learning platform connecting the material, hardware, infrastructure, software, and learning systems behind modern AI. Includes procedural 3D models, a component field guide, numerical labs, primary references, and historical context."
 authors:
-  - name: "SemiAIFoundry"
+  - name: "Semi AI Foundry, LLC"
     website: "https://semiaifoundry.com/"
 version: 1.0.0
 date-released: 2026-09-06
