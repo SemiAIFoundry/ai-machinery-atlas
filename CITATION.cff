@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use AI Machinery Atlas in teaching or research, please cite this reference edition and cite the original sources for scientific claims."
+type: software
+title: "AI Machinery Atlas"
+abstract: "A human-directed, AI-assisted interactive learning platform connecting the material, hardware, infrastructure, software, and learning systems behind modern AI. Includes procedural 3D models, a component field guide, numerical labs, primary references, and historical context."
+authors:
+  - name: "SemiAIFoundry"
+    website: "https://semiaifoundry.com/"
+version: 1.0.0
+date-released: 2026-09-06
+url: "https://semiaifoundry.com/ai-atlas/"
+repository-code: "https://github.com/SemiAIFoundry/ai-machinery-atlas"
+license: MIT
+keywords:
+  - artificial intelligence
+  - semiconductors
+  - computer architecture
+  - interactive education
+  - scientific visualization
+  - machine learning systems
