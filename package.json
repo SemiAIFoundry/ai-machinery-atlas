@@ -1,0 +1,49 @@
+{
+  "name": "ai-machinery-atlas",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An interactive learning atlas of AI machinery, from silicon and transistors to systems, models, and evaluation.",
+  "license": "MIT",
+  "author": "SemiAIFoundry",
+  "homepage": "https://semiaifoundry.com/ai-atlas/",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "npm run build && node --experimental-strip-types scripts/validate-atlas.mjs && node --test scripts/portable.test.mjs"
+  },
+  "dependencies": {
+    "@base-ui/react": "1.7.0",
+    "class-variance-authority": "0.7.1",
+    "clsx": "2.1.1",
+    "lucide-react": "1.31.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "tailwind-merge": "3.6.0",
+    "three": "0.160.1",
+    "tw-animate-css": "1.4.0",
+    "shadcn": "4.18.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.2.1",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "tailwindcss": "4.2.1",
+    "typescript": "5.9.3",
+    "vite": "8.0.13",
+    "@types/three": "0.160.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SemiAIFoundry/ai-machinery-atlas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SemiAIFoundry/ai-machinery-atlas/issues"
+  }
+}

@@ -1,0 +1,285 @@
+[
+  {
+    "package": "react",
+    "version": "19.2.6",
+    "license": "MIT",
+    "file": "licenses/react.txt",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package react@19.2.6",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/react.git",
+      "directory": "packages/react"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "react-dom",
+    "version": "19.2.6",
+    "license": "MIT",
+    "file": "licenses/react-dom.txt",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package react-dom@19.2.6",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/react.git",
+      "directory": "packages/react-dom"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "scheduler",
+    "version": "0.27.0",
+    "license": "MIT",
+    "file": "licenses/scheduler.txt",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package scheduler@0.27.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/react.git",
+      "directory": "packages/scheduler"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "@base-ui/react",
+    "version": "1.7.0",
+    "license": "MIT",
+    "file": "licenses/base-ui--react.txt",
+    "sha256": "07fc1b39d69d14bc7d40482a628f47226258eb01265db68ae684944b916beb2a",
+    "source": "npm package @base-ui/react@1.7.0",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mui/base-ui.git",
+      "directory": "packages/react"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "three",
+    "version": "0.160.1",
+    "license": "MIT",
+    "file": "licenses/three.txt",
+    "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d",
+    "source": "npm package three@0.160.1",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/mrdoob/three.js"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "lucide-react",
+    "version": "1.31.0",
+    "license": "ISC",
+    "file": "licenses/lucide-react.txt",
+    "sha256": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "source": "npm package lucide-react@1.31.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/lucide-icons/lucide.git",
+      "directory": "packages/lucide-react"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "class-variance-authority",
+    "version": "0.7.1",
+    "license": "Apache-2.0",
+    "file": "licenses/class-variance-authority.txt",
+    "sha256": "0ccbf956cffc8dcf515809433cb5242ee67c94513d46e48c261d68d0880de406",
+    "source": "npm package class-variance-authority@0.7.1",
+    "repository": "https://github.com/joe-bell/cva.git",
+    "scope": "direct"
+  },
+  {
+    "package": "clsx",
+    "version": "2.1.1",
+    "license": "MIT",
+    "file": "licenses/clsx.txt",
+    "sha256": "9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97",
+    "source": "npm package clsx@2.1.1",
+    "repository": "lukeed/clsx",
+    "scope": "direct"
+  },
+  {
+    "package": "tailwind-merge",
+    "version": "3.6.0",
+    "license": "MIT",
+    "file": "licenses/tailwind-merge.txt",
+    "sha256": "d4c70c7ce38cea8778f0aed3fc0bef0a9dbd27f13bd8b6773cbd6d37941971e5",
+    "source": "npm package tailwind-merge@3.6.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/dcastil/tailwind-merge.git"
+    },
+    "scope": "direct"
+  },
+  {
+    "package": "tw-animate-css",
+    "version": "1.4.0",
+    "license": "MIT",
+    "file": "licenses/tw-animate-css.txt",
+    "sha256": "039184dfa0a822397b3f45a435b5b1e538721587fbade96b9fa80f86cb354109",
+    "source": "npm package tw-animate-css@1.4.0",
+    "repository": "Wombosvideo/tw-animate-css",
+    "scope": "direct"
+  },
+  {
+    "package": "@babel/runtime",
+    "version": "7.29.7",
+    "license": "MIT",
+    "file": "licenses/babel--runtime.txt",
+    "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76",
+    "source": "npm package @babel/runtime@7.29.7",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/babel/babel.git",
+      "directory": "packages/babel-runtime"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "@floating-ui/react-dom",
+    "version": "2.1.9",
+    "license": "MIT",
+    "file": "licenses/floating-ui--react-dom.txt",
+    "sha256": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+    "source": "npm package @floating-ui/react-dom@2.1.9",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/floating-ui/floating-ui.git",
+      "directory": "packages/react-dom"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "@floating-ui/utils",
+    "version": "0.2.12",
+    "license": "MIT",
+    "file": "licenses/floating-ui--utils.txt",
+    "sha256": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+    "source": "npm package @floating-ui/utils@0.2.12",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/floating-ui/floating-ui.git",
+      "directory": "packages/utils"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "use-sync-external-store",
+    "version": "1.6.0",
+    "license": "MIT",
+    "file": "licenses/use-sync-external-store.txt",
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "source": "npm package use-sync-external-store@1.6.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/facebook/react.git",
+      "directory": "packages/use-sync-external-store"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "@base-ui/utils",
+    "version": "0.3.2",
+    "license": "MIT",
+    "file": "licenses/base-ui--utils.txt",
+    "sha256": "07fc1b39d69d14bc7d40482a628f47226258eb01265db68ae684944b916beb2a",
+    "source": "npm package @base-ui/utils@0.3.2",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/mui/base-ui.git",
+      "directory": "packages/utils"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "@floating-ui/dom",
+    "version": "1.8.0",
+    "license": "MIT",
+    "file": "licenses/floating-ui--dom.txt",
+    "sha256": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+    "source": "npm package @floating-ui/dom@1.8.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/floating-ui/floating-ui.git",
+      "directory": "packages/dom"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "reselect",
+    "version": "5.3.0",
+    "license": "MIT",
+    "file": "licenses/reselect.txt",
+    "sha256": "e98047a5dee068b33f82e8c4b7a63037b5108c93393198efd4097753004af5dd",
+    "source": "npm package reselect@5.3.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/reduxjs/reselect.git"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "@floating-ui/core",
+    "version": "1.8.0",
+    "license": "MIT",
+    "file": "licenses/floating-ui--core.txt",
+    "sha256": "0e4c9a9b6c71019cbbea3bdc20b01223110a9035700f9c960c8fcbf78c2325ce",
+    "source": "npm package @floating-ui/core@1.8.0",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/floating-ui/floating-ui.git",
+      "directory": "packages/core"
+    },
+    "scope": "transitive"
+  },
+  {
+    "package": "shadcn",
+    "version": "4.18.0",
+    "license": "MIT",
+    "file": "licenses/shadcn-primitives.txt",
+    "sha256": "1564074e13439397221ffd522e2e504d56561994a23d371aa5e3ad43e4f5423f",
+    "source": "npm package shadcn@4.18.0",
+    "scope": "copied UI source and generated CSS",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/shadcn-ui/ui.git",
+      "directory": "packages/shadcn"
+    }
+  },
+  {
+    "package": "tailwindcss",
+    "version": "4.2.1",
+    "license": "MIT",
+    "file": "licenses/tailwindcss.txt",
+    "sha256": "60e0b68c0f35c078eef3a5d29419d0b03ff84ec1df9c3f9d6e39a519a5ae7985",
+    "source": "npm package tailwindcss@4.2.1",
+    "scope": "CSS generation",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/tailwindlabs/tailwindcss.git",
+      "directory": "packages/tailwindcss"
+    }
+  },
+  {
+    "package": "Geist",
+    "version": "Google Fonts distribution; retrieved 2026-09-06",
+    "license": "OFL-1.1",
+    "file": "licenses/geist-OFL.txt",
+    "sha256": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/geist/OFL.txt",
+    "scope": "font asset"
+  },
+  {
+    "package": "Geist Mono",
+    "version": "Google Fonts distribution; retrieved 2026-09-06",
+    "license": "OFL-1.1",
+    "file": "licenses/geistmono-OFL.txt",
+    "sha256": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/geistmono/OFL.txt",
+    "scope": "font asset"
+  }
+]
