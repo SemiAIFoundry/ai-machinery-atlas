@@ -6,11 +6,23 @@ A 3D learning platform for the machinery behind modern AI: atoms and electronic 
 
 The atlas pairs a component field guide with selectable, procedural 3D assemblies, formal equations, numerical labs, and cited history. Its companion film, *The Ascent*, narrates the progression from attention and early GPT systems toward the current frontier and the open questions around AGI. The project is a connected account of how matter, devices, circuits, architectures, infrastructure, software, training, inference, and evaluation become useful intelligence. The CRG bridge connects computation intent with chip design, physical realization, and verification evidence.
 
-**Current release: [v1.1.1](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.1).** This documentation and metadata revision clarifies the complete project scope and the cumulative coverage introduced in v1.1.0. It adds no lessons or scientific models beyond v1.1.0.
+**Current release: [v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0).** This edition preserves the full atoms-to-intelligence scope and adds device-adaptive learning, deeper memory and packaging decisions, and three interactive systems labs.
+
+**Software and original content: academic, public-interest research, personal and hobby use permitted with attribution. Commercial use requires a separate written license from Semi AI Foundry, LLC.** Read the [Research and Noncommercial License](LICENSE) and [commercial-use guidance](COMMERCIAL_LICENSE.md). The software is source-available; it is not offered under MIT in this release.
+
+**Current scope:** 224 lessons · 62 branches · 15 guided paths · 24 numerical labs · 76 historical and dated milestones.
+
+## v1.2.0 coverage and delivery addendum
+
+- A reading-first phone layout, searchable contents drawer, accessible secondary destinations, larger touch controls, adaptable tablet panes, and an explicitly activated model workspace preserve the learning content across device sizes.
+- Models render on demand when paused and suspend when hidden or offscreen. Equations retain mathematical notation and local text alternatives; narrow comparisons and process explanations adapt to reading space.
+- A focused memory and integration learning sequence examines HBM stack height, thermal/yield limits, TCB/TC-NCF, MR-MUF, hybrid bonding, HBF read-tier contracts, prefetching, working-set placement, training/prefill/decode/MoE, and propagation into hall capacity and qualification.
+- Three numerical labs let learners build an illustrative HBM stack, place an inference working set, and follow a token through memory, compute and communication. Assumptions and effective-rate limits remain visible; results are not product forecasts.
+- Product announcements, standards specifications, research demonstrations and measured deployment evidence remain explicitly distinguished. The original journeys, science, history and *The Ascent* remain part of the same atlas.
 
 ## v1.1.0 coverage addendum
 
-The September 2026 **v1.1.0** expansion retains the original v1.0.0 curriculum and adds deeper, source-linked treatment of the physical and systems layers. The following are cumulative totals in v1.1.1, including the original 97 lessons and the 113 lessons added in v1.1.0:
+The September 2026 **v1.1.0** expansion retains the original v1.0.0 curriculum and adds deeper, source-linked treatment of the physical and systems layers. The following records the v1.1.0 baseline retained in this edition, including the original 97 lessons and the 113 lessons added in v1.1.0:
 
 | Resource | Coverage |
 | --- | --- |
@@ -25,7 +37,7 @@ These additions extend the same learning loop used throughout the atlas: inspect
 
 ## Explore
 
-Choose a branch, select a component in the scene or component list, and use **Learn**, **Science**, **Specs**, and **Connections** to investigate it. Drag to orbit, scroll to zoom, separate an assembly with **Explode**, or focus on a part with **Isolate**. Search with the search button or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd>.
+On phones, start reading immediately and use **Contents** to choose a topic; open **Explore 3D** when you want to manipulate the model. On larger screens, choose a branch and select a component in the scene or component list. Use **Learn**, **Science**, **Specs**, and **Connections** to investigate it. Drag to orbit, scroll to zoom, separate an assembly with **Explode**, or focus on a part with **Isolate**. Search with the search button or <kbd>⌘</kbd>/<kbd>Ctrl</kbd> + <kbd>K</kbd>.
 
 Component URLs use fragments, such as [`#hbm-stack`](https://semiaifoundry.com/ai-atlas/#hbm-stack). Explored lessons and knowledge-check answers are stored in the current browser’s local storage. They are not synchronized between devices.
 
@@ -66,9 +78,11 @@ All runtime scripts, fonts, and narration ship locally; reference links still le
 
 ## Releases and updates
 
-The application and educational content are versioned together. [Release v1.1.1](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.1) is the current documentation and metadata revision of the [v1.1.0 expansion](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.1.0). The v1.1.0 and [v1.0.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.0.0) tags and their published artifacts remain fixed. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the release record.
+The application and educational content are versioned together. [Release v1.2.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.2.0) is the current release. The [live demo](https://semiaifoundry.com/ai-atlas/) follows the current published site build. Browse the [changelog](CHANGELOG.md) for the cumulative project history.
 
-Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Each release preserves a fixed source tag, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
+The earlier v1.0.0, v1.1.0 and v1.1.1 release pages and packaged downloads have been withdrawn as part of the licensing transition. Historical source notices record the terms of earlier copies; withdrawal does not retroactively revoke permissions previously granted. See the [transition record](docs/LICENSING-TRANSITION.md).
+
+Patch releases correct defects, factual errors, references, and notices. Minor releases add lessons, scientific models, or compatible features. Major releases introduce incompatible navigation, saved-progress, data-format, or embedding changes. Active releases use fixed source tags, dated release notes, and archive checksums; see the [release guide](docs/RELEASING.md).
 
 ## Contribute
 
@@ -82,6 +96,6 @@ This is a human-directed, AI-assisted project. Its concept, scope, and iterative
 
 Interaction design was inspired by [ashemag’s Human Atlas](https://github.com/ashemag/human-atlas). The AI curriculum and component geometry were created for this atlas. The companion film includes generated narration using Kokoro’s `af_heart` voice and a procedural score.
 
-Copyright © 2026 Semi AI Foundry, LLC. Atlas-owned source and original content are available under the [MIT License](LICENSE). Dependencies, fonts, generated UI primitives, and other third-party materials retain their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Linked papers, documentation, trademarks, and product names are not relicensed by this project. Attribution does not imply endorsement.
+Copyright © 2026 Semi AI Foundry, LLC. Atlas-owned software and original content are available under the [AI Machinery Atlas Research and Noncommercial License 1.0](LICENSE), following the CRG Systems licensing scheme. Academic, public-interest research, personal and hobby use are permitted with attribution; commercial use requires a separate written agreement. [Request commercial licensing](https://semiaifoundry.com/contact/). Dependencies, fonts, generated UI primitives, and other third-party materials retain their own licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Linked papers, documentation, trademarks, and product names are not relicensed by this project. Attribution does not imply endorsement.
 
 For citation metadata, see [CITATION.cff](CITATION.cff).

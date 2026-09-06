@@ -1,5 +1,8 @@
 # AI Machinery Atlas v1.0.0
 
+> Historical release record. The v1.0.0 release page and packaged downloads were withdrawn during the v1.2.0 licensing transition. This document records the original release terms and capabilities; it is not the current license. See [current licensing](../LICENSE) and the [transition record](LICENSING-TRANSITION.md).
+
+
 **[Live demo](https://semiaifoundry.com/ai-atlas/)** · **[Changelog](https://github.com/SemiAIFoundry/ai-machinery-atlas/blob/v1.0.0/CHANGELOG.md)**
 
 First public release, September 6, 2026. This edition connects AI machinery through 97 lessons, 26 procedural 3D branches, five learning paths, seven numerical labs, and 41 historical milestones. The Ascent companion film includes locally hosted scripts and generated narration.

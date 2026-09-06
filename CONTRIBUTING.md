@@ -43,6 +43,6 @@ For changes affecting delivery, check both root and subdirectory hosting, fragme
 
 ## Licensing and AI assistance
 
-Submit only material you have the right to contribute. Contributions to atlas-owned code and content are provided under the project’s MIT License. Preserve third-party license notices and document any new dependency or bundled asset in `THIRD_PARTY_NOTICES.md`.
+Submit only material you have the right to contribute. Contributions to atlas-owned code and content must be compatible with the project’s Research and Noncommercial License. By intentionally submitting a contribution for inclusion, you grant Semi AI Foundry, LLC a perpetual, worldwide, non-exclusive, royalty-free right to use, modify, reproduce, distribute and sublicense your contribution under the project license and separate commercial licenses. You retain ownership of your contribution. Submit only contributions for which you can grant these rights; identify separately licensed third-party material explicitly. This contribution grant applies to submissions made after this policy was introduced on 2026-09-06. Preserve third-party license notices and document any new dependency or bundled asset in `THIRD_PARTY_NOTICES.md`.
 
 Disclose substantial AI assistance when describing a contribution. Contributors remain responsible for checking factual claims, citations, licenses, and behavior. Do not include private material in prompts or source examples intended for a public release.

@@ -1,9 +1,9 @@
 {
   "name": "ai-machinery-atlas",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "description": "A 3D atoms-to-intelligence atlas of chip design, fabrication, packaging, HBM, architectures, infrastructure, models, and CRG, with formal mathematics, numerical labs, cited history, and The Ascent film.",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "author": "Semi AI Foundry, LLC",
   "homepage": "https://semiaifoundry.com/ai-atlas/",
   "type": "module",
@@ -14,7 +14,7 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "npm run build && node --experimental-strip-types scripts/validate-atlas.mjs && node --experimental-strip-types --test scripts/deep-math.test.mjs && node --test scripts/portable.test.mjs"
+    "test": "npm run build && node --experimental-strip-types scripts/validate-atlas.mjs && node --experimental-strip-types --test scripts/deep-math.test.mjs scripts/numeric-math.test.mjs scripts/infrastructure-depth.test.mjs && node --test scripts/portable.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

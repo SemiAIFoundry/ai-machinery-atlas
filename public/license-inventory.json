@@ -281,5 +281,14 @@
     "sha256": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
     "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/geistmono/OFL.txt",
     "scope": "font asset"
+  },
+  {
+    "package": "katex",
+    "version": "0.18.6",
+    "license": "MIT",
+    "file": "licenses/katex.txt",
+    "sha256": "766ccc1f306c885aa45542a9846bbd0a505b27a0374f146778171c2254ce18e3",
+    "source": "npm package katex@0.18.6",
+    "scope": "math rendering and bundled fonts"
   }
 ]

@@ -1,5 +1,8 @@
 # AI Machinery Atlas v1.1.0
 
+> Historical release record. The v1.1.0 release page and packaged downloads were withdrawn during the v1.2.0 licensing transition. This document records the original release terms and capabilities; it is not the current license. See [current licensing](../LICENSE) and the [transition record](LICENSING-TRANSITION.md).
+
+
 **[Live demo](https://semiaifoundry.com/ai-atlas/)** · **[Watch The Ascent](https://semiaifoundry.com/ai-atlas/ascent.html)** · **[Changelog](https://github.com/SemiAIFoundry/ai-machinery-atlas/blob/v1.1.0/CHANGELOG.md)**
 
 Compatible expansion of the September 6, 2026 v1.0.0 reference release by Semi AI Foundry, LLC. The prior v1.0.0 tag and its downloadable artifacts remain immutable.

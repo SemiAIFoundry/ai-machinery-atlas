@@ -1,11 +1,12 @@
 # Third-party notices
 
-AI Machinery Atlas includes or uses the following third-party components. The project's MIT license applies to original project material; it does not replace any upstream license. Preserve this file and the linked `licenses/` directory when distributing source or a compiled release containing these components.
+AI Machinery Atlas includes or uses the following third-party components. The project's Research and Noncommercial License applies to atlas-owned material; it does not replace or restrict any upstream license. Preserve this file and the linked `licenses/` directory when distributing source or a compiled release containing these components.
 
 The versions below were checked against the final portable release lockfile. The bundled JavaScript module inventory was also verified with an in-memory Vite production build. `package-lock.json` is the authoritative dependency lockfile. `license-inventory.json` records the origin and SHA-256 of each preserved license text. Refresh this inventory when changing dependencies.
 
 | Component | Version used | License | Full text |
 | --- | --- | --- | --- |
+| katex | 0.18.6 | MIT | [License](licenses/katex.txt) |
 | react | 19.2.6 | MIT | [License](licenses/react.txt) |
 | react-dom | 19.2.6 | MIT | [License](licenses/react-dom.txt) |
 | scheduler | 0.27.0 | MIT | [License](licenses/scheduler.txt) |
@@ -39,7 +40,7 @@ The Lucide license file contains two notices: ISC for Lucide, and MIT for icons 
 
 ## Fonts
 
-Geist and Geist Mono are copyright 2024 The Geist Project Authors and remain licensed under the SIL Open Font License 1.1. The font files are unmodified distributions. Their license is not changed to MIT by being bundled with this application.
+Geist and Geist Mono are copyright 2024 The Geist Project Authors and remain licensed under the SIL Open Font License 1.1. The font files are unmodified distributions. Their license is unchanged by being bundled with this application.
 
 ## Film and generated narration
 
@@ -47,7 +48,7 @@ The Ascent companion contains project-authored procedural scenes, explanatory sc
 
 [Kokoro model card and license](https://huggingface.co/hexgrad/Kokoro-82M) · [Kokoro source](https://github.com/hexgrad/kokoro)
 
-Kokoro's model card identifies its model weights as Apache-2.0. This release includes generated narration audio; it does not redistribute Kokoro model weights, voice embeddings, or TTS inference code. Those upstream materials are not relicensed by the project's MIT license.
+Kokoro's model card identifies its model weights as Apache-2.0. This release includes generated narration audio; it does not redistribute Kokoro model weights, voice embeddings, or TTS inference code. Those upstream materials are not relicensed by the project's license.
 
 ## Inspiration and references
 

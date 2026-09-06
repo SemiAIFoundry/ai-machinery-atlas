@@ -1,3 +1,4 @@
+import {memoryRouteFor} from './memory-processes.ts';
 export type ProcessStep={title:string;input:string;action:string;output:string;measure:string;why:string;lesson:string};
 export type ProcessRoute={id:string;name:string;kind:string;source:string;steps:ProcessStep[]};
 const step=(title:string,input:string,action:string,output:string,measure:string,why:string,lesson:string):ProcessStep=>({title,input,action,output,measure,why,lesson});
@@ -86,6 +87,7 @@ const routeVariants={
  vertical:packageVariant('vertical','SoIC/Foveros vertical-bonding route','https://3dfabric.tsmc.com/english/3dfabric/soic.htm','vertical hybrid or thermo-compression bonding')
 };
 export function routeFor(scene:string,lesson=''){
+ const memoryRoute=memoryRouteFor(lesson);if(memoryRoute)return memoryRoute;
  if(scene==='process-tool')return toolRoute;
  if(scene==='fab-operations')return fabOpsRoute;
  if(scene==='orbital-system')return orbitalRoute;

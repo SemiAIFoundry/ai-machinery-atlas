@@ -1,0 +1,1713 @@
+{
+  "chapters": [
+    {
+      "id": "deep-hbm-height-closure",
+      "band": 2,
+      "name": "HBM height, heat and test closure",
+      "parent": "Memory / HBM manufacturing",
+      "scene": "hbm-detail",
+      "scale": "Stack interfaces → memory access → useful system work; representative scales",
+      "title": "HBM height, heat and test closure",
+      "summary": "Resolve the thickness budget, vertical interconnects, conditional yield and spatial heat path.",
+      "ids": [
+        "hbm-stack-height-budget",
+        "hbm-stack-thermal-yield"
+      ],
+      "question": "What changes when more memory dies must fit into the same envelope?",
+      "read": "Eight drawn layers are a shared schematic, not the selected product’s die count or dimensions. The stack-build lab carries the adjustable layer, joint and thickness model; compare its arithmetic with this anatomy."
+    },
+    {
+      "id": "deep-hbm-bond-route-closure",
+      "band": 2,
+      "name": "HBM bonding routes and process closure",
+      "parent": "Packaging / bonding and reliability",
+      "scene": "hbm-detail",
+      "scale": "Stack interfaces → memory access → useful system work; representative scales",
+      "title": "HBM bonding routes and process closure",
+      "summary": "Compare film-assisted thermocompression, reflow/molding and direct hybrid interfaces.",
+      "ids": [
+        "hbm-tc-ncf-route",
+        "hbm-mr-muf-route",
+        "hbm-hybrid-bond-route",
+        "hbm-bonding-process-selection"
+      ],
+      "question": "How do surface, alignment, joint formation and inspection change between routes?",
+      "read": "The shared stack exposes the same endpoints. Read the selected route’s process steps for distinct transformations; geometry is not a proprietary cross-section, and solder bumps must not be inferred at a hybrid interface."
+    },
+    {
+      "id": "deep-hbf-access-contract",
+      "band": 2,
+      "name": "HBF interface, latency and access contract",
+      "parent": "Memory / emerging NAND-backed tier",
+      "scene": "memory-route",
+      "scale": "Stack interfaces → memory access → useful system work; representative scales",
+      "title": "HBF interface, latency and access contract",
+      "summary": "Connect the announced read-oriented tier to granularity, latency, writes and prefetch.",
+      "ids": [
+        "hbf-read-tier-contract",
+        "hbf-latency-prefetch"
+      ],
+      "question": "Which additional facts are needed beyond capacity and peak read bandwidth?",
+      "read": "The tier diagram is a logical teaching topology, not a disclosed HBF floorplan or an interoperability claim. Announced grades and synthetic latency/granularity inputs remain distinct."
+    },
+    {
+      "id": "deep-working-set-placement",
+      "band": 4,
+      "name": "Working-set placement across memory tiers",
+      "parent": "Software / state and data movement",
+      "scene": "memory-route",
+      "scale": "Stack interfaces → memory access → useful system work; representative scales",
+      "title": "Working-set placement across memory tiers",
+      "summary": "Place mutable and read-mostly state differently across training, prefill, decode and expert routing.",
+      "ids": [
+        "memory-working-set-placement",
+        "training-tier-placement",
+        "prefill-decode-tier-placement",
+        "moe-expert-tier-placement"
+      ],
+      "question": "Which state belongs close to arithmetic, and what must happen before offloaded state can be used?",
+      "read": "Boxes denote residency domains and buffers, not physical layers inside a processor. Read interfaces and worked examples to distinguish weights, mutable KV, optimizer state and transfers."
+    },
+    {
+      "id": "deep-memory-system-realization",
+      "band": 3,
+      "name": "Memory choices to commissioned useful work",
+      "parent": "Infrastructure / system realization",
+      "scene": "hall-system",
+      "scale": "Stack interfaces → memory access → useful system work; representative scales",
+      "title": "Memory choices to commissioned useful work",
+      "summary": "Carry memory traffic into network, electrical, thermal, commissioning and retained-work accounting.",
+      "ids": [
+        "memory-to-hall-propagation",
+        "memory-system-qualification"
+      ],
+      "question": "Where does a local memory improvement move the system’s limiting resource?",
+      "read": "Racks and service paths depict system boundaries. No rack count or geometry certifies readiness; follow the qualification and measured-work evidence."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "hbm-stack-height-budget",
+      "level": "package",
+      "name": "HBM layer count and physical height",
+      "shortName": "HBM layer count and physical height",
+      "role": "Separate memory-die count, package thickness, stored bits and interface bandwidth.",
+      "description": "An HBM stack is assembled from separately fabricated DRAM dies and a base/interface structure. “12-high” describes a specified count of memory dies; it is neither twelve transistors nor a height in micrometers. Within a mechanical envelope, adding layers requires redistributing the thickness budget among silicon, inter-die joints, base structures and clearance. Wafer thinning and TSV reveal make vertical electrical paths accessible, but thin dies are harder to handle without bow or damage. Capacity rises with the number of usable bits in the memory dies. External bandwidth is set by the interface and achievable data rate, so more dies do not automatically create more external signal wires.",
+      "mechanism": [
+        "Begin with tested memory wafers and identify whether each drawing counts memory dies or the base die.",
+        "Thin on a compatible carrier; measure total thickness variation, warp and TSV reveal before handling the separated dies.",
+        "Allocate a mechanical budget to the base, every silicon layer, every counted bond line and the top allowance.",
+        "Verify that pad positions, channels, thermal path and package interfaces remain compatible as the layer count changes.",
+        "Test the assembled stack and report capacity, bandwidth and physical height as three separate outcomes."
+      ],
+      "science": [
+        {
+          "title": "Stack-height budget",
+          "equation": "H = tbase + N tdie + J tbond + tcap",
+          "explanation": "Count each physical thickness once. J includes every bond line represented in this cross-section; its value depends on whether the base interface is included.",
+          "assumptions": "Uniform die/bond thickness is a teaching simplification. Real layouts include local steps, tolerances and route-specific top structures."
+        },
+        {
+          "title": "Capacity is not bandwidth",
+          "equation": "C = N Cdie; B = w r η / 8",
+          "explanation": "Capacity C counts bytes; bandwidth B counts delivered bytes each second across the stated interface.",
+          "assumptions": "Equal capacity dies; data rate r already counts transfers; usable efficiency must be stated."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Layer count",
+          "value": "Memory dies, separately from base",
+          "context": "Read each product drawing’s counting convention."
+        },
+        {
+          "label": "Height budget",
+          "value": "Silicon + joints + base + allowance",
+          "context": "A die-count label is not a dimensional drawing."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "TSV reveal",
+          "direction": "in",
+          "signal": "Exposed vertical conductors and measured silicon thickness"
+        },
+        {
+          "name": "Accelerator package",
+          "direction": "out",
+          "signal": "Stack height, interface footprint and thermal contact"
+        }
+      ],
+      "tradeoff": "Thinner silicon frees vertical space while increasing handling sensitivity; smaller joints demand tighter assembly control.",
+      "whyAI": "A larger working set can fit locally without a proportional increase in external memory bandwidth.",
+      "prerequisites": [
+        "hbm-tsv-reveal",
+        "temporary-carrier-thinning"
+      ],
+      "related": [
+        "hbm-stack-thermal-yield",
+        "hbm-bonding-process-selection",
+        "hbm-channel-generation-ras"
+      ],
+      "misconception": "Die count, silicon thickness and the external interface are separate design variables.",
+      "check": {
+        "question": "A stack changes from 8 to 12 memory dies at unchanged external width and pin rate. What follows directly?",
+        "options": [
+          "Capacity can rise; external peak bandwidth need not change",
+          "External bandwidth must rise by 50%",
+          "Physical height must rise by 50%"
+        ],
+        "answer": 0,
+        "explanation": "Die count, silicon thickness and the external interface are separate design variables."
+      },
+      "engineeringExample": "Synthetic budget: base 60 µm, 12 memory dies × 30 µm, 12 included joints × 7 µm and a 40 µm allowance give 544 µm. Changing die thickness to 40 µm gives 664 µm. These are arithmetic inputs, not a JEDEC height limit or product cross-section.",
+      "evidenceNotes": "SK hynix’s 2023 account describes fitting more DRAM dies into the same height through thinner dies and changed assembly. The source supports the mechanism; the lab uses independent illustrative dimensions.",
+      "sources": [
+        {
+          "title": "SK hynix — the team behind 12-layer HBM3",
+          "url": "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/"
+        },
+        {
+          "title": "Samsung — 36 GB HBM3E 12H development",
+          "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+        }
+      ],
+      "learningObjective": "Separate memory-die count, package thickness, stored bits and interface bandwidth.",
+      "workstream": "W06",
+      "visualFamily": "hbm-detail",
+      "scale": "Die micrometers → assembled stack; vertical geometry exaggerated",
+      "kind": "process",
+      "labId": "hbm-stack-build",
+      "branch": "Memory",
+      "subbranch": "HBM height, heat and test closure"
+    },
+    {
+      "id": "hbm-stack-thermal-yield",
+      "level": "package",
+      "name": "HBM heat, assembly yield and test access",
+      "shortName": "HBM heat, assembly yield and test access",
+      "role": "Explain how added layers affect the heat path, screening strategy and delivered good stacks.",
+      "description": "Every added die introduces heat sources, interfaces and opportunities for assembly damage. Heat follows several parallel paths through silicon, metal, polymer and the surrounding package; the hottest location is not necessarily the tallest die. Test coverage changes with access: a wafer test can inspect some die functions before stacking, while TSV chains, cross-die connections and the complete high-speed interface require later checks. A known-good input is a unit that passed a defined screen, not a physically perfect die. Assembly yield therefore starts from screened inputs and counts newly introduced failures, avoiding a second charge for the same wafer loss.",
+      "mechanism": [
+        "Define incoming wafer/die test coverage and preserve identity through thinning, singulation and stacking.",
+        "Measure continuity and functional behavior at the stages where test access exists; map errors to the same stack genealogy.",
+        "Estimate heat from each active layer using a stated power distribution and boundary temperature.",
+        "Inspect assembly defects with electrical tests plus suitable imaging; a hot spot or open circuit alone does not identify its cause.",
+        "Separate per-unit screening, product reliability qualification and observed in-service failure rates."
+      ],
+      "science": [
+        {
+          "title": "Multiple heat sources",
+          "equation": "Ti − Tcoolant = Σj Rij Pj",
+          "explanation": "A thermal-resistance matrix represents how each heat source j contributes to temperature at location i, including cross-heating.",
+          "assumptions": "Linear steady-state approximation at specified boundaries. Transients and temperature-dependent properties require a richer model."
+        },
+        {
+          "title": "Conditional assembly yield",
+          "equation": "Yassembly ≈ yjoint^J",
+          "explanation": "J is the number of independently modeled assembly interfaces, each with aggregate conditional pass probability yjoint.",
+          "assumptions": "Screened inputs; excludes residual input escapes, correlated defects, repair and common tooling failures. An interface probability is not a per-bump probability."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Yield denominator",
+          "value": "Screened input sets",
+          "context": "Do not multiply their original wafer yield a second time."
+        },
+        {
+          "label": "Thermal boundary",
+          "value": "Location, power map and coolant",
+          "context": "Stack-average temperature can hide local limits."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Die screening",
+          "direction": "in",
+          "signal": "Coverage, bin and residual escape risk"
+        },
+        {
+          "name": "Stack test",
+          "direction": "out",
+          "signal": "Functional, interconnect and thermal evidence"
+        }
+      ],
+      "tradeoff": "Earlier screening avoids wasting downstream components, but adds handling, test time and cost; some failures are only observable after assembly.",
+      "whyAI": "Effective stack supply and sustainable frequency depend on both manufacturability and thermal operation.",
+      "prerequisites": [
+        "hbm-stack-height-budget",
+        "known-good-die-test"
+      ],
+      "related": [
+        "package-thermomechanical-reliability",
+        "memory-system-qualification",
+        "hbm-stack-assembly-test"
+      ],
+      "misconception": "Track the denominator at each stage; conditional assembly loss acts on the units that actually enter assembly.",
+      "check": {
+        "question": "Why not multiply wafer yield into every already screened die again?",
+        "options": [
+          "It double-counts losses already excluded from the incoming population",
+          "Screening guarantees zero future failures",
+          "HBM assembly cannot introduce faults"
+        ],
+        "answer": 0,
+        "explanation": "Track the denominator at each stage; conditional assembly loss acts on the units that actually enter assembly."
+      },
+      "engineeringExample": "Synthetic independent-interface model: 12 interfaces at 99.5% conditional pass probability yield about 94.2%; at 99.9%, about 98.8%. A shared contamination event violates independence. These values do not estimate any supplier’s yield.",
+      "evidenceNotes": "imec’s 2025 thermal study concerns a specified research HBM-on-GPU arrangement. It motivates spatial heat analysis; its simulated temperatures are not general product limits.",
+      "sources": [
+        {
+          "title": "imec — thermal STCO study of 3D HBM-on-GPU",
+          "url": "https://www.imec-int.com/en/press/imec-mitigates-thermal-bottleneck-3d-hbm-gpu-architectures-using-system-technology-co"
+        },
+        {
+          "title": "MIT OpenCourseWare — Introduction to Heat Transfer",
+          "url": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/"
+        },
+        {
+          "title": "SK hynix — the team behind 12-layer HBM3",
+          "url": "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/"
+        }
+      ],
+      "learningObjective": "Explain how added layers affect the heat path, screening strategy and delivered good stacks.",
+      "workstream": "W06",
+      "visualFamily": "hbm-detail",
+      "scale": "Thermal path and test population across a memory stack; schematic",
+      "kind": "process",
+      "labId": "hbm-stack-build",
+      "branch": "Memory",
+      "subbranch": "HBM height, heat and test closure"
+    },
+    {
+      "id": "hbm-tc-ncf-route",
+      "level": "package",
+      "name": "Thermocompression with non-conductive film",
+      "shortName": "Thermocompression with non-conductive film",
+      "role": "Trace a bump-based TC-NCF route and separate polymer behavior from electrical contact formation.",
+      "description": "Thermocompression bonding applies controlled temperature, force and alignment to form interconnections. In a TC-NCF route, a non-conductive film occupies the space between the mating dies while metallic bumps and pads carry the electrical connection. The polymer must deform and cure without blocking intended contacts or trapping unacceptable voids. Thin-die handling, film behavior and bump geometry are therefore coupled. TC-NCF is one thermocompression implementation, not a synonym for every bump process or every adhesive. Samsung’s February 2024 HBM3E 12H announcement gives a concrete historical application; it does not make one vendor’s process window universal.",
+      "mechanism": [
+        "Prepare bumped dies, compatible film and verified surface/handling conditions.",
+        "Place the film at its defined wafer or die stage; maintain the intended contact openings and contamination controls.",
+        "Align a die to the receiving die and apply the qualified thermal/force cycle for metallic contact and polymer flow/cure.",
+        "Repeat the specified stacking sequence while tracking placement error and cumulative warpage.",
+        "Inspect continuity, bond-line condition and voids; complete the product-specific reliability qualification."
+      ],
+      "science": [
+        {
+          "title": "Serial tool occupancy",
+          "equation": "tstack ≈ N (talign + tbond) + thandling",
+          "explanation": "This estimates occupied tool time for a strictly serial die-placement/bonding sequence.",
+          "assumptions": "No overlapping stations or batch operations. It is not factory cycle time, and route-specific curing may occupy different equipment."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Electrical path",
+          "value": "Metallic bumps/pads",
+          "context": "NCF itself is electrically insulating."
+        },
+        {
+          "label": "Control variables",
+          "value": "Alignment, force, thermal cycle and film state",
+          "context": "Values are recipe- and material-specific, not supplied here."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Prepared die and film",
+          "direction": "in",
+          "signal": "Surface, metallurgy, rheology and alignment"
+        },
+        {
+          "name": "Bonded die pair",
+          "direction": "out",
+          "signal": "Electrical joints and cured/processed polymer interface"
+        }
+      ],
+      "tradeoff": "Sequential local bonding provides process control but tool occupancy, film flow and thin-die stress must close together.",
+      "whyAI": "A packaging decision changes manufacturable stack height, test yield and the number of usable HBM stacks delivered.",
+      "prerequisites": [
+        "bump-thermocompression-assembly",
+        "hbm-stack-height-budget"
+      ],
+      "related": [
+        "hbm-mr-muf-route",
+        "hbm-hybrid-bond-route",
+        "hbm-bonding-process-selection"
+      ],
+      "misconception": "NCF supplies insulation and mechanical support; metal joints provide the conductive path.",
+      "check": {
+        "question": "In TC-NCF, what carries current between memory dies?",
+        "options": [
+          "The metallic interconnections",
+          "The non-conductive film",
+          "The surrounding air gap"
+        ],
+        "answer": 0,
+        "explanation": "NCF supplies insulation and mechanical support; metal joints provide the conductive path."
+      },
+      "engineeringExample": "Synthetic serial flow: 12 placements × (0.3 s alignment + 0.7 s bonding) plus 3 s handling occupy 15 s. A different station layout could overlap work; this calculation predicts neither commercial throughput nor yield.",
+      "evidenceNotes": "Historical vendor example: Samsung reported an advanced TC-NCF route for its 2024 HBM3E 12H development. Sampling, qualification and volume production are distinct statuses.",
+      "sources": [
+        {
+          "title": "Samsung — 36 GB HBM3E 12H development",
+          "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+        }
+      ],
+      "learningObjective": "Trace a bump-based TC-NCF route and separate polymer behavior from electrical contact formation.",
+      "workstream": "W05",
+      "visualFamily": "hbm-detail",
+      "scale": "Inter-die contact and serial assembly sequence; enlarged bond lines",
+      "kind": "process",
+      "labId": "hbm-stack-build",
+      "branch": "Packaging",
+      "subbranch": "HBM bonding routes and process closure"
+    },
+    {
+      "id": "hbm-mr-muf-route",
+      "level": "package",
+      "name": "Mass reflow and molded underfill",
+      "shortName": "Mass reflow and molded underfill",
+      "role": "Separate stack placement, metallic reflow and molding in an MR-MUF assembly route.",
+      "description": "Mass reflow forms many solder interconnections within a thermal operation. Molded underfill subsequently fills and encapsulates the intended spaces with molding compound. The route therefore separates electrical joint formation from the bulk protective fill, although particular implementations can use additional stabilization during stacking. Polymer flow through narrow gaps, trapped gas, die bow and reflow behavior still matter. Increasing the number of parts processed together can move a bottleneck from the bond operation to alignment, molding, cure, inspection or test; a batch label does not establish the final factory output.",
+      "mechanism": [
+        "Align and place the compatible bumped memory dies while controlling thin-die shape.",
+        "Apply any stabilization required by the named implementation; do not assume all MR-MUF products share this substep.",
+        "Run the selected reflow operation to connect the metallic joints across the assembled stack.",
+        "Fill and encapsulate using the specified molded-underfill sequence; control venting, flow, pressure and cure.",
+        "Inspect the same traced stack for joint continuity, voiding, warpage and functional behavior."
+      ],
+      "science": [
+        {
+          "title": "Batch-limited station rate",
+          "equation": "Q = K a / tcycle",
+          "explanation": "K is processed stacks per batch and a is the productive-time fraction. Q is the station’s nominal processed-stack rate before yield.",
+          "assumptions": "Consistent time units, full modeled batch, no double counting overlap; the slowest compatible route station can dominate the line."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Reflow",
+          "value": "Forms metal joints",
+          "context": "Do not describe polymer encapsulation as the conductor."
+        },
+        {
+          "label": "Molded underfill",
+          "value": "Fills and protects",
+          "context": "Flow, voids and mechanical behavior require separate controls."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Placed bump stack",
+          "direction": "in",
+          "signal": "Alignment and solderable interfaces"
+        },
+        {
+          "name": "Encapsulated stack",
+          "direction": "out",
+          "signal": "Connected and mechanically supported memory"
+        }
+      ],
+      "tradeoff": "Batch processing can reduce per-stack occupancy at one station while narrow-gap filling, alignment and inspection determine end-to-end yield and capacity.",
+      "whyAI": "Memory demand becomes qualified delivered stacks only after the whole assembly route can sustain its required rate.",
+      "prerequisites": [
+        "hbm-stack-height-budget",
+        "bump-thermocompression-assembly"
+      ],
+      "related": [
+        "hbm-tc-ncf-route",
+        "hbm-bonding-process-selection",
+        "fab-ramp-cycle-time"
+      ],
+      "misconception": "Factory output follows the limiting compatible stage, including its yield and availability.",
+      "check": {
+        "question": "A reflow station doubles its rate while molding remains slower. What happens to line capacity?",
+        "options": [
+          "It can remain limited by molding",
+          "It necessarily doubles",
+          "It becomes independent of test time"
+        ],
+        "answer": 0,
+        "explanation": "Factory output follows the limiting compatible stage, including its yield and availability."
+      },
+      "engineeringExample": "Synthetic station: 20 stacks per 100 s batch at 80% productive time gives 0.16 stacks/s, or 576 stacks/hour before yield. A 400-stack/hour downstream screen caps this toy line below the reflow rate.",
+      "evidenceNotes": "SK hynix’s process explanation describes reflow and molded underfill as separate roles, with implementation-specific chip stabilization in its advanced route. No comparative vendor yield or cost is assumed.",
+      "sources": [
+        {
+          "title": "SK hynix — Small Size, Big Impact",
+          "url": "https://news.skhynix.com/en/small-size-big-impact/"
+        }
+      ],
+      "learningObjective": "Separate stack placement, metallic reflow and molding in an MR-MUF assembly route.",
+      "workstream": "W05",
+      "visualFamily": "hbm-detail",
+      "scale": "Stack alignment, reflow and polymer fill; schematic sequence",
+      "kind": "process",
+      "labId": "hbm-stack-build",
+      "branch": "Packaging",
+      "subbranch": "HBM bonding routes and process closure"
+    },
+    {
+      "id": "hbm-hybrid-bond-route",
+      "level": "package",
+      "name": "Hybrid bonding: surface-to-interface closure",
+      "shortName": "Hybrid bonding: surface-to-interface closure",
+      "role": "Follow CMP, cleaning, alignment, contact and anneal as one surface-controlled integration problem.",
+      "description": "Hybrid bonding joins a dielectric interface together with matching conductive pads. The goal is a dense direct connection without a solder-bump gap at that interface. Surface flatness alone is insufficient: local copper topography, surface chemistry, particles, placement error and the thermal cycle determine whether the two material systems can join as intended. A wafer-to-wafer process and a die-to-wafer process have different handling, selection and throughput constraints. A successful research pitch demonstration establishes a result on its specified test structure; it does not establish that a complete HBM product is shipping with that process.",
+      "mechanism": [
+        "Form patterned bonding metal and dielectric, then planarize to a controlled local topography.",
+        "Measure copper recess, surface roughness and within-wafer variation; clean and prepare the bonding surfaces.",
+        "For a die route, preserve the prepared surface through singulation and handling; retain the known-good input map.",
+        "Align and contact according to the chosen route, then complete the required anneal for the bonded interface.",
+        "Assess electrical chains, voids, alignment and mechanical integrity, and qualify the full product separately."
+      ],
+      "science": [
+        {
+          "title": "Geometric pad-overlap example",
+          "equation": "Aoverlap = max(0,w−|dx|) max(0,w−|dy|)",
+          "explanation": "For equal square pads, misalignment reduces geometrical overlap in both axes. Electrical yield also depends on surface and material behavior.",
+          "assumptions": "Rigid planar equal squares; no rotation, deformation or local overlay field. This is not a qualified bond tolerance."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Surface condition",
+          "value": "Local topography and chemistry",
+          "context": "A mean wafer flatness value cannot certify every bond interface."
+        },
+        {
+          "label": "Route distinction",
+          "value": "Wafer-to-wafer versus die-to-wafer",
+          "context": "Do not transfer one route’s pitch/throughput claim to the other."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Prepared metal/dielectric surface",
+          "direction": "in",
+          "signal": "Measured topography, cleanliness and pad position"
+        },
+        {
+          "name": "Bonded interface",
+          "direction": "out",
+          "signal": "Electrical, dielectric and mechanical continuity"
+        }
+      ],
+      "tradeoff": "Finer direct interconnects can reduce spacing, but surface preparation, handling and overlay increase integration demands; solder self-alignment cannot be assumed.",
+      "whyAI": "The available interface pitch and thermal/mechanical envelope constrain future memory-on-logic arrangements.",
+      "prerequisites": [
+        "hybrid-bond-surface-alignment",
+        "hbm-stack-height-budget"
+      ],
+      "related": [
+        "hbm-tc-ncf-route",
+        "hbm-mr-muf-route",
+        "hbm-bonding-process-selection",
+        "clean-planarize-surface"
+      ],
+      "misconception": "Bond success depends on local conditions and the integrated route; one average cannot settle all failure mechanisms.",
+      "check": {
+        "question": "A clean-looking surface has acceptable mean flatness. Is that sufficient evidence of good hybrid bonds?",
+        "options": [
+          "No: local topography, chemistry, alignment and bonded-interface tests remain necessary",
+          "Yes: average flatness certifies all electrical connections",
+          "Yes: annealing removes every particle"
+        ],
+        "answer": 0,
+        "explanation": "Bond success depends on local conditions and the integrated route; one average cannot settle all failure mechanisms."
+      },
+      "engineeringExample": "Synthetic equal square pads of width 2 µm offset 0.2 µm in x and y retain 3.24 µm² overlap, 81% of the nominal area. This geometric result is neither an 81% bond yield nor a recommended pad design.",
+      "evidenceNotes": "imec sources establish wafer-to-wafer and die-to-wafer research mechanisms. Product-specific HBM hybrid-bond qualification, throughput and cost are not inferred.",
+      "sources": [
+        {
+          "title": "imec — wafer-to-wafer hybrid bonding at 400 nm pitch",
+          "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch"
+        },
+        {
+          "title": "imec — die-to-wafer hybrid bonding demonstration",
+          "url": "https://www.imec-int.com/en/press/imec-demonstrates-die-wafer-hybrid-bonding-cu-interconnect-pad-pitch-2mm"
+        }
+      ],
+      "learningObjective": "Follow CMP, cleaning, alignment, contact and anneal as one surface-controlled integration problem.",
+      "workstream": "W05",
+      "visualFamily": "hbm-detail",
+      "scale": "Bond surface nanometers to die placement micrometers; dimensions exaggerated",
+      "kind": "process",
+      "labId": "hbm-stack-build",
+      "branch": "Packaging",
+      "subbranch": "HBM bonding routes and process closure"
+    },
+    {
+      "id": "hbm-bonding-process-selection",
+      "level": "package",
+      "name": "Selecting a bonding route under constraints",
+      "shortName": "Selecting a bonding route under constraints",
+      "role": "Compare qualified output, height, thermal behavior, inspection and cost on the same product boundary.",
+      "description": "A useful process comparison starts from one required product: die count, footprint, electrical interfaces, operating conditions and test coverage. TC-NCF, MR-MUF and hybrid bonding organize joint formation and support differently. Each route moves effort among surface preparation, die placement, joint formation, encapsulation, annealing and inspection. “Finer pitch” and “faster bond tool” are individual attributes, not complete cost or delivery answers. Keep development readiness and demonstrated results beside each route, and leave supplier yield, process time or commercial price unknown when undisclosed.",
+      "mechanism": [
+        "Fix the same functional memory requirement and package-height boundary before comparing alternatives.",
+        "Map the chosen route’s preparation, handling, bonding/fill, thermal and test steps without replacing them with one generic bond operation.",
+        "Define compatible station capacity and conditional yield for the same input population.",
+        "Include consumables, equipment occupancy, inspection and losses in a cost per accepted stack model.",
+        "Reject or revise routes that miss electrical, thermal, mechanical or qualification requirements even if nominal throughput is high."
+      ],
+      "science": [
+        {
+          "title": "Cost per accepted stack",
+          "equation": "cgood = (cinput + cprocess + ctest) / Y",
+          "explanation": "Costs are normalized to one assembled input set and divided by final pass fraction.",
+          "assumptions": "Simple no-rework average with all modeled costs incurred per input set; stage-dependent scrap/rework requires a yield waterfall."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Comparison basis",
+          "value": "Same product and test coverage",
+          "context": "Different layer counts or qualification stages are not an equal comparison."
+        },
+        {
+          "label": "Readiness",
+          "value": "Research, sample, qualified, production",
+          "context": "Keep date and measured scope visible."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Process candidate",
+          "direction": "in",
+          "signal": "Flow, equipment and material requirements"
+        },
+        {
+          "name": "Integration decision",
+          "direction": "out",
+          "signal": "Feasible route plus remaining evidence needs"
+        }
+      ],
+      "tradeoff": "Reducing joint thickness can consume more surface-control effort; reducing bond time may expose inspection or supply as the next bottleneck.",
+      "whyAI": "Memory economics and supply depend on accepted output from the complete route, affecting how many accelerators can be deployed.",
+      "prerequisites": [
+        "hbm-tc-ncf-route",
+        "hbm-mr-muf-route",
+        "hbm-hybrid-bond-route"
+      ],
+      "related": [
+        "hbm-silicon-intensity",
+        "compatible-supply-capacity",
+        "crg-package-system-closure"
+      ],
+      "misconception": "A process must close the full product and production requirements; one favorable parameter does not establish a usable stack.",
+      "check": {
+        "question": "Which comparison supports an engineering choice?",
+        "options": [
+          "Same product boundary, yield denominator and qualification requirements",
+          "Only minimum reported pitch",
+          "Only the fastest advertised bonding operation"
+        ],
+        "answer": 0,
+        "explanation": "A process must close the full product and production requirements; one favorable parameter does not establish a usable stack."
+      },
+      "engineeringExample": "Synthetic routes: 100 currency units per input set at 90% final yield cost 111.1 per accepted stack. A 105-unit route at 97% costs 108.2. The example illustrates sensitivity; it ranks no commercial process.",
+      "evidenceNotes": "Route mechanisms are grounded in their named sources. Cost, cycle time and yield values in the workbench are transparent teaching scenarios, not supplier disclosures.",
+      "sources": [
+        {
+          "title": "Samsung — 36 GB HBM3E 12H development",
+          "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+        },
+        {
+          "title": "SK hynix — Small Size, Big Impact",
+          "url": "https://news.skhynix.com/en/small-size-big-impact/"
+        },
+        {
+          "title": "imec — wafer-to-wafer hybrid bonding at 400 nm pitch",
+          "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch"
+        }
+      ],
+      "learningObjective": "Compare qualified output, height, thermal behavior, inspection and cost on the same product boundary.",
+      "workstream": "W05",
+      "visualFamily": "package-route",
+      "scale": "Process-flow alternatives on a fixed stack/package boundary; schematic",
+      "kind": "process",
+      "labId": "hbm-stack-build",
+      "branch": "Packaging",
+      "subbranch": "HBM bonding routes and process closure"
+    },
+    {
+      "id": "hbf-read-tier-contract",
+      "level": "software",
+      "name": "HBF: a read-oriented tier and its evidence boundary",
+      "shortName": "HBF: a read-oriented tier and its evidence boundary",
+      "role": "Distinguish an announced HBF interface/capacity specification from validated workload behavior.",
+      "description": "High Bandwidth Flash proposes a NAND-based tier near the processor, alongside the existing memory hierarchy. SK hynix’s August 2026 announcement describes up to 512 GB and bandwidth grades of approximately 0.4–3.0 TB/s, with UCIe connectivity. These are reported specification boundaries, not proof of sustained throughput on a deployed inference system. A capacity and read-bandwidth headline leaves access latency, request granularity, concurrency, write service and host software to be examined. NAND-based capacity can be attractive for read-heavy state, but it does not acquire DRAM semantics merely by sharing a package or a fast link.",
+      "mechanism": [
+        "Identify the source date and distinguish technical specification, sample, qualified component and shipping system.",
+        "Map the processor link, HBF controller and NAND array as separate interfaces; use the same transfer direction and byte convention.",
+        "Request latency, granularity, concurrency and read/write conditions before treating the headline rate as usable.",
+        "Keep mutable working state and recovery requirements in the placement contract rather than assuming every tensor can move to flash.",
+        "Measure application-level correctness, latency and energy on a named integration before claiming a deployment benefit."
+      ],
+      "science": [
+        {
+          "title": "Minimum bulk-read transfer time",
+          "equation": "ttransfer ≥ V / B",
+          "explanation": "Moving V payload bytes cannot take less than V/B at usable bandwidth B, even before initial access, scheduling or contention.",
+          "assumptions": "Single direction with compatible decimal units; B is a sustained payload assumption, not automatically an advertised interface maximum."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Evidence snapshot",
+          "value": "Announced · 4 August 2026",
+          "context": "Reported specification: up to 512 GB; grades approximately 0.4–3.0 TB/s."
+        },
+        {
+          "label": "Interface",
+          "value": "UCIe in the announcement",
+          "context": "A common framework is not a drop-in compatibility or shipped-system certificate."
+        },
+        {
+          "label": "Still configuration-dependent",
+          "value": "Latency, granularity, read/write behavior",
+          "context": "The headline grades do not settle end-to-end service performance."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Processor/HBF interface",
+          "direction": "in",
+          "signal": "Requests, completion, error and transfer semantics"
+        },
+        {
+          "name": "NAND-backed capacity",
+          "direction": "out",
+          "signal": "Data with specified access and persistence behavior"
+        }
+      ],
+      "tradeoff": "More near-compute capacity may reduce remote movement, while page access, writes and integration requirements can move the performance bottleneck.",
+      "whyAI": "Large read-mostly parameter pools are a possible use case; they require a software and system plan that accounts for access behavior.",
+      "prerequisites": [
+        "memory-interface-choice",
+        "die-link-compatibility"
+      ],
+      "related": [
+        "hbf-latency-prefetch",
+        "memory-working-set-placement",
+        "memory-system-qualification"
+      ],
+      "misconception": "An interface/specification announcement and a measured shipping-system result are different evidence states.",
+      "check": {
+        "question": "What does the announced HBF bandwidth range establish?",
+        "options": [
+          "A reported specification range that still needs workload validation",
+          "Guaranteed HBM-equivalent random-access latency",
+          "Proof that every GPU can attach HBF today"
+        ],
+        "answer": 0,
+        "explanation": "An interface/specification announcement and a measured shipping-system result are different evidence states."
+      },
+      "engineeringExample": "Synthetic payload-only calculation: reading 100 GB at an assumed sustained 1 TB/s requires at least 0.1 s. No setup, concurrency loss or other work is included. The assumed usable rate is not a measured HBF benchmark.",
+      "evidenceNotes": "SK hynix and Sandisk identify the August 2026 milestone as specification release. The atlas has not verified a volume-shipping deployment from these announcements. Missing access metrics remain unknown rather than receiving SSD or HBM defaults.",
+      "sources": [
+        {
+          "title": "SK hynix — first HBF specifications at FMS 2026",
+          "url": "https://news.skhynix.com/en/hbf-at-fms-2026/"
+        },
+        {
+          "title": "Sandisk — release of first OCP HBF specification",
+          "url": "https://investor.sandisk.com/node/8126/pdf"
+        },
+        {
+          "title": "UCIe — introduction Q&A recap",
+          "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap"
+        }
+      ],
+      "learningObjective": "Distinguish an announced HBF interface/capacity specification from validated workload behavior.",
+      "workstream": "W11",
+      "visualFamily": "memory-route",
+      "scale": "Processor interface to NAND-backed capacity; logical topology, not a disclosed product floorplan",
+      "kind": "system",
+      "labId": "inference-placement",
+      "branch": "Memory",
+      "subbranch": "HBF interface, latency and access contract"
+    },
+    {
+      "id": "hbf-latency-prefetch",
+      "level": "software",
+      "name": "HBF latency, transfer granularity and prefetch",
+      "shortName": "HBF latency, transfer granularity and prefetch",
+      "role": "Explain why matching read bandwidth does not guarantee matching request latency or useful-byte efficiency.",
+      "description": "Bandwidth measures a stream; latency measures the delay before a particular dependency can proceed. NAND access and the controller’s request unit can make a small useful read consume a much larger transfer. Concurrency and prefetch can hide some delays when the next address is known early, but cannot make an unexpected dependency arrive before it is requested. Sandisk’s 2025 fact sheet explicitly qualifies its performance comparison with higher HBF latency and larger pages than HBM, using a particular internal weight-reading simulation. Writes also require their own service model: NAND programming, erasure, garbage collection and wear do not disappear behind a wider host link.",
+      "mechanism": [
+        "Measure the useful request size separately from controller granularity and actual fetched bytes.",
+        "Separate first-access latency, queue time, transfer time and completion overhead.",
+        "Issue independent reads concurrently where the software knows their addresses; budget outstanding bytes and staging space.",
+        "Prefetch predictable state far enough ahead, measuring misses and wasted transfers when prediction fails.",
+        "Specify write rate, program/erase behavior, amplification and endurance for the actual configuration; do not substitute a read-bandwidth grade."
+      ],
+      "science": [
+        {
+          "title": "Useful-byte efficiency",
+          "equation": "Buseful ≤ Bphysical u/g",
+          "explanation": "A transaction fetches g bytes but only u are consumed before eviction. Coalescing or reuse can improve the ratio.",
+          "assumptions": "0 < u ≤ g, no later use of the remaining bytes; this is traffic efficiency, not a measured HBF result."
+        },
+        {
+          "title": "Concurrency to cover latency",
+          "equation": "Qflight ≥ Btarget L",
+          "explanation": "Sustaining a target byte rate over latency L needs approximately that rate times latency in flight.",
+          "assumptions": "Steady independent requests, adequate resources, no contention or dependency stalls; necessary capacity is not sufficient throughput proof."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Missing HBF defaults",
+          "value": "Do not invent latency or page size",
+          "context": "Scenario inputs are hypothetical until a pinned specification or measurement supplies them."
+        },
+        {
+          "label": "Reads versus writes",
+          "value": "Different access operations",
+          "context": "Read-dominant does not mean physically read-only or unlimited endurance."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Prefetch planner",
+          "direction": "in",
+          "signal": "Future address, issue time and useful-byte prediction"
+        },
+        {
+          "name": "Staging memory",
+          "direction": "out",
+          "signal": "Ready data plus occupancy and miss evidence"
+        }
+      ],
+      "tradeoff": "Aggressive prefetch can hide latency but consumes staging memory and bandwidth, especially when addresses or expert choices are unpredictable.",
+      "whyAI": "A model that fits in a large tier can still stall if its access pattern cannot expose enough predictable parallelism.",
+      "prerequisites": [
+        "hbf-read-tier-contract",
+        "memory-hierarchy-route"
+      ],
+      "related": [
+        "moe-expert-tier-placement",
+        "prefill-decode-tier-placement",
+        "kernel-locality-fusion"
+      ],
+      "misconception": "Useful-byte efficiency is 1/16 for this synthetic access pattern; batching nearby accesses or reuse can change it.",
+      "check": {
+        "question": "A request fetches 16 KiB but consumes 1 KiB with no reuse. What fraction is immediately useful?",
+        "options": [
+          "1/16",
+          "All of it because peak bandwidth is high",
+          "16 times the fetched volume"
+        ],
+        "answer": 0,
+        "explanation": "Useful-byte efficiency is 1/16 for this synthetic access pattern; batching nearby accesses or reuse can change it."
+      },
+      "engineeringExample": "Synthetic access: 1 TB/s with 20 µs completion latency requires at least 20 MB outstanding in the simple concurrency model. A 16 KiB fetch with only 1 KiB consumed has 6.25% useful-byte efficiency. Neither latency nor granularity is an HBF product specification.",
+      "evidenceNotes": "The Sandisk fact sheet’s comparison concerns internal testing/simulation of reading 8-bit pretrained Llama 3.1 405B weights, one kernel at a time on an xPU performance model. It does not establish arbitrary random reads, training writes or end-to-end serving parity. KIOXIA supports general NAND access distinctions, not HBF timing numbers.",
+      "sources": [
+        {
+          "title": "Sandisk — HBF fact sheet",
+          "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf"
+        },
+        {
+          "title": "KIOXIA — NAND erase operations and latency",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/topics/topics-51.html"
+        }
+      ],
+      "learningObjective": "Explain why matching read bandwidth does not guarantee matching request latency or useful-byte efficiency.",
+      "workstream": "W11",
+      "visualFamily": "memory-route",
+      "scale": "Request granularity, queues and staging buffers; abstract dataflow",
+      "kind": "system",
+      "labId": "inference-placement",
+      "branch": "Memory",
+      "subbranch": "HBF interface, latency and access contract"
+    },
+    {
+      "id": "memory-working-set-placement",
+      "level": "software",
+      "name": "Place the working set, not just the model",
+      "shortName": "Place the working set, not just the model",
+      "role": "Assign tensor state to tiers using lifetime, mutation, reuse distance, access size and latency requirements.",
+      "description": "A model is not one undifferentiated memory allocation. Parameters, activation tiles, optimizer state, KV cache, routing metadata and checkpoints have different lifetimes and traffic. Registers and SRAM serve small, frequently reused local data; HBM supports the accelerator’s active read/write state; host DDR or LPDDR offers another capacity and compute boundary. NAND-based HBF is an emerging candidate for read-heavy near-compute state, while local and remote storage retain datasets, checkpoints and less active material. These are roles, not a universal fixed ranking: effective placement depends on the actual links, controller behavior, software and workload.",
+      "mechanism": [
+        "Inventory each tensor/state object with its precision, dimensions, lifetime and mutation rate.",
+        "Identify the deadline for its next use, expected reuse distance and bytes consumed per fetch.",
+        "Reserve fast-tier space for concurrent workspaces and hot mutable state before allocating the remaining capacity to weights.",
+        "Define transfer, prefetch, eviction and consistency rules for each tier boundary, including persistent copies.",
+        "Profile misses, spills, writes and tail latency; move the object or change batching rather than judging only aggregate capacity."
+      ],
+      "science": [
+        {
+          "title": "Tier-capacity constraint",
+          "equation": "Σi xi,k Si + Ok ≤ Ck",
+          "explanation": "For each tier k, resident objects plus reserved buffers and overhead must fit. x indicates the fraction or copy of object i resident there.",
+          "assumptions": "Use simultaneous live state, not sums of mutually exclusive tensors; copied buffers consume capacity in both tiers while alive."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Placement record",
+          "value": "Lifetime • reads/writes • reuse • granularity",
+          "context": "A parameter count alone is insufficient."
+        },
+        {
+          "label": "Tier boundary",
+          "value": "Capacity, link, service and consistency",
+          "context": "Host-accessible and device-local are different properties."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Tensor contract",
+          "direction": "in",
+          "signal": "Shape, precision, lifetime and required access pattern"
+        },
+        {
+          "name": "Runtime memory plan",
+          "direction": "out",
+          "signal": "Residency, copies, transfer schedule and recovery state"
+        }
+      ],
+      "tradeoff": "Keeping more weights local can displace KV or workspaces; offloading capacity creates transfer and synchronization work.",
+      "whyAI": "Memory placement connects physical packaging choices to batch size, context, latency and productive accelerator use.",
+      "prerequisites": [
+        "memory-hierarchy-route",
+        "graph-tensor-ir"
+      ],
+      "related": [
+        "training-tier-placement",
+        "prefill-decode-tier-placement",
+        "moe-expert-tier-placement",
+        "crg-architecture-contract"
+      ],
+      "misconception": "Placement must account for all simultaneously live state at the relevant precision and execution phase.",
+      "check": {
+        "question": "Why can a model fail to run even when its weight file fits in HBM?",
+        "options": [
+          "Live KV, activations, workspaces and metadata also need capacity",
+          "Weights are the only memory allocation",
+          "Storage capacity fixes all device-memory limits"
+        ],
+        "answer": 0,
+        "explanation": "Placement must account for all simultaneously live state at the relevant precision and execution phase."
+      },
+      "engineeringExample": "Synthetic 80 GiB usable tier: 45 GiB weights + 20 GiB KV + 12 GiB workspaces + 5 GiB other live state = 82 GiB. At least 2 GiB must be removed or reduced before allowing additional staging margin. A larger cold tier does not directly enlarge local workspace.",
+      "evidenceNotes": "The placement framework is an engineering synthesis of established heterogeneous-memory and inference mechanisms. HBF placement remains a conditional scenario, not a claim that the cited runtimes support HBF.",
+      "sources": [
+        {
+          "title": "NVIDIA — Mastering LLM Techniques: Inference Optimization",
+          "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/"
+        },
+        {
+          "title": "ZeRO-Infinity: Breaking the GPU Memory Wall",
+          "url": "https://arxiv.org/abs/2104.07857"
+        },
+        {
+          "title": "Sandisk — release of first OCP HBF specification",
+          "url": "https://investor.sandisk.com/node/8126/pdf"
+        }
+      ],
+      "learningObjective": "Assign tensor state to tiers using lifetime, mutation, reuse distance, access size and latency requirements.",
+      "workstream": "W11",
+      "visualFamily": "memory-route",
+      "scale": "Register/SRAM ↔ HBM ↔ host ↔ proposed HBF ↔ storage; logical topology",
+      "kind": "system",
+      "labId": "inference-placement",
+      "branch": "Software",
+      "subbranch": "Working-set placement across memory tiers"
+    },
+    {
+      "id": "training-tier-placement",
+      "level": "software",
+      "name": "Training state across HBM, host memory and storage",
+      "shortName": "Training state across HBM, host memory and storage",
+      "role": "Distinguish mutable training state, recomputation, offload and durable checkpoints.",
+      "description": "Training retains values for the forward pass, computes gradients and updates parameters and optimizer state. The fastest tier must therefore accommodate more than inference weights. Activation checkpointing stores selected intermediates and recomputes others; persistent checkpoints instead save restartable state outside the live execution path. State sharding changes ownership across devices, while CPU/NVMe offload moves both capacity and work across interfaces. A read-oriented flash tier cannot simply inherit the role of frequently updated optimizer or gradient storage: its write service, software support and movement schedule must be demonstrated.",
+      "mechanism": [
+        "Separate parameters, gradients, master weights, optimizer moments, live activations and temporary buffers.",
+        "Set precision and sharding rules independently for each class of state.",
+        "Choose where optimizer computation occurs, keeping its mutable state and transfer requirements consistent.",
+        "Model recomputation and offload as extra work or movement rather than free capacity.",
+        "Save version-consistent durable checkpoints and measure recovery alongside steady step time."
+      ],
+      "science": [
+        {
+          "title": "State inventory before sharding",
+          "equation": "Mstate = P (bw + bg + bm + bo) + A + O",
+          "explanation": "Per-parameter byte terms represent the explicitly chosen training representation. bo includes all optimizer-state values per parameter.",
+          "assumptions": "Dense unsharded inventory; omit absent state such as a separate master copy, then apply actual partition/replication factors by tensor class."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Two checkpoint meanings",
+          "value": "Activation recomputation versus durable restart",
+          "context": "Saving an activation is not saving a recoverable training run."
+        },
+        {
+          "label": "Offload boundary",
+          "value": "Data and computation placement",
+          "context": "A CPU optimizer also consumes CPU compute and memory bandwidth."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Forward/backward tensors",
+          "direction": "in",
+          "signal": "Activations, gradients and parameter version"
+        },
+        {
+          "name": "Update and durable state",
+          "direction": "out",
+          "signal": "New parameters, optimizer state and recoverable checkpoint"
+        }
+      ],
+      "tradeoff": "Offload and recomputation enable larger models at the cost of movement or extra arithmetic; the best choice depends on overlap and recovery requirements.",
+      "whyAI": "Useful training progress depends on completed and recoverable updates, not the largest parameter count that can be allocated.",
+      "prerequisites": [
+        "training-memory-state",
+        "memory-working-set-placement"
+      ],
+      "related": [
+        "checkpoint-retained-work",
+        "parallelism-communication-budget",
+        "hbf-read-tier-contract"
+      ],
+      "misconception": "Training repeatedly updates gradient/optimizer/parameter state, so read bandwidth alone cannot characterize an appropriate tier.",
+      "check": {
+        "question": "Which state is inherently write-active during ordinary optimizer updates?",
+        "options": [
+          "Gradients and optimizer state",
+          "Only the immutable tokenizer vocabulary",
+          "Only a finalized archival checkpoint"
+        ],
+        "answer": 0,
+        "explanation": "Training repeatedly updates gradient/optimizer/parameter state, so read bandwidth alone cannot characterize an appropriate tier."
+      },
+      "engineeringExample": "Synthetic mixed-precision Adam inventory: 1 billion parameters × (2 weight + 2 gradient + 4 master + 8 moment bytes) = 16 GB before activations, workspace, sharding or replication. It is one representation, not a rule for every optimizer.",
+      "evidenceNotes": "DeepSpeed documents optimizer offload to the host CPU; ZeRO-Infinity studies GPU/CPU/NVMe state management. Neither source establishes an HBF training implementation or its write endurance.",
+      "sources": [
+        {
+          "title": "DeepSpeed — ZeRO-Offload tutorial",
+          "url": "https://www.deepspeed.ai/tutorials/zero-offload/"
+        },
+        {
+          "title": "ZeRO-Infinity: Breaking the GPU Memory Wall",
+          "url": "https://arxiv.org/abs/2104.07857"
+        }
+      ],
+      "learningObjective": "Distinguish mutable training state, recomputation, offload and durable checkpoints.",
+      "workstream": "W11",
+      "visualFamily": "model-workload",
+      "scale": "Tensor state over a training step and across memory tiers; abstraction",
+      "kind": "system",
+      "labId": "inference-placement",
+      "branch": "Software",
+      "subbranch": "Working-set placement across memory tiers"
+    },
+    {
+      "id": "prefill-decode-tier-placement",
+      "level": "software",
+      "name": "Prefill, decode and the moving KV working set",
+      "shortName": "Prefill, decode and the moving KV working set",
+      "role": "Place active and reusable inference state according to the execution phase and service deadline.",
+      "description": "Prefill processes an input sequence and creates state for subsequent generation. Decode repeatedly generates new tokens while reading prior context and appending new KV state. Weights are reused across requests, while KV belongs to a model/version, sequence position and attention configuration. A reusable prefix can be retained or offloaded, but restoring it competes with recomputing it. Moving large KV payloads between prefill and decode nodes adds network work and coordination. Larger near-compute capacity can help only if the state is available before the next dependent operation and the placement preserves correctness.",
+      "mechanism": [
+        "Identify whether the workload is prefill, decode or a mixture; record batch, context and attention architecture.",
+        "Budget the live KV payload and append/write behavior separately from weight reads.",
+        "Keep imminent mutable state accessible; choose a policy for inactive prefixes, eviction and restoration.",
+        "Compare restore transfer time with recomputation and service deadlines under actual contention.",
+        "For split serving, trace KV over its physical links and validate model/version, ownership and completion before decode uses it."
+      ],
+      "science": [
+        {
+          "title": "Conventional KV payload",
+          "equation": "MKV = 2 L Hkv d b Σs Ts",
+          "explanation": "Each stored token has key and value vectors for the specified layers and KV heads.",
+          "assumptions": "Full conventional KV representation; no sliding windows, compression or architecture-specific state reduction. Excludes paging overhead and padding."
+        },
+        {
+          "title": "Restore or recompute",
+          "equation": "trestore ≥ Lpath + V/Bpath",
+          "explanation": "Compare this transfer lower bound with measured recomputation time and the request deadline.",
+          "assumptions": "One aggregate transfer; includes no queueing or validation cost and assumes the cache is valid."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Decode",
+          "value": "Repeated reads and KV appends",
+          "context": "An active KV cache is not immutable pretrained weight storage."
+        },
+        {
+          "label": "Prefix reuse",
+          "value": "Must retain semantic validity",
+          "context": "Model, token sequence and attention configuration matter."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Prefill",
+          "direction": "in",
+          "signal": "Prompt computation and newly produced KV"
+        },
+        {
+          "name": "Decode",
+          "direction": "out",
+          "signal": "Ready prior state, appended KV and output token"
+        }
+      ],
+      "tradeoff": "More cached context saves recomputation but occupies memory and creates movement when placed remotely; a cache hit still has a service cost.",
+      "whyAI": "Memory tiers determine concurrency and context support, while the restore path can affect first-token and inter-token latency.",
+      "prerequisites": [
+        "prefill-resource-trace",
+        "decode-bandwidth-trace",
+        "memory-working-set-placement"
+      ],
+      "related": [
+        "hbf-latency-prefetch",
+        "disaggregated-serving",
+        "memory-to-hall-propagation"
+      ],
+      "misconception": "Active decoding both reads old context and appends state; placement must match those access requirements.",
+      "check": {
+        "question": "Does a large read-oriented tier automatically suit the active KV cache?",
+        "options": [
+          "No: append writes, access granularity and deadlines must be evaluated",
+          "Yes: capacity alone establishes suitability",
+          "Yes: KV never changes during generation"
+        ],
+        "answer": 0,
+        "explanation": "Active decoding both reads old context and appends state; placement must match those access requirements."
+      },
+      "engineeringExample": "Synthetic conventional KV: 32 layers × 8 KV heads × 128 values × 2 bytes × 2 for K/V × 8,192 tokens is 1 GiB per sequence. Eight such sequences need 8 GiB before metadata and other model state.",
+      "evidenceNotes": "The equation is an explicitly scoped conventional attention model. It is not a specification of Astra. Any HBF KV placement is a scenario requiring controller/write behavior and serving measurements, not an asserted deployed configuration.",
+      "sources": [
+        {
+          "title": "NVIDIA — Mastering LLM Techniques: Inference Optimization",
+          "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/"
+        },
+        {
+          "title": "Sandisk — HBF fact sheet",
+          "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf"
+        }
+      ],
+      "learningObjective": "Place active and reusable inference state according to the execution phase and service deadline.",
+      "workstream": "W11",
+      "visualFamily": "model-workload",
+      "scale": "Prefill output, live decode state and tier-crossing transfers; abstraction",
+      "kind": "system",
+      "labId": "inference-placement",
+      "branch": "Software",
+      "subbranch": "Working-set placement across memory tiers"
+    },
+    {
+      "id": "moe-expert-tier-placement",
+      "level": "software",
+      "name": "MoE experts: resident capacity, routing and misses",
+      "shortName": "MoE experts: resident capacity, routing and misses",
+      "role": "Explain why sparse activation reduces arithmetic without eliminating expert storage or transfer constraints.",
+      "description": "A mixture-of-experts model selects only some experts for each token, but the full parameter set still needs a valid storage and delivery strategy. A larger batch can touch many distinct experts even when each token chooses only a few. Frequently used experts may remain in fast memory; inactive expert weights can occupy another tier if the runtime can bring them in before use. Router outcomes depend on the current hidden state, so advance prediction can be imperfect. Expert parallelism also moves token activations across devices, which is a different traffic stream from fetching missing expert weights.",
+      "mechanism": [
+        "Separate shared parameters, the full expert inventory and per-token selected experts.",
+        "Measure how many distinct expert weights a batch touches and which remain cached.",
+        "Account for weight misses, staging capacity and latency; track prefetch precision and wasted bytes.",
+        "Route token activations to resident experts using the actual expert-parallel topology.",
+        "Evaluate load imbalance, missed deadlines and quality-preserving routing behavior alongside throughput."
+      ],
+      "science": [
+        {
+          "title": "Expert-weight miss traffic",
+          "equation": "Vmiss = Σe∈M Pe be",
+          "explanation": "The set M contains distinct missing experts required during the measured reuse window; count each transferred expert once in that window.",
+          "assumptions": "Whole expert transfer at specified stored precision, no shared/sub-tensor fetch or compression metadata; streaming changes the model."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Two traffic streams",
+          "value": "Expert weights and token dispatch",
+          "context": "They may use different paths and cannot be conflated."
+        },
+        {
+          "label": "Sparse activity",
+          "value": "Few experts per token",
+          "context": "A batch may still touch much of the expert inventory."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Router output",
+          "direction": "in",
+          "signal": "Selected experts and token assignments"
+        },
+        {
+          "name": "Expert execution",
+          "direction": "out",
+          "signal": "Delivered weights, routed activations and combined output"
+        }
+      ],
+      "tradeoff": "Caching popular experts saves movement but occupies scarce fast-tier space; inaccurate prefetch can consume bandwidth needed for actual misses.",
+      "whyAI": "MoE capacity claims become meaningful only when routing, memory placement and interconnect scheduling can deliver selected work on time.",
+      "prerequisites": [
+        "expert-routing-budget",
+        "memory-working-set-placement",
+        "hbf-latency-prefetch"
+      ],
+      "related": [
+        "fabric-collective-traffic",
+        "memory-to-hall-propagation",
+        "crg-communication-graph"
+      ],
+      "misconception": "The union of selected experts across a batch can be much larger than the per-token selection count.",
+      "check": {
+        "question": "Each token selects two experts. Must a batch need only two experts resident?",
+        "options": [
+          "No: tokens can choose different experts",
+          "Yes: top-2 means only two experts exist",
+          "Yes: unused experts have no stored weights"
+        ],
+        "answer": 0,
+        "explanation": "The union of selected experts across a batch can be much larger than the per-token selection count."
+      },
+      "engineeringExample": "Synthetic example: four distinct missed experts of 2 GiB each require 8 GiB of weight transfer at the stated precision. Ten token assignments to the same cached expert do not require ten new copies of its weights, although token dispatch still moves data.",
+      "evidenceNotes": "DeepSpeed supports the distinction between expert distribution and communication scheduling. HBF-based expert caching here is an explicit architectural scenario, not a feature claimed for that runtime.",
+      "sources": [
+        {
+          "title": "DeepSpeed — MoE inference",
+          "url": "https://www.deepspeed.ai/tutorials/mixture-of-experts-inference/"
+        },
+        {
+          "title": "Sandisk — release of first OCP HBF specification",
+          "url": "https://investor.sandisk.com/node/8126/pdf"
+        }
+      ],
+      "learningObjective": "Explain why sparse activation reduces arithmetic without eliminating expert storage or transfer constraints.",
+      "workstream": "W11",
+      "visualFamily": "model-workload",
+      "scale": "Router decisions, expert residency and physical link traffic; abstraction",
+      "kind": "system",
+      "labId": "inference-placement",
+      "branch": "Software",
+      "subbranch": "Working-set placement across memory tiers"
+    },
+    {
+      "id": "memory-to-hall-propagation",
+      "level": "infrastructure",
+      "name": "From memory placement to network, power and cooling",
+      "shortName": "From memory placement to network, power and cooling",
+      "role": "Trace how a tensor-placement decision changes link demand and useful service at the hall boundary.",
+      "description": "Moving state out of HBM can free capacity while creating traffic on package, CPU–GPU, PCIe, storage or network paths. Every path has its own direction, contention domain and service overhead. A larger batch may amortize weight reads while increasing KV and queueing; disaggregated serving may improve resource matching while adding KV transfers. The resulting workload changes electrical demand and heat distribution, but fixed conversion losses and idle power remain. A credible comparison closes memory, movement, compute, facility services and response-quality requirements on the same time interval.",
+      "mechanism": [
+        "Start with the working-set plan and trace every moved byte across named physical interfaces.",
+        "Aggregate traffic by link and direction, separating expert-weight reads, token routing, KV movement and checkpoints.",
+        "Find a workload-rate bound from compute, memory and network demand; use a schedule to expose dependencies and overlap.",
+        "Apply measured or explicitly assumed power at the chosen IT boundary and the facility overhead at the same interval.",
+        "Report accepted outputs meeting quality and latency targets, and identify whether the constraint moved after the placement change."
+      ],
+      "science": [
+        {
+          "title": "Resource-normalized service bound",
+          "equation": "R ≤ min(F/f, Bmem/vmem, Bnet/vnet)",
+          "explanation": "Normalize each resource to the same defined unit of work before taking the minimum.",
+          "assumptions": "Steady aggregate upper bound, independent capacities and positive demand; omit an unused resource. Serial phases, latency and skew can lower performance."
+        },
+        {
+          "title": "Energy per accepted work",
+          "equation": "e = PIT PUE / Raccepted",
+          "explanation": "Use average IT power and accepted-work rate over the same measured interval; PUE supplies the facility boundary conversion.",
+          "assumptions": "Stable or interval-averaged boundaries; Raccepted must be positive and enforce a defined quality/latency criterion. This is not a universal joules-per-token constant."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Same work unit",
+          "value": "Token, request or training update",
+          "context": "Define model, precision, quality and latency target."
+        },
+        {
+          "label": "Boundary",
+          "value": "Link → rack → IT → facility",
+          "context": "Do not mix package power with facility-wide outputs."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Memory/runtime policy",
+          "direction": "in",
+          "signal": "Resident state, misses, transfer volume and schedule"
+        },
+        {
+          "name": "Hall service result",
+          "direction": "out",
+          "signal": "Accepted work, power, cooling and deployment requirements"
+        }
+      ],
+      "tradeoff": "Capacity offload can reduce device count but increase transfer stalls or energy elsewhere; no component metric alone predicts the net result.",
+      "whyAI": "This closes the wafer → package → memory → hall → model journey through actual work rather than installed hardware totals.",
+      "prerequisites": [
+        "memory-working-set-placement",
+        "fabric-collective-traffic",
+        "coolant-loop-separation"
+      ],
+      "related": [
+        "memory-system-qualification",
+        "crg-package-system-closure",
+        "crg-verification-loop",
+        "cluster-commissioning-gates"
+      ],
+      "misconception": "A local improvement can move the bottleneck to another interface or increase work elsewhere in the system.",
+      "check": {
+        "question": "A placement change lowers HBM traffic but doubles remote transfers. What should be compared?",
+        "options": [
+          "The complete workload at consistent quality, latency and energy boundaries",
+          "Only HBM bandwidth utilization",
+          "Only the capacity printed on the memory package"
+        ],
+        "answer": 0,
+        "explanation": "A local improvement can move the bottleneck to another interface or increase work elsewhere in the system."
+      },
+      "engineeringExample": "Synthetic service: compute supports 300 work/s, memory 200 work/s and network 100 work/s; the simple bound is 100 work/s. Halving memory traffic alone leaves that bound unchanged. At 12 kW IT, PUE 1.2 and 90 accepted work/s, facility energy is 160 J per accepted work unit.",
+      "evidenceNotes": "All numerical values are scenario inputs. No relationship between a megawatt and tokens is assumed without a named workload. CRG provides an attributed way to organize these realization boundaries; the arithmetic is a resource-accounting model.",
+      "sources": [
+        {
+          "title": "NVIDIA — DGX GB rack hardware guide",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        },
+        {
+          "title": "MIT OpenCourseWare — Introduction to Heat Transfer",
+          "url": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/"
+        },
+        {
+          "title": "NVIDIA — Mastering LLM Techniques: Inference Optimization",
+          "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/"
+        },
+        {
+          "title": "Semi AI Foundry — Communication Theory of Computation Realization",
+          "url": "https://semiaifoundry.com/updates/communication-theory-of-computation-realization/"
+        }
+      ],
+      "learningObjective": "Trace how a tensor-placement decision changes link demand and useful service at the hall boundary.",
+      "workstream": "W09",
+      "visualFamily": "hall-system",
+      "scale": "Package/link topology → rack services → facility accounting; schematic",
+      "kind": "system",
+      "labId": "token-system-path",
+      "branch": "Infrastructure",
+      "subbranch": "Memory choices to commissioned useful work"
+    },
+    {
+      "id": "memory-system-qualification",
+      "level": "infrastructure",
+      "name": "Qualify the memory system and retain useful work",
+      "shortName": "Qualify the memory system and retain useful work",
+      "role": "Separate component screening, integration qualification, commissioning and sustained service evidence.",
+      "description": "A memory stack can pass its own tests while a system fails at a different boundary: incompatible interface options, insufficient margin under simultaneous traffic, thermal hot spots, firmware errors or an incomplete recovery path. Integration therefore checks the package, board, fabric and runtime together. Commissioning confirms that the installed site can deliver the required power, cooling, connectivity and operational controls. These gates have evidence and dates, not merely installed component counts. Once operating, corrected errors, retried reads, throttling, restarts and lost updates affect useful service and must be visible in the workload result.",
+      "mechanism": [
+        "Verify component identity, test coverage, interface revision and allowed operating conditions.",
+        "Exercise the package/board memory paths under representative traffic, power and thermal conditions, preserving configuration and observed failures.",
+        "Validate error reporting, firmware/runtime responses and data correctness; distinguish corrected errors from silent corruption.",
+        "Commission facility and rack services with recovery/failure-path checks appropriate to the deployment.",
+        "Measure accepted work over time, including interruptions, retries, recovery and checkpoint loss, then feed that evidence into the next design decision."
+      ],
+      "science": [
+        {
+          "title": "Retained work accounting",
+          "equation": "Wretained = Wexecuted − Wdiscarded",
+          "explanation": "Both terms use the same useful-work definition. Discarded work includes invalid results and computations that must be repeated after loss.",
+          "assumptions": "Retries are not counted twice as retained output; accepted quality and service constraints must be specified."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Four separate gates",
+          "value": "Screen • qualify • commission • operate",
+          "context": "Passing one does not supply evidence for all the others."
+        },
+        {
+          "label": "Evidence bundle",
+          "value": "Configuration, method, population and date",
+          "context": "A source announcement cannot replace integration measurements."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Integrated memory system",
+          "direction": "in",
+          "signal": "Qualified components, firmware, runtime and site services"
+        },
+        {
+          "name": "Measured deployment evidence",
+          "direction": "out",
+          "signal": "Correctness, recovery, sustained work and remaining limits"
+        }
+      ],
+      "tradeoff": "Testing and redundancy add cost and time while improving confidence and service continuity; no finite test proves the absence of every future fault.",
+      "whyAI": "The deployed thinking machine depends on retained correct results, not merely functional arithmetic units or announced memory capacity.",
+      "prerequisites": [
+        "memory-to-hall-propagation",
+        "hbm-stack-thermal-yield",
+        "cluster-commissioning-gates"
+      ],
+      "related": [
+        "checkpoint-retained-work",
+        "crg-verification-loop",
+        "hbf-read-tier-contract",
+        "package-thermomechanical-reliability"
+      ],
+      "misconception": "Component specifications define intended behavior; the integrated platform and site still need their own verification.",
+      "check": {
+        "question": "A new memory component has a published specification. What establishes system readiness?",
+        "options": [
+          "Configuration-specific integration and commissioning evidence",
+          "The specification alone",
+          "A high advertised read-bandwidth grade"
+        ],
+        "answer": 0,
+        "explanation": "Component specifications define intended behavior; the integrated platform and site still need their own verification."
+      },
+      "engineeringExample": "Synthetic interval: 1,000 updates execute, but 40 must be discarded after the last valid durable checkpoint. Retained progress is 960 updates, before later reruns. A busy GPU during the discarded work still consumed energy.",
+      "evidenceNotes": "Qualification criteria depend on the actual product and deployment; the atlas gives an evidence sequence, not vendor-approved limits. Proposed HBF systems remain proposed until corresponding integration and operational evidence exists.",
+      "sources": [
+        {
+          "title": "NVIDIA — DGX GB rack hardware guide",
+          "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+        },
+        {
+          "title": "UCIe — introduction Q&A recap",
+          "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap"
+        },
+        {
+          "title": "Sandisk — release of first OCP HBF specification",
+          "url": "https://investor.sandisk.com/node/8126/pdf"
+        },
+        {
+          "title": "Semi AI Foundry — Communication Theory of Computation Realization",
+          "url": "https://semiaifoundry.com/updates/communication-theory-of-computation-realization/"
+        }
+      ],
+      "learningObjective": "Separate component screening, integration qualification, commissioning and sustained service evidence.",
+      "workstream": "W09",
+      "visualFamily": "hall-system",
+      "scale": "Component screen → package qualification → site commissioning → operational evidence",
+      "kind": "system",
+      "labId": "token-system-path",
+      "branch": "Infrastructure",
+      "subbranch": "Memory choices to commissioned useful work"
+    }
+  ],
+  "milestones": [
+    {
+      "year": 2023,
+      "title": "More memory dies within an HBM height envelope",
+      "significance": "A documented 12-layer HBM3 example connects thinning and assembly changes to a fixed mechanical envelope.",
+      "source": {
+        "title": "SK hynix — the team behind 12-layer HBM3",
+        "url": "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/"
+      },
+      "component": "hbm-stack-height-budget",
+      "eventType": "publication"
+    },
+    {
+      "year": 2024,
+      "title": "TC-NCF example for HBM3E 12H announced",
+      "significance": "The development announcement provides a dated alternative assembly route for high-stack memory.",
+      "source": {
+        "title": "Samsung — 36 GB HBM3E 12H development",
+        "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+      },
+      "component": "hbm-tc-ncf-route",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "First OCP HBF specification announced",
+      "significance": "The interface and software framework becomes a dated standardization milestone; validated deployment remains a separate step.",
+      "source": {
+        "title": "SK hynix — first HBF specifications at FMS 2026",
+        "url": "https://news.skhynix.com/en/hbf-at-fms-2026/"
+      },
+      "component": "hbf-read-tier-contract",
+      "eventType": "announcement"
+    }
+  ],
+  "claims": [
+    {
+      "id": "depth-claim-hbf-spec",
+      "title": "HBF specification milestone",
+      "statement": "SK hynix announced HBF specifications covering up to 512 GB, grades around 0.4–3.0 TB/s and UCIe connectivity.",
+      "sourceId": "depth-src-hbf",
+      "lessonIds": [
+        "hbf-read-tier-contract"
+      ],
+      "status": "announced",
+      "metric": "Capacity and bandwidth grades",
+      "value": "512 GB; approximately 0.4–3.0 TB/s",
+      "unit": "",
+      "denominator": "Announced stack configurations/grades",
+      "period": "2026-08-04",
+      "scope": "Reported HBF technical specification",
+      "limitations": "Not a measured shipping-system result; grade conditions, access latency, useful granularity and write service need configuration-specific evidence.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "depth-claim-hbf-scope",
+      "title": "Scope of the historical HBF comparison",
+      "statement": "Sandisk’s July 2025 fact sheet states higher HBF latency and larger pages than HBM; its performance comparison is limited to an internal 8-bit pretrained-weight simulation.",
+      "sourceId": "depth-src-hbf-detail",
+      "lessonIds": [
+        "hbf-latency-prefetch"
+      ],
+      "status": "reported",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2025-07",
+      "scope": "Llama 3.1 405B weight reads; one kernel at a time on an xPU performance model",
+      "limitations": "Do not generalize to arbitrary random reads, writes, complete serving systems or training. The atlas supplies no unverified HBF latency/granularity default.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "depth-claim-tcncf",
+      "title": "A historical TC-NCF HBM example",
+      "statement": "Samsung’s February 2024 HBM3E 12H announcement identifies advanced TC-NCF and reports sampling at that date.",
+      "sourceId": "depth-src-tcncf",
+      "lessonIds": [
+        "hbm-tc-ncf-route"
+      ],
+      "status": "announced",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2024-02-27",
+      "scope": "Named HBM3E 12H development",
+      "limitations": "Historical status; later volume production and another vendor’s process cannot be inferred. No generic yield/cost ranking follows.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "depth-claim-hybrid-route",
+      "title": "Hybrid-bond research is route-specific",
+      "statement": "imec describes planarized metal/dielectric surfaces, alignment, contact and annealing in its wafer-to-wafer hybrid-bond research.",
+      "sourceId": "depth-src-hybrid",
+      "lessonIds": [
+        "hbm-hybrid-bond-route"
+      ],
+      "status": "research",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2024-02-19",
+      "scope": "Named wafer-to-wafer research process",
+      "limitations": "Different from die-to-wafer handling; this is not evidence that all HBM generations use hybrid bonding or that a commercial stack is qualified.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "depth-claim-hbm-thermal",
+      "title": "3D HBM-on-GPU thermal analysis",
+      "statement": "imec’s 2025 report studies thermal coupling in a specified simulated 3D HBM-on-GPU arrangement.",
+      "sourceId": "depth-src-thermal",
+      "lessonIds": [
+        "hbm-stack-thermal-yield"
+      ],
+      "status": "research",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2025-12-08",
+      "scope": "Research geometry, power maps and cooling assumptions",
+      "limitations": "Simulation temperatures and mitigations are not universal HBM product measurements or operating limits.",
+      "checkedOn": "2026-09-06"
+    }
+  ],
+  "sources": [
+    {
+      "id": "depth-src-height",
+      "title": "SK hynix — the team behind 12-layer HBM3",
+      "url": "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/",
+      "publisher": "SK hynix",
+      "published": "2023-05-19",
+      "checkedOn": "2026-09-06",
+      "locator": "Achieving the Highest Capacity HBM3 With Advanced MR-MUF",
+      "scope": "Historical product-specific explanation; no universal die thickness or stack-height limit."
+    },
+    {
+      "id": "depth-src-tcncf",
+      "title": "Samsung — 36 GB HBM3E 12H development",
+      "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram",
+      "publisher": "Samsung",
+      "published": "2024-02-27",
+      "checkedOn": "2026-09-06",
+      "locator": "Advanced TC NCF; sampling paragraph",
+      "scope": "Vendor development announcement; comparative thermal/performance claims are not independent measurements."
+    },
+    {
+      "id": "depth-src-muf",
+      "title": "SK hynix — Small Size, Big Impact",
+      "url": "https://news.skhynix.com/en/small-size-big-impact/",
+      "publisher": "SK hynix",
+      "published": "2023-07-27",
+      "checkedOn": "2026-09-06",
+      "locator": "Advanced Mass Reflow Molded Underfill section",
+      "scope": "Explains reflow, subsequent molding and route-specific chip stabilization; published wording is not a production recipe."
+    },
+    {
+      "id": "depth-src-hybrid",
+      "title": "imec — wafer-to-wafer hybrid bonding at 400 nm pitch",
+      "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch",
+      "publisher": "imec",
+      "published": "2024-02-19",
+      "checkedOn": "2026-09-06",
+      "locator": "Current process flow; surface topography",
+      "scope": "Research wafer-to-wafer mechanism; does not establish commercial HBM qualification or die-to-wafer tolerances."
+    },
+    {
+      "id": "depth-src-d2w",
+      "title": "imec — die-to-wafer hybrid bonding demonstration",
+      "url": "https://www.imec-int.com/en/press/imec-demonstrates-die-wafer-hybrid-bonding-cu-interconnect-pad-pitch-2mm",
+      "publisher": "imec",
+      "published": "2024-05-29",
+      "checkedOn": "2026-09-06",
+      "locator": "Die preparation, surface condition and alignment discussion",
+      "scope": "Research test vehicle; source URL retains original identifier, article concerns 2 micrometer pitch."
+    },
+    {
+      "id": "depth-src-thermal",
+      "title": "imec — thermal STCO study of 3D HBM-on-GPU",
+      "url": "https://www.imec-int.com/en/press/imec-mitigates-thermal-bottleneck-3d-hbm-gpu-architectures-using-system-technology-co",
+      "publisher": "imec",
+      "published": "2025-12-08",
+      "checkedOn": "2026-09-06",
+      "locator": "Model geometry, power maps and mitigation comparisons",
+      "scope": "Simulation study of specified 3D geometry; temperatures do not describe every HBM package."
+    },
+    {
+      "id": "depth-src-hbf",
+      "title": "SK hynix — first HBF specifications at FMS 2026",
+      "url": "https://news.skhynix.com/en/hbf-at-fms-2026/",
+      "publisher": "SK hynix",
+      "published": "2026-08-04",
+      "checkedOn": "2026-09-06",
+      "locator": "Capacity grades, UCIe and specification scope",
+      "scope": "Announcement of an OCP technical specification; not a shipped-system or sustained-throughput result."
+    },
+    {
+      "id": "depth-src-hbf-detail",
+      "title": "Sandisk — HBF fact sheet",
+      "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf",
+      "publisher": "Sandisk",
+      "published": "2025-07",
+      "checkedOn": "2026-09-06",
+      "locator": "Pages 2–3, particularly footnote 1",
+      "scope": "Historical vendor target and internal simulation; higher latency/page size and modeled workload are explicit qualifications."
+    },
+    {
+      "id": "depth-src-hbf-spec",
+      "title": "Sandisk — release of first OCP HBF specification",
+      "url": "https://investor.sandisk.com/node/8126/pdf",
+      "publisher": "Sandisk",
+      "published": "2026-08-03",
+      "checkedOn": "2026-09-06",
+      "locator": "Page 1: interface, software read/write, reliability and packaging scope",
+      "scope": "Company account of standardization; not a complete specification review or production-readiness attestation."
+    },
+    {
+      "id": "depth-src-nand",
+      "title": "KIOXIA — NAND erase operations and latency",
+      "url": "https://www.kioxia.com/en-jp/rd/technology/topics/topics-51.html",
+      "publisher": "KIOXIA",
+      "published": "2023 technical research summary; living page",
+      "checkedOn": "2026-09-06",
+      "locator": "Page read/write versus block erase; suspension",
+      "scope": "NAND mechanism and low-latency SSD research, not numerical HBF latency or endurance specifications."
+    },
+    {
+      "id": "depth-src-zero",
+      "title": "DeepSpeed — ZeRO-Offload tutorial",
+      "url": "https://www.deepspeed.ai/tutorials/zero-offload/",
+      "publisher": "DeepSpeed",
+      "published": "Updated 2026-09-05",
+      "checkedOn": "2026-09-06",
+      "locator": "Overview; optimizer placement; CPU tuning",
+      "scope": "Documented CPU optimizer offload; system-specific throughput and numerical settings remain contextual."
+    },
+    {
+      "id": "depth-src-infinity",
+      "title": "ZeRO-Infinity: Breaking the GPU Memory Wall",
+      "url": "https://arxiv.org/abs/2104.07857",
+      "publisher": "Rajbhandari et al.",
+      "published": "2021-04-16",
+      "checkedOn": "2026-09-06",
+      "locator": "Heterogeneous GPU/CPU/NVMe state and transfer scheduling",
+      "scope": "Research software architecture; does not demonstrate a training system using HBF."
+    },
+    {
+      "id": "depth-src-inference",
+      "title": "NVIDIA — Mastering LLM Techniques: Inference Optimization",
+      "url": "https://developer.nvidia.com/blog/mastering-llm-techniques-inference-optimization/",
+      "publisher": "NVIDIA",
+      "published": "Living technical article; checked 2026-09-06",
+      "checkedOn": "2026-09-06",
+      "locator": "Prefill, decode, memory capacity and batching",
+      "scope": "Mechanisms are configuration-dependent; no generic end-to-end performance guarantee."
+    },
+    {
+      "id": "depth-src-moe",
+      "title": "DeepSpeed — MoE inference",
+      "url": "https://www.deepspeed.ai/tutorials/mixture-of-experts-inference/",
+      "publisher": "DeepSpeed",
+      "published": "Living tutorial; checked 2026-09-06",
+      "checkedOn": "2026-09-06",
+      "locator": "Expert parallelism, expert slicing and communication scheduling",
+      "scope": "Documented distributed MoE concepts; HBF expert offload is an atlas scenario, not a claimed deployment."
+    },
+    {
+      "id": "depth-src-rack",
+      "title": "NVIDIA — DGX GB rack hardware guide",
+      "url": "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html",
+      "publisher": "NVIDIA",
+      "published": "Living product guide; checked 2026-09-06",
+      "checkedOn": "2026-09-06",
+      "locator": "Compute trays, switch trays and rack service boundaries",
+      "scope": "Named reference architecture, not a universal AI rack."
+    },
+    {
+      "id": "depth-src-heat",
+      "title": "MIT OpenCourseWare — Introduction to Heat Transfer",
+      "url": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/",
+      "publisher": "MIT",
+      "published": "Fall 2015",
+      "checkedOn": "2026-09-06",
+      "locator": "Conduction, thermal resistance and energy balance",
+      "scope": "General heat-transfer foundations; atlas numerical examples are synthetic."
+    },
+    {
+      "id": "depth-src-ucie",
+      "title": "UCIe — introduction Q&A recap",
+      "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+      "publisher": "UCIe Consortium",
+      "published": "Living technical reference",
+      "checkedOn": "2026-09-06",
+      "locator": "Initialization, protocol options and interoperability",
+      "scope": "Common interface framework does not prove any arbitrary chiplet pair is qualified."
+    },
+    {
+      "id": "depth-src-crg",
+      "title": "Semi AI Foundry — Communication Theory of Computation Realization",
+      "url": "https://semiaifoundry.com/updates/communication-theory-of-computation-realization/",
+      "publisher": "Semi AI Foundry, LLC",
+      "published": "Research framing; checked 2026-09-06",
+      "checkedOn": "2026-09-06",
+      "locator": "Representation and physical realization boundaries",
+      "scope": "Use as an attributed research framing; no new universal theorem or performance validation is asserted here."
+    }
+  ]
+}
