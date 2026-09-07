@@ -4119,7 +4119,7 @@
       "name": "HBM silicon intensity and allocation",
       "shortName": "HBM silicon intensity and allocation",
       "role": "Estimates wafer demand per delivered bit without double-counting embedded yield losses.",
-      "description": "HBM requires silicon for memory arrays, peripheral circuits, vertical connections and base-die functions, followed by thinning, stacking and test. A stack’s footprint hides the area of its multiple dies. Silicon intensity can mean geometric area per bit or empirical wafer supply per delivered bit: different accounting methods. The geometric route explicitly applies relevant yields. An empirical ratio may already include those losses and must not receive them again. This lesson converts memory requirements into a consistent supply boundary while keeping a indexed Micron figure pending direct original-document verification.",
+      "description": "HBM requires silicon for memory arrays, peripheral circuits, vertical connections and base-die functions, followed by thinning, stacking and test. A stack’s footprint hides the area of its multiple dies. Silicon intensity can mean geometric area per bit or empirical wafer supply per delivered bit: different accounting methods. The geometric route explicitly applies relevant yields. An empirical ratio may already include those losses and must not receive them again. This lesson converts memory requirements into a consistent supply boundary with a dated supplier comparison whose denominator is kept explicit.",
       "specs": [
         {
           "label": "Geometric method",
@@ -4159,8 +4159,8 @@
       ],
       "sources": [
         {
-          "title": "Micron — FY Q2 2024 prepared remarks, legacy attachment",
-          "url": "https://investors.micron.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5"
+          "title": "Micron — FY Q2 2024 prepared remarks, page 6",
+          "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5"
         },
         {
           "title": "SK hynix — TSMC collaboration on HBM",
@@ -4213,7 +4213,7 @@
       "workstream": "W06",
       "visualFamily": "capacity-flow",
       "engineeringExample": "Synthetic empirical case: two wafer-equivalents per unit of tested-stack bits and ten units of demand require twenty wafer-equivalents. Applying a stack yield already embedded in that intensity would overstate demand.",
-      "evidenceNotes": "Micron’s legacy FY Q2/Q3 2024 attachment URLs redirect. Indexed wording does not release the exact multiplier; the claim remains unresolved with no production default."
+      "evidenceNotes": "Micron’s March 20, 2024 prepared remarks, page 6, report approximately 3× wafer supply for HBM3E versus DDR5 at equal bits and the same technology node. This historical supplier statement does not establish a universal generation-independent factor, package footprint or current customer allocation. The lab keeps synthetic inputs and does not add losses already embedded in an empirical ratio."
     }
   ],
   "milestones": [
@@ -4482,21 +4482,21 @@
     },
     {
       "id": "fab-claim-micron-intensity-pending",
-      "title": "Historical HBM3E silicon-intensity figure remains gated",
-      "statement": "The legacy Micron HBM3E-to-DDR5 wafer-supply comparison is pending direct recovery of the migrated original prepared-remarks attachment.",
+      "title": "Historical HBM3E wafer-supply comparison",
+      "statement": "In its March 20, 2024 prepared remarks, Micron reported that HBM3E needed approximately three times DDR5 wafer supply for equal bit output at the same technology node.",
       "sourceId": "fab-src-micron-pending",
       "lessonIds": [
         "hbm-silicon-intensity"
       ],
-      "status": "unresolved",
+      "status": "reported",
       "metric": "Wafer-supply intensity comparison",
-      "value": "",
-      "unit": "",
-      "denominator": "Equal bits at the same technology node, as described in indexed text",
+      "value": "approximately 3",
+      "unit": "ratio",
+      "denominator": "Equal bit output at the same technology node",
       "period": "FY Q2 2024 prepared remarks, 2024-03-20",
       "scope": "Historical HBM3E versus D5/DDR5 comparison",
-      "limitations": "Legacy Q2 and Q3 attachment links redirect. Indexed 3× wording is not treated as directly verified original evidence, and no numeric lab default is released. The metric is not package footprint or a universal HBM multiplier.",
-      "checkedOn": "2026-09-06"
+      "limitations": "Historical manufacturer-reported comparison, not an independent wafer-fab measurement. The remarks do not itemize individual die, stacking or test losses; do not apply those again without a separate boundary. It is neither package footprint nor a universal multiplier for all HBM generations, and no production lab default is inferred.",
+      "checkedOn": "2026-09-07"
     },
     {
       "id": "fab-claim-hbm-base-collaboration",
@@ -4769,13 +4769,13 @@
     },
     {
       "id": "fab-src-micron-pending",
-      "title": "Micron — FY Q2 2024 prepared remarks, legacy attachment",
-      "url": "https://investors.micron.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+      "title": "Micron — FY Q2 2024 prepared remarks, page 6",
+      "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
       "publisher": "Micron",
       "published": "2024-03-20",
-      "checkedOn": "2026-09-06",
-      "locator": "Legacy attachment redirects to investor overview when opened on 2026-09-06",
-      "scope": "Original attachment migration unresolved. Indexed descriptions alone are insufficient for a released numeric default."
+      "checkedOn": "2026-09-07",
+      "locator": "Page 6, Turning to supply, paragraph beginning As discussed previously",
+      "scope": "Dated supplier comparison of wafer supply for equal bits and the same node. HBM4 language in the following sentence is a forecast, not a measured comparison."
     },
     {
       "id": "fab-src-amkor-flip",

@@ -3,10 +3,10 @@ import {pathToFileURL} from 'node:url';
 import assert from 'node:assert/strict';
 const base=process.cwd();const ts=(await import('typescript')).default;
 const baseline=JSON.parse(fs.readFileSync('src/lib/data/records.json','utf8'));
-const packs=['fabrication','architecture','infrastructure','crg','infrastructure-depth'].map(n=>JSON.parse(fs.readFileSync('src/lib/data/'+n+'.json','utf8')));
+
 
 const {loadAuthoredAtlas}=await import('./atlas-authoring.mjs');
-const {chapters,journeys,records:data}=await loadAuthoredAtlas();
+const {chapters,journeys,records:data,contentPacks:packs}=await loadAuthoredAtlas();
 const {buildModel}=await import(pathToFileURL(base+'/src/lib/scene-models.ts').href);const math=await import(pathToFileURL(base+'/src/lib/lab-math.ts').href);
 const ids=new Set(data.map(r=>r.id));assert.equal(ids.size,data.length,'Unique IDs');const assigned=chapters.flatMap(c=>c.ids);const missing=assigned.filter(id=>!ids.has(id));const unassigned=[...ids].filter(id=>!assigned.includes(id));console.log('Missing records:',missing,'Unassigned:',unassigned);assert.deepEqual(missing,[]);assert.deepEqual(unassigned,[]);
 const missingScene=[];for(const r of data){assert.ok(r.mechanism?.length>=3,r.id+' mechanism');assert.ok(r.science?.length,r.id+' science');assert.ok(r.sources?.length,r.id+' source');assert.ok(r.check?.options.length===3,r.id+' quiz');assert.ok(r.check.answer>=0&&r.check.answer<3,r.id+' answer');for(const ref of r.sources)assert.ok(ref.url.startsWith('https://'));const c=chapters.find(c=>c.ids.includes(r.id));const model=buildModel(c.scene,r.id,c.ids);if(!model.groups.some(g=>g.userData.id===r.id&&g.children.length))missingScene.push(r.id);assert.ok(Number.isFinite(model.boxBounds.min.x)&&Number.isFinite(model.boxBounds.max.y),r.id+' bounds');const geo=new Set(),mat=new Set();model.root.traverse(o=>{if(o.geometry)geo.add(o.geometry);if(o.material)(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>mat.add(m));});geo.forEach(g=>g.dispose());mat.forEach(m=>m.dispose());}

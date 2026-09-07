@@ -1,0 +1,227 @@
+{
+  "record": {
+    "id": "hbm-silicon-intensity",
+    "level": "package",
+    "name": "HBM silicon intensity and allocation",
+    "shortName": "HBM silicon intensity and allocation",
+    "role": "Estimates wafer demand per delivered bit without double-counting embedded yield losses.",
+    "description": "HBM requires silicon for memory arrays, peripheral circuits, vertical connections and base-die functions, followed by thinning, stacking and test. A stack’s footprint hides the area of its multiple dies. Silicon intensity can mean geometric area per bit or empirical wafer supply per delivered bit: different accounting methods. The geometric route explicitly applies relevant yields. An empirical ratio may already include those losses and must not receive them again. This lesson converts memory requirements into a consistent supply boundary with a dated supplier comparison whose denominator is kept explicit.",
+    "specs": [
+      {
+        "label": "Geometric method",
+        "value": "Area per gross bit plus explicit yields",
+        "context": "Separate memory and logic-process base-die wafer requirements."
+      },
+      {
+        "label": "Empirical method",
+        "value": "Wafer supply per delivered bit",
+        "context": "State generation, node, output boundary and included losses."
+      },
+      {
+        "label": "Different quantities",
+        "value": "Footprint, summed silicon area and delivered capacity",
+        "context": "Stack height and package area alone cannot measure wafer demand."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Memory requirement and scoped model",
+        "direction": "in",
+        "signal": "Target bits, product configuration and nonoverlapping yield/intensity assumptions"
+      },
+      {
+        "name": "Normalized manufacturing demand",
+        "direction": "out",
+        "signal": "Wafer-equivalent or good-stack requirements over a stated period"
+      }
+    ],
+    "tradeoff": "More capacity or bandwidth can consume additional wafer and assembly resources; architecture and memory-traffic improvements can reduce demand.",
+    "whyAI": "HBM can limit deployable accelerators even when logic wafers are available, connecting model memory requirements to manufacturing allocation.",
+    "related": [
+      "yield-wafer-defect-model",
+      "hbm-stack-assembly-test",
+      "hbm-channel-generation-ras",
+      "fab-ramp-cycle-time"
+    ],
+    "sources": [
+      {
+        "title": "Micron — FY Q2 2024 prepared remarks, page 6",
+        "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5"
+      },
+      {
+        "title": "SK hynix — TSMC collaboration on HBM",
+        "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/"
+      },
+      {
+        "title": "DISCO — Tech Briefing 2023",
+        "url": "https://disco.co.jp/jp/ir/movie/doc/E_Tech_Briefing_2023.pdf"
+      },
+      {
+        "title": "Micron — HBM3E",
+        "url": "https://www.micron.com/products/memory/hbm/hbm3e"
+      }
+    ],
+    "scale": "Memory channels, package links and wafer-supply accounting",
+    "kind": "integration",
+    "branch": "Memory / HBM system constraints",
+    "subbranch": "HBM interfaces, generations and silicon intensity",
+    "mechanism": [
+      "Specify gross, good-die, tested-stack or package-delivered bits as the output boundary.",
+      "For geometry, sum die area and apply explicitly defined, nonoverlapping yield losses.",
+      "For empirical intensity, determine which wafer-to-output losses the reported ratio already includes.",
+      "Calculate separate memory and base-die process demands without applying any loss twice.",
+      "Compare stack demand with logic, substrate and assembly constraints before predicting delivered accelerators."
+    ],
+    "misconception": "Wafer-supply intensity is neither package footprint nor a universal multiplier across HBM generations.",
+    "check": {
+      "question": "When is applying an extra stack-yield penalty to an empirical wafer/output-bit ratio justified?",
+      "options": [
+        "Never for any geometric model either",
+        "Only when that ratio demonstrably excludes the stack loss",
+        "Always, because more factors improve accuracy"
+      ],
+      "answer": 1,
+      "explanation": "The starting metric’s denominator and included losses determine which additional factors are legitimate."
+    },
+    "science": [
+      {
+        "title": "Two alternative demand models",
+        "equation": "Geometric: W ≈ B_target a_bit/(A_usable Y); empirical: W = B_target I_emp",
+        "explanation": "B_target is target output bits, a_bit gross silicon area/bit, A_usable effective wafer area, Y the explicitly modeled nonoverlapping survival, and I_emp wafers/output bit.",
+        "assumptions": "Account separately for packing, redundancy and logic-process base dies; do not combine these alternative formulas blindly."
+      }
+    ],
+    "prerequisites": [
+      "yield-wafer-defect-model",
+      "hbm-stack-assembly-test"
+    ],
+    "learningObjective": "Choose a consistent HBM silicon-intensity method and avoid duplicated yield penalties.",
+    "workstream": "W06",
+    "visualFamily": "capacity-flow",
+    "engineeringExample": "Synthetic empirical case: two wafer-equivalents per unit of tested-stack bits and ten units of demand require twenty wafer-equivalents. Applying a stack yield already embedded in that intensity would overstate demand.",
+    "evidenceNotes": "Micron’s March 20, 2024 prepared remarks, page 6, report approximately 3× wafer supply for HBM3E versus DDR5 at equal bits and the same technology node. This historical supplier statement does not establish a universal generation-independent factor, package footprint or current customer allocation. The lab keeps synthetic inputs and does not add losses already embedded in an empirical ratio.",
+    "labId": "engineering",
+    "scope": "Compare a synthetic geometric area ratio with an output-normalized supply ratio without applying the same yield loss twice.",
+    "deepLabId": "hbm",
+    "investigationId": "manufacturing",
+    "labScope": "Compare a synthetic geometric area ratio with an output-normalized supply ratio without applying the same yield loss twice."
+  },
+  "chapter": {
+    "id": "deep-hbm-interface-supply",
+    "domainId": "packaging-machines",
+    "read": "Follow the physical state, inspect the engineering model, then test the explanation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}\\text{Geometric:}\\quad W&\\approx\\frac{B_{\\mathrm{target}}a_{\\mathrm{bit}}}{A_{\\mathrm{usable}}Y}\\\\\\text{Empirical:}\\quad W&=B_{\\mathrm{target}}I_{\\mathrm{emp}}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "W",
+          "meaning": "Wafer requirement under the selected alternative model",
+          "unit": "wafers"
+        },
+        {
+          "symbol": "B_target",
+          "meaning": "Target delivered output bits",
+          "unit": "bits"
+        },
+        {
+          "symbol": "a_bit",
+          "meaning": "Gross silicon area per bit under the geometric convention",
+          "unit": "mm²/bit"
+        },
+        {
+          "symbol": "A_usable",
+          "meaning": "Effective usable area per wafer",
+          "unit": "mm²/wafer"
+        },
+        {
+          "symbol": "Y",
+          "meaning": "Explicit nonoverlapping survival fraction excluded from a_bit",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "I_emp",
+          "meaning": "Empirical wafer requirement per delivered output bit",
+          "unit": "wafers/output bit"
+        }
+      ],
+      "text": "The geometric model divides target bits times gross area per bit by usable wafer area and an explicitly separate survival fraction. The alternative empirical model multiplies target output bits by measured wafers per output bit.",
+      "note": "These are alternative models. An empirical output-bit intensity may already include yield; do not add the same loss again."
+    }
+  ],
+  "contentFingerprint": "1b4390556192fe34236e6a9912d8f6ec207a08bb096ca449b66d15f4c1e0ed6b",
+  "claims": [
+    {
+      "id": "fab-claim-micron-intensity-pending",
+      "title": "Historical HBM3E wafer-supply comparison",
+      "statement": "In its March 20, 2024 prepared remarks, Micron reported that HBM3E needed approximately three times DDR5 wafer supply for equal bit output at the same technology node.",
+      "sourceId": "fab-src-micron-pending",
+      "lessonIds": [
+        "hbm-silicon-intensity"
+      ],
+      "status": "reported",
+      "metric": "Wafer-supply intensity comparison",
+      "value": "approximately 3",
+      "unit": "ratio",
+      "denominator": "Equal bit output at the same technology node",
+      "period": "FY Q2 2024 prepared remarks, 2024-03-20",
+      "scope": "Historical HBM3E versus D5/DDR5 comparison",
+      "limitations": "Historical manufacturer-reported comparison, not an independent wafer-fab measurement. The remarks do not itemize individual die, stacking or test losses; do not apply those again without a separate boundary. It is neither package footprint nor a universal multiplier for all HBM generations, and no production lab default is inferred.",
+      "urlSourceId": "url-f4f45053d1a6f5b9080a",
+      "inheritedCheckedOn": "2026-09-07",
+      "dateBasis": "Copied from existing claim ledger; not a review performed by this task.",
+      "supersedesClaimId": null,
+      "supersededByClaimId": null,
+      "reviewEventIds": []
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "url-f4f45053d1a6f5b9080a",
+      "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+      "title": "Micron — FY Q2 2024 prepared remarks, page 6",
+      "contexts": [
+        {
+          "field": "sources"
+        },
+        {
+          "field": "claim",
+          "claimId": "fab-claim-micron-intensity-pending",
+          "ledgerSourceId": "fab-src-micron-pending"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-dbd96dc7b5fd154235b2",
+      "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+      "title": "SK hynix — TSMC collaboration on HBM",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-e033a05c1723994e9007",
+      "url": "https://disco.co.jp/jp/ir/movie/doc/E_Tech_Briefing_2023.pdf",
+      "title": "DISCO — Tech Briefing 2023",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-d40dd97ba68c5279afc8",
+      "url": "https://www.micron.com/products/memory/hbm/hbm3e",
+      "title": "Micron — HBM3E",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    }
+  ]
+}

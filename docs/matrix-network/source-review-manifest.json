@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "experienceId": "network",
+  "modelVersion": "matrix-network-transfer-1",
+  "sourceModelVersion": "architecture-execution-1",
+  "actor": {
+    "type": "agent",
+    "id": "/root/curriculum_assessment"
+  },
+  "checkedAt": "2026-09-07",
+  "sources": [
+    {
+      "url": "https://www.gem5.org/documentation/general_docs/ruby/garnet-2/",
+      "locator": "Garnet 2.0: Configuration (ni_flit_size and buffers_per_data_vc); Network Components (NetworkLink/CreditLink); Flow Control; Buffer Management; Lifecycle of a Network Traversal, especially OutputUnit credit reception, SwitchAllocator credit decrement/return and NetworkLink latency",
+      "supports": "Flits as transfer granularity; finite buffer capacity communicated by credits; link traversal with explicit delay.",
+      "limits": "The authored single-link order, fixture failures, byte counts and MAC timing are not gem5 implementation or measured device performance. No virtual channels, routing, checksum, physical link framing or production protocol claims.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    }
+  ],
+  "checks": {
+    "unitsAndDenominators": "Actual source bytes, valid physical payload, padded slot bytes, unique accepted bytes, flit counts and credit reservations are kept separate. Every snapshot conserves credits and sends/arrivals/dequeues. All times are synthetic ticks.",
+    "modelAssumptions": "Fixed architecture-presets matrices, little-endian int32, one local and one transferred operand, FIFO/one-flit injection, positive return/transit delay, finite receiver service and pause. Omission happens before send; no random error rate/retry or hardware timing.",
+    "claimQualifiers": "Identity checks do not authenticate data. Wrong payload flows to actual MACs and is detected only by a separate original-matrix reference. Duplicate rejection frees its slot; incomplete operands never enter the consumer. No production protocol or physical device validation.",
+    "dependencyAndVisualScope": "Same matrix-two/three-int32-le-1 and A/B/C coordinate identities as existing selected-operation specimens. UI presents actual event prefix, counters, destination words and MACs; final reference/details explicitly distinguished from selected tick. The completeness API is shared by premature and normal requests."
+  },
+  "lessonIds": [
+    "on-chip-network",
+    "dma-visibility-ownership",
+    "sharded-matmul-ownership"
+  ],
+  "pending": [
+    "New network browser interaction review",
+    "Physical-device and assistive-technology observation",
+    "Human specialist and learner observation"
+  ],
+  "files": {
+    "src/lib/matrix-network.ts": "e6d5f181048406fc787de19cbad154873725c56958443c087e120f395451f08d",
+    "src/components/matrix-network.tsx": "492a10f2daed935ea3a90e6b87884e452adb7ca4a349b3453e7d00c6115b265b",
+    "src/components/matrix-network.css": "4a15f409743f12aabec8c642e267b0f922d2765e7b70393f4c577e5298884ec4",
+    "scripts/matrix-network.test.mjs": "ce1326234063617629e99b1626b1f6080e8ae97ed94794993667fd28bba049f0"
+  }
+}

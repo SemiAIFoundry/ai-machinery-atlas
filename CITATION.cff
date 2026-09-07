@@ -2,12 +2,12 @@ cff-version: 1.2.0
 message: "If you use AI Machinery Atlas in teaching or research, please cite this reference edition and cite the original sources for scientific claims."
 type: software
 title: "AI Machinery Atlas"
-abstract: "A human-directed, AI-assisted 3D learning platform tracing AI machinery from atoms and transistors through chip design, fabrication, packaging, HBM, processing architectures, infrastructure, software, and model intelligence. Includes 224 connected lessons, formal equations, numerical labs, cited history, the CRG computation-to-realization bridge, and The Ascent companion film."
+abstract: "A human-directed, AI-assisted 3D learning platform tracing AI machinery from atoms and transistors through chip design, fabrication, packaging, HBM, processing architectures, infrastructure, software, and model intelligence. Includes 311 connected lessons and 28 engineering experiences, formal equations, numerical labs, cited history, the CRG computation-to-realization bridge, actual model learning and automation, and The Ascent and Inside the machinery companion films."
 authors:
   - name: "Semi AI Foundry, LLC"
     website: "https://semiaifoundry.com/"
-version: 1.2.0
-date-released: 2026-09-06
+version: 1.3.0
+date-released: 2026-09-07
 url: "https://semiaifoundry.com/ai-atlas/"
 repository-code: "https://github.com/SemiAIFoundry/ai-machinery-atlas"
 license-url: "https://semiaifoundry.com/ai-atlas/LICENSE.txt"

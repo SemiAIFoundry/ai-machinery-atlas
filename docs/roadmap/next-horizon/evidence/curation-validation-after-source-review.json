@@ -1,0 +1,51 @@
+{
+  "status": "pass",
+  "validatedAt": "2026-09-07T22:49:22.392Z",
+  "asOf": "2026-09-07",
+  "repositoryRead": "SemiAIFoundry/ai-machinery-atlas",
+  "lessons": 311,
+  "distinctSourceUrls": 364,
+  "uniqueLessonSourcePairs": 659,
+  "inheritedLedgerRecords": 205,
+  "structuredClaims": 96,
+  "claimLinkedLessons": 108,
+  "lessonScopesWithNumericWorkedExample": 258,
+  "sourceVerificationDatesCreated": 0,
+  "reviewCompletionDatesCreated": 0,
+  "recordedReviewEvents": 23,
+  "bySensitivity": {
+    "implementation-sensitive": 130,
+    "product-generation-sensitive": 60,
+    "research-sensitive": 72,
+    "stable-principle": 34,
+    "status-sensitive": 15
+  },
+  "byPriority": {
+    "high": 87,
+    "normal": 224
+  },
+  "byRole": {
+    "computation-realization-research-reviewer": 7,
+    "computer-architecture-reviewer": 45,
+    "infrastructure-engineering-reviewer": 32,
+    "ml-methods-reviewer": 77,
+    "ml-systems-reviewer": 47,
+    "packaging-systems-reviewer": 50,
+    "semiconductor-process-reviewer": 31,
+    "solid-state-device-reviewer": 15,
+    "space-systems-reviewer": 7
+  },
+  "validations": [
+    "Exact current-corpus ID coverage; unique URL identifiers and inherited ledger/claim identities.",
+    "Current merged content and formal equation fingerprints; exact copied scope, dates, references and claim qualifiers.",
+    "Stable domain, chapter, prerequisite, related, journey, lab, deep-lab, investigation and engineering relation links match current atlas.",
+    "Complete reverse source-use index and acyclic prerequisite graph.",
+    "Generated manifest baseline fields retain null assignments/review dates; actual source-scope events are validated separately.",
+    "Freshness distinguishes unreviewed content, elapsed review interval, changed content and changes required; rejects future review dates."
+  ],
+  "limitations": [
+    "No live link accessibility or source-support verification was performed.",
+    "Proposed roles and intervals are editorial planning choices, not assignments or specialist approval.",
+    "Structured claim coverage is counted at lesson level and does not certify every numerical specification."
+  ]
+}

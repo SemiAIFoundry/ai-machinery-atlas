@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "approvedPlan": "docs/model-lifecycle/curriculum/model-candidates.json",
+  "asOf": "2026-09-07",
+  "entries": [
+    {
+      "id": "training-data",
+      "action": "deepen",
+      "family": "data"
+    },
+    {
+      "id": "tokenizer",
+      "action": "deepen",
+      "family": "data"
+    },
+    {
+      "id": "data-quality-dedup-audit",
+      "action": "new",
+      "family": "data"
+    },
+    {
+      "id": "data-mixture-sampling",
+      "action": "new",
+      "family": "data"
+    },
+    {
+      "id": "sequence-packing-loss-denominators",
+      "action": "new",
+      "family": "data"
+    },
+    {
+      "id": "synthetic-data-selection-feedback",
+      "action": "new",
+      "family": "data"
+    },
+    {
+      "id": "data-coverage-language-slices",
+      "action": "new",
+      "family": "data"
+    },
+    {
+      "id": "embedding",
+      "action": "deepen",
+      "family": "base-model"
+    },
+    {
+      "id": "attention",
+      "action": "deepen",
+      "family": "base-model"
+    },
+    {
+      "id": "feed-forward",
+      "action": "deepen",
+      "family": "base-model"
+    },
+    {
+      "id": "residual-normalization",
+      "action": "deepen",
+      "family": "base-model"
+    },
+    {
+      "id": "output-head",
+      "action": "deepen",
+      "family": "base-model"
+    },
+    {
+      "id": "reverse-mode-autodiff",
+      "action": "new",
+      "family": "base-model"
+    },
+    {
+      "id": "tiny-causal-decoder",
+      "action": "new",
+      "family": "base-model"
+    },
+    {
+      "id": "moe",
+      "action": "deepen",
+      "family": "base-model"
+    },
+    {
+      "id": "loss-optimizer",
+      "action": "deepen",
+      "family": "pretraining"
+    },
+    {
+      "id": "causal-pretraining-objective",
+      "action": "new",
+      "family": "pretraining"
+    },
+    {
+      "id": "optimizer-schedule-stability",
+      "action": "new",
+      "family": "pretraining"
+    },
+    {
+      "id": "microbatch-equivalent-updates",
+      "action": "new",
+      "family": "pretraining"
+    },
+    {
+      "id": "checkpoint",
+      "action": "deepen",
+      "family": "pretraining"
+    },
+    {
+      "id": "training-memory-state",
+      "action": "deepen",
+      "family": "pretraining"
+    },
+    {
+      "id": "scaling-laws",
+      "action": "deepen",
+      "family": "pretraining"
+    },
+    {
+      "id": "model-lifecycle-stage-contract",
+      "action": "new",
+      "family": "continuation"
+    },
+    {
+      "id": "domain-adaptive-continuation",
+      "action": "new",
+      "family": "continuation"
+    },
+    {
+      "id": "replay-retention-forgetting",
+      "action": "new",
+      "family": "continuation"
+    },
+    {
+      "id": "long-context-adaptation",
+      "action": "new",
+      "family": "continuation"
+    },
+    {
+      "id": "checkpoint-averaging-boundaries",
+      "action": "new",
+      "family": "continuation"
+    },
+    {
+      "id": "post-training",
+      "action": "deepen",
+      "family": "posttraining"
+    },
+    {
+      "id": "sft-chat-loss-masks",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "preference-reward-model",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "direct-preference-objective",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "policy-gradient-kl-control",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "verifiable-reward-group-updates",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "reward-proxy-overoptimization",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "low-rank-adaptation",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "teacher-student-distillation",
+      "action": "new",
+      "family": "posttraining"
+    },
+    {
+      "id": "evaluation",
+      "action": "deepen",
+      "family": "evaluation"
+    },
+    {
+      "id": "probability-calibration-abstention",
+      "action": "new",
+      "family": "evaluation"
+    },
+    {
+      "id": "judge-rubric-agreement",
+      "action": "new",
+      "family": "evaluation"
+    },
+    {
+      "id": "retrieval-supported-generation",
+      "action": "new",
+      "family": "evaluation"
+    },
+    {
+      "id": "tool-loop",
+      "action": "deepen",
+      "family": "evaluation"
+    },
+    {
+      "id": "test-time-search-verification",
+      "action": "new",
+      "family": "evaluation"
+    },
+    {
+      "id": "model-system-regression-contract",
+      "action": "new",
+      "family": "evaluation"
+    },
+    {
+      "id": "image-text-contrastive-learning",
+      "action": "new",
+      "family": "multimodal"
+    },
+    {
+      "id": "visual-language-bridge",
+      "action": "new",
+      "family": "multimodal"
+    },
+    {
+      "id": "speech-audio-sequence-objectives",
+      "action": "new",
+      "family": "multimodal"
+    },
+    {
+      "id": "denoising-generative-objectives",
+      "action": "new",
+      "family": "multimodal"
+    },
+    {
+      "id": "video-latent-prediction",
+      "action": "new",
+      "family": "multimodal"
+    },
+    {
+      "id": "action-conditioned-world-model",
+      "action": "new",
+      "family": "world-action"
+    },
+    {
+      "id": "imagined-rollouts-policy-learning",
+      "action": "new",
+      "family": "world-action"
+    },
+    {
+      "id": "vision-language-action-interface",
+      "action": "new",
+      "family": "world-action"
+    },
+    {
+      "id": "diffusion-action-horizon",
+      "action": "new",
+      "family": "world-action"
+    }
+  ],
+  "approvedPlanSha256": "330dd5a150f350e63a5af21c7588b4e871686341191b90318a03f550e58551c6"
+}

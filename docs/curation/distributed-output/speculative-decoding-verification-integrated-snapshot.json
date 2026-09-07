@@ -1,0 +1,277 @@
+{
+  "record": {
+    "id": "speculative-decoding-verification",
+    "name": "Speculative decoding: proposals and verified output",
+    "shortName": "Draft, verify and correct",
+    "role": "Account for target-distributed output tokens while separating draft work, verification and actual elapsed time.",
+    "description": "A draft model can propose several next tokens cheaply, but proposals are not yet accepted output. In strict speculative sampling, the target model evaluates the relevant conditional distributions and verifies the draft sequence in order. A proposal is accepted with a probability determined by the target-to-draft probability ratio. The first rejected position is corrected using the positive residual between the two distributions, and later proposals from that speculative branch are discarded. When all proposals are accepted, one additional target token can be emitted. This procedure preserves the target sampling distribution under its stated assumptions; it does not establish factual truth or force the same sampled text from the same random seed. The benefit can come from evaluating several target positions together and reusing data movement, while draft work, rejected work and additional state still consume resources. The exact three-symbol example below checks the sampling correction before considering a separately assumed timing budget.",
+    "mechanism": [
+      "Use target p and draft q distributions over the same token events and the same valid prefix, including any declared sampling transforms.",
+      "Sample a proposal x from q; when q(x)>0, accept it with probability min(1,p(x)/q(x)). A symbol with q(x)=0 cannot be proposed.",
+      "After the first rejection, sample a correction from normalized max(p−q,0) at that prefix and discard the later speculative branch.",
+      "If all γ proposals are accepted, draw the extra token from the target distribution conditioned on the full accepted prefix.",
+      "Count accepted prefix tokens plus the one correction or bonus token as output; count draft proposals and rejected target work separately.",
+      "Measure draft, target-verification, synchronization and state-management time on the actual workload before claiming a speedup. Distributional equivalence remains separate from factual or task correctness."
+    ],
+    "prerequisites": [
+      "output-head",
+      "decode-bandwidth-trace",
+      "kv-cache",
+      "evaluation"
+    ],
+    "related": [
+      "prefill-resource-trace",
+      "disaggregated-serving",
+      "runtime-device-dispatch",
+      "memory-working-set-placement"
+    ],
+    "specs": [
+      {
+        "label": "Preserved quantity",
+        "value": "Target sampling distribution",
+        "context": "Ideal strict correction; not a guarantee of the same random sample or true statements."
+      },
+      {
+        "label": "Output per verification",
+        "value": "1 through γ+1 tokens before stopping rules",
+        "context": "Accepted prefix plus a correction or a target bonus."
+      },
+      {
+        "label": "Resource boundary",
+        "value": "Draft and verification both cost work",
+        "context": "Batch verification latency is an implementation measurement, not implied by token count."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Aligned target and draft distributions",
+        "direction": "in",
+        "signal": "Prefix-conditioned token probabilities and proposal sequence"
+      },
+      {
+        "name": "Verified continuation",
+        "direction": "out",
+        "signal": "Accepted prefix and corrected or bonus target token"
+      }
+    ],
+    "science": [
+      {
+        "title": "Acceptance and rejection correction",
+        "equation": "a(x)=min(1,p(x)/q(x)); r(x)=[p(x)−q(x)]+ / Σy[p(y)−q(y)]+",
+        "explanation": "For a proposed symbol, accept with a(x). After a rejection, sample from residual r. Total acceptance probability is α=Σx min(p(x),q(x)).",
+        "assumptions": "Finite normalized distributions with q(x)>0 for a proposed x. Use r only when its denominator is positive; if p=q no rejection occurs. Exact probability arithmetic and consistent prefixes are assumed."
+      },
+      {
+        "title": "Output count in the iid acceptance scenario",
+        "equation": "E[K] = Σj=0…γ αʲ; Rscenario = E[K]/(Tdraft + Tverify + Toverhead)",
+        "explanation": "K counts output tokens, including the correction or bonus. With iid acceptance probability α and no early stopping, the probability of accepting at least j proposals is αʲ.",
+        "assumptions": "The iid assumption is synthetic; actual acceptance varies with prefix. Time terms are separately declared seconds per verification round; no measured speedup, energy reduction or universal latency scaling is implied."
+      }
+    ],
+    "engineeringExample": "For symbols A/B/C, choose target p=[0.6,0.3,0.1] and draft q=[0.2,0.3,0.5]. Conditional acceptance is [1,1,0.2], so accepted probability mass is [0.2,0.3,0.1] and total α=0.6. The rejected mass is 0.4; normalized positive residual p−q is [1,0,0], so every correction in this toy case is A. The final output distribution is [0.2,0.3,0.1]+0.4×[1,0,0]=[0.6,0.3,0.1], exactly the target distribution. If γ=2 and acceptance events are independently 0.6 at both positions, output counts 1,2,3 have probabilities 0.4,0.24,0.36. Thus E[K]=1.96 tokens. Separately assume the two draft steps together take 2 ms, target verification 6 ms and overhead 1 ms: 1.96/0.009≈217.8 output tokens/s. A 6 ms single-token baseline would be 166.7 tokens/s under those assumptions. At 12 ms verification, the speculative scenario instead gives 130.7 tokens/s. Neither timing is measured or taken from the paper; acceptance alone does not establish acceleration.",
+    "learningObjective": "Recover the target distribution by exact probability accounting, then calculate output-per-round and a conditional throughput without treating proposals or assumptions as measured useful output.",
+    "misconception": "Accepting a draft token validates it against a sampling distribution, not against external facts; higher acceptance does not by itself prove lower latency.",
+    "check": {
+      "question": "In the stated toy distributions, a rejected proposal must be corrected from which distribution?",
+      "options": [
+        "The original draft [0.2,0.3,0.5]",
+        "The residual [1,0,0]",
+        "Any uniform distribution"
+      ],
+      "answer": 1,
+      "explanation": "The positive residual is [0.4,0,0], which normalizes to [1,0,0]. Adding its weighted contribution recovers the target probabilities."
+    },
+    "checks": [
+      {
+        "question": "Under iid α=0.6 with two proposals, what is the expected output count including correction or bonus?",
+        "options": [
+          "1.2",
+          "1.96",
+          "3"
+        ],
+        "answer": 1,
+        "explanation": "The count expectation is 1+0.6+0.36=1.96."
+      },
+      {
+        "question": "Does preserving p establish that sampled statements are true?",
+        "options": [
+          "Yes",
+          "No",
+          "Only when α=1"
+        ],
+        "answer": 1,
+        "explanation": "The target distribution can assign probability to factually wrong continuations."
+      }
+    ],
+    "whyAI": "Useful serving throughput counts the output that survives the verification algorithm and meets the task’s quality requirements. This connects decoding semantics, memory reuse and latency accounting.",
+    "tradeoff": "More proposals can expose useful parallel verification while increasing draft computation, temporary state and wasted work. Prefix-dependent acceptance and workload-specific target cost determine the result.",
+    "evidenceNotes": "The cited ICML paper establishes the strict correction algorithm and the explicitly iid output-count formula. The toy probabilities, output-count distribution and all millisecond values are authored. No private model, serving implementation, benchmark speedup or quality improvement is asserted.",
+    "sourceIds": [
+      "speculative-decoding-2023"
+    ],
+    "sources": [
+      {
+        "title": "Leviathan, Kalman and Matias — Fast Inference from Transformers via Speculative Decoding",
+        "url": "https://proceedings.mlr.press/v202/leviathan23a.html"
+      }
+    ],
+    "workedTrace": {
+      "id": "three-symbol-strict-correction",
+      "input": {
+        "symbols": [
+          "A",
+          "B",
+          "C"
+        ],
+        "target": [
+          0.6,
+          0.3,
+          0.1
+        ],
+        "draft": [
+          0.2,
+          0.3,
+          0.5
+        ],
+        "proposalCount": 2
+      },
+      "conditionalAcceptance": [
+        1,
+        1,
+        0.2
+      ],
+      "acceptedMass": [
+        0.2,
+        0.3,
+        0.1
+      ],
+      "acceptanceRate": 0.6,
+      "rejectionProbability": 0.4,
+      "correctionDistribution": [
+        1,
+        0,
+        0
+      ],
+      "outputDistribution": [
+        0.6,
+        0.3,
+        0.1
+      ],
+      "iidOutputCounts": {
+        "counts": [
+          1,
+          2,
+          3
+        ],
+        "probabilities": [
+          0.4,
+          0.24,
+          0.36
+        ],
+        "expected": 1.96
+      },
+      "timingAssumptions": {
+        "draftTotalMs": 2,
+        "verificationMs": 6,
+        "overheadMs": 1,
+        "baselineMsPerToken": 6
+      },
+      "conditionalTokensPerSecond": 217.77777777777777,
+      "slowerVerificationMs": 12,
+      "slowerConditionalTokensPerSecond": 130.66666666666666
+    },
+    "level": "software",
+    "branch": "Executable software",
+    "subbranch": "Distributed computation to useful output",
+    "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+    "kind": "system",
+    "workstream": "W11",
+    "visualFamily": "model-workload",
+    "labId": "kv",
+    "investigationId": "execution",
+    "labScope": "Explore the KV storage consequence of token length and concurrency. Draft/target acceptance and corrected sampling are worked explicitly in this lesson, not executed by the cache-size calculator.",
+    "history": [],
+    "scope": "Explore the KV storage consequence of token length and concurrency. Draft/target acceptance and corrected sampling are worked explicitly in this lesson, not executed by the cache-size calculator."
+  },
+  "chapter": {
+    "id": "distributed-output-bridges",
+    "domainId": "executable-software",
+    "read": "Follow the worked values and declared numerical contract. Software boxes denote dependencies and ownership, not physical layers or measured timing."
+  },
+  "formalEquations": [
+    {
+      "latex": "a(x)=\\min\\!\\left(1,\\frac{p(x)}{q(x)}\\right),\\qquad r(x)=\\frac{[p(x)-q(x)]_+}{\\sum_y[p(y)-q(y)]_+},\\qquad \\alpha=\\sum_x\\min(p(x),q(x))",
+      "text": "Accept a proposed symbol using the target-to-draft ratio capped at one. After rejection, sample from the normalized positive target-minus-draft residual. Acceptance mass sums the minimum of each pair of probabilities.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "p(x), q(x)",
+          "meaning": "Target and draft probabilities at the same prefix",
+          "unit": "probability"
+        },
+        {
+          "symbol": "a(x)",
+          "meaning": "Conditional acceptance probability for q(x)>0",
+          "unit": "probability"
+        },
+        {
+          "symbol": "r(x)",
+          "meaning": "Correction probability when residual mass is positive",
+          "unit": "probability"
+        },
+        {
+          "symbol": "[z]+",
+          "meaning": "Positive part max(z,0)",
+          "unit": "value"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Total proposal-acceptance probability at this prefix",
+          "unit": "probability"
+        }
+      ]
+    },
+    {
+      "latex": "\\mathbb{E}[K]=\\sum_{j=0}^{\\gamma}\\alpha^j,\\qquad R_{\\mathrm{scenario}}=\\frac{\\mathbb{E}[K]}{T_{\\mathrm{draft}}+T_{\\mathrm{verify}}+T_{\\mathrm{overhead}}}",
+      "text": "With iid acceptance and no early stop, expected output count is one plus powers of acceptance probability through the proposal count. Divide by the separately assumed total round time for a scenario token rate.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "K",
+          "meaning": "Output tokens, including the correction or bonus token",
+          "unit": "tokens/round"
+        },
+        {
+          "symbol": "γ",
+          "meaning": "Maximum draft proposals in a verification round",
+          "unit": "count"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Assumed identical independent acceptance probability",
+          "unit": "probability"
+        },
+        {
+          "symbol": "Tdraft",
+          "meaning": "Total draft time for the round",
+          "unit": "s/round"
+        },
+        {
+          "symbol": "Tverify",
+          "meaning": "Target verification time for the round",
+          "unit": "s/round"
+        },
+        {
+          "symbol": "Toverhead",
+          "meaning": "Other nonoverlapped round time",
+          "unit": "s/round"
+        },
+        {
+          "symbol": "Rscenario",
+          "meaning": "Output rate under the time assumptions",
+          "unit": "tokens/s"
+        }
+      ]
+    }
+  ]
+}

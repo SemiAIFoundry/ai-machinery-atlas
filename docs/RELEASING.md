@@ -16,7 +16,7 @@ Publish a draft only after its source and static archives match the tagged sourc
 
 ## 1. Review the source
 
-Confirm the package contains the application source, dependency lockfile, tests, build configuration, Research and Noncommercial License, NOTICE, commercial-use guidance, third-party notices, and documentation. Exclude dependency folders, caches, local paths, credentials, private Sites metadata, and unrelated workspace files.
+Confirm the package contains the application source, dependency lockfile, tests, build configuration, Research and Noncommercial License, NOTICE, commercial-use guidance, third-party notices, and documentation. Exclude dependency folders, caches, personal workspace paths, credentials, private Sites metadata, and unrelated workspace files. Reproduction evidence may preserve non-sensitive tool-installation paths, such as a system package-manager prefix, when they are part of checksummed tool output.
 
 Review the version in `package.json`, `CHANGELOG.md`, and `CITATION.cff`. Keep the citation URL pointed at the canonical atlas. Keep the verified repository URL synchronized across the README, package metadata, and citation metadata.
 
@@ -41,6 +41,7 @@ Before calling a deployment browser-verified, manually inspect a served producti
 - Component selection, field-guide tabs, search, guided paths, knowledge checks, and numerical labs work.
 - Scenes can be navigated and reset, with readable content when WebGL is unavailable or constrained.
 - The film opens and its controls, generated narration, and full-screen behavior work under the deployment’s content security policy.
+- The navigation companion loads, displays captions, seeks through chapter buttons and retains pause/play state; the host serves the MP4 with byte-range support. Instructor and realization ZIP downloads retain their checksummed contents.
 - Keyboard navigation, narrow layouts, and the motion controls remain usable.
 
 Use the [review kit](learning-review/README.md) for the three pilot investigations. Preserve its physical-device, specialist and learner gates before broader rollout. Record the browser and device used, any limitations, and whether optional WebMCP registration was exercised. If no browser check was performed, state that clearly.
@@ -54,7 +55,7 @@ Create two separate archives:
 
 Use versioned names such as `ai-machinery-atlas-<version>-source.zip` and `ai-machinery-atlas-<version>-static.zip`. Produce SHA-256 checksums for the final archives and verify them after copying. Include the exact source commit once the release repository exists.
 
-Review the unpacked source archive in a clean directory: the documented install, test, and build commands should work without access to the original workspace. Verify that no private project IDs, credentials, or absolute local paths have been exported.
+Review the unpacked source archive in a clean directory: the documented install, test, and build commands should work without access to the original workspace. Verify that no private project IDs, credentials, or personal workspace paths have been exported.
 
 ## 4. Publish to GitHub
 

@@ -1,0 +1,35 @@
+{
+  "method": "Actual CUA browser screenshots captured while navigating and manipulating the working atlas. Edited state sequence with reading pauses and original score; not an uninterrupted screen recording.",
+  "durationS": 60,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "captureBuild": {
+    "schemaVersion": 1,
+    "edition": "1.2.0",
+    "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+    "dirty": true,
+    "sourceSha256": "7f6f02277a38e7dabf6952a158a3b26c9c065aff978bcca84cef8f0197da37ca",
+    "contentSha256": "6e3baea782563a0f21c18f86036befb4f373248fcf081b73439ebcb187845804",
+    "modelVersions": {
+      "investigations": "atlas-investigations-1",
+      "processes": "process-mechanisms-1",
+      "learningPrompts": "investigation-prompts-1",
+      "architecture": "architecture-execution-1",
+      "fabrication": "atlas-fabrication-flow-1",
+      "operatingHall": "1",
+      "realization": "atlas-realization-1",
+      "memory": "atlas-memory-interfaces-1",
+      "sensor": "sensor-logistic-1",
+      "retrieval": "lexical-cited-answer-1",
+      "orbital": "1",
+      "progress": "progress-evidence-1",
+      "studioRecords": "atlas-studio-record-1"
+    },
+    "builtAt": "2026-09-07T17:59:57.536Z"
+  },
+  "music": "Open Horizons: original procedural AI Atlas score. No sampled song or recording. See original-score-notes.txt.",
+  "artifactSha256": "cb42920629f412a848cac1f27cee7faca2fec630760cbac73969fffcb00ea098"
+}

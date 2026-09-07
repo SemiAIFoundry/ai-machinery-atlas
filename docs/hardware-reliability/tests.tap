@@ -1,0 +1,30 @@
+✔ Gray pointer cycle changes exactly one bit and decodes all eight states (0.453584ms)
+✔ default FIFO delivers all eight tagged values with conservative full/empty stalls (0.675ms)
+✔ 360 clock/backpressure/reset scenarios retain exact ordering and cancellation accounting (9.37625ms)
+✔ simultaneous edges sample pre-edge opposite-domain pointers (0.114417ms)
+✔ coordinated reset cancels outstanding tags instead of claiming their delivery (0.107375ms)
+✔ reader-only reset produces an actual out-of-order counterexample (0.073792ms)
+✔ a short horizon reports remaining tags rather than declaring completion (0.088833ms)
+✔ all 16 valid codewords have zero checks and recover their four data bits (0.239125ms)
+✔ all 128 single-bit errors are corrected, including the overall parity bit (0.57425ms)
+✔ all 448 double-bit errors are detected and never supplied to the consumer (0.864417ms)
+✔ code construction agrees with a separately specified parity matrix (0.085708ms)
+✔ three-bit fixture can be miscorrected and its oracle mismatch remains explicit (0.444375ms)
+✔ double error restores a trusted checkpoint and recomputes lost work exactly once (0.148833ms)
+✔ recovery ledger holds for every fault step, checkpoint interval and payload (4.628708ms)
+✔ stop policy exposes completed versus checkpointed work and publishes no final result (0.060875ms)
+✔ healthy and correctable words need no restart (0.162667ms)
+✔ input and snapshots are copied; records restore only matching model identity (0.167083ms)
+✔ invalid clocks, reset bounds, bit patterns and sparse arrays reject (0.2205ms)
+✔ all codeword pairs establish minimum distance four (0.124334ms)
+✔ incompatible raw reliability records survive replacement exactly (0.119625ms)
+✔ backup quota failure preserves the prior active reliability record (0.115875ms)
+✔ corrupt recovery storage remains exportable and cannot be overwritten by save (0.064625ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 79.883875

@@ -1,0 +1,4 @@
+read_verilog adder.v
+synth_ice40 -top atlas_adder -json artifacts/mapped.json
+write_verilog -noattr artifacts/mapped.v
+stat

@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:42:57.383Z",
+  "contentFingerprint": "95fec33cf0bde46c4cbad76ad384f21e52220c55f8d94a695c3a578d706dda10",
+  "record": {
+    "id": "attention-io-tiling",
+    "level": "software",
+    "name": "IO-aware attention and online softmax",
+    "shortName": "IO-aware attention and online softmax",
+    "role": "Computes attention while reducing large intermediate transfers to outer memory.",
+    "description": "Standard attention can create a score matrix with one entry for each query–key pair. Materializing that matrix in HBM becomes expensive as sequence length grows. FlashAttention reorganizes the calculation into tiles, keeping useful intermediates in faster local memory and maintaining the normalization information needed to combine blocks. The algorithm still computes exact attention in its stated numerical setting; it is different from deleting attention connections or approximating the model. Backward computation can recompute some intermediates rather than storing them all. The benefit depends on the memory hierarchy, tile shape, sequence length and implementation, not simply on changing the name of the attention kernel.",
+    "specs": [
+      {
+        "label": "Score shape",
+        "value": "Tquery × Tkey",
+        "context": "Element count grows quadratically when both lengths scale together."
+      },
+      {
+        "label": "Exactness boundary",
+        "value": "Same mathematical attention with finite-precision effects",
+        "context": "Order and rounding can differ from another implementation."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Query, key and value tiles",
+        "direction": "in",
+        "signal": "Blocks staged from accelerator memory"
+      },
+      {
+        "name": "Attention output",
+        "direction": "out",
+        "signal": "Normalized weighted values without a full stored score matrix"
+      }
+    ],
+    "tradeoff": "Less outer-memory traffic can justify additional recomputation and local bookkeeping; oversized tiles can exhaust scratchpad or reduce execution residency.",
+    "whyAI": "Long contexts amplify intermediate-memory costs, so attention performance depends on IO organization as well as matrix arithmetic.",
+    "related": [
+      "attention",
+      "kernel-locality-fusion",
+      "gpu-occupancy-pipeline"
+    ],
+    "sources": [
+      {
+        "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+        "url": "https://arxiv.org/abs/2205.14135"
+      }
+    ],
+    "scale": "One model step to accelerator memory hierarchy",
+    "kind": "workload",
+    "branch": "Model–machine co-design",
+    "subbranch": "Training, prefill and decode",
+    "mechanism": [
+      "Partition query, key and value matrices into tiles that fit the chosen local-memory budget.",
+      "Form one score block and update stable running softmax statistics for the relevant query rows.",
+      "Accumulate weighted values while rescaling partial results when the running normalization changes.",
+      "Discard the temporary score block rather than writing the full score matrix to HBM.",
+      "Use the retained statistics and permitted recomputation for backward execution, then verify numerical outputs and measured traffic."
+    ],
+    "misconception": "IO-aware exact attention reduces materialized intermediates; it does not by itself reduce the quadratic number of dense attention pair interactions.",
+    "check": {
+      "question": "What is the main avoided object in tiled IO-aware attention?",
+      "options": [
+        "The full attention score/probability matrix in outer memory",
+        "All model weights",
+        "The causal relationship between tokens"
+      ],
+      "answer": 0,
+      "explanation": "Tiles and running normalization allow the result to be accumulated without retaining every pairwise score in HBM."
+    },
+    "science": [
+      {
+        "title": "Score storage",
+        "equation": "Mscore = Tquery Tkey s",
+        "explanation": "Tquery and Tkey count positions and s is bytes/score; Mscore is bytes for one dense score matrix.",
+        "assumptions": "One head and one request, no padding; causal storage and implementation fusion change actual allocation."
+      }
+    ],
+    "prerequisites": [
+      "attention",
+      "kernel-locality-fusion"
+    ],
+    "learningObjective": "Explain how tiling and online normalization reduce attention IO without confusing exact and sparse methods.",
+    "workstream": "W11",
+    "visualFamily": "model-workload",
+    "engineeringExample": "Synthetic one-head score matrix with 4,096 queries, 4,096 keys and two-byte scores has 33,554,432 bytes, or 32 MiB. Avoiding its materialization removes one large temporary, while keys, values and outputs still require storage.",
+    "evidenceNotes": "The example is a storage calculation, not a promised speedup. Exactness refers to the algorithm’s attention definition; finite-precision evaluation still needs testing.",
+    "labId": "library",
+    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "investigationId": "execution",
+    "labScope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+  },
+  "chapter": {
+    "id": "deep-workload-memory",
+    "band": 4,
+    "name": "Training, prefill and decode",
+    "parent": "Model–machine co-design",
+    "scene": "model-workload",
+    "scale": "One model step to accelerator memory hierarchy",
+    "title": "Training, prefill and decode",
+    "summary": "Explain distinct state lifetimes and data reuse in three workload phases.",
+    "ids": [
+      "training-memory-state",
+      "prefill-resource-trace",
+      "decode-bandwidth-trace",
+      "attention-io-tiling"
+    ],
+    "question": "Why does the same model have different bottlenecks?",
+    "read": "Compare bytes moved and state retained for a fixed model and precision.",
+    "domainId": "executable-software"
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "M_{\\mathrm{score}}=T_{\\mathrm{query}}T_{\\mathrm{key}}s",
+      "variables": [
+        {
+          "symbol": "M_score",
+          "meaning": "Dense score-matrix payload for one head and request",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "T_query",
+          "meaning": "Query-position count",
+          "unit": "positions"
+        },
+        {
+          "symbol": "T_key",
+          "meaning": "Key-position count",
+          "unit": "positions"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Stored bytes per score",
+          "unit": "bytes/score"
+        }
+      ],
+      "text": "A materialized dense score matrix contains query positions times key positions times bytes per score."
+    }
+  ],
+  "structuredClaims": [
+    {
+      "id": "arch-claim-flash-method",
+      "title": "IO-aware exact attention",
+      "statement": "FlashAttention uses tiling to reduce transfers between HBM and on-chip SRAM for exact attention.",
+      "sourceId": "arch-src-flash",
+      "lessonIds": [
+        "attention-io-tiling"
+      ],
+      "status": "research",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "Algorithm under its numerical and memory-model assumptions",
+      "period": "First preprint 27 May 2022; linked revision June 2022",
+      "scope": "Algorithmic mechanism; block-sparse extension is separately approximate",
+      "limitations": "No universal speedup claimed; target, shape, precision and baseline determine measured benefit.",
+      "checkedOn": "2026-09-06"
+    }
+  ],
+  "manifestLesson": {
+    "id": "attention-io-tiling",
+    "title": "IO-aware attention and online softmax",
+    "chapterId": "deep-workload-memory",
+    "domainId": "executable-software",
+    "workstream": "W11",
+    "contentFingerprint": "95fec33cf0bde46c4cbad76ad384f21e52220c55f8d94a695c3a578d706dda10",
+    "scope": {
+      "role": "Computes attention while reducing large intermediate transfers to outer memory.",
+      "learningObjective": "Explain how tiling and online normalization reduce attention IO without confusing exact and sparse methods.",
+      "scale": "One model step to accelerator memory hierarchy",
+      "evidenceNotes": "The example is a storage calculation, not a promised speedup. Exactness refers to the algorithm’s attention definition; finite-precision evaluation still needs testing.",
+      "workedExample": "Synthetic one-head score matrix with 4,096 queries, 4,096 keys and two-byte scores has 33,554,432 bytes, or 32 MiB. Avoiding its materialization removes one large temporary, while keys, values and outputs still require storage.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Score storage",
+          "assumptions": "One head and one request, no padding; causal storage and implementation fusion change actual allocation.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Compare bytes moved and state retained for a fixed model and precision."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-5727fed78bddc70147e9",
+        "url": "https://arxiv.org/abs/2205.14135",
+        "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "arch-claim-flash-method",
+            "ledgerSourceId": "arch-src-flash"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "arch-claim-flash-method"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "research"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "ml-systems-reviewer",
+        "label": "ML systems and compiler reviewer",
+        "focus": "Software/version scope, tensor and memory semantics, workload conditions and performance denominators."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Research framing, model validity and replication status require explicit limitations and follow-up evidence."
+      ],
+      "reviewFocus": [
+        "Software/version scope, tensor and memory semantics, workload conditions and performance denominators.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "attention",
+        "kernel-locality-fusion"
+      ],
+      "dependentLessonIds": [],
+      "relatedLessonIds": [
+        "attention",
+        "kernel-locality-fusion",
+        "gpu-occupancy-pipeline"
+      ],
+      "journeyIds": [],
+      "lab": {
+        "labId": "library",
+        "deepLabId": null,
+        "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+      },
+      "primaryInvestigationId": "execution",
+      "investigationIds": [
+        "execution"
+      ],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": [
+        "engineering-executes-kernel-attention"
+      ]
+    }
+  }
+}

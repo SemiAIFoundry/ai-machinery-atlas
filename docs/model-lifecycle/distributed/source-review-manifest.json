@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "experienceId": "distributed",
+  "modelVersion": "distributed-causal-gradient-2",
+  "sourceModelVersion": "causal-decoder-lifecycle-1",
+  "actor": {
+    "type": "agent",
+    "id": "/root/curriculum_assessment"
+  },
+  "checkedAt": "2026-09-07",
+  "publicationDates": "Not separately established by this review; versioned documentation URLs identify the checked scope.",
+  "sources": [
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.parallel.DistributedDataParallel.html",
+      "locator": "Notes on gradient averaging versus summed losses; gradient all-reduce and identical optimizer updates; constructor/forward/backward synchronization warnings",
+      "supports": "The need to match loss normalization and global optimizer semantics.",
+      "limits": "Our numerator reduction, fixed logical rank retries and single-process barrier are authored mechanisms, not a real DDP execution.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/elastic/run.html",
+      "locator": "Failure Modes; Membership Changes; Important Notices, including worker-group stop/restart, checkpoint recovery and non-stable RANK",
+      "supports": "Real worker-group failure boundaries and checkpoint restart differ from a fixed logical rank retry.",
+      "limits": "No TorchElastic/NCCL runtime is executed; no claim of production fault tolerance.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/notes/autograd.html",
+      "locator": "How autograd encodes history; saved tensors; backward differentiation",
+      "supports": "Reverse-mode history and derivative computation; actual core implementation is separately finite-difference tested.",
+      "limits": "No PyTorch implementation dependency or production equivalence.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html",
+      "locator": "Algorithm equations for first/second moments, bias correction and parameter update",
+      "supports": "Retained Adam state and one bias-corrected update after global clipping.",
+      "limits": "Constant learning rate, fixed beta coefficients, no weight decay; binary64 toy model.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+      "locator": "NCCL 2.31.2 rendered documentation: Collective Operations opening count/type contract; AllGather rank order and ReduceScatter equal-sized rank-indexed blocks",
+      "supports": "Logical rank ownership, ordered gathered buffers, equal padded block count; actual owner reduction and updated model reconstruction are independently tested in the authored model.",
+      "limits": "Not an NCCL implementation, network topology, performance benchmark or real worker failure guarantee. Diagnostic gradient gathering adds traffic; logical count excludes metadata, scalar synchronization and transport framing.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    }
+  ],
+  "checks": {
+    "unitsAndDenominators": "Actual target/sample numerators divide by global denominator, not owner size. 423 real coordinates; two ranks pad one non-parameter zero. Logical eight-byte padded remote copies are separate from JSON serialization, heap memory, scalar synchronization and transport time.",
+    "modelAssumptions": "One synthetic decoder and fixed logical ranks; explicit owner-local optimizer algebra, shared clipping, immutable full source/diagnostic snapshots and all-gather replicas. No physically distributed runtime or measured memory savings.",
+    "claimQualifiers": "Logical restart is distinguished from real worker-group restart; no speed or large-model effectiveness claim.",
+    "dependencyAndVisualScope": "Actual lifecycle gradients and retained optimizer feed inspectable owner slices and payloads. New UI exposes explicit shard barrier; one-action commit compatibility uses the same computed collectives. Existing serving handoff remains intact; factory JSON-byte fixtures must refresh."
+  },
+  "pending": [
+    "Browser and physical-device review",
+    "Assistive technology and learner review",
+    "Specialist scientific review"
+  ],
+  "files": {
+    "src/lib/model-lifecycle-distributed.ts": "8a9f571d800400ea0a8f5c06f8b57f6fe40cb63e29e604352a502795c66b26d5",
+    "src/components/model-lifecycle-distributed.tsx": "9f1843f71a16385d36699bf88a351a1223bc6be3ef06f411d6433b8d794f88e0",
+    "src/components/model-lifecycle-distributed.css": "626ad75ffd38faccfcf4dd2f62d0f385a9be4d5ba792bf3c7841cfa108241dd8",
+    "scripts/model-lifecycle-distributed.test.mjs": "ffa11780e4c037ab5c6356bcc20f686d6e22d94eaaa4f1c66027bc3fc7318646"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-07",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root",
+    "role": "Scoped primary-source reading and implementation comparison"
+  },
+  "sources": [
+    {
+      "id": "linear",
+      "url": "https://www.deeplearningbook.org/contents/linear_algebra.html",
+      "locator": "Chapter 2, \u00a7\u00a72.1\u20132.2, equation2.5; \u00a72.8, equation2.43",
+      "supports": "Index and contraction semantics; singular-vector factorization.",
+      "excludes": "The exact two-by-two spectrum, geometric display and rank-error experiment are original calculations."
+    },
+    {
+      "id": "numerical",
+      "url": "https://www.deeplearningbook.org/contents/numerical.html",
+      "locator": "Chapter4 \u00a74.1, equation4.1 and max-shift/log-softmax discussion",
+      "supports": "Finite arithmetic can overflow; max shifting stabilizes normalization and log probabilities.",
+      "excludes": "Does not define the authored seven-bit E3M3 format or prove all model arithmetic stable."
+    },
+    {
+      "id": "probability",
+      "url": "https://www.deeplearningbook.org/contents/prob.html",
+      "locator": "Chapter3 \u00a73.5 conditional probability, equation3.5; \u00a73.6 equation3.6",
+      "supports": "Conditioning requires a nonzero denominator; a conditional association is distinct from an intervention.",
+      "excludes": "The finite samples, confounder and structural assignments are authored fixtures."
+    },
+    {
+      "id": "datasheets",
+      "url": "https://arxiv.org/html/1803.09010v8",
+      "locator": "\u00a7\u00a73.2 and3.4 composition and preprocessing/cleaning/labeling",
+      "supports": "Record source composition and transformations, including whether originals were retained.",
+      "excludes": "Documentation and adjudication do not certify consent, correctness or representativeness of a real dataset."
+    },
+    {
+      "id": "trees",
+      "url": "https://arxiv.org/html/1603.02754v3",
+      "locator": "\u00a7\u00a72.1\u20132.2, additive ensemble and gradient tree boosting",
+      "supports": "Trees contribute additive functions fitted in successive rounds.",
+      "excludes": "The atlas fits elementary squared-error residual stumps; it does not reproduce XGBoost implementation or results."
+    },
+    {
+      "id": "graph",
+      "url": "https://arxiv.org/html/1609.02907v4",
+      "locator": "\u00a72, equation2 and self-loop/degree definitions",
+      "supports": "Symmetric degree-normalized adjacency propagates node features through a nonlinearity.",
+      "excludes": "Identity weights and four authored nodes are a forward-only specimen, not the paper\u2019s trained model."
+    },
+    {
+      "id": "search",
+      "url": "https://arxiv.org/abs/1712.01815",
+      "locator": "Abstract and original submission metadata",
+      "supports": "Historical example of a learned self-play system, contrasting learning with search.",
+      "excludes": "Only abstract-level historical scope read for this use. The minimax fixture is not AlphaZero, Monte Carlo tree search or reproduction of reported performance."
+    }
+  ],
+  "files": [
+    {
+      "path": "src/lib/foundation-models.ts",
+      "sha256": "f5c0514d430b3b8ed88eddd886723804b672ce2344118193350758bc21665a7b"
+    },
+    {
+      "path": "scripts/foundation-models.test.mjs",
+      "sha256": "7d0c55d8de9757e0b94be8aec4f80d750e883c197660d72314944132500213d9"
+    },
+    {
+      "path": "src/lib/data/learning-foundations.json",
+      "sha256": "b8e4683669595735112e115f1f57b87b3891ad30e5b84871826bf7154ea9d6ac"
+    },
+    {
+      "path": "src/lib/data/equations-learning-foundations.json",
+      "sha256": "94ee0f97fd38a59bea9c82c7a5d320317096bd4785ffcb0866e1bedba4b6490f"
+    }
+  ],
+  "independentHumanReviews": 0,
+  "scope": "Source-use checks, not blanket acceptance of all lesson content or physical/learner observations."
+}

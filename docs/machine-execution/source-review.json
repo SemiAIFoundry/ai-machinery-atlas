@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "machine-execution-1",
+  "scope": "First bounded E3/HW07/HW09 connection. No claim of full hardware-roadmap closure.",
+  "checks": [
+    {
+      "id": "machine-cuda-layout",
+      "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-c-best-practices-guide/index.html",
+      "title": "CUDA C++ Best Practices Guide 13.1.1",
+      "locator": "10.2.1.1 simple access pattern; 10.2.3.1 shared banks and broadcasts; 10.2.3.2–3 matrix layout; 10.2.3.4 asynchronous copy",
+      "supports": "Address grouping, distinct-word bank serialization, same-word broadcast and completion-before-consumption mechanisms.",
+      "limits": "The source device example uses different lane, transaction and bank dimensions. All dimensions/times in this new machine are synthetic; no published benchmark is transferred.",
+      "lessonIds": [
+        "simt-active-lanes",
+        "shared-sram",
+        "gpu-occupancy-pipeline",
+        "compiler-layout-lowering"
+      ],
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "status": "scoped-source-comparison",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source section changes",
+        "Teaching mechanism, address map or timing scope changes",
+        "A real-device or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "machine-linux-dma",
+      "url": "https://docs.kernel.org/core-api/dma-api-howto.html",
+      "title": "Linux Dynamic DMA mapping Guide",
+      "locator": "CPU and DMA addresses; Types of DMA mappings; streaming mapping synchronization; Handling Errors",
+      "supports": "Device/physical addresses differ; mappings and direction must be valid; CPU/device visibility and ownership need synchronization.",
+      "limits": "A finite range/permission table and zero-duration handoff are teaching abstractions, not OS firmware, page tables, cache coherence or a real driver implementation.",
+      "lessonIds": [
+        "runtime-device-dispatch",
+        "pcie-interface"
+      ],
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "status": "scoped-source-comparison",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source section changes",
+        "Teaching mechanism, address map or timing scope changes",
+        "A real-device or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "machine-microchip-bank",
+      "url": "https://onlinedocs.microchip.com/oxy/GUID-B822915F-C375-4172-91BD-AB6F326EB783-en-US-1/GUID-F3B24B38-CBB2-434E-A89A-EC8BB4810756.html",
+      "title": "Microchip Optimized Access Functionality",
+      "locator": "3.6.5.5: open banks, row hit, activation and precharge before a row change",
+      "supports": "Closed/hit/conflict access dependencies.",
+      "limits": "No numerical timings, HBM policy, address map or throughput are taken from this controller-specific description.",
+      "lessonIds": [
+        "hbm-controller",
+        "hbm-base-phy-controller"
+      ],
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "status": "scoped-source-comparison",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source section changes",
+        "Teaching mechanism, address map or timing scope changes",
+        "A real-device or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "machine-ramulator-context",
+      "url": "https://github.com/CMU-SAFARI/ramulator2",
+      "title": "Ramulator 2.0",
+      "locator": "README: stand-alone simulation, configuration and trace use",
+      "supports": "A primary example of explicit trace/configuration-driven DRAM modeling.",
+      "limits": "Context only. No Ramulator run or comparison was performed, and its standards support is not claimed for this model.",
+      "lessonIds": [
+        "hbm-controller"
+      ],
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "status": "scoped-source-comparison",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source section changes",
+        "Teaching mechanism, address map or timing scope changes",
+        "A real-device or external-simulator preset is proposed"
+      ]
+    }
+  ],
+  "parameterStatus": "All dimensions and nanosecond constants are declared synthetic teaching inputs, not source-calibrated hardware values.",
+  "candidateFiles": [
+    {
+      "path": "src/lib/machine-execution.ts",
+      "sha256": "60ddd8b0a4d7d32283c0b69ab1918e8b26a098dab80275eb3cdc2424e9e00872"
+    },
+    {
+      "path": "src/lib/machine-execution-record.ts",
+      "sha256": "2a4db765c6b793fb53280133bd689f3afbe6585d9cb8b8b559280a62d5a5e824"
+    },
+    {
+      "path": "src/components/machine-execution.tsx",
+      "sha256": "1f0068f29adb2d92936e8d0527b60b3b2c4f6a5d171521b419fc94dfd563f88a"
+    },
+    {
+      "path": "src/components/machine-execution.css",
+      "sha256": "2b6e4df2f3b262e824d38f2f0a70bf9c5624c7d170e35a850cc599f89fb70777"
+    },
+    {
+      "path": "scripts/machine-execution.test.mjs",
+      "sha256": "dac28873d3ba6eb7ed0d444e0178d42e26fc7e85d8523b962f5e6783f2518b93"
+    }
+  ],
+  "humanSpecialistReview": null,
+  "physicalMeasurement": null,
+  "externalSimulatorComparison": null
+}

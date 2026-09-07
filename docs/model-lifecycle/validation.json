@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-07",
+  "actor": "/root/curriculum_assessment",
+  "modelVersion": "causal-decoder-lifecycle-1",
+  "automatedOnly": true,
+  "tests": {
+    "command": "node --experimental-strip-types --test scripts/model-lifecycle.test.mjs",
+    "passed": 27,
+    "failed": 0,
+    "report": "test-results.txt"
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit --pretty false",
+    "exitCode": 0,
+    "report": "typecheck.log"
+  },
+  "numericalFixtures": {
+    "defaultSeed": 7,
+    "baseUpdates": 320,
+    "copyDevelopment": {
+      "correct": 8,
+      "total": 8
+    },
+    "copyFinalExplicitlyOpened": {
+      "correct": 4,
+      "total": 4
+    },
+    "sftAdditionalUpdates": 120,
+    "sftSwapDevelopment": {
+      "correct": 8,
+      "total": 8
+    },
+    "sftCopyRetention": {
+      "correct": 0,
+      "total": 8
+    }
+  },
+  "notEstablished": [
+    "Human peer review",
+    "Learner efficacy",
+    "General language capability",
+    "Physical-device behavior"
+  ],
+  "fileSnapshots": [
+    {
+      "path": "src/lib/model-lifecycle.ts",
+      "sha256": "5b01cdd348e82e7855c205af7f4d4dbb71e21320e73a696a211b625615c8e91d"
+    },
+    {
+      "path": "src/lib/model-lifecycle-data.ts",
+      "sha256": "c3deefb00776c2c9d85d6409b7f163b80532048fefdeab0c534fc5a2d4ea3dee"
+    },
+    {
+      "path": "src/lib/model-lifecycle-workspace.ts",
+      "sha256": "dfd802d8919bce0222fd1787f73589e0f7a24600abcd6be8b7ae6ef64442b10c"
+    },
+    {
+      "path": "src/components/model-lifecycle.tsx",
+      "sha256": "4ffabe28e828128b3de94ba174072ea03c4b82d7e4dc154bace44cb6a32025e8"
+    },
+    {
+      "path": "src/components/model-lifecycle.css",
+      "sha256": "a4c6ca67460e2954cc405ac2e4c06b456fdc8fbf82fc6dc845391bb02661ad4c"
+    },
+    {
+      "path": "scripts/model-lifecycle.test.mjs",
+      "sha256": "2443fa13964e3de878c9976a656e4e39b7a3a752b9c0e55233ec464903c189a0"
+    },
+    {
+      "path": "docs/model-lifecycle/README.md",
+      "sha256": "c819d160f61800b9d926dc3fdd142d4c34d7aea03cd1e764935179234e8d1c16"
+    }
+  ],
+  "workspaceBoundaryEvidence": [
+    "Old import and reset retain exposure",
+    "Imported exposed record persists journal before explicit save",
+    "Invalid or stale import leaves run and journal unchanged",
+    "Storage failure retains mounted disclosure",
+    "Corrupt saved bytes remain available",
+    "Fresh workspace does not invent exposure",
+    "An existing journal refreshes independently recorded exposure before importing older state"
+  ]
+}

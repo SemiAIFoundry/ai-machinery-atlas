@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "exposure-aware-ranking-1",
+  "maintenanceOwner": "Semi AI Foundry, LLC",
+  "actor": {
+    "type": "AI agent",
+    "id": "/root/process_editor"
+  },
+  "scope": "Bounded N16 authored exposure log → actual logistic fit → distinct evaluation users, with explicit missingness and objective-mismatch counterexamples. No real-user data or observed instructor/specialist review.",
+  "sourceChecks": [
+    {
+      "id": "propensity-scored-risk",
+      "title": "Recommendations as Treatments: Debiasing Learning and Evaluation",
+      "url": "https://proceedings.mlr.press/v48/schnabel16.pdf",
+      "edition": "ICML 2016, PMLR 48, author paper PDF",
+      "locator": "Section 3.3: assignment mechanism and nonzero propensities, Eq. 10 and following expectation derivation (PDF pages 3–4); section 4.1 Eq. 12 (PDF page 5); section 5 Eq. 15 and discussion (PDF pages 5–6)",
+      "supports": "Known assignment probabilities, positive support, fixed-score inverse-propensity risk with the eligible-population denominator, and propensity-weighted empirical risk minimization. Incorrect probabilities change the estimator expectation.",
+      "limits": "The local three-parameter pointwise logistic scorer is authored and is not the paper’s matrix factorization. Fixed-score unbiasedness does not establish independent evaluation of a fitted function or finite-sample ranking improvement. The clipped estimator is not SNIPS; no paper performance result is transferred.",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "status": "scoped-primary-text-or-equation-comparison",
+      "humanSpecialistReview": null,
+      "accessMethod": "Primary source text read with the web reader; no diagram or full-paper review claimed",
+      "reviewTriggers": [
+        "Logging design, loss denominator, metrics or model scope changes",
+        "Source locator or pinned documentation edition changes",
+        "Real-user, fairness or causal outcome claims are proposed"
+      ]
+    },
+    {
+      "id": "clicks-and-relevance",
+      "title": "Unbiased Learning-to-Rank with Biased Feedback",
+      "url": "https://www.cs.cornell.edu/~tj/publications/joachims_etal_17a.pdf",
+      "edition": "WSDM 2017, author paper PDF",
+      "locator": "Sections 5.1–5.2: examination, clicks and relevance/noise assumptions (PDF page 4); section 7.5: propensity misspecification and clipping (PDF page 7)",
+      "supports": "Separating exposure or examination from observed clicks and task relevance; correction depends on the observation model, and propensity misspecification or clipping can change the result.",
+      "limits": "The authored log directly records exposures and shown no-clicks; it does not implement position-based examination, SVM-Rank or the paper’s specific click-noise model. Appeal is an explicit counterexample to equating click response with topic usefulness. No fairness or causal business-effect claim follows.",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "status": "scoped-primary-text-or-equation-comparison",
+      "humanSpecialistReview": null,
+      "accessMethod": "Primary source text read with the web reader; no diagram or full-paper review claimed",
+      "reviewTriggers": [
+        "Logging design, loss denominator, metrics or model scope changes",
+        "Source locator or pinned documentation edition changes",
+        "Real-user, fairness or causal outcome claims are proposed"
+      ]
+    },
+    {
+      "id": "ndcg-definition",
+      "title": "scikit-learn ndcg_score",
+      "url": "https://scikit-learn.org/1.7/modules/generated/sklearn.metrics.ndcg_score.html",
+      "edition": "scikit-learn 1.7.2 documentation",
+      "locator": "Opening metric definition; y_true, y_score, k and ignore_ties parameters; Returns and Notes",
+      "supports": "Discounting ranked gains logarithmically, normalizing by ideal gain at a declared cutoff and averaging sample scores.",
+      "limits": "The local implementation explicitly converts usefulness grades to gains 2^grade−1 before discounting. Stable item-ID tie ordering is declared; it is not library tie averaging. scikit-learn is not executed and supplies no validation of the authored users or usefulness labels.",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "status": "scoped-primary-text-or-equation-comparison",
+      "humanSpecialistReview": null,
+      "accessMethod": "Primary source text read with the web reader; no diagram or full-paper review claimed",
+      "reviewTriggers": [
+        "Logging design, loss denominator, metrics or model scope changes",
+        "Source locator or pinned documentation edition changes",
+        "Real-user, fairness or causal outcome claims are proposed"
+      ]
+    }
+  ],
+  "integrationChecks": [
+    "Only shown features, clicks and probabilities enter the fit; unshown author-only outcomes are absent from fitting samples.",
+    "Potential outcomes stay fixed when the exposure seed or policy changes.",
+    "Independent finite-difference gradients and one-step residual sums validate the fitted objective.",
+    "All eight exposure patterns of a separate three-row fixture establish the fixed-score IPS expectation, and show the effect of wrong or clipped weights.",
+    "Two zero-support worlds preserve exactly the observed rows while their population feedback differs.",
+    "Hand calculations and all 243 five-item grade combinations validate metric denominators, cutoff behavior and ideal normalization.",
+    "Four authored mathematical definitions render strict HTML and MathML.",
+    "Portable inputs restore only compatible current-model records; saved inputs do not certify lesson completion."
+  ],
+  "candidateFiles": [
+    {
+      "path": "src/lib/ranking-application.ts",
+      "sha256": "327e7e51112672c13278a247482b8e89d55dbd3fc2d4220e677dc286cb9fcfe2"
+    },
+    {
+      "path": "src/components/ranking-application.tsx",
+      "sha256": "453be0306c1d5bd9f18559871f261d2b9c149cce52703f29904da956121365a0"
+    },
+    {
+      "path": "src/components/ranking-application.css",
+      "sha256": "20cdd2e1034bb75f886b73fb0e0d1f5deb3d7cb33c3cedb9e2c1ee73bdad0c9c"
+    },
+    {
+      "path": "scripts/ranking-application.test.mjs",
+      "sha256": "fb2e998f6d817009a1ca8bbb1c23f28536acb5fc38092eec74c48ad9e24d0c48"
+    },
+    {
+      "path": "src/components/equation.tsx",
+      "sha256": "5d5079cb851d0f5af835f99042e4265ce43360f8c7a9c3dc34aad197fcd68480"
+    },
+    {
+      "path": "src/components/portable-experiment.tsx",
+      "sha256": "3acb9038050e2f0ce771dd9d523da300a7e23dddbc3dacada80293b795878074"
+    },
+    {
+      "path": "src/lib/portable-experiment-storage.ts",
+      "sha256": "4adab4a5129db3bf911c5da220ffbcd5c47694dc97d320bbb9c29ef00055a535"
+    },
+    {
+      "path": "docs/ranking-application/reproduce.mjs",
+      "sha256": "9462486bfd1ee4a70d9a243b5d8da97a15c8923577a1a2848d17c09f08426573"
+    }
+  ],
+  "humanSpecialistReview": null,
+  "humanLearnerObservation": null,
+  "physicalDeviceObservation": null
+}

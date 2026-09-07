@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "experienceId": "model-lifecycle",
+  "modelVersion": "causal-decoder-lifecycle-1",
+  "checkedOn": "2026-09-07",
+  "actorType": "agent",
+  "actor": "/root/curriculum_assessment",
+  "sources": [
+    {
+      "id": "transformer",
+      "title": "Attention Is All You Need",
+      "url": "https://arxiv.org/html/1706.03762v7",
+      "locator": "Sections 3.1\u20133.5; equations 1\u20132",
+      "supportedMechanism": "Causal mask, scaled dot-product attention, feed-forward/residual and positional mechanisms.",
+      "limits": "Authored one-head pre-RMS/tanh decoder variant, not the original post-norm ReLU encoder\u2013decoder.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    },
+    {
+      "id": "rmsnorm",
+      "title": "Root Mean Square Layer Normalization",
+      "url": "https://arxiv.org/html/1910.07467v1",
+      "locator": "Section 4, equation 4",
+      "supportedMechanism": "RMS normalization by the root mean square of features.",
+      "limits": "Teaching implementation fixes gain to one and adds epsilon 1e-5 inside the root; epsilon limits exact scale invariance.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    },
+    {
+      "id": "autograd",
+      "title": "PyTorch autograd mechanics",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/autograd.html",
+      "locator": "How autograd encodes the history; saved tensors",
+      "supportedMechanism": "Reverse-mode graph, saved intermediate values and accumulation of derivatives.",
+      "limits": "Independent scalar TypeScript tape; no PyTorch runtime or performance equivalence.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    },
+    {
+      "id": "adam",
+      "title": "PyTorch Adam algorithm",
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html",
+      "locator": "Algorithm pseudocode and beta/epsilon parameters",
+      "supportedMechanism": "First/second moments, bias correction and parameter update.",
+      "limits": "Beta1=.9, beta2=.999, epsilon=1e-8, no weight decay, global clipping before moments; constant learning rate.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    },
+    {
+      "id": "sft",
+      "title": "TRL SFTTrainer",
+      "url": "https://huggingface.co/docs/trl/sft_trainer",
+      "locator": "Label shifting and masking; assistant_only_loss and completion_only_loss",
+      "supportedMechanism": "Shifted labels and masking prompt positions while supervising response positions.",
+      "limits": "Fixed one-turn symbol dialogue; no production chat template, packing implementation or TRL execution.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    },
+    {
+      "id": "dpo",
+      "title": "Direct Preference Optimization",
+      "url": "https://arxiv.org/html/2305.18290v3",
+      "locator": "Sections 3\u20134, especially equation 7",
+      "supportedMechanism": "Pairwise chosen/rejected response log-ratios relative to frozen reference and logistic loss.",
+      "limits": "Authored swap preference pairs, answer plus EOS sequence scores; not human preference collection or general alignment evidence.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    },
+    {
+      "id": "reinforce",
+      "title": "PyTorch probability distributions",
+      "url": "https://docs.pytorch.org/docs/2.14/distributions.html#score-function",
+      "locator": "Score function (REINFORCE)",
+      "supportedMechanism": "Sampled action, log probability and negative reward-weighted log-probability surrogate.",
+      "limits": "Two-action contextual bandit. Detached exact reward baseline and exact categorical KL are stated derived additions; no PPO, GRPO or long-horizon credit assignment.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "relevant-section-inspected",
+      "specialistReview": null,
+      "recheckTriggers": [
+        "Cited section or implementation changes",
+        "New mechanism or empirical claim added"
+      ]
+    }
+  ],
+  "fileSnapshots": [
+    {
+      "path": "src/lib/model-lifecycle.ts",
+      "sha256": "5b01cdd348e82e7855c205af7f4d4dbb71e21320e73a696a211b625615c8e91d"
+    },
+    {
+      "path": "src/lib/model-lifecycle-data.ts",
+      "sha256": "c3deefb00776c2c9d85d6409b7f163b80532048fefdeab0c534fc5a2d4ea3dee"
+    },
+    {
+      "path": "src/lib/model-lifecycle-workspace.ts",
+      "sha256": "dfd802d8919bce0222fd1787f73589e0f7a24600abcd6be8b7ae6ef64442b10c"
+    },
+    {
+      "path": "src/components/model-lifecycle.tsx",
+      "sha256": "4ffabe28e828128b3de94ba174072ea03c4b82d7e4dc154bace44cb6a32025e8"
+    },
+    {
+      "path": "src/components/model-lifecycle.css",
+      "sha256": "a4c6ca67460e2954cc405ac2e4c06b456fdc8fbf82fc6dc845391bb02661ad4c"
+    },
+    {
+      "path": "scripts/model-lifecycle.test.mjs",
+      "sha256": "2443fa13964e3de878c9976a656e4e39b7a3a752b9c0e55233ec464903c189a0"
+    },
+    {
+      "path": "docs/model-lifecycle/README.md",
+      "sha256": "c819d160f61800b9d926dc3fdd142d4c34d7aea03cd1e764935179234e8d1c16"
+    }
+  ],
+  "reviewDisposition": {
+    "status": "agent-source-and-numerical-review",
+    "unitsAndDenominators": "Reviewed token/pair/rollout denominators; binary64 payload excludes overhead; tape nodes are not FLOPs.",
+    "modelAssumptions": "Reviewed fixed dimensions, authored corpus conflict, train-only gradients, constant learning-rate schedule, objective and parameterization boundaries.",
+    "claimQualifiers": "Toy task computations only; no vendor timing, general capability, human-learning or safety claim.",
+    "dependencyAndVisualScope": "Pure modules and UI read actual model state. Full browser/device/accessibility interaction is an integration gate.",
+    "humanSpecialistReview": null,
+    "remainingGates": [
+      "Root integration and browser QA",
+      "Physical-device and assistive-technology checks",
+      "Observed learner tasks",
+      "Human specialist content review"
+    ]
+  },
+  "freshnessWorkflow": "Recheck affected primary sections and numerical tests after equation, objective, tokenizer, data or checkpoint changes; append dated review evidence without overwriting previous events."
+}

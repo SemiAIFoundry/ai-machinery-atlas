@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readBrowserLearningState, learningContract, scenarioDefaults as defaults, systemScenario, switchingScenario, attentionScenario, validateScenario, readInvestigationDocument, investigationVersion } from '../src/lib/investigation-models.ts';
+import { mergeLearningRecords, readBrowserLearningState, learningContract, scenarioDefaults as defaults, systemScenario, switchingScenario, attentionScenario, validateScenario, readInvestigationDocument, investigationVersion } from '../src/lib/investigation-models.ts';
 
 test('manufacturing applies screened input yield once, then stack and package survival', () => {
   const r = systemScenario(defaults);
@@ -80,4 +80,15 @@ test('static memory fit does not imply append capacity; a smaller working set re
   assert.equal(packed.placement.feasible,true);assert.equal(packed.nextStepFits,false);assert.equal(packed.packageTokensPerSecond,0);
   const recovered=systemScenario({...defaults,dies:4,context:8192,batch:1,weightBits:8});
   assert.equal(recovered.executionFeasible,true);assert.ok(recovered.packageTokensPerSecond>0);
+});
+
+test('conflicting imports retain the original first attempt and displaced practice',()=>{
+ const make=label=>({prediction:label,explanation:'reason',transfer:'boundary',savedAt:'2026-09-07T12:00:00Z',scenario:{...defaults}});
+ const f=make('F'),p=make('P'),g=make('G'),q=make('Q');
+ const merged=mergeLearningRecords({firstAttempt:f,practice:p},{firstAttempt:g,practice:q});
+ assert.deepEqual(merged.firstAttempt,f);assert.deepEqual(merged.practice,q);assert.deepEqual(merged.history.map(h=>h.attempt.prediction),['P','G']);
+ const round=readInvestigationDocument(JSON.stringify({...learningContract,caseId:'switching',scenario:defaults,...merged}));assert.deepEqual(round.history,merged.history);
+ assert.deepEqual(mergeLearningRecords(merged,{}),merged);
+ assert.throws(()=>mergeLearningRecords({...merged,history:[...merged.history,{reason:'previous-practice',attempt:make('R')},{reason:'previous-practice',attempt:make('S')}]},{firstAttempt:make('T'),practice:make('U')}),/limit/);
+ assert.deepEqual(merged.firstAttempt,f);
 });

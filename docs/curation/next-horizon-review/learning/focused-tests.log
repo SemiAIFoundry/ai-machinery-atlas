@@ -1,0 +1,18 @@
+✔ server idempotency returns the original effect and rejects changed arguments under the same key (2.877292ms)
+✔ lost reply records caller uncertainty while the external write is already committed (3.60825ms)
+✔ commit followed by failed result journaling survives reload and replays without duplicate effect (9.825459ms)
+✔ hand-constructed packing masks prompts, cross-document EOS targets and padding (0.771833ms)
+✔ packing retains every shifted target across blocks without admitting future context (38.782792ms)
+✔ complete decoder forward matches an independent numerical implementation (8.941958ms)
+✔ all parameter groups have checked supervised gradients, including shared embedding paths (21.116834ms)
+✔ causal prefix outputs are invariant to later token changes and extension (2.411667ms)
+✔ zero output weights produce uniform probabilities and cross-entropy ln vocabulary (0.563375ms)
+✔ same seed and checkpointed RNG/optimizer/cursor reproduce uninterrupted training exactly (103.341167ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 256.808208

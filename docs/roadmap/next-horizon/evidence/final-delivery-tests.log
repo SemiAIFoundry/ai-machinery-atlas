@@ -1,0 +1,14 @@
+✔ connected footage retains captured pixels, exact build evidence and the delivered video (3.609333ms)
+✔ every captured experience has a current canonical destination and a readable alternative (138.691417ms)
+Entry JS: 333655 gzip bytes (level 9; local file measurement)
+✔ compressed entry JavaScript stays below the 350 kB budget (20.73625ms)
+✔ every authored lesson is independently loaded and content addressed (156.079625ms)
+✔ build identity carries independent source, content and model identity (0.28175ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 221.240292

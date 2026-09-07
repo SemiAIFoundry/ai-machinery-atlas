@@ -1,0 +1,2118 @@
+{
+  "schemaVersion": 1,
+  "contentPack": "model-lifecycle-learning",
+  "checkedOn": "2026-09-07",
+  "actorType": "agent",
+  "actor": "/root/curriculum_assessment",
+  "status": "authored-source-scope-review",
+  "humanSpecialistReview": null,
+  "coverageBoundary": "New and appended material only. Original lesson source reviews are preserved separately. Worked exercises are original derivations; cited empirical experiments were not reproduced.",
+  "sources": [
+    {
+      "id": "ml-source-autograd",
+      "title": "PyTorch autograd mechanics",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/autograd.html",
+      "locator": "How autograd encodes the history; saved tensors",
+      "supportedClaim": "Reverse-mode differentiation represents dependencies and retains needed forward intermediates.",
+      "limits": "The TypeScript tape is independently implemented; documentation is not a runtime reproduction.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "reverse-mode-autodiff"
+      ],
+      "claimIds": [
+        "ml-claim-autograd"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-adamw",
+      "title": "Decoupled Weight Decay Regularization",
+      "url": "https://arxiv.org/html/1711.05101v3",
+      "locator": "Algorithm 2 and Section 2, decoupled weight decay",
+      "supportedClaim": "AdamW separates parameter decay from the gradient entering adaptive moment updates.",
+      "limits": "The worked formula declares learning-rate-scaled decay; the lifecycle core has no decay.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "optimizer-schedule-stability"
+      ],
+      "claimIds": [
+        "ml-claim-adamw"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-switch",
+      "title": "Switch Transformers",
+      "url": "https://arxiv.org/html/2101.03961v3",
+      "locator": "Section 2.2, equations 4–6 and capacity discussion",
+      "supportedClaim": "Switch top-one routing uses a load-balancing term built from dispatch fractions and mean router probabilities.",
+      "limits": "Worked routing is not an MoE implementation or reproduction of reported scaling results.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "moe"
+      ],
+      "claimIds": [
+        "ml-claim-switch"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-rag",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/html/2005.11401v4",
+      "locator": "Section 2.1, RAG-Sequence and RAG-Token",
+      "supportedClaim": "RAG defines distinct ways to marginalize generation probabilities over retrieved documents.",
+      "limits": "The exact two-document example is authored; the existing retrieval specimen is a deterministic baseline.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "retrieval-supported-generation"
+      ],
+      "claimIds": [
+        "ml-claim-rag"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-react",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/html/2210.03629v3",
+      "locator": "Section 2, observation/action setup; Section 3 analysis",
+      "supportedClaim": "A model policy can generate actions conditioned on a context of prior actions and environment observations.",
+      "limits": "Authorization, idempotency and inventory validation are additional authored system contracts, not claims of the paper.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "tool-loop"
+      ],
+      "claimIds": [
+        "ml-claim-react"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-olmo2",
+      "title": "2 OLMo 2 Furious",
+      "url": "https://arxiv.org/html/2501.00656v1",
+      "locator": "Sections 2.3 and 4.2.2; mid-training soups/Table 14; Section 5",
+      "supportedClaim": "The disclosed recipe separates data curricula, continued pretraining and post-training stages; selected checkpoint averages are evaluated.",
+      "limits": "No corpus, model size, optimizer schedule or empirical result from OLMo 2 is reproduced by the toy decoder.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "data-mixture-sampling",
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "model-lifecycle-stage-contract",
+        "replay-retention-forgetting",
+        "checkpoint-averaging-boundaries",
+        "feed-forward",
+        "residual-normalization",
+        "loss-optimizer",
+        "checkpoint",
+        "training-memory-state"
+      ],
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-fineweb",
+      "title": "The FineWeb Datasets",
+      "url": "https://arxiv.org/html/2406.17557v1",
+      "locator": "Sections 3.1–3.4 and 5; fixed-budget ablations and deduplication",
+      "supportedClaim": "Filtering and deduplication change retained data and require controlled comparison; the recipe has an explicit language scope.",
+      "limits": "No universal filter threshold or multilingual quality ranking is inferred. File/token examples are authored.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "data-quality-dedup-audit",
+        "data-mixture-sampling",
+        "data-coverage-language-slices",
+        "training-data",
+        "scaling-laws"
+      ],
+      "claimIds": [
+        "ml-claim-fineweb"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-dapt",
+      "title": "Don’t Stop Pretraining",
+      "url": "https://aclanthology.org/2020.acl-main.740.pdf",
+      "locator": "Sections 2–3 and Appendix E, cross-domain masked-LM loss",
+      "supportedClaim": "Further language-model training on domain data is evaluated separately from task-specific supervised adaptation.",
+      "limits": "The cited study uses RoBERTa masked LM; the causal copy/swap experiment is a distinct authored case.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "model-lifecycle-stage-contract",
+        "domain-adaptive-continuation",
+        "replay-retention-forgetting"
+      ],
+      "claimIds": [
+        "ml-claim-dapt"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-tulu3",
+      "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "url": "https://arxiv.org/html/2411.15124v1",
+      "locator": "Sections 4–6, especially Section 6/Table 21 and verifier description",
+      "supportedClaim": "The disclosed pipeline separates supervised learning, preferences and PPO-based verifiable-reward training.",
+      "limits": "No full Tülu recipe, reward-model population or reported benchmark is reproduced.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "synthetic-data-selection-feedback",
+        "microbatch-equivalent-updates",
+        "sft-chat-loss-masks",
+        "verifiable-reward-group-updates",
+        "reward-proxy-overoptimization",
+        "judge-rubric-agreement",
+        "test-time-search-verification",
+        "model-system-regression-contract",
+        "post-training"
+      ],
+      "claimIds": [
+        "ml-claim-tulu3"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-sft-doc",
+      "title": "TRL SFT Trainer",
+      "url": "https://huggingface.co/docs/trl/sft_trainer",
+      "locator": "Label shifting and masking; packing; assistant_only_loss/completion_only_loss",
+      "supportedClaim": "Loss masks can restrict direct supervision to response targets while prompts remain context.",
+      "limits": "Core uses one explicit answer delimiter; packed multi-turn chat templates are worked extensions.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "sequence-packing-loss-denominators",
+        "microbatch-equivalent-updates",
+        "sft-chat-loss-masks"
+      ],
+      "claimIds": [
+        "ml-claim-sft-doc"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-instructgpt",
+      "title": "Training language models to follow instructions with human feedback",
+      "url": "https://arxiv.org/html/2203.02155v1",
+      "locator": "Section 3.4 human data collection; Section 3.5 equations 1–2",
+      "supportedClaim": "Demonstrations, pairwise reward fitting and sampled policy optimization are different training signals.",
+      "limits": "No human participants were recruited for these authored labels and no named-model alignment result is reproduced.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "preference-reward-model",
+        "policy-gradient-kl-control",
+        "judge-rubric-agreement",
+        "post-training"
+      ],
+      "claimIds": [
+        "ml-claim-instructgpt"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-dpo",
+      "title": "Direct Preference Optimization",
+      "url": "https://arxiv.org/html/2305.18290v3",
+      "locator": "Sections 3–4, equation 7 and policy/reference definitions",
+      "supportedClaim": "DPO compares chosen/rejected response log-ratios relative to a frozen reference through a logistic objective.",
+      "limits": "Authored response preferences do not establish factual accuracy or human preference generalization.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "preference-reward-model",
+        "direct-preference-objective"
+      ],
+      "claimIds": [
+        "ml-claim-dpo"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-ppo",
+      "title": "Proximal Policy Optimization Algorithms",
+      "url": "https://arxiv.org/pdf/1707.06347",
+      "locator": "Sections 2–3, equations 1–7, especially clipped surrogate equation 7",
+      "supportedClaim": "PPO uses old-policy action ratios and a sign-sensitive clipped surrogate for sampled advantages.",
+      "limits": "PPO is worked-only here; the executable core uses a REINFORCE bandit with exact categorical KL.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "policy-gradient-kl-control"
+      ],
+      "claimIds": [
+        "ml-claim-ppo"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-r1",
+      "title": "DeepSeek-R1",
+      "url": "https://arxiv.org/html/2501.12948v1",
+      "locator": "Section 2.2.1 equations 1–3; Section 2.3 stage pipeline",
+      "supportedClaim": "The report describes group-relative policy optimization, rule-based rewards and separate cold-start/training stages.",
+      "limits": "Worked population variance and zero-variance conventions are explicit; core does not implement GRPO or reproduce reasoning claims.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "synthetic-data-selection-feedback",
+        "verifiable-reward-group-updates",
+        "teacher-student-distillation",
+        "test-time-search-verification"
+      ],
+      "claimIds": [
+        "ml-claim-r1"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-overoptimization",
+      "title": "Scaling Laws for Reward Model Overoptimization",
+      "url": "https://arxiv.org/html/2210.10760v1",
+      "locator": "Sections 2, 3.5–3.6 and 4.2.2–4.2.3",
+      "supportedClaim": "Optimizing a proxy reward can diverge from a separately defined target in the studied synthetic reward setup.",
+      "limits": "Authored length and faulty-checker counterexamples are not the paper’s measured trajectories or a universal inevitability.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "reward-proxy-overoptimization"
+      ],
+      "claimIds": [
+        "ml-claim-overoptimization"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-lora",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "url": "https://arxiv.org/html/2106.09685v2",
+      "locator": "Section 4.1, low-rank parameterization and scale convention",
+      "supportedClaim": "LoRA freezes the base matrix while training low-rank update factors.",
+      "limits": "Only the factor arithmetic is worked here; all 423 core parameters remain trainable.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "low-rank-adaptation"
+      ],
+      "claimIds": [
+        "ml-claim-lora"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-helm",
+      "title": "Holistic Evaluation of Language Models",
+      "url": "https://arxiv.org/html/2211.09110v1",
+      "locator": "Sections 3–4, scenario and metric taxonomy; Section 4.4 calibration",
+      "supportedClaim": "Evaluation separates scenarios, adaptation procedures and metrics such as accuracy, calibration and robustness.",
+      "limits": "Authored scoring gates and examples are not HELM benchmark measurements.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "data-coverage-language-slices",
+        "probability-calibration-abstention",
+        "judge-rubric-agreement",
+        "retrieval-supported-generation",
+        "model-system-regression-contract",
+        "evaluation"
+      ],
+      "claimIds": [
+        "ml-claim-helm"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-calibration",
+      "title": "On Calibration of Modern Neural Networks",
+      "url": "https://arxiv.org/html/1706.04599v2",
+      "locator": "Section 4, temperature scaling equation 9; validation fit description",
+      "supportedClaim": "A positive scalar temperature can adjust output confidence using validation data while preserving class ordering.",
+      "limits": "Brier/coverage arithmetic is authored; no calibration optimizer is implemented in the lifecycle core.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "probability-calibration-abstention",
+        "evaluation"
+      ],
+      "claimIds": [
+        "ml-claim-calibration"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-chinchilla",
+      "title": "Training Compute-Optimal Large Language Models",
+      "url": "https://arxiv.org/html/2203.15556v1",
+      "locator": "Section 3.3, equations 2–4; Appendix D.2",
+      "supportedClaim": "A fitted loss function separates parameter and data terms under a declared compute approximation.",
+      "limits": "Illustrative coefficients are synthetic; the tiny model does not estimate frontier scaling exponents.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "scaling-laws"
+      ],
+      "claimIds": [
+        "ml-claim-chinchilla"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-bpe",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "url": "https://aclanthology.org/P16-1162.pdf",
+      "locator": "Section 3.2 and Algorithm 1, printed pages 1717–1718",
+      "supportedClaim": "The adapted BPE method repeatedly merges frequent adjacent symbol pairs in the fitting corpus.",
+      "limits": "Toy words omit the paper’s end-of-word marker explicitly; no BPE trainer is executed in the core.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "tokenizer"
+      ],
+      "claimIds": [
+        "ml-claim-bpe"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-transformer",
+      "title": "Attention Is All You Need",
+      "url": "https://arxiv.org/html/1706.03762v7",
+      "locator": "Sections 3.1–3.5, equations 1–2, causal masking and positions",
+      "supportedClaim": "The Transformer combines attention, position-wise nonlinear maps and positional information, with masking in its decoder.",
+      "limits": "Core is an authored one-head pre-RMS/tanh decoder with separate head, not the original encoder–decoder architecture.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "embedding",
+        "attention",
+        "feed-forward",
+        "output-head"
+      ],
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-dedup",
+      "title": "Deduplicating Training Data Makes Language Models Better",
+      "url": "https://arxiv.org/html/2107.06499v1",
+      "locator": "Section 3, ExactSubstr/NearDup; Appendix A–B",
+      "supportedClaim": "Exact and approximate duplicate detection have different matching and threshold boundaries.",
+      "limits": "No memorization reduction percentage is claimed for the authored corpus; similarity does not prove semantic equivalence.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "data-quality-dedup-audit",
+        "training-data"
+      ],
+      "claimIds": [
+        "ml-claim-dedup"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-yarn",
+      "title": "YaRN: Efficient Context Window Extension of Large Language Models",
+      "url": "https://arxiv.org/html/2309.00071v2",
+      "locator": "Sections 2.2–3, position interpolation and RoPE extension",
+      "supportedClaim": "YaRN studies extending the rotary-position regime rather than merely changing an input storage limit.",
+      "limits": "KV byte ledger is authored; the core has fixed sinusoidal positions and does not implement YaRN.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "long-context-adaptation"
+      ],
+      "claimIds": [
+        "ml-claim-yarn"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-clip",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "url": "https://arxiv.org/html/2103.00020v1",
+      "locator": "Section 2.3 and Figure 3 pseudocode",
+      "supportedClaim": "CLIP optimizes symmetric image/text matching losses over paired batch representations.",
+      "limits": "Two-pair logits are authored; no vision encoder training or reported transfer result is reproduced.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "image-text-contrastive-learning"
+      ],
+      "claimIds": [
+        "ml-claim-clip"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-llava",
+      "title": "Visual Instruction Tuning",
+      "url": "https://arxiv.org/html/2304.08485v2",
+      "locator": "Sections 4.1–4.2, visual projection and two-stage training",
+      "supportedClaim": "LLaVA projects visual features into language-model width and declares different trainable components across stages.",
+      "limits": "The fixed 2×3 projector example is authored and not a full visual model.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "visual-language-bridge"
+      ],
+      "claimIds": [
+        "ml-claim-llava"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-whisper",
+      "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+      "url": "https://arxiv.org/html/2212.04356v1",
+      "locator": "Sections 2.2–2.3, spectrogram and sequence task representation",
+      "supportedClaim": "The disclosed speech system uses a specified audio feature representation and text-sequence task format.",
+      "limits": "Frame and WER arithmetic uses explicit unpadded/reference-word conventions; no audio recognition is performed.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "speech-audio-sequence-objectives"
+      ],
+      "claimIds": [
+        "ml-claim-whisper"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-ddpm",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "url": "https://arxiv.org/html/2006.11239v2",
+      "locator": "Algorithms 1–2 and Section 3.4 equation 14",
+      "supportedClaim": "The simplified DDPM objective regresses sampled noise at a selected corruption level; sampling is a separate procedure.",
+      "limits": "One-dimensional arithmetic is not a trained diffusion model, likelihood reproduction or image-quality result.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "denoising-generative-objectives"
+      ],
+      "claimIds": [
+        "ml-claim-ddpm"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-flow",
+      "title": "Flow Matching for Generative Modeling",
+      "url": "https://arxiv.org/html/2210.02747v2",
+      "locator": "Sections 3–4, equations 5 and conditional flow matching",
+      "supportedClaim": "Flow matching regresses a vector field along a declared probability path.",
+      "limits": "Straight interpolation example uses an authored pair; no ODE sampler or published experiment is reproduced.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "denoising-generative-objectives"
+      ],
+      "claimIds": [
+        "ml-claim-flow"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-vjepa2",
+      "title": "V-JEPA 2",
+      "url": "https://arxiv.org/html/2506.09985v1",
+      "locator": "Figure 2; Sections 2 and 3.1–3.2",
+      "supportedClaim": "Action-free masked feature prediction and action-conditioned prediction/control are separate stages in this work.",
+      "limits": "Worked scalars are not video training; plausible representation prediction is not a general causal or robotic capability guarantee.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "video-latent-prediction",
+        "action-conditioned-world-model"
+      ],
+      "claimIds": [
+        "ml-claim-vjepa2"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-dreamer",
+      "title": "Mastering Diverse Domains through World Models",
+      "url": "https://arxiv.org/html/2301.04104v2",
+      "locator": "Learning algorithm; World model learning equation 1; Actor/critic learning",
+      "supportedClaim": "Dreamer trains a world model, actor and critic using observed and imagined trajectories.",
+      "limits": "Authored scalar return examples do not execute Dreamer or imply fresh online tree search at each deployed action.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "action-conditioned-world-model",
+        "imagined-rollouts-policy-learning"
+      ],
+      "claimIds": [
+        "ml-claim-dreamer"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-openvla",
+      "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+      "url": "https://arxiv.org/html/2406.09246v1",
+      "locator": "Sections 3.1–3.2, action tokens and 1st/99th quantile range",
+      "supportedClaim": "OpenVLA represents action dimensions with discrete bins and trains on action-token targets.",
+      "limits": "Four-bin midpoint example is explicitly different from OpenVLA’s 256-bin recipe and actual token IDs.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "visual-language-bridge",
+        "vision-language-action-interface"
+      ],
+      "claimIds": [
+        "ml-claim-openvla"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-diffusion-policy",
+      "title": "Diffusion Policy",
+      "url": "https://arxiv.org/html/2303.04137v5",
+      "locator": "Section 3, action-sequence formulation and receding horizon; Section 9 limitations",
+      "supportedClaim": "Diffusion Policy predicts action sequences and executes a prefix before replanning from new observations.",
+      "limits": "Authored position increments and latency assumptions are not diffusion inference measurements or physical robot evidence.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "diffusion-action-horizon"
+      ],
+      "claimIds": [
+        "ml-claim-diffusion-policy"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-distill",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "url": "https://arxiv.org/html/1503.02531v1",
+      "locator": "Section 2, equations 1–2 and T-squared scaling discussion",
+      "supportedClaim": "Distillation can fit softened teacher probabilities and combine them with a separately weighted hard-target loss.",
+      "limits": "No trained student or named model reproduction is included; temperature and gradient scaling are explicit.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "teacher-student-distillation"
+      ],
+      "claimIds": [
+        "ml-claim-distill"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-rmsnorm",
+      "title": "Root Mean Square Layer Normalization",
+      "url": "https://arxiv.org/html/1910.07467v1",
+      "locator": "Section 4, equation 4",
+      "supportedClaim": "RMS normalization divides by feature root mean square with an explicit gain convention.",
+      "limits": "Core gain is fixed one and epsilon positive; no exact scale-invariance claim with epsilon.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "tiny-causal-decoder",
+        "residual-normalization"
+      ],
+      "claimIds": [
+        "ml-claim-rmsnorm"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-adam",
+      "title": "PyTorch Adam algorithm",
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html",
+      "locator": "Algorithm pseudocode, bias correction and epsilon placement",
+      "supportedClaim": "Adam retains first/second moments and applies bias-corrected normalization.",
+      "limits": "Core is independent TypeScript, constant-rate and zero-decay; SGD moment retention is a documented teaching policy.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "tiny-causal-decoder",
+        "optimizer-schedule-stability",
+        "loss-optimizer"
+      ],
+      "claimIds": [
+        "ml-claim-adam"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    },
+    {
+      "id": "ml-source-wilson",
+      "title": "NIST Dataplot: Wilson proportion interval",
+      "url": "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/agrecoul.htm",
+      "locator": "Description equations and Note distinguishing Wilson from adjusted Wald",
+      "supportedClaim": "Wilson intervals invert a binomial score test and remain nondegenerate for small all-success samples.",
+      "limits": "The illustrative interval assumes a sampling model; it does not establish representative coverage of a synthetic final split.",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkStatus": "relevant-section-inspected",
+      "lessonIds": [
+        "evaluation"
+      ],
+      "claimIds": [
+        "ml-claim-wilson"
+      ],
+      "humanSpecialistReview": null,
+      "reviewRole": "Proposed: machine-learning methods specialist; modality specialist for vision, speech and control",
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not separately inventoried; URL edition and locator retained.",
+      "recheckCadenceDays": 180,
+      "recheckTriggers": [
+        "Equation, objective, source edition or executable scope changes",
+        "A worked example is promoted to an executable experiment",
+        "New empirical capability or timing claim is added"
+      ]
+    }
+  ],
+  "reviewDispositions": [
+    {
+      "lessonId": "data-quality-dedup-audit",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Nonempty shingle union; exact set arithmetic. Threshold and authored semantic labels are teaching choices, not a universal deduplication rule.",
+      "modelAssumptions": "Mode: worked example. Nonempty shingle union; exact set arithmetic. Threshold and authored semantic labels are teaching choices, not a universal deduplication rule. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-dedup"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2406.17557v1",
+        "https://arxiv.org/html/2107.06499v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "data-mixture-sampling",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Independent source draws with replacement, positive pool sizes and probabilities summing to one. These are exposure calculations, not predicted learning curves.",
+      "modelAssumptions": "Mode: worked example. Independent source draws with replacement, positive pool sizes and probabilities summing to one. These are exposure calculations, not predicted learning curves. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-olmo2"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2406.17557v1",
+        "https://arxiv.org/html/2501.00656v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "sequence-packing-loss-denominators",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Positive valid-target count; the displayed attention formula chooses document isolation. Other packing policies must declare their different boundary semantics.",
+      "modelAssumptions": "Mode: worked example. Positive valid-target count; the displayed attention formula chooses document isolation. Other packing policies must declare their different boundary semantics. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-sft-doc"
+      ],
+      "sourceUrls": [
+        "https://huggingface.co/docs/trl/sft_trainer"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "synthetic-data-selection-feedback",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Explicit arithmetic reference and deterministic faulty filter; positive denominators. This is a worked selection audit, not a synthetic-data training simulator.",
+      "modelAssumptions": "Mode: worked example. Explicit arithmetic reference and deterministic faulty filter; positive denominators. This is a worked selection audit, not a synthetic-data training simulator. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-r1"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2411.15124v1",
+        "https://arxiv.org/html/2501.12948v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "data-coverage-language-slices",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored strings and slice counts; UTF-8 and a fixed character tokenizer. Cross-tokenizer loss values require further normalization and do not directly rank language ability.",
+      "modelAssumptions": "Mode: worked example. Authored strings and slice counts; UTF-8 and a fixed character tokenizer. Cross-tokenizer loss values require further normalization and do not directly rank language ability. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-helm"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2406.17557v1",
+        "https://arxiv.org/html/2211.09110v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "reverse-mode-autodiff",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Smooth scalar graph and nonzero finite-difference step; floating-point cancellation can limit very small h. Lifecycle tape executes these mechanisms for all 423 parameters.",
+      "modelAssumptions": "Mode: executable core. Smooth scalar graph and nonzero finite-difference step; floating-point cancellation can limit very small h. Lifecycle tape executes these mechanisms for all 423 parameters. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable core",
+      "claimIds": [
+        "ml-claim-autograd"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/2.14/notes/autograd.html"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "tiny-causal-decoder",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "One head, separate input/output weights, two feed-forward biases, output bias, fixed sinusoidal positions, gain-free RMS normalization, tanh activation and binary64 arithmetic.",
+      "modelAssumptions": "Mode: executable core. One head, separate input/output weights, two feed-forward biases, output bias, fixed sinusoidal positions, gain-free RMS normalization, tanh activation and binary64 arithmetic. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable core",
+      "claimIds": [
+        "ml-claim-transformer",
+        "ml-claim-olmo2",
+        "ml-claim-rmsnorm",
+        "ml-claim-adam"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1706.03762v7",
+        "https://arxiv.org/html/2501.00656v1",
+        "https://arxiv.org/html/1910.07467v1",
+        "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "causal-pretraining-objective",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable.",
+      "modelAssumptions": "Mode: executable core. Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable core",
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-transformer"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1",
+        "https://arxiv.org/html/1706.03762v7"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "optimizer-schedule-stability",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "For zero gradient use clipping multiplier one. The second equation declares one AdamW convention; lifecycle core sets decay to zero and has a constant schedule.",
+      "modelAssumptions": "Mode: executable clipping; worked schedule and AdamW. For zero gradient use clipping multiplier one. The second equation declares one AdamW convention; lifecycle core sets decay to zero and has a constant schedule. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable clipping; worked schedule and AdamW",
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-adamw",
+        "ml-claim-adam"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1",
+        "https://arxiv.org/html/1711.05101v3",
+        "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "microbatch-equivalent-updates",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "All gradients evaluated at the same weights with the same stochastic choices needed for equivalence. Exact arithmetic example; finite reductions can introduce rounding differences.",
+      "modelAssumptions": "Mode: worked example. All gradients evaluated at the same weights with the same stochastic choices needed for equivalence. Exact arithmetic example; finite reductions can introduce rounding differences. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-sft-doc",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://huggingface.co/docs/trl/sft_trainer",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "model-lifecycle-stage-contract",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Contract notation is an authored organizational tool, not a universal naming standard. The tuple does not itself train a model.",
+      "modelAssumptions": "Mode: executable stage branches. Contract notation is an authored organizational tool, not a universal naming standard. The tuple does not itself train a model. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable stage branches",
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-dapt"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1",
+        "https://aclanthology.org/2020.acl-main.740.pdf"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "domain-adaptive-continuation",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Same evaluation cases, masks and tokenizer before/after; negative loss change is improvement. Binary illustrative probabilities do not describe every vocabulary class in the core.",
+      "modelAssumptions": "Mode: executable continuation. Same evaluation cases, masks and tokenizer before/after; negative loss change is improvement. Binary illustrative probabilities do not describe every vocabulary class in the core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable continuation",
+      "claimIds": [
+        "ml-claim-dapt"
+      ],
+      "sourceUrls": [
+        "https://aclanthology.org/2020.acl-main.740.pdf"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "replay-retention-forgetting",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "One identical prompt with contradictory binary labels, unlimited fitting of its probability and no domain tag. Finite decoder optimization need not reach this ideal optimum.",
+      "modelAssumptions": "Mode: executable replay; worked ideal optimum. One identical prompt with contradictory binary labels, unlimited fitting of its probability and no domain tag. Finite decoder optimization need not reach this ideal optimum. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable replay; worked ideal optimum",
+      "claimIds": [
+        "ml-claim-dapt",
+        "ml-claim-olmo2"
+      ],
+      "sourceUrls": [
+        "https://aclanthology.org/2020.acl-main.740.pdf",
+        "https://arxiv.org/html/2501.00656v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "long-context-adaptation",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Uncompressed full KV payload with no sharing or overhead. This lesson is a worked extension; the lifecycle core has at most eight input positions and does not implement YaRN.",
+      "modelAssumptions": "Mode: worked example. Uncompressed full KV payload with no sharing or overhead. This lesson is a worked extension; the lifecycle core has at most eight input positions and does not implement YaRN. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-yarn"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2309.00071v2"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "checkpoint-averaging-boundaries",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core.",
+      "modelAssumptions": "Mode: worked example. Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "sft-chat-loss-masks",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Positive included-target count and a stated role/template boundary. Core mask covers one answer and EOS; multi-turn masking here is worked-only.",
+      "modelAssumptions": "Mode: executable one-turn response mask. Positive included-target count and a stated role/template boundary. Core mask covers one answer and EOS; multi-turn masking here is worked-only. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable one-turn response mask",
+      "claimIds": [
+        "ml-claim-sft-doc",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://huggingface.co/docs/trl/sft_trainer",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "preference-reward-model",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Bradley–Terry logistic score-difference model with one explicit preference label. No learned reward model is implemented in the lifecycle core; its reward stage uses a disclosed checker.",
+      "modelAssumptions": "Mode: worked example. Bradley–Terry logistic score-difference model with one explicit preference label. No learned reward model is implemented in the lifecycle core; its reward stage uses a disclosed checker. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-instructgpt",
+        "ml-claim-dpo"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2203.02155v1",
+        "https://arxiv.org/html/2305.18290v3"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "direct-preference-objective",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Positive probabilities, fixed reference and consistent response token scoring. Core uses authored swap preferences and answer-plus-EOS scores, not collected human labels.",
+      "modelAssumptions": "Mode: executable DPO. Positive probabilities, fixed reference and consistent response token scoring. Core uses authored swap preferences and answer-plus-EOS scores, not collected human labels. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable DPO",
+      "claimIds": [
+        "ml-claim-dpo"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2305.18290v3"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "policy-gradient-kl-control",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "One sampled-action term with fixed advantage. PPO formula is worked-only; executable core uses REINFORCE plus exact two-action KL, not PPO or GRPO.",
+      "modelAssumptions": "Mode: worked example. One sampled-action term with fixed advantage. PPO formula is worked-only; executable core uses REINFORCE plus exact two-action KL, not PPO or GRPO. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-ppo",
+        "ml-claim-instructgpt"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/pdf/1707.06347",
+        "https://arxiv.org/html/2203.02155v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "verifiable-reward-group-updates",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Explicit population-variance and zero-variance teaching convention; real implementations may add epsilon or use another normalization. This group arithmetic is not the core bandit estimator.",
+      "modelAssumptions": "Mode: executable checker; worked group normalization. Explicit population-variance and zero-variance teaching convention; real implementations may add epsilon or use another normalization. This group arithmetic is not the core bandit estimator. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable checker; worked group normalization",
+      "claimIds": [
+        "ml-claim-r1",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.12948v1",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "reward-proxy-overoptimization",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored counterexample and a separately specified task scorer. No claim that every reward model inevitably fails or that a particular real system followed this trajectory.",
+      "modelAssumptions": "Mode: executable faulty verifier; worked length proxy. Authored counterexample and a separately specified task scorer. No claim that every reward model inevitably fails or that a particular real system followed this trajectory. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable faulty verifier; worked length proxy",
+      "claimIds": [
+        "ml-claim-overoptimization",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2210.10760v1",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "low-rank-adaptation",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Rank one, d=4, k=6 and alpha/r=1 in the example. Biases and any additional adapted matrices are excluded. Worked-only parameterization.",
+      "modelAssumptions": "Mode: worked example. Rank one, d=4, k=6 and alpha/r=1 in the example. Biases and any additional adapted matrices are excluded. Worked-only parameterization. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-lora"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2106.09685v2"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "teacher-student-distillation",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Teacher probabilities detached; fixed shared temperature. T² scaling is explicit. Worked calculation only; no student distillation trainer is in the lifecycle core.",
+      "modelAssumptions": "Mode: worked example. Teacher probabilities detached; fixed shared temperature. T² scaling is explicit. Worked calculation only; no student distillation trainer is in the lifecycle core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-distill",
+        "ml-claim-r1"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1503.02531v1",
+        "https://arxiv.org/html/2501.12948v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "probability-calibration-abstention",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Binary Brier convention shown, not sum over both class coordinates. Authored predictions; no calibration fitting feature is implemented in the lifecycle core.",
+      "modelAssumptions": "Mode: worked example. Binary Brier convention shown, not sum over both class coordinates. Authored predictions; no calibration fitting feature is implemented in the lifecycle core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-calibration",
+        "ml-claim-helm"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1706.04599v2",
+        "https://arxiv.org/html/2211.09110v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "judge-rubric-agreement",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored binary labels and exact case matching; agreement here is raw agreement, not chance-corrected kappa. Human preference tasks may lack a single factual reference.",
+      "modelAssumptions": "Mode: worked example. Authored binary labels and exact case matching; agreement here is raw agreement, not chance-corrected kappa. Human preference tasks may lack a single factual reference. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-helm",
+        "ml-claim-instructgpt"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2411.15124v1",
+        "https://arxiv.org/html/2211.09110v1",
+        "https://arxiv.org/html/2203.02155v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "retrieval-supported-generation",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Exact normalized two-document teaching mixture; RAG top-k truncation can require a different approximation boundary. Support is rubric evidence, not model likelihood.",
+      "modelAssumptions": "Mode: worked example. Exact normalized two-document teaching mixture; RAG top-k truncation can require a different approximation boundary. Support is rubric evidence, not model likelihood. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-helm",
+        "ml-claim-rag"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2211.09110v1",
+        "https://arxiv.org/html/2005.11401v4"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "test-time-search-verification",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Independent identically distributed success events for the probability calculation. Correlated samples and imperfect selectors invalidate interpreting this as final accuracy.",
+      "modelAssumptions": "Mode: worked example. Independent identically distributed success events for the probability calculation. Correlated samples and imperfect selectors invalidate interpreting this as final accuracy. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-r1",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.12948v1",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "model-system-regression-contract",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored finite regression contract; thresholds are chosen before evaluation and do not certify open-ended model safety. System component identities must remain available.",
+      "modelAssumptions": "Mode: worked example. Authored finite regression contract; thresholds are chosen before evaluation and do not certify open-ended model safety. System component identities must remain available. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-helm",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2211.09110v1",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "image-text-contrastive-learning",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Two uniquely matched pairs, unit vectors and temperature one in the example. False-negative captions and general image understanding are outside this exact arithmetic.",
+      "modelAssumptions": "Mode: worked example. Two uniquely matched pairs, unit vectors and temperature one in the example. False-negative captions and general image understanding are outside this exact arithmetic. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-clip"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2103.00020v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "visual-language-bridge",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored fixed features and a linear projector, not an executed vision encoder or replication of an entire VLM. Matrix orientation is explicitly row-vector based.",
+      "modelAssumptions": "Mode: worked example. Authored fixed features and a linear projector, not an executed vision encoder or replication of an entire VLM. Matrix orientation is explicitly row-vector based. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-llava",
+        "ml-claim-openvla"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2304.08485v2",
+        "https://arxiv.org/html/2406.09246v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "speech-audio-sequence-objectives",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "N at least W, no padding or centering for frame arithmetic; fixed whitespace-normalized reference words for WER. No audio data is uploaded or speech model run by this lesson.",
+      "modelAssumptions": "Mode: worked example. N at least W, no padding or centering for frame arithmetic; fixed whitespace-normalized reference words for WER. No audio data is uploaded or speech model run by this lesson. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-whisper"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2212.04356v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "denoising-generative-objectives",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "One-dimensional authored samples; diffusion and flow use separate time/start conventions explicitly. No complete sampler, likelihood bound or image-quality benchmark is executed.",
+      "modelAssumptions": "Mode: worked example. One-dimensional authored samples; diffusion and flow use separate time/start conventions explicitly. No complete sampler, likelihood bound or image-quality benchmark is executed. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-ddpm",
+        "ml-claim-flow"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2006.11239v2",
+        "https://arxiv.org/html/2210.02747v2"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "video-latent-prediction",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Scalar authored feature targets and a declared L1 coordinate mean. Worked EMA arithmetic does not replicate an encoder, dataset or the full V-JEPA 2 training recipe.",
+      "modelAssumptions": "Mode: worked example. Scalar authored feature targets and a declared L1 coordinate mean. Worked EMA arithmetic does not replicate an encoder, dataset or the full V-JEPA 2 training recipe. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-vjepa2"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2506.09985v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "action-conditioned-world-model",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Example gain is 2 m per normalized command per step; model gain is 1.8. No clipping, noise or hidden state. This is worked arithmetic, not a trained world-model experience.",
+      "modelAssumptions": "Mode: worked example. Example gain is 2 m per normalized command per step; model gain is 1.8. No clipping, noise or hidden state. This is worked arithmetic, not a trained world-model experience. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-vjepa2",
+        "ml-claim-dreamer"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2506.09985v1",
+        "https://arxiv.org/html/2301.04104v2"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "imagined-rollouts-policy-learning",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored deterministic rewards and finite horizon; no learned actor/critic or robot is executed here. Terminal states must stop or otherwise explicitly zero further rewards.",
+      "modelAssumptions": "Mode: worked example. Authored deterministic rewards and finite horizon; no learned actor/critic or robot is executed here. Terminal states must stop or otherwise explicitly zero further rewards. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-dreamer"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2301.04104v2"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "vision-language-action-interface",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored four-bin midpoint convention, range checked first; a=u maps to final bin. It is not a verbatim implementation of OpenVLA token IDs or quantile calibration.",
+      "modelAssumptions": "Mode: worked example. Authored four-bin midpoint convention, range checked first; a=u maps to final bin. It is not a verbatim implementation of OpenVLA token IDs or quantile calibration. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-openvla"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2406.09246v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "diffusion-action-horizon",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "New authored lesson",
+      "unitsAndDenominators": "Authored deterministic scalar integrator and command chunks. Rate and delay are stated assumptions; no diffusion inference or physical robot timing is measured.",
+      "modelAssumptions": "Mode: worked example. Authored deterministic scalar integrator and command chunks. Rate and delay are stated assumptions; no diffusion inference or physical robot timing is measured. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-diffusion-policy"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2303.04137v5"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "training-data",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied.",
+      "modelAssumptions": "Mode: executable corpus lineage. Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable corpus lineage",
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-dedup"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2406.17557v1",
+        "https://arxiv.org/html/2107.06499v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "tokenizer",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Toy word boundaries and deterministic lexical tie rule; no byte fallback or production BPE trainer is executed by the core.",
+      "modelAssumptions": "Mode: worked example. Toy word boundaries and deterministic lexical tie rule; no byte fallback or production BPE trainer is executed by the core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-bpe"
+      ],
+      "sourceUrls": [
+        "https://aclanthology.org/P16-1162.pdf"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "embedding",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate.",
+      "modelAssumptions": "Mode: executable lookup gradients; worked tying. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable lookup gradients; worked tying",
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1706.03762v7"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "attention",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections.",
+      "modelAssumptions": "Mode: executable causal attention gradients. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable causal attention gradients",
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1706.03762v7"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "feed-forward",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "The scalar activation symbol h and hidden-width ledger are explicitly separated by context. Core uses tanh, not the original Transformer ReLU or a gated variant.",
+      "modelAssumptions": "Mode: executable nonlinear block. The scalar activation symbol h and hidden-width ledger are explicitly separated by context. Core uses tanh, not the original Transformer ReLU or a gated variant. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable nonlinear block",
+      "claimIds": [
+        "ml-claim-transformer",
+        "ml-claim-olmo2"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1706.03762v7",
+        "https://arxiv.org/html/2501.00656v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "residual-normalization",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Fixed gain one; epsilon zero only for the explicitly labeled hand calculation. Core epsilon is 1e-5, so exact scale invariance is qualified.",
+      "modelAssumptions": "Mode: executable residual and RMS paths. Fixed gain one; epsilon zero only for the explicitly labeled hand calculation. Core epsilon is 1e-5, so exact scale invariance is qualified. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable residual and RMS paths",
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-rmsnorm"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1",
+        "https://arxiv.org/html/1910.07467v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "output-head",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Finite logits, natural logarithms and one categorical target. Stable implementation subtracts maximum logit; that shift preserves the distribution.",
+      "modelAssumptions": "Mode: executable output probabilities and generation. Finite logits, natural logarithms and one categorical target. Stable implementation subtracts maximum logit; that shift preserves the distribution. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable output probabilities and generation",
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/1706.03762v7"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "moe",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Switch top-one auxiliary convention, before capacity handling. Discrete f is treated as nondifferentiable; P supplies a gradient path. Worked-only routing.",
+      "modelAssumptions": "Mode: worked example. Switch top-one auxiliary convention, before capacity handling. Discrete f is treated as nondifferentiable; P supplies a gradient path. Worked-only routing. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-switch"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2101.03961v3"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "loss-optimizer",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5.",
+      "modelAssumptions": "Mode: executable derived-gradient optimizer. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable derived-gradient optimizer",
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-adam"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1",
+        "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "checkpoint",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract.",
+      "modelAssumptions": "Mode: executable full checkpoint. Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable full checkpoint",
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "training-memory-state",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed.",
+      "modelAssumptions": "Mode: executable arrays; payload arithmetic. 423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable arrays; payload arithmetic",
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2501.00656v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "scaling-laws",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Illustrative coefficients only. The 6ND heuristic omits architecture-specific terms and is not a measured cost of the scalar-tape core.",
+      "modelAssumptions": "Mode: worked example. Illustrative coefficients only. The 6ND heuristic omits architecture-specific terms and is not a measured cost of the scalar-tape core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-chinchilla",
+        "ml-claim-fineweb"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2203.15556v1",
+        "https://arxiv.org/html/2406.17557v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "post-training",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Core conventions: answer plus EOS SFT, response-pair DPO, one-action bandit rollouts. These are not a claim that every post-training implementation uses the same denominators.",
+      "modelAssumptions": "Mode: executable SFT DPO and bandit. Core conventions: answer plus EOS SFT, response-pair DPO, one-action bandit rollouts. These are not a claim that every post-training implementation uses the same denominators. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable SFT DPO and bandit",
+      "claimIds": [
+        "ml-claim-instructgpt",
+        "ml-claim-tulu3"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2203.02155v1",
+        "https://arxiv.org/html/2411.15124v1"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "evaluation",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias.",
+      "modelAssumptions": "Mode: executable final report; worked uncertainty. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. executable final report; worked uncertainty",
+      "claimIds": [
+        "ml-claim-helm",
+        "ml-claim-calibration",
+        "ml-claim-wilson"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2211.09110v1",
+        "https://arxiv.org/html/1706.04599v2",
+        "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/agrecoul.htm"
+      ],
+      "specialistReview": null
+    },
+    {
+      "lessonId": "tool-loop",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "checkedOn": "2026-09-07",
+      "scope": "Appended material only",
+      "unitsAndDenominators": "Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries.",
+      "modelAssumptions": "Mode: worked example. Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "claimQualifiers": "Mechanism anchors and authored calculations only; no reproduction or human specialist review.",
+      "dependencyAndVisualScope": "Prerequisites validated against the current authored graph; diagrams are conceptual. worked example",
+      "claimIds": [
+        "ml-claim-react"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/html/2210.03629v3"
+      ],
+      "specialistReview": null
+    }
+  ],
+  "pendingGates": [
+    "Independent specialist review",
+    "Observed learner acceptance tasks",
+    "Root integration visual and interaction QA"
+  ],
+  "freshnessWorkflow": "Append a dated source/equation review after any affected edit; keep old events and actual actor identity. Recompute hashes and numerical checks after integration. No source verification date is inferred from a publication or automated URL availability check.",
+  "fileSnapshots": [
+    {
+      "path": "src/lib/data/model-lifecycle-learning.json",
+      "sha256": "9e79325d61494e633bc527c6610c82f6dfaf969ddc25d229b8b345c4daced52d"
+    },
+    {
+      "path": "src/lib/data/equations-model-lifecycle-learning.json",
+      "sha256": "9e0f27b85f118041498da2787bf4323847fa158a33a3ece2b41a04babcdc3fe5"
+    },
+    {
+      "path": "src/lib/data/model-lifecycle-enrichments.json",
+      "sha256": "acfbe1643bab8c648ff064308f7e2e5422869788989f528205f664ba8b32ac97"
+    },
+    {
+      "path": "scripts/model-lifecycle-curriculum.test.mjs",
+      "sha256": "21d01225e0d9843dd6050f1f47f6091aa3c4a724c7aa4fc776080137c111655c"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/generate.py",
+      "sha256": "8e73b4ab1b6c0ccc41b5d5cb0cca1a586395673126e9711e8a7d0cba716fea2b"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/approved-candidates.json",
+      "sha256": "d44a4467898ed7b81d66a9eab72a85eed0a8c59248b6d62fe065a7bc26849fa0"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/README.md",
+      "sha256": "8f27b70bdf1cb1e68a486c09a498d68bc5a3a1b5add950f8fd00fa03c42ad92b"
+    }
+  ]
+}

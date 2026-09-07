@@ -1,0 +1,106 @@
+TAP version 13
+# Subtest: four additive lessons form one existing-domain chapter with valid identifiers and no prerequisite cycles
+ok 1 - four additive lessons form one existing-domain chapter with valid identifiers and no prerequisite cycles
+  ---
+  duration_ms: 0.945667
+  type: 'test'
+  ...
+# Subtest: every lesson has substantive scoped explanation, worked content and multiple answerable checks
+ok 2 - every lesson has substantive scoped explanation, worked content and multiple answerable checks
+  ---
+  duration_ms: 0.218416
+  type: 'test'
+  ...
+# Subtest: eight canonical equations render strictly and pair with populated scientific assumptions and variable units
+ok 3 - eight canonical equations render strictly and pair with populated scientific assumptions and variable units
+  ---
+  duration_ms: 7.719375
+  type: 'test'
+  ...
+# Subtest: all lesson source references are covered by scoped, actually dated agent checks without invented human review
+ok 4 - all lesson source references are covered by scoped, actually dated agent checks without invented human review
+  ---
+  duration_ms: 0.120917
+  type: 'test'
+  ...
+# Subtest: pack evidence cards preserve source identity, applicable lessons and explicit non-performance limits
+ok 5 - pack evidence cards preserve source identity, applicable lessons and explicit non-performance limits
+  ---
+  duration_ms: 0.085333
+  type: 'test'
+  ...
+# Subtest: inner-dimension partials independently reconstruct the exact matrix and both receive layouts
+ok 6 - inner-dimension partials independently reconstruct the exact matrix and both receive layouts
+  ---
+  duration_ms: 0.164125
+  type: 'test'
+  ...
+# Subtest: the explicit two-phase exchange transports the correct row once at the sender boundary
+ok 7 - the explicit two-phase exchange transports the correct row once at the sender boundary
+  ---
+  duration_ms: 0.06475
+  type: 'test'
+  ...
+# Subtest: different contracted-axis partitions preserve products across signed small matrix specimens
+ok 8 - different contracted-axis partitions preserve products across signed small matrix specimens
+  ---
+  duration_ms: 0.674917
+  type: 'test'
+  ...
+# Subtest: global gradient follows the actual eight-item squared-error objective and agrees with finite differences
+ok 9 - global gradient follows the actual eight-item squared-error objective and agrees with finite differences
+  ---
+  duration_ms: 0.144709
+  type: 'test'
+  ...
+# Subtest: sample-weighted rank means equal flattening for uneven groups; unweighted rank means need not
+ok 10 - sample-weighted rank means equal flattening for uneven groups; unweighted rank means need not
+  ---
+  duration_ms: 0.2695
+  type: 'test'
+  ...
+# Subtest: binary32 cancellation trace and reference error use two independent rounding mechanisms
+ok 11 - binary32 cancellation trace and reference error use two independent rounding mechanisms
+  ---
+  duration_ms: 0.082375
+  type: 'test'
+  ...
+# Subtest: binary32 spacing and ties-to-even are checked on both sides of the power-of-two boundary
+ok 12 - binary32 spacing and ties-to-even are checked on both sides of the power-of-two boundary
+  ---
+  duration_ms: 0.049417
+  type: 'test'
+  ...
+# Subtest: speculative sampling recovers the exact toy target rather than accepting the draft unconditionally
+ok 13 - speculative sampling recovers the exact toy target rather than accepting the draft unconditionally
+  ---
+  duration_ms: 0.118792
+  type: 'test'
+  ...
+# Subtest: correction mass preserves target distributions across support gaps, equality and a simplex grid
+ok 14 - correction mass preserves target distributions across support gaps, equality and a simplex grid
+  ---
+  duration_ms: 0.612792
+  type: 'test'
+  ...
+# Subtest: iid output counts include the correction/bonus and handle zero and perfect acceptance
+ok 15 - iid output counts include the correction/bonus and handle zero and perfect acceptance
+  ---
+  duration_ms: 0.194084
+  type: 'test'
+  ...
+# Subtest: throughput uses separately assumed round times and can reverse the apparent acceleration
+ok 16 - throughput uses separately assumed round times and can reverse the apparent acceleration
+  ---
+  duration_ms: 0.063625
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 16
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 333.24275

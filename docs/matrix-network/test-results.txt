@@ -1,0 +1,27 @@
+✔ the 2x2 source bytes, word identities and consumer dot products agree with hand arithmetic (2.8235ms)
+✔ signed little-endian conversion is independently checked at negative and sign-boundary values (0.181125ms)
+✔ independent column accumulation agrees for each specimen, tensor, flit width, credit count and delay boundary (13.362667ms)
+✔ single-credit timing has an independent stop-and-return recurrence (0.176334ms)
+✔ enough credits pipeline one flit per tick without equating injection width and latency (0.116583ms)
+✔ receiver pause retains finite slots and return latency blocks send until the credit arrives (0.181541ms)
+✔ receiver interval is evaluated on declared absolute eligible ticks (0.147958ms)
+✔ partial last slot padding never creates extra destination bytes or trainable operands (0.162417ms)
+✔ each omitted segment leaves the exact destination hole, no MAC and all credits recovered (1.256583ms)
+✔ wrong transfer and tensor identity is rejected without copying any of that segment (0.14675ms)
+✔ duplicate delivery costs another slot but writes each identified destination byte only once (0.550542ms)
+✔ actual consumer completeness gate refuses every incomplete prefix including legitimate zero bytes (0.895417ms)
+✔ premature fixture invokes the same byte gate and computes only after identified assembly (0.470291ms)
+✔ valid identity with altered payload feeds wrong real operands rather than the reference matrix (0.107166ms)
+✔ consumer start is tied to destination readiness, while trailing credits can drain concurrently (0.078083ms)
+✔ all failure modes remain bounded at slow-link, slow-service, long-pause and flit-count extremes (7.036834ms)
+✔ record import is strict, bounded and recomputes source identity rather than trusting supplied outputs (0.961542ms)
+✔ invalid choices and cross-field fault indices cannot trigger giant or ambiguous simulations (0.19125ms)
+✔ mutation of a returned snapshot cannot change other snapshots, presets or replay (0.772666ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.043875

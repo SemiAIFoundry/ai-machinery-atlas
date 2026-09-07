@@ -1,0 +1,2 @@
+PASS: 256 exhaustive input pairs; registered unsigned sum preserves the carry bit.
+exhaustive-tb.v:24: $finish called at 5126000 (1ps)

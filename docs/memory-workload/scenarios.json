@@ -1,0 +1,838 @@
+{
+  "schemaVersion": 1,
+  "scope": "Authored deterministic software fixtures; not measured hardware.",
+  "cases": [
+    {
+      "id": "healthy",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "none",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "stagingNs": 0,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 0,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "single-corrected",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "single-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "stagingNs": 0,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 2,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "host-staged",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "host-stage",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "single-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 696,
+          "stagingNs": 44,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 2,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 48
+      }
+    },
+    {
+      "id": "read-tier-staged",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "read-tier-stage",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "single-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 696,
+          "stagingNs": 44,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 2,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 48
+      }
+    },
+    {
+      "id": "double-detected",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "double-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "ecc-blocked",
+        "finalOutput": null,
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 40,
+          "stagingNs": 0,
+          "machineElapsedNs": 40,
+          "macs": 0,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 32,
+          "writeTransactionBytes": 0,
+          "operandReadOccurrences": 5,
+          "correctedNibbles": 0,
+          "detectedReads": 1,
+          "refreshes": 0,
+          "refreshReservedNs": 0,
+          "refreshBusyNs": 0
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "double-unchecked",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "unchecked",
+          "fault": "double-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "silent-corruption",
+        "finalOutput": [
+          [
+            4,
+            5,
+            -1
+          ],
+          [
+            6,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "stagingNs": 0,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 0,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "triple-miscorrected",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "triple",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "silent-corruption",
+        "finalOutput": [
+          [
+            0,
+            5,
+            -1
+          ],
+          [
+            4,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "stagingNs": 0,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 2,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "qualification-pending",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "not-provided",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "single-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "admission-blocked",
+        "finalOutput": null,
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 0,
+          "stagingNs": 0,
+          "machineElapsedNs": 0,
+          "macs": 0,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 0,
+          "writeTransactionBytes": 0,
+          "operandReadOccurrences": 0,
+          "correctedNibbles": 0,
+          "detectedReads": 0,
+          "refreshes": 0,
+          "refreshReservedNs": 0,
+          "refreshBusyNs": 0
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "placement-blocked",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 96,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "secded",
+          "fault": "single-data",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "placement-blocked",
+        "finalOutput": null,
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 0,
+          "stagingNs": 0,
+          "machineElapsedNs": 0,
+          "macs": 0,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 0,
+          "writeTransactionBytes": 0,
+          "operandReadOccurrences": 0,
+          "correctedNibbles": 0,
+          "detectedReads": 0,
+          "refreshes": 0,
+          "refreshReservedNs": 0,
+          "refreshBusyNs": 0
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "no-refresh",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 0,
+          "protection": "secded",
+          "fault": "none",
+          "faultTensor": "B",
+          "faultWord": 0,
+          "faultNibble": 0
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 562,
+          "stagingNs": 0,
+          "machineElapsedNs": 562,
+          "macs": 27,
+          "outputNarrowedWords": 0,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 0,
+          "detectedReads": 0,
+          "refreshes": 0,
+          "refreshReservedNs": 0,
+          "refreshBusyNs": 0
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    },
+    {
+      "id": "high-nibble-narrowing",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "memory-workload-bridge-1",
+        "source": "authored-matrix-memory-boundary-1",
+        "input": {
+          "specimen": "three",
+          "route": "tc-ncf",
+          "dies": 8,
+          "selectedDie": 0,
+          "registrationOffsetUm": 0.1,
+          "qualification": "synthetic-pass",
+          "bTier": "hbm",
+          "payloadBudgetBytes": 192,
+          "bankPlacement": "same-bank",
+          "buffers": 2,
+          "refreshEveryNs": 96,
+          "protection": "unchecked",
+          "fault": "double-data",
+          "faultTensor": "A",
+          "faultWord": 1,
+          "faultNibble": 7
+        }
+      },
+      "expected": {
+        "status": "silent-corruption",
+        "finalOutput": [
+          [
+            2,
+            805306373,
+            1879048191
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "stagingNs": 0,
+          "machineElapsedNs": 652,
+          "macs": 27,
+          "outputNarrowedWords": 1,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "operandReadOccurrences": 36,
+          "correctedNibbles": 0,
+          "detectedReads": 0,
+          "refreshes": 6,
+          "refreshReservedNs": 72,
+          "refreshBusyNs": 72
+        },
+        "allocatedBytes": 144,
+        "remoteSourceReadBytes": 0
+      }
+    }
+  ]
+}

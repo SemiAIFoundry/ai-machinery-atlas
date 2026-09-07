@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "mergeContract": "Append these fields to existing lessons; preserve original science, mechanisms, objectives, checks and prerequisites. Root owns registry integration.",
+  "entries": {
+    "training-data": {
+      "appendDescription": "The corpus lineage experience now executes a small construction chain: original document families are assigned to splits before normalization; exact training copies can be excluded with retained source pointers; a tokenizer fits only retained training fields; deterministic document sampling and packing produce inspectable arrays.",
+      "appendMechanism": [
+        "Compare exact transformed prompt/response pairs, three-word-shingle similarity and known-family relationships without treating any single diagnostic as semantic truth.",
+        "Record split seed, transformation, excluded IDs, tokenizer fitting IDs, merge order, sampler cursor and packed indices so the same declared batch can be reconstructed."
+      ],
+      "appendEngineeringExample": "At split seed17 in the original maintenance fixture, splitting individual documents places fan7-original in training and its exact mirror in evaluation. Whole-family assignment removes that flagged cross-split overlap. At default seed7, exact-copy exclusion removes three training records while preserving their original texts and retained-document pointers.",
+      "appendEvidenceNotes": "These are computed relationships in twelve authored documents across seven known families. No language-model quality, memorization rate or representative real-corpus coverage is measured.",
+      "additionalChecks": [
+        {
+          "question": "A mirrored document appears in training and evaluation after individual-document splitting. What does this establish?",
+          "options": [
+            "The model must have memorized it",
+            "The evaluation has observable overlap that must be disclosed; model impact needs separate measurement",
+            "The mirror becomes independent because its ID differs"
+          ],
+          "answer": 1,
+          "explanation": "An ID difference does not erase shared content or lineage. The data relationship is measurable before training; a causal model-quality claim requires another experiment."
+        }
+      ],
+      "additionalRelated": [
+        "tokenizer",
+        "dataset-human-judgment-lineage",
+        "evaluation"
+      ],
+      "additionalSources": [
+        {
+          "title": "Lee et al. · duplicates and train-test overlap",
+          "url": "https://arxiv.org/abs/2107.06499"
+        }
+      ]
+    },
+    "tokenizer": {
+      "appendDescription": "The corpus experience actually trains a bounded byte-pair tokenizer. Its initial 256-byte inventory is fixed; frequent adjacent pairs are merged using only retained training prompt and response fields. This is separate from the lifecycle model, whose nine-token whitespace vocabulary stays fixed.",
+      "appendMechanism": [
+        "Count candidate pairs inside each training field, break equal-frequency ties by numeric IDs, and replace non-overlapping occurrences left to right.",
+        "Apply the frozen merge sequence to every split; keep structural boundaries outside content-byte encoding and verify full UTF-8 reconstruction."
+      ],
+      "appendEngineeringExample": "In the field abab, the pair ab occurs twice. One merge maps its two bytes to a new symbol, and encoding becomes two copies of that symbol. In aaa, the pair aa has two overlapping counts but only one non-overlapping replacement. These counts describe different stages of the algorithm.",
+      "appendEvidenceNotes": "The implemented whole-field UTF-8 byte variant has no word pre-tokenizer and can merge across spaces within a field. Smaller token count is not by itself evidence of better learning. BPE IDs never enter the fixed nine-token lifecycle decoder.",
+      "additionalChecks": [
+        {
+          "question": "Why do two adjacent aa counts in aaa produce only one replacement during one left-to-right merge pass?",
+          "options": [
+            "Overlapping occurrences share a byte and cannot both be replaced simultaneously",
+            "The tokenizer ignores the final word",
+            "One occurrence belongs to evaluation"
+          ],
+          "answer": 0,
+          "explanation": "Candidate counting scans adjacent positions. A replacement consumes both members of the pair, so the next replacement cannot reuse the consumed middle symbol."
+        }
+      ],
+      "additionalRelated": [
+        "training-data",
+        "loss-optimizer"
+      ],
+      "additionalSources": [
+        {
+          "title": "Sennrich et al. · BPE construction §3.2",
+          "url": "https://arxiv.org/html/1508.07909v5"
+        }
+      ]
+    },
+    "attention": {
+      "appendDescription": "Packing several examples into one input array adds a boundary condition to causal attention. In the corpus experience, a query may use only earlier or current positions from its own sampled document instance within the same block. Adjacent storage does not grant another document access to that context.",
+      "appendMechanism": [
+        "Use document-instance IDs as well as causal position order when constructing allowed attention keys.",
+        "Keep shifted supervision separate from attention: a next-token label may be just outside the input block without becoming visible input context."
+      ],
+      "appendEngineeringExample": "If the second document begins at block slot5, its query at slot7 can attend to slots5,6,7. Slots0–4 belong to the prior example and slots8 onward are future context. When an EOS is followed by another document’s BOS, the corresponding cross-document prediction loss is masked.",
+      "appendEvidenceNotes": "The experience constructs explicit masks and arrays. It does not execute fused variable-length attention or measure packing speedups. Documents crossing blocks lose earlier-block context in this declared specimen.",
+      "additionalChecks": [
+        {
+          "question": "A packed query at slot7 belongs to a document starting at slot5. Which keys are allowed by this specimen?",
+          "options": [
+            "Every earlier slot0–7",
+            "Only slots5–7",
+            "Only the next token at slot8"
+          ],
+          "answer": 1,
+          "explanation": "Both the same-instance constraint and causal order apply. Storage adjacency cannot override either boundary."
+        }
+      ],
+      "additionalRelated": [
+        "training-data",
+        "tokenizer",
+        "loss-optimizer"
+      ],
+      "additionalSources": [
+        {
+          "title": "Megatron Bridge 0.3.1 · packed sequence boundaries",
+          "url": "https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html"
+        }
+      ]
+    }
+  }
+}

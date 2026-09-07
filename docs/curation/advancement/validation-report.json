@@ -1,0 +1,897 @@
+{
+  "errors": [],
+  "counts": {
+    "experiences": 8,
+    "sourceUrls": 57,
+    "sourceUses": 62,
+    "recordedAgentChecks": 62,
+    "checksNotRecorded": 0
+  },
+  "queue": [
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:deal-grove:1",
+      "sourceId": "url-40addeae2482059de6fe",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:mit-cvd:1",
+      "sourceId": "url-f116e0d9c1a2b5fa527e",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:asml-resist:1",
+      "sourceId": "url-0f363a59034560c28dab",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:mit-dry-etch:1",
+      "sourceId": "url-a71acc7da43bb0743118",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:jcgm-conformity:1",
+      "sourceId": "url-8f92c621075d51704096",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:nist-limits:1",
+      "sourceId": "url-ec2f812b9ee5ae93d9fd",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:nist-poisson:1",
+      "sourceId": "url-ae8fbc8994610142a96c",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:samsung-tcncf:1",
+      "sourceId": "url-ba853b10116d83397966",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:sk-mrmuf:1",
+      "sourceId": "url-50a724d11041787b45f0",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "fabrication",
+      "sourceUseId": "fabrication:imec-hybrid:1",
+      "sourceId": "url-510c2cf1752741ad1b47",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Research interpretation maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:samsung-tcncf:1",
+      "sourceId": "url-ba853b10116d83397966",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:sk-mrmuf:1",
+      "sourceId": "url-50a724d11041787b45f0",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:imec-hybrid:1",
+      "sourceId": "url-510c2cf1752741ad1b47",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Research interpretation maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:micron-hbm-hierarchy:1",
+      "sourceId": "url-d40dd97ba68c5279afc8",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:intel-hbm-address:1",
+      "sourceId": "url-f1ed799d51bebd8d1700",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:microchip-bank-access:1",
+      "sourceId": "url-574d176e3d2d11e829dc",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:nasa-cte:1",
+      "sourceId": "url-585147868d7e58550d42",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:paged-attention:1",
+      "sourceId": "url-ef8b5f9fca8456b539f4",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "memory",
+      "sourceUseId": "memory:sandisk-hbf:1",
+      "sourceId": "url-265af9ba5e1220b53072",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-10-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Deployment and announcement source maintainer"
+    },
+    {
+      "experienceId": "architecture",
+      "sourceUseId": "architecture:matrix-definition:1",
+      "sourceId": "url-9d8c5dab925fe2697d97",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "AI implementation author; personal identifier not recorded in source handoff"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "architecture",
+      "sourceUseId": "architecture:riscv-vector-v1:1",
+      "sourceId": "url-db64170e57d7fb8864cc",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "AI implementation author; personal identifier not recorded in source handoff"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "architecture",
+      "sourceUseId": "architecture:cuda-simt-guide:1",
+      "sourceId": "url-3573d01bb0394b4335bf",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "AI implementation author; personal identifier not recorded in source handoff"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "architecture",
+      "sourceUseId": "architecture:kung-systolic-1982:1",
+      "sourceId": "url-80b4d051620b52824808",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "AI implementation author; personal identifier not recorded in source handoff"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "realization",
+      "sourceUseId": "realization:yosys-sat:1",
+      "sourceId": "url-62299f7999d7f34d38e6",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "Codex root AI agent performing scoped documentation reading and native artifact inspection"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "realization",
+      "sourceUseId": "realization:yosys-ice40:1",
+      "sourceId": "url-1eba8c63aa0fca7835b5",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "Codex root AI agent performing scoped documentation reading and native artifact inspection"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "realization",
+      "sourceUseId": "realization:nextpnr-ice40:1",
+      "sourceId": "url-1cb7624841fd79e54f82",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "Codex root AI agent performing scoped documentation reading and native artifact inspection"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "realization",
+      "sourceUseId": "realization:icestorm:1",
+      "sourceId": "url-eee9656c652cfa513c14",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "Codex root AI agent performing scoped documentation reading and native artifact inspection"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "realization",
+      "sourceUseId": "realization:icarus:1",
+      "sourceId": "url-1bb36e1bf8326683b454",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "Codex root AI agent performing scoped documentation reading and native artifact inspection"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "applications",
+      "sourceUseId": "applications:stanford-logistic:1",
+      "sourceId": "url-53204aff56399760e01f",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "automated implementation assistant"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "applications",
+      "sourceUseId": "applications:sklearn-leakage:1",
+      "sourceId": "url-b3e0a83cbe77dd86571b",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "automated implementation assistant"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "applications",
+      "sourceUseId": "applications:sklearn-metrics:1",
+      "sourceId": "url-1bc0e72436a851827416",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "automated implementation assistant"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "applications",
+      "sourceUseId": "applications:stanford-tfidf:1",
+      "sourceId": "url-dafe8773708a957f3c6b",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "automated implementation assistant"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "applications",
+      "sourceUseId": "applications:stanford-query-vectors:1",
+      "sourceId": "url-e2a5af04db4717d7e68b",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": null,
+        "role": "automated implementation assistant"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "hall",
+      "sourceUseId": "hall:electrical-power:1",
+      "sourceId": "url-b34d92f523d12aa58d76",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "hall",
+      "sourceUseId": "hall:pue-energy:1",
+      "sourceId": "url-6780e95cc2c5019179b7",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "hall",
+      "sourceUseId": "hall:coolant-balance:1",
+      "sourceId": "url-3b7807edf95083529949",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "hall",
+      "sourceUseId": "hall:gemm-contract:1",
+      "sourceId": "url-b420bb2b0f5005d4135b",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "hall",
+      "sourceUseId": "hall:roofline-bound:1",
+      "sourceId": "url-5a5caaab38445bbf5cd9",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "hall",
+      "sourceUseId": "hall:scr-valid-checkpoint:1",
+      "sourceId": "url-f88c4f70e3f8b07e28f2",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI implementation author and scoped source checker"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:solar-irradiance:1",
+      "sourceId": "url-feb433342262babb90e8",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:spacecraft-power:1",
+      "sourceId": "url-212a9d133004d01dc3dc",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:stefan-boltzmann:1",
+      "sourceId": "url-e2ef01ef9ccb60f25965",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:spacecraft-thermal:1",
+      "sourceId": "url-7a11cf3b1dcdeb44be8d",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:gemm-contract:1",
+      "sourceId": "url-b420bb2b0f5005d4135b",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:dtn-buffer:1",
+      "sourceId": "url-a64a405122de8135cd09",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-03-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Engineering model maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:see-rate:1",
+      "sourceId": "url-ab4f1161af3430388eca",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "orbital",
+      "sourceUseId": "orbital:poisson-reset:1",
+      "sourceId": "url-986d49e5fef9ae6692d2",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:kahng-1960:1",
+      "sourceId": "url-7ee3cbd2eed8daca2e59",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:copper-1997:1",
+      "sourceId": "url-8f3dfb7bd3e636cdacee",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:cuda-2006:1",
+      "sourceId": "url-ad531584af4555a34be3",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:cowos-2012:1",
+      "sourceId": "url-9310331128e535e41368",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:adam-2014:1",
+      "sourceId": "url-e41b8a2c1c7799deafe1",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:attention-2017:1",
+      "sourceId": "url-a7468c68516526913141",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:tpu-2017:1",
+      "sourceId": "url-b185fa5680358011e91f",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:flash-2022:1",
+      "sourceId": "url-5727fed78bddc70147e9",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:paged-2023:1",
+      "sourceId": "url-ef8b5f9fca8456b539f4",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:rack-2024:1",
+      "sourceId": "url-a69266ea554e74ca4353",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:tsmc-2026q2:1",
+      "sourceId": "url-4e9f3d1f7e61cd1b4afe",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:lbnl-queue-2026:1",
+      "sourceId": "url-647ad68fbb10feedaaa9",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:incite-2026:1",
+      "sourceId": "url-da2d3aa09dc1a9d69dd4",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2027-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Scientific content maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:core-2026q2:1",
+      "sourceId": "url-7fa5f6e3ffe67c090fdc",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    },
+    {
+      "experienceId": "progress",
+      "sourceUseId": "progress:galaxy-2026q2:1",
+      "sourceId": "url-ce5b7b125228d1f0feff",
+      "status": "agent-check-recorded-within-proposed-interval",
+      "checkedOn": "2026-09-07",
+      "dueOn": "2026-12-06",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/curriculum_assessment",
+        "role": "AI progress and capacity content author performing scoped primary-source readings"
+      },
+      "proposedRole": "Memory and product-source maintainer"
+    }
+  ],
+  "asOf": "2026-09-07",
+  "validationActor": {
+    "kind": "agent",
+    "role": "Automated structural and snapshot validation, not source reading"
+  },
+  "snapshotChecks": {
+    "mode": "current-repository",
+    "changedFiles": [],
+    "changedLessons": [],
+    "missingFiles": []
+  },
+  "warnings": [
+    "docs/curation/curation-manifest.json: baseline has advanced since inventory. This addendum preserves its captured identity and does not overwrite it.",
+    "docs/curation/curation-review-events.json: baseline has advanced since inventory. This addendum preserves its captured identity and does not overwrite it."
+  ],
+  "passed": true,
+  "limit": "This validates metadata, scope identities, explicit pending states and file/lesson drift. It fetches no URLs and records no new source, specialist or learner review."
+}

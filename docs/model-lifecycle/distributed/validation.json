@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07",
+  "actorType": "agent",
+  "modelVersion": "distributed-causal-gradient-2",
+  "automated": {
+    "tests": 32,
+    "passed": 32,
+    "failed": 0,
+    "typecheck": "passed",
+    "connectedLifecycleTests": 124
+  },
+  "notEstablished": [
+    "Browser and physical-device review",
+    "Assistive technology and learner review",
+    "Specialist scientific review"
+  ],
+  "files": {
+    "src/lib/model-lifecycle-distributed.ts": "8a9f571d800400ea0a8f5c06f8b57f6fe40cb63e29e604352a502795c66b26d5",
+    "src/components/model-lifecycle-distributed.tsx": "9f1843f71a16385d36699bf88a351a1223bc6be3ef06f411d6433b8d794f88e0",
+    "src/components/model-lifecycle-distributed.css": "626ad75ffd38faccfcf4dd2f62d0f385a9be4d5ba792bf3c7841cfa108241dd8",
+    "scripts/model-lifecycle-distributed.test.mjs": "ffa11780e4c037ab5c6356bcc20f686d6e22d94eaaa4f1c66027bc3fc7318646"
+  },
+  "actor": "/root/curriculum_assessment"
+}

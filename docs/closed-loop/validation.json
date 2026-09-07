@@ -1,0 +1,491 @@
+{
+  "date": "2026-09-07T21:24:56.046Z",
+  "actor": {
+    "type": "agent",
+    "id": "/root"
+  },
+  "scope": "Automated mathematical and program checks; no physical or human learning observation",
+  "focusedTests": 11,
+  "files": [
+    {
+      "path": "src/lib/closed-loop.ts",
+      "sha256": "a32d37aba9e01eef47d9a268e52482fb4025cd97193019a29921ee14a7c572fb"
+    },
+    {
+      "path": "src/components/closed-loop.tsx",
+      "sha256": "e9104d2f866c021855195f9082ebbc3c47bec121dfe97a3266a64167babe61a8"
+    },
+    {
+      "path": "src/components/closed-loop.css",
+      "sha256": "159ed60d90714dfd71cd60be1c7067b1816629d57462e3be75758ea691b5bdb5"
+    },
+    {
+      "path": "src/components/portable-experiment.tsx",
+      "sha256": "e69b9b9df13c1a71de4292a79cbd04e542c9d88fafde9f8fcb9c84b5c0c4bd31"
+    },
+    {
+      "path": "scripts/closed-loop.test.mjs",
+      "sha256": "aaf24b8b98b8393423f3e29efb13d15dacd8f2621ec905215d176d941388cd16"
+    }
+  ],
+  "fixtures": [
+    {
+      "id": "nominal",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "predictive",
+        "horizon": 4,
+        "deadline": 100,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 0.0006406371375673459,
+        "rmsError": 0.6261358356859471,
+        "violationTicks": [],
+        "missedDeadlines": 0,
+        "finalVelocity": -0.0003203185687833855,
+        "goalReached": true,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 2.6
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "feedback",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "proportional",
+        "horizon": 4,
+        "deadline": 100,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 6.037125355184969e-7,
+        "rmsError": 0.6322041622171426,
+        "violationTicks": [],
+        "missedDeadlines": 0,
+        "finalVelocity": -3.7681923899950046e-7,
+        "goalReached": true,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 1.5755337961637397
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "openLoop",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "open-loop",
+        "horizon": 4,
+        "deadline": 100,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 1.1947877532986602,
+        "rmsError": 1.143498481220099,
+        "violationTicks": [],
+        "missedDeadlines": 0,
+        "finalVelocity": -0.002606123350669579,
+        "goalReached": false,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 2.8000000000000003
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "delay",
+      "input": {
+        "seed": 17,
+        "delay": 4,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "predictive",
+        "horizon": 4,
+        "deadline": 100,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 1.9905898250511624,
+        "rmsError": 1.6869532001750345,
+        "violationTicks": [
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ],
+        "missedDeadlines": 0,
+        "finalVelocity": 0.004705087474419486,
+        "goalReached": false,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 3.2000000000000006
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "wrongGain",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "predictive",
+        "horizon": 4,
+        "deadline": 100,
+        "model": "wrong-gain",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 4.393662473545569,
+        "rmsError": 3.962371076490876,
+        "violationTicks": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59
+        ],
+        "missedDeadlines": 0,
+        "finalVelocity": -0.003168763227216595,
+        "goalReached": false,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 1.2
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "missedDeadline",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "predictive",
+        "horizon": 4,
+        "deadline": 40,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 2,
+        "rmsError": 2,
+        "violationTicks": [],
+        "missedDeadlines": 60,
+        "finalVelocity": 0,
+        "goalReached": false,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 0
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "largerSearch",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 0.9,
+        "plantGain": 0.2,
+        "controller": "predictive",
+        "horizon": 5,
+        "deadline": 100,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 2,
+        "rmsError": 2,
+        "violationTicks": [],
+        "missedDeadlines": 60,
+        "finalVelocity": 0,
+        "goalReached": false,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 0
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    },
+    {
+      "id": "changedPlant",
+      "input": {
+        "seed": 17,
+        "delay": 0,
+        "noise": 0,
+        "plantRetention": 1.02,
+        "plantGain": 0.4,
+        "controller": "predictive",
+        "horizon": 4,
+        "deadline": 100,
+        "model": "fitted",
+        "disturbance": 0
+      },
+      "metrics": {
+        "finalError": 0.023154716654008034,
+        "rmsError": 0.5368449329262013,
+        "violationTicks": [],
+        "missedDeadlines": 0,
+        "finalVelocity": 0.20231547166540045,
+        "goalReached": false,
+        "simulatedSeconds": 12,
+        "actionEffortSeconds": 7.200000000000004
+      },
+      "fitted": {
+        "retention": 0.9,
+        "gain": 0.20000000000000004,
+        "residualMse": 5.7777898331617076e-34,
+        "trainIds": [
+          "calibration-0",
+          "calibration-1",
+          "calibration-2",
+          "calibration-3",
+          "calibration-4",
+          "calibration-5",
+          "calibration-6",
+          "calibration-7",
+          "calibration-8",
+          "calibration-9",
+          "calibration-10",
+          "calibration-11"
+        ]
+      }
+    }
+  ],
+  "pending": [
+    "Independent specialist review",
+    "Physical device accessibility and interaction checks",
+    "Human learner observations"
+  ]
+}

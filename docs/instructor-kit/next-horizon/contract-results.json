@@ -1,0 +1,25 @@
+{
+  "status": "pass",
+  "contractGroups": 9,
+  "preservedContractGroups": 7,
+  "addedContractGroups": [
+    "joined-factory",
+    "joined-memory"
+  ],
+  "models": {
+    "factory": {
+      "factory": "factory-actual-checkpoint-1",
+      "decoder": "causal-decoder-lifecycle-1",
+      "distributed": "distributed-causal-gradient-2",
+      "commissioning": "commissioning-execution-1",
+      "hall": 1
+    },
+    "memoryWorkload": "memory-workload-bridge-1"
+  },
+  "checkedAt": "2026-09-07",
+  "actor": {
+    "type": "agent",
+    "id": "/root/curriculum_assessment"
+  },
+  "scope": "Existing seven groups preserved; added independent count, delta-time/energy, byte-capacity, dot-product, bit-change, staging and admission contracts. No learner, physical-device, assistive-technology or specialist observations."
+}

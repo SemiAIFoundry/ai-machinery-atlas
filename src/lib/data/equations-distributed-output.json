@@ -1,0 +1,241 @@
+{
+  "sharded-matmul-ownership": [
+    {
+      "latex": "C^{(r)}_{ij}=\\sum_{k\\in K_r}A_{ik}B_{kj},\\qquad C_{ij}=\\sum_{r=0}^{P-1}C^{(r)}_{ij}",
+      "text": "Rank r sums products for its contracted indices K_r; completed C sums the rank contributions at matching coordinates.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Cij",
+          "meaning": "Completed matrix output element",
+          "unit": "value"
+        },
+        {
+          "symbol": "C(r)ij",
+          "meaning": "Partial contribution from rank r",
+          "unit": "value"
+        },
+        {
+          "symbol": "Aik, Bkj",
+          "meaning": "Input matrix elements",
+          "unit": "value"
+        },
+        {
+          "symbol": "Kr",
+          "meaning": "Disjoint contracted indices assigned to rank r",
+          "unit": "index set"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Number of participating ranks",
+          "unit": "count"
+        }
+      ]
+    },
+    {
+      "latex": "Q_{\\mathrm{RS}}=2\\times4=8\\ \\mathrm{bytes/rank},\\quad Q_{\\mathrm{AG}}=8\\ \\mathrm{bytes/rank},\\quad Q_{\\mathrm{sent}}=2(8+8)=32\\ \\mathrm{bytes}",
+      "text": "This two-rank schedule sends two float32 values per rank per phase: eight bytes for reduce-scatter and eight for all-gather, giving thirty-two bytes across both senders.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "QRS",
+          "meaning": "Payload sent by each rank in the chosen reduce-scatter exchange",
+          "unit": "bytes/rank"
+        },
+        {
+          "symbol": "QAG",
+          "meaning": "Payload sent by each rank in the chosen all-gather exchange",
+          "unit": "bytes/rank"
+        },
+        {
+          "symbol": "Qsent",
+          "meaning": "Payload sent across both ranks and both phases",
+          "unit": "bytes"
+        }
+      ]
+    }
+  ],
+  "distributed-gradient-weighting": [
+    {
+      "latex": "N=\\sum_{r=0}^{P-1}n_r,\\qquad g=\\frac{1}{N}\\sum_{r=0}^{P-1}n_r\\bar g_r",
+      "text": "Sum local valid-item counts to N. Weight each local mean gradient by its count and divide their sum by N.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "N",
+          "meaning": "Total valid equally weighted items in the update",
+          "unit": "count"
+        },
+        {
+          "symbol": "nr",
+          "meaning": "Valid items at rank r",
+          "unit": "count"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Participating rank count",
+          "unit": "count"
+        },
+        {
+          "symbol": "ḡr",
+          "meaning": "Mean local gradient at shared parameter state",
+          "unit": "loss/parameter"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Global item-mean gradient",
+          "unit": "loss/parameter"
+        }
+      ]
+    },
+    {
+      "latex": "g=\\frac{1}{P}\\sum_{r=0}^{P-1}\\left(\\frac{P n_r}{N}\\bar g_r\\right),\\qquad w_{\\mathrm{new}}=w-\\eta g",
+      "text": "Before a mean-across-ranks reduction, scale local mean gradients by P times n_r over N. Scalar SGD subtracts learning rate times global gradient.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "P",
+          "meaning": "Fixed participants in the mean reducer",
+          "unit": "count"
+        },
+        {
+          "symbol": "nr, N",
+          "meaning": "Local and global valid-item counts",
+          "unit": "count"
+        },
+        {
+          "symbol": "ḡr, g",
+          "meaning": "Local and global mean gradients",
+          "unit": "loss/parameter"
+        },
+        {
+          "symbol": "w, wnew",
+          "meaning": "Parameter before and after the update",
+          "unit": "parameter"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Learning rate for the declared objective scaling",
+          "unit": "parameter²/loss"
+        }
+      ]
+    }
+  ],
+  "floating-point-reduction-order": [
+    {
+      "latex": "\\operatorname{fl}\\!\\left(\\operatorname{fl}(a+b)+c\\right)\\ne\\operatorname{fl}\\!\\left(a+\\operatorname{fl}(b+c)\\right)\\quad\\text{in general}",
+      "text": "Rounding the inner addition before the outer one means regrouped additions can differ.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "fl",
+          "meaning": "One binary32 round-to-nearest ties-to-even operation in this example",
+          "unit": "operation"
+        },
+        {
+          "symbol": "a, b, c",
+          "meaning": "Exactly representable input operands",
+          "unit": "value"
+        }
+      ]
+    },
+    {
+      "latex": "\\Delta_{[2^{24},2^{25})}=2^{24-23}=2,\\qquad (2^{24}+1)-2^{24}=1\\quad\\text{over the reals}",
+      "text": "The spacing above two to the twenty-fourth in binary32 is two. The exact real-number sum with one and its negative is one.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Δ",
+          "meaning": "Adjacent representable spacing in the stated interval",
+          "unit": "value"
+        },
+        {
+          "symbol": "24",
+          "meaning": "Exponent at the chosen magnitude",
+          "unit": "count"
+        },
+        {
+          "symbol": "23",
+          "meaning": "Stored binary32 fraction-bit count",
+          "unit": "count"
+        }
+      ]
+    }
+  ],
+  "speculative-decoding-verification": [
+    {
+      "latex": "a(x)=\\min\\!\\left(1,\\frac{p(x)}{q(x)}\\right),\\qquad r(x)=\\frac{[p(x)-q(x)]_+}{\\sum_y[p(y)-q(y)]_+},\\qquad \\alpha=\\sum_x\\min(p(x),q(x))",
+      "text": "Accept a proposed symbol using the target-to-draft ratio capped at one. After rejection, sample from the normalized positive target-minus-draft residual. Acceptance mass sums the minimum of each pair of probabilities.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "p(x), q(x)",
+          "meaning": "Target and draft probabilities at the same prefix",
+          "unit": "probability"
+        },
+        {
+          "symbol": "a(x)",
+          "meaning": "Conditional acceptance probability for q(x)>0",
+          "unit": "probability"
+        },
+        {
+          "symbol": "r(x)",
+          "meaning": "Correction probability when residual mass is positive",
+          "unit": "probability"
+        },
+        {
+          "symbol": "[z]+",
+          "meaning": "Positive part max(z,0)",
+          "unit": "value"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Total proposal-acceptance probability at this prefix",
+          "unit": "probability"
+        }
+      ]
+    },
+    {
+      "latex": "\\mathbb{E}[K]=\\sum_{j=0}^{\\gamma}\\alpha^j,\\qquad R_{\\mathrm{scenario}}=\\frac{\\mathbb{E}[K]}{T_{\\mathrm{draft}}+T_{\\mathrm{verify}}+T_{\\mathrm{overhead}}}",
+      "text": "With iid acceptance and no early stop, expected output count is one plus powers of acceptance probability through the proposal count. Divide by the separately assumed total round time for a scenario token rate.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "K",
+          "meaning": "Output tokens, including the correction or bonus token",
+          "unit": "tokens/round"
+        },
+        {
+          "symbol": "γ",
+          "meaning": "Maximum draft proposals in a verification round",
+          "unit": "count"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Assumed identical independent acceptance probability",
+          "unit": "probability"
+        },
+        {
+          "symbol": "Tdraft",
+          "meaning": "Total draft time for the round",
+          "unit": "s/round"
+        },
+        {
+          "symbol": "Tverify",
+          "meaning": "Target verification time for the round",
+          "unit": "s/round"
+        },
+        {
+          "symbol": "Toverhead",
+          "meaning": "Other nonoverlapped round time",
+          "unit": "s/round"
+        },
+        {
+          "symbol": "Rscenario",
+          "meaning": "Output rate under the time assumptions",
+          "unit": "tokens/s"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,906 @@
+{
+  "id": "learning-foundations",
+  "version": "learning-foundations-1",
+  "title": "Mathematical foundations and contrasting AI mechanisms",
+  "scope": "Ten authored lessons with bounded executable specimens; existing curriculum remains intact.",
+  "chapters": [
+    {
+      "id": "mathematical-foundations",
+      "name": "Mathematical foundations",
+      "title": "Matrices, probabilities and finite arithmetic",
+      "question": "How do numbers, distributions and finite representations constrain learning?",
+      "band": 5,
+      "domainId": "learning-intelligence",
+      "parent": "Learning foundations",
+      "scene": "representation",
+      "scale": "Mathematical objects and data, not physical scale",
+      "summary": "Matrices, probabilities and finite arithmetic",
+      "ids": [
+        "tensor-index-contracts",
+        "linear-map-rank-subspace",
+        "probability-conditioning-information",
+        "floating-number-range-resolution",
+        "sampling-estimation-uncertainty"
+      ],
+      "read": "Use the executable workbench for values and state. The atlas assembly is conceptual; an abstract vector is not a physical coordinate."
+    },
+    {
+      "id": "data-evidence-foundations",
+      "name": "Data and experimental evidence",
+      "title": "Examples, judgments and comparisons",
+      "question": "What evidence supports a measured improvement?",
+      "band": 5,
+      "domainId": "learning-intelligence",
+      "parent": "Learning foundations",
+      "scene": "representation",
+      "scale": "Mathematical objects and data, not physical scale",
+      "summary": "Examples, judgments and comparisons",
+      "ids": [
+        "ablation-reproduction-design",
+        "dataset-human-judgment-lineage"
+      ],
+      "read": "Use the executable workbench for values and state. The atlas assembly is conceptual; an abstract vector is not a physical coordinate."
+    },
+    {
+      "id": "contrasting-ai-methods",
+      "name": "Contrasting AI mechanisms",
+      "title": "Trees, graphs and search",
+      "question": "Which computational structure fits this kind of task?",
+      "band": 5,
+      "domainId": "learning-intelligence",
+      "parent": "Learning foundations",
+      "scene": "representation",
+      "scale": "Mathematical objects and data, not physical scale",
+      "summary": "Trees, graphs and search",
+      "ids": [
+        "tree-ensemble-baseline",
+        "graph-message-passing",
+        "search-value-policy-boundary"
+      ],
+      "read": "Use the executable workbench for values and state. The atlas assembly is conceptual; an abstract vector is not a physical coordinate."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "tensor-index-contracts",
+      "name": "Tensor shapes, indices and contractions",
+      "shortName": "Tensor contracts",
+      "role": "Specifies what each axis means before the same numbers are scheduled or stored on hardware.",
+      "description": "A tensor is an indexed collection of values. Shape records axis lengths; it does not by itself record which axis means token, feature, batch or head. A contraction pairs chosen axes and sums their products. The unsummed axes survive in the output. Matrix multiplication is one such contraction: output row i and column j identify a sum over the shared index k. A transpose, a physical memory reorder and a reinterpretation of an axis are different operations. A shape-compatible program can still compute the wrong function when its axis meanings are mistaken. The experiment keeps explicit indices beside each operand and partial sum so that arithmetic and layout can later be connected without losing the original contract.",
+      "mechanism": [
+        "Name each input axis and check that contracted dimensions agree. A tensor with two rows and two columns can still represent different semantic objects.",
+        "Choose an output coordinate. Fetch matching A[i,k] and B[k,j], multiply them, and add the product to that output’s accumulator.",
+        "Advance k until every contribution is included, then move to another output. Keep the final result separate from a partial sum.",
+        "Compare a separate dense reference and preserve index meaning when a compiler changes placement, tiling or ownership."
+      ],
+      "learningObjective": "Trace every scalar contribution into one output and detect an incorrect contraction axis.",
+      "engineeringExample": "With A=[[1,2],[3,4]] and B=[[5,6],[7,8]], C[0,0]=1×5+2×7=19 and C=[[19,22],[43,50]]. Changing A[0,1] changes the first output row while leaving the second row unchanged. Eight scalar products appear in the trace. These are exact small integer operations, not eight measured GPU instructions.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Finite rectangular arrays, matching contracted dimension and a declared arithmetic type. The workbench uses small integers; rounded reduction order is studied separately.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Tensor contracts",
+          "context": "With A=[[1,2],[3,4]] and B=[[5,6],[7,8]], C[0,0]=1×5+2×7=19 and C=[[19,22],[43,50]]. Changing A[0,1] changes the first output row while leaving the second row unchanged. Eight scalar products appear in the trace. These are exact small integer operations, not eight measured GPU instructions."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Finite rectangular arrays, matching contracted dimension and a declared arithmetic type. The workbench uses small integers; rounded reduction order is studied separately."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Name each input axis and check that contracted dimensions agree. A tensor with two rows and two columns can still represent different semantic objects."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Trace every scalar contribution into one output and detect an incorrect contraction axis."
+        }
+      ],
+      "tradeoff": "A layout that improves locality must preserve axis semantics. Materializing a transpose can cost traffic; changing a label alone cannot perform its mathematical effect.",
+      "whyAI": "Attention projections, gradient contractions and distributed sharding depend on the same index discipline. Correct dimensions are necessary but insufficient evidence of correct tensor semantics.",
+      "misconception": "A tensor’s axes are not automatically physical coordinates, and reshaping an array does not generally transpose its values.",
+      "check": {
+        "question": "Which change leaves C = AB semantically unchanged?",
+        "options": [
+          "Changing storage layout while preserving the indexed values consumed by the contraction",
+          "Relabeling any two equal-length axes without checking their meaning",
+          "Concatenating partial sums instead of adding matching output coordinates"
+        ],
+        "answer": 0,
+        "explanation": "Changing storage layout while preserving the indexed values consumed by the contraction. Finite rectangular arrays, matching contracted dimension and a declared arithmetic type. The workbench uses small integers; rounded reduction order is studied separately."
+      },
+      "prerequisites": [],
+      "related": [
+        "embedding",
+        "mac",
+        "attention",
+        "sharded-matmul-ownership"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow, Bengio and Courville · Linear algebra",
+          "url": "https://www.deeplearningbook.org/contents/linear_algebra.html"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "mathematical-foundations",
+      "subbranch": "Tensor contracts",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Tensor shapes, indices and contractions",
+          "equation": "Each output entry sums the matching scalar products along the contracted axis k.",
+          "explanation": "With A=[[1,2],[3,4]] and B=[[5,6],[7,8]], C[0,0]=1×5+2×7=19 and C=[[19,22],[43,50]]. Changing A[0,1] changes the first output row while leaving the second row unchanged. Eight scalar products appear in the trace. These are exact small integer operations, not eight measured GPU instructions.",
+          "assumptions": "Finite rectangular arrays, matching contracted dimension and a declared arithmetic type. The workbench uses small integers; rounded reduction order is studied separately."
+        }
+      ]
+    },
+    {
+      "id": "linear-map-rank-subspace",
+      "name": "Linear maps, rank and retained directions",
+      "shortName": "Rank and directions",
+      "role": "Shows how a large array can represent fewer independent transformations than its number of entries suggests.",
+      "description": "A linear map transforms input directions into output directions. Its rank counts independent output directions, not entries or bytes. A rank-restricted map can be stored or updated through smaller factors, but removing a direction changes the function whenever a relevant input contains that component. The specimen constructs a symmetric two-dimensional map from orthogonal unit vectors u and v, with singular values 3 and σ₂. Dropping the v term gives a rank-one approximation. Rotating the basis changes the visible entries while preserving the amount of discarded Frobenius norm. This makes a useful prerequisite for understanding factorized weights and adapters without claiming that a small matrix-error metric determines a task’s quality.",
+      "mechanism": [
+        "Choose two orthogonal unit vectors and scale their outer products by the two singular values.",
+        "Add the two outer products to construct the exact map; retain only the larger term for the rank-one map.",
+        "Subtract the maps and inspect an input along the dropped direction. Its smaller response is lost.",
+        "Rotate the basis while holding singular values fixed. Compare changed entries with invariant discarded norm."
+      ],
+      "learningObjective": "Identify the direction lost by a rank-one approximation and distinguish rank from matrix size.",
+      "engineeringExample": "For u=[1,0], v=[0,1] and σ₂=1, A=diag(3,1) while A₁=diag(3,0). Input [0,1] maps to [0,1] under A and [0,0] under A₁. The Frobenius error is 1. Rotating both directions by 30° changes every matrix entry but leaves this error at 1.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Real symmetric two-dimensional constructed map with orthonormal u and v and 0 ≤ σ₂ ≤ 3. This is not an arbitrary-matrix SVD solver.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Rank and directions",
+          "context": "For u=[1,0], v=[0,1] and σ₂=1, A=diag(3,1) while A₁=diag(3,0). Input [0,1] maps to [0,1] under A and [0,0] under A₁. The Frobenius error is 1. Rotating both directions by 30° changes every matrix entry but leaves this error at 1."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Real symmetric two-dimensional constructed map with orthonormal u and v and 0 ≤ σ₂ ≤ 3. This is not an arbitrary-matrix SVD solver."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Choose two orthogonal unit vectors and scale their outer products by the two singular values."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Identify the direction lost by a rank-one approximation and distinguish rank from matrix size."
+        }
+      ],
+      "tradeoff": "Reduced factor size can lower trainable state or arithmetic, but task-relevant information may occupy the removed subspace. Task evaluation remains necessary.",
+      "whyAI": "Embedding geometry, compressed operators and low-rank parameter updates rely on structured directions. Rank and parameter count are related through a specific representation, not by a universal quality law.",
+      "misconception": "A low-rank adapter is a choice of trainable parameterization. It is not by itself a pretraining, supervised or preference-learning objective.",
+      "check": {
+        "question": "What stays unchanged when this orthogonal basis is rotated?",
+        "options": [
+          "Every displayed matrix entry",
+          "The singular values and the Frobenius norm of the discarded component",
+          "The usefulness of the approximation on every task"
+        ],
+        "answer": 1,
+        "explanation": "The singular values and the Frobenius norm of the discarded component. Real symmetric two-dimensional constructed map with orthonormal u and v and 0 ≤ σ₂ ≤ 3. This is not an arbitrary-matrix SVD solver."
+      },
+      "prerequisites": [
+        "tensor-index-contracts"
+      ],
+      "related": [
+        "embedding",
+        "feed-forward",
+        "quantization"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow, Bengio and Courville · Linear algebra",
+          "url": "https://www.deeplearningbook.org/contents/linear_algebra.html"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "mathematical-foundations",
+      "subbranch": "Rank and directions",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Linear maps, rank and retained directions",
+          "equation": "The exact map adds two orthogonal outer products; dropping the second leaves Frobenius error equal to its nonnegative singular value.",
+          "explanation": "For u=[1,0], v=[0,1] and σ₂=1, A=diag(3,1) while A₁=diag(3,0). Input [0,1] maps to [0,1] under A and [0,0] under A₁. The Frobenius error is 1. Rotating both directions by 30° changes every matrix entry but leaves this error at 1.",
+          "assumptions": "Real symmetric two-dimensional constructed map with orthonormal u and v and 0 ≤ σ₂ ≤ 3. This is not an arbitrary-matrix SVD solver."
+        }
+      ]
+    },
+    {
+      "id": "probability-conditioning-information",
+      "name": "Probability, likelihood and stable information",
+      "shortName": "Probability and loss",
+      "role": "Connects model scores to probabilities, information and the gradients that guide learning.",
+      "description": "A logit is an unnormalized score. Softmax turns a finite score vector into probabilities by exponentiating and dividing by the total. Negative log likelihood measures how much probability was assigned to the observed target; it is not a correctness score for a generated sentence. Computing exponentials directly can overflow even when the intended probabilities are ordinary numbers. Subtracting the largest logit preserves all score differences and therefore preserves the distribution. The log-sum-exp form calculates loss without first rounding a tiny target probability to zero. The workbench shows both the stable result and the failure of the naive exponential sum, then exposes the derivative with respect to each score.",
+      "mechanism": [
+        "Declare the outcome set and observed target. Scores alone need not sum to one and can be negative.",
+        "Subtract the largest logit before exponentiating, sum shifted exponentials and normalize them.",
+        "Calculate target loss in log space and entropy over the resulting distribution, using natural logarithms in this example.",
+        "Inspect the loss derivative pᵢ−1[i=y]. The target component differs from the other components because the observed outcome supplies supervision."
+      ],
+      "learningObjective": "Convert logits to a normalized distribution, calculate target loss and explain why a common offset should not change either.",
+      "engineeringExample": "Scores [0,ln 2,ln 3] normalize to [1/6,1/3,1/2]. If target class is 2, loss is ln 2 ≈0.6931 nats. Adding 1000 to every score leaves the mathematical probabilities and loss unchanged, while naive exponentials overflow in ordinary floating arithmetic. Finite-difference checks independently verify the three loss derivatives.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Finite logits, categorical outcomes and a single observed class. Natural logarithms are used. Conditioning on further evidence requires its own likelihood model; the workbench changes scores rather than demonstrating Bayesian updating.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Probability and loss",
+          "context": "Scores [0,ln 2,ln 3] normalize to [1/6,1/3,1/2]. If target class is 2, loss is ln 2 ≈0.6931 nats. Adding 1000 to every score leaves the mathematical probabilities and loss unchanged, while naive exponentials overflow in ordinary floating arithmetic. Finite-difference checks independently verify the three loss derivatives."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Finite logits, categorical outcomes and a single observed class. Natural logarithms are used. Conditioning on further evidence requires its own likelihood model; the workbench changes scores rather than demonstrating Bayesian updating."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Declare the outcome set and observed target. Scores alone need not sum to one and can be negative."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Convert logits to a normalized distribution, calculate target loss and explain why a common offset should not change either."
+        }
+      ],
+      "tradeoff": "A probability distribution enables likelihood-based optimization and uncertainty analysis, but calibration and task correctness require empirical evaluation on identified data.",
+      "whyAI": "Language-model output heads and cross-entropy training repeatedly perform this operation. Stable arithmetic is part of preserving the mathematical objective on real machines.",
+      "misconception": "High assigned probability is a statement made by the model. It is not proof that an answer is true or that the model is calibrated.",
+      "check": {
+        "question": "What does adding the same finite constant to all logits do mathematically?",
+        "options": [
+          "It necessarily makes the model more confident",
+          "It changes the target label",
+          "It leaves the softmax distribution unchanged"
+        ],
+        "answer": 2,
+        "explanation": "It leaves the softmax distribution unchanged. Finite logits, categorical outcomes and a single observed class. Natural logarithms are used. Conditioning on further evidence requires its own likelihood model; the workbench changes scores rather than demonstrating Bayesian updating."
+      },
+      "prerequisites": [],
+      "related": [
+        "output-head",
+        "loss-optimizer",
+        "evaluation"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow, Bengio and Courville · Probability and information theory",
+          "url": "https://www.deeplearningbook.org/contents/prob.html"
+        },
+        {
+          "title": "Goodfellow, Bengio and Courville · Numerical computation",
+          "url": "https://www.deeplearningbook.org/contents/numerical.html"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "mathematical-foundations",
+      "subbranch": "Probability and loss",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Probability, likelihood and stable information",
+          "equation": "Subtract the maximum score m, normalize shifted exponentials, compute target log loss, and differentiate to obtain probability minus target indicator.",
+          "explanation": "Scores [0,ln 2,ln 3] normalize to [1/6,1/3,1/2]. If target class is 2, loss is ln 2 ≈0.6931 nats. Adding 1000 to every score leaves the mathematical probabilities and loss unchanged, while naive exponentials overflow in ordinary floating arithmetic. Finite-difference checks independently verify the three loss derivatives.",
+          "assumptions": "Finite logits, categorical outcomes and a single observed class. Natural logarithms are used. Conditioning on further evidence requires its own likelihood model; the workbench changes scores rather than demonstrating Bayesian updating."
+        }
+      ]
+    },
+    {
+      "id": "floating-number-range-resolution",
+      "name": "Floating-point range, resolution and rounding",
+      "shortName": "Represent a number",
+      "role": "Explains which numerical values a finite bit pattern can represent before those values enter a learned computation.",
+      "description": "Floating-point formats distribute representable numbers across a range of magnitudes. An exponent controls scale while fraction bits provide resolution within that scale. A sign bit, exponent field and fraction field must be interpreted under an explicit encoding convention. The workbench defines its own seven-bit format: one sign bit, three exponent bits, three fraction bits and exponent bias 3. It reserves the all-ones exponent for special values, supports subnormals near zero and rounds ties toward an even low-order significand bit. This is a fully enumerated teaching format, not an assertion about a vendor’s FP8 implementation. Seeing the exact stored bits makes it possible to separate representability error from changes in an algorithm.",
+      "mechanism": [
+        "Separate the sign and magnitude, then identify the normal exponent interval or subnormal range.",
+        "Find adjacent representable magnitudes and round to the nearest, resolving exact midpoints with the declared even-bit rule.",
+        "Inspect the stored sign/exponent/fraction fields and the absolute difference from the input.",
+        "Probe the boundaries where spacing changes, a small value rounds to zero or a large value overflows."
+      ],
+      "learningObjective": "Encode a value in a declared miniature format and diagnose rounding, gradual underflow and overflow.",
+      "engineeringExample": "In this format, 1.0625 lies halfway between 1 and 1.125 and rounds to 1. The midpoint 1.1875 rounds to 1.25. The smallest positive subnormal is 1/32=0.03125; 1/64 is a tie that rounds to zero. The largest finite value is 15, and 15.5 reaches the nearest-rounding overflow threshold.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. This authored seven-bit format uses bias 3, gradual underflow and nearest ties-to-even. Exponent 7 is special and excluded from the finite expression.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Represent a number",
+          "context": "In this format, 1.0625 lies halfway between 1 and 1.125 and rounds to 1. The midpoint 1.1875 rounds to 1.25. The smallest positive subnormal is 1/32=0.03125; 1/64 is a tie that rounds to zero. The largest finite value is 15, and 15.5 reaches the nearest-rounding overflow threshold."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "This authored seven-bit format uses bias 3, gradual underflow and nearest ties-to-even. Exponent 7 is special and excluded from the finite expression."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Separate the sign and magnitude, then identify the normal exponent interval or subnormal range."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Encode a value in a declared miniature format and diagnose rounding, gradual underflow and overflow."
+        }
+      ],
+      "tradeoff": "More exponent bits extend dynamic range; more fraction bits refine spacing. Neither change alone establishes model accuracy, latency or energy savings.",
+      "whyAI": "Training and inference depend on representable activations, weights, gradients and accumulations. Low precision needs explicit scale, accumulation and error contracts.",
+      "misconception": "A datatype name or bit count does not specify all rounding, saturation, subnormal and accumulation behavior.",
+      "check": {
+        "question": "What primarily changes when fraction bits are increased at fixed exponent width?",
+        "options": [
+          "The spacing between representable values within a magnitude interval",
+          "The meaning of the target label",
+          "The physical number of training examples"
+        ],
+        "answer": 0,
+        "explanation": "The spacing between representable values within a magnitude interval. This authored seven-bit format uses bias 3, gradual underflow and nearest ties-to-even. Exponent 7 is special and excluded from the finite expression."
+      },
+      "prerequisites": [],
+      "related": [
+        "quantization",
+        "floating-point-reduction-order",
+        "tensor-core"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow, Bengio and Courville · Numerical computation",
+          "url": "https://www.deeplearningbook.org/contents/numerical.html"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "mathematical-foundations",
+      "subbranch": "Represent a number",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Floating-point range, resolution and rounding",
+          "equation": "Subnormals use exponent minus two without the implicit leading one; normal finite values use biased exponent e minus three and an implicit leading one.",
+          "explanation": "In this format, 1.0625 lies halfway between 1 and 1.125 and rounds to 1. The midpoint 1.1875 rounds to 1.25. The smallest positive subnormal is 1/32=0.03125; 1/64 is a tie that rounds to zero. The largest finite value is 15, and 15.5 reaches the nearest-rounding overflow threshold.",
+          "assumptions": "This authored seven-bit format uses bias 3, gradual underflow and nearest ties-to-even. Exponent 7 is special and excluded from the finite expression."
+        }
+      ]
+    },
+    {
+      "id": "sampling-estimation-uncertainty",
+      "name": "Sampling variability and independent evidence",
+      "shortName": "Sampling uncertainty",
+      "role": "Shows why a measured success rate varies even when the underlying teaching probability is held fixed.",
+      "description": "A finite evaluation contains a particular sample of outcomes. To reason about variability, this specimen begins with a known synthetic success probability and independent Bernoulli trials. Enumerating all possible success counts produces the exact binomial distribution of observed rates. Increasing the number of independent trials concentrates that distribution. The qualifier independent matters: duplicated observations, repeated attempts on the same task or shared hidden causes can violate this model. This is a forward sampling calculation conditional on a known probability. It does not automatically supply a confidence interval for an unknown production system or justify a chosen classroom sample size.",
+      "mechanism": [
+        "Declare the event counted as success, the number of independent trials and the fixed probability used by the model.",
+        "For every possible count k, combine the number of outcome sequences with their success/failure probabilities.",
+        "Divide counts by n and calculate the probability-weighted mean and variance of the rate.",
+        "Compare different n values while keeping p fixed; explain why correlated duplicates cannot be treated as fresh independent trials."
+      ],
+      "learningObjective": "Reconcile an exact sampling distribution with its mean and variance, and identify when a claimed sample count is not independent.",
+      "engineeringExample": "At p=0.5 and n=4, success counts 0 through 4 have probabilities [1,4,6,4,1]/16. The expected rate is 0.5 and its standard deviation is 0.25. With n=16 independent trials the standard deviation becomes 0.125. Copying four original outcomes four times does not create the same distribution as sixteen independent observations.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Independent identically distributed Bernoulli trials and known p. No interval estimation, multiple-comparison correction or guarantee of real evaluation representativeness is implied.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Sampling uncertainty",
+          "context": "At p=0.5 and n=4, success counts 0 through 4 have probabilities [1,4,6,4,1]/16. The expected rate is 0.5 and its standard deviation is 0.25. With n=16 independent trials the standard deviation becomes 0.125. Copying four original outcomes four times does not create the same distribution as sixteen independent observations."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Independent identically distributed Bernoulli trials and known p. No interval estimation, multiple-comparison correction or guarantee of real evaluation representativeness is implied."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Declare the event counted as success, the number of independent trials and the fixed probability used by the model."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Reconcile an exact sampling distribution with its mean and variance, and identify when a claimed sample count is not independent."
+        }
+      ],
+      "tradeoff": "More evaluations consume time and resources. Their informational value depends on task diversity, sampling and dependence, not solely the count.",
+      "whyAI": "Model comparisons, reliability estimates and learning studies need transparent denominators and sampling assumptions. A small observed improvement may be consistent with ordinary variability.",
+      "misconception": "A displayed rate is not an exact population property, and repeated correlated trials do not necessarily reduce uncertainty like independent samples.",
+      "check": {
+        "question": "What does the plotted distribution assume?",
+        "options": [
+          "Every evaluation task has identical difficulty in the real world",
+          "A fixed known probability and independent Bernoulli trials",
+          "The probability was proved by the atlas"
+        ],
+        "answer": 1,
+        "explanation": "A fixed known probability and independent Bernoulli trials. Independent identically distributed Bernoulli trials and known p. No interval estimation, multiple-comparison correction or guarantee of real evaluation representativeness is implied."
+      },
+      "prerequisites": [
+        "probability-conditioning-information"
+      ],
+      "related": [
+        "evaluation",
+        "scaling-laws"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow, Bengio and Courville · Probability and information theory",
+          "url": "https://www.deeplearningbook.org/contents/prob.html"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "mathematical-foundations",
+      "subbranch": "Sampling uncertainty",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Sampling variability and independent evidence",
+          "equation": "The binomial count distribution has rate mean p and variance p times one minus p divided by the independent sample count.",
+          "explanation": "At p=0.5 and n=4, success counts 0 through 4 have probabilities [1,4,6,4,1]/16. The expected rate is 0.5 and its standard deviation is 0.25. With n=16 independent trials the standard deviation becomes 0.125. Copying four original outcomes four times does not create the same distribution as sixteen independent observations.",
+          "assumptions": "Independent identically distributed Bernoulli trials and known p. No interval estimation, multiple-comparison correction or guarantee of real evaluation representativeness is implied."
+        }
+      ]
+    },
+    {
+      "id": "ablation-reproduction-design",
+      "name": "Controlled comparisons and confounded improvement",
+      "shortName": "What changed?",
+      "role": "Makes the design of an experiment part of the evidence for an improvement.",
+      "description": "A performance difference can reflect both an intervention and the conditions under which it was tested. This synthetic specimen assigns outcomes from a known treatment effect plus a low or high baseline. A balanced allocation places treated and untreated examples in both groups. A confounded allocation gives treatment mostly to the high-baseline group. The crude treated-minus-control difference then includes a population-composition change. Within-group contrasts reveal the issue, but a group containing no control observations cannot identify its own treatment contrast from these data. The author knows the generative rule; the learner must distinguish that knowledge from what the observed comparison establishes.",
+      "mechanism": [
+        "Declare a baseline outcome for each group and an additive treatment effect in outcome units.",
+        "Allocate treatment using either the balanced or confounded assignment while preserving the outcome-generating rule.",
+        "Calculate the crude difference and separate within-group differences where both treatment states occur.",
+        "Keep unsupported contrasts marked unidentified, then explain which additional design or assumptions would be needed."
+      ],
+      "learningObjective": "Separate a changed treatment from a changed population, and identify a comparison that lacks support in the observed data.",
+      "engineeringExample": "Baseline outcomes are 2 and 12, with an authored treatment effect of 3. Balanced allocation gives a crude contrast of 3. In the confounded eight-row assignment, the treated mean is 13 and the untreated mean is 2, producing a contrast of 11. The high-baseline group has no untreated rows; its within-group contrast remains unidentified by the observed table.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Finite deterministic authored data with no noise and an additive constant effect. This lesson does not establish a general causal-identification method.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "What changed?",
+          "context": "Baseline outcomes are 2 and 12, with an authored treatment effect of 3. Balanced allocation gives a crude contrast of 3. In the confounded eight-row assignment, the treated mean is 13 and the untreated mean is 2, producing a contrast of 11. The high-baseline group has no untreated rows; its within-group contrast remains unidentified by the observed table."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Finite deterministic authored data with no noise and an additive constant effect. This lesson does not establish a general causal-identification method."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Declare a baseline outcome for each group and an additive treatment effect in outcome units."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Separate a changed treatment from a changed population, and identify a comparison that lacks support in the observed data."
+        }
+      ],
+      "tradeoff": "Tighter controls improve attribution but can narrow relevance to deployment conditions. An ablation should report both its controlled comparison and the circumstances it excludes.",
+      "whyAI": "Training recipes change data, compute, seeds, architecture and evaluation at once. Without explicit controls, a better score does not explain which change produced it.",
+      "misconception": "Knowing an authored synthetic effect is different from estimating a causal effect from incomplete observational data.",
+      "check": {
+        "question": "Why does the confounded contrast exceed the authored effect?",
+        "options": [
+          "The calculator changed the authored treatment effect",
+          "More digits automatically prove a causal explanation",
+          "Treatment allocation changes the baseline composition of the compared groups"
+        ],
+        "answer": 2,
+        "explanation": "Treatment allocation changes the baseline composition of the compared groups. Finite deterministic authored data with no noise and an additive constant effect. This lesson does not establish a general causal-identification method."
+      },
+      "prerequisites": [
+        "sampling-estimation-uncertainty"
+      ],
+      "related": [
+        "evaluation",
+        "training-data",
+        "scaling-laws"
+      ],
+      "sources": [
+        {
+          "title": "Goodfellow, Bengio and Courville · Probability and information theory",
+          "url": "https://www.deeplearningbook.org/contents/prob.html"
+        },
+        {
+          "title": "Gebru et al. · Datasheets for Datasets",
+          "url": "https://arxiv.org/abs/1803.09010"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "data-evidence-foundations",
+      "subbranch": "What changed?",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Controlled comparisons and confounded improvement",
+          "equation": "Synthetic outcome combines a group baseline and treatment contribution; the crude contrast compares observed group means.",
+          "explanation": "Baseline outcomes are 2 and 12, with an authored treatment effect of 3. Balanced allocation gives a crude contrast of 3. In the confounded eight-row assignment, the treated mean is 13 and the untreated mean is 2, producing a contrast of 11. The high-baseline group has no untreated rows; its within-group contrast remains unidentified by the observed table.",
+          "assumptions": "Finite deterministic authored data with no noise and an additive constant effect. This lesson does not establish a general causal-identification method."
+        }
+      ]
+    },
+    {
+      "id": "dataset-human-judgment-lineage",
+      "name": "Human judgments, disagreement and dataset lineage",
+      "shortName": "Annotation lineage",
+      "role": "Makes the people and decisions behind training labels visible in the resulting dataset.",
+      "description": "A label is produced by a process: an example is selected, a task is explained, a person or system makes a judgment, and a policy decides what becomes training material. Disagreement can reveal ambiguity, differing interpretations or poor instructions. Erasing the earlier judgments after adjudication makes those causes harder to study. The specimen retains two fictional annotations for each example and applies a declared rule to unresolved cases. The result is a lineage table containing both source judgments and the selected training label. The rule is inspectable and changeable; it is not presented as a way to infer truth automatically.",
+      "mechanism": [
+        "Retain the example identifier, each original annotation and the relevant instruction/version context.",
+        "Measure direct agreement without changing the labels to make the agreement look higher.",
+        "Apply a declared review-category policy to disagreements or retain them as unresolved.",
+        "Count which examples now have usable labels while preserving the disagreement and selection history."
+      ],
+      "learningObjective": "Preserve original judgments through an adjudication rule and distinguish label availability from truth.",
+      "engineeringExample": "Six fictional examples contain three agreements and three disagreements, so direct agreement is 3/6. With unresolved cases excluded, three training labels remain. Sending disagreements to the review category retains six labels, but original agreement remains 3/6. The extra labels reflect a policy decision, not newly discovered truth.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Two annotations per fictional example; direct agreement is not chance-adjusted and is not a truth or representativeness metric.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Annotation lineage",
+          "context": "Six fictional examples contain three agreements and three disagreements, so direct agreement is 3/6. With unresolved cases excluded, three training labels remain. Sending disagreements to the review category retains six labels, but original agreement remains 3/6. The extra labels reflect a policy decision, not newly discovered truth."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Two annotations per fictional example; direct agreement is not chance-adjusted and is not a truth or representativeness metric."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Retain the example identifier, each original annotation and the relevant instruction/version context."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Preserve original judgments through an adjudication rule and distinguish label availability from truth."
+        }
+      ],
+      "tradeoff": "Adjudication can improve consistency or usability, but it can also suppress meaningful disagreement or change which populations are retained. Documenting the rule makes the effect inspectable.",
+      "whyAI": "Supervised tuning, preference data and model evaluation all incorporate judgments. Their provenance and selection can affect what behavior the system learns or appears to satisfy.",
+      "misconception": "Agreement is not proof of truth, and an adjudicated label does not by itself establish representative coverage or permission to use the data.",
+      "check": {
+        "question": "What happens to original agreement after the review-category rule is applied?",
+        "options": [
+          "It remains 3/6 because the original judgments are preserved",
+          "It becomes 6/6 by definition",
+          "It proves the selected labels are objectively correct"
+        ],
+        "answer": 0,
+        "explanation": "It remains 3/6 because the original judgments are preserved. Two annotations per fictional example; direct agreement is not chance-adjusted and is not a truth or representativeness metric."
+      },
+      "prerequisites": [],
+      "related": [
+        "training-data",
+        "post-training",
+        "evaluation"
+      ],
+      "sources": [
+        {
+          "title": "Gebru et al. · Datasheets for Datasets",
+          "url": "https://arxiv.org/abs/1803.09010"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "data-evidence-foundations",
+      "subbranch": "Annotation lineage",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Human judgments, disagreement and dataset lineage",
+          "equation": "Direct agreement is the fraction of examples on which the two original labels match.",
+          "explanation": "Six fictional examples contain three agreements and three disagreements, so direct agreement is 3/6. With unresolved cases excluded, three training labels remain. Sending disagreements to the review category retains six labels, but original agreement remains 3/6. The extra labels reflect a policy decision, not newly discovered truth.",
+          "assumptions": "Two annotations per fictional example; direct agreement is not chance-adjusted and is not a truth or representativeness metric."
+        }
+      ]
+    },
+    {
+      "id": "tree-ensemble-baseline",
+      "name": "A tree ensemble that learns residual corrections",
+      "shortName": "Learn a tree ensemble",
+      "role": "Provides a contrasting learned prediction mechanism that does not use token attention.",
+      "description": "A regression stump divides one feature at a threshold and predicts a value on either side. An additive ensemble can fit successive stumps to the current residuals, gradually correcting its earlier predictions. The workbench actually searches thresholds between training values, computes residual means in both leaves, chooses the lowest squared residual error and applies shrinkage before the next round. The reserved examples never fit the thresholds or leaf values. This simple squared-loss mechanism illustrates boosting; it does not reproduce the many algorithms and engineering choices in production XGBoost. The separate reversed-relationship challenge exposes why fitting the training pattern does not guarantee robustness to a changed task.",
+      "mechanism": [
+        "Initialize predictions at the mean training target and calculate each residual.",
+        "For every candidate threshold, partition training rows, fit left/right residual means and compute squared error.",
+        "Choose the best stump and add its shrunken leaf contributions to the ensemble. Repeat on the remaining residuals.",
+        "Evaluate reserved examples and a separately defined reversed-label relationship with the same fitted ensemble."
+      ],
+      "learningObjective": "Fit a sequence of regression stumps, inspect their contributions and evaluate both a reserved task and a changed relationship.",
+      "engineeringExample": "Six training points map negative values to −2 and nonnegative values to 2. The first fitted split is −0.5. With shrinkage 0.5, its contributions are −1 and 1. Four rounds leave a reserved-set MSE of 0.015625, while reversing the target relationship produces MSE 15.015625. Both results come from the same actually fitted stumps.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. One numeric feature, squared loss, finite candidate splits and constant leaves; no regularized second-order XGBoost implementation or performance claim.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Learn a tree ensemble",
+          "context": "Six training points map negative values to −2 and nonnegative values to 2. The first fitted split is −0.5. With shrinkage 0.5, its contributions are −1 and 1. Four rounds leave a reserved-set MSE of 0.015625, while reversing the target relationship produces MSE 15.015625. Both results come from the same actually fitted stumps."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "One numeric feature, squared loss, finite candidate splits and constant leaves; no regularized second-order XGBoost implementation or performance claim."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Initialize predictions at the mean training target and calculate each residual."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Fit a sequence of regression stumps, inspect their contributions and evaluate both a reserved task and a changed relationship."
+        }
+      ],
+      "tradeoff": "More rounds can fit more detail, but complexity and learning rate affect generalization and computation. A task baseline should be evaluated under the same data boundaries as a larger model.",
+      "whyAI": "AI applications often use structured/tabular prediction. Understanding this mechanism broadens the atlas beyond the assumption that all useful learning is a decoder transformer.",
+      "misconception": "A good score on one held-out distribution does not imply resistance to a reversed or otherwise changed input/output relationship.",
+      "check": {
+        "question": "What data choose the stump threshold in this experiment?",
+        "options": [
+          "The reversed-relationship challenge labels",
+          "Only the training rows and their current residuals",
+          "The final reported evaluation score"
+        ],
+        "answer": 1,
+        "explanation": "Only the training rows and their current residuals. One numeric feature, squared loss, finite candidate splits and constant leaves; no regularized second-order XGBoost implementation or performance claim."
+      },
+      "prerequisites": [
+        "ablation-reproduction-design"
+      ],
+      "related": [
+        "loss-optimizer",
+        "evaluation",
+        "host-cpu"
+      ],
+      "sources": [
+        {
+          "title": "Chen and Guestrin · XGBoost",
+          "url": "https://arxiv.org/abs/1603.02754"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "contrasting-ai-methods",
+      "subbranch": "Learn a tree ensemble",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "A tree ensemble that learns residual corrections",
+          "equation": "Fit a stump to current residuals and add a scaled contribution to the existing prediction function.",
+          "explanation": "Six training points map negative values to −2 and nonnegative values to 2. The first fitted split is −0.5. With shrinkage 0.5, its contributions are −1 and 1. Four rounds leave a reserved-set MSE of 0.015625, while reversing the target relationship produces MSE 15.015625. Both results come from the same actually fitted stumps.",
+          "assumptions": "One numeric feature, squared loss, finite candidate splits and constant leaves; no regularized second-order XGBoost implementation or performance claim."
+        }
+      ]
+    },
+    {
+      "id": "graph-message-passing",
+      "name": "Graph message passing and node identity",
+      "shortName": "Graph computation",
+      "role": "Shows how a model can operate on relationships between entities instead of a simple token sequence.",
+      "description": "A graph supplies nodes and edges describing task relationships. Node features are arrays, but their row order is only an indexing convention. The specimen adds self-loops, normalizes adjacency by endpoint degrees and propagates two feature coordinates through one or more layers. It uses identity feature weights and ReLU so that each output can be traced to neighbors. Renaming nodes and consistently permuting rows/edges preserves the represented result. Removing an edge changes the computation because information follows a different relationship structure. This is an executable forward mechanism; its weights are fixed, and it does not demonstrate training a graph model.",
+      "mechanism": [
+        "Declare a four-node undirected graph and two features for every node; add a self-loop at every node.",
+        "Calculate degree and the symmetric normalization coefficient for every present edge.",
+        "Multiply normalized adjacency by the feature matrix and apply ReLU; repeat to expand the reachable neighborhood.",
+        "Compare a consistent permutation with an actual edge removal and inspect the different invariance claims."
+      ],
+      "learningObjective": "Compute normalized neighborhood aggregation and distinguish an edge change from a harmless node renaming.",
+      "engineeringExample": "On a four-node cycle with self-loops, every node has degree 3. Node 0 initially receives features from itself, node 1 and node 3: ([1,0]+[0,1]+[0,2])/3=[1/3,1]. Removing the 0–3 edge changes both the neighborhood and endpoint normalization. A separate test permutes all node IDs and verifies equivalent outputs after undoing the permutation.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Four-node undirected graph, self-loops, identity learned-weight placeholder and nonnegative input features. No parameter training or arbitrary graph benchmark is performed.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Graph computation",
+          "context": "On a four-node cycle with self-loops, every node has degree 3. Node 0 initially receives features from itself, node 1 and node 3: ([1,0]+[0,1]+[0,2])/3=[1/3,1]. Removing the 0–3 edge changes both the neighborhood and endpoint normalization. A separate test permutes all node IDs and verifies equivalent outputs after undoing the permutation."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Four-node undirected graph, self-loops, identity learned-weight placeholder and nonnegative input features. No parameter training or arbitrary graph benchmark is performed."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Declare a four-node undirected graph and two features for every node; add a self-loop at every node."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Compute normalized neighborhood aggregation and distinguish an edge change from a harmless node renaming."
+        }
+      ],
+      "tradeoff": "More aggregation steps allow information to travel farther, but representation behavior and task quality depend on the architecture, normalization, features and learning objective.",
+      "whyAI": "Graph learning is used where relations are part of the input. The same matrix machinery executes the aggregation, but its semantic edges are not the hardware wires carrying those numbers.",
+      "misconception": "The task graph, a computation graph, the atlas prerequisite graph and a chip netlist are different objects even when all are drawn as nodes and edges.",
+      "check": {
+        "question": "Which operation should preserve the represented forward result?",
+        "options": [
+          "Removing an edge without changing anything else",
+          "Changing degree normalization arbitrarily",
+          "Renaming nodes while consistently permuting features and adjacency"
+        ],
+        "answer": 2,
+        "explanation": "Renaming nodes while consistently permuting features and adjacency. Four-node undirected graph, self-loops, identity learned-weight placeholder and nonnegative input features. No parameter training or arbitrary graph benchmark is performed."
+      },
+      "prerequisites": [
+        "tensor-index-contracts"
+      ],
+      "related": [
+        "embedding",
+        "evaluation",
+        "on-chip-network"
+      ],
+      "sources": [
+        {
+          "title": "Kipf and Welling · Graph convolutional networks",
+          "url": "https://arxiv.org/abs/1609.02907"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "contrasting-ai-methods",
+      "subbranch": "Graph computation",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Graph message passing and node identity",
+          "equation": "Normalize adjacency with self-loops, aggregate feature rows and apply ReLU using identity feature weights.",
+          "explanation": "On a four-node cycle with self-loops, every node has degree 3. Node 0 initially receives features from itself, node 1 and node 3: ([1,0]+[0,1]+[0,2])/3=[1/3,1]. Removing the 0–3 edge changes both the neighborhood and endpoint normalization. A separate test permutes all node IDs and verifies equivalent outputs after undoing the permutation.",
+          "assumptions": "Four-node undirected graph, self-loops, identity learned-weight placeholder and nonnegative input features. No parameter training or arbitrary graph benchmark is performed."
+        }
+      ]
+    },
+    {
+      "id": "search-value-policy-boundary",
+      "name": "Search, value estimates and selected actions",
+      "shortName": "Search and value",
+      "role": "Explains how a system can spend additional computation selecting an action after receiving an observation.",
+      "description": "A policy selects an action. Search evaluates possible continuations before that selection, using a transition model and a value estimate at the explored boundary. In this rule-defined tic-tac-toe specimen, legal moves change a nine-cell board, players alternate, X maximizes and O minimizes a score. Terminal wins receive exact ±100 and draws receive zero. At a truncated leaf, an explicitly authored open-line heuristic supplies a provisional value. Deeper search may replace that guess with a different consequence, at a cost in visited nodes. The heuristic is not learned. Research systems such as AlphaZero combine learned value/policy functions with search; their training and search results are not reproduced by this small example.",
+      "mechanism": [
+        "Read the board, infer the next player from legal move counts and enumerate legal actions.",
+        "Apply each action to a separate board and alternate the maximizing/minimizing player.",
+        "Use exact terminal outcomes when available; at the selected depth, use the declared heuristic instead.",
+        "Choose the action under the resulting values and count the visited states. Preserve the original board for comparison."
+      ],
+      "learningObjective": "Trace legal game actions through a bounded alternating-player search and distinguish terminal evidence from a truncated heuristic.",
+      "engineeringExample": "The displayed position has X at opposite corners and O in the center, so O moves next. Compare lookahead depths 1 through 5 and inspect each legal action’s value and visited-node count. A separate exact test uses an immediate X winning row and verifies that the winning move has value +100 regardless of the nonterminal heuristic.",
+      "evidenceNotes": "The workbench executes the declared small mechanism. Numeric examples are authored and independently checked, not measurements from the cited research. Finite deterministic perfect-information game, alternating players and a declared fixed heuristic. This is minimax teaching search, not AlphaZero or a learned planning system.",
+      "specs": [
+        {
+          "label": "Teaching specimen",
+          "value": "Search and value",
+          "context": "The displayed position has X at opposite corners and O in the center, so O moves next. Compare lookahead depths 1 through 5 and inspect each legal action’s value and visited-node count. A separate exact test uses an immediate X winning row and verifies that the winning move has value +100 regardless of the nonterminal heuristic."
+        },
+        {
+          "label": "Evidence boundary",
+          "value": "Explicit computed example",
+          "context": "Finite deterministic perfect-information game, alternating players and a declared fixed heuristic. This is minimax teaching search, not AlphaZero or a learned planning system."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Inputs and convention",
+          "direction": "in",
+          "signal": "Read the board, infer the next player from legal move counts and enumerate legal actions."
+        },
+        {
+          "name": "Computed result and scope",
+          "direction": "out",
+          "signal": "Trace legal game actions through a bounded alternating-player search and distinguish terminal evidence from a truncated heuristic."
+        }
+      ],
+      "tradeoff": "More search can improve a decision when the transition/value assumptions are useful, but consumes time and can amplify a wrong model. More visited nodes are not evidence of better real-world reasoning.",
+      "whyAI": "Inference-time selection, planning and tool policies can involve additional computation beyond one forward pass. Their benefits require task-specific verification and explicit environmental semantics.",
+      "misconception": "Searching at inference time is not the same operation as updating learned parameters. An authored heuristic must not be presented as a trained value function.",
+      "check": {
+        "question": "What changes when lookahead depth increases in this specimen?",
+        "options": [
+          "The evaluated continuation tree and computation spent selecting an action",
+          "The fixed heuristic is automatically trained",
+          "The rules of the environment change"
+        ],
+        "answer": 0,
+        "explanation": "The evaluated continuation tree and computation spent selecting an action. Finite deterministic perfect-information game, alternating players and a declared fixed heuristic. This is minimax teaching search, not AlphaZero or a learned planning system."
+      },
+      "prerequisites": [],
+      "related": [
+        "evaluation",
+        "tool-loop",
+        "loss-optimizer"
+      ],
+      "sources": [
+        {
+          "title": "Silver et al. · AlphaZero",
+          "url": "https://arxiv.org/abs/1712.01815"
+        }
+      ],
+      "level": "model",
+      "scale": "Mathematical and data space; dimensions are not physical distance",
+      "kind": "model",
+      "branch": "contrasting-ai-methods",
+      "subbranch": "Search and value",
+      "workstream": "W11",
+      "visualFamily": "mathematical",
+      "labId": "library",
+      "labScope": "Open Mathematical foundations for the bounded executable mechanism and its record. General numerical labs are an additional reference library.",
+      "science": [
+        {
+          "title": "Search, value estimates and selected actions",
+          "equation": "Use terminal utility, or a boundary heuristic when depth is zero, otherwise alternate maximizing and minimizing over legal transitions.",
+          "explanation": "The displayed position has X at opposite corners and O in the center, so O moves next. Compare lookahead depths 1 through 5 and inspect each legal action’s value and visited-node count. A separate exact test uses an immediate X winning row and verifies that the winning move has value +100 regardless of the nonterminal heuristic.",
+          "assumptions": "Finite deterministic perfect-information game, alternating players and a declared fixed heuristic. This is minimax teaching search, not AlphaZero or a learned planning system."
+        }
+      ]
+    }
+  ],
+  "sources": [],
+  "claims": [],
+  "milestones": []
+}

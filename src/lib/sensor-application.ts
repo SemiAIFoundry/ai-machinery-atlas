@@ -1,0 +1,59 @@
+import {sensorDataset,type SensorDataset,type SensorSample} from './application-data.ts';
+export const sensorModelVersion='sensor-logistic-1';
+export type FeatureSet='both'|'temperature'|'vibration';
+export type SensorCost={fixedLatencyUs:number;featureMacLatencyUs:number;sigmoidLatencyUs:number};
+export type SensorOptions={steps?:number;learningRate?:number;decisionThreshold?:number;featureSet?:FeatureSet;l2?:number;minimumRecall?:number;maximumFalsePositiveRate?:number;latencyBudgetUs?:number;cost?:Partial<SensorCost>};
+export type SensorParameters={weights:[number,number];bias:number};
+export type SensorNormalizer={mean:[number,number];standardDeviation:[number,number];fittedSampleIds:string[];convention:string};
+export type SensorPrediction={sampleId:string;features:[number,number];logit:number;probability:number;label:0|1;prediction:0|1;correct:boolean;crossEntropy:number;note:string};
+export type BinaryMetrics={count:number;tp:number;tn:number;fp:number;fn:number;accuracy:number;precision:number|null;recall:number|null;falsePositiveRate:number|null;meanCrossEntropy:number};
+export type SensorGradientRow=SensorPrediction&{weightGradient:[number,number];biasGradient:number};
+export type SensorTrainingStep={index:number;before:SensorParameters;rows:SensorGradientRow[];meanDataLossBefore:number;penaltyBefore:number;objectiveBefore:number;dataGradient:SensorParameters;regularizationGradient:SensorParameters;gradient:SensorParameters;after:SensorParameters;objectiveAfter:number;evaluationAfter:BinaryMetrics};
+const defaults={steps:24,learningRate:.3,decisionThreshold:.5,featureSet:'both' as FeatureSet,l2:0,minimumRecall:.8,maximumFalsePositiveRate:.2,latencyBudgetUs:25,cost:{fixedLatencyUs:20,featureMacLatencyUs:.02,sigmoidLatencyUs:.1}};
+const ensure=(condition:unknown,message:string)=>{if(!condition)throw Error(message);};
+const bounded=(value:unknown,min:number,max:number,name:string,integer=false):number=>{ensure(typeof value==='number'&&Number.isFinite(value)&&value>=min&&value<=max&&(!integer||Number.isInteger(value)),`Invalid ${name}.`);return value as number;};
+export function resolveSensorOptions(value:SensorOptions={}){
+ ensure(value&&typeof value==='object'&&!Array.isArray(value),'Options must be an object.');ensure(Object.keys(value).every(k=>Object.keys(defaults).includes(k)),'Unknown sensor option.');
+ const x={...defaults,...value,cost:{...defaults.cost,...value.cost}};ensure(['both','temperature','vibration'].includes(x.featureSet),'Unknown feature set.');
+ bounded(x.steps,0,80,'steps',true);bounded(x.learningRate,.01,1,'learning rate');bounded(x.decisionThreshold,0,1,'decision threshold');bounded(x.l2,0,1,'regularization');bounded(x.minimumRecall,0,1,'minimum recall');bounded(x.maximumFalsePositiveRate,0,1,'maximum false-positive rate');bounded(x.latencyBudgetUs,0,10000,'latency budget');
+ if(value.cost!==undefined){ensure(value.cost&&typeof value.cost==='object'&&!Array.isArray(value.cost),'Cost must be an object.');ensure(Object.keys(value.cost).every(k=>Object.keys(defaults.cost).includes(k)),'Unknown cost option.');}
+ bounded(x.cost.fixedLatencyUs,0,10000,'fixed latency');bounded(x.cost.featureMacLatencyUs,0,100,'feature MAC latency');bounded(x.cost.sigmoidLatencyUs,0,100,'sigmoid latency');return x;
+}
+function checkSamples(samples:readonly SensorSample[],minimum=1){ensure(Array.isArray(samples)&&samples.length>=minimum,'Not enough sensor samples.');const ids=new Set();for(const s of samples){ensure(s&&typeof s.id==='string'&&s.id.length&&!ids.has(s.id),'Sample IDs must be unique.');ids.add(s.id);ensure(Number.isFinite(s.temperatureC)&&Number.isFinite(s.vibrationMmS),'Sensor features must be finite.');ensure(s.label===0||s.label===1,'Sensor labels must be binary.');}}
+export function fitSensorNormalizer(training:readonly SensorSample[]):SensorNormalizer{
+ checkSamples(training,2);const columns=[training.map(s=>s.temperatureC),training.map(s=>s.vibrationMmS)],mean=columns.map(c=>c.reduce((a,b)=>a+b,0)/c.length) as [number,number],sd=columns.map((c,j)=>Math.sqrt(c.reduce((s,v)=>s+(v-mean[j])**2,0)/c.length)) as [number,number];ensure(sd.every(v=>Number.isFinite(v)&&v>0),'Training feature variance must be positive.');return{mean,standardDeviation:sd,fittedSampleIds:training.map(s=>s.id),convention:'Population standard deviation with denominator N, fitted on training features only.'};
+}
+const features=(s:SensorSample,n:SensorNormalizer,set:FeatureSet):[number,number]=>[set==='vibration'?0:(s.temperatureC-n.mean[0])/n.standardDeviation[0],set==='temperature'?0:(s.vibrationMmS-n.mean[1])/n.standardDeviation[1]];
+export const logistic=(z:number)=>z>=0?1/(1+Math.exp(-z)):Math.exp(z)/(1+Math.exp(z));
+export const binaryCrossEntropyFromLogit=(z:number,y:0|1)=>Math.max(z,0)-y*z+Math.log1p(Math.exp(-Math.abs(z)));
+const clone=(p:SensorParameters):SensorParameters=>({weights:[...p.weights],bias:p.bias});
+export function predictSensor(samples:readonly SensorSample[],normalizer:SensorNormalizer,parameters:SensorParameters,featureSet:FeatureSet,threshold:number):SensorPrediction[]{
+ return samples.map(s=>{const x=features(s,normalizer,featureSet),logit=parameters.bias+parameters.weights[0]*x[0]+parameters.weights[1]*x[1],probability=logistic(logit),prediction=(probability>=threshold?1:0) as 0|1;return{sampleId:s.id,features:x,logit,probability,label:s.label,prediction,correct:prediction===s.label,crossEntropy:binaryCrossEntropyFromLogit(logit,s.label),note:s.note};});
+}
+export function binaryMetrics(rows:readonly SensorPrediction[]):BinaryMetrics{
+ ensure(rows.length>0,'Cannot evaluate an empty set.');let tp=0,tn=0,fp=0,fn=0;for(const r of rows){if(r.label===1){if(r.prediction===1)tp++;else fn++;}else if(r.prediction===1)fp++;else tn++;}
+ return{count:rows.length,tp,tn,fp,fn,accuracy:(tp+tn)/rows.length,precision:tp+fp?tp/(tp+fp):null,recall:tp+fn?tp/(tp+fn):null,falsePositiveRate:fp+tn?fp/(fp+tn):null,meanCrossEntropy:rows.reduce((s,r)=>s+r.crossEntropy,0)/rows.length};
+}
+export function sensorObjectiveGradient(training:readonly SensorSample[],normalizer:SensorNormalizer,parameters:SensorParameters,featureSet:FeatureSet,l2:number,threshold=.5){
+ const predictions=predictSensor(training,normalizer,parameters,featureSet,threshold),rows:SensorGradientRow[]=predictions.map(r=>({...r,weightGradient:[(r.probability-r.label)*r.features[0],(r.probability-r.label)*r.features[1]],biasGradient:r.probability-r.label}));
+ const dataGradient:SensorParameters={weights:[rows.reduce((s,r)=>s+r.weightGradient[0],0)/rows.length,rows.reduce((s,r)=>s+r.weightGradient[1],0)/rows.length],bias:rows.reduce((s,r)=>s+r.biasGradient,0)/rows.length};
+ const regularizationGradient:SensorParameters={weights:[l2*parameters.weights[0],l2*parameters.weights[1]],bias:0};
+ const gradient:SensorParameters={weights:[dataGradient.weights[0]+regularizationGradient.weights[0],dataGradient.weights[1]+regularizationGradient.weights[1]],bias:dataGradient.bias};
+ const meanDataLoss=rows.reduce((s,r)=>s+r.crossEntropy,0)/rows.length,penalty=.5*l2*(parameters.weights[0]**2+parameters.weights[1]**2);
+ return{rows,dataGradient,regularizationGradient,gradient,meanDataLoss,penalty,objective:meanDataLoss+penalty};
+}
+export function runSensorApplication(value:SensorOptions={},dataset:SensorDataset=sensorDataset){
+ const options=resolveSensorOptions(value);checkSamples(dataset.training,2);checkSamples(dataset.evaluation);const allIds=[...dataset.training,...dataset.evaluation].map(s=>s.id);ensure(new Set(allIds).size===allIds.length,'Training and evaluation sample IDs must be disjoint.');
+ const normalizer=fitSensorNormalizer(dataset.training),initial:SensorParameters={weights:[0,0],bias:0};let parameters=clone(initial);const steps:SensorTrainingStep[]=[];
+ for(let index=0;index<options.steps;index++){
+  const before=clone(parameters),g=sensorObjectiveGradient(dataset.training,normalizer,before,options.featureSet,options.l2,options.decisionThreshold);
+  parameters={weights:[before.weights[0]-options.learningRate*g.gradient.weights[0],before.weights[1]-options.learningRate*g.gradient.weights[1]],bias:before.bias-options.learningRate*g.gradient.bias};
+  const after=clone(parameters),objectiveAfter=sensorObjectiveGradient(dataset.training,normalizer,after,options.featureSet,options.l2).objective,evaluationAfter=binaryMetrics(predictSensor(dataset.evaluation,normalizer,after,options.featureSet,options.decisionThreshold));
+  steps.push({index,before,rows:g.rows,meanDataLossBefore:g.meanDataLoss,penaltyBefore:g.penalty,objectiveBefore:g.objective,dataGradient:g.dataGradient,regularizationGradient:g.regularizationGradient,gradient:g.gradient,after,objectiveAfter,evaluationAfter});
+ }
+ const trainingPredictions=predictSensor(dataset.training,normalizer,parameters,options.featureSet,options.decisionThreshold),evaluationPredictions=predictSensor(dataset.evaluation,normalizer,parameters,options.featureSet,options.decisionThreshold),trainingMetrics=binaryMetrics(trainingPredictions),evaluationMetrics=binaryMetrics(evaluationPredictions),d=options.featureSet==='both'?2:1;
+ const modeledInferenceUs=options.cost.fixedLatencyUs+d*options.cost.featureMacLatencyUs+options.cost.sigmoidLatencyUs;
+ const recallPassed=evaluationMetrics.recall===null?null:evaluationMetrics.recall>=options.minimumRecall,falsePositiveRatePassed=evaluationMetrics.falsePositiveRate===null?null:evaluationMetrics.falsePositiveRate<=options.maximumFalsePositiveRate;
+ return{modelVersion:sensorModelVersion,dataVersion:dataset.version,options,normalizer,initial,initialTrainingLoss:Math.log(2),steps,parameters:clone(parameters),training:{predictions:trainingPredictions,metrics:trainingMetrics},evaluation:{predictions:evaluationPredictions,metrics:evaluationMetrics},qualityGate:{basis:`User-selected teaching criteria on these ${dataset.evaluation.length} synthetic evaluation cases; no deployment certification.`,recallPassed,falsePositiveRatePassed,passed:recallPassed===true&&falsePositiveRatePassed===true},resourceScenario:{basis:'Hypothetical additive per-reading cost, not browser or hardware timing. Binary64 coefficient payload only; excludes object/allocator/runtime overhead.',modeledInferenceUs,latencyBudgetUs:options.latencyBudgetUs,latencyPassed:modeledInferenceUs<=options.latencyBudgetUs,activeFeatures:d,coefficientWords:d+1,coefficientPayloadBytes:(d+1)*8,featurePayloadBytes:d*8,trainingCoreFeatureMacs:options.steps*dataset.training.length*d,trainingCoreGradientFeatureProducts:options.steps*dataset.training.length*d,trainingCoreSigmoidCalls:options.steps*dataset.training.length,workCountScope:'Core batch-gradient calculations only. Extra evaluations, diagnostic traces, scaling, index/loop operations and exponent/log implementations are excluded from this resource scenario.'},limitations:['The labels and sensor readings are authored synthetic teaching data, not observed equipment measurements or safety thresholds.','Normalization and updates use training data only. Repeatedly selecting settings after viewing the held-out examples turns them into development feedback, not an untouched test of generalization.','The decision threshold changes confusion counts without changing fitted parameters or cross-entropy. A low training loss does not prove useful behavior on shifted cases.','Temperature and vibration correlate in training; deliberately separated evaluation cases expose reliance on that correlation. This is an illustration, not causal identification.','Precision/recall/false-positive rates with a zero denominator are null, not silently scored as zero or one.','Quality and latency gates are separate, explicitly selected teaching constraints. No real application or vendor performance claim is made.'],sourceIds:['stanford-logistic','sklearn-leakage','sklearn-metrics']};
+}
+export type SensorApplicationResult=ReturnType<typeof runSensorApplication>;

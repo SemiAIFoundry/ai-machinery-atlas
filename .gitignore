@@ -13,3 +13,14 @@ dist/
 src/lib/generated/
 public/lesson-data/
 .validation/
+
+# Retain verified tool evidence, exclude local simulator executables.
+!examples/realization/artifacts/*.log
+examples/realization/artifacts/*-sim
+
+# Preserve checksummed, public validation evidence referenced by the release docs.
+!docs/roadmap/next-horizon/evidence/*.log
+!docs/curation/next-horizon-review/learning/focused-tests.log
+!docs/model-lifecycle/typecheck.log
+!docs/model-lifecycle/distributed/typecheck.log
+!docs/release-evidence/v1.3.0/*.log

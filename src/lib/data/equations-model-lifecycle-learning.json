@@ -1,0 +1,1755 @@
+{
+  "data-quality-dedup-audit": [
+    {
+      "kind": "math",
+      "latex": "J(A,B)=\\frac{|A\\cap B|}{|A\\cup B|},\\qquad r_{\\rm files}=1-\\frac{N_{\\rm kept}}{N_{\\rm input}}",
+      "text": "Distinguish exact duplicates, approximate matches and evaluation contamination using explicit document families.",
+      "variables": [
+        {
+          "symbol": "A,B",
+          "meaning": "Sets of declared shingles",
+          "unit": "set"
+        },
+        {
+          "symbol": "J",
+          "meaning": "Jaccard overlap for a nonempty union",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Document counts at the specified boundary",
+          "unit": "documents"
+        },
+        {
+          "symbol": "r_files",
+          "meaning": "Removed-file fraction",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "data-mixture-sampling": [
+    {
+      "kind": "math",
+      "latex": "\\mathbb E[D_i]=B p_i,\\qquad E_i=\\frac{B p_i}{U_i},\\qquad \\operatorname{Var}(D_i)=B p_i(1-p_i)",
+      "text": "Calculate expected exposure per source and distinguish it from one finite seeded draw.",
+      "variables": [
+        {
+          "symbol": "B",
+          "meaning": "Total independent token draws",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "p_i",
+          "meaning": "Source selection probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "U_i",
+          "meaning": "Unique tokens in source i",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "D_i",
+          "meaning": "Realized source draws",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "E_i",
+          "meaning": "Expected equivalent passes",
+          "unit": "epochs"
+        }
+      ]
+    }
+  ],
+  "sequence-packing-loss-denominators": [
+    {
+      "kind": "math",
+      "latex": "L=\\frac{\\sum_{b,t}m_{bt}\\ell_{bt}}{\\sum_{b,t}m_{bt}},\\qquad A_{ij}=\\mathbf 1[j\\le i]\\mathbf 1[d_j=d_i]",
+      "text": "Draw document and target masks, then reconstruct the loss denominator of a packed batch.",
+      "variables": [
+        {
+          "symbol": "L",
+          "meaning": "Mean included target loss",
+          "unit": "nats per target"
+        },
+        {
+          "symbol": "m_bt",
+          "meaning": "Target inclusion flag",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "ell_bt",
+          "meaning": "Negative log probability of one target",
+          "unit": "nats"
+        },
+        {
+          "symbol": "A_ij",
+          "meaning": "Optional causal same-document visibility flag",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "d_i",
+          "meaning": "Document identity at input position i",
+          "unit": "identifier"
+        }
+      ]
+    }
+  ],
+  "synthetic-data-selection-feedback": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{precision}_{\\rm selected}=\\frac{N_{\\rm correct\\,and\\,selected}}{N_{\\rm selected}},\\qquad \\operatorname{selection\\ rate}=\\frac{N_{\\rm selected}}{N_{\\rm generated}}",
+      "text": "Track a generated example through verification and selection without converting acceptance into ground truth.",
+      "variables": [
+        {
+          "symbol": "N",
+          "meaning": "Counts under the stated candidate or unique-pair boundary",
+          "unit": "examples"
+        },
+        {
+          "symbol": "precision_selected",
+          "meaning": "Independent correctness among accepted candidates",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "data-coverage-language-slices": [
+    {
+      "kind": "math",
+      "latex": "r_s=\\frac{N_{{\\rm kept},s}}{N_{{\\rm input},s}},\\qquad \\bar\\ell_s=\\frac{\\sum_{t\\in s}\\ell_t}{T_s}",
+      "text": "Compare source slices under explicit byte, token and task denominators.",
+      "variables": [
+        {
+          "symbol": "r_s",
+          "meaning": "Retention within source slice s",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Document count",
+          "unit": "documents"
+        },
+        {
+          "symbol": "T_s",
+          "meaning": "Included targets under one tokenizer",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "ell_t",
+          "meaning": "One target negative log likelihood",
+          "unit": "nats"
+        },
+        {
+          "symbol": "bar ell_s",
+          "meaning": "Mean slice loss",
+          "unit": "nats per token"
+        }
+      ]
+    }
+  ],
+  "reverse-mode-autodiff": [
+    {
+      "kind": "math",
+      "latex": "\\bar v_i\\mathrel{+}=\\bar v_j\\frac{\\partial v_j}{\\partial v_i},\\qquad \\frac{\\partial L}{\\partial w}\\approx\\frac{L(w+h)-L(w-h)}{2h}",
+      "text": "Accumulate every branch contribution to a reused parameter and check it by finite differences.",
+      "variables": [
+        {
+          "symbol": "v_i,v_j",
+          "meaning": "Intermediate scalar values",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "bar v_i",
+          "meaning": "Accumulated derivative of loss with respect to v_i",
+          "unit": "loss per value"
+        },
+        {
+          "symbol": "w",
+          "meaning": "Reused trainable scalar",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "h",
+          "meaning": "Finite-difference perturbation",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Scalar objective",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "tiny-causal-decoder": [
+    {
+      "kind": "math",
+      "latex": "P=Vd+4d^2+(dh+h+hd+d)+(dV+V)=423",
+      "text": "Join tensor shapes, causal probabilities, gradients and optimizer state into one reproducible trained model.",
+      "variables": [
+        {
+          "symbol": "P",
+          "meaning": "Learned scalar coefficients in this declared decoder",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Vocabulary size, 9",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Hidden and single-head width, 6",
+          "unit": "features"
+        },
+        {
+          "symbol": "h",
+          "meaning": "Feed-forward width, 12",
+          "unit": "features"
+        }
+      ]
+    }
+  ],
+  "causal-pretraining-objective": [
+    {
+      "kind": "math",
+      "latex": "L=-\\frac{1}{M}\\sum_{t:m_t=1}\\log p_\\theta(x_{t+1}\\mid x_{\\le t}),\\qquad \\operatorname{PPL}=e^L",
+      "text": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+      "variables": [
+        {
+          "symbol": "L",
+          "meaning": "Mean included next-token NLL",
+          "unit": "nats per token"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Included target count",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "m_t",
+          "meaning": "Target inclusion flag",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p_theta",
+          "meaning": "Conditional target probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "PPL",
+          "meaning": "Perplexity under this tokenization",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "optimizer-schedule-stability": [
+    {
+      "kind": "math",
+      "latex": "g_c=g\\min\\!\\left(1,\\frac{c}{\\lVert g\\rVert_2}\\right),\\qquad \\theta^+=\\theta-\\eta u-\\eta\\lambda\\theta",
+      "text": "Separate gradient clipping, adaptive moments, decay and the learning-rate schedule.",
+      "variables": [
+        {
+          "symbol": "g,g_c",
+          "meaning": "Raw and globally clipped gradient vectors",
+          "unit": "loss per parameter"
+        },
+        {
+          "symbol": "c",
+          "meaning": "Gradient norm limit",
+          "unit": "loss per parameter"
+        },
+        {
+          "symbol": "theta",
+          "meaning": "Parameter vector",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "eta",
+          "meaning": "Step size in the declared numerical convention",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "u",
+          "meaning": "Adaptive update direction",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "lambda",
+          "meaning": "Decoupled decay coefficient",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "microbatch-equivalent-updates": [
+    {
+      "kind": "math",
+      "latex": "g=\\frac{\\sum_k n_k g_k}{\\sum_k n_k},\\qquad \\theta^+=\\theta-\\eta\\operatorname{clip}(g)",
+      "text": "Recover a full-batch gradient from unequal target counts before clipping or stepping.",
+      "variables": [
+        {
+          "symbol": "g_k",
+          "meaning": "Mean gradient for microbatch k",
+          "unit": "loss per parameter"
+        },
+        {
+          "symbol": "n_k",
+          "meaning": "Valid targets in microbatch k",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Global token-mean gradient",
+          "unit": "loss per parameter"
+        },
+        {
+          "symbol": "theta",
+          "meaning": "Parameter evaluated consistently across microbatches",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "eta",
+          "meaning": "SGD step size",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "model-lifecycle-stage-contract": [
+    {
+      "kind": "math",
+      "latex": "\\mathcal C=(\\theta_0,\\mathcal D,\\mathcal L,\\mathcal T,\\mathcal O,\\mathcal E)",
+      "text": "Classify a transition by checkpoint, data, loss, trainable state, optimizer policy and evaluation.",
+      "variables": [
+        {
+          "symbol": "C",
+          "meaning": "Stage contract tuple",
+          "unit": "record"
+        },
+        {
+          "symbol": "theta_0",
+          "meaning": "Starting checkpoint",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Training data distribution",
+          "unit": "distribution"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Objective and denominator",
+          "unit": "function"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Trainable parameter subset",
+          "unit": "set"
+        },
+        {
+          "symbol": "O",
+          "meaning": "Optimizer RNG and schedule policy",
+          "unit": "state contract"
+        },
+        {
+          "symbol": "E",
+          "meaning": "Evaluation and retention gates",
+          "unit": "protocol"
+        }
+      ]
+    }
+  ],
+  "domain-adaptive-continuation": [
+    {
+      "kind": "math",
+      "latex": "\\Delta L_A=L_A(\\theta_{\\rm after})-L_A(\\theta_{\\rm before}),\\qquad \\Delta L_B=L_B(\\theta_{\\rm after})-L_B(\\theta_{\\rm before})",
+      "text": "Measure new-domain acquisition and old-domain retention from the same starting checkpoint.",
+      "variables": [
+        {
+          "symbol": "L_A,L_B",
+          "meaning": "Held-out losses under fixed domain-specific targets",
+          "unit": "nats per target"
+        },
+        {
+          "symbol": "theta",
+          "meaning": "Checkpoint being evaluated",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "Delta L",
+          "meaning": "After-minus-before loss change",
+          "unit": "nats per target"
+        }
+      ]
+    }
+  ],
+  "replay-retention-forgetting": [
+    {
+      "kind": "math",
+      "latex": "L(p)=-q\\log p-(1-q)\\log(1-p),\\qquad p^*=q\\quad(0<q<1)",
+      "text": "Reason about a fixed-budget retention tradeoff without treating replay as a guarantee.",
+      "variables": [
+        {
+          "symbol": "p",
+          "meaning": "Probability of the old-domain answer",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "q",
+          "meaning": "Old-domain mixture weight",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Expected binary target loss",
+          "unit": "nats per target"
+        },
+        {
+          "symbol": "p*",
+          "meaning": "Optimal probability for the specified conflicting prompt",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "long-context-adaptation": [
+    {
+      "kind": "math",
+      "latex": "B_{KV}=2LTH_{KV}d_hb",
+      "text": "Separate accepted context length, causal correctness, memory growth and demonstrated long-distance use.",
+      "variables": [
+        {
+          "symbol": "B_KV",
+          "meaning": "Key plus value payload",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Layer count",
+          "unit": "layers"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Stored token positions",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "H_KV",
+          "meaning": "KV head count",
+          "unit": "heads"
+        },
+        {
+          "symbol": "d_h",
+          "meaning": "Features per KV head",
+          "unit": "features"
+        },
+        {
+          "symbol": "b",
+          "meaning": "Stored bytes per element",
+          "unit": "bytes per element"
+        }
+      ]
+    }
+  ],
+  "checkpoint-averaging-boundaries": [
+    {
+      "kind": "math",
+      "latex": "\\bar\\theta=\\sum_k a_k\\theta_k,\\qquad \\sum_k a_k=1,\\quad a_k\\ge0",
+      "text": "Check parameter alignment before averaging and evaluate the resulting function.",
+      "variables": [
+        {
+          "symbol": "theta_k",
+          "meaning": "Coordinate-aligned candidate weights",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "a_k",
+          "meaning": "Averaging weights",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "bar theta",
+          "meaning": "New averaged checkpoint",
+          "unit": "parameters"
+        }
+      ]
+    }
+  ],
+  "sft-chat-loss-masks": [
+    {
+      "kind": "math",
+      "latex": "L_{SFT}=-\\frac{\\sum_t m_t\\log p_\\theta(y_t\\mid x,y_{<t})}{\\sum_t m_t}",
+      "text": "Identify exactly which shifted response targets contribute to supervised fine-tuning.",
+      "variables": [
+        {
+          "symbol": "L_SFT",
+          "meaning": "Masked supervised target loss",
+          "unit": "nats per included target"
+        },
+        {
+          "symbol": "m_t",
+          "meaning": "Assistant-target inclusion flag after shifting",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Prompt context",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "y_t",
+          "meaning": "Supervised response target",
+          "unit": "token identifier"
+        },
+        {
+          "symbol": "p_theta",
+          "meaning": "Conditional target probability",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "preference-reward-model": [
+    {
+      "kind": "math",
+      "latex": "p(w\\succ l)=\\sigma(r_w-r_l),\\qquad L=-\\log\\sigma(r_w-r_l),\\qquad \\frac{\\partial L}{\\partial(r_w-r_l)}=\\sigma(r_w-r_l)-1",
+      "text": "Compute a pairwise preference probability and distinguish a learned score from verified correctness.",
+      "variables": [
+        {
+          "symbol": "r_w,r_l",
+          "meaning": "Chosen and rejected scalar scores",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Predicted pairwise preference probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "sigma",
+          "meaning": "Logistic function",
+          "unit": "function"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Pairwise negative log likelihood",
+          "unit": "nats per pair"
+        }
+      ]
+    }
+  ],
+  "direct-preference-objective": [
+    {
+      "kind": "math",
+      "latex": "L_{DPO}=-\\log\\sigma\\!\\left(\\beta\\left[\\log\\frac{\\pi_\\theta(y_w\\mid x)}{\\pi_{ref}(y_w\\mid x)}-\\log\\frac{\\pi_\\theta(y_l\\mid x)}{\\pi_{ref}(y_l\\mid x)}\\right]\\right)",
+      "text": "Compute DPO from policy and frozen-reference response likelihoods with an explicit pair denominator.",
+      "variables": [
+        {
+          "symbol": "L_DPO",
+          "meaning": "Loss for one labeled preference pair",
+          "unit": "nats per pair"
+        },
+        {
+          "symbol": "pi_theta",
+          "meaning": "Current policy response probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "pi_ref",
+          "meaning": "Frozen reference response probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "y_w,y_l",
+          "meaning": "Chosen and rejected responses",
+          "unit": "token sequences"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Prompt",
+          "unit": "token sequence"
+        },
+        {
+          "symbol": "beta",
+          "meaning": "Log-ratio scale",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "policy-gradient-kl-control": [
+    {
+      "kind": "math",
+      "latex": "J_{clip}=\\min(rA,\\operatorname{clip}(r,1-\\epsilon,1+\\epsilon)A),\\quad r=\\frac{\\pi_\\theta(a\\mid s)}{\\pi_{old}(a\\mid s)},\\quad D_{KL}(p\\Vert q)=\\sum_i p_i\\log\\frac{p_i}{q_i}",
+      "text": "Separate sampled advantages, old-policy ratios, clipping and reference KL.",
+      "variables": [
+        {
+          "symbol": "J_clip",
+          "meaning": "One PPO surrogate contribution to maximize",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Current to rollout-policy action ratio",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Detached advantage",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "epsilon",
+          "meaning": "Surrogate clip width",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p,q",
+          "meaning": "Current and reference distributions for this KL direction",
+          "unit": "probabilities"
+        },
+        {
+          "symbol": "D_KL",
+          "meaning": "Categorical divergence",
+          "unit": "nats"
+        }
+      ]
+    }
+  ],
+  "verifiable-reward-group-updates": [
+    {
+      "kind": "math",
+      "latex": "\\bar r=\\frac1G\\sum_i r_i,\\quad s=\\sqrt{\\frac1G\\sum_i(r_i-\\bar r)^2},\\quad A_i=\\begin{cases}(r_i-\\bar r)/s&s>0\\\\0&s=0\\end{cases}",
+      "text": "Compute relative group advantages and identify what a verifier does and does not establish.",
+      "variables": [
+        {
+          "symbol": "G",
+          "meaning": "Outputs sampled for one prompt",
+          "unit": "outputs"
+        },
+        {
+          "symbol": "r_i",
+          "meaning": "Verifier reward",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "bar r",
+          "meaning": "Group mean",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Population standard deviation",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "A_i",
+          "meaning": "Standardized relative advantage",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "reward-proxy-overoptimization": [
+    {
+      "kind": "math",
+      "latex": "\\Delta R_{proxy}>0\\quad\\not\\Rightarrow\\quad\\Delta S_{task}>0",
+      "text": "Compare a rewarded proxy with independently scored task success and locate divergence.",
+      "variables": [
+        {
+          "symbol": "R_proxy",
+          "meaning": "Mean optimized reward under its disclosed rule",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "S_task",
+          "meaning": "Independent task success rate",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Delta",
+          "meaning": "After-minus-before change at a fixed evaluation boundary",
+          "unit": "difference"
+        }
+      ]
+    }
+  ],
+  "low-rank-adaptation": [
+    {
+      "kind": "math",
+      "latex": "W=W_0+\\frac{\\alpha}{r}BA,\\quad B\\in\\mathbb R^{d\\times r},\\quad A\\in\\mathbb R^{r\\times k},\\quad P_{adapter}=r(d+k)",
+      "text": "Multiply a low-rank update and count trainable factors without confusing them with the training objective.",
+      "variables": [
+        {
+          "symbol": "W_0",
+          "meaning": "Frozen base matrix",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "B,A",
+          "meaning": "Trainable low-rank factors",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "d,k",
+          "meaning": "Output and input widths",
+          "unit": "features"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Adapter rank",
+          "unit": "rank"
+        },
+        {
+          "symbol": "alpha",
+          "meaning": "Declared adapter scale",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "P_adapter",
+          "meaning": "Trainable factor count",
+          "unit": "parameters"
+        }
+      ]
+    }
+  ],
+  "teacher-student-distillation": [
+    {
+      "kind": "math",
+      "latex": "L_{soft}=-T^2\\sum_i p_i^{(T)}\\log q_i^{(T)},\\qquad \\frac{\\partial L_{soft}}{\\partial z_i}=T\\big(q_i^{(T)}-p_i^{(T)}\\big)",
+      "text": "Calculate soft-target loss and gradient, then evaluate the student separately from its teacher.",
+      "variables": [
+        {
+          "symbol": "T",
+          "meaning": "Common teacher/student temperature",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p_i^(T)",
+          "meaning": "Teacher softened target probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "q_i^(T)",
+          "meaning": "Student softened probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "z_i",
+          "meaning": "Student pre-temperature logit",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "L_soft",
+          "meaning": "Temperature-scaled soft-target loss",
+          "unit": "scaled nats"
+        }
+      ]
+    }
+  ],
+  "probability-calibration-abstention": [
+    {
+      "kind": "math",
+      "latex": "B=\\frac1N\\sum_i(p_i-y_i)^2,\\quad C=\\frac{|A|}{N},\\quad R=\\frac{\\sum_{i\\in A}\\mathbf1[\\hat y_i\\ne y_i]}{|A|}\\ (|A|>0)",
+      "text": "Evaluate probability quality and selective error using distinct calibration and final-test data.",
+      "variables": [
+        {
+          "symbol": "B",
+          "meaning": "Binary one-probability Brier score",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p_i",
+          "meaning": "Probability of class one",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "y_i",
+          "meaning": "Binary class-one label",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Cases passing the confidence threshold",
+          "unit": "set"
+        },
+        {
+          "symbol": "N",
+          "meaning": "All evaluated cases",
+          "unit": "cases"
+        },
+        {
+          "symbol": "C",
+          "meaning": "Answer coverage",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "R",
+          "meaning": "Error conditional on answering",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "judge-rubric-agreement": [
+    {
+      "kind": "math",
+      "latex": "G=\\frac1N\\sum_i\\mathbf1[j_i^{A}=j_i^{B}],\\qquad S_A=\\frac1N\\sum_i\\mathbf1[j_i^{A}=y_i]",
+      "text": "Separate agreement, task correctness and preference under a reproducible judging rubric.",
+      "variables": [
+        {
+          "symbol": "G",
+          "meaning": "Observed pairwise judge agreement",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "S_A",
+          "meaning": "Judge A correctness against the declared reference",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "j_i^A,j_i^B",
+          "meaning": "Judge labels",
+          "unit": "category"
+        },
+        {
+          "symbol": "y_i",
+          "meaning": "Task reference label",
+          "unit": "category"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Paired cases",
+          "unit": "cases"
+        }
+      ]
+    }
+  ],
+  "retrieval-supported-generation": [
+    {
+      "kind": "math",
+      "latex": "p(y\\mid x)=\\sum_z p(z\\mid x)p(y\\mid x,z),\\qquad S=\\frac{N_{\\rm supported\\ claims}}{N_{\\rm scored\\ claims}}",
+      "text": "Track evidence retrieval, answer likelihood and claim support as separate stages.",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Question or input",
+          "unit": "text"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Complete candidate answer",
+          "unit": "text"
+        },
+        {
+          "symbol": "z",
+          "meaning": "Retrieved document in the declared finite mixture",
+          "unit": "document"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Conditional probabilities under their stated models",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "S",
+          "meaning": "Claim support fraction under the scoring rubric",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Claims at the stated scoring boundary",
+          "unit": "claims"
+        }
+      ]
+    }
+  ],
+  "test-time-search-verification": [
+    {
+      "kind": "math",
+      "latex": "P(\\text{at least one success})=1-(1-p)^k",
+      "text": "Distinguish finding a correct candidate from selecting one under a finite verification budget.",
+      "variables": [
+        {
+          "symbol": "p",
+          "meaning": "Single-candidate success probability under the assumed distribution",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Independent candidates",
+          "unit": "candidates"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Candidate-set success probability",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "model-system-regression-contract": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{accept}=\\mathbf1[S_{task}\\ge\\tau]\\mathbf1[F_{protected}=0]",
+      "text": "Attach an evaluation result to the complete system configuration and apply a stated rollback rule.",
+      "variables": [
+        {
+          "symbol": "accept",
+          "meaning": "Boolean acceptance under the declared policy",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "S_task",
+          "meaning": "Task success fraction",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "tau",
+          "meaning": "Minimum task success threshold",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "F_protected",
+          "meaning": "Failures on explicitly protected cases",
+          "unit": "cases"
+        }
+      ]
+    }
+  ],
+  "image-text-contrastive-learning": [
+    {
+      "kind": "math",
+      "latex": "s_{ij}=\\frac{u_i^\\mathsf T v_j}{\\tau},\\quad L=-\\frac1{2N}\\sum_i\\left[\\log\\frac{e^{s_{ii}}}{\\sum_j e^{s_{ij}}}+\\log\\frac{e^{s_{ii}}}{\\sum_j e^{s_{ji}}}\\right]",
+      "text": "Compute a paired image/text similarity loss and test a shortcut with held-out compositions.",
+      "variables": [
+        {
+          "symbol": "u_i,v_j",
+          "meaning": "Unit-normalized image and text feature vectors",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "tau",
+          "meaning": "Positive contrastive temperature",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "s_ij",
+          "meaning": "Pair similarity logit",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Paired examples in the batch",
+          "unit": "pairs"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Mean symmetric directional cross-entropy",
+          "unit": "nats"
+        }
+      ]
+    }
+  ],
+  "visual-language-bridge": [
+    {
+      "kind": "math",
+      "latex": "H_v=Z_vW,\\qquad Z_v\\in\\mathbb R^{N\\times d_v},\\quad W\\in\\mathbb R^{d_v\\times d_l}",
+      "text": "Trace visual feature dimensions into a language model and distinguish alignment from visual use.",
+      "variables": [
+        {
+          "symbol": "H_v",
+          "meaning": "Projected visual tokens in the declared row-vector convention",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Z_v",
+          "meaning": "Patch feature matrix",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "W",
+          "meaning": "Projection weights with no bias in this example",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Patch count",
+          "unit": "patches"
+        },
+        {
+          "symbol": "d_v,d_l",
+          "meaning": "Visual and language widths",
+          "unit": "features"
+        }
+      ]
+    }
+  ],
+  "speech-audio-sequence-objectives": [
+    {
+      "kind": "math",
+      "latex": "F=1+\\left\\lfloor\\frac{N-W}{H}\\right\\rfloor,\\qquad WER=\\frac{S+D+I}{N_{ref}}",
+      "text": "Relate audio samples, time frames and transcript errors without mixing their denominators.",
+      "variables": [
+        {
+          "symbol": "F",
+          "meaning": "Unpadded full-window frame count",
+          "unit": "frames"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Waveform length at declared sample rate",
+          "unit": "samples"
+        },
+        {
+          "symbol": "W,H",
+          "meaning": "Window length and hop",
+          "unit": "samples"
+        },
+        {
+          "symbol": "S,D,I",
+          "meaning": "Substitution deletion and insertion counts",
+          "unit": "word edits"
+        },
+        {
+          "symbol": "N_ref",
+          "meaning": "Reference transcript length",
+          "unit": "words"
+        },
+        {
+          "symbol": "WER",
+          "meaning": "Word error ratio",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "denoising-generative-objectives": [
+    {
+      "kind": "math",
+      "latex": "x_t=\\sqrt{\\bar\\alpha_t}x_0+\\sqrt{1-\\bar\\alpha_t}\\epsilon,\\quad L_\\epsilon=\\lVert\\epsilon-\\epsilon_\\theta(x_t,t)\\rVert^2,\\qquad x_t^{flow}=(1-t)x_0+t x_1,\\quad u=x_1-x_0",
+      "text": "Compute a noisy training target and distinguish noise regression from a flow vector field.",
+      "variables": [
+        {
+          "symbol": "x_0",
+          "meaning": "Clean diffusion value or explicitly named flow start",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "x_1",
+          "meaning": "Data endpoint in the flow example",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "alpha bar_t",
+          "meaning": "Cumulative diffusion signal factor",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "epsilon",
+          "meaning": "Sampled standard Gaussian noise",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Declared diffusion index or normalized flow time",
+          "unit": "index or dimensionless"
+        },
+        {
+          "symbol": "u",
+          "meaning": "Straight-path target velocity",
+          "unit": "value per normalized time"
+        },
+        {
+          "symbol": "L_epsilon",
+          "meaning": "Coordinate-summed noise error",
+          "unit": "squared value"
+        }
+      ]
+    }
+  ],
+  "video-latent-prediction": [
+    {
+      "kind": "math",
+      "latex": "L=\\frac1M\\sum_{j\\in mask}|\\hat z_j-\\operatorname{sg}(z_j)|,\\qquad \\bar\\theta^+=\\rho\\bar\\theta+(1-\\rho)\\theta",
+      "text": "Compare masked feature prediction with pixel generation and test temporal information use.",
+      "variables": [
+        {
+          "symbol": "L",
+          "meaning": "Mean absolute masked-feature error",
+          "unit": "feature units"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Scored scalar feature coordinates",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "z_j,hat z_j",
+          "meaning": "Target and predicted representation coordinates",
+          "unit": "feature units"
+        },
+        {
+          "symbol": "sg",
+          "meaning": "Stop-gradient operation",
+          "unit": "operator"
+        },
+        {
+          "symbol": "theta,bar theta",
+          "meaning": "Online and target-encoder parameters",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "rho",
+          "meaning": "Moving-average coefficient",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "action-conditioned-world-model": [
+    {
+      "kind": "math",
+      "latex": "\\hat x_{t+1}=f_\\theta(\\hat x_t,a_t),\\qquad e_H=|\\hat x_{t+H}-x_{t+H}|",
+      "text": "Change an action while holding state fixed and compare predicted transitions with a held-out environment.",
+      "variables": [
+        {
+          "symbol": "x,hat x",
+          "meaning": "Observed and predicted scalar position in the example",
+          "unit": "m"
+        },
+        {
+          "symbol": "a",
+          "meaning": "Declared normalized action command",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "f_theta",
+          "meaning": "Learned or supplied transition predictor",
+          "unit": "function"
+        },
+        {
+          "symbol": "t,H",
+          "meaning": "Transition index and rollout horizon",
+          "unit": "steps"
+        },
+        {
+          "symbol": "e_H",
+          "meaning": "H-step position error",
+          "unit": "m"
+        }
+      ]
+    }
+  ],
+  "imagined-rollouts-policy-learning": [
+    {
+      "kind": "math",
+      "latex": "G_t=\\sum_{k=0}^{H-1}\\gamma^k r_{t+k},\\qquad \\Delta_{model}=\\hat G-G_{environment}",
+      "text": "Compare a policy’s imagined return with return in the actual environment and identify model exploitation.",
+      "variables": [
+        {
+          "symbol": "G_t",
+          "meaning": "Finite-horizon discounted return",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "gamma",
+          "meaning": "Discount factor",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "H",
+          "meaning": "Reward horizon",
+          "unit": "steps"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Reward at the stated transition boundary",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "hat G",
+          "meaning": "Return predicted by the model",
+          "unit": "reward units"
+        },
+        {
+          "symbol": "Delta_model",
+          "meaning": "Predicted minus environment return",
+          "unit": "reward units"
+        }
+      ]
+    }
+  ],
+  "vision-language-action-interface": [
+    {
+      "kind": "math",
+      "latex": "\\Delta=\\frac{u-l}{K},\\quad b=\\left\\lfloor\\frac{a-l}{\\Delta}\\right\\rfloor,\\quad \\hat a=l+(b+\\tfrac12)\\Delta",
+      "text": "Decode action tokens into physical commands with explicit frame, units and validity checks.",
+      "variables": [
+        {
+          "symbol": "l,u",
+          "meaning": "Lower and upper declared action limits",
+          "unit": "m"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Equal-width bins",
+          "unit": "bins"
+        },
+        {
+          "symbol": "Delta",
+          "meaning": "Bin width",
+          "unit": "m"
+        },
+        {
+          "symbol": "b",
+          "meaning": "Zero-based bin index, with endpoint convention",
+          "unit": "index"
+        },
+        {
+          "symbol": "a,hat a",
+          "meaning": "Command and midpoint reconstruction",
+          "unit": "m"
+        }
+      ]
+    }
+  ],
+  "diffusion-action-horizon": [
+    {
+      "kind": "math",
+      "latex": "T_{prefix}=\\frac{H_a}{f},\\qquad x_{t+1}=x_t+a_t+d_t",
+      "text": "Separate generated action horizon, executed prefix and replanning interval.",
+      "variables": [
+        {
+          "symbol": "T_prefix",
+          "meaning": "Time covered by executed action prefix",
+          "unit": "s"
+        },
+        {
+          "symbol": "H_a",
+          "meaning": "Executed commands before replanning",
+          "unit": "commands"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Command rate",
+          "unit": "commands per s"
+        },
+        {
+          "symbol": "x_t",
+          "meaning": "Position",
+          "unit": "m"
+        },
+        {
+          "symbol": "a_t",
+          "meaning": "Position increment command",
+          "unit": "m per step"
+        },
+        {
+          "symbol": "d_t",
+          "meaning": "Disturbance at the declared step",
+          "unit": "m"
+        }
+      ]
+    }
+  ],
+  "training-data": [
+    {
+      "kind": "math",
+      "latex": "N_{records}=\\sum_s N_s,\\qquad N_{families}=|\\{\\operatorname{family}(x):x\\in D\\}|",
+      "text": "Audit data lineage at the family and split boundaries.",
+      "variables": [
+        {
+          "symbol": "N_records",
+          "meaning": "Stored example rows",
+          "unit": "examples"
+        },
+        {
+          "symbol": "N_s",
+          "meaning": "Rows in split s",
+          "unit": "examples"
+        },
+        {
+          "symbol": "N_families",
+          "meaning": "Distinct prompt-family identities",
+          "unit": "families"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Declared corpus",
+          "unit": "dataset"
+        }
+      ]
+    }
+  ],
+  "tokenizer": [
+    {
+      "kind": "math",
+      "latex": "(u^*,v^*)=\\arg\\max_{(u,v)}\\sum_{w\\in D_{train}}c_w(u,v)",
+      "text": "Distinguish fitting a vocabulary from using a fixed token mapping on held-out input.",
+      "variables": [
+        {
+          "symbol": "u,v",
+          "meaning": "Adjacent current symbols or subwords",
+          "unit": "symbols"
+        },
+        {
+          "symbol": "c_w",
+          "meaning": "Adjacent-pair occurrences in training item w",
+          "unit": "count"
+        },
+        {
+          "symbol": "D_train",
+          "meaning": "Tokenizer fitting corpus",
+          "unit": "dataset"
+        }
+      ]
+    }
+  ],
+  "embedding": [
+    {
+      "kind": "math",
+      "latex": "\\frac{\\partial L}{\\partial E_{v,:}}=\\sum_{t:x_t=v}\\frac{\\partial L}{\\partial e_t}+g^{tied\\ output}_{v,:}",
+      "text": "Accumulate gradients into shared lookup rows and distinguish tied from separate output weights.",
+      "variables": [
+        {
+          "symbol": "E_v",
+          "meaning": "Shared embedding row for token v",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "e_t",
+          "meaning": "Lookup result at input position t",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Derivative contribution, zero here unless weights are explicitly tied",
+          "unit": "loss per parameter"
+        },
+        {
+          "symbol": "x_t",
+          "meaning": "Token identity",
+          "unit": "identifier"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Scalar objective",
+          "unit": "loss"
+        }
+      ]
+    }
+  ],
+  "attention": [
+    {
+      "kind": "math",
+      "latex": "o=\\sum_j a_jv_j,\\qquad \\frac{\\partial o}{\\partial s_j}=a_j(v_j-o)",
+      "text": "Trace a numerical softmax derivative through a causal value mixture.",
+      "variables": [
+        {
+          "symbol": "o",
+          "meaning": "Scalar attention output in this example",
+          "unit": "value units"
+        },
+        {
+          "symbol": "a_j",
+          "meaning": "Softmax probability over allowed keys",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "v_j",
+          "meaning": "Allowed scalar value",
+          "unit": "value units"
+        },
+        {
+          "symbol": "s_j",
+          "meaning": "Pre-softmax score",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "feed-forward": [
+    {
+      "kind": "math",
+      "latex": "a=\\tanh(wx+b),\\qquad \\frac{\\partial a}{\\partial w}=(1-a^2)x,\\qquad P=dm+m+md+d",
+      "text": "Count a nonlinear block’s learned state and differentiate its activation.",
+      "variables": [
+        {
+          "symbol": "a",
+          "meaning": "Scalar tanh activation",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "w,b",
+          "meaning": "Scalar weight and bias",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Scalar input",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "d,m",
+          "meaning": "Model and feed-forward widths in the separate parameter ledger",
+          "unit": "features"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Two affine maps plus biases",
+          "unit": "parameters"
+        }
+      ]
+    }
+  ],
+  "residual-normalization": [
+    {
+      "kind": "math",
+      "latex": "\\frac{dy}{dx}=1+f^{\\prime}(x),\\qquad \\operatorname{RMSNorm}(x)_i=\\frac{x_i}{\\sqrt{d^{-1}\\sum_j x_j^2+\\epsilon}}",
+      "text": "Distinguish an identity gradient path from normalization’s scale transformation.",
+      "variables": [
+        {
+          "symbol": "x_i",
+          "meaning": "Input feature",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Features normalized together",
+          "unit": "features"
+        },
+        {
+          "symbol": "epsilon",
+          "meaning": "Positive stabilizer in mean-square units",
+          "unit": "dimensionless squared"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Residual sublayer",
+          "unit": "function"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Residual output",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "output-head": [
+    {
+      "kind": "math",
+      "latex": "p_i=\\frac{e^{z_i}}{\\sum_j e^{z_j}},\\qquad L=-\\log p_y,\\qquad \\frac{\\partial L}{\\partial z_i}=p_i-\\mathbf1[i=y]",
+      "text": "Connect logits, likelihood gradients and sampling without turning confidence into truth.",
+      "variables": [
+        {
+          "symbol": "z_i",
+          "meaning": "Vocabulary logit",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p_i",
+          "meaning": "Next-token probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Target class",
+          "unit": "index"
+        },
+        {
+          "symbol": "L",
+          "meaning": "One target negative log likelihood",
+          "unit": "nats"
+        }
+      ]
+    }
+  ],
+  "moe": [
+    {
+      "kind": "math",
+      "latex": "L_{aux}=\\alpha N\\sum_i f_iP_i,\\quad f_i=\\frac1T\\sum_x\\mathbf1[\\arg\\max_j p_j(x)=i],\\quad P_i=\\frac1T\\sum_xp_i(x)",
+      "text": "Calculate routing loads and a declared auxiliary loss separately from expert capacity.",
+      "variables": [
+        {
+          "symbol": "L_aux",
+          "meaning": "Switch-style auxiliary objective",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "alpha",
+          "meaning": "Auxiliary coefficient",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Experts",
+          "unit": "experts"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Routed tokens",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "f_i",
+          "meaning": "Discrete dispatch fraction",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "P_i",
+          "meaning": "Mean router probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p_i(x)",
+          "meaning": "Router probability for token x",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "loss-optimizer": [
+    {
+      "kind": "math",
+      "latex": "m_t=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\quad v_t=\\beta_2v_{t-1}+(1-\\beta_2)g_t^2,\\quad\\theta^+=\\theta-\\eta\\frac{m_t/(1-\\beta_1^t)}{\\sqrt{v_t/(1-\\beta_2^t)}+\\epsilon}",
+      "text": "Verify the first actual gradient-driven SGD and Adam updates under explicit state.",
+      "variables": [
+        {
+          "symbol": "m_t",
+          "meaning": "First gradient moment",
+          "unit": "gradient units"
+        },
+        {
+          "symbol": "v_t",
+          "meaning": "Second gradient moment",
+          "unit": "squared gradient units"
+        },
+        {
+          "symbol": "g_t",
+          "meaning": "Gradient after declared clipping",
+          "unit": "gradient units"
+        },
+        {
+          "symbol": "beta_1,beta_2",
+          "meaning": "Moment decay factors",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Optimizer update count",
+          "unit": "updates"
+        },
+        {
+          "symbol": "eta",
+          "meaning": "Learning rate",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "epsilon",
+          "meaning": "Denominator stabilizer",
+          "unit": "gradient units"
+        },
+        {
+          "symbol": "theta",
+          "meaning": "Parameter",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "checkpoint": [
+    {
+      "kind": "math",
+      "latex": "S_{t+1}=F(S_t,D_t),\\qquad S_t=(\\theta_t,m_t,v_t,t,RNG_t,cursor_t,config)",
+      "text": "Resume weights, optimizer, RNG and data cursor as one experiment state.",
+      "variables": [
+        {
+          "symbol": "S_t",
+          "meaning": "Complete reproducible learning state",
+          "unit": "record"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Declared deterministic update given its saved state",
+          "unit": "function"
+        },
+        {
+          "symbol": "D_t",
+          "meaning": "Sampled training data selected by saved RNG/cursor policy",
+          "unit": "examples"
+        },
+        {
+          "symbol": "theta,m,v",
+          "meaning": "Weights and optimizer moment arrays",
+          "unit": "parameters and moments"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Optimizer counter",
+          "unit": "updates"
+        }
+      ]
+    }
+  ],
+  "training-memory-state": [
+    {
+      "kind": "math",
+      "latex": "B_{payload}=P\\sum_k b_k",
+      "text": "Inventory real trainable arrays separately from activation and runtime overhead.",
+      "variables": [
+        {
+          "symbol": "B_payload",
+          "meaning": "Payload of the explicitly inventoried full-length arrays",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Parameters represented in every listed array",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "b_k",
+          "meaning": "Bytes per parameter for listed array k",
+          "unit": "bytes per parameter"
+        }
+      ]
+    }
+  ],
+  "scaling-laws": [
+    {
+      "kind": "math",
+      "latex": "L(N,D)=E+AN^{-\\alpha}+BD^{-\\beta},\\qquad C\\approx6ND",
+      "text": "Interpret a fitted loss surface under a bounded compute and evaluation regime.",
+      "variables": [
+        {
+          "symbol": "L",
+          "meaning": "Fitted held-out target loss",
+          "unit": "nats per token"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Trainable parameter count under the fitted convention",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Training token presentations",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "E,A,B",
+          "meaning": "Fitted coefficients with units consistent with N and D",
+          "unit": "fit coefficients"
+        },
+        {
+          "symbol": "alpha,beta",
+          "meaning": "Fitted positive exponents",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "C",
+          "meaning": "Approximate dense training work under the chosen convention",
+          "unit": "FLOPs"
+        }
+      ]
+    }
+  ],
+  "post-training": [
+    {
+      "kind": "math",
+      "latex": "M_{SFT}=\\sum_i T_i^{response},\\qquad M_{DPO}=N_{pairs},\\qquad M_{RL}=N_{prompts}G",
+      "text": "Choose a supervision signal and objective independently of the parameterization.",
+      "variables": [
+        {
+          "symbol": "M",
+          "meaning": "Objective denominator for the named stage",
+          "unit": "targets pairs or rollouts"
+        },
+        {
+          "symbol": "T_i^response",
+          "meaning": "Included response targets in demonstration i",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "N_pairs",
+          "meaning": "Preference comparisons",
+          "unit": "pairs"
+        },
+        {
+          "symbol": "N_prompts",
+          "meaning": "Sampled prompts",
+          "unit": "prompts"
+        },
+        {
+          "symbol": "G",
+          "meaning": "Actions sampled per prompt",
+          "unit": "rollouts per prompt"
+        }
+      ]
+    }
+  ],
+  "evaluation": [
+    {
+      "kind": "math",
+      "latex": "CI=\\frac{\\hat p+z^2/(2n)\\ \\pm\\ z\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}+\\frac{z^2}{4n^2}}}{1+z^2/n}",
+      "text": "Keep development feedback separate from a first final-test report and state its uncertainty.",
+      "variables": [
+        {
+          "symbol": "CI",
+          "meaning": "Wilson interval under the stated binomial model",
+          "unit": "probability interval"
+        },
+        {
+          "symbol": "p hat",
+          "meaning": "Observed success fraction",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Evaluated cases",
+          "unit": "cases"
+        },
+        {
+          "symbol": "z",
+          "meaning": "Normal quantile, 1.96 for approximate 95 percent",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "tool-loop": [
+    {
+      "kind": "math",
+      "latex": "s_{t+1}=\\begin{cases}T(s_t,a_t)&V(s_t,a_t)=1\\\\s_t&V(s_t,a_t)=0\\end{cases}",
+      "text": "Distinguish a proposed model action, validated execution and an observed successful outcome.",
+      "variables": [
+        {
+          "symbol": "s_t",
+          "meaning": "Environment state before validation",
+          "unit": "state"
+        },
+        {
+          "symbol": "a_t",
+          "meaning": "Proposed action with identity",
+          "unit": "record"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Schema capability and precondition validator",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Authorized transition including idempotency semantics",
+          "unit": "function"
+        }
+      ]
+    }
+  ]
+}

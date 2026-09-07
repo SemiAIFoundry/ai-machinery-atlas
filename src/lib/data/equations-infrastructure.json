@@ -6,12 +6,12 @@
         {
           "symbol": "H",
           "meaning": "Modeled stack height",
-          "unit": "\u00b5m"
+          "unit": "µm"
         },
         {
           "symbol": "tbase",
           "meaning": "Base structure thickness",
-          "unit": "\u00b5m"
+          "unit": "µm"
         },
         {
           "symbol": "N",
@@ -21,7 +21,7 @@
         {
           "symbol": "tdie",
           "meaning": "Memory die thickness",
-          "unit": "\u00b5m"
+          "unit": "µm"
         },
         {
           "symbol": "J",
@@ -31,12 +31,12 @@
         {
           "symbol": "tbond",
           "meaning": "Thickness per bond line",
-          "unit": "\u00b5m"
+          "unit": "µm"
         },
         {
           "symbol": "tcap",
           "meaning": "Top allowance in this model",
-          "unit": "\u00b5m"
+          "unit": "µm"
         }
       ],
       "kind": "math",
@@ -66,7 +66,7 @@
           "unit": "transfers/s"
         },
         {
-          "symbol": "\u03b7",
+          "symbol": "η",
           "meaning": "Payload efficiency",
           "unit": "fraction"
         },
@@ -82,7 +82,7 @@
         }
       ],
       "kind": "math",
-      "text": "C = N Cdie; B = w r \u03b7 / 8"
+      "text": "C = N Cdie; B = w r η / 8"
     }
   ],
   "hbm-stack-thermal-yield": [
@@ -92,12 +92,12 @@
         {
           "symbol": "Ti",
           "meaning": "Temperature at inspected location i",
-          "unit": "\u00b0C"
+          "unit": "°C"
         },
         {
           "symbol": "Tcoolant",
           "meaning": "Specified coolant boundary temperature",
-          "unit": "\u00b0C"
+          "unit": "°C"
         },
         {
           "symbol": "Rij",
@@ -111,7 +111,7 @@
         }
       ],
       "kind": "math",
-      "text": "Ti \u2212 Tcoolant = \u03a3j Rij Pj"
+      "text": "Ti − Tcoolant = Σj Rij Pj"
     },
     {
       "latex": "Y_{\\mathrm{assembly}}\\approx y_{\\mathrm{joint}}^{J}",
@@ -133,7 +133,7 @@
         }
       ],
       "kind": "math",
-      "text": "Yassembly \u2248 yjoint^J"
+      "text": "Yassembly ≈ yjoint^J"
     }
   ],
   "hbm-tc-ncf-route": [
@@ -167,7 +167,7 @@
         }
       ],
       "kind": "math",
-      "text": "tstack \u2248 N (talign + tbond) + thandling"
+      "text": "tstack ≈ N (talign + tbond) + thandling"
     }
   ],
   "hbm-mr-muf-route": [
@@ -206,26 +206,26 @@
         {
           "symbol": "Aoverlap",
           "meaning": "Geometric overlap area",
-          "unit": "\u00b5m\u00b2"
+          "unit": "µm²"
         },
         {
           "symbol": "w",
           "meaning": "Square pad side length",
-          "unit": "\u00b5m"
+          "unit": "µm"
         },
         {
           "symbol": "dx",
           "meaning": "Relative offset in x",
-          "unit": "\u00b5m"
+          "unit": "µm"
         },
         {
           "symbol": "dy",
           "meaning": "Relative offset in y",
-          "unit": "\u00b5m"
+          "unit": "µm"
         }
       ],
       "kind": "math",
-      "text": "Aoverlap = max(0,w\u2212|dx|) max(0,w\u2212|dy|)"
+      "text": "Aoverlap = max(0,w−|dx|) max(0,w−|dy|)"
     }
   ],
   "hbm-bonding-process-selection": [
@@ -283,7 +283,7 @@
         }
       ],
       "kind": "math",
-      "text": "ttransfer \u2265 V / B"
+      "text": "ttransfer ≥ V / B"
     }
   ],
   "hbf-latency-prefetch": [
@@ -312,7 +312,7 @@
         }
       ],
       "kind": "math",
-      "text": "Buseful \u2264 Bphysical u/g"
+      "text": "Buseful ≤ Bphysical u/g"
     },
     {
       "latex": "Q_{\\mathrm{flight}}\\geq B_{\\mathrm{target}}L",
@@ -334,7 +334,7 @@
         }
       ],
       "kind": "math",
-      "text": "Qflight \u2265 Btarget L"
+      "text": "Qflight ≥ Btarget L"
     }
   ],
   "memory-working-set-placement": [
@@ -363,7 +363,7 @@
         }
       ],
       "kind": "math",
-      "text": "\u03a3i xi,k Si + Ok \u2264 Ck"
+      "text": "Σi xi,k Si + Ok ≤ Ck"
     }
   ],
   "training-tier-placement": [
@@ -451,7 +451,7 @@
         }
       ],
       "kind": "math",
-      "text": "MKV = 2 L Hkv d b \u03a3s Ts"
+      "text": "MKV = 2 L Hkv d b Σs Ts"
     },
     {
       "latex": "t_{\\mathrm{restore}}\\geq L_{\\mathrm{path}}+\\frac{V}{B_{\\mathrm{path}}}",
@@ -478,7 +478,7 @@
         }
       ],
       "kind": "math",
-      "text": "trestore \u2265 Lpath + V/Bpath"
+      "text": "trestore ≥ Lpath + V/Bpath"
     }
   ],
   "moe-expert-tier-placement": [
@@ -507,7 +507,7 @@
         }
       ],
       "kind": "math",
-      "text": "Vmiss = \u03a3e\u2208M Pe be"
+      "text": "Vmiss = Σe∈M Pe be"
     }
   ],
   "memory-to-hall-propagation": [
@@ -551,7 +551,7 @@
         }
       ],
       "kind": "math",
-      "text": "R \u2264 min(F/f, Bmem/vmem, Bnet/vnet)"
+      "text": "R ≤ min(F/f, Bmem/vmem, Bnet/vnet)"
     },
     {
       "latex": "e=\\frac{P_{\\mathrm{IT}}\\,\\mathrm{PUE}}{R_{\\mathrm{accepted}}}",
@@ -602,7 +602,68 @@
         }
       ],
       "kind": "math",
-      "text": "Wretained = Wexecuted \u2212 Wdiscarded"
+      "text": "Wretained = Wexecuted − Wdiscarded"
+    }
+  ],
+  "retained-work-restart-boundary": [
+    {
+      "latex": "W_{\\mathrm{exec}}=D+V+F+L,\\qquad W_{\\mathrm{retained}}=D+V",
+      "variables": [
+        {
+          "symbol": "Wexec",
+          "meaning": "All executed work, including later replay",
+          "unit": "whole-step equivalents"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Committed restart-durable completed steps",
+          "unit": "whole steps"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Volatile completed steps still retained",
+          "unit": "whole steps"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Current unfinished step fraction, from zero up to but excluding one",
+          "unit": "whole-step equivalents"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Cumulative discarded completed and partial work",
+          "unit": "whole-step equivalents"
+        },
+        {
+          "symbol": "Wretained",
+          "meaning": "Currently retained complete steps",
+          "unit": "whole steps"
+        }
+      ],
+      "kind": "math",
+      "text": "Wexec = D + V + F + L; Wretained = D + V"
+    },
+    {
+      "latex": "e=\\frac{E_{\\mathrm{facility}}}{W_{\\mathrm{retained}}},\\qquad W_{\\mathrm{retained}}>0",
+      "variables": [
+        {
+          "symbol": "e",
+          "meaning": "Facility energy per currently retained complete step",
+          "unit": "J per step"
+        },
+        {
+          "symbol": "Efacility",
+          "meaning": "Integrated facility energy across all modeled phases",
+          "unit": "J"
+        },
+        {
+          "symbol": "Wretained",
+          "meaning": "Currently retained complete steps over the same interval",
+          "unit": "whole steps"
+        }
+      ],
+      "kind": "math",
+      "text": "e = Efacility / Wretained, for Wretained > 0"
     }
   ]
 }

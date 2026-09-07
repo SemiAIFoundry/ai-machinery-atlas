@@ -1,0 +1,61 @@
+{
+  "schema": "atlas-additive-lesson-proposal-1",
+  "lessonId": "retained-work-restart-boundary",
+  "operations": [
+    {
+      "file": "src/lib/data/infrastructure-depth.json",
+      "operation": "append-unique",
+      "at": "lessons",
+      "valueFile": "second-author-lesson.json"
+    },
+    {
+      "file": "src/lib/data/infrastructure-depth.json",
+      "operation": "append-unique",
+      "at": "chapters[id=deep-memory-system-realization].ids",
+      "value": "retained-work-restart-boundary"
+    },
+    {
+      "file": "src/lib/data/infrastructure-depth.json",
+      "operation": "append-unique",
+      "at": "sources",
+      "valueFile": "second-author-evidence.json",
+      "valueField": "sources"
+    },
+    {
+      "file": "src/lib/data/infrastructure-depth.json",
+      "operation": "append-unique",
+      "at": "claims",
+      "valueFile": "second-author-evidence.json",
+      "valueField": "claims"
+    },
+    {
+      "file": "src/lib/data/equations-infrastructure.json",
+      "operation": "set-new-key",
+      "key": "retained-work-restart-boundary",
+      "valueFile": "second-author-equations.json"
+    },
+    {
+      "file": "src/lib/data/lesson-lab-map.json",
+      "operation": "set-new-key",
+      "key": "retained-work-restart-boundary",
+      "value": {
+        "labId": "library",
+        "scope": "Use Engineering experiences → Rack → retained work. H7 is also available as a hand-checkable contract in the instructor pack."
+      }
+    }
+  ],
+  "chapterPolicy": "Retain all existing chapter content and lesson order; append this narrow commit-boundary extension. No new chapter or prerequisite cycle is needed.",
+  "studioEntry": {
+    "lesson": "retained-work-restart-boundary",
+    "studio": "hall",
+    "fragment": "#retained-work-restart-boundary~v=1&studio=hall"
+  },
+  "integrationChecks": [
+    "Validate new record with validateLessonRecord.",
+    "Verify prerequisite DAG and source/claim IDs.",
+    "Generate the lesson delivery assets and formal equation catalog using existing scripts.",
+    "Verify the new lesson has an isolatable hall-system scene group; do not claim this UI check complete from source validation.",
+    "Rebuild curation manifest; review fingerprint must match the resulting effective record, chapter scope and equations before appending the candidate review event."
+  ],
+  "publication": "This proposal is additive data only. It does not publish a release."
+}

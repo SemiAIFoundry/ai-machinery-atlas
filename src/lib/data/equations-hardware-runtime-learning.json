@@ -1,0 +1,198 @@
+{
+  "firmware-device-contract": [
+    {
+      "latex": "G_{\\mathrm{ABI}}=\\mathbf{1}[a_{\\mathrm{device}}=a_{\\mathrm{driver}}]",
+      "text": "ABI gate equals one only when the advertised and required interface identifiers match.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "GABI",
+          "meaning": "Compatibility gate",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "adevice",
+          "meaning": "Advertised ABI identifier",
+          "unit": "string"
+        },
+        {
+          "symbol": "adriver",
+          "meaning": "Required ABI identifier",
+          "unit": "string"
+        }
+      ]
+    }
+  ],
+  "process-dma-address-spaces": [
+    {
+      "latex": "p=p_0+(v-v_0)=p_0+(d-d_0),\\qquad 0\\leq v-v_0<16",
+      "text": "Physical address equals its buffer base plus the virtual or device byte offset.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "p,p0",
+          "meaning": "Physical byte address and buffer base",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "v,v0",
+          "meaning": "Process virtual byte address and buffer base",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "d,d0",
+          "meaning": "Device byte address and buffer base",
+          "unit": "bytes"
+        }
+      ]
+    }
+  ],
+  "iommu-buffer-identity": [
+    {
+      "latex": "g\\leq d\\;\\land\\;d+q\\leq g+L\\;\\land\\;P_{\\mathrm{access}}\\;\\land\\;e_{\\mathrm{map}}=e_{\\mathrm{active}}",
+      "text": "The request starts at or above the range base, ends within its byte length, has permission, and uses the active mapping epoch.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "g,d",
+          "meaning": "Mapped base and requested device byte address",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "q,L",
+          "meaning": "Request length and mapped region length",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Paccess",
+          "meaning": "Requested read or write permission",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "emap,eactive",
+          "meaning": "Mapping and current device generations",
+          "unit": "count"
+        }
+      ]
+    },
+    {
+      "latex": "C_{\\mathrm{observed}}=AA=\\begin{bmatrix}7&10\\\\15&22\\end{bmatrix}\\ne AB=\\begin{bmatrix}19&22\\\\43&50\\end{bmatrix}",
+      "text": "The default B-to-A alias computes [[7,10],[15,22]] instead of [[19,22],[43,50]].",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "A,B",
+          "meaning": "Default exact 2×2 input matrices",
+          "unit": "integer values"
+        },
+        {
+          "symbol": "Cobserved",
+          "meaning": "Output produced using delivered operands",
+          "unit": "integer values"
+        }
+      ]
+    }
+  ],
+  "dma-visibility-ownership": [
+    {
+      "latex": "A_{\\mathrm{device}}=\\begin{cases}A,&\\text{coherent or synchronized},\\\\0,&\\text{noncoherent with omitted input handoff}.\\end{cases}",
+      "text": "The device reads A when values are coherent or synchronized; it reads the zeroed memory copy when the noncoherent input handoff is omitted.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "A",
+          "meaning": "CPU-populated input matrix",
+          "unit": "integer values"
+        },
+        {
+          "symbol": "Adevice",
+          "meaning": "Values delivered from device-visible memory",
+          "unit": "integer values"
+        }
+      ]
+    },
+    {
+      "latex": "G_{\\mathrm{reuse}}(b)=\\mathbf{1}[\\operatorname{owner}(b)=\\mathrm{host}]",
+      "text": "The reuse gate accepts a buffer only while its declared owner is the host.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Greuse",
+          "meaning": "Permission to overwrite or reuse in the teaching runtime",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "b",
+          "meaning": "Stable buffer identity",
+          "unit": "object"
+        },
+        {
+          "symbol": "owner(b)",
+          "meaning": "Current host/device lifetime owner",
+          "unit": "enum"
+        }
+      ]
+    }
+  ],
+  "device-completion-reset-epochs": [
+    {
+      "latex": "N_{\\mathrm{executed}}=N_{\\mathrm{active}}+N_{\\mathrm{discarded}}+N_{\\mathrm{committed}}",
+      "text": "Executed MACs equal active, discarded and committed MACs at every event.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Nexecuted",
+          "meaning": "All performed multiply-accumulates",
+          "unit": "MAC count"
+        },
+        {
+          "symbol": "Nactive",
+          "meaning": "Work in the current uncommitted attempt",
+          "unit": "MAC count"
+        },
+        {
+          "symbol": "Ndiscarded",
+          "meaning": "Work belonging to canceled attempts",
+          "unit": "MAC count"
+        },
+        {
+          "symbol": "Ncommitted",
+          "meaning": "Work in the once-accepted attempt",
+          "unit": "MAC count"
+        }
+      ]
+    },
+    {
+      "latex": "G_{\\mathrm{completion}}=(j_c=j_a)\\land(e_c=e_a)\\land Q\\land W\\land\\neg A_c",
+      "text": "Completion acceptance requires matching job and epoch, a live queue, all output cells written and no prior acceptance.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "jc,ja",
+          "meaning": "Completion and active job identities",
+          "unit": "identifier"
+        },
+        {
+          "symbol": "ec,ea",
+          "meaning": "Completion and active epochs",
+          "unit": "count"
+        },
+        {
+          "symbol": "Q",
+          "meaning": "Queue and published descriptor are live",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "W",
+          "meaning": "All four output cells have been written",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Ac",
+          "meaning": "A completion was already accepted",
+          "unit": "Boolean"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "hardware-reliability-1",
+  "scope": "Bounded HW03/HW10 digital protocol and coding-arithmetic cases; independent FIFO and consumer examples.",
+  "checks": [
+    {
+      "id": "reliability-opentitan-fifo",
+      "url": "https://github.com/lowRISC/opentitan/blob/master/hw/ip/prim/rtl/prim_fifo_async.sv",
+      "title": "OpenTitan asynchronous FIFO RTL",
+      "locator": "prim_fifo_async: fifo_incr_wptr/rptr; sync_wptr and sync_rptr prim_flop_2sync instances; fifo_rptr_sync_q; GrayWptr/GrayRptr assertions",
+      "supports": "Receiving-clock synchronizer registers, Gray-coded pointers and valid/ready transfer conditions provide a concrete hardware source example.",
+      "limits": "Living master source inspected; no pinned native RTL run. The source has an additional registered decoded read pointer not reproduced in the teaching model. No analog metastability, physical reset release or equivalence claim.",
+      "status": "scoped-source-comparison",
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source locator or implementation changes",
+        "Parity mapping, synchronizer or reset contract changes",
+        "Physical or vendor-specific claims are proposed"
+      ]
+    },
+    {
+      "id": "reliability-opentitan-ecc-tooling",
+      "url": "https://opentitan.org/book/util/design/index.html",
+      "title": "OpenTitan design tooling",
+      "locator": "ECC Generator Tool section: generated C/SystemVerilog encode/decode and verification artifacts",
+      "supports": "Separate encoder, decoder and verification artifacts for SECDED configurations.",
+      "limits": "The page does not establish this custom (8,4) bit mapping or its parity equations. No generator or native hardware proof was run; the small code is independently derived and exhaustively tested.",
+      "status": "scoped-source-comparison",
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source locator or implementation changes",
+        "Parity mapping, synchronizer or reset contract changes",
+        "Physical or vendor-specific claims are proposed"
+      ]
+    },
+    {
+      "id": "reliability-hamming-publication",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/j.1538-7305.1950.tb00463.x",
+      "title": "R. W. Hamming, Error Detecting and Error Correcting Codes",
+      "locator": "Publisher article metadata: Bell System Technical Journal 29(2), April 1950, pages 147\u2013160; DOI 10.1002/j.1538-7305.1950.tb00463.x",
+      "supports": "Historical author, title, date, journal and publication identity only.",
+      "limits": "Full mathematical text was unavailable in this review. No unseen equation or proof is marked as checked.",
+      "status": "metadata-only-full-text-unavailable",
+      "checkedOn": "2026-09-07",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source locator or implementation changes",
+        "Parity mapping, synchronizer or reset contract changes",
+        "Physical or vendor-specific claims are proposed"
+      ]
+    }
+  ],
+  "parameterStatus": "Clock ticks are synthetic event units. Exact code arithmetic is defined locally; no radiation rates, silicon timings or vendor ECC parameters are inferred.",
+  "candidateFiles": [
+    {
+      "path": "src/lib/hardware-reliability.ts",
+      "sha256": "c4a8ab595d0023ba7f3f339358cb8df47171578d6e4b85011a88f919fe71fae9"
+    },
+    {
+      "path": "src/components/hardware-reliability.tsx",
+      "sha256": "3c321cc12d98aa9a844aff0edb2efa098a58da183bc0201ae74bd192b251c6f5"
+    },
+    {
+      "path": "src/components/hardware-reliability.css",
+      "sha256": "a28d76ffb529ed23c46ce409780a81c3dfbe2337464828d20d5766d3bd0f8654"
+    },
+    {
+      "path": "scripts/hardware-reliability.test.mjs",
+      "sha256": "d83b20a734f74cc9cd75c6a2ad142fcad94e3bde8a1f95a26a0893e55bc2ba85"
+    }
+  ],
+  "humanSpecialistReview": null,
+  "physicalMeasurement": null,
+  "externalSimulatorComparison": null
+}

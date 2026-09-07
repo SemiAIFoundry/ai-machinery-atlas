@@ -1,0 +1,58 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-07T18:35:18.799Z",
+  "actor": {
+    "actorType": "agent",
+    "actorId": "/root/curriculum_assessment",
+    "role": "Content author, primary-source scope reader and numerical checker"
+  },
+  "contentPack": "distributed-output-bridges-1",
+  "lessons": 4,
+  "chapters": 1,
+  "canonicalEquations": 8,
+  "evidenceClaims": 4,
+  "distinctPrimarySources": 6,
+  "perLessonSourceReferences": 7,
+  "authoredLessonCountAtValidation": 229,
+  "automatedTests": {
+    "count": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "strictTypecheck": "Full repository tsc --noEmit passed",
+  "canonicalMath": "All eight equations rendered with KaTeX throwOnError:true and strict:error",
+  "independentNumerics": [
+    "Dense reference reconstruction and explicit payload ledger",
+    "Signed matrix partition grid",
+    "Global squared-error finite differences and 441 weighting cases",
+    "Math.fround, Float32Array conversion and bit-spacing checks",
+    "441 pairs of probability distributions including zero-probability support gaps",
+    "Explicit output-count probabilities and separately assumed timing reversal"
+  ],
+  "sourceReview": "All lesson source references and four claim IDs are covered by the agent check dispositions and exact candidate snapshots.",
+  "humanSpecialistReview": null,
+  "realDeviceOrDistributedExecution": null,
+  "learnerValidation": null,
+  "files": [
+    {
+      "path": "src/lib/data/distributed-output-bridges.json",
+      "bytes": 51059,
+      "sha256": "d133761140c9c86366c6208be7e505689f3e0a0672df017bed02b03479be5b7c"
+    },
+    {
+      "path": "src/lib/data/equations-distributed-output.json",
+      "bytes": 8127,
+      "sha256": "ff4db83bf41370db2a6b95f3fc49fb570bc6358aad34d110712c58752427e942"
+    },
+    {
+      "path": "docs/distributed-output-bridges/source-review-manifest.json",
+      "bytes": 86400,
+      "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36"
+    },
+    {
+      "path": "scripts/distributed-output-bridges.test.mjs",
+      "bytes": 12526,
+      "sha256": "daaae72e9d856cbb81f633434546ae73a28d53bb03571d57fb8e6e631cc0dcab"
+    }
+  ]
+}

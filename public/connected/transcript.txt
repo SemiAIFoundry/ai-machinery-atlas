@@ -1,0 +1,44 @@
+INSIDE THE MACHINERY — AI MACHINERY ATLAS
+
+Actual CUA interface captures, edited into a sequence with reading pauses and an original instrumental score. Not an uninterrupted recording or a continuous shared artifact across all specimens. Each frame retains its observed build identity.
+Instrumental original score; no narration.
+
+0:00 — Geometry becomes behavior
+INV-01 keeps its 10 nm oxide while four following inverter loads raise the output capacitance. Its static logic still passes, but loaded delay exceeds the chosen timing limit. This is an analytic long-channel specimen, not foundry qualification.
+Experience: oxide-to-cell-acceptance / cell
+
+0:06 — A read must earn trust
+The selected B word moves through declared address translation and a real teaching DRAM trace. A separately injected double-bit codeword fault is detected at 40 modeled nanoseconds, withholding output. Unchecked consumption instead produces an independently detected wrong matrix. Stack qualification is a separate gate.
+Experience: hbm-channel-generation-ras / memory-workload
+
+0:12 — Boundaries before batches
+The corpus experience fits byte-pair merges only on retained training fields. Inspect a sampled document, response mask and causal key row. Family splits and duplicate diagnostics expose leakage. This byte-BPE specimen is separate from the decoder’s fixed nine-token vocabulary.
+Experience: training-data / data
+
+0:18 — Weights that actually learn
+A seeded 423-parameter causal decoder completes 320 numerical updates. Copy-development answers reach eight of eight while the deliberately conflicting swap task reaches zero of eight. The selected answer-position attention is causal; the final prompt families remain unopened. Development feedback is not an untouched final test.
+Experience: tiny-causal-decoder / learning
+
+0:24 — One objective, many owners
+Two ranks contribute gradients for six and twenty-four targets. The 423 parameters use owned slices of 212 and 211, with one unused padded slot. One received shard leaves weights frozen. Once both arrive, owner updates and all-gather reconstruct the same model within the declared centralized-reference tolerance. The depicted run starts at the stated initialization, independently of the prior trained capture.
+Experience: distributed-gradient-weighting / distributed
+
+0:30 — Verify before accepting
+The distributed checkpoint enters the serving queue with the same weight identity. Two learner-authored draft tokens fail target-greedy verification; the target emits v then b, matching its independent greedy reference. One dependent tentative KV row is discarded. This is exact bounded greedy verification, not a learned draft model or measured acceleration.
+Experience: speculative-decoding-verification / serving
+
+0:36 — A reference becomes a proposal
+A separate fitted incident model ranks two fictional manuals, selects the FAN-7 reference and generates reserve FAN-7 FILTER-A 2 followed by EOS. Retrieval score, source support and task correctness have different meanings. The generated proposal carries its frozen model and corpus identity into the workflow.
+Experience: tool-loop / retrieval
+
+0:42 — Inspect what really happened
+The same learned proposal enters a fictional maintenance workflow. After exact reservation review, a reply is deliberately lost. Durable recovery completes one reservation and one linked work order, conserves inventory and avoids duplicate effects. Independent environment checks establish this bounded task result.
+Experience: tool-loop / automation
+
+0:48 — Prediction meets consequence
+Twelve calibration transitions fit the plant model. The controller evaluates eighty-one four-step action sequences, then applies one action to a separate simulated trajectory. Observation delay, noise, model error and deadlines can change the outcome. Action effort is not physical energy; no robot trial is implied.
+Experience: robot-feedback-control / control
+
+0:54 — Keep the work that survives
+A reproduced 320-update decoder enters the factory job. Five additional updates execute; two roll back and three remain durable. The accepted optimizer reaches step 323 with matched weights, moments, RNG and cursor relative to uninterrupted work. Time and facility energy use declared synthetic assumptions. Return to the atlas to change a boundary and explain the result.
+Experience: checkpoint-retained-work / factory

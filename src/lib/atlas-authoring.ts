@@ -1,3 +1,15 @@
+import dataLineageEnrichments from './data/data-lineage-enrichments.json';
+import applicationEvaluationEnrichments from './data/application-evaluation-enrichments.json';
+import nextHorizonHistory from './data/next-horizon-history.json';
+import processCellLearning from './data/process-cell-learning.json';
+import contrastingComputation from './data/contrasting-computation.json';
+import hardwareRuntimeLearning from './data/hardware-runtime-learning.json';
+import modelLifecycleLearning from './data/model-lifecycle-learning.json';
+import modelLifecycleEnrichments from './data/model-lifecycle-enrichments.json';
+import learningOrientation from './data/learning-orientation.json';
+import automationLearning from './data/automation-learning.json';
+import automationEnrichments from './data/automation-enrichments.json';
+import {enrichLesson} from './lesson-enrichment';
 import raw from './data/records.json';
 import foundations from './data/legacy-foundations.json';
 import descriptions from './data/expansion-description-overrides.json';
@@ -10,10 +22,12 @@ import architecture from './data/architecture.json';
 import infrastructure from './data/infrastructure.json';
 import infrastructureDepth from './data/infrastructure-depth.json';
 import crg from './data/crg.json';
+import distributedOutput from './data/distributed-output-bridges.json';
+import learningFoundations from './data/learning-foundations.json';
 import {legacyEnrichments} from './legacy-enrichments';
-export const contentPacks=[fabrication,architecture,infrastructure,crg,infrastructureDepth];
-export type RecordEntry={deepLabId?:string;investigationId?:'switching'|'manufacturing'|'execution';labScope?:string;labId?:string;branch?:string;subbranch?:string;prerequisites?:string[];learningObjective?:string;workstream?:string;visualFamily?:string;engineeringExample?:string;evidenceNotes?:string;id:string;level:string;name:string;shortName:string;role:string;description:string;specs:{label:string;value:string;context:string}[];interfaces:{name:string;direction:string;signal:string}[];tradeoff:string;whyAI:string;related:string[];sources:{title:string;url:string}[];scale:string;kind:string;mechanism:string[];misconception:string;check:{question:string;options:string[];answer:number;explanation:string};science?:{title:string;equation:string;explanation:string;assumptions:string}[];history?:{year:string|number;title:string;significance:string;source:{title:string;url:string}}[]};
-export const records=[...raw.map(r=>({...r,...legacyEnrichments[r.id],...(foundations as Record<string,Partial<RecordEntry>>)[r.id]})),...contentPacks.flatMap(p=>(p.lessons as unknown as RecordEntry[]).map(r=>({...r,...(descriptions as Record<string,Partial<RecordEntry>>)[r.id]})))].map(r=>({...r,...(labLinks as Record<string,{labId:string;deepLabId?:string;investigationId?:RecordEntry['investigationId'];scope:string}>)[r.id],labScope:(labLinks as Record<string,{scope:string}>)[r.id]?.scope})) as RecordEntry[];
+export const contentPacks=[fabrication,architecture,infrastructure,crg,infrastructureDepth,distributedOutput,learningFoundations,automationLearning,modelLifecycleLearning,hardwareRuntimeLearning,contrastingComputation,processCellLearning,nextHorizonHistory];
+export type RecordEntry={checks?:{question:string;options:string[];answer:number;explanation:string}[];deepLabId?:string;investigationId?:'switching'|'manufacturing'|'execution';labScope?:string;labId?:string;branch?:string;subbranch?:string;prerequisites?:string[];learningObjective?:string;workstream?:string;visualFamily?:string;engineeringExample?:string;evidenceNotes?:string;id:string;level:string;name:string;shortName:string;role:string;description:string;specs:{label:string;value:string;context:string}[];interfaces:{name:string;direction:string;signal:string}[];tradeoff:string;whyAI:string;related:string[];sources:{title:string;url:string}[];scale:string;kind:string;mechanism:string[];misconception:string;check:{question:string;options:string[];answer:number;explanation:string};science?:{title:string;equation:string;explanation:string;assumptions:string}[];history?:{year:string|number;title:string;significance:string;source:{title:string;url:string}}[]};
+export const records=[...raw.map(r=>({...r,...legacyEnrichments[r.id],...(foundations as Record<string,Partial<RecordEntry>>)[r.id]})),...contentPacks.flatMap(p=>(p.lessons as unknown as RecordEntry[]).map(r=>({...r,...(descriptions as Record<string,Partial<RecordEntry>>)[r.id]})))].map(r=>enrichLesson(r,[automationEnrichments.entries,modelLifecycleEnrichments.entries,applicationEvaluationEnrichments.entries,dataLineageEnrichments.entries])).map(r=>({...r,...(labLinks as Record<string,{labId:string;deepLabId?:string;investigationId?:RecordEntry['investigationId'];scope:string}>)[r.id],labScope:(labLinks as Record<string,{scope:string}>)[r.id]?.scope??r.labScope})) as RecordEntry[];
 export const byId=Object.fromEntries(records.map(r=>[r.id,r]));
 export type RelationKind='prerequisite'|'related'|typeof engineeringRelations[number]['kind'];
 export type AtlasRelation={id?:string;from:string;to:string;kind:RelationKind;label:string;scope?:string;sourceLessonId?:string};
@@ -52,7 +66,7 @@ export const originalChapters=[
  {id:'agent',band:5,name:'Agent systems & the frontier',scene:'agent',scale:'Model → environment',title:'The thinking machine as a system',summary:'Tools, observations, memory, evaluation, and open questions.',ids:'tool-loop evaluation astra',question:'What must be assembled around a model for reliable work?',read:'The model sits inside an execution-and-observation loop. Published capabilities are separated from undisclosed architecture and future possibilities.'},
 ].map(c=>({...c,ids:c.ids.split(' ')}));
 export type Chapter=typeof originalChapters[number]&{parent?:string;domainId?:string};
-export const chapters:Chapter[]=[...originalChapters,...contentPacks.flatMap(p=>p.chapters) as Chapter[]].map(c=>({...c,...(domainMap as Record<string,{domainId:string;band:number}>)[c.id]})).sort((a,b)=>a.band-b.band);
+export const chapters:Chapter[]=[...originalChapters,...contentPacks.flatMap(p=>p.chapters) as Chapter[]].map(c=>({...c,...(domainMap as Record<string,{domainId:string;band:number}>)[c.id],...(learningOrientation as Record<string,{scene:string;read:string}>)[c.id]})).sort((a,b)=>a.band-b.band);
 export const chapterFor=(id:string)=>chapters.find(c=>c.ids.includes(id))??chapters[0];
 export const originalJourneys=[
  {id:'foundation',name:'From matter to a machine',subtitle:'Build the conceptual foundation, one scale at a time.',ids:'silicon-atom crystal-lattice doping mosfet inverter mac tensor-core gpu-die compute-baseboard rack tool-loop'.split(' ')},
@@ -64,6 +78,12 @@ export const originalJourneys=[
 
 const path=(id:string,name:string,subtitle:string,ids:string[])=>({id,name,subtitle,ids:[...new Set(ids)]});
 export const journeys=[...originalJourneys,
+ path("action-feedback","Observe, predict, act and measure again","Connect fitted dynamics, finite planning and actual closed-loop consequences.",["robot-observation-frame", "robot-goal-plan-action", "robot-feedback-control", "embodied-policy-evidence", "temporal-forecast-validation"]),
+ path("algorithms","Compare computational structures","Learn which information and operations distinguish selected AI methods.",["tensor-index-contracts", "probability-conditioning-information", "tree-ensemble-baseline", "graph-message-passing", "search-value-policy-boundary", "attention", "moe", "scalar-state-space-recurrence", "spatial-filter-patch-attention", "audio-sampling-spectrum", "denoising-generative-objectives"]),
+ path("runtime-ownership","Commission and execute one operation","Boot, address mapping, visibility, completion and reset constrain correct work.",["firmware-device-contract", "process-dma-address-spaces", "iommu-buffer-identity", "dma-visibility-ownership", "device-completion-reset-epochs", "compiler-layout-lowering", "tensor-memory-accelerator", "floating-point-reduction-order"]),
+ path("request-action","A request becomes a checked action","Keep source, model, proposal, authority, durable effect and task correctness distinct.",["embedding", "retrieval-supported-generation", "tool-contracts-schemas", "tool-authority-identity", "durable-actions-idempotency", "telemetry-traces-evaluation"]),
+ path("learn-a-model","Build, train and adapt a model","Inspect corpus boundaries, causal tensors, real gradients and changed learning objectives.",["data-quality-dedup-audit", "sequence-packing-loss-denominators", "tensor-index-contracts", "tiny-causal-decoder", "reverse-mode-autodiff", "causal-pretraining-objective", "optimizer-schedule-stability", "checkpoint", "domain-adaptive-continuation", "sft-chat-loss-masks", "direct-preference-objective", "probability-calibration-abstention"]),
+ path('distributed-output','Preserve the intended computation','Ownership, gradient weighting, rounded arithmetic and verified output across distributed execution.',['compiler-layout-lowering','parallelism','nccl','sharded-matmul-ownership','loss-optimizer','distributed-gradient-weighting','floating-point-reduction-order','output-head','speculative-decoding-verification','evaluation']),
  path('two-wafers','Two wafers to one AI system','Follow converging logic and memory production into an operating workload.',['silicon-wafer','lithography','mosfet','interconnect','dram-die','through-silicon-via','hbm-stack','hbm-stack-height-budget','hbm-bonding-process-selection','hbm-stack-thermal-yield','interposer','microbump','package-substrate','gpu-die','compute-baseboard','rack','cdu','compiler','memory-working-set-placement','serving','memory-system-qualification']),
  path('one-byte','Follow one byte','Storage, host memory, HBM, local memory, arithmetic and the network.',['storage','nvme-storage','ddr-memory','hbm-stack','hbm-controller','l2-cache','shared-sram','register-file','tensor-core','nccl']),
  path('one-watt','Follow one watt','From facility power to switching, temperature rise and heat rejection.',['ups','power-supply','power-shelf','voltage-regulator','mosfet','thermal-interface','heat-spreader','coldplate','cdu','cooling-plant']),

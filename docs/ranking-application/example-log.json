@@ -1,0 +1,1734 @@
+{
+  "modelVersion": "exposure-aware-ranking-1",
+  "scope": "Author-only potential outcomes are included for an explicit synthetic audit and are never fitting inputs for unshown rows.",
+  "rows": [
+    {
+      "id": "train-01/I01/visit-1",
+      "userId": "train-01",
+      "itemId": "I01",
+      "visit": 1,
+      "features": [
+        1,
+        1,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.5258673818316311,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.9,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-01/I02/visit-1",
+      "userId": "train-01",
+      "itemId": "I02",
+      "visit": 1,
+      "features": [
+        1,
+        0.9,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.6398112685419619,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-01/I03/visit-1",
+      "userId": "train-01",
+      "itemId": "I03",
+      "visit": 1,
+      "features": [
+        1,
+        0,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.08783778198994696,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.1,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I04/visit-1",
+      "userId": "train-01",
+      "itemId": "I04",
+      "visit": 1,
+      "features": [
+        1,
+        0.15,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.4201347893103957,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.22,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I05/visit-1",
+      "userId": "train-01",
+      "itemId": "I05",
+      "visit": 1,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.09624485927633941,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I06/visit-1",
+      "userId": "train-01",
+      "itemId": "I06",
+      "visit": 1,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.21045492170378566,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I07/visit-1",
+      "userId": "train-01",
+      "itemId": "I07",
+      "visit": 1,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.7146169666666538,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-01/I08/visit-1",
+      "userId": "train-01",
+      "itemId": "I08",
+      "visit": 1,
+      "features": [
+        1,
+        0.4,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.04250878468155861,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.42000000000000004,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I01/visit-2",
+      "userId": "train-01",
+      "itemId": "I01",
+      "visit": 2,
+      "features": [
+        1,
+        1,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.17089004418812692,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.9,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-01/I02/visit-2",
+      "userId": "train-01",
+      "itemId": "I02",
+      "visit": 2,
+      "features": [
+        1,
+        0.9,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.9868702148087323,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-01/I03/visit-2",
+      "userId": "train-01",
+      "itemId": "I03",
+      "visit": 2,
+      "features": [
+        1,
+        0,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.3803724779281765,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.1,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I04/visit-2",
+      "userId": "train-01",
+      "itemId": "I04",
+      "visit": 2,
+      "features": [
+        1,
+        0.15,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.734891370870173,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.22,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I05/visit-2",
+      "userId": "train-01",
+      "itemId": "I05",
+      "visit": 2,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.2951656475197524,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I06/visit-2",
+      "userId": "train-01",
+      "itemId": "I06",
+      "visit": 2,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.835505788680166,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-01/I07/visit-2",
+      "userId": "train-01",
+      "itemId": "I07",
+      "visit": 2,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.5089708261657506,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-01/I08/visit-2",
+      "userId": "train-01",
+      "itemId": "I08",
+      "visit": 2,
+      "features": [
+        1,
+        0.4,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.9004915188997984,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.42000000000000004,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I01/visit-1",
+      "userId": "train-02",
+      "itemId": "I01",
+      "visit": 1,
+      "features": [
+        1,
+        0,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.8815646597649902,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.1,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I02/visit-1",
+      "userId": "train-02",
+      "itemId": "I02",
+      "visit": 1,
+      "features": [
+        1,
+        0.15,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.6513632931746542,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.22,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I03/visit-1",
+      "userId": "train-02",
+      "itemId": "I03",
+      "visit": 1,
+      "features": [
+        1,
+        1,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.721639514202252,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.9,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-02/I04/visit-1",
+      "userId": "train-02",
+      "itemId": "I04",
+      "visit": 1,
+      "features": [
+        1,
+        0.9,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.24844547640532255,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-02/I05/visit-1",
+      "userId": "train-02",
+      "itemId": "I05",
+      "visit": 1,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.9426815423648804,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I06/visit-1",
+      "userId": "train-02",
+      "itemId": "I06",
+      "visit": 1,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.2303728754632175,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I07/visit-1",
+      "userId": "train-02",
+      "itemId": "I07",
+      "visit": 1,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.6465983849484473,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-02/I08/visit-1",
+      "userId": "train-02",
+      "itemId": "I08",
+      "visit": 1,
+      "features": [
+        1,
+        0.6,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.4127742871642113,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.58,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-02/I01/visit-2",
+      "userId": "train-02",
+      "itemId": "I01",
+      "visit": 2,
+      "features": [
+        1,
+        0,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.35640998161397874,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.1,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I02/visit-2",
+      "userId": "train-02",
+      "itemId": "I02",
+      "visit": 2,
+      "features": [
+        1,
+        0.15,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.5607139808125794,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.22,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I03/visit-2",
+      "userId": "train-02",
+      "itemId": "I03",
+      "visit": 2,
+      "features": [
+        1,
+        1,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.6749800315592438,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.9,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-02/I04/visit-2",
+      "userId": "train-02",
+      "itemId": "I04",
+      "visit": 2,
+      "features": [
+        1,
+        0.9,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.3730991231277585,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-02/I05/visit-2",
+      "userId": "train-02",
+      "itemId": "I05",
+      "visit": 2,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.0539922050666064,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I06/visit-2",
+      "userId": "train-02",
+      "itemId": "I06",
+      "visit": 2,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.6112064658664167,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-02/I07/visit-2",
+      "userId": "train-02",
+      "itemId": "I07",
+      "visit": 2,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.6786642700899392,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-02/I08/visit-2",
+      "userId": "train-02",
+      "itemId": "I08",
+      "visit": 2,
+      "features": [
+        1,
+        0.6,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.8802394289523363,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.58,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-03/I01/visit-1",
+      "userId": "train-03",
+      "itemId": "I01",
+      "visit": 1,
+      "features": [
+        1,
+        0.9,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.7715448604431003,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-03/I02/visit-1",
+      "userId": "train-03",
+      "itemId": "I02",
+      "visit": 1,
+      "features": [
+        1,
+        0.8250000000000001,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.9448970244266093,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7600000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-03/I03/visit-1",
+      "userId": "train-03",
+      "itemId": "I03",
+      "visit": 1,
+      "features": [
+        1,
+        0.1,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.9556516746524721,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.18000000000000002,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I04/visit-1",
+      "userId": "train-03",
+      "itemId": "I04",
+      "visit": 1,
+      "features": [
+        1,
+        0.22500000000000003,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.3398188790306449,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.28,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I05/visit-1",
+      "userId": "train-03",
+      "itemId": "I05",
+      "visit": 1,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.2556864570360631,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I06/visit-1",
+      "userId": "train-03",
+      "itemId": "I06",
+      "visit": 1,
+      "features": [
+        1,
+        0.30000000000000004,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.7359659257344902,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.3400000000000001,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I07/visit-1",
+      "userId": "train-03",
+      "itemId": "I07",
+      "visit": 1,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.9186011750716716,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-03/I08/visit-1",
+      "userId": "train-03",
+      "itemId": "I08",
+      "visit": 1,
+      "features": [
+        1,
+        0.42000000000000004,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.8570041470229626,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.43600000000000005,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I01/visit-2",
+      "userId": "train-03",
+      "itemId": "I01",
+      "visit": 2,
+      "features": [
+        1,
+        0.9,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.06389136961661279,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-03/I02/visit-2",
+      "userId": "train-03",
+      "itemId": "I02",
+      "visit": 2,
+      "features": [
+        1,
+        0.8250000000000001,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.01807906525209546,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7600000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-03/I03/visit-2",
+      "userId": "train-03",
+      "itemId": "I03",
+      "visit": 2,
+      "features": [
+        1,
+        0.1,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.29215671704150736,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.18000000000000002,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I04/visit-2",
+      "userId": "train-03",
+      "itemId": "I04",
+      "visit": 2,
+      "features": [
+        1,
+        0.22500000000000003,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.3955014878883958,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.28,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I05/visit-2",
+      "userId": "train-03",
+      "itemId": "I05",
+      "visit": 2,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.3501954048406333,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I06/visit-2",
+      "userId": "train-03",
+      "itemId": "I06",
+      "visit": 2,
+      "features": [
+        1,
+        0.30000000000000004,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.24231032794341445,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.3400000000000001,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-03/I07/visit-2",
+      "userId": "train-03",
+      "itemId": "I07",
+      "visit": 2,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.8346879847813398,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-03/I08/visit-2",
+      "userId": "train-03",
+      "itemId": "I08",
+      "visit": 2,
+      "features": [
+        1,
+        0.42000000000000004,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.2539361324161291,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.43600000000000005,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I01/visit-1",
+      "userId": "train-04",
+      "itemId": "I01",
+      "visit": 1,
+      "features": [
+        1,
+        0.1,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.27687793015502393,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.18000000000000002,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I02/visit-1",
+      "userId": "train-04",
+      "itemId": "I02",
+      "visit": 1,
+      "features": [
+        1,
+        0.22500000000000003,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.4727592640556395,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.28,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I03/visit-1",
+      "userId": "train-04",
+      "itemId": "I03",
+      "visit": 1,
+      "features": [
+        1,
+        0.9,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.8500701861921698,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-04/I04/visit-1",
+      "userId": "train-04",
+      "itemId": "I04",
+      "visit": 1,
+      "features": [
+        1,
+        0.8250000000000001,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.31273949425667524,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.7600000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-04/I05/visit-1",
+      "userId": "train-04",
+      "itemId": "I05",
+      "visit": 1,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.9427455652039498,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I06/visit-1",
+      "userId": "train-04",
+      "itemId": "I06",
+      "visit": 1,
+      "features": [
+        1,
+        0.30000000000000004,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.7979890774004161,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.3400000000000001,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I07/visit-1",
+      "userId": "train-04",
+      "itemId": "I07",
+      "visit": 1,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.005127900512889028,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-04/I08/visit-1",
+      "userId": "train-04",
+      "itemId": "I08",
+      "visit": 1,
+      "features": [
+        1,
+        0.5800000000000001,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.754669189453125,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.5640000000000001,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-04/I01/visit-2",
+      "userId": "train-04",
+      "itemId": "I01",
+      "visit": 2,
+      "features": [
+        1,
+        0.1,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.9686424357350916,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.18000000000000002,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I02/visit-2",
+      "userId": "train-04",
+      "itemId": "I02",
+      "visit": 2,
+      "features": [
+        1,
+        0.22500000000000003,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.786409926135093,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.28,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I03/visit-2",
+      "userId": "train-04",
+      "itemId": "I03",
+      "visit": 2,
+      "features": [
+        1,
+        0.9,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.21836798847652972,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.8200000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-04/I04/visit-2",
+      "userId": "train-04",
+      "itemId": "I04",
+      "visit": 2,
+      "features": [
+        1,
+        0.8250000000000001,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.21208686847239733,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.7600000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-04/I05/visit-2",
+      "userId": "train-04",
+      "itemId": "I05",
+      "visit": 2,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.1308119900058955,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I06/visit-2",
+      "userId": "train-04",
+      "itemId": "I06",
+      "visit": 2,
+      "features": [
+        1,
+        0.30000000000000004,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.06373253604397178,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.3400000000000001,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-04/I07/visit-2",
+      "userId": "train-04",
+      "itemId": "I07",
+      "visit": 2,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.6356265649665147,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-04/I08/visit-2",
+      "userId": "train-04",
+      "itemId": "I08",
+      "visit": 2,
+      "features": [
+        1,
+        0.5800000000000001,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.5441188607364893,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.5640000000000001,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-05/I01/visit-1",
+      "userId": "train-05",
+      "itemId": "I01",
+      "visit": 1,
+      "features": [
+        1,
+        0.65,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.6827353776898235,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.62,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-05/I02/visit-1",
+      "userId": "train-05",
+      "itemId": "I02",
+      "visit": 1,
+      "features": [
+        1,
+        0.6375000000000001,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.34061712631955743,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.6100000000000001,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-05/I03/visit-1",
+      "userId": "train-05",
+      "itemId": "I03",
+      "visit": 1,
+      "features": [
+        1,
+        0.35,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.9582550341729075,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.38,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I04/visit-1",
+      "userId": "train-05",
+      "itemId": "I04",
+      "visit": 1,
+      "features": [
+        1,
+        0.4125,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.6968246316537261,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.43000000000000005,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I05/visit-1",
+      "userId": "train-05",
+      "itemId": "I05",
+      "visit": 1,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.25607139128260314,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I06/visit-1",
+      "userId": "train-05",
+      "itemId": "I06",
+      "visit": 1,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.46864264784380794,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I07/visit-1",
+      "userId": "train-05",
+      "itemId": "I07",
+      "visit": 1,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.6394701872486621,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-05/I08/visit-1",
+      "userId": "train-05",
+      "itemId": "I08",
+      "visit": 1,
+      "features": [
+        1,
+        0.47,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.34949805215001106,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.476,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-05/I01/visit-2",
+      "userId": "train-05",
+      "itemId": "I01",
+      "visit": 2,
+      "features": [
+        1,
+        0.65,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.48132297000847757,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.62,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-05/I02/visit-2",
+      "userId": "train-05",
+      "itemId": "I02",
+      "visit": 2,
+      "features": [
+        1,
+        0.6375000000000001,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.35272133396938443,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.6100000000000001,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-05/I03/visit-2",
+      "userId": "train-05",
+      "itemId": "I03",
+      "visit": 2,
+      "features": [
+        1,
+        0.35,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.7144933624658734,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.38,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I04/visit-2",
+      "userId": "train-05",
+      "itemId": "I04",
+      "visit": 2,
+      "features": [
+        1,
+        0.4125,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.3002264807000756,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.43000000000000005,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I05/visit-2",
+      "userId": "train-05",
+      "itemId": "I05",
+      "visit": 2,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.7188552662264556,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I06/visit-2",
+      "userId": "train-05",
+      "itemId": "I06",
+      "visit": 2,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.7980835638009012,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-05/I07/visit-2",
+      "userId": "train-05",
+      "itemId": "I07",
+      "visit": 2,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.28010366787202656,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-05/I08/visit-2",
+      "userId": "train-05",
+      "itemId": "I08",
+      "visit": 2,
+      "features": [
+        1,
+        0.47,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.7938326578587294,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.476,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-06/I01/visit-1",
+      "userId": "train-06",
+      "itemId": "I01",
+      "visit": 1,
+      "features": [
+        1,
+        0.35,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.5408902743365616,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.38,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I02/visit-1",
+      "userId": "train-06",
+      "itemId": "I02",
+      "visit": 1,
+      "features": [
+        1,
+        0.4125,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.6199580379761755,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.43000000000000005,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I03/visit-1",
+      "userId": "train-06",
+      "itemId": "I03",
+      "visit": 1,
+      "features": [
+        1,
+        0.65,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.8892302664462477,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.62,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-06/I04/visit-1",
+      "userId": "train-06",
+      "itemId": "I04",
+      "visit": 1,
+      "features": [
+        1,
+        0.6375000000000001,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.24532441329210997,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.6100000000000001,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-06/I05/visit-1",
+      "userId": "train-06",
+      "itemId": "I05",
+      "visit": 1,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.8551030221860856,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I06/visit-1",
+      "userId": "train-06",
+      "itemId": "I06",
+      "visit": 1,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.5940722669474781,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I07/visit-1",
+      "userId": "train-06",
+      "itemId": "I07",
+      "visit": 1,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.37620872375555336,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-06/I08/visit-1",
+      "userId": "train-06",
+      "itemId": "I08",
+      "visit": 1,
+      "features": [
+        1,
+        0.53,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.06197718530893326,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.524,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-06/I01/visit-2",
+      "userId": "train-06",
+      "itemId": "I01",
+      "visit": 2,
+      "features": [
+        1,
+        0.35,
+        0.2
+      ],
+      "propensity": 0.26,
+      "exposureDraw": 0.8104443249758333,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.38,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I02/visit-2",
+      "userId": "train-06",
+      "itemId": "I02",
+      "visit": 2,
+      "features": [
+        1,
+        0.4125,
+        0.4
+      ],
+      "propensity": 0.42000000000000004,
+      "exposureDraw": 0.07609837176278234,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.43000000000000005,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I03/visit-2",
+      "userId": "train-06",
+      "itemId": "I03",
+      "visit": 2,
+      "features": [
+        1,
+        0.65,
+        0.1
+      ],
+      "propensity": 0.18000000000000002,
+      "exposureDraw": 0.8783264181111008,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.62,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-06/I04/visit-2",
+      "userId": "train-06",
+      "itemId": "I04",
+      "visit": 2,
+      "features": [
+        1,
+        0.6375000000000001,
+        0.35
+      ],
+      "propensity": 0.38,
+      "exposureDraw": 0.5171743528917432,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.6100000000000001,
+      "authorUsefulnessGrade": 1
+    },
+    {
+      "id": "train-06/I05/visit-2",
+      "userId": "train-06",
+      "itemId": "I05",
+      "visit": 2,
+      "features": [
+        1,
+        0.2,
+        1
+      ],
+      "propensity": 0.9,
+      "exposureDraw": 0.875815101666376,
+      "shown": true,
+      "click": 0,
+      "authorPotentialClick": 0,
+      "authorClickProbability": 0.26,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I06/visit-2",
+      "userId": "train-06",
+      "itemId": "I06",
+      "visit": 2,
+      "features": [
+        1,
+        0.3,
+        0.9
+      ],
+      "propensity": 0.8200000000000001,
+      "exposureDraw": 0.36816919734701514,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.33999999999999997,
+      "authorUsefulnessGrade": 0
+    },
+    {
+      "id": "train-06/I07/visit-2",
+      "userId": "train-06",
+      "itemId": "I07",
+      "visit": 2,
+      "features": [
+        1,
+        0.75,
+        0.5
+      ],
+      "propensity": 0.5,
+      "exposureDraw": 0.06928201322443783,
+      "shown": true,
+      "click": 1,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.7000000000000001,
+      "authorUsefulnessGrade": 2
+    },
+    {
+      "id": "train-06/I08/visit-2",
+      "userId": "train-06",
+      "itemId": "I08",
+      "visit": 2,
+      "features": [
+        1,
+        0.53,
+        0.65
+      ],
+      "propensity": 0.62,
+      "exposureDraw": 0.8791303802281618,
+      "shown": false,
+      "click": null,
+      "authorPotentialClick": 1,
+      "authorClickProbability": 0.524,
+      "authorUsefulnessGrade": 1
+    }
+  ]
+}

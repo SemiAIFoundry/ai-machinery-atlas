@@ -1,0 +1,807 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "commissioning-execution-1",
+  "scope": "Complete importable teaching input records and recomputed deterministic outcomes; not hardware measurements.",
+  "scenarios": [
+    {
+      "id": "default",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "none",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "totals": {
+          "executedMacs": 8,
+          "discardedMacs": 0,
+          "committedMacs": 8,
+          "submittedAttempts": 1,
+          "canceledAttempts": 0,
+          "completedAttempts": 1,
+          "readBytes": 32,
+          "writeBytes": 16,
+          "rejectedActions": 0
+        },
+        "eventCount": 37,
+        "issues": []
+      }
+    },
+    {
+      "id": "abi-mismatch",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "abi-mismatch",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "none",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "blocked",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": null,
+        "totals": {
+          "executedMacs": 0,
+          "discardedMacs": 0,
+          "committedMacs": 0,
+          "submittedAttempts": 0,
+          "canceledAttempts": 0,
+          "completedAttempts": 0,
+          "readBytes": 0,
+          "writeBytes": 0,
+          "rejectedActions": 1
+        },
+        "eventCount": 5,
+        "issues": [
+          {
+            "kind": "boot-rejected",
+            "index": 4,
+            "epoch": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "wrong-mapping",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "wrong-mapping",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "semantic-mismatch",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            7,
+            10
+          ],
+          [
+            15,
+            22
+          ]
+        ],
+        "totals": {
+          "executedMacs": 8,
+          "discardedMacs": 0,
+          "committedMacs": 8,
+          "submittedAttempts": 1,
+          "canceledAttempts": 0,
+          "completedAttempts": 1,
+          "readBytes": 32,
+          "writeBytes": 16,
+          "rejectedActions": 0
+        },
+        "eventCount": 37,
+        "issues": []
+      }
+    },
+    {
+      "id": "unmapped-b",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "unmapped-b",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "blocked",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": null,
+        "totals": {
+          "executedMacs": 0,
+          "discardedMacs": 0,
+          "committedMacs": 0,
+          "submittedAttempts": 1,
+          "canceledAttempts": 1,
+          "completedAttempts": 0,
+          "readBytes": 16,
+          "writeBytes": 0,
+          "rejectedActions": 1
+        },
+        "eventCount": 18,
+        "issues": [
+          {
+            "kind": "dma-fault",
+            "index": 16,
+            "epoch": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "skip-to-device",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "skip-to-device",
+          "fault": "none",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "semantic-mismatch",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "totals": {
+          "executedMacs": 8,
+          "discardedMacs": 0,
+          "committedMacs": 8,
+          "submittedAttempts": 1,
+          "canceledAttempts": 0,
+          "completedAttempts": 1,
+          "readBytes": 32,
+          "writeBytes": 16,
+          "rejectedActions": 0
+        },
+        "eventCount": 37,
+        "issues": []
+      }
+    },
+    {
+      "id": "skip-to-cpu",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "skip-to-cpu",
+          "fault": "none",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "semantic-mismatch",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            -777,
+            -777
+          ],
+          [
+            -777,
+            -777
+          ]
+        ],
+        "totals": {
+          "executedMacs": 8,
+          "discardedMacs": 0,
+          "committedMacs": 8,
+          "submittedAttempts": 1,
+          "canceledAttempts": 0,
+          "completedAttempts": 1,
+          "readBytes": 32,
+          "writeBytes": 16,
+          "rejectedActions": 0
+        },
+        "eventCount": 37,
+        "issues": []
+      }
+    },
+    {
+      "id": "coherent-omitted-output-handoff",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "coherent",
+          "sync": "skip-to-cpu",
+          "fault": "none",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "totals": {
+          "executedMacs": 8,
+          "discardedMacs": 0,
+          "committedMacs": 8,
+          "submittedAttempts": 1,
+          "canceledAttempts": 0,
+          "completedAttempts": 1,
+          "readBytes": 32,
+          "writeBytes": 16,
+          "rejectedActions": 0
+        },
+        "eventCount": 37,
+        "issues": []
+      }
+    },
+    {
+      "id": "early-reuse",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "early-reuse",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "totals": {
+          "executedMacs": 8,
+          "discardedMacs": 0,
+          "committedMacs": 8,
+          "submittedAttempts": 1,
+          "canceledAttempts": 0,
+          "completedAttempts": 1,
+          "readBytes": 32,
+          "writeBytes": 16,
+          "rejectedActions": 1
+        },
+        "eventCount": 38,
+        "issues": [
+          {
+            "kind": "reuse-rejected",
+            "index": 12,
+            "epoch": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "device-reset",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "device-reset",
+          "resetAfterCells": 2,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "totals": {
+          "executedMacs": 12,
+          "discardedMacs": 4,
+          "committedMacs": 8,
+          "submittedAttempts": 2,
+          "canceledAttempts": 1,
+          "completedAttempts": 1,
+          "readBytes": 64,
+          "writeBytes": 24,
+          "rejectedActions": 1
+        },
+        "eventCount": 63,
+        "issues": [
+          {
+            "kind": "reset-needed",
+            "index": 26,
+            "epoch": 0
+          },
+          {
+            "kind": "old-completion-rejected",
+            "index": 37,
+            "epoch": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-stop",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "device-reset",
+          "resetAfterCells": 2,
+          "resetPolicy": "stop"
+        }
+      },
+      "expected": {
+        "status": "canceled",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": null,
+        "totals": {
+          "executedMacs": 4,
+          "discardedMacs": 4,
+          "committedMacs": 0,
+          "submittedAttempts": 1,
+          "canceledAttempts": 1,
+          "completedAttempts": 0,
+          "readBytes": 32,
+          "writeBytes": 8,
+          "rejectedActions": 0
+        },
+        "eventCount": 28,
+        "issues": [
+          {
+            "kind": "reset-needed",
+            "index": 26,
+            "epoch": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "reset-after-four-cells",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "commissioning-execution-1",
+        "input": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "boot": "compatible",
+          "coherence": "noncoherent",
+          "sync": "both",
+          "fault": "device-reset",
+          "resetAfterCells": 4,
+          "resetPolicy": "retry"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "finalOutput": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "totals": {
+          "executedMacs": 16,
+          "discardedMacs": 8,
+          "committedMacs": 8,
+          "submittedAttempts": 2,
+          "canceledAttempts": 1,
+          "completedAttempts": 1,
+          "readBytes": 64,
+          "writeBytes": 32,
+          "rejectedActions": 1
+        },
+        "eventCount": 69,
+        "issues": [
+          {
+            "kind": "reset-needed",
+            "index": 32,
+            "epoch": 0
+          },
+          {
+            "kind": "old-completion-rejected",
+            "index": 43,
+            "epoch": 1
+          }
+        ]
+      }
+    }
+  ]
+}

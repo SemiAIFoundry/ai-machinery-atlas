@@ -1,8 +1,10 @@
 import * as T from 'three';
+import {buildLearningStructure,learningStructureFamilies} from './learning-structures.ts';
 import {buildDeepModel,deepFamilies} from './deep-models.ts';
 export type NodeGroup=T.Group&{userData:{id:string;base:T.Vector3;spread:T.Vector3;label:T.Vector3}};
 export type Flow={curve:T.CatmullRomCurve3;dots:T.InstancedMesh;color:number};
 export function buildModel(level:string,selected:string,ids:string[]){
+ if(learningStructureFamilies.includes(level))return buildLearningStructure(level,selected);
  if(deepFamilies.includes(level))return buildDeepModel(level,selected);
  const root=new T.Group(),groups:NodeGroup[]=[],flows:Flow[]=[];const teal=0x74dbcf,gold=0xfac08c,violet=0xa29ddd,blue=0x719ecb,copper=0xc8895b,dark=0x244b51;
  const boxGeo=new T.BoxGeometry(1,1,1),ballGeo=new T.SphereGeometry(1,16,12),mats=new Map<number,T.MeshStandardMaterial>();

@@ -1,0 +1,230 @@
+{
+  "record": {
+    "id": "hbm-base-phy-controller",
+    "level": "package",
+    "name": "Base die, PHY and memory controller",
+    "shortName": "Base die, PHY and memory controller",
+    "role": "Separates memory-stack logic from host scheduling and the electrical interface.",
+    "description": "An HBM connection has several cooperating control layers. DRAM core dies store and access data; a base die supports the stack’s interface and other generation-specific functions; the host memory controller schedules commands and manages access policy; the host PHY implements the physical signaling, timing and training boundary. These are not interchangeable objects. A base die fabricated on an advanced logic process does not automatically become the accelerator’s main memory controller. The chosen package route must connect compatible pad arrangements and electrical interfaces. This lesson follows one request across those boundaries and identifies which part owns scheduling, signal timing, vertical transport and storage.",
+    "specs": [
+      {
+        "label": "Host boundary",
+        "value": "Controller ↔ PHY ↔ package link",
+        "context": "A defined digital-to-physical interface is required."
+      },
+      {
+        "label": "Stack boundary",
+        "value": "Base die ↔ DRAM core dies",
+        "context": "Base-die functions and fabrication process vary by generation/vendor."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Host requests",
+        "direction": "in",
+        "signal": "Addresses, data, ordering and service priorities"
+      },
+      {
+        "name": "HBM command/data link",
+        "direction": "out",
+        "signal": "Trained electrical transactions compatible with the memory stack"
+      }
+    ],
+    "tradeoff": "More sophisticated scheduling or base-die functionality can improve efficiency and customization while adding area, verification and process dependencies.",
+    "whyAI": "Usable HBM bandwidth depends on controllers, PHY timing, package connectivity and array behavior working together, not just memory pin count.",
+    "related": [
+      "hbm-controller",
+      "dram-cell-array-fabrication",
+      "hbm-channel-generation-ras",
+      "cowos-s-silicon-interposer"
+    ],
+    "sources": [
+      {
+        "title": "SK hynix — TSMC collaboration on HBM",
+        "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/"
+      },
+      {
+        "title": "Synopsys — HBM3 Controller IP",
+        "url": "https://www.synopsys.com/designware-ip/interface-ip/hbm/hbm3-controller.html"
+      },
+      {
+        "title": "Synopsys — HBM4 PHY IP datasheet",
+        "url": "https://www.synopsys.com/content/dam/synopsys/resources/dw/hbm4-phy-datasheet.pdf"
+      }
+    ],
+    "scale": "Memory channels, package links and wafer-supply accounting",
+    "kind": "integration",
+    "branch": "Memory / HBM system constraints",
+    "subbranch": "HBM interfaces, generations and silicon intensity",
+    "mechanism": [
+      "Accept memory requests and map them to the controller’s address and scheduling policy.",
+      "Generate legal DRAM commands while coordinating refresh, ordering and data-integrity functions.",
+      "Pass the transaction across the defined controller/PHY interface.",
+      "Train and drive the physical link through the package and stack interface.",
+      "Return sensed data and handle reported errors within the stated host and memory responsibilities."
+    ],
+    "misconception": "The HBM base die is not automatically the host memory controller, and the PHY does not replace all scheduling logic.",
+    "check": {
+      "question": "Which block principally chooses when queued host memory requests become DRAM commands?",
+      "options": [
+        "A passive silicon TSV alone",
+        "The package lid",
+        "The memory controller"
+      ],
+      "answer": 2,
+      "explanation": "The controller manages protocol and scheduling policy; the PHY realizes the physical signaling boundary."
+    },
+    "science": [
+      {
+        "title": "Interface timing budget",
+        "equation": "T_UI = 1/r; margin ≈ T_UI − timing_uncertainty − required_window",
+        "explanation": "Data rate r uses transfers/s for one data lane and T_UI seconds; other timing terms also use seconds.",
+        "assumptions": "Illustrative unit-interval budget. Exact setup/hold, jitter, skew and receiver models depend on the signaling standard and implementation."
+      }
+    ],
+    "prerequisites": [
+      "hbm-controller",
+      "hbm-stack-assembly-test"
+    ],
+    "learningObjective": "Assign controller, PHY, base-die and core-die functions to the correct boundaries.",
+    "workstream": "W06",
+    "visualFamily": "hbm-detail",
+    "engineeringExample": "Synthetic link: 8×10⁹ transfers/s gives a 125 ps unit interval. A shorter interval tightens timing requirements even if the stored memory capacity is unchanged.",
+    "evidenceNotes": "The 2024 SK hynix–TSMC announcement describes a planned HBM4 base-die direction, not proof of its current production status. PHY-specific limits are not generalized to all HBM.",
+    "labId": "library",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "investigationId": "manufacturing",
+    "labScope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism."
+  },
+  "chapter": {
+    "id": "deep-hbm-interface-supply",
+    "domainId": "packaging-machines",
+    "read": "Follow the physical state, inspect the engineering model, then test the explanation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "T_{UI}=\\frac{1}{r},\\qquad m\\approx T_{UI}-t_{\\mathrm{uncertainty}}-t_{\\mathrm{required}}",
+      "variables": [
+        {
+          "symbol": "T_UI",
+          "meaning": "Unit interval of the selected data-lane transfer convention",
+          "unit": "s"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Effective transfers per second on one data lane",
+          "unit": "transfers/s"
+        },
+        {
+          "symbol": "m",
+          "meaning": "Remaining timing margin",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_uncertainty",
+          "meaning": "Budgeted timing uncertainty",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_required",
+          "meaning": "Required receiver timing window",
+          "unit": "s"
+        }
+      ],
+      "text": "Unit interval is the reciprocal of the lane transfer rate. Timing margin is approximately that interval minus uncertainty and the required receiver window."
+    }
+  ],
+  "contentFingerprint": "e2cc45b841c55207b6e0220c3cd7e46670797745f07b5bc477e6b358cd17a19e",
+  "claims": [
+    {
+      "id": "fab-claim-hbm4-organization",
+      "title": "Disclosed HBM4 PHY doubles aggregate data-interface width",
+      "statement": "Synopsys’s dated HBM4 PHY datasheet specifies a complete 2,048-bit interface with 32 independent 64-bit channels and up to 64 32-bit pseudochannels.",
+      "sourceId": "fab-src-synopsys-hbm4",
+      "lessonIds": [
+        "hbm-base-phy-controller",
+        "hbm-channel-generation-ras"
+      ],
+      "status": "reported",
+      "metric": "Aggregate data-interface width",
+      "value": 2048,
+      "unit": "bits",
+      "denominator": "One complete disclosed HBM4 PHY data interface",
+      "period": "Datasheet footer 2026-05-27",
+      "scope": "Synopsys HBM4 PHY IP disclosure",
+      "limitations": "An IP specification does not establish a shipped memory stack’s rate, capacity, power or deployed performance.",
+      "urlSourceId": "url-506a55bc0c864af1071c",
+      "inheritedCheckedOn": "2026-09-06",
+      "dateBasis": "Copied from existing claim ledger; not a review performed by this task.",
+      "supersedesClaimId": null,
+      "supersededByClaimId": null,
+      "reviewEventIds": []
+    },
+    {
+      "id": "fab-claim-hbm-base-collaboration",
+      "title": "SK hynix announces TSMC collaboration for HBM4 base dies",
+      "statement": "The April 2024 announcement says SK hynix plans to use TSMC’s advanced logic process for HBM4 base dies and to coordinate package integration.",
+      "sourceId": "fab-src-hynix-base",
+      "lessonIds": [
+        "hbm-base-phy-controller"
+      ],
+      "status": "announced",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2024-04-19",
+      "scope": "Historical HBM4 base-die and CoWoS collaboration announcement",
+      "limitations": "This announcement alone is not proof of current volume production, qualification, allocation or an arbitrary host controller moving into the base die.",
+      "urlSourceId": "url-dbd96dc7b5fd154235b2",
+      "inheritedCheckedOn": "2026-09-06",
+      "dateBasis": "Copied from existing claim ledger; not a review performed by this task.",
+      "supersedesClaimId": null,
+      "supersededByClaimId": null,
+      "reviewEventIds": []
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "url-dbd96dc7b5fd154235b2",
+      "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+      "title": "SK hynix — TSMC collaboration on HBM",
+      "contexts": [
+        {
+          "field": "sources"
+        },
+        {
+          "field": "claim",
+          "claimId": "fab-claim-hbm-base-collaboration",
+          "ledgerSourceId": "fab-src-hynix-base"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-68876ab7e350dda637ab",
+      "url": "https://www.synopsys.com/designware-ip/interface-ip/hbm/hbm3-controller.html",
+      "title": "Synopsys — HBM3 Controller IP",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-506a55bc0c864af1071c",
+      "url": "https://www.synopsys.com/content/dam/synopsys/resources/dw/hbm4-phy-datasheet.pdf",
+      "title": "Synopsys — HBM4 PHY IP datasheet",
+      "contexts": [
+        {
+          "field": "sources"
+        },
+        {
+          "field": "claim",
+          "claimId": "fab-claim-hbm4-organization",
+          "ledgerSourceId": "fab-src-synopsys-hbm4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# Application-specific outcome contracts
+
+The forecasting case computes a five-coefficient ridge regression on synthetic hourly load. It fits hours 1–23, uses an unpenalized intercept, and solves the normal equations with pivoted elimination. Features are intercept, previous load / 30, known calendar sine/cosine, and known time / 48. At each later origin it observes that hour's actual value, then recursively uses predictions through the selected horizon. Coefficients never see later data. The persistence baseline uses the same origin and target. Horizons change the number of scored rows, which is displayed explicitly. Overlapping forecasts are correlated; no independent-sample confidence interval is claimed.
+
+An intervention changes load only from hour 32, preserving the fitted model. Another deliberately substitutes unavailable future labels for predictions: error becomes zero and temporal validity fails. This exposes why a perfect score can be unusable evidence.
+
+The coding case executes four whitelisted authored clamp functions. Two interior examples, ten broader cases and a finite exhaustive 308-triple oracle expose different evidence scopes. The independent oracle uses branches; the correct candidate uses min/max. Passing the grid is not a proof over all IEEE inputs. Arbitrary code is not evaluated and no model generates these candidates. NaN, infinities, unordered bounds and signed-zero identity are outside the stated contract.
+
+Nine tests check a hand-solvable linear system, the independently accumulated ridge gradient, fit independence from future shifts, recursive lag ownership, leak invalidity, matched forecast denominators, insufficient tests, finite contract coverage and portable records. Run `node --experimental-strip-types --test scripts/application-decisions.test.mjs`.
+
+The agent read scikit-learn's primary Ridge objective and TimeSeriesSplit time-ordering descriptions on 2026-09-07. The implementation directly computes the declared equations; it does not call scikit-learn or reproduce its solver. Chen et al., *Evaluating Large Language Models Trained on Code*, [arXiv:2107.03374v2](https://arxiv.org/abs/2107.03374v2), supplies the historical motivation for functional testing, not these authored programs or a pass@k claim. No human review, real load forecast or code-model benchmark is claimed.

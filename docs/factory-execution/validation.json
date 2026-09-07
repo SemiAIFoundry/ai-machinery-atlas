@@ -1,0 +1,43 @@
+{
+  "checkedOn": "2026-09-07",
+  "actor": {
+    "type": "AI agent",
+    "id": "/root/process_editor"
+  },
+  "nodeTests": {
+    "passed": 21,
+    "failed": 0,
+    "command": "node --experimental-strip-types --test scripts/factory-execution.test.mjs"
+  },
+  "strictScopedTypeScript": "passed",
+  "fixturesRecomputed": 11,
+  "localDocumentationLinks": "passed",
+  "freezeStatus": "Validated against distributed-causal-gradient-2 and the explicit 650000-byte factory save limit; 11 complete workspaces, 13 current source fingerprints, and all 34 factory/storage tests pass.",
+  "humanSpecialistReview": null,
+  "humanLearnerObservation": null,
+  "physicalDeviceObservation": null,
+  "browserChecksReportedByParent": {
+    "actorType": "AI agent",
+    "actorId": "/root",
+    "reportedOn": "2026-09-07",
+    "observations": [
+      "Default has 5 executed, 2 rolled-back and 3 durable updates.",
+      "Wrong valid DMA mapping blocks before updates.",
+      "Carry accepted model to serving retains weight identity 779c106a; the int4 serving queue computes outputs."
+    ],
+    "physicalDevice": false
+  },
+  "portableStorageTests": {
+    "passed": 13,
+    "failed": 0,
+    "command": "node --experimental-strip-types --test scripts/factory-execution.test.mjs scripts/portable-experiment-storage.test.mjs",
+    "combinedPassed": 34
+  },
+  "portableWorkspaceScope": {
+    "factoryMaximumUTF8Bytes": 650000,
+    "defaultOtherExperiencesMaximumUTF8Bytes": 20000,
+    "recoveryMaximumRecords": 30,
+    "recoveryMaximumBytes": 1000000,
+    "largeRecordRestore": "Saved workspace and file import; the shared text-entry control remains limited to 20000 characters."
+  }
+}

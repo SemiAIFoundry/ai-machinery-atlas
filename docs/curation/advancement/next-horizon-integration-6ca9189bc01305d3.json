@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "kind": "additive-integration-recheck",
+  "recordedAt": "2026-09-07T22:15:24.645Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root",
+    "role": "AI integration and executable navigation reviewer"
+  },
+  "previousAddendumSha256": "6ca9189bc01305d36df42eb752338048e1d53a5583abde80c2fad37cf5c93eab",
+  "files": [
+    {
+      "path": "src/lib/studio-lessons.ts",
+      "previous": "26b9c4747ee22afd76273842636bcf2f61406180aa49a5e455c1e43e4da868d3",
+      "current": "6c7a14d694024c8ffca147807b66130195134c52e93415d17db199f0a028c098",
+      "scope": "Reviewed explicit canonical lesson routes and one navigation home per experience; the eight original numerical models are unchanged."
+    }
+  ],
+  "lessons": [],
+  "sourceUseRecordsUnchanged": true,
+  "newSourceReadings": 0,
+  "humanReviews": 0,
+  "scope": "Reconstructed the captured earlier lessons without the append-only enrichment packs and verified their earlier identities. Retained all existing scoped source checks. New appended mechanisms use their separate model-lifecycle and automation source records; this integration event is not a blanket review of new lesson content.",
+  "newEvidenceLocations": [
+    "docs/model-lifecycle/curriculum/source-review-manifest.json",
+    "docs/automation-execution/learning-source-review.json"
+  ],
+  "pending": "Independent specialist, physical-device and learner observations remain unobserved.",
+  "preservedSnapshot": "docs/curation/advancement/history/before-next-horizon-6ca9189bc01305d3.json"
+}

@@ -1,0 +1,249 @@
+{
+  "record": {
+    "id": "distributed-gradient-weighting",
+    "name": "Uneven batches and the global gradient",
+    "shortName": "Weight the global update",
+    "role": "Preserve the intended training objective when ranks contribute different numbers of valid examples or tokens.",
+    "description": "A synchronized gradient can be consistent across replicas and still represent the wrong objective. Suppose the intended loss is the mean over all valid training items in one optimizer update. A rank that averages two items and a rank that averages six have already divided by different denominators. Averaging their two gradient means assigns the smaller batch more influence per item. The global item mean instead weights each local mean by its valid-item count. PyTorch’s pinned DistributedDataParallel contract documents averaging gradients between workers, so the loss normalization and collective normalization must be considered together. The count can mean examples, unmasked target tokens or a sum of explicit sample weights; choosing it is part of the objective, not a hardware detail. This lesson derives one scalar update from a concrete squared-error loss. It assumes the same current parameter at both ranks and no cross-sample operation such as batch-dependent normalization. A rank exhausting its entire input stream is a separate synchronization problem: matching collective participation does not by itself fix per-item weighting.",
+    "mechanism": [
+      "Define which items count in the loss and record their global count N for this optimizer update. Exclude padding only when the objective says to exclude it.",
+      "Compute local loss sums or local means and retain the valid count associated with each reduction.",
+      "For a rank-mean reducer over P active participants, scale a local mean gradient by P nᵣ/N before the averaging collective. Equivalently reduce local sums and divide once by N.",
+      "During gradient accumulation, use the count over the entire update window rather than silently averaging unequal microbatch means.",
+      "Apply the same synchronized gradient and optimizer state transition at every replica, then compare the result with the unpartitioned reference objective.",
+      "Handle empty local contributions and exhausted ranks with explicit participation rules; never divide an empty local mean by zero or simply omit a required collective."
+    ],
+    "prerequisites": [
+      "loss-optimizer",
+      "training-data",
+      "parallelism",
+      "nccl"
+    ],
+    "related": [
+      "training-memory-state",
+      "evaluation",
+      "floating-point-reduction-order"
+    ],
+    "specs": [
+      {
+        "label": "Normalization unit",
+        "value": "Valid examples or tokens",
+        "context": "Choose the intended loss denominator explicitly."
+      },
+      {
+        "label": "Replica consistency",
+        "value": "Equal synchronized gradients",
+        "context": "Does not establish agreement with the desired global objective."
+      },
+      {
+        "label": "Runtime scope",
+        "value": "Default mean reduction",
+        "context": "Custom hooks, joined ranks or summed losses can change the scale."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Per-rank loss contributions",
+        "direction": "in",
+        "signal": "Local sums or means, valid counts, shared parameter state"
+      },
+      {
+        "name": "Global optimizer update",
+        "direction": "out",
+        "signal": "One correctly normalized gradient applied consistently"
+      }
+    ],
+    "science": [
+      {
+        "title": "Global item-mean gradient",
+        "equation": "N = Σr nᵣ; g = (1/N) Σr nᵣ ḡᵣ",
+        "explanation": "Each local ḡᵣ is the mean of gradients for nᵣ valid equally weighted items. Multiply by nᵣ to recover the local sum.",
+        "assumptions": "N>0, same parameters and differentiable separable per-item loss. No cross-sample dependence; sample weights replace counts when the objective uses unequal weights."
+      },
+      {
+        "title": "Compensate a mean-across-ranks reducer",
+        "equation": "g = (1/P) Σr [(P nᵣ/N) ḡᵣ]; wnew = w − ηg",
+        "explanation": "The factor P nᵣ/N ensures the subsequent division by P leaves the intended global item mean.",
+        "assumptions": "P fixed participating ranks for this update; no custom reducer scaling. The scalar SGD update has no momentum, clipping, weight decay or loss scaling."
+      }
+    ],
+    "engineeringExample": "Take ℓ(w;y)=½(w−y)² at w=10. Rank 0 has targets [9,9], producing gradients [1,1], count 2 and mean 1. Rank 1 has [7,7,7,7,7,7], producing six gradients of 3, count 6 and mean 3. The unpartitioned objective has gradient (2×1+6×3)/8=2.5. Averaging rank means gives (1+3)/2=2 instead. With learning rate 0.1, correct SGD gives wnew=9.75; the unweighted rank mean gives 9.8. For a reducer that divides by P=2, scale the local means by 2×2/8=0.5 and 2×6/8=1.5. It then averages 0.5 and 4.5 to obtain 2.5. If the ranks each held four valid items, equal weighting would be appropriate. Token-level training needs the valid target-token count when that is the declared loss denominator; sequence counts need not be proportional.",
+    "learningObjective": "Derive and test a globally normalized gradient from unequal local batch means, then distinguish objective equivalence from replica synchronization.",
+    "misconception": "A mean across ranks is a mean across training items only when local denominators and weights make it so.",
+    "check": {
+      "question": "Two ranks have counts 2 and 6 and mean gradients 1 and 3. What is the global item-mean gradient?",
+      "options": [
+        "2",
+        "2.5",
+        "4"
+      ],
+      "answer": 1,
+      "explanation": "The weighted numerator is 2×1+6×3=20 across eight items, so the result is 2.5."
+    },
+    "checks": [
+      {
+        "question": "A mean-across-two-ranks reducer receives local means. Which scale factors preserve the eight-item objective?",
+        "options": [
+          "1 and 1",
+          "2 and 6",
+          "0.5 and 1.5"
+        ],
+        "answer": 2,
+        "explanation": "Scaling by P nᵣ/N gives 0.5 and 1.5; the reducer then averages 0.5 and 4.5."
+      },
+      {
+        "question": "Does equal synchronized state prove the chosen sample weights were correct?",
+        "options": [
+          "Yes",
+          "No",
+          "Only if the network is fast"
+        ],
+        "answer": 1,
+        "explanation": "All replicas can agree on the same incorrectly normalized gradient."
+      }
+    ],
+    "whyAI": "The number of completed updates is useful only relative to the training objective those updates optimize. Ragged data, masking and uneven accumulation can change that objective through an unnoticed denominator.",
+    "tradeoff": "Keeping exact counts and a reference objective adds bookkeeping and sometimes a small count reduction. It prevents an apparent scaling improvement from silently changing sample influence.",
+    "evidenceNotes": "The PyTorch source is pinned to v2.8.0 and supports the default averaging convention, not a claim about every backend or custom hook. The squared-error data, gradient weighting derivation and SGD step are authored examples. Join semantics after input exhaustion are outside this fixed-participant update.",
+    "sourceIds": [
+      "pytorch-ddp-weighting",
+      "nccl-layout-semantics"
+    ],
+    "sources": [
+      {
+        "title": "PyTorch v2.8.0 — DistributedDataParallel implementation and contract",
+        "url": "https://github.com/pytorch/pytorch/blob/v2.8.0/torch/nn/parallel/distributed.py"
+      },
+      {
+        "title": "NVIDIA NCCL — Collective Operations",
+        "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html"
+      }
+    ],
+    "workedTrace": {
+      "id": "uneven-squared-error",
+      "input": {
+        "parameter": 10,
+        "learningRate": 0.1,
+        "rankTargets": [
+          [
+            9,
+            9
+          ],
+          [
+            7,
+            7,
+            7,
+            7,
+            7,
+            7
+          ]
+        ]
+      },
+      "lossDefinition": "0.5 * (w-y)^2 per item; mean over all eight items",
+      "localCounts": [
+        2,
+        6
+      ],
+      "localGradientMeans": [
+        1,
+        3
+      ],
+      "globalGradient": 2.5,
+      "unweightedRankGradient": 2,
+      "meanReducerScales": [
+        0.5,
+        1.5
+      ],
+      "scaledLocalGradients": [
+        0.5,
+        4.5
+      ],
+      "correctNextParameter": 9.75,
+      "unweightedNextParameter": 9.8
+    },
+    "level": "software",
+    "branch": "Executable software",
+    "subbranch": "Distributed computation to useful output",
+    "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+    "kind": "system",
+    "workstream": "W11",
+    "visualFamily": "software-flow",
+    "labId": "engineering",
+    "investigationId": "execution",
+    "labScope": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson.",
+    "history": [],
+    "deepLabId": "network",
+    "scope": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+  },
+  "chapter": {
+    "id": "distributed-output-bridges",
+    "domainId": "executable-software",
+    "read": "Follow the worked values and declared numerical contract. Software boxes denote dependencies and ownership, not physical layers or measured timing."
+  },
+  "formalEquations": [
+    {
+      "latex": "N=\\sum_{r=0}^{P-1}n_r,\\qquad g=\\frac{1}{N}\\sum_{r=0}^{P-1}n_r\\bar g_r",
+      "text": "Sum local valid-item counts to N. Weight each local mean gradient by its count and divide their sum by N.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "N",
+          "meaning": "Total valid equally weighted items in the update",
+          "unit": "count"
+        },
+        {
+          "symbol": "nr",
+          "meaning": "Valid items at rank r",
+          "unit": "count"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Participating rank count",
+          "unit": "count"
+        },
+        {
+          "symbol": "ḡr",
+          "meaning": "Mean local gradient at shared parameter state",
+          "unit": "loss/parameter"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Global item-mean gradient",
+          "unit": "loss/parameter"
+        }
+      ]
+    },
+    {
+      "latex": "g=\\frac{1}{P}\\sum_{r=0}^{P-1}\\left(\\frac{P n_r}{N}\\bar g_r\\right),\\qquad w_{\\mathrm{new}}=w-\\eta g",
+      "text": "Before a mean-across-ranks reduction, scale local mean gradients by P times n_r over N. Scalar SGD subtracts learning rate times global gradient.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "P",
+          "meaning": "Fixed participants in the mean reducer",
+          "unit": "count"
+        },
+        {
+          "symbol": "nr, N",
+          "meaning": "Local and global valid-item counts",
+          "unit": "count"
+        },
+        {
+          "symbol": "ḡr, g",
+          "meaning": "Local and global mean gradients",
+          "unit": "loss/parameter"
+        },
+        {
+          "symbol": "w, wnew",
+          "meaning": "Parameter before and after the update",
+          "unit": "parameter"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Learning rate for the declared objective scaling",
+          "unit": "parameter²/loss"
+        }
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import {defaultRepo,loadCurrent,lessonReferences,sourceId,unique,count,sha,stable} from './curation-common.mjs';
-const dir=path.dirname(fileURLToPath(import.meta.url)),repo=process.argv[2]||defaultRepo;
+const dir=path.dirname(fileURLToPath(import.meta.url)),repo=path.resolve(process.argv[2]||defaultRepo);
 const {atlas,equations,engineeringRelations,claims,ledgerSources,fingerprint,sourceFiles}=loadCurrent(repo);
 const policies={
  'stable-principle':{label:'Stable principle',proposedIntervalDays:365,reason:'The core mechanism is relatively stable. Review when scope, assumptions, diagrams or teaching examples change.'},

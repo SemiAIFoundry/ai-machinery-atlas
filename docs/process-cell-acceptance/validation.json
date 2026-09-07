@@ -1,0 +1,20 @@
+{
+  "checkedOn": "2026-09-07",
+  "actorType": "AI agent",
+  "modelVersion": "process-cell-acceptance-1",
+  "nodeTests": {
+    "passed": 18,
+    "failed": 0,
+    "command": "node --experimental-strip-types --test scripts/process-cell-acceptance.test.mjs"
+  },
+  "strictScopedTypeScript": "passed",
+  "fixturesRecomputed": 8,
+  "lessonsValidated": 2,
+  "canonicalMathValidated": 8,
+  "localDocumentationLinks": "passed",
+  "physicalDeviceObservation": null,
+  "humanLearnerObservation": null,
+  "humanSpecialistReview": null,
+  "externalSimulatorComparison": null,
+  "formalEquationPresentation": "Canonical oxide, threshold and beta definitions reused through shared Equation; strict scoped TypeScript and existing 18 tests passed."
+}

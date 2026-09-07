@@ -1,0 +1,281 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-scoped-source-checks",
+  "completedOn": "2026-09-07",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root/process_editor",
+    "role": "AI primary-source reader"
+  },
+  "scope": "Actual passage reading, not merely URL accessibility. No independent human specialist or learner review performed. Synthetic model parameters are not source-reported specifications.",
+  "checks": [
+    {
+      "experienceId": "hall",
+      "sourceLocalId": "electrical-power",
+      "title": "OpenStax University Physics 2",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "\u00a79.5, Power in Electric Circuits and Electric Power, equation 9.12; Cost of Electricity integral"
+      ],
+      "notes": "The derivation and Eq.9.12 support DC P=VI. The energy integral supports phase integration. No AC rail, protection or physical-current summation claim is imported.",
+      "statement": "DC P=VI at explicitly declared electrical boundaries.",
+      "exclusions": "An equivalent package rail does not establish actual multi-rail, AC, power-factor or protection design.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "hall",
+      "sourceLocalId": "coolant-balance",
+      "title": "Colozza and Burke, NASA/TM-2011-216962",
+      "url": "https://ntrs.nasa.gov/api/citations/20110007103/downloads/20110007103.pdf",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "NASA/TM-2011-216962: printed p.3 equation (2); printed p.12 equation (12) and water specific-heat paragraph"
+      ],
+      "notes": "Read the downloaded 25-page report. Equation (2) relates heat, mass flow and coolant temperature rise; Eq.(12) defines capacity rate. The atlas 4180 is rounded and its complete IT capture remains synthetic.",
+      "statement": "The steady heat balance uses mass flow times specific heat times temperature rise.",
+      "exclusions": "Complete IT capture, 4180 J/(kg K), zero heat storage and fixed PUE are authored bounds; recirculation is not water consumption.",
+      "humanSpecialistReview": null,
+      "retrievalEvidence": {
+        "format": "PDF, 25 pages",
+        "sha256": "6c9145343c34106a72ca1217e75bddb56fb219f9565e168547f356794a127a9f",
+        "method": "Public HTTPS download and pypdf text extraction after web-reader failure",
+        "initialAttempts": [
+          "Web reader returned 403 for the download",
+          "Web reader could not read the citation page or attachment query"
+        ],
+        "readingScope": "Printed pages 3\u20134 and 12, not the complete spacecraft/fuel-cell design."
+      }
+    },
+    {
+      "experienceId": "hall",
+      "sourceLocalId": "gemm-contract",
+      "title": "Netlib reference DGEMM",
+      "url": "https://www.netlib.org/lapack/explore-html/dd/d09/group__gemm_ga1e899f8453bcbfde78e91a86a2dab984.html",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "LAPACK 3.12.1 DGEMM, Purpose and Parameters: M, N, K; alpha/beta specialization"
+      ],
+      "notes": "The source defines op(A) as m\u00d7k, op(B) as k\u00d7n and C as m\u00d7n. The hall specializes alpha=beta=1; its sharding, traffic and timing are authored assumptions.",
+      "statement": "GEMM dimensions and C \u2190 AB + C contract.",
+      "exclusions": "The chosen sharding, ideal traffic counts, checkpoint sizes and rate assumptions are original teaching accounting.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "hall",
+      "sourceLocalId": "roofline-bound",
+      "title": "Berkeley Lab Roofline Performance Model",
+      "url": "https://amcr.lbl.gov/departments/computer-science-department/ppan/roofline-performance-model/",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "Introduction to the Roofline Model, paragraphs 1\u20134; Why Your Performance Might Be Below the Roofline, introduction and Cache Behavior"
+      ],
+      "notes": "The source explicitly frames compute and memory limits as performance bounds, and arithmetic intensity as operations per transferred byte. It does not endorse the hall\u2019s communication overlap or rate assumptions.",
+      "statement": "compare computational and memory service bounds.",
+      "exclusions": "The authored serial/ideal-overlap schedules do not prove attainable implementation speed or cache blocking.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "solar-irradiance",
+      "title": "NASA Goddard Solar Irradiance",
+      "url": "https://earth.gsfc.nasa.gov/climate/projects/solar-irradiance/science",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "NASA\u2019s observation of solar radiation, paragraphs 2\u20133: SORCE value and TSIS-1 2019 solar-minimum value"
+      ],
+      "notes": "The overview lacks the numeric value. NASA\u2019s science page identifies 1361 W/m\u00b2 from SORCE, separately 1361.6\u00b10.3 W/m\u00b2 for the 2019 minimum. The selected 1361 is representative, not a universal constant or current mission prediction.",
+      "statement": "representative irradiance near Earth\u2019s solar distance.",
+      "exclusions": "The selected irradiance is not a mission-specific illumination or degradation prediction.",
+      "humanSpecialistReview": null,
+      "initialFinding": {
+        "url": "https://earth.gsfc.nasa.gov/climate/projects/solar-irradiance",
+        "access": "accessible",
+        "support": "partial-support",
+        "notes": "Overview describes measured and variable TSI but does not provide the stated numeric value; the specific science page supplies the locator."
+      }
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "spacecraft-power",
+      "title": "NASA Small Spacecraft Technology \u2014 Power",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/power-subsystems/",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "\u00a73.2.1 Solar Cells, incidence-angle paragraph; \u00a73.2.2 Solar Panels & Arrays, power-metric discussion; \u00a73.4 Energy Storage, opening and aging paragraphs"
+      ],
+      "notes": "Read the incidence/cosine and battery-availability discussion. The source distinguishes mission and beginning-of-life metrics and requires condition-dependent battery assessment. Fixed efficiencies, thresholds and loads remain synthetic.",
+      "statement": "Solar exposure and battery storage shape spacecraft electrical availability.",
+      "exclusions": "All array dimensions, conversion efficiencies, battery thresholds and loads are synthetic; no SOC/voltage/aging/current-transient model.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "stefan-boltzmann",
+      "title": "NIST 2022 CODATA constants table",
+      "url": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "2022 CODATA table: Stefan\u2013Boltzmann constant row, with units W m^-2 K^-4"
+      ],
+      "notes": "The exact SI expression has decimal expansion 5.670374419\u2026\u00d710^-8. The code uses a finite rounded representation. Area, emissivity, temperatures and view factor remain separately declared assumptions.",
+      "statement": "The SI Stefan\u2013Boltzmann constant used in a radiative fourth-power bound.",
+      "exclusions": "The constant does not establish the authored radiator area, emissivity, view factor, sink temperature or spacecraft thermal feasibility.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "spacecraft-thermal",
+      "title": "NASA Small Spacecraft Technology \u2014 Thermal Control",
+      "url": "https://www.nasa.gov/smallsat-institute/sst-soa/thermal-control/",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "\u00a77.1 Introduction, equation (1) and bullets for environmental input, internally generated, radiated and stored heat"
+      ],
+      "notes": "The source supports separate absorbed, generated, radiated and stored terms. The model consistently uses whole-boundary watts and sets stored heat to zero; its temperature is a steady-state estimate, not survival evidence. The source figure caption mixes heat/flux terminology; the atlas does not import that caption as a unit convention.",
+      "statement": "Spacecraft heat balance separates environmental absorption, internal heat, radiation and stored thermal energy.",
+      "exclusions": "The explorer sets stored thermal energy to zero; equilibrium is not a transient temperature or evidence of cold survival.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "gemm-contract",
+      "title": "Netlib reference DGEMM",
+      "url": "https://www.netlib.org/lapack/explore-html/dd/d09/group__gemm_ga1e899f8453bcbfde78e91a86a2dab984.html",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "LAPACK 3.12.1 DGEMM, Purpose and Parameters: M, N, K; alpha=1, beta=0 specialization"
+      ],
+      "notes": "Matrix dimensions support the product contract. Leading-order operation and minimum traffic counts, independent products, commit delay and delivery rules are authored accounting, not DGEMM performance measurements.",
+      "statement": "Dense matrix-product dimensions motivate the declared workload.",
+      "exclusions": "Leading-order 2mnk work, one-read traffic, independent products and atomic commit are authored assumptions.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "dtn-buffer",
+      "title": "NASA Delay/Disruption Tolerant Networking Overview",
+      "url": "https://www.nasa.gov/reference/delay-disruption-tolerant-networking-overview/",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "What is DTN? store-and-forward definition; How Does DTN Work?, first paragraph; CFDP distinction"
+      ],
+      "notes": "The primary description supports retaining data when onward forwarding is unavailable. The atlas only borrows buffering across interrupted contacts; it does not implement the bundle protocol, CFDP or an RF link budget.",
+      "statement": "retain data for later transfer across contact interruptions.",
+      "exclusions": "The one-hop reliable acknowledgement abstraction is not DTN/CFDP or proof of an RF or optical link.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "see-rate",
+      "title": "NASA NEPP Single Event Effect Criticality Analysis",
+      "url": "https://nepp.nasa.gov/DocUploads/6D728AF0-2817-4530-97555B6DCB26D083/seecai.pdf",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "\u00a74.3 SEE Rate Calculations, printed pp.28\u201330; particle distribution, chord-length geometry, cross-section and device-versus-bit rate conventions"
+      ],
+      "notes": "The source combines device response, particle distribution and sensitive geometry. It warns about assumptions and uncertainty. Effective angle-integrated reset flux is an authored reduction; no per-steradian flux is silently substituted.",
+      "statement": "Single-event rate estimation depends on environment, device response and geometry.",
+      "exclusions": "The effective angle-integrated flux \u00d7 reset cross-section \u00d7 device count is synthetic; it is not an environment, shielding or mission-survival calculation.",
+      "humanSpecialistReview": null
+    },
+    {
+      "experienceId": "orbital",
+      "sourceLocalId": "poisson-reset",
+      "title": "NIST Engineering Statistics Handbook \u2014 Poisson Distribution",
+      "url": "https://itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI scoped primary-source reader"
+      },
+      "access": "accessible",
+      "support": "supports-scoped-use",
+      "locators": [
+        "\u00a71.3.6.6.19, Probability Mass Function definition"
+      ],
+      "notes": "Setting the event count to zero gives exp(-mu). Here mu=rate\u00d7duration under an explicit independent constant-rate assumption. The probability does not drive scripted faults or multiply retained work.",
+      "statement": "Poisson zero-event probability exp(\u2212\u03bbT) for the assumed constant independent rate.",
+      "exclusions": "The probability is context only; scripted resets drive the trace. It must not multiply retained products and double-count losses.",
+      "humanSpecialistReview": null
+    }
+  ]
+}

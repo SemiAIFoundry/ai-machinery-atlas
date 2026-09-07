@@ -1,0 +1,2812 @@
+{
+  "schemaVersion": 1,
+  "kind": "additive-integration-recheck",
+  "recordedAt": "2026-09-07T21:20:26.820Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root",
+    "role": "AI integration and executable navigation reviewer"
+  },
+  "previousAddendumSha256": "64688193c6a18bde730e1424c4270e3607ee1157c340dfee990ed77647ee7036",
+  "files": [
+    {
+      "path": "src/lib/studio-lessons.ts",
+      "previous": "04cefa4e7a79618ff9b42539163df6ccaee02dff3f8a706e34f76fc42090f161",
+      "current": "497ab5da9af11c1072e1b827b438e5e6b4519bcd6b4a03a2f448c94fd7d12c2a",
+      "scope": "Reviewed explicit canonical lesson routes and one navigation home per experience; the eight original numerical models are unchanged."
+    },
+    {
+      "path": "src/studio.css",
+      "previous": "d7e69b2b79c4fd814881b21633ed7a459ecb647096db2307a80bc4b16e1aaea5",
+      "current": "78932df09ac0c946fed2275416a9093ee9ee689a2753fb35e07e3bf22ad55e4d",
+      "scope": "Reviewed scoped layout and responsive navigation additions; no numerical model changed."
+    }
+  ],
+  "lessons": [
+    {
+      "experience": "applications",
+      "id": "training-data",
+      "previous": "924d2ffbe257f57e302e58043abcb9a501f78df448b51b7692f27ccb94f9f27a",
+      "current": "2516cb4e54773a4eedb248f4e7d24985d44a5db4c81507ac580fcad1ea040d0e",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "training-data",
+        "level": "model",
+        "name": "Training data pipeline",
+        "shortName": "Training data pipeline",
+        "role": "Convert a source collection into useful learning examples.",
+        "description": "A training pipeline may collect, filter, deduplicate, format, tokenize, and batch data. The mixture controls which patterns the optimizer repeatedly encounters. Quality is not a single scalar: correctness, coverage, provenance, licensing, contamination, and representativeness all matter. Training, validation, and benchmark splits need careful separation and overlap checks. More bytes alone do not guarantee better learning; repeated low-value or contaminated examples can waste compute and distort evaluation.\n\nTraining examples also have an availability and transformation history. A label may arrive after an input was first observed, and preprocessing fitted on future or held-out cases can leak information across the evaluation boundary. A deployed artifact should retain which split supplied each learned statistic so later predictions can be reproduced without silently refitting on new data.\n\nAdvanced lifecycle practice retains source identity, transformation history, tokenizer version and document-family split assignment together. A train/development/final separation is meaningful only if near-identical families do not cross it. The executable symbol corpus records these fields, while its source is original synthetic material rather than a crawl or human conversation. Development answers support iteration; the first final report records the evaluated checkpoint and cannot be silently rewritten after another update.",
+        "mechanism": [
+          "Prepare and document the source mixture.",
+          "Filter, deduplicate, tokenize, and form batches.",
+          "Track validation and contamination separately from optimization.",
+          "Feature construction and normalizer fitting use only the allowed training information.",
+          "Evaluation and later monitoring retain their own sample and label-availability boundaries rather than being folded back into the training statistic.",
+          "Preserve raw-source and transformed-example identities.",
+          "Assign whole document families to splits before tokenization-dependent sampling.",
+          "Record final exposure as part of the experimental history, including after importing an older checkpoint."
+        ],
+        "specs": [
+          {
+            "label": "Budget",
+            "value": "Tokens actually trained on",
+            "context": "Different from raw corpus size."
+          },
+          {
+            "label": "Data quality",
+            "value": "Multidimensional",
+            "context": "Coverage, correctness, provenance, and duplication matter."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Storage",
+            "direction": "in",
+            "signal": "Prepared examples"
+          },
+          {
+            "name": "Training loop",
+            "direction": "out",
+            "signal": "Batches of token IDs and targets"
+          }
+        ],
+        "tradeoff": "Cleaning can remove useful rare content as well as noise. Data composition must match intended capabilities and evaluation goals.",
+        "whyAI": "Data supplies the examples that shape the model’s learned behavior.",
+        "related": [
+          "tokenizer",
+          "loss-optimizer",
+          "storage",
+          "scaling-laws",
+          "model-artifact-rollout-drift",
+          "temporal-forecast-validation",
+          "data-quality-dedup-audit",
+          "data-mixture-sampling",
+          "sequence-packing-loss-denominators",
+          "synthetic-data-selection-feedback",
+          "data-coverage-language-slices"
+        ],
+        "sources": [
+          {
+            "title": "Hoffmann et al. — Compute-Optimal Training",
+            "url": "https://arxiv.org/abs/2203.15556"
+          },
+          {
+            "title": "GPT-4 Technical Report",
+            "url": "https://arxiv.org/abs/2303.08774"
+          },
+          {
+            "title": "Lee et al. — Deduplicating Training Data Makes Language Models Better",
+            "url": "https://arxiv.org/abs/2107.06499"
+          },
+          {
+            "title": "scikit-learn · Common pitfalls and data leakage",
+            "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+          },
+          {
+            "title": "The FineWeb Datasets",
+            "url": "https://arxiv.org/html/2406.17557v1"
+          },
+          {
+            "title": "Deduplicating Training Data Makes Language Models Better",
+            "url": "https://arxiv.org/html/2107.06499v1"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "training-data",
+        "misconception": "Training tokens are not the same thing as a count of unique source documents.",
+        "check": {
+          "question": "Does a larger raw corpus guarantee a better model?",
+          "options": [
+            "No; quality and training use matter",
+            "Yes, without exception",
+            "Only if it contains images"
+          ],
+          "answer": 0,
+          "explanation": "Size alone misses duplication, usefulness, coverage, and optimization."
+        },
+        "branch": "Learning",
+        "subbranch": "Data mixture and coverage",
+        "science": [
+          {
+            "title": "The mixture defines the expected learning signal",
+            "equation": "ℒ_mix(θ) = Σⱼ w_j·E[x∼D_j][ℓ(θ;x)]; w_j ≥ 0; Σⱼw_j = 1",
+            "explanation": "Each data source D_j contributes according to its sampling weight w_j. Changing those weights changes which errors the optimizer is asked to reduce most often. Repeating near-duplicates can therefore increase their influence without adding comparable diversity. The same nominal token budget can represent very different learning opportunities.",
+            "assumptions": "This expectation assumes a fixed mixture and loss definition. Curriculum schedules, example weighting, repeated epochs, and adaptive sampling modify the effective weights. Source quality and legal provenance cannot be inferred from the equation."
+          },
+          {
+            "title": "Dataset lineage and reproducible splits · worked relation",
+            "equation": "N_{records}=\\sum_s N_s,\\qquad N_{families}=|\\{\\operatorname{family}(x):x\\in D\\}|",
+            "explanation": "The executable corpus has 12 training, 8 development and 4 final examples per domain. Across copy and swap this is 24/16/8 example records, but only 12/8/4 distinct prompt families because each domain assigns its own answer to the same family. Treating all 48 records as independent prompt families would double-count the evidence.",
+            "assumptions": "Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied."
+          }
+        ],
+        "history": [
+          {
+            "year": 2021,
+            "title": "Deduplication is measured as a training intervention",
+            "significance": "Lee and colleagues showed that removing repeated training material could reduce memorized output and train–test overlap while preserving or improving measured accuracy. Their preprint preceded ACL 2022 publication.",
+            "source": {
+              "title": "Lee et al. — Deduplicating Training Data Makes Language Models Better",
+              "url": "https://arxiv.org/abs/2107.06499"
+            }
+          }
+        ],
+        "prerequisites": [
+          "tokenizer"
+        ],
+        "learningObjective": "Calculate a mixture-weighted loss and explain why changing the data mix changes the learning objective.",
+        "engineeringExample": "Synthetic source losses are 2 and 4 under the same loss definition. Sampling weights 0.75 and 0.25 give mixture loss 2.5; changing to 0.5 and 0.5 gives 3. The calculation changes source influence even when total example count is unchanged.\n\nIf a training-only normalizer has mean 60 and standard deviation 10, input 70 maps to 1. Recomputing a mean of 70 using a later population maps the same input to 0. Comparing model predictions before and after that change as if only the weights mattered hides a preprocessing change. The new artifact lesson gives a logistic example where the resulting threshold decision reverses.\n\nThe executable corpus has 12 training, 8 development and 4 final examples per domain. Across copy and swap this is 24/16/8 example records, but only 12/8/4 distinct prompt families because each domain assigns its own answer to the same family. Treating all 48 records as independent prompt families would double-count the evidence.",
+        "evidenceNotes": "The fixed-mixture expectation is the relation stated in the lesson. Values are synthetic; deduplication, representativeness, contamination and provenance require independent checks and cannot be inferred from this weighted average.\n\nThe sensor datasets and numeric normalization values are authored. They establish a leakage/artifact mechanism, not field data quality or generalization on real equipment.\n\nMode: executable corpus lineage. Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "Should held-out evaluation labels or future observations fit a preprocessing statistic used to claim an earlier forecast?",
+            "options": [
+              "Yes, more data always improves the experiment",
+              "No, that violates the stated availability boundary",
+              "Only if the resulting accuracy increases"
+            ],
+            "answer": 1,
+            "explanation": "The comparison must use information that was allowed at training or prediction time."
+          },
+          {
+            "question": "Why are there only 24 distinct prompt families across the 48 records?",
+            "options": [
+              "Each prompt family is represented once in copy and once in swap.",
+              "Half the records are secretly final-test examples.",
+              "Every source record is necessarily an independent task."
+            ],
+            "answer": 0,
+            "explanation": "Each prompt family is represented once in copy and once in swap. Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied."
+          }
+        ],
+        "labId": "library",
+        "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+        "investigationId": "execution",
+        "labScope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\mathcal L_{\\mathrm{mix}}(\\theta)=\\sum_j w_j\\,\\mathbb E_{x\\sim D_j}[\\ell(\\theta;x)],\\qquad w_j\\ge0,\\quad\\sum_jw_j=1",
+          "variables": [
+            {
+              "symbol": "ℒ_mix",
+              "meaning": "Expected loss under the selected source mixture",
+              "unit": "loss units"
+            },
+            {
+              "symbol": "θ",
+              "meaning": "Model parameter vector",
+              "unit": "model coordinates"
+            },
+            {
+              "symbol": "wⱼ",
+              "meaning": "Sampling weight of source j",
+              "unit": "probability fraction"
+            },
+            {
+              "symbol": "Dⱼ",
+              "meaning": "Data distribution for source j",
+              "unit": "probability distribution"
+            },
+            {
+              "symbol": "x",
+              "meaning": "Example sampled from Dⱼ",
+              "unit": "example"
+            },
+            {
+              "symbol": "ℓ(θ,x)",
+              "meaning": "Per-example loss",
+              "unit": "same loss units as ℒ_mix"
+            },
+            {
+              "symbol": "j",
+              "meaning": "Source index",
+              "unit": "integer index"
+            }
+          ],
+          "text": "Mixture loss is the weighted sum of expected per-example loss for each source. Sampling weights are nonnegative and sum to one."
+        },
+        {
+          "kind": "math",
+          "latex": "N_{records}=\\sum_s N_s,\\qquad N_{families}=|\\{\\operatorname{family}(x):x\\in D\\}|",
+          "text": "Audit data lineage at the family and split boundaries.",
+          "variables": [
+            {
+              "symbol": "N_records",
+              "meaning": "Stored example rows",
+              "unit": "examples"
+            },
+            {
+              "symbol": "N_s",
+              "meaning": "Rows in split s",
+              "unit": "examples"
+            },
+            {
+              "symbol": "N_families",
+              "meaning": "Distinct prompt-family identities",
+              "unit": "families"
+            },
+            {
+              "symbol": "D",
+              "meaning": "Declared corpus",
+              "unit": "dataset"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "applications",
+      "id": "loss-optimizer",
+      "previous": "a55032dcbccd5bf049020fe990ad36b2a93ef30527fe3dbf8f205c2ed139afc5",
+      "current": "26e1bf1e124fe3933f61e2c3a2fff4dde2a9b5058210f14ff254bee954a7d319",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "loss-optimizer",
+        "level": "model",
+        "name": "Loss, gradients & optimizer",
+        "shortName": "Loss, gradients & optimizer",
+        "role": "Turn prediction errors into parameter updates.",
+        "description": "A loss assigns a numerical training objective to the model’s predictions. Backpropagation applies the chain rule through the computation graph to obtain gradients. An optimizer uses those gradients and, often, additional state to update weights. Adam maintains estimates related to gradient moments. This backward computation and optimizer storage distinguish training from ordinary inference. Distributed execution must coordinate the appropriate gradients or shards before consistent updates can proceed.\n\nA training objective, a decision threshold and an operational acceptance criterion answer different questions. Updating weights changes the predictive function; moving a threshold changes decisions for the same probabilities. Neither operation should be concealed inside an evaluation comparison. A frozen artifact and separate test set make these changes traceable into later deployment decisions.\n\nAn optimizer consumes a derived gradient; a supplied-gradient calculator teaches only the last part of that chain. The lifecycle experience adds an actual decoder loss and reverse pass before applying either SGD or Adam. Adam’s moments and step counter are learning state, not display history. Global norm clipping occurs before those moments. Changing the objective changes the gradient even if the optimizer setting is held fixed.",
+        "mechanism": [
+          "Run the forward computation and evaluate the loss.",
+          "Backpropagate derivatives through the recorded operations.",
+          "Combine required distributed information and update parameters.",
+          "The optimizer updates model parameters using the defined training loss and regularization.",
+          "Evaluation keeps thresholds and accepted error tradeoffs explicit instead of claiming that lower loss necessarily produces a better application.",
+          "Compute the gradient from the current batch loss and retain its denominator.",
+          "Apply the declared global clipping rule.",
+          "Update moments, bias-correct them and apply the chosen learning rate; save all resulting state."
+        ],
+        "specs": [
+          {
+            "label": "Gradient",
+            "value": "∂loss / ∂weight",
+            "context": "Local sensitivity of the objective."
+          },
+          {
+            "label": "Adam state",
+            "value": "First and second moment estimates",
+            "context": "Adds storage beyond the weights."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Batch and predictions",
+            "direction": "in",
+            "signal": "Objective and activations"
+          },
+          {
+            "name": "Model parameters",
+            "direction": "out",
+            "signal": "Updated weight arrays"
+          }
+        ],
+        "tradeoff": "Optimizer state and saved activations consume substantial memory. Checkpointing can exchange extra computation for lower activation storage.",
+        "whyAI": "Learning is an optimization process executed by physical arithmetic and memory systems.",
+        "related": [
+          "training-data",
+          "residual-normalization",
+          "parallelism",
+          "checkpoint",
+          "model-artifact-rollout-drift",
+          "evaluation",
+          "causal-pretraining-objective",
+          "optimizer-schedule-stability",
+          "microbatch-equivalent-updates"
+        ],
+        "sources": [
+          {
+            "title": "Kingma & Ba — Adam",
+            "url": "https://arxiv.org/abs/1412.6980"
+          },
+          {
+            "title": "PyTorch — CrossEntropyLoss",
+            "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.CrossEntropyLoss.html"
+          },
+          {
+            "title": "scikit-learn · Common pitfalls and data leakage",
+            "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+          },
+          {
+            "title": "2 OLMo 2 Furious",
+            "url": "https://arxiv.org/html/2501.00656v1"
+          },
+          {
+            "title": "PyTorch Adam algorithm",
+            "url": "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "loss-optimizer",
+        "misconception": "Backpropagation computes derivatives; the optimizer decides the update.",
+        "check": {
+          "question": "Which process changes learned weights in a normal training step?",
+          "options": [
+            "Displaying a response",
+            "Applying an optimizer update",
+            "Reading a KV cache"
+          ],
+          "answer": 1,
+          "explanation": "The optimizer updates parameters using gradients and its update rule."
+        },
+        "branch": "Learning",
+        "subbranch": "Differentiation and weight updates",
+        "science": [
+          {
+            "title": "Adam adapts updates using gradient moments",
+            "equation": "gₜ = ∇θℒₜ; mₜ = β₁mₜ₋₁+(1−β₁)gₜ; vₜ = β₂vₜ₋₁+(1−β₂)gₜ²; θₜ₊₁ = θₜ−η·m̂ₜ/(√v̂ₜ+ε)",
+            "explanation": "The first moment m smooths gradient direction; the second moment v tracks squared gradient magnitude. Bias-corrected estimates m̂ and v̂ scale each coordinate’s step. The optimizer consequently needs state arrays in addition to weights and gradients, connecting a mathematical update rule directly to accelerator memory requirements.",
+            "assumptions": "Products, squares, and divisions are coordinate-wise. With zero initialization, m̂ₜ=mₜ/(1−β₁ᵗ) and v̂ₜ=vₜ/(1−β₂ᵗ). This is ordinary Adam; decoupled weight decay, clipping, loss scaling, and distributed sharding require additional rules."
+          },
+          {
+            "title": "Compute gradients before applying the optimizer · worked relation",
+            "equation": "m_t=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\quad v_t=\\beta_2v_{t-1}+(1-\\beta_2)g_t^2,\\quad\\theta^+=\\theta-\\eta\\frac{m_t/(1-\\beta_1^t)}{\\sqrt{v_t/(1-\\beta_2^t)}+\\epsilon}",
+            "explanation": "For a scalar gradient g=0.5, weight 2 and learning rate 0.1, SGD gives 1.95. For the first Adam step with zero moments, beta1=0.9 and beta2=0.999, m=0.05 and v=0.00025; bias-corrected values are 0.5 and 0.25. With epsilon=1e-8 the Adam result is approximately 1.900000002. It differs from SGD because Adam normalizes by the second-moment scale.",
+            "assumptions": "No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5."
+          }
+        ],
+        "history": [
+          {
+            "year": 2014,
+            "title": "Adam combines momentum with adaptive scaling",
+            "significance": "Kingma and Ba released the Adam preprint in December 2014; its conference publication followed at ICLR 2015. The method maintains first and second gradient-moment estimates.",
+            "source": {
+              "title": "Kingma & Ba — Adam: A Method for Stochastic Optimization",
+              "url": "https://arxiv.org/abs/1412.6980"
+            }
+          }
+        ],
+        "prerequisites": [
+          "training-data",
+          "output-head"
+        ],
+        "learningObjective": "Trace one Adam update from a gradient through moment state to a changed parameter.",
+        "engineeringExample": "Synthetic first Adam step: θ = 1, gradient g = 2, zero initial moments, β₁ = 0.9, β₂ = 0.999 and learning rate 0.01 give m₁ = 0.2 and v₁ = 0.004. Bias correction gives m̂₁ = 2 and v̂₁ = 4; with ε = 10⁻⁸, θ becomes approximately 0.99.\n\nFor fixed predicted probabilities [0.2,0.6,0.8], a threshold of 0.5 gives decisions [0,1,1], while threshold 0.7 gives [0,0,1]. The weights and all three probabilities are unchanged. With labels [0,0,1], the second threshold removes one false positive on these three cases. This does not prove that 0.7 is better on future data; selecting it using the held-out test would also compromise that test’s independence.\n\nFor a scalar gradient g=0.5, weight 2 and learning rate 0.1, SGD gives 1.95. For the first Adam step with zero moments, beta1=0.9 and beta2=0.999, m=0.05 and v=0.00025; bias-corrected values are 0.5 and 0.25. With epsilon=1e-8 the Adam result is approximately 1.900000002. It differs from SGD because Adam normalizes by the second-moment scale.",
+        "evidenceNotes": "This follows the ordinary Adam equations in the linked paper. The gradient is supplied rather than derived here; clipping, weight decay, loss scaling and sharded optimizer state are excluded. Computing a gradient and applying an update remain separate steps.\n\nThe threshold arithmetic is authored. The existing sensor experience executes actual logistic updates, while these three probabilities are a separate worked decision example.\n\nMode: executable derived-gradient optimizer. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "A decision threshold changes from 0.5 to 0.7 with fixed model outputs. What necessarily changes?",
+            "options": [
+              "The fitted weights",
+              "The training labels",
+              "Potential binary decisions, without requiring retraining"
+            ],
+            "answer": 2,
+            "explanation": "Thresholding is a downstream decision rule; it can change labels without changing the fitted predictor."
+          },
+          {
+            "question": "Why is the first Adam change about 0.1 rather than 0.05?",
+            "options": [
+              "Adam ignores gradients and always chooses random weights.",
+              "SGD and Adam use identical state equations.",
+              "The bias-corrected gradient is divided by its second-moment root."
+            ],
+            "answer": 2,
+            "explanation": "The bias-corrected gradient is divided by its second-moment root. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5."
+          }
+        ],
+        "labId": "library",
+        "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+        "investigationId": "execution",
+        "labScope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\begin{aligned}g_t&=\\nabla_\\theta\\mathcal L_t,\\\\m_t&=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\\\v_t&=\\beta_2v_{t-1}+(1-\\beta_2)g_t^{\\odot2},\\\\\\hat m_t&=\\frac{m_t}{1-\\beta_1^t},\\qquad\\hat v_t=\\frac{v_t}{1-\\beta_2^t},\\\\\\theta_{t+1}&=\\theta_t-\\eta\\frac{\\hat m_t}{\\sqrt{\\hat v_t}+\\varepsilon}\\end{aligned}",
+          "variables": [
+            {
+              "symbol": "θₜ",
+              "meaning": "Parameter vector before update t",
+              "unit": "parameter-coordinate units"
+            },
+            {
+              "symbol": "ℒₜ",
+              "meaning": "Step-t loss evaluated at the current parameters",
+              "unit": "loss units"
+            },
+            {
+              "symbol": "gₜ",
+              "meaning": "Gradient of step loss with respect to parameters",
+              "unit": "loss units per parameter-coordinate unit"
+            },
+            {
+              "symbol": "mₜ,m̂ₜ",
+              "meaning": "First moment and its zero-initialization bias correction",
+              "unit": "same units as gₜ"
+            },
+            {
+              "symbol": "vₜ,v̂ₜ",
+              "meaning": "Second raw moment and its bias correction",
+              "unit": "squared gradient units"
+            },
+            {
+              "symbol": "β₁,β₂",
+              "meaning": "Moment decay coefficients",
+              "unit": "fractions less than one"
+            },
+            {
+              "symbol": "η",
+              "meaning": "Step size applied to the normalized direction",
+              "unit": "parameter-coordinate units"
+            },
+            {
+              "symbol": "ε",
+              "meaning": "Positive denominator stabilizer",
+              "unit": "same units as square root of v̂ₜ"
+            },
+            {
+              "symbol": "t",
+              "meaning": "Positive update index for moment bias correction",
+              "unit": "integer index"
+            },
+            {
+              "symbol": "⊙2",
+              "meaning": "Elementwise square",
+              "unit": "operator"
+            }
+          ],
+          "text": "Adam smooths gradients and their elementwise squares, corrects zero-initialization bias, then subtracts the step size times corrected first moment divided elementwise by square root of corrected second moment plus a stabilizer.",
+          "note": "All squares, roots and divisions are elementwise. The two bias-correction relations are made explicit from the original assumptions. Parameter labels retain the source convention of updating θ_t to θ_(t+1)."
+        },
+        {
+          "kind": "math",
+          "latex": "m_t=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\quad v_t=\\beta_2v_{t-1}+(1-\\beta_2)g_t^2,\\quad\\theta^+=\\theta-\\eta\\frac{m_t/(1-\\beta_1^t)}{\\sqrt{v_t/(1-\\beta_2^t)}+\\epsilon}",
+          "text": "Verify the first actual gradient-driven SGD and Adam updates under explicit state.",
+          "variables": [
+            {
+              "symbol": "m_t",
+              "meaning": "First gradient moment",
+              "unit": "gradient units"
+            },
+            {
+              "symbol": "v_t",
+              "meaning": "Second gradient moment",
+              "unit": "squared gradient units"
+            },
+            {
+              "symbol": "g_t",
+              "meaning": "Gradient after declared clipping",
+              "unit": "gradient units"
+            },
+            {
+              "symbol": "beta_1,beta_2",
+              "meaning": "Moment decay factors",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "t",
+              "meaning": "Optimizer update count",
+              "unit": "updates"
+            },
+            {
+              "symbol": "eta",
+              "meaning": "Learning rate",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "epsilon",
+              "meaning": "Denominator stabilizer",
+              "unit": "gradient units"
+            },
+            {
+              "symbol": "theta",
+              "meaning": "Parameter",
+              "unit": "dimensionless"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "applications",
+      "id": "evaluation",
+      "previous": "d47d5dd2c0ac000b793a5b471d6807bfbd78b32a05ea866dd5490e6767221fbb",
+      "current": "5f06e507266080e89a2e417a5235d0436727ea9f7f5d80df93a03e0c78a36f4c",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "evaluation",
+        "level": "model",
+        "name": "Evaluation & the AGI frontier",
+        "shortName": "Evaluation & the AGI frontier",
+        "role": "Measure breadth, reliability, and practical competence.",
+        "description": "A useful evaluation asks what the entire system can accomplish under clear conditions. It records correctness, consistency, cost, latency, tool access, and the amount of human help allowed. Generality involves breadth across tasks and transfer to unfamiliar situations; excellent results on one benchmark cannot establish all of it. Contamination and benchmark saturation complicate comparison. This atlas ends at an open research frontier: the assembled machinery enables increasingly capable systems, while the definition and demonstration of AGI require explicit evidence.\n\nThe durable incident experience adds a task-state oracle to the existing distinction between source support and answer correctness. The oracle checks actual reservations, work orders, inventory conservation and prohibited exports. It does not accept the worker’s completion status as its label. Repeated trials can later assess reliability, but a deterministic fixture run is only evidence for its declared case.\n\nEvaluation attaches a scoring rule and denominator to a fixed checkpoint. Development cases guide iteration, while an independent final test assesses a choice made before its answers are inspected. Repeatedly consulting that final set while choosing changes weakens its independence. A small perfect result also leaves substantial uncertainty about future cases. The lifecycle’s seal is procedural: source files remain inspectable, and its first final report retains checkpoint identity rather than updating silently as training continues.",
+        "mechanism": [
+          "Define tasks, success criteria, and permitted resources.",
+          "Test on held-out and unfamiliar cases, including failures.",
+          "Report uncertainty, repeatability, and limits alongside successes.",
+          "The evaluation target specifies acceptable environment state and forbidden effects independently of the policy.",
+          "Source support, task correctness, abstention and tool error rates retain distinct denominators and interpretations.",
+          "Choose the task and score before revealing final outcomes.",
+          "Preserve checkpoint, dataset, tokenizer and inference identities with each result.",
+          "Report counts and uncertainty rather than only percentages; mark exposed final data as previously seen."
+        ],
+        "specs": [
+          {
+            "label": "Dimensions",
+            "value": "Breadth + competence + autonomy",
+            "context": "A framework, not a single universal score."
+          },
+          {
+            "label": "Evidence",
+            "value": "Task-specific and repeatable",
+            "context": "Benchmark conditions affect conclusions."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Model system",
+            "direction": "in",
+            "signal": "Behavior under controlled conditions"
+          },
+          {
+            "name": "Research decisions",
+            "direction": "out",
+            "signal": "Measured strengths and failure modes"
+          }
+        ],
+        "tradeoff": "A compact benchmark is easy to compare but cannot cover all real-world situations. More representative evaluation costs time and effort.",
+        "whyAI": "The goal is useful, reliable competence; larger machines are a means to test, not proof of the goal.",
+        "related": [
+          "tool-loop",
+          "post-training",
+          "scaling-laws",
+          "workflow-graphs-state",
+          "telemetry-traces-evaluation",
+          "retrieval-indexing-evaluation",
+          "probability-calibration-abstention",
+          "judge-rubric-agreement",
+          "retrieval-supported-generation",
+          "test-time-search-verification",
+          "model-system-regression-contract"
+        ],
+        "sources": [
+          {
+            "title": "Morris et al. — Levels of AGI",
+            "url": "https://arxiv.org/abs/2311.02462"
+          },
+          {
+            "title": "NIST — Binomial Distribution",
+            "url": "https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm"
+          },
+          {
+            "title": "NIST — Exact Binomial Confidence Limits",
+            "url": "https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/exacbici.htm"
+          },
+          {
+            "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+            "url": "https://arxiv.org/abs/2406.12045"
+          },
+          {
+            "title": "Holistic Evaluation of Language Models",
+            "url": "https://arxiv.org/html/2211.09110v1"
+          },
+          {
+            "title": "On Calibration of Modern Neural Networks",
+            "url": "https://arxiv.org/html/1706.04599v2"
+          },
+          {
+            "title": "NIST Dataplot: Wilson proportion interval",
+            "url": "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/agrecoul.htm"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "evaluation",
+        "misconception": "An impressive system architecture does not, by itself, establish general intelligence.",
+        "check": {
+          "question": "What does strong performance on one benchmark demonstrate?",
+          "options": [
+            "Universal AGI by itself",
+            "Performance on that benchmark under its stated conditions",
+            "That evaluation is no longer needed"
+          ],
+          "answer": 1,
+          "explanation": "Breadth, reliability, and transfer require additional evidence."
+        },
+        "branch": "Evidence and frontiers",
+        "subbranch": "Measurement and uncertainty",
+        "science": [
+          {
+            "title": "Benchmark success has sampling uncertainty",
+            "equation": "p̂ = k/n; SE(p̂) ≈ √[p̂(1−p̂)/n]",
+            "explanation": "If k of n independently sampled tasks succeed, p̂ estimates the success probability for that task distribution. The estimated standard error shrinks only as the square root of sample size: roughly four times as many comparable trials are needed to halve it. This uncertainty says nothing by itself about tasks outside the tested distribution.",
+            "assumptions": "Binary outcomes, independent trials, fixed conditions, and a representative sample are required. The plug-in approximation is poor near zero or one or with small n; use suitable binomial intervals. Correlated tasks, benchmark selection, contamination, and judge error add other uncertainties."
+          },
+          {
+            "title": "A development protocol and an independent final test · worked relation",
+            "equation": "CI=\\frac{\\hat p+z^2/(2n)\\ \\pm\\ z\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}+\\frac{z^2}{4n^2}}}{1+z^2/n}",
+            "explanation": "A result of 4/4 on the tiny final copy split is 100% observed accuracy, not proof of perfect population accuracy. A Wilson 95% interval with z=1.96 has lower bound about 0.510 and upper bound 1.000. The finite test supports only its declared toy task and split. Updating weights after the report changes model identity; the earlier 4/4 must remain attributed to the earlier checkpoint.",
+            "assumptions": "Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias."
+          }
+        ],
+        "history": [
+          {
+            "year": 2023,
+            "title": "Levels of AGI separates breadth from performance",
+            "significance": "Morris and colleagues proposed a framework for comparing capability breadth and performance while treating deployment autonomy separately, making progress claims more explicit than a single benchmark score.",
+            "source": {
+              "title": "Morris et al. — Levels of AGI for Operationalizing Progress on the Path to AGI",
+              "url": "https://arxiv.org/abs/2311.02462"
+            }
+          }
+        ],
+        "learningObjective": "Use a proportion with uncertainty rather than a single pass rate.",
+        "engineeringExample": "If k=90 of n=100 items pass, p̂=0.9; the standard-error approximation is about 0.03 under a simple independent-sample model.\n\nIn the wrong-entity incident, the authored policy completes one FAN-9 work order supported by the FAN-9 manual. Source support is 1/1, yet the original FAN-7 task is wrong. In the canceled-after-commit case the reservation exists but the required work order does not, so task success is false even though an external write succeeded. These outcomes expose errors that counting successful calls would miss.\n\nA result of 4/4 on the tiny final copy split is 100% observed accuracy, not proof of perfect population accuracy. A Wilson 95% interval with z=1.96 has lower bound about 0.510 and upper bound 1.000. The finite test supports only its declared toy task and split. Updating weights after the report changes model identity; the earlier 4/4 must remain attributed to the earlier checkpoint.",
+        "evidenceNotes": "Benchmark selection, contamination, rubric and dependence dominate many real evaluations.\n\nThe examples use fictional environments and deterministic authored policies. They do not reproduce τ-bench cases or establish a real agent’s reliability or benchmark score.\n\nMode: executable final report; worked uncertainty. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "visualFamily": "model-workload",
+        "prerequisites": [
+          "output-head"
+        ],
+        "checks": [
+          {
+            "question": "Every call succeeded and the source supports the FAN-9 work order, but the task requested FAN-7. Is the task correct?",
+            "options": [
+              "Yes, because all calls succeeded",
+              "No, because the environment fails the original goal",
+              "Yes, because the citation is valid"
+            ],
+            "answer": 1,
+            "explanation": "Call status and source support do not replace the original task contract."
+          },
+          {
+            "question": "What should happen to a 4/4 report after the weights change?",
+            "options": [
+              "It proves every later model also succeeds.",
+              "It remains attached to the checkpoint that was actually evaluated.",
+              "It silently becomes a report about the new weights."
+            ],
+            "answer": 1,
+            "explanation": "It remains attached to the checkpoint that was actually evaluated. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias."
+          }
+        ],
+        "labId": "library",
+        "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+        "investigationId": "execution",
+        "labScope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\hat p=\\frac{k}{n},\\qquad\\operatorname{SE}(\\hat p)\\approx\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}",
+          "variables": [
+            {
+              "symbol": "p̂",
+              "meaning": "Observed success fraction",
+              "unit": "probability fraction"
+            },
+            {
+              "symbol": "k",
+              "meaning": "Successful independent trials",
+              "unit": "trials"
+            },
+            {
+              "symbol": "n",
+              "meaning": "Total independent trials, greater than zero",
+              "unit": "trials"
+            },
+            {
+              "symbol": "SE(p̂)",
+              "meaning": "Plug-in standard error of the success-fraction estimator",
+              "unit": "probability fraction"
+            }
+          ],
+          "text": "Estimated success probability is successes divided by trials. Its plug-in standard error is the square root of estimated probability times one minus that probability divided by trial count."
+        },
+        {
+          "kind": "math",
+          "latex": "CI=\\frac{\\hat p+z^2/(2n)\\ \\pm\\ z\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}+\\frac{z^2}{4n^2}}}{1+z^2/n}",
+          "text": "Keep development feedback separate from a first final-test report and state its uncertainty.",
+          "variables": [
+            {
+              "symbol": "CI",
+              "meaning": "Wilson interval under the stated binomial model",
+              "unit": "probability interval"
+            },
+            {
+              "symbol": "p hat",
+              "meaning": "Observed success fraction",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "n",
+              "meaning": "Evaluated cases",
+              "unit": "cases"
+            },
+            {
+              "symbol": "z",
+              "meaning": "Normal quantile, 1.96 for approximate 95 percent",
+              "unit": "dimensionless"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "applications",
+      "id": "embedding",
+      "previous": "c93bd77665949229c45aba4e729476fdbca63e75af5c694ecbf26cf405e280d8",
+      "current": "b97066417deb1d20cb7ebb608af14157dff69a14be7e8e8e8890a804cfd4bda8",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "embedding",
+        "level": "model",
+        "name": "Embedding table",
+        "shortName": "Embedding table",
+        "role": "Give discrete tokens a trainable numerical representation.",
+        "description": "An embedding table is a matrix with one row per vocabulary entry. Looking up an ID returns a vector that the rest of the network can transform. These values are learned during training. Related uses can acquire useful geometric relationships, but no single coordinate is guaranteed to have a neat human interpretation. The table lives in memory; its displayed three-dimensional form is a small sample of a much higher-dimensional array.\n\nA lookup row is a shared parameter whenever the same token occurs more than once. Reverse-mode gradients from every occurrence must accumulate into that row. If input embeddings and the output head are tied, the output path adds another contribution to the same parameters. The executable lifecycle model uses separate matrices, so tying is a worked extension rather than an implicit property of all decoders.",
+        "mechanism": [
+          "Take a token ID as a row address.",
+          "Read the corresponding vector of learned values.",
+          "Pass the sequence of vectors into the model with position information.",
+          "Identify all input positions that read the same token row.",
+          "Add each position’s backward contribution at matching feature coordinates.",
+          "If weights are explicitly tied, add output-path gradients before the optimizer update."
+        ],
+        "specs": [
+          {
+            "label": "Shape",
+            "value": "V × d",
+            "context": "Vocabulary size V; vector width d."
+          },
+          {
+            "label": "Storage",
+            "value": "V × d × bytes/value",
+            "context": "Excludes quantization metadata and optimizer state."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Tokenizer",
+            "direction": "in",
+            "signal": "Integer IDs"
+          },
+          {
+            "name": "Transformer blocks",
+            "direction": "out",
+            "signal": "Token vectors"
+          }
+        ],
+        "tradeoff": "Wider vectors increase representation capacity and arithmetic/storage cost. Quantization can reduce bytes per value with numerical tradeoffs.",
+        "whyAI": "Embeddings connect symbolic input to the matrix computations executed by accelerators.",
+        "related": [
+          "tokenizer",
+          "positional-encoding",
+          "attention",
+          "hbm-stack",
+          "reverse-mode-autodiff",
+          "tiny-causal-decoder"
+        ],
+        "sources": [
+          {
+            "title": "PyTorch — Embedding",
+            "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.Embedding.html"
+          },
+          {
+            "title": "Bengio et al. — A Neural Probabilistic Language Model",
+            "url": "https://www.jmlr.org/papers/v3/bengio03a.html"
+          },
+          {
+            "title": "Attention Is All You Need",
+            "url": "https://arxiv.org/html/1706.03762v7"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "embedding",
+        "misconception": "The visible vector is not a literal concept stored in one neuron.",
+        "check": {
+          "question": "What does an embedding lookup return?",
+          "options": [
+            "A row of learned numerical values",
+            "A network packet",
+            "A transistor address"
+          ],
+          "answer": 0,
+          "explanation": "The ID indexes a trainable matrix row."
+        },
+        "branch": "Representation",
+        "subbranch": "Learned vectors",
+        "science": [
+          {
+            "title": "Lookup is a sparse matrix multiplication",
+            "equation": "e_i = one_hot(i)ᵀ E; E ∈ ℝ^(V×d); ∂ℒ/∂E_j = Σ[t: token_t=j] ∂ℒ/∂e_t",
+            "explanation": "A one-hot row selects exactly one of V embedding vectors, each with d coordinates. Implementations gather that row instead of materializing a giant one-hot matrix. During backpropagation, occurrences of the same token contribute to the gradient of the same shared row.",
+            "assumptions": "The gradient expression covers the input lookup path only. A tied output projection, regularization, or other use of E can add gradients to additional rows; quantization changes physical storage."
+          },
+          {
+            "title": "Learned lookup gradients and tied weights · worked relation",
+            "equation": "\\frac{\\partial L}{\\partial E_{v,:}}=\\sum_{t:x_t=v}\\frac{\\partial L}{\\partial e_t}+g^{tied\\ output}_{v,:}",
+            "explanation": "Token a appears twice and receives row gradients [1,2] and [3,−1]. Its input-embedding gradient is [4,1]. A separate token b receives [0.5,0.5] and must not be added to a. If an explicitly tied output path contributes [−2,1] to a, the combined tied gradient becomes [2,2]. The core instead keeps the output contribution in its separate unembedding tensor.",
+            "assumptions": "Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate."
+          }
+        ],
+        "history": [
+          {
+            "year": 2003,
+            "title": "Distributed word representations in a neural language model",
+            "significance": "Bengio and colleagues jointly learned word vectors and a sequence probability model, showing how shared continuous representations could generalize beyond previously observed word sequences.",
+            "source": {
+              "title": "Bengio et al. — A Neural Probabilistic Language Model",
+              "url": "https://www.jmlr.org/papers/v3/bengio03a.html"
+            }
+          }
+        ],
+        "prerequisites": [
+          "tokenizer"
+        ],
+        "learningObjective": "Compute table storage and explain how an ID selects a vector without creating meaning from its numeric value.",
+        "engineeringExample": "Synthetic table with 1,000 vocabulary rows, width 8 and two bytes per element uses 1,000 × 8 × 2 = 16,000 bytes. Looking up ID 17 returns one eight-element row, a 16-byte logical vector; it does not mean the token has semantic magnitude 17.\n\nToken a appears twice and receives row gradients [1,2] and [3,−1]. Its input-embedding gradient is [4,1]. A separate token b receives [0.5,0.5] and must not be added to a. If an explicitly tied output path contributes [−2,1] to a, the combined tied gradient becomes [2,2]. The core instead keeps the output contribution in its separate unembedding tensor.",
+        "evidenceNotes": "This is dense logical storage and lookup as described by the linked embedding references. Padding, quantization metadata, tied output weights and training optimizer state are separate; no particular model vocabulary or width is assumed.\n\nMode: executable lookup gradients; worked tying. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "What is the input-only gradient for the repeated a row?",
+            "options": [
+              "[3,−1], because the second occurrence replaces the first.",
+              "[4.5,1.5], because every token shares one row.",
+              "[4,1]."
+            ],
+            "answer": 2,
+            "explanation": "[4,1]. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate."
+          }
+        ],
+        "labId": "engineering",
+        "scope": "Budget weights, KV and optional optimizer/master state; activations, gradients and the numerical training or quantization algorithm are not modeled.",
+        "deepLabId": "footprint",
+        "investigationId": "execution",
+        "labScope": "Budget weights, KV and optional optimizer/master state; activations, gradients and the numerical training or quantization algorithm are not modeled."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\begin{aligned}e_i&=\\operatorname{onehot}(i)^{\\mathsf T}E,\\quad E\\in\\mathbb R^{V\\times d}\\\\\\frac{\\partial\\mathcal L}{\\partial E_{j,:}}&=\\sum_{t:\\,\\mathrm{token}_t=j}\\frac{\\partial\\mathcal L}{\\partial e_t}\\end{aligned}",
+          "variables": [
+            {
+              "symbol": "E",
+              "meaning": "Embedding table with one row per vocabulary item",
+              "unit": "real V × d array"
+            },
+            {
+              "symbol": "V",
+              "meaning": "Vocabulary size",
+              "unit": "count"
+            },
+            {
+              "symbol": "d",
+              "meaning": "Embedding width",
+              "unit": "coordinates"
+            },
+            {
+              "symbol": "eᵢ",
+              "meaning": "Row vector retrieved for token ID i in the lookup identity",
+              "unit": "real 1 × d vector"
+            },
+            {
+              "symbol": "onehot(i)",
+              "meaning": "Column selector containing one at token ID i",
+              "unit": "real V × 1 vector"
+            },
+            {
+              "symbol": "E_j,:",
+              "meaning": "Embedding row for vocabulary ID j",
+              "unit": "real 1 × d vector"
+            },
+            {
+              "symbol": "ℒ",
+              "meaning": "Scalar training loss",
+              "unit": "dimensionless model loss"
+            },
+            {
+              "symbol": "eₜ",
+              "meaning": "Embedding occurrence at sequence position t in the gradient sum",
+              "unit": "real 1 × d vector"
+            },
+            {
+              "symbol": "tokenₜ",
+              "meaning": "Token ID at sequence position t",
+              "unit": "integer ID"
+            },
+            {
+              "symbol": "i,j,t",
+              "meaning": "Vocabulary or sequence indices as locally indicated",
+              "unit": "integer indices"
+            }
+          ],
+          "text": "A one-hot row selects its embedding-table row. The lookup-path gradient for a shared vocabulary row sums gradients from every sequence position using that token.",
+          "note": "The first e index names a vocabulary item; the gradient-sum e index names a sequence occurrence. The table explicitly distinguishes them. All values are model coordinates, not physical distances."
+        },
+        {
+          "kind": "math",
+          "latex": "\\frac{\\partial L}{\\partial E_{v,:}}=\\sum_{t:x_t=v}\\frac{\\partial L}{\\partial e_t}+g^{tied\\ output}_{v,:}",
+          "text": "Accumulate gradients into shared lookup rows and distinguish tied from separate output weights.",
+          "variables": [
+            {
+              "symbol": "E_v",
+              "meaning": "Shared embedding row for token v",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "e_t",
+              "meaning": "Lookup result at input position t",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "g",
+              "meaning": "Derivative contribution, zero here unless weights are explicitly tied",
+              "unit": "loss per parameter"
+            },
+            {
+              "symbol": "x_t",
+              "meaning": "Token identity",
+              "unit": "identifier"
+            },
+            {
+              "symbol": "L",
+              "meaning": "Scalar objective",
+              "unit": "loss"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "applications",
+      "id": "serving",
+      "previous": "023db907efd5c9c47c3559e7c5d96ab2c4b3be1f0959abb237e600a8aaabf085",
+      "current": "998f99f61462d045616dab0c30f52c7e65e3ad79242403c0bebdd60c53498f45",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "serving",
+        "level": "software",
+        "name": "Inference serving and request scheduling",
+        "shortName": "Serving engine",
+        "role": "Turns incoming model requests into scheduled prefill and generation work.",
+        "description": "A serving engine manages the many requests that share an inference deployment. It receives inputs, schedules prompt processing, keeps track of generation state, and returns outputs while managing memory and latency goals. Continuous batching can admit and retire requests as generation progresses instead of waiting for one fixed batch to finish. Paged KV-cache management organizes attention state in blocks to reduce wasted allocation and support flexible scheduling. The atlas shows requests with different lengths sharing device execution while retaining distinct state. Serving optimization changes resource use and response timing, not the meaning of trained weights. Throughput, time to first token, and time between later tokens must be considered separately because users experience all three differently.\n\nA request-level explanation should retain arrival, admission, service and completion as separate states. Resource bounds for a decode step do not by themselves determine which queued request runs next. A scheduling policy also owns live sequence state and must release or preserve it correctly after completion, cancellation and handoff. A useful comparison holds the request trace and service assumptions fixed while changing only the scheduling policy.",
+        "specs": [
+          {
+            "label": "Execution phases",
+            "value": "Prefill and decode",
+            "context": "Prompt processing followed by iterative generation."
+          },
+          {
+            "label": "Latency measures",
+            "value": "Time to first token and inter-token latency",
+            "context": "Different parts of perceived responsiveness."
+          },
+          {
+            "label": "Example techniques",
+            "value": "Continuous batching and paged KV cache",
+            "context": "Documented in vLLM; implementation-specific."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Inference requests",
+            "direction": "in",
+            "signal": "Prompts, settings, and request state"
+          },
+          {
+            "name": "Generated outputs",
+            "direction": "out",
+            "signal": "Streamed tokens or completed results"
+          }
+        ],
+        "tradeoff": "Batching can improve throughput. Queueing and memory pressure can worsen individual request latency.",
+        "whyAI": "Serving makes trained models available to people and applications. It translates hardware capacity into practical responsiveness and concurrency.",
+        "related": [
+          "cuda",
+          "kernel",
+          "quantization",
+          "storage",
+          "scheduler",
+          "output-head",
+          "event-queues-delivery",
+          "telemetry-traces-evaluation",
+          "runtime-device-dispatch"
+        ],
+        "sources": [
+          {
+            "title": "vLLM — Inference and Serving Documentation",
+            "url": "https://docs.vllm.ai/en/latest/"
+          },
+          {
+            "title": "Kwon et al. — Efficient Memory Management with PagedAttention",
+            "url": "https://arxiv.org/abs/2309.06180"
+          }
+        ],
+        "scale": "Request-to-device software pipeline",
+        "kind": "serving",
+        "mechanism": [
+          "Accept requests and schedule their prompt processing.",
+          "Maintain each request’s state while batching compatible generation work.",
+          "Stream results and release resources as requests finish.",
+          "Request timestamps and state transitions distinguish queue wait, first-token delay and later inter-token intervals.",
+          "A canceled or completed request releases its owned state under an explicit policy; a workload bound alone does not simulate that transition."
+        ],
+        "misconception": "Higher tokens-per-second throughput does not automatically mean lower latency for one user’s request.",
+        "check": {
+          "question": "What does continuous batching allow?",
+          "options": [
+            "All users must finish at the same time",
+            "Requests can enter and leave the running workload as generation progresses",
+            "Every token bypasses the model"
+          ],
+          "answer": 1,
+          "explanation": "The batch can evolve across iterations, helping use capacity despite requests having different arrival times and lengths."
+        },
+        "branch": "Model deployment",
+        "subbranch": "Request execution",
+        "science": [
+          {
+            "title": "Generation latency decomposition",
+            "equation": "T_response ≈ TTFT + (N_output − 1) × mean_ITL",
+            "explanation": "Time to first token covers the initial wait and work; later tokens accumulate inter-token latency. Two systems with equal total throughput can offer very different interactive responsiveness.",
+            "assumptions": "Simplified mean-latency decomposition for one streamed request with at least one output token; actual token gaps and network delivery vary."
+          }
+        ],
+        "history": [
+          {
+            "year": 2023,
+            "title": "PagedAttention connects memory management to LLM serving",
+            "significance": "The vLLM paper showed how block-based KV-cache management and flexible sharing can improve the use of memory during batched generation. Reported gains depend on workloads and comparisons.",
+            "source": {
+              "title": "Kwon et al. — PagedAttention",
+              "url": "https://arxiv.org/abs/2309.06180"
+            }
+          }
+        ],
+        "learningObjective": "Separate time-to-first-token from per-token latency.",
+        "engineeringExample": "For 200 output tokens, response time is TTFT plus 199 inter-token intervals; batching changes both terms.\n\nFor a hypothetical request that arrives at 0 ms, is admitted at 30 ms and returns its first token at 80 ms, queue wait is 30 ms and time to first token is 80 ms. If 100 later inter-token intervals each take 5 ms, its final token arrives at 580 ms. Summing a separate device enqueue duration into every interval without identifying a dependency would double-count or misplace overhead.",
+        "evidenceNotes": "The expression does not promise a quality or throughput target.\n\nThis additive trace is worked synthetic timing. It does not extend the existing resource calculator into a measured queueing engine or claim current vendor service rates.",
+        "visualFamily": "model-workload",
+        "prerequisites": [
+          "scheduler",
+          "kernel",
+          "kv-cache"
+        ],
+        "checks": [
+          {
+            "question": "A request arrives at 0 ms and returns its first token at 80 ms after 30 ms queueing. What is TTFT?",
+            "options": [
+              "30 ms",
+              "50 ms",
+              "80 ms"
+            ],
+            "answer": 2,
+            "explanation": "TTFT is measured from arrival to first token and includes the queue interval."
+          }
+        ],
+        "labId": "token-system-path",
+        "scope": "Follow a modeled batched decode critical path and energy budget; prefill, expert routing and scheduling differences are comparison context rather than separately simulated algorithms.",
+        "investigationId": "execution",
+        "labScope": "Follow a modeled batched decode critical path and energy budget; prefill, expert routing and scheduling differences are comparison context rather than separately simulated algorithms."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "T_{\\mathrm{response}}\\approx\\mathrm{TTFT}+(N_{\\mathrm{output}}-1)\\overline{\\mathrm{ITL}}",
+          "variables": [
+            {
+              "symbol": "T_response",
+              "meaning": "Time through the final output token of one streamed request",
+              "unit": "s"
+            },
+            {
+              "symbol": "TTFT",
+              "meaning": "Time to first token",
+              "unit": "s"
+            },
+            {
+              "symbol": "N_output",
+              "meaning": "Number of output tokens, at least one",
+              "unit": "tokens"
+            },
+            {
+              "symbol": "mean ITL",
+              "meaning": "Mean gap between successive output tokens",
+              "unit": "s/token gap"
+            }
+          ],
+          "text": "Response time is approximately time to first token plus the remaining token gaps times their mean inter-token latency."
+        }
+      ]
+    },
+    {
+      "experience": "applications",
+      "id": "tool-loop",
+      "previous": "926855bc7d3ce67ac2bec7197e07e7ca8c1fee6a2a6a5cf63aefd2fd304567af",
+      "current": "34d86f9e551cfda05114786984a63b5192f901c31640ce10d4d5c988f8825f31",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "tool-loop",
+        "level": "model",
+        "name": "Tools, memory & agent loop",
+        "shortName": "Tools, memory & agent loop",
+        "role": "Connect model inference to actions and evidence.",
+        "description": "A model can propose a structured tool call, but a surrounding runtime must validate it, execute the tool, and return the result. The next model invocation can use that observation. Search, code execution, file operations, and external memory are therefore parts of a larger system around the neural network. Permissions, state tracking, error handling, and verification determine what the system can do reliably. A retrieved document and a model parameter are different kinds of memory.\n\nAn observable tool loop needs a contract for effects as well as returned text. The durable incident experience now executes proposals through schema validation, authority, exact human review, service and receipt recording. Its fixed workflow and bounded branching policy are authored code. Their visible decisions demonstrate runtime boundaries without claiming a language model generated them. A future real-model adapter must identify its model/configuration and preserve the same runtime checks.\n\nA model policy can propose a structured action, but a separate environment contract determines whether it is valid and authorized. The tool response becomes an observation, not an instruction with authority over the system. A plausible final sentence does not establish that the requested state transition occurred. The connected automation experience supplies bounded actions and verifiable outcomes; the lifecycle decoder itself generates symbols and does not call external tools or receive extra training from a tool response.",
+        "mechanism": [
+          "Interpret the task and generate a response or proposed action.",
+          "Execute an allowed tool through the runtime and capture its result.",
+          "Use observations to revise the plan, continue, or finish.",
+          "A proposed call remains separate from permission and the external effect; the caller observes the returned result or explicit uncertainty.",
+          "After a write commits but its response is lost, a receipt or idempotent retry resolves the original action before another dependent action starts.",
+          "Log the policy input and proposed structured action.",
+          "Validate schema, capability, preconditions and budget before any state mutation.",
+          "Record the actual observation and independently score the desired state change."
+        ],
+        "specs": [
+          {
+            "label": "Boundary",
+            "value": "Model ↔ runtime ↔ environment",
+            "context": "Tools execute outside the weight matrices."
+          },
+          {
+            "label": "Persistence",
+            "value": "Application dependent",
+            "context": "External memory differs from a context window."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "User and observations",
+            "direction": "in",
+            "signal": "Context plus task state"
+          },
+          {
+            "name": "Runtime",
+            "direction": "out",
+            "signal": "Structured calls or final response"
+          }
+        ],
+        "tradeoff": "More tools expand reach while increasing dependencies and failure modes. Useful autonomy requires measurable completion and recovery behavior.",
+        "whyAI": "Advanced assistants combine learned inference with software and infrastructure.",
+        "related": [
+          "output-head",
+          "serving",
+          "evaluation",
+          "post-training",
+          "astra",
+          "durable-actions-idempotency",
+          "tool-contracts-schemas",
+          "human-review-cancellation",
+          "probability-calibration-abstention",
+          "judge-rubric-agreement",
+          "retrieval-supported-generation",
+          "test-time-search-verification",
+          "model-system-regression-contract"
+        ],
+        "sources": [
+          {
+            "title": "Schick et al. — Toolformer",
+            "url": "https://arxiv.org/abs/2302.04761"
+          },
+          {
+            "title": "Yao et al. — ReAct",
+            "url": "https://arxiv.org/abs/2210.03629"
+          },
+          {
+            "title": "Temporal Activities",
+            "url": "https://docs.temporal.io/activities"
+          },
+          {
+            "title": "MCP tools",
+            "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools"
+          },
+          {
+            "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+            "url": "https://arxiv.org/html/2210.03629v3"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "tool-loop",
+        "misconception": "Tool access is a system capability, not a new physical neuron inside the model.",
+        "check": {
+          "question": "What actually executes a model-proposed tool call?",
+          "options": [
+            "A surrounding runtime or application",
+            "The embedding table itself",
+            "A silicon atom"
+          ],
+          "answer": 0,
+          "explanation": "The model emits a proposal; software carries out the operation and returns observations."
+        },
+        "branch": "Agent systems",
+        "subbranch": "Actions and observations",
+        "science": [
+          {
+            "title": "A closed loop changes context and the environment",
+            "equation": "aₜ ∼ πθ(·|hₜ); oₜ = Tool(aₜ); hₜ₊₁ = Update(hₜ,aₜ,oₜ)",
+            "explanation": "The model conditions an action proposal a on available history h. A runtime executes an allowed tool and returns an observation o. The next invocation receives updated context and can change its next action. This creates feedback with the world while ordinary inference keeps the trained parameters θ fixed.",
+            "assumptions": "This is a schematic sequential loop, not a hidden implementation. Tools may fail, be asynchronous, or change external state; the runtime enforces permissions and can decline actions. Context management may summarize rather than retain all history."
+          },
+          {
+            "title": "A model policy with validated observations and actions · worked relation",
+            "equation": "s_{t+1}=\\begin{cases}T(s_t,a_t)&V(s_t,a_t)=1\\\\s_t&V(s_t,a_t)=0\\end{cases}",
+            "explanation": "In an authored inventory environment, stock starts at 3. A proposed reserve(2) passes a bound of available stock and commits stock=1. Retrying the same committed action with the same idempotency key returns its prior receipt rather than subtracting again. A fresh reserve(2) fails because only one remains. Saying “reserved” after that rejection is an answer failure even if its JSON syntax is valid.",
+            "assumptions": "Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries."
+          }
+        ],
+        "history": [
+          {
+            "year": 2022,
+            "title": "ReAct interleaves language-model reasoning and actions",
+            "significance": "Yao and colleagues explored alternating reasoning and actions that gather observations from external environments. The preprint appeared in 2022 and the conference version at ICLR 2023.",
+            "source": {
+              "title": "Yao et al. — ReAct: Synergizing Reasoning and Acting in Language Models",
+              "url": "https://arxiv.org/abs/2210.03629"
+            }
+          }
+        ],
+        "prerequisites": [
+          "output-head",
+          "serving"
+        ],
+        "learningObjective": "Track which state changes in a tool-assisted inference loop and account for its sequential latency.",
+        "engineeringExample": "Synthetic loop: first model call takes 0.8 s, a permitted tool takes 0.3 s, and the follow-up model call takes 0.7 s. With sequential execution, elapsed time is 1.8 s before overhead. Tool output changes the next call’s context; it does not by itself update the model’s learned weights.\n\nIn the commit-timeout case, reserving two FILTER-A units leaves two of the original four units before the caller has any successful response. The fixed workflow retries the same keyed action; the authored policy looks up the receipt. Both can finish with one reservation and one work order. Neither can infer that the timeout meant no effect occurred.\n\nIn an authored inventory environment, stock starts at 3. A proposed reserve(2) passes a bound of available stock and commits stock=1. Retrying the same committed action with the same idempotency key returns its prior receipt rather than subtracting again. A fresh reserve(2) fails because only one remains. Saying “reserved” after that rejection is an answer failure even if its JSON syntax is valid.",
+        "evidenceNotes": "The model–action–observation pattern follows the linked Toolformer/ReAct context. Times are synthetic; parallel tools, failure, retries and context management alter timing. The runtime validates permissions and results rather than treating a proposal as completed work.\n\nThe executable extension is a fictional local environment with two authored policies. It adds no claim of real LLM agency, MCP conformance or production durability. Model parameters, invocation context and the workflow journal remain separate objects.\n\nMode: worked example. Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "What does a lost tool response establish about whether the write committed?",
+            "options": [
+              "It establishes no effect",
+              "It leaves the outcome uncertain until checked",
+              "It automatically authorizes a second logical write"
+            ],
+            "answer": 1,
+            "explanation": "Transport failure does not determine external state; check the original keyed effect."
+          },
+          {
+            "question": "What establishes successful reservation after a tool call?",
+            "options": [
+              "A fluent sentence saying the reservation succeeded.",
+              "The presence of a syntactically valid action proposal alone.",
+              "A validated committed receipt and the corresponding environment state."
+            ],
+            "answer": 2,
+            "explanation": "A validated committed receipt and the corresponding environment state. Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries."
+          }
+        ],
+        "labId": "library",
+        "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+        "investigationId": "execution",
+        "labScope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "a_t\\sim\\pi_\\theta(\\cdot\\mid h_t),\\qquad o_t=\\operatorname{Tool}(a_t),\\qquad h_{t+1}=\\operatorname{Update}(h_t,a_t,o_t)",
+          "variables": [
+            {
+              "symbol": "aₜ",
+              "meaning": "Proposed action sampled from the policy",
+              "unit": "action object"
+            },
+            {
+              "symbol": "π_θ",
+              "meaning": "Policy conditional on supplied history",
+              "unit": "probability distribution"
+            },
+            {
+              "symbol": "θ",
+              "meaning": "Fixed inference-time trained parameters",
+              "unit": "model coordinates"
+            },
+            {
+              "symbol": "hₜ",
+              "meaning": "Supplied history or context at step t",
+              "unit": "structured state"
+            },
+            {
+              "symbol": "oₜ",
+              "meaning": "Returned tool observation",
+              "unit": "observation object"
+            },
+            {
+              "symbol": "Tool",
+              "meaning": "Allowed tool execution in this sequential abstraction",
+              "unit": "action → observation"
+            },
+            {
+              "symbol": "Update",
+              "meaning": "Context update operation",
+              "unit": "state/action/observation → state"
+            },
+            {
+              "symbol": "t",
+              "meaning": "Interaction-step index",
+              "unit": "integer index"
+            }
+          ],
+          "text": "Sample an action from the policy given current history, execute the permitted tool to obtain an observation, then update history with the action and observation.",
+          "note": "These are typed state-transition relations, not physical scalar equations. Tool failures, permissions and asynchronous execution remain runtime conditions."
+        },
+        {
+          "kind": "math",
+          "latex": "s_{t+1}=\\begin{cases}T(s_t,a_t)&V(s_t,a_t)=1\\\\s_t&V(s_t,a_t)=0\\end{cases}",
+          "text": "Distinguish a proposed model action, validated execution and an observed successful outcome.",
+          "variables": [
+            {
+              "symbol": "s_t",
+              "meaning": "Environment state before validation",
+              "unit": "state"
+            },
+            {
+              "symbol": "a_t",
+              "meaning": "Proposed action with identity",
+              "unit": "record"
+            },
+            {
+              "symbol": "V",
+              "meaning": "Schema capability and precondition validator",
+              "unit": "Boolean"
+            },
+            {
+              "symbol": "T",
+              "meaning": "Authorized transition including idempotency semantics",
+              "unit": "function"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "loss-optimizer",
+      "previous": "a55032dcbccd5bf049020fe990ad36b2a93ef30527fe3dbf8f205c2ed139afc5",
+      "current": "26e1bf1e124fe3933f61e2c3a2fff4dde2a9b5058210f14ff254bee954a7d319",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "loss-optimizer",
+        "level": "model",
+        "name": "Loss, gradients & optimizer",
+        "shortName": "Loss, gradients & optimizer",
+        "role": "Turn prediction errors into parameter updates.",
+        "description": "A loss assigns a numerical training objective to the model’s predictions. Backpropagation applies the chain rule through the computation graph to obtain gradients. An optimizer uses those gradients and, often, additional state to update weights. Adam maintains estimates related to gradient moments. This backward computation and optimizer storage distinguish training from ordinary inference. Distributed execution must coordinate the appropriate gradients or shards before consistent updates can proceed.\n\nA training objective, a decision threshold and an operational acceptance criterion answer different questions. Updating weights changes the predictive function; moving a threshold changes decisions for the same probabilities. Neither operation should be concealed inside an evaluation comparison. A frozen artifact and separate test set make these changes traceable into later deployment decisions.\n\nAn optimizer consumes a derived gradient; a supplied-gradient calculator teaches only the last part of that chain. The lifecycle experience adds an actual decoder loss and reverse pass before applying either SGD or Adam. Adam’s moments and step counter are learning state, not display history. Global norm clipping occurs before those moments. Changing the objective changes the gradient even if the optimizer setting is held fixed.",
+        "mechanism": [
+          "Run the forward computation and evaluate the loss.",
+          "Backpropagate derivatives through the recorded operations.",
+          "Combine required distributed information and update parameters.",
+          "The optimizer updates model parameters using the defined training loss and regularization.",
+          "Evaluation keeps thresholds and accepted error tradeoffs explicit instead of claiming that lower loss necessarily produces a better application.",
+          "Compute the gradient from the current batch loss and retain its denominator.",
+          "Apply the declared global clipping rule.",
+          "Update moments, bias-correct them and apply the chosen learning rate; save all resulting state."
+        ],
+        "specs": [
+          {
+            "label": "Gradient",
+            "value": "∂loss / ∂weight",
+            "context": "Local sensitivity of the objective."
+          },
+          {
+            "label": "Adam state",
+            "value": "First and second moment estimates",
+            "context": "Adds storage beyond the weights."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Batch and predictions",
+            "direction": "in",
+            "signal": "Objective and activations"
+          },
+          {
+            "name": "Model parameters",
+            "direction": "out",
+            "signal": "Updated weight arrays"
+          }
+        ],
+        "tradeoff": "Optimizer state and saved activations consume substantial memory. Checkpointing can exchange extra computation for lower activation storage.",
+        "whyAI": "Learning is an optimization process executed by physical arithmetic and memory systems.",
+        "related": [
+          "training-data",
+          "residual-normalization",
+          "parallelism",
+          "checkpoint",
+          "model-artifact-rollout-drift",
+          "evaluation",
+          "causal-pretraining-objective",
+          "optimizer-schedule-stability",
+          "microbatch-equivalent-updates"
+        ],
+        "sources": [
+          {
+            "title": "Kingma & Ba — Adam",
+            "url": "https://arxiv.org/abs/1412.6980"
+          },
+          {
+            "title": "PyTorch — CrossEntropyLoss",
+            "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.CrossEntropyLoss.html"
+          },
+          {
+            "title": "scikit-learn · Common pitfalls and data leakage",
+            "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+          },
+          {
+            "title": "2 OLMo 2 Furious",
+            "url": "https://arxiv.org/html/2501.00656v1"
+          },
+          {
+            "title": "PyTorch Adam algorithm",
+            "url": "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "loss-optimizer",
+        "misconception": "Backpropagation computes derivatives; the optimizer decides the update.",
+        "check": {
+          "question": "Which process changes learned weights in a normal training step?",
+          "options": [
+            "Displaying a response",
+            "Applying an optimizer update",
+            "Reading a KV cache"
+          ],
+          "answer": 1,
+          "explanation": "The optimizer updates parameters using gradients and its update rule."
+        },
+        "branch": "Learning",
+        "subbranch": "Differentiation and weight updates",
+        "science": [
+          {
+            "title": "Adam adapts updates using gradient moments",
+            "equation": "gₜ = ∇θℒₜ; mₜ = β₁mₜ₋₁+(1−β₁)gₜ; vₜ = β₂vₜ₋₁+(1−β₂)gₜ²; θₜ₊₁ = θₜ−η·m̂ₜ/(√v̂ₜ+ε)",
+            "explanation": "The first moment m smooths gradient direction; the second moment v tracks squared gradient magnitude. Bias-corrected estimates m̂ and v̂ scale each coordinate’s step. The optimizer consequently needs state arrays in addition to weights and gradients, connecting a mathematical update rule directly to accelerator memory requirements.",
+            "assumptions": "Products, squares, and divisions are coordinate-wise. With zero initialization, m̂ₜ=mₜ/(1−β₁ᵗ) and v̂ₜ=vₜ/(1−β₂ᵗ). This is ordinary Adam; decoupled weight decay, clipping, loss scaling, and distributed sharding require additional rules."
+          },
+          {
+            "title": "Compute gradients before applying the optimizer · worked relation",
+            "equation": "m_t=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\quad v_t=\\beta_2v_{t-1}+(1-\\beta_2)g_t^2,\\quad\\theta^+=\\theta-\\eta\\frac{m_t/(1-\\beta_1^t)}{\\sqrt{v_t/(1-\\beta_2^t)}+\\epsilon}",
+            "explanation": "For a scalar gradient g=0.5, weight 2 and learning rate 0.1, SGD gives 1.95. For the first Adam step with zero moments, beta1=0.9 and beta2=0.999, m=0.05 and v=0.00025; bias-corrected values are 0.5 and 0.25. With epsilon=1e-8 the Adam result is approximately 1.900000002. It differs from SGD because Adam normalizes by the second-moment scale.",
+            "assumptions": "No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5."
+          }
+        ],
+        "history": [
+          {
+            "year": 2014,
+            "title": "Adam combines momentum with adaptive scaling",
+            "significance": "Kingma and Ba released the Adam preprint in December 2014; its conference publication followed at ICLR 2015. The method maintains first and second gradient-moment estimates.",
+            "source": {
+              "title": "Kingma & Ba — Adam: A Method for Stochastic Optimization",
+              "url": "https://arxiv.org/abs/1412.6980"
+            }
+          }
+        ],
+        "prerequisites": [
+          "training-data",
+          "output-head"
+        ],
+        "learningObjective": "Trace one Adam update from a gradient through moment state to a changed parameter.",
+        "engineeringExample": "Synthetic first Adam step: θ = 1, gradient g = 2, zero initial moments, β₁ = 0.9, β₂ = 0.999 and learning rate 0.01 give m₁ = 0.2 and v₁ = 0.004. Bias correction gives m̂₁ = 2 and v̂₁ = 4; with ε = 10⁻⁸, θ becomes approximately 0.99.\n\nFor fixed predicted probabilities [0.2,0.6,0.8], a threshold of 0.5 gives decisions [0,1,1], while threshold 0.7 gives [0,0,1]. The weights and all three probabilities are unchanged. With labels [0,0,1], the second threshold removes one false positive on these three cases. This does not prove that 0.7 is better on future data; selecting it using the held-out test would also compromise that test’s independence.\n\nFor a scalar gradient g=0.5, weight 2 and learning rate 0.1, SGD gives 1.95. For the first Adam step with zero moments, beta1=0.9 and beta2=0.999, m=0.05 and v=0.00025; bias-corrected values are 0.5 and 0.25. With epsilon=1e-8 the Adam result is approximately 1.900000002. It differs from SGD because Adam normalizes by the second-moment scale.",
+        "evidenceNotes": "This follows the ordinary Adam equations in the linked paper. The gradient is supplied rather than derived here; clipping, weight decay, loss scaling and sharded optimizer state are excluded. Computing a gradient and applying an update remain separate steps.\n\nThe threshold arithmetic is authored. The existing sensor experience executes actual logistic updates, while these three probabilities are a separate worked decision example.\n\nMode: executable derived-gradient optimizer. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "A decision threshold changes from 0.5 to 0.7 with fixed model outputs. What necessarily changes?",
+            "options": [
+              "The fitted weights",
+              "The training labels",
+              "Potential binary decisions, without requiring retraining"
+            ],
+            "answer": 2,
+            "explanation": "Thresholding is a downstream decision rule; it can change labels without changing the fitted predictor."
+          },
+          {
+            "question": "Why is the first Adam change about 0.1 rather than 0.05?",
+            "options": [
+              "Adam ignores gradients and always chooses random weights.",
+              "SGD and Adam use identical state equations.",
+              "The bias-corrected gradient is divided by its second-moment root."
+            ],
+            "answer": 2,
+            "explanation": "The bias-corrected gradient is divided by its second-moment root. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5."
+          }
+        ],
+        "labId": "library",
+        "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+        "investigationId": "execution",
+        "labScope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\begin{aligned}g_t&=\\nabla_\\theta\\mathcal L_t,\\\\m_t&=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\\\v_t&=\\beta_2v_{t-1}+(1-\\beta_2)g_t^{\\odot2},\\\\\\hat m_t&=\\frac{m_t}{1-\\beta_1^t},\\qquad\\hat v_t=\\frac{v_t}{1-\\beta_2^t},\\\\\\theta_{t+1}&=\\theta_t-\\eta\\frac{\\hat m_t}{\\sqrt{\\hat v_t}+\\varepsilon}\\end{aligned}",
+          "variables": [
+            {
+              "symbol": "θₜ",
+              "meaning": "Parameter vector before update t",
+              "unit": "parameter-coordinate units"
+            },
+            {
+              "symbol": "ℒₜ",
+              "meaning": "Step-t loss evaluated at the current parameters",
+              "unit": "loss units"
+            },
+            {
+              "symbol": "gₜ",
+              "meaning": "Gradient of step loss with respect to parameters",
+              "unit": "loss units per parameter-coordinate unit"
+            },
+            {
+              "symbol": "mₜ,m̂ₜ",
+              "meaning": "First moment and its zero-initialization bias correction",
+              "unit": "same units as gₜ"
+            },
+            {
+              "symbol": "vₜ,v̂ₜ",
+              "meaning": "Second raw moment and its bias correction",
+              "unit": "squared gradient units"
+            },
+            {
+              "symbol": "β₁,β₂",
+              "meaning": "Moment decay coefficients",
+              "unit": "fractions less than one"
+            },
+            {
+              "symbol": "η",
+              "meaning": "Step size applied to the normalized direction",
+              "unit": "parameter-coordinate units"
+            },
+            {
+              "symbol": "ε",
+              "meaning": "Positive denominator stabilizer",
+              "unit": "same units as square root of v̂ₜ"
+            },
+            {
+              "symbol": "t",
+              "meaning": "Positive update index for moment bias correction",
+              "unit": "integer index"
+            },
+            {
+              "symbol": "⊙2",
+              "meaning": "Elementwise square",
+              "unit": "operator"
+            }
+          ],
+          "text": "Adam smooths gradients and their elementwise squares, corrects zero-initialization bias, then subtracts the step size times corrected first moment divided elementwise by square root of corrected second moment plus a stabilizer.",
+          "note": "All squares, roots and divisions are elementwise. The two bias-correction relations are made explicit from the original assumptions. Parameter labels retain the source convention of updating θ_t to θ_(t+1)."
+        },
+        {
+          "kind": "math",
+          "latex": "m_t=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\quad v_t=\\beta_2v_{t-1}+(1-\\beta_2)g_t^2,\\quad\\theta^+=\\theta-\\eta\\frac{m_t/(1-\\beta_1^t)}{\\sqrt{v_t/(1-\\beta_2^t)}+\\epsilon}",
+          "text": "Verify the first actual gradient-driven SGD and Adam updates under explicit state.",
+          "variables": [
+            {
+              "symbol": "m_t",
+              "meaning": "First gradient moment",
+              "unit": "gradient units"
+            },
+            {
+              "symbol": "v_t",
+              "meaning": "Second gradient moment",
+              "unit": "squared gradient units"
+            },
+            {
+              "symbol": "g_t",
+              "meaning": "Gradient after declared clipping",
+              "unit": "gradient units"
+            },
+            {
+              "symbol": "beta_1,beta_2",
+              "meaning": "Moment decay factors",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "t",
+              "meaning": "Optimizer update count",
+              "unit": "updates"
+            },
+            {
+              "symbol": "eta",
+              "meaning": "Learning rate",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "epsilon",
+              "meaning": "Denominator stabilizer",
+              "unit": "gradient units"
+            },
+            {
+              "symbol": "theta",
+              "meaning": "Parameter",
+              "unit": "dimensionless"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "training-memory-state",
+      "previous": "95121d1ebb02a7d925555ebcb7f9677f33122f0561b8cac887f7b3c64e6d2af2",
+      "current": "bd1ec79873cb32a4ceeecb211c3b771a8e2eb148a504c27be10c943a910c4b16",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "training-memory-state",
+        "level": "software",
+        "name": "Training state and activation rematerialization",
+        "shortName": "Training state and activation rematerialization",
+        "role": "Budgets weights, gradients, optimizer state and saved activations across a training step.",
+        "description": "Training keeps more state than inference because it must calculate gradients and update parameters. Weights, gradients and optimizer state have different lifetimes and may use different numerical formats. Forward activations can be saved for the backward pass or recomputed later, exchanging extra arithmetic for reduced storage. Distributed sharding can partition optimizer state, gradients and parameters, while communication supplies the pieces required by each operation. ZeRO is a disclosed method for these partitions. A memory estimate must state its optimizer, precision and sharding configuration; multiplying parameter count by one universal bytes-per-parameter constant conceals the choices that determine whether training fits.\n\nTraining memory includes persistent parameters and optimizer arrays plus temporary gradients and saved forward intermediates. Their lifetimes differ. A coefficient payload calculation is useful only when it names precision and excluded structures. Activation rematerialization trades recomputation for retained intermediates, but is not implemented merely because a UI shows an estimated memory total. The lifecycle core exposes actual scalar tape-node counts and parameter arrays; those nodes are not hardware FLOPs or a byte-accurate JavaScript heap measurement.",
+        "specs": [
+          {
+            "label": "Persistent versus transient",
+            "value": "Step-to-step state versus temporary tensors",
+            "context": "Optimizer state persists; many activations expire after backward use."
+          },
+          {
+            "label": "Memory budget",
+            "value": "Bytes per state category",
+            "context": "Include workspace, fragmentation and communication buffers separately."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Forward and optimizer configuration",
+            "direction": "in",
+            "signal": "Weights, batch activations, gradients and update rules"
+          },
+          {
+            "name": "Updated model state",
+            "direction": "out",
+            "signal": "New parameter values and retained optimizer history"
+          }
+        ],
+        "tradeoff": "Rematerialization reduces saved activation memory but adds computation; sharding reduces replication while increasing data exchange and scheduling complexity.",
+        "whyAI": "Training can be compute-heavy and still fail a capacity limit or stall on collectives, so fitting the full step is separate from feeding its arithmetic.",
+        "related": [
+          "loss-optimizer",
+          "parallelism",
+          "parallelism-communication-budget",
+          "causal-pretraining-objective",
+          "optimizer-schedule-stability",
+          "microbatch-equivalent-updates"
+        ],
+        "sources": [
+          {
+            "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+            "url": "https://arxiv.org/abs/1910.02054"
+          },
+          {
+            "title": "2 OLMo 2 Furious",
+            "url": "https://arxiv.org/html/2501.00656v1"
+          }
+        ],
+        "scale": "One model step to accelerator memory hierarchy",
+        "kind": "workload",
+        "branch": "Model–machine co-design",
+        "subbranch": "Training, prefill and decode",
+        "mechanism": [
+          "List persistent parameter and optimizer tensors with their actual stored precision rather than assuming a single shared format.",
+          "Trace forward activations and identify when each is last needed by backward computation.",
+          "Choose which activations to retain and which to recompute under the available memory budget.",
+          "Partition replicated state where the distributed method supports it and insert required communication.",
+          "Measure peak live memory and completed step time, including temporary workspaces and exposed synchronization.",
+          "Count persistent weight and moment arrays under the chosen numerical representation.",
+          "Separate the current gradient, frozen reference and saved activations from those arrays.",
+          "Use a lifetime trace or measured heap evidence before claiming peak runtime memory."
+        ],
+        "misconception": "Activation checkpointing recomputes intermediate tensors; a recovery checkpoint saves durable state for restart. They solve different problems.",
+        "check": {
+          "question": "What cost accompanies discarding a forward activation that backward computation needs?",
+          "options": [
+            "Recomputing it or an equivalent quantity later",
+            "Eliminating the backward pass",
+            "Automatically lowering the optimizer state size"
+          ],
+          "answer": 0,
+          "explanation": "Rematerialization trades retained memory for computation; persistent optimizer storage is a separate category."
+        },
+        "science": [
+          {
+            "title": "Training capacity ledger",
+            "equation": "Mpeak = Mweights + Mgradients + Moptimizer + Mlive_activations + Mworkspace",
+            "explanation": "Each term is bytes at the same device boundary and instant of peak occupancy.",
+            "assumptions": "Sharding and mixed precision alter each term; summing independent category maxima may overestimate the true simultaneous peak."
+          },
+          {
+            "title": "Training tensors with actual lifetimes · worked relation",
+            "equation": "B_{payload}=P\\sum_k b_k",
+            "explanation": "The core has 423 binary64 weights, requiring 3384 raw bytes. Two Adam moment arrays add 6768 bytes, so weights plus moments total 10152. Adding one equally sized gradient vector yields 13536 raw bytes. A frozen reference adds another 3384. These sums exclude the scalar tape’s graph objects, history, JSON encoding, React state and allocator overhead.",
+            "assumptions": "423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed."
+          }
+        ],
+        "prerequisites": [
+          "loss-optimizer",
+          "memory-hierarchy-route"
+        ],
+        "learningObjective": "Build a training memory ledger that distinguishes state type, precision and lifetime.",
+        "workstream": "W11",
+        "visualFamily": "model-workload",
+        "engineeringExample": "Synthetic parameter ledger: 1 billion parameters with 2-byte weights, 2-byte gradients and two 4-byte optimizer tensors occupy 12 GB before activations, master copies or workspace. Adding a 4-byte master weight would add 4 GB.\n\nThe core has 423 binary64 weights, requiring 3384 raw bytes. Two Adam moment arrays add 6768 bytes, so weights plus moments total 10152. Adding one equally sized gradient vector yields 13536 raw bytes. A frozen reference adds another 3384. These sums exclude the scalar tape’s graph objects, history, JSON encoding, React state and allocator overhead.",
+        "evidenceNotes": "This is an explicit synthetic format choice, not a universal training multiplier. ZeRO stages and implementation buffers must be identified before applying a sharding estimate.\n\nMode: executable arrays; payload arithmetic. 423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "What does 10152 bytes include?",
+            "options": [
+              "All future checkpoint JSON and activation history.",
+              "Weights and the two full Adam moment arrays only.",
+              "The complete browser heap at peak training."
+            ],
+            "answer": 1,
+            "explanation": "Weights and the two full Adam moment arrays only. 423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed."
+          }
+        ],
+        "labId": "engineering",
+        "scope": "Enable the optimizer-state option to budget weights and master/moment state; gradients, activations, workspaces and actual tier transfers are omitted.",
+        "deepLabId": "footprint",
+        "investigationId": "execution",
+        "labScope": "Enable the optimizer-state option to budget weights and master/moment state; gradients, activations, workspaces and actual tier transfers are omitted."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "M_{\\mathrm{peak}}=M_{\\mathrm{weights}}+M_{\\mathrm{gradients}}+M_{\\mathrm{optimizer}}+M_{\\mathrm{live\\ activations}}+M_{\\mathrm{workspace}}",
+          "variables": [
+            {
+              "symbol": "M_peak",
+              "meaning": "Combined occupancy at the chosen peak instant and device boundary",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "M_weights",
+              "meaning": "Resident weight storage at that instant",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "M_gradients",
+              "meaning": "Resident gradient storage at that instant",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "M_optimizer",
+              "meaning": "Resident optimizer state at that instant",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "M_live activations",
+              "meaning": "Simultaneously live activation storage",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "M_workspace",
+              "meaning": "Workspace occupied at that instant",
+              "unit": "bytes"
+            }
+          ],
+          "text": "Peak memory is the sum of weights, gradients, optimizer state, live activations and workspace at the same device boundary and the same instant.",
+          "note": "Do not add independently occurring category maxima as though they were simultaneous."
+        },
+        {
+          "kind": "math",
+          "latex": "B_{payload}=P\\sum_k b_k",
+          "text": "Inventory real trainable arrays separately from activation and runtime overhead.",
+          "variables": [
+            {
+              "symbol": "B_payload",
+              "meaning": "Payload of the explicitly inventoried full-length arrays",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "P",
+              "meaning": "Parameters represented in every listed array",
+              "unit": "parameters"
+            },
+            {
+              "symbol": "b_k",
+              "meaning": "Bytes per parameter for listed array k",
+              "unit": "bytes per parameter"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "evaluation",
+      "previous": "d47d5dd2c0ac000b793a5b471d6807bfbd78b32a05ea866dd5490e6767221fbb",
+      "current": "5f06e507266080e89a2e417a5235d0436727ea9f7f5d80df93a03e0c78a36f4c",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "evaluation",
+        "level": "model",
+        "name": "Evaluation & the AGI frontier",
+        "shortName": "Evaluation & the AGI frontier",
+        "role": "Measure breadth, reliability, and practical competence.",
+        "description": "A useful evaluation asks what the entire system can accomplish under clear conditions. It records correctness, consistency, cost, latency, tool access, and the amount of human help allowed. Generality involves breadth across tasks and transfer to unfamiliar situations; excellent results on one benchmark cannot establish all of it. Contamination and benchmark saturation complicate comparison. This atlas ends at an open research frontier: the assembled machinery enables increasingly capable systems, while the definition and demonstration of AGI require explicit evidence.\n\nThe durable incident experience adds a task-state oracle to the existing distinction between source support and answer correctness. The oracle checks actual reservations, work orders, inventory conservation and prohibited exports. It does not accept the worker’s completion status as its label. Repeated trials can later assess reliability, but a deterministic fixture run is only evidence for its declared case.\n\nEvaluation attaches a scoring rule and denominator to a fixed checkpoint. Development cases guide iteration, while an independent final test assesses a choice made before its answers are inspected. Repeatedly consulting that final set while choosing changes weakens its independence. A small perfect result also leaves substantial uncertainty about future cases. The lifecycle’s seal is procedural: source files remain inspectable, and its first final report retains checkpoint identity rather than updating silently as training continues.",
+        "mechanism": [
+          "Define tasks, success criteria, and permitted resources.",
+          "Test on held-out and unfamiliar cases, including failures.",
+          "Report uncertainty, repeatability, and limits alongside successes.",
+          "The evaluation target specifies acceptable environment state and forbidden effects independently of the policy.",
+          "Source support, task correctness, abstention and tool error rates retain distinct denominators and interpretations.",
+          "Choose the task and score before revealing final outcomes.",
+          "Preserve checkpoint, dataset, tokenizer and inference identities with each result.",
+          "Report counts and uncertainty rather than only percentages; mark exposed final data as previously seen."
+        ],
+        "specs": [
+          {
+            "label": "Dimensions",
+            "value": "Breadth + competence + autonomy",
+            "context": "A framework, not a single universal score."
+          },
+          {
+            "label": "Evidence",
+            "value": "Task-specific and repeatable",
+            "context": "Benchmark conditions affect conclusions."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Model system",
+            "direction": "in",
+            "signal": "Behavior under controlled conditions"
+          },
+          {
+            "name": "Research decisions",
+            "direction": "out",
+            "signal": "Measured strengths and failure modes"
+          }
+        ],
+        "tradeoff": "A compact benchmark is easy to compare but cannot cover all real-world situations. More representative evaluation costs time and effort.",
+        "whyAI": "The goal is useful, reliable competence; larger machines are a means to test, not proof of the goal.",
+        "related": [
+          "tool-loop",
+          "post-training",
+          "scaling-laws",
+          "workflow-graphs-state",
+          "telemetry-traces-evaluation",
+          "retrieval-indexing-evaluation",
+          "probability-calibration-abstention",
+          "judge-rubric-agreement",
+          "retrieval-supported-generation",
+          "test-time-search-verification",
+          "model-system-regression-contract"
+        ],
+        "sources": [
+          {
+            "title": "Morris et al. — Levels of AGI",
+            "url": "https://arxiv.org/abs/2311.02462"
+          },
+          {
+            "title": "NIST — Binomial Distribution",
+            "url": "https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm"
+          },
+          {
+            "title": "NIST — Exact Binomial Confidence Limits",
+            "url": "https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/exacbici.htm"
+          },
+          {
+            "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+            "url": "https://arxiv.org/abs/2406.12045"
+          },
+          {
+            "title": "Holistic Evaluation of Language Models",
+            "url": "https://arxiv.org/html/2211.09110v1"
+          },
+          {
+            "title": "On Calibration of Modern Neural Networks",
+            "url": "https://arxiv.org/html/1706.04599v2"
+          },
+          {
+            "title": "NIST Dataplot: Wilson proportion interval",
+            "url": "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/agrecoul.htm"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "evaluation",
+        "misconception": "An impressive system architecture does not, by itself, establish general intelligence.",
+        "check": {
+          "question": "What does strong performance on one benchmark demonstrate?",
+          "options": [
+            "Universal AGI by itself",
+            "Performance on that benchmark under its stated conditions",
+            "That evaluation is no longer needed"
+          ],
+          "answer": 1,
+          "explanation": "Breadth, reliability, and transfer require additional evidence."
+        },
+        "branch": "Evidence and frontiers",
+        "subbranch": "Measurement and uncertainty",
+        "science": [
+          {
+            "title": "Benchmark success has sampling uncertainty",
+            "equation": "p̂ = k/n; SE(p̂) ≈ √[p̂(1−p̂)/n]",
+            "explanation": "If k of n independently sampled tasks succeed, p̂ estimates the success probability for that task distribution. The estimated standard error shrinks only as the square root of sample size: roughly four times as many comparable trials are needed to halve it. This uncertainty says nothing by itself about tasks outside the tested distribution.",
+            "assumptions": "Binary outcomes, independent trials, fixed conditions, and a representative sample are required. The plug-in approximation is poor near zero or one or with small n; use suitable binomial intervals. Correlated tasks, benchmark selection, contamination, and judge error add other uncertainties."
+          },
+          {
+            "title": "A development protocol and an independent final test · worked relation",
+            "equation": "CI=\\frac{\\hat p+z^2/(2n)\\ \\pm\\ z\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}+\\frac{z^2}{4n^2}}}{1+z^2/n}",
+            "explanation": "A result of 4/4 on the tiny final copy split is 100% observed accuracy, not proof of perfect population accuracy. A Wilson 95% interval with z=1.96 has lower bound about 0.510 and upper bound 1.000. The finite test supports only its declared toy task and split. Updating weights after the report changes model identity; the earlier 4/4 must remain attributed to the earlier checkpoint.",
+            "assumptions": "Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias."
+          }
+        ],
+        "history": [
+          {
+            "year": 2023,
+            "title": "Levels of AGI separates breadth from performance",
+            "significance": "Morris and colleagues proposed a framework for comparing capability breadth and performance while treating deployment autonomy separately, making progress claims more explicit than a single benchmark score.",
+            "source": {
+              "title": "Morris et al. — Levels of AGI for Operationalizing Progress on the Path to AGI",
+              "url": "https://arxiv.org/abs/2311.02462"
+            }
+          }
+        ],
+        "learningObjective": "Use a proportion with uncertainty rather than a single pass rate.",
+        "engineeringExample": "If k=90 of n=100 items pass, p̂=0.9; the standard-error approximation is about 0.03 under a simple independent-sample model.\n\nIn the wrong-entity incident, the authored policy completes one FAN-9 work order supported by the FAN-9 manual. Source support is 1/1, yet the original FAN-7 task is wrong. In the canceled-after-commit case the reservation exists but the required work order does not, so task success is false even though an external write succeeded. These outcomes expose errors that counting successful calls would miss.\n\nA result of 4/4 on the tiny final copy split is 100% observed accuracy, not proof of perfect population accuracy. A Wilson 95% interval with z=1.96 has lower bound about 0.510 and upper bound 1.000. The finite test supports only its declared toy task and split. Updating weights after the report changes model identity; the earlier 4/4 must remain attributed to the earlier checkpoint.",
+        "evidenceNotes": "Benchmark selection, contamination, rubric and dependence dominate many real evaluations.\n\nThe examples use fictional environments and deterministic authored policies. They do not reproduce τ-bench cases or establish a real agent’s reliability or benchmark score.\n\nMode: executable final report; worked uncertainty. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "visualFamily": "model-workload",
+        "prerequisites": [
+          "output-head"
+        ],
+        "checks": [
+          {
+            "question": "Every call succeeded and the source supports the FAN-9 work order, but the task requested FAN-7. Is the task correct?",
+            "options": [
+              "Yes, because all calls succeeded",
+              "No, because the environment fails the original goal",
+              "Yes, because the citation is valid"
+            ],
+            "answer": 1,
+            "explanation": "Call status and source support do not replace the original task contract."
+          },
+          {
+            "question": "What should happen to a 4/4 report after the weights change?",
+            "options": [
+              "It proves every later model also succeeds.",
+              "It remains attached to the checkpoint that was actually evaluated.",
+              "It silently becomes a report about the new weights."
+            ],
+            "answer": 1,
+            "explanation": "It remains attached to the checkpoint that was actually evaluated. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias."
+          }
+        ],
+        "labId": "library",
+        "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+        "investigationId": "execution",
+        "labScope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\hat p=\\frac{k}{n},\\qquad\\operatorname{SE}(\\hat p)\\approx\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}",
+          "variables": [
+            {
+              "symbol": "p̂",
+              "meaning": "Observed success fraction",
+              "unit": "probability fraction"
+            },
+            {
+              "symbol": "k",
+              "meaning": "Successful independent trials",
+              "unit": "trials"
+            },
+            {
+              "symbol": "n",
+              "meaning": "Total independent trials, greater than zero",
+              "unit": "trials"
+            },
+            {
+              "symbol": "SE(p̂)",
+              "meaning": "Plug-in standard error of the success-fraction estimator",
+              "unit": "probability fraction"
+            }
+          ],
+          "text": "Estimated success probability is successes divided by trials. Its plug-in standard error is the square root of estimated probability times one minus that probability divided by trial count."
+        },
+        {
+          "kind": "math",
+          "latex": "CI=\\frac{\\hat p+z^2/(2n)\\ \\pm\\ z\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}+\\frac{z^2}{4n^2}}}{1+z^2/n}",
+          "text": "Keep development feedback separate from a first final-test report and state its uncertainty.",
+          "variables": [
+            {
+              "symbol": "CI",
+              "meaning": "Wilson interval under the stated binomial model",
+              "unit": "probability interval"
+            },
+            {
+              "symbol": "p hat",
+              "meaning": "Observed success fraction",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "n",
+              "meaning": "Evaluated cases",
+              "unit": "cases"
+            },
+            {
+              "symbol": "z",
+              "meaning": "Normal quantile, 1.96 for approximate 95 percent",
+              "unit": "dimensionless"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "attention",
+      "previous": "f34b4868dabb54eec0ff9ce2884e47eb63085ca81644a26180c1f9af3208d0a3",
+      "current": "3d5959c372ba23d8f9a9fae55882b0e486ffa0b21058b7cb4022d51aaa35a542",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "attention",
+        "level": "model",
+        "name": "Self-attention",
+        "shortName": "Self-attention",
+        "role": "Exchange information between token representations.",
+        "description": "Self-attention computes content-dependent mixtures of information. Learned projections produce queries, keys, and values. Query–key dot products become scores; scaling, a causal mask when appropriate, and softmax turn them into weights. Those weights mix value vectors. Multiple heads can form different mixtures. A causal decoder prevents a position from using future tokens during training. The atlas displays a small matrix so the relationship between rows, columns, and weighted values remains visible.\n\nAttention learning differentiates both the value path and the probabilities controlling that mixture. A causal mask removes future positions from the allowed softmax support; it is not merely a visual annotation. The executable decoder exposes projected Q/K/V, scores, probabilities and the complete gradient graph. A small analytical example clarifies why changing one score can redistribute weight across all allowed values.",
+        "mechanism": [
+          "Project representations into Q, K, and V.",
+          "Form softmax(QKᵀ / √dₖ + mask).",
+          "Multiply the weights by V and combine heads.",
+          "Form scores only for positions the query may attend to.",
+          "Normalize those scores together and mix their value vectors.",
+          "Backpropagate through both softmax probabilities and value projections; verify prefix invariance under future-token changes."
+        ],
+        "specs": [
+          {
+            "label": "Dense score shape",
+            "value": "T × T per head",
+            "context": "T is sequence length; algorithms need not store the full matrix."
+          },
+          {
+            "label": "Causality",
+            "value": "Future positions masked",
+            "context": "For an autoregressive decoder."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Representations",
+            "direction": "in",
+            "signal": "Queries, keys, values"
+          },
+          {
+            "name": "Residual stream",
+            "direction": "out",
+            "signal": "Context-dependent value mixtures"
+          }
+        ],
+        "tradeoff": "Dense attention has quadratic pairwise work in sequence length. IO-aware kernels reduce memory traffic while implementing the same attention mathematics, subject to finite-precision differences.",
+        "whyAI": "Attention makes relationships within context available to each token.",
+        "related": [
+          "embedding",
+          "positional-encoding",
+          "feed-forward",
+          "tensor-core",
+          "kv-cache",
+          "reverse-mode-autodiff",
+          "tiny-causal-decoder"
+        ],
+        "sources": [
+          {
+            "title": "Vaswani et al. — Attention Is All You Need",
+            "url": "https://arxiv.org/abs/1706.03762"
+          },
+          {
+            "title": "Dao et al. — FlashAttention",
+            "url": "https://arxiv.org/abs/2205.14135"
+          },
+          {
+            "title": "Attention Is All You Need",
+            "url": "https://arxiv.org/html/1706.03762v7"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "attention",
+        "misconception": "Attention weights are not a complete explanation of a model’s reasoning.",
+        "check": {
+          "question": "What does the attention weight matrix mix?",
+          "options": [
+            "CPU clocks",
+            "Value vectors",
+            "Raw electrical power"
+          ],
+          "answer": 1,
+          "explanation": "Each row weights the value vectors available to that query."
+        },
+        "branch": "Transformer computation",
+        "subbranch": "Communication between positions",
+        "science": [
+          {
+            "title": "Scaled dot-product attention",
+            "equation": "A = softmax_rows(QKᵀ / √dₖ + M); Y = AV; Var(qᵀk) ≈ dₖ",
+            "explanation": "Each row of A describes how one query mixes allowed value vectors. Dividing by √dₖ controls score scale: a sum of dₖ independent unit-variance products has variance dₖ. Without that adjustment, larger head widths can push softmax toward saturation. The matrix products expose why data reuse matters on GPU tensor units.",
+            "assumptions": "The variance argument assumes independent, zero-mean, unit-variance query/key coordinates; trained vectors need not satisfy it exactly. M is zero for allowed positions and negative infinity for masked positions. This is one attention head before output projection."
+          },
+          {
+            "title": "Trainable attention from Q/K/V through gradients · worked relation",
+            "equation": "o=\\sum_j a_jv_j,\\qquad \\frac{\\partial o}{\\partial s_j}=a_j(v_j-o)",
+            "explanation": "With allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.",
+            "assumptions": "Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections."
+          }
+        ],
+        "history": [
+          {
+            "year": 2017,
+            "title": "The Transformer replaces recurrent sequence processing",
+            "significance": "Attention Is All You Need demonstrated an encoder–decoder built from attention and position-wise transformations, enabling parallel processing across training positions. It did not establish that attention alone constitutes intelligence.",
+            "source": {
+              "title": "Vaswani et al. — Attention Is All You Need",
+              "url": "https://arxiv.org/abs/1706.03762"
+            }
+          }
+        ],
+        "learningObjective": "Relate attention scores to a quadratic sequence interaction.",
+        "engineeringExample": "For sequence length T, the unstructured score matrix has T² entries per head; memory-aware kernels change movement without changing the mathematical dependency.\n\nWith allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.",
+        "evidenceNotes": "The displayed equation is a model abstraction; masks and precision are explicit assumptions.\n\nMode: executable causal attention gradients. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "visualFamily": "model-workload",
+        "prerequisites": [
+          "embedding",
+          "positional-encoding",
+          "mac"
+        ],
+        "checks": [
+          {
+            "question": "What is the derivative of output with respect to the first score?",
+            "options": [
+              "−0.75.",
+              "+0.75.",
+              "Zero merely because attention probabilities sum to one."
+            ],
+            "answer": 0,
+            "explanation": "−0.75. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections."
+          }
+        ],
+        "labId": "attention",
+        "scope": "Inspect the causal mask and normalized score weights for hand-chosen vectors; attention temperature is separate from output sampling.",
+        "investigationId": "execution",
+        "labScope": "Inspect the causal mask and normalized score weights for hand-chosen vectors; attention temperature is separate from output sampling."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\begin{aligned}A&=\\operatorname{softmax}_{\\mathrm{rows}}\\!\\left(\\frac{QK^{\\mathsf T}}{\\sqrt{d_k}}+M\\right),\\qquad Y=AV\\\\\\operatorname{Var}(q^{\\mathsf T}k)&\\approx d_k\\end{aligned}",
+          "variables": [
+            {
+              "symbol": "Q",
+              "meaning": "Query matrix for one attention head",
+              "unit": "real T_q × d_k array"
+            },
+            {
+              "symbol": "K",
+              "meaning": "Key matrix",
+              "unit": "real T_k × d_k array"
+            },
+            {
+              "symbol": "V",
+              "meaning": "Value matrix",
+              "unit": "real T_k × d_v array"
+            },
+            {
+              "symbol": "A",
+              "meaning": "Row-normalized attention weights",
+              "unit": "dimensionless T_q × T_k array"
+            },
+            {
+              "symbol": "Y",
+              "meaning": "Mixed value output",
+              "unit": "real T_q × d_v array"
+            },
+            {
+              "symbol": "M",
+              "meaning": "Additive attention mask: zero or negative infinity",
+              "unit": "dimensionless score array"
+            },
+            {
+              "symbol": "d_k",
+              "meaning": "Query/key width",
+              "unit": "coordinates"
+            },
+            {
+              "symbol": "d_v",
+              "meaning": "Value width",
+              "unit": "coordinates"
+            },
+            {
+              "symbol": "T_q,T_k",
+              "meaning": "Query and key position counts",
+              "unit": "counts"
+            },
+            {
+              "symbol": "q,k",
+              "meaning": "Individual query/key vectors in the variance argument",
+              "unit": "dimensionless d_k-coordinate vectors"
+            },
+            {
+              "symbol": "Var",
+              "meaning": "Variance under the stated coordinate distribution",
+              "unit": "squared score units"
+            }
+          ],
+          "text": "Attention weights are a row-wise softmax of query–key scores divided by the square root of head width, plus a mask. Multiplying weights by values gives the output. Under the stated independent unit-variance coordinate assumptions, the unscaled dot-product variance is approximately head width."
+        },
+        {
+          "kind": "math",
+          "latex": "o=\\sum_j a_jv_j,\\qquad \\frac{\\partial o}{\\partial s_j}=a_j(v_j-o)",
+          "text": "Trace a numerical softmax derivative through a causal value mixture.",
+          "variables": [
+            {
+              "symbol": "o",
+              "meaning": "Scalar attention output in this example",
+              "unit": "value units"
+            },
+            {
+              "symbol": "a_j",
+              "meaning": "Softmax probability over allowed keys",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "v_j",
+              "meaning": "Allowed scalar value",
+              "unit": "value units"
+            },
+            {
+              "symbol": "s_j",
+              "meaning": "Pre-softmax score",
+              "unit": "dimensionless"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "embedding",
+      "previous": "c93bd77665949229c45aba4e729476fdbca63e75af5c694ecbf26cf405e280d8",
+      "current": "b97066417deb1d20cb7ebb608af14157dff69a14be7e8e8e8890a804cfd4bda8",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "embedding",
+        "level": "model",
+        "name": "Embedding table",
+        "shortName": "Embedding table",
+        "role": "Give discrete tokens a trainable numerical representation.",
+        "description": "An embedding table is a matrix with one row per vocabulary entry. Looking up an ID returns a vector that the rest of the network can transform. These values are learned during training. Related uses can acquire useful geometric relationships, but no single coordinate is guaranteed to have a neat human interpretation. The table lives in memory; its displayed three-dimensional form is a small sample of a much higher-dimensional array.\n\nA lookup row is a shared parameter whenever the same token occurs more than once. Reverse-mode gradients from every occurrence must accumulate into that row. If input embeddings and the output head are tied, the output path adds another contribution to the same parameters. The executable lifecycle model uses separate matrices, so tying is a worked extension rather than an implicit property of all decoders.",
+        "mechanism": [
+          "Take a token ID as a row address.",
+          "Read the corresponding vector of learned values.",
+          "Pass the sequence of vectors into the model with position information.",
+          "Identify all input positions that read the same token row.",
+          "Add each position’s backward contribution at matching feature coordinates.",
+          "If weights are explicitly tied, add output-path gradients before the optimizer update."
+        ],
+        "specs": [
+          {
+            "label": "Shape",
+            "value": "V × d",
+            "context": "Vocabulary size V; vector width d."
+          },
+          {
+            "label": "Storage",
+            "value": "V × d × bytes/value",
+            "context": "Excludes quantization metadata and optimizer state."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Tokenizer",
+            "direction": "in",
+            "signal": "Integer IDs"
+          },
+          {
+            "name": "Transformer blocks",
+            "direction": "out",
+            "signal": "Token vectors"
+          }
+        ],
+        "tradeoff": "Wider vectors increase representation capacity and arithmetic/storage cost. Quantization can reduce bytes per value with numerical tradeoffs.",
+        "whyAI": "Embeddings connect symbolic input to the matrix computations executed by accelerators.",
+        "related": [
+          "tokenizer",
+          "positional-encoding",
+          "attention",
+          "hbm-stack",
+          "reverse-mode-autodiff",
+          "tiny-causal-decoder"
+        ],
+        "sources": [
+          {
+            "title": "PyTorch — Embedding",
+            "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.Embedding.html"
+          },
+          {
+            "title": "Bengio et al. — A Neural Probabilistic Language Model",
+            "url": "https://www.jmlr.org/papers/v3/bengio03a.html"
+          },
+          {
+            "title": "Attention Is All You Need",
+            "url": "https://arxiv.org/html/1706.03762v7"
+          }
+        ],
+        "scale": "Logical structure · mapped onto physical hardware",
+        "kind": "embedding",
+        "misconception": "The visible vector is not a literal concept stored in one neuron.",
+        "check": {
+          "question": "What does an embedding lookup return?",
+          "options": [
+            "A row of learned numerical values",
+            "A network packet",
+            "A transistor address"
+          ],
+          "answer": 0,
+          "explanation": "The ID indexes a trainable matrix row."
+        },
+        "branch": "Representation",
+        "subbranch": "Learned vectors",
+        "science": [
+          {
+            "title": "Lookup is a sparse matrix multiplication",
+            "equation": "e_i = one_hot(i)ᵀ E; E ∈ ℝ^(V×d); ∂ℒ/∂E_j = Σ[t: token_t=j] ∂ℒ/∂e_t",
+            "explanation": "A one-hot row selects exactly one of V embedding vectors, each with d coordinates. Implementations gather that row instead of materializing a giant one-hot matrix. During backpropagation, occurrences of the same token contribute to the gradient of the same shared row.",
+            "assumptions": "The gradient expression covers the input lookup path only. A tied output projection, regularization, or other use of E can add gradients to additional rows; quantization changes physical storage."
+          },
+          {
+            "title": "Learned lookup gradients and tied weights · worked relation",
+            "equation": "\\frac{\\partial L}{\\partial E_{v,:}}=\\sum_{t:x_t=v}\\frac{\\partial L}{\\partial e_t}+g^{tied\\ output}_{v,:}",
+            "explanation": "Token a appears twice and receives row gradients [1,2] and [3,−1]. Its input-embedding gradient is [4,1]. A separate token b receives [0.5,0.5] and must not be added to a. If an explicitly tied output path contributes [−2,1] to a, the combined tied gradient becomes [2,2]. The core instead keeps the output contribution in its separate unembedding tensor.",
+            "assumptions": "Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate."
+          }
+        ],
+        "history": [
+          {
+            "year": 2003,
+            "title": "Distributed word representations in a neural language model",
+            "significance": "Bengio and colleagues jointly learned word vectors and a sequence probability model, showing how shared continuous representations could generalize beyond previously observed word sequences.",
+            "source": {
+              "title": "Bengio et al. — A Neural Probabilistic Language Model",
+              "url": "https://www.jmlr.org/papers/v3/bengio03a.html"
+            }
+          }
+        ],
+        "prerequisites": [
+          "tokenizer"
+        ],
+        "learningObjective": "Compute table storage and explain how an ID selects a vector without creating meaning from its numeric value.",
+        "engineeringExample": "Synthetic table with 1,000 vocabulary rows, width 8 and two bytes per element uses 1,000 × 8 × 2 = 16,000 bytes. Looking up ID 17 returns one eight-element row, a 16-byte logical vector; it does not mean the token has semantic magnitude 17.\n\nToken a appears twice and receives row gradients [1,2] and [3,−1]. Its input-embedding gradient is [4,1]. A separate token b receives [0.5,0.5] and must not be added to a. If an explicitly tied output path contributes [−2,1] to a, the combined tied gradient becomes [2,2]. The core instead keeps the output contribution in its separate unembedding tensor.",
+        "evidenceNotes": "This is dense logical storage and lookup as described by the linked embedding references. Padding, quantization metadata, tied output weights and training optimizer state are separate; no particular model vocabulary or width is assumed.\n\nMode: executable lookup gradients; worked tying. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+        "checks": [
+          {
+            "question": "What is the input-only gradient for the repeated a row?",
+            "options": [
+              "[3,−1], because the second occurrence replaces the first.",
+              "[4.5,1.5], because every token shares one row.",
+              "[4,1]."
+            ],
+            "answer": 2,
+            "explanation": "[4,1]. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate."
+          }
+        ],
+        "labId": "engineering",
+        "scope": "Budget weights, KV and optional optimizer/master state; activations, gradients and the numerical training or quantization algorithm are not modeled.",
+        "deepLabId": "footprint",
+        "investigationId": "execution",
+        "labScope": "Budget weights, KV and optional optimizer/master state; activations, gradients and the numerical training or quantization algorithm are not modeled."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "\\begin{aligned}e_i&=\\operatorname{onehot}(i)^{\\mathsf T}E,\\quad E\\in\\mathbb R^{V\\times d}\\\\\\frac{\\partial\\mathcal L}{\\partial E_{j,:}}&=\\sum_{t:\\,\\mathrm{token}_t=j}\\frac{\\partial\\mathcal L}{\\partial e_t}\\end{aligned}",
+          "variables": [
+            {
+              "symbol": "E",
+              "meaning": "Embedding table with one row per vocabulary item",
+              "unit": "real V × d array"
+            },
+            {
+              "symbol": "V",
+              "meaning": "Vocabulary size",
+              "unit": "count"
+            },
+            {
+              "symbol": "d",
+              "meaning": "Embedding width",
+              "unit": "coordinates"
+            },
+            {
+              "symbol": "eᵢ",
+              "meaning": "Row vector retrieved for token ID i in the lookup identity",
+              "unit": "real 1 × d vector"
+            },
+            {
+              "symbol": "onehot(i)",
+              "meaning": "Column selector containing one at token ID i",
+              "unit": "real V × 1 vector"
+            },
+            {
+              "symbol": "E_j,:",
+              "meaning": "Embedding row for vocabulary ID j",
+              "unit": "real 1 × d vector"
+            },
+            {
+              "symbol": "ℒ",
+              "meaning": "Scalar training loss",
+              "unit": "dimensionless model loss"
+            },
+            {
+              "symbol": "eₜ",
+              "meaning": "Embedding occurrence at sequence position t in the gradient sum",
+              "unit": "real 1 × d vector"
+            },
+            {
+              "symbol": "tokenₜ",
+              "meaning": "Token ID at sequence position t",
+              "unit": "integer ID"
+            },
+            {
+              "symbol": "i,j,t",
+              "meaning": "Vocabulary or sequence indices as locally indicated",
+              "unit": "integer indices"
+            }
+          ],
+          "text": "A one-hot row selects its embedding-table row. The lookup-path gradient for a shared vocabulary row sums gradients from every sequence position using that token.",
+          "note": "The first e index names a vocabulary item; the gradient-sum e index names a sequence occurrence. The table explicitly distinguishes them. All values are model coordinates, not physical distances."
+        },
+        {
+          "kind": "math",
+          "latex": "\\frac{\\partial L}{\\partial E_{v,:}}=\\sum_{t:x_t=v}\\frac{\\partial L}{\\partial e_t}+g^{tied\\ output}_{v,:}",
+          "text": "Accumulate gradients into shared lookup rows and distinguish tied from separate output weights.",
+          "variables": [
+            {
+              "symbol": "E_v",
+              "meaning": "Shared embedding row for token v",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "e_t",
+              "meaning": "Lookup result at input position t",
+              "unit": "dimensionless"
+            },
+            {
+              "symbol": "g",
+              "meaning": "Derivative contribution, zero here unless weights are explicitly tied",
+              "unit": "loss per parameter"
+            },
+            {
+              "symbol": "x_t",
+              "meaning": "Token identity",
+              "unit": "identifier"
+            },
+            {
+              "symbol": "L",
+              "meaning": "Scalar objective",
+              "unit": "loss"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "disaggregated-serving",
+      "previous": "e1f9c79f12849c2d2cbf4ec7b905edf63007c0ab988aca8d67ed770502c37c26",
+      "current": "7a675aa9e6a5b0c5f3852386b081a6aa02f9745543e04f7fda9f5becdf687f73",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "disaggregated-serving",
+        "level": "software",
+        "name": "Prefill/decode disaggregation and useful serving rate",
+        "shortName": "Prefill/decode disaggregation and useful serving rate",
+        "role": "Separates workload phases when independent scheduling benefits exceed the state-transfer cost.",
+        "description": "A serving system can run prefill and decode on different resource pools. Prefill produces KV state that must become accessible to the decode worker, creating a transfer and handoff boundary. Separating the phases may prevent long prompts from disrupting token-generation deadlines and allows different batching or hardware choices. It also adds network demand, queue coordination and failure cases. DistServe studies this design under explicit service objectives. PagedAttention addresses a different layer: efficient mapping and sharing of KV memory blocks. Combining allocation and scheduling methods requires measuring accepted requests that meet latency and quality targets, not just the largest raw token count.\n\nA prefill/decode split hands off sequence state as well as service work. The downstream worker needs compatible model, representation and ownership before it can consume transferred KV data. A partially transferred or stale state cannot be treated as a complete handoff merely because the sending request returned. Keeping the same request identity through queueing and transfer makes those failure boundaries visible.",
+        "specs": [
+          {
+            "label": "Goodput",
+            "value": "Accepted requests/s meeting stated service objectives",
+            "context": "Raw throughput includes outputs that may miss deadlines."
+          },
+          {
+            "label": "Handoff state",
+            "value": "KV bytes and metadata per transferred request",
+            "context": "Transfer must preserve model version, layout and request identity."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Prefill pool",
+            "direction": "in",
+            "signal": "Completed prompt state and request deadline"
+          },
+          {
+            "name": "Decode pool",
+            "direction": "out",
+            "signal": "Continued token stream after verified KV handoff"
+          }
+        ],
+        "tradeoff": "Disaggregation can improve scheduling isolation and hardware fit, but large KV transfers or imbalanced pools can erase the gain.",
+        "whyAI": "Workload phases stress compute and memory differently; useful capacity depends on serving deadlines, arrival patterns and the cost of moving state.",
+        "related": [
+          "serving",
+          "kv-cache",
+          "prefill-resource-trace",
+          "decode-bandwidth-trace",
+          "runtime-device-dispatch",
+          "context-memory-provenance",
+          "event-queues-delivery"
+        ],
+        "sources": [
+          {
+            "title": "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving",
+            "url": "https://arxiv.org/abs/2401.09670"
+          },
+          {
+            "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+            "url": "https://arxiv.org/abs/2309.06180"
+          }
+        ],
+        "scale": "Accelerator group to serving pool; routes schematic",
+        "kind": "workload",
+        "branch": "Model–machine co-design",
+        "subbranch": "Distributed work and serving choices",
+        "mechanism": [
+          "Classify the prompt work and generation work with separate latency objectives and resource estimates.",
+          "Allocate prefill and decode capacity according to the observed request mix and variability.",
+          "Transfer or expose the completed KV state with explicit ownership, layout and readiness metadata.",
+          "Admit the request to decode only when its state is accessible and scheduling deadlines remain feasible.",
+          "Measure goodput and handoff failures while varying context, batch and network load; compare with a colocated baseline.",
+          "The handoff declares which sequence/model state is transferred, who owns it and what confirms a complete usable copy.",
+          "Queue imbalance, retransmission and state conversion are additional to the simple payload transfer bound."
+        ],
+        "misconception": "Paged KV allocation does not itself separate prefill from decode, and phase separation is not automatically beneficial for every workload.",
+        "check": {
+          "question": "What new cost must a disaggregated design explicitly budget?",
+          "options": [
+            "Moving or exposing KV state between phase workers",
+            "Retraining the tokenizer for each token",
+            "Eliminating all decode weights"
+          ],
+          "answer": 0,
+          "explanation": "The decode worker needs the prompt’s context state, making its handoff a capacity, bandwidth and correctness concern."
+        },
+        "science": [
+          {
+            "title": "KV handoff floor",
+            "equation": "Thandoff ≥ MKV / Blink",
+            "explanation": "MKV is bytes actually transferred and Blink useful bytes/s on the selected path; Thandoff is seconds.",
+            "assumptions": "A payload floor; queueing, setup, layout conversion and synchronization add latency, while reuse or shared access changes transferred bytes."
+          }
+        ],
+        "prerequisites": [
+          "prefill-resource-trace",
+          "decode-bandwidth-trace"
+        ],
+        "learningObjective": "Judge phase separation through service objectives and state-transfer costs.",
+        "workstream": "W11",
+        "visualFamily": "model-workload",
+        "engineeringExample": "Synthetic handoff: 2 GB of KV at 25 GB/s requires at least 80 ms of payload transfer. That may be acceptable for one workload and dominate another’s first-token target; a fixed universal benefit is unjustified.\n\nA synthetic 2 GB KV payload over an effective 25 GB/s path has a payload-only lower bound of 0.08 s, or 80 ms. If a required state-conversion step takes another 10 ms and is serialized after transfer, the handoff path needs at least 90 ms under those assumptions. It cannot be added as free overlap without a dependency argument. An interrupted transfer also needs a rule for discarding or resuming partial state.",
+        "evidenceNotes": "DistServe and PagedAttention are distinct research methods. Their measured gains depend on workload and configurations and are not reproduced as unconditional defaults.\n\nThe handoff extension is worked timing and ownership analysis. It is not a measured disaggregated server, network protocol or real-model KV exchange.",
+        "checks": [
+          {
+            "question": "Can a decoder consume an incomplete handoff simply because some KV bytes arrived?",
+            "options": [
+              "Yes, all partial state is equivalent",
+              "No, its declared valid-state and ownership contract must be met",
+              "Yes, if the link is fast"
+            ],
+            "answer": 1,
+            "explanation": "Arrival of some bytes does not establish a complete sequence representation suitable for decode."
+          }
+        ],
+        "labId": "library",
+        "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+        "investigationId": "execution",
+        "labScope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "T_{\\mathrm{handoff}}\\ge\\frac{M_{KV}}{B_{\\mathrm{link}}}",
+          "variables": [
+            {
+              "symbol": "T_handoff",
+              "meaning": "KV handoff time lower bound",
+              "unit": "s"
+            },
+            {
+              "symbol": "M_KV",
+              "meaning": "KV bytes actually transferred",
+              "unit": "bytes"
+            },
+            {
+              "symbol": "B_link",
+              "meaning": "Useful bandwidth of the handoff path",
+              "unit": "bytes/s"
+            }
+          ],
+          "text": "KV handoff takes at least transferred KV bytes divided by useful path bandwidth."
+        }
+      ]
+    },
+    {
+      "experience": "progress",
+      "id": "serving",
+      "previous": "023db907efd5c9c47c3559e7c5d96ab2c4b3be1f0959abb237e600a8aaabf085",
+      "current": "998f99f61462d045616dab0c30f52c7e65e3ad79242403c0bebdd60c53498f45",
+      "earlierScopeReconstructed": true,
+      "record": {
+        "id": "serving",
+        "level": "software",
+        "name": "Inference serving and request scheduling",
+        "shortName": "Serving engine",
+        "role": "Turns incoming model requests into scheduled prefill and generation work.",
+        "description": "A serving engine manages the many requests that share an inference deployment. It receives inputs, schedules prompt processing, keeps track of generation state, and returns outputs while managing memory and latency goals. Continuous batching can admit and retire requests as generation progresses instead of waiting for one fixed batch to finish. Paged KV-cache management organizes attention state in blocks to reduce wasted allocation and support flexible scheduling. The atlas shows requests with different lengths sharing device execution while retaining distinct state. Serving optimization changes resource use and response timing, not the meaning of trained weights. Throughput, time to first token, and time between later tokens must be considered separately because users experience all three differently.\n\nA request-level explanation should retain arrival, admission, service and completion as separate states. Resource bounds for a decode step do not by themselves determine which queued request runs next. A scheduling policy also owns live sequence state and must release or preserve it correctly after completion, cancellation and handoff. A useful comparison holds the request trace and service assumptions fixed while changing only the scheduling policy.",
+        "specs": [
+          {
+            "label": "Execution phases",
+            "value": "Prefill and decode",
+            "context": "Prompt processing followed by iterative generation."
+          },
+          {
+            "label": "Latency measures",
+            "value": "Time to first token and inter-token latency",
+            "context": "Different parts of perceived responsiveness."
+          },
+          {
+            "label": "Example techniques",
+            "value": "Continuous batching and paged KV cache",
+            "context": "Documented in vLLM; implementation-specific."
+          }
+        ],
+        "interfaces": [
+          {
+            "name": "Inference requests",
+            "direction": "in",
+            "signal": "Prompts, settings, and request state"
+          },
+          {
+            "name": "Generated outputs",
+            "direction": "out",
+            "signal": "Streamed tokens or completed results"
+          }
+        ],
+        "tradeoff": "Batching can improve throughput. Queueing and memory pressure can worsen individual request latency.",
+        "whyAI": "Serving makes trained models available to people and applications. It translates hardware capacity into practical responsiveness and concurrency.",
+        "related": [
+          "cuda",
+          "kernel",
+          "quantization",
+          "storage",
+          "scheduler",
+          "output-head",
+          "event-queues-delivery",
+          "telemetry-traces-evaluation",
+          "runtime-device-dispatch"
+        ],
+        "sources": [
+          {
+            "title": "vLLM — Inference and Serving Documentation",
+            "url": "https://docs.vllm.ai/en/latest/"
+          },
+          {
+            "title": "Kwon et al. — Efficient Memory Management with PagedAttention",
+            "url": "https://arxiv.org/abs/2309.06180"
+          }
+        ],
+        "scale": "Request-to-device software pipeline",
+        "kind": "serving",
+        "mechanism": [
+          "Accept requests and schedule their prompt processing.",
+          "Maintain each request’s state while batching compatible generation work.",
+          "Stream results and release resources as requests finish.",
+          "Request timestamps and state transitions distinguish queue wait, first-token delay and later inter-token intervals.",
+          "A canceled or completed request releases its owned state under an explicit policy; a workload bound alone does not simulate that transition."
+        ],
+        "misconception": "Higher tokens-per-second throughput does not automatically mean lower latency for one user’s request.",
+        "check": {
+          "question": "What does continuous batching allow?",
+          "options": [
+            "All users must finish at the same time",
+            "Requests can enter and leave the running workload as generation progresses",
+            "Every token bypasses the model"
+          ],
+          "answer": 1,
+          "explanation": "The batch can evolve across iterations, helping use capacity despite requests having different arrival times and lengths."
+        },
+        "branch": "Model deployment",
+        "subbranch": "Request execution",
+        "science": [
+          {
+            "title": "Generation latency decomposition",
+            "equation": "T_response ≈ TTFT + (N_output − 1) × mean_ITL",
+            "explanation": "Time to first token covers the initial wait and work; later tokens accumulate inter-token latency. Two systems with equal total throughput can offer very different interactive responsiveness.",
+            "assumptions": "Simplified mean-latency decomposition for one streamed request with at least one output token; actual token gaps and network delivery vary."
+          }
+        ],
+        "history": [
+          {
+            "year": 2023,
+            "title": "PagedAttention connects memory management to LLM serving",
+            "significance": "The vLLM paper showed how block-based KV-cache management and flexible sharing can improve the use of memory during batched generation. Reported gains depend on workloads and comparisons.",
+            "source": {
+              "title": "Kwon et al. — PagedAttention",
+              "url": "https://arxiv.org/abs/2309.06180"
+            }
+          }
+        ],
+        "learningObjective": "Separate time-to-first-token from per-token latency.",
+        "engineeringExample": "For 200 output tokens, response time is TTFT plus 199 inter-token intervals; batching changes both terms.\n\nFor a hypothetical request that arrives at 0 ms, is admitted at 30 ms and returns its first token at 80 ms, queue wait is 30 ms and time to first token is 80 ms. If 100 later inter-token intervals each take 5 ms, its final token arrives at 580 ms. Summing a separate device enqueue duration into every interval without identifying a dependency would double-count or misplace overhead.",
+        "evidenceNotes": "The expression does not promise a quality or throughput target.\n\nThis additive trace is worked synthetic timing. It does not extend the existing resource calculator into a measured queueing engine or claim current vendor service rates.",
+        "visualFamily": "model-workload",
+        "prerequisites": [
+          "scheduler",
+          "kernel",
+          "kv-cache"
+        ],
+        "checks": [
+          {
+            "question": "A request arrives at 0 ms and returns its first token at 80 ms after 30 ms queueing. What is TTFT?",
+            "options": [
+              "30 ms",
+              "50 ms",
+              "80 ms"
+            ],
+            "answer": 2,
+            "explanation": "TTFT is measured from arrival to first token and includes the queue interval."
+          }
+        ],
+        "labId": "token-system-path",
+        "scope": "Follow a modeled batched decode critical path and energy budget; prefill, expert routing and scheduling differences are comparison context rather than separately simulated algorithms.",
+        "investigationId": "execution",
+        "labScope": "Follow a modeled batched decode critical path and energy budget; prefill, expert routing and scheduling differences are comparison context rather than separately simulated algorithms."
+      },
+      "equations": [
+        {
+          "kind": "math",
+          "latex": "T_{\\mathrm{response}}\\approx\\mathrm{TTFT}+(N_{\\mathrm{output}}-1)\\overline{\\mathrm{ITL}}",
+          "variables": [
+            {
+              "symbol": "T_response",
+              "meaning": "Time through the final output token of one streamed request",
+              "unit": "s"
+            },
+            {
+              "symbol": "TTFT",
+              "meaning": "Time to first token",
+              "unit": "s"
+            },
+            {
+              "symbol": "N_output",
+              "meaning": "Number of output tokens, at least one",
+              "unit": "tokens"
+            },
+            {
+              "symbol": "mean ITL",
+              "meaning": "Mean gap between successive output tokens",
+              "unit": "s/token gap"
+            }
+          ],
+          "text": "Response time is approximately time to first token plus the remaining token gaps times their mean inter-token latency."
+        }
+      ]
+    }
+  ],
+  "sourceUseRecordsUnchanged": true,
+  "newSourceReadings": 0,
+  "humanReviews": 0,
+  "scope": "Reconstructed the captured earlier lessons without the append-only enrichment packs and verified their earlier identities. Retained all existing scoped source checks. New appended mechanisms use their separate model-lifecycle and automation source records; this integration event is not a blanket review of new lesson content.",
+  "newEvidenceLocations": [
+    "docs/model-lifecycle/curriculum/source-review-manifest.json"
+  ],
+  "pending": "Independent specialist, physical-device and learner observations remain unobserved.",
+  "preservedSnapshot": "docs/curation/advancement/history/before-next-horizon-64688193c6a18bde.json"
+}

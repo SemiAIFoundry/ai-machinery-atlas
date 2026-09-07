@@ -1,63 +1,22 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-09-07",
-  "generatedAt": "2026-09-07T15:50:39.400Z",
+  "generatedAt": "2026-09-07T22:48:54.449Z",
   "interpretation": "A planning queue. Baseline review required means no review is recorded, not that content is false, out of date, or peer reviewed. Inherited dates are triage metadata only.",
   "summary": {
-    "lessons": 224,
-    "recordedReviewEvents": 0,
+    "lessons": 311,
+    "recordedReviewEvents": 23,
     "byPriority": {
-      "high": 35,
-      "normal": 188,
-      "urgent": 1
+      "high": 87,
+      "normal": 224
     },
     "bySourceReviewStatus": {
-      "baseline-review-required": 224
+      "baseline-review-required": 290,
+      "within-proposed-review-interval": 21
     },
     "specialistReviewEvents": 0
   },
   "lessons": [
-    {
-      "lessonId": "hbm-silicon-intensity",
-      "title": "HBM silicon intensity and allocation",
-      "domainId": "packaging-machines",
-      "priority": "urgent",
-      "proposedReviewRole": "packaging-systems-reviewer",
-      "updateSensitivity": "status-sensitive",
-      "proposedIntervalDays": 30,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [
-          "2026-09-06"
-        ],
-        "ageDaysRange": [
-          1,
-          1
-        ],
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [
-        "fab-claim-micron-intensity-pending"
-      ],
-      "sourceIds": [
-        "url-5d5ec03f59af302cf531",
-        "url-dbd96dc7b5fd154235b2",
-        "url-e033a05c1723994e9007",
-        "url-d40dd97ba68c5279afc8"
-      ],
-      "dependentLessonIds": [],
-      "investigationIds": [
-        "manufacturing"
-      ]
-    },
     {
       "lessonId": "astra",
       "title": "GPT-6 Astra",
@@ -76,15 +35,21 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
       "claimIds": [],
       "sourceIds": [
         "url-67b4ce9b4e6ab350a12b",
         "url-49e8d0577a5e1f9d20fd",
-        "url-ec400e9e55dcff2e4973"
+        "url-ec400e9e55dcff2e4973",
+        "url-920caecd56af83238184"
       ],
       "dependentLessonIds": [],
       "investigationIds": [
@@ -100,12 +65,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-capacity-phase-geography-2026-09-07-02-accepted",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -142,12 +108,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-compatible-supply-capacity-2026-09-07-02-accepted",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -181,12 +148,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-energy-forecast-boundaries-2026-09-07-02-accepted",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -221,12 +189,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-grid-interconnection-readiness-2026-09-07-02-accepted",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -257,12 +226,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-hbf-latency-prefetch-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -298,12 +268,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-hbf-read-tier-contract-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -340,12 +311,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-hbm-base-phy-controller-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -383,12 +355,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-hbm-tc-ncf-route-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -501,12 +474,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-production-ramp-allocation-2026-09-07-02-accepted",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -539,12 +513,13 @@
       "updateSensitivity": "status-sensitive",
       "proposedIntervalDays": 30,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-10-07",
+        "reviewEventId": "agent-source-scope-regional-siting-access-2026-09-07-02-accepted",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -640,6 +615,48 @@
       "investigationIds": []
     },
     {
+      "lessonId": "action-conditioned-world-model",
+      "title": "Predict transitions conditional on actions",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-vjepa2",
+        "ml-claim-dreamer"
+      ],
+      "sourceIds": [
+        "url-70b3d8859e7fa4d897be",
+        "url-626b513bbd172b5cd862"
+      ],
+      "dependentLessonIds": [
+        "imagined-rollouts-policy-learning",
+        "vision-language-action-interface",
+        "diffusion-action-horizon"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "analog-photonic-research",
       "title": "Analog and photonic arithmetic research",
       "domainId": "circuits-architecture",
@@ -677,6 +694,61 @@
       ]
     },
     {
+      "lessonId": "attention",
+      "title": "Self-attention",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "source-review-2026-09-07-learning-attention",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-06",
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          1
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "sourceIds": [
+        "url-a7468c68516526913141",
+        "url-5727fed78bddc70147e9",
+        "url-8a455ddf634c62b2a780",
+        "url-d4823e472e1706a61a2a"
+      ],
+      "dependentLessonIds": [
+        "output-head",
+        "kv-cache",
+        "prefill-resource-trace",
+        "attention-io-tiling",
+        "crg-problem-statement",
+        "tiny-causal-decoder",
+        "long-context-adaptation",
+        "retrieval-supported-generation",
+        "visual-language-bridge",
+        "speech-audio-sequence-objectives",
+        "video-latent-prediction"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
       "lessonId": "attention-io-tiling",
       "title": "IO-aware attention and online softmax",
       "domainId": "executable-software",
@@ -685,12 +757,13 @@
       "updateSensitivity": "research-sensitive",
       "proposedIntervalDays": 90,
       "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "source-review-2026-09-07-learning-attention-io-tiling",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
@@ -713,6 +786,133 @@
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "causal-pretraining-objective",
+      "title": "Next-token supervision from raw sequences",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "source-review-2026-09-07-learning-causal-pretraining-objective",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-transformer"
+      ],
+      "sourceIds": [
+        "url-91e65f2aee755df9b416",
+        "url-8a455ddf634c62b2a780"
+      ],
+      "dependentLessonIds": [
+        "domain-adaptive-continuation",
+        "sft-chat-loss-masks"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "checkpoint",
+      "title": "Distributed checkpoint and recovery state",
+      "domainId": "executable-software",
+      "priority": "high",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "source-review-2026-09-07-learning-checkpoint",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "sourceIds": [
+        "url-284d853c6b8e814d96db",
+        "url-23a0b3fa770742478d25",
+        "url-1743ee34e2118e1db2a4",
+        "url-91e65f2aee755df9b416"
+      ],
+      "dependentLessonIds": [
+        "checkpoint-retained-work",
+        "orbital-radiation-recovery",
+        "domain-adaptive-continuation",
+        "checkpoint-averaging-boundaries",
+        "model-system-regression-contract"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "checkpoint-averaging-boundaries",
+      "title": "Compatible weight averaging and regressions",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "source-review-2026-09-07-learning-checkpoint-averaging-boundaries",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "sourceIds": [
+        "url-91e65f2aee755df9b416"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "chip-volume-economics",
@@ -1026,6 +1226,232 @@
       ]
     },
     {
+      "lessonId": "data-coverage-language-slices",
+      "title": "Coverage across language and source slices",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-helm"
+      ],
+      "sourceIds": [
+        "url-1312b273c0df61134371",
+        "url-c14b21395cca9227d069"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "data-mixture-sampling",
+      "title": "Mixtures, epochs and exposure",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-fineweb"
+      ],
+      "sourceIds": [
+        "url-1312b273c0df61134371",
+        "url-91e65f2aee755df9b416"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "data-quality-dedup-audit",
+      "title": "Filtering, duplication and contamination",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-dedup"
+      ],
+      "sourceIds": [
+        "url-1312b273c0df61134371",
+        "url-8169b40335c48a85fd71"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "denoising-generative-objectives",
+      "title": "Train a denoiser and sample iteratively",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-ddpm",
+        "ml-claim-flow"
+      ],
+      "sourceIds": [
+        "url-ea3efbe628f6a1660bb8",
+        "url-432271623a03e09a8d06"
+      ],
+      "dependentLessonIds": [
+        "diffusion-action-horizon"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "diffusion-action-horizon",
+      "title": "Predict action chunks and replan with feedback",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-diffusion-policy"
+      ],
+      "sourceIds": [
+        "url-f8268ad2733735278180"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "direct-preference-objective",
+      "title": "DPO policy/reference likelihood ratios",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-dpo"
+      ],
+      "sourceIds": [
+        "url-9dce83c9e048d1427ad9"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "disaggregated-serving",
       "title": "Prefill/decode disaggregation and useful serving rate",
       "domainId": "executable-software",
@@ -1065,6 +1491,131 @@
       ]
     },
     {
+      "lessonId": "domain-adaptive-continuation",
+      "title": "Continue language modeling on a new domain",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-dapt"
+      ],
+      "sourceIds": [
+        "url-d2dd0142ed9206a21f2c"
+      ],
+      "dependentLessonIds": [
+        "replay-retention-forgetting",
+        "long-context-adaptation"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "embedding",
+      "title": "Embedding table",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "sourceIds": [
+        "url-db64e40f66a319b915c9",
+        "url-1918837f4f2e373ed6b9",
+        "url-8a455ddf634c62b2a780"
+      ],
+      "dependentLessonIds": [
+        "positional-encoding",
+        "attention",
+        "feed-forward",
+        "residual-normalization",
+        "retrieval-indexing-evaluation",
+        "recommendation-ranking-feedback",
+        "tiny-causal-decoder",
+        "image-text-contrastive-learning"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "embodied-policy-evidence",
+      "title": "Learned action policies need embodiment evidence",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-learned-action-representation"
+      ],
+      "sourceIds": [
+        "url-dd85391b5dd07c92c601",
+        "url-95cbe5cc3de26b5b3aa4"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "evaluation",
       "title": "Evaluation & the AGI frontier",
       "domainId": "learning-intelligence",
@@ -1082,21 +1633,106 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
-      "claimIds": [],
+      "claimIds": [
+        "ml-claim-helm",
+        "ml-claim-calibration",
+        "ml-claim-wilson"
+      ],
       "sourceIds": [
         "url-bd84fe2ca228cff9557e",
         "url-333f107f10674bbdd8b4",
-        "url-5370b3d6ba6d10217392"
+        "url-5370b3d6ba6d10217392",
+        "url-9e1bf2cb709d465ff34c",
+        "url-c14b21395cca9227d069",
+        "url-b76261cdeaef1c22cbae",
+        "url-1a59dfe9b378a555c8df"
       ],
       "dependentLessonIds": [
         "post-training",
         "scaling-laws",
         "astra",
-        "crg-verification-loop"
+        "crg-verification-loop",
+        "speculative-decoding-verification",
+        "workflow-graphs-state",
+        "telemetry-traces-evaluation",
+        "model-artifact-rollout-drift",
+        "retrieval-indexing-evaluation",
+        "document-extraction-validation",
+        "coding-agent-patch-evidence",
+        "robot-observation-frame",
+        "streaming-speech-turns",
+        "recommendation-ranking-feedback",
+        "temporal-forecast-validation",
+        "scientific-surrogate-validation",
+        "synthetic-data-selection-feedback",
+        "checkpoint-averaging-boundaries",
+        "verifiable-reward-group-updates",
+        "reward-proxy-overoptimization",
+        "teacher-student-distillation",
+        "probability-calibration-abstention",
+        "judge-rubric-agreement",
+        "retrieval-supported-generation",
+        "test-time-search-verification",
+        "model-system-regression-contract",
+        "image-text-contrastive-learning",
+        "speech-audio-sequence-objectives",
+        "denoising-generative-objectives",
+        "action-conditioned-world-model"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "feed-forward",
+      "title": "Feed-forward network",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-transformer"
+      ],
+      "sourceIds": [
+        "url-7febb7e905af5e40fb85",
+        "url-8a455ddf634c62b2a780",
+        "url-91e65f2aee755df9b416"
+      ],
+      "dependentLessonIds": [
+        "residual-normalization",
+        "output-head",
+        "moe",
+        "tiny-causal-decoder"
       ],
       "investigationIds": [
         "execution"
@@ -1227,6 +1863,446 @@
       ]
     },
     {
+      "lessonId": "image-text-contrastive-learning",
+      "title": "Pair images and captions in a shared representation",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-clip"
+      ],
+      "sourceIds": [
+        "url-28f9138da2fe6ba80d89"
+      ],
+      "dependentLessonIds": [
+        "visual-language-bridge",
+        "video-latent-prediction"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "imagined-rollouts-policy-learning",
+      "title": "Learn behavior from a model and test in the environment",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-dreamer"
+      ],
+      "sourceIds": [
+        "url-626b513bbd172b5cd862"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "judge-rubric-agreement",
+      "title": "Human and model judgments under a rubric",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-instructgpt",
+        "ml-claim-helm"
+      ],
+      "sourceIds": [
+        "url-cc089f0f2013c741cde3",
+        "url-c14b21395cca9227d069",
+        "url-53c27cfc128038ed6a19"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "long-context-adaptation",
+      "title": "Context extension is a learned-use test",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-yarn"
+      ],
+      "sourceIds": [
+        "url-28354ec4ebdba36cfc0d"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "loss-optimizer",
+      "title": "Loss, gradients & optimizer",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-adam"
+      ],
+      "sourceIds": [
+        "url-e41b8a2c1c7799deafe1",
+        "url-8f8d412c4de780f50406",
+        "url-b3e0a83cbe77dd86571b",
+        "url-91e65f2aee755df9b416",
+        "url-956f804ab378bbe67fc2"
+      ],
+      "dependentLessonIds": [
+        "post-training",
+        "scaling-laws",
+        "training-memory-state",
+        "distributed-gradient-weighting",
+        "model-artifact-rollout-drift",
+        "reverse-mode-autodiff",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates",
+        "model-lifecycle-stage-contract",
+        "preference-reward-model",
+        "low-rank-adaptation",
+        "image-text-contrastive-learning",
+        "denoising-generative-objectives",
+        "action-conditioned-world-model"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "low-rank-adaptation",
+      "title": "Frozen base weights and trainable adapters",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-lora"
+      ],
+      "sourceIds": [
+        "url-e2afb90c7054b9f1caa0"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "microbatch-equivalent-updates",
+      "title": "Gradient accumulation under a fixed global objective",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-sft-doc"
+      ],
+      "sourceIds": [
+        "url-4ff7d5b6196f2fd7657c",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "model-lifecycle-stage-contract",
+      "title": "Describe a stage by its changed contract",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-dapt"
+      ],
+      "sourceIds": [
+        "url-91e65f2aee755df9b416",
+        "url-d2dd0142ed9206a21f2c"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "model-system-regression-contract",
+      "title": "Version the entire evaluated system",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-helm"
+      ],
+      "sourceIds": [
+        "url-c14b21395cca9227d069",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "moe",
+      "title": "Mixture of experts",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-switch"
+      ],
+      "sourceIds": [
+        "url-bf9cd21d7a7afdfffc44",
+        "url-d330b5d2f8ae1e926732"
+      ],
+      "dependentLessonIds": [
+        "expert-routing-budget"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "optimizer-schedule-stability",
+      "title": "Initialization, learning rate and stable updates",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-adamw",
+        "ml-claim-olmo2",
+        "ml-claim-adam"
+      ],
+      "sourceIds": [
+        "url-91e65f2aee755df9b416",
+        "url-57f988210236f2c30210",
+        "url-956f804ab378bbe67fc2"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "orbital-link-contacts",
       "title": "Orbital optical links and contact budgets",
       "domainId": "connected-infrastructure",
@@ -1305,6 +2381,96 @@
       "investigationIds": []
     },
     {
+      "lessonId": "output-head",
+      "title": "Output head & decoding",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-transformer"
+      ],
+      "sourceIds": [
+        "url-2cab3ea10b8b7ae2638f",
+        "url-8a455ddf634c62b2a780"
+      ],
+      "dependentLessonIds": [
+        "loss-optimizer",
+        "tool-loop",
+        "evaluation",
+        "speculative-decoding-verification",
+        "tiny-causal-decoder",
+        "policy-gradient-kl-control",
+        "teacher-student-distillation",
+        "probability-calibration-abstention",
+        "test-time-search-verification"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "policy-gradient-kl-control",
+      "title": "Rollouts, advantages and PPO constraints",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-instructgpt",
+        "ml-claim-ppo"
+      ],
+      "sourceIds": [
+        "url-5c73fa759d96331836bf",
+        "url-53c27cfc128038ed6a19"
+      ],
+      "dependentLessonIds": [
+        "verifiable-reward-group-updates",
+        "imagined-rollouts-policy-learning"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "post-training",
       "title": "Post-training & feedback",
       "domainId": "learning-intelligence",
@@ -1322,18 +2488,350 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
-      "claimIds": [],
-      "sourceIds": [
-        "url-1098fc60be7ca2b0583a"
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-instructgpt"
       ],
-      "dependentLessonIds": [],
+      "sourceIds": [
+        "url-1098fc60be7ca2b0583a",
+        "url-ffc229d83891918f8206",
+        "url-53c27cfc128038ed6a19",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [
+        "model-lifecycle-stage-contract",
+        "sft-chat-loss-masks",
+        "preference-reward-model"
+      ],
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "preference-reward-model",
+      "title": "Learn a reward from pairwise choices",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-instructgpt",
+        "ml-claim-dpo"
+      ],
+      "sourceIds": [
+        "url-53c27cfc128038ed6a19",
+        "url-9dce83c9e048d1427ad9"
+      ],
+      "dependentLessonIds": [
+        "direct-preference-objective",
+        "policy-gradient-kl-control",
+        "reward-proxy-overoptimization",
+        "judge-rubric-agreement"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "probability-calibration-abstention",
+      "title": "Confidence, errors and refusal to guess",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-helm",
+        "ml-claim-calibration"
+      ],
+      "sourceIds": [
+        "url-b76261cdeaef1c22cbae",
+        "url-c14b21395cca9227d069"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "replay-retention-forgetting",
+      "title": "Retention, replay and transfer",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-dapt"
+      ],
+      "sourceIds": [
+        "url-d2dd0142ed9206a21f2c",
+        "url-91e65f2aee755df9b416"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "residual-normalization",
+      "title": "Residual stream & normalization",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-rmsnorm"
+      ],
+      "sourceIds": [
+        "url-712837d07aa15d316802",
+        "url-e778b23064e784e2fcb9",
+        "url-c0695dd7ff75966fa30b",
+        "url-91e65f2aee755df9b416",
+        "url-e97ce83de42747e1d49b"
+      ],
+      "dependentLessonIds": [
+        "output-head",
+        "tiny-causal-decoder",
+        "optimizer-schedule-stability"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "retrieval-indexing-evaluation",
+      "title": "Retrieval from source document to answer",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-task-oracle"
+      ],
+      "sourceIds": [
+        "url-02ad74cdb0c9081ff689",
+        "url-9e1bf2cb709d465ff34c"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "retrieval-supported-generation",
+      "title": "From lexical retrieval to model answers with evidence",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-rag",
+        "ml-claim-helm"
+      ],
+      "sourceIds": [
+        "url-c14b21395cca9227d069",
+        "url-5f1ab442cf615da6d90e"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "reverse-mode-autodiff",
+      "title": "A differentiable computation graph",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-autograd"
+      ],
+      "sourceIds": [
+        "url-aef81312cc03bbea6ae8"
+      ],
+      "dependentLessonIds": [
+        "tiny-causal-decoder"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "reward-proxy-overoptimization",
+      "title": "When reward improves but the task gets worse",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-overoptimization"
+      ],
+      "sourceIds": [
+        "url-f0c7a59aef185a579dda",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "scaling-laws",
@@ -1353,17 +2851,428 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
-      "claimIds": [],
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-chinchilla"
+      ],
       "sourceIds": [
         "url-85f66a6419d173a7d68d",
-        "url-46fd66187ec3e6aebdb5"
+        "url-46fd66187ec3e6aebdb5",
+        "url-e66c4c7c0ba9e0383d52",
+        "url-1312b273c0df61134371"
       ],
       "dependentLessonIds": [],
       "investigationIds": []
+    },
+    {
+      "lessonId": "sequence-packing-loss-denominators",
+      "title": "Packing documents and masking valid targets",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-sft-doc"
+      ],
+      "sourceIds": [
+        "url-4ff7d5b6196f2fd7657c"
+      ],
+      "dependentLessonIds": [
+        "causal-pretraining-objective",
+        "sft-chat-loss-masks"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "sft-chat-loss-masks",
+      "title": "Instruction tuning and assistant-only loss",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-sft-doc"
+      ],
+      "sourceIds": [
+        "url-4ff7d5b6196f2fd7657c",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [
+        "direct-preference-objective",
+        "visual-language-bridge"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "speculative-decoding-verification",
+      "title": "Speculative decoding: proposals and verified output",
+      "domainId": "executable-software",
+      "priority": "high",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "agent-source-scope-speculative-decoding-verification-integrated-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "bridge-claim-speculative-correction"
+      ],
+      "sourceIds": [
+        "url-fd3d857f4120158d76d7"
+      ],
+      "dependentLessonIds": [
+        "test-time-search-verification"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "speech-audio-sequence-objectives",
+      "title": "Audio representation, alignment and transcript loss",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-whisper"
+      ],
+      "sourceIds": [
+        "url-3c334d664e650b49c575"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "synthetic-data-selection-feedback",
+      "title": "Synthetic supervision and selection loops",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-r1"
+      ],
+      "sourceIds": [
+        "url-cc089f0f2013c741cde3",
+        "url-efb2a0cd8c7d56c0ab9c"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "teacher-student-distillation",
+      "title": "Transfer outputs without confusing size with quality",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-r1",
+        "ml-claim-distill"
+      ],
+      "sourceIds": [
+        "url-b1e01652d4347cf1e496",
+        "url-efb2a0cd8c7d56c0ab9c"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "telemetry-traces-evaluation",
+      "title": "Traces connect cost, latency and results",
+      "domainId": "executable-software",
+      "priority": "high",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-task-oracle"
+      ],
+      "sourceIds": [
+        "url-e45dc2c99a6d65674041",
+        "url-9e1bf2cb709d465ff34c"
+      ],
+      "dependentLessonIds": [
+        "multi-agent-coordination-cost"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "test-time-search-verification",
+      "title": "Sampling more candidates versus selecting correct ones",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-r1"
+      ],
+      "sourceIds": [
+        "url-efb2a0cd8c7d56c0ab9c",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "tiny-causal-decoder",
+      "title": "Assemble an initialized causal language model",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-transformer",
+        "ml-claim-rmsnorm",
+        "ml-claim-adam"
+      ],
+      "sourceIds": [
+        "url-8a455ddf634c62b2a780",
+        "url-91e65f2aee755df9b416",
+        "url-e97ce83de42747e1d49b",
+        "url-956f804ab378bbe67fc2"
+      ],
+      "dependentLessonIds": [
+        "causal-pretraining-objective"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "tokenizer",
+      "title": "Tokenizer",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-bpe"
+      ],
+      "sourceIds": [
+        "url-b6bef96e5a3ad28e5c4e",
+        "url-a2690ed31e8cc7e90c6d",
+        "url-5cad59a5357dfbca3872",
+        "url-c9d2d85077b11c515625"
+      ],
+      "dependentLessonIds": [
+        "embedding",
+        "training-data",
+        "sequence-packing-loss-denominators",
+        "data-coverage-language-slices",
+        "speech-audio-sequence-objectives"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
     },
     {
       "lessonId": "tool-loop",
@@ -1383,21 +3292,287 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
-      "claimIds": [],
+      "claimIds": [
+        "ml-claim-react"
+      ],
       "sourceIds": [
         "url-200002328137240fce9a",
-        "url-7647307fe49844a005ca"
+        "url-7647307fe49844a005ca",
+        "url-1743ee34e2118e1db2a4",
+        "url-920caecd56af83238184",
+        "url-a535f627b3b17212e31c"
       ],
       "dependentLessonIds": [
-        "astra"
+        "astra",
+        "workflow-graphs-state",
+        "tool-contracts-schemas",
+        "context-memory-provenance",
+        "retrieval-indexing-evaluation",
+        "retrieval-supported-generation",
+        "model-system-regression-contract"
       ],
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "training-data",
+      "title": "Training data pipeline",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-fineweb",
+        "ml-claim-dedup"
+      ],
+      "sourceIds": [
+        "url-46fd66187ec3e6aebdb5",
+        "url-29a0882390ee70638f8c",
+        "url-9237d7c1fc508040a2c6",
+        "url-b3e0a83cbe77dd86571b",
+        "url-1312b273c0df61134371",
+        "url-8169b40335c48a85fd71"
+      ],
+      "dependentLessonIds": [
+        "loss-optimizer",
+        "distributed-gradient-weighting",
+        "model-artifact-rollout-drift",
+        "recommendation-ranking-feedback",
+        "temporal-forecast-validation",
+        "scientific-surrogate-validation",
+        "data-quality-dedup-audit",
+        "data-mixture-sampling",
+        "synthetic-data-selection-feedback",
+        "data-coverage-language-slices",
+        "model-lifecycle-stage-contract"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "training-memory-state",
+      "title": "Training state and activation rematerialization",
+      "domainId": "executable-software",
+      "priority": "high",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-06",
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          1
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-olmo2"
+      ],
+      "sourceIds": [
+        "url-1480e50475d6c98e2ad0",
+        "url-91e65f2aee755df9b416"
+      ],
+      "dependentLessonIds": [
+        "training-tier-placement"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "verifiable-reward-group-updates",
+      "title": "Verifiers, grouped advantages and RLVR",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-tulu3",
+        "ml-claim-r1"
+      ],
+      "sourceIds": [
+        "url-efb2a0cd8c7d56c0ab9c",
+        "url-cc089f0f2013c741cde3"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "video-latent-prediction",
+      "title": "Predict temporal representations without generating pixels",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-vjepa2"
+      ],
+      "sourceIds": [
+        "url-70b3d8859e7fa4d897be"
+      ],
+      "dependentLessonIds": [
+        "action-conditioned-world-model"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "vision-language-action-interface",
+      "title": "Translate learned representations into robot action units",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-openvla"
+      ],
+      "sourceIds": [
+        "url-7d185359f1130aaa9d21"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "visual-language-bridge",
+      "title": "Patches, projection and visual instruction tuning",
+      "domainId": "learning-intelligence",
+      "priority": "high",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "ml-claim-llava",
+        "ml-claim-openvla"
+      ],
+      "sourceIds": [
+        "url-c2ea430b14e0e963807e",
+        "url-7d185359f1130aaa9d21"
+      ],
+      "dependentLessonIds": [
+        "vision-language-action-interface"
+      ],
+      "investigationIds": []
     },
     {
       "lessonId": "aws-neuron-dataflow",
@@ -2261,6 +4436,49 @@
       ]
     },
     {
+      "lessonId": "hbm-silicon-intensity",
+      "title": "HBM silicon intensity and allocation",
+      "domainId": "packaging-machines",
+      "priority": "normal",
+      "proposedReviewRole": "packaging-systems-reviewer",
+      "updateSensitivity": "product-generation-sensitive",
+      "proposedIntervalDays": 90,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2026-12-06",
+        "reviewEventId": "agent-source-scope-hbm-silicon-intensity-recovered-2026-09-07-02",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-06",
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          1
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "fab-claim-micron-intensity-pending"
+      ],
+      "sourceIds": [
+        "url-f4f45053d1a6f5b9080a",
+        "url-dbd96dc7b5fd154235b2",
+        "url-e033a05c1723994e9007",
+        "url-d40dd97ba68c5279afc8"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": [
+        "manufacturing"
+      ]
+    },
+    {
       "lessonId": "hbm-stack",
       "title": "High-bandwidth memory stack",
       "domainId": "packaging-machines",
@@ -2343,7 +4561,8 @@
         "cpu-out-of-order",
         "coherence-numa",
         "inference-custom-silicon",
-        "dpu-infrastructure-offload"
+        "dpu-infrastructure-offload",
+        "process-dma-address-spaces"
       ],
       "investigationIds": [
         "execution"
@@ -2457,7 +4676,8 @@
         "url-336b83f8a5160fad287e"
       ],
       "dependentLessonIds": [
-        "l2-cache"
+        "l2-cache",
+        "dma-visibility-ownership"
       ],
       "investigationIds": [
         "execution",
@@ -2604,7 +4824,8 @@
         "url-a67df5ab4ac6fffd3d4e"
       ],
       "dependentLessonIds": [
-        "cluster-commissioning-gates"
+        "cluster-commissioning-gates",
+        "firmware-device-contract"
       ],
       "investigationIds": [
         "manufacturing"
@@ -2703,10 +4924,11 @@
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
         "checkedOnDates": [
-          "2026-09-06"
+          "2026-09-06",
+          "2026-09-07"
         ],
         "ageDaysRange": [
-          1,
+          0,
           1
         ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
@@ -2719,7 +4941,10 @@
       "dependentLessonIds": [
         "parallelism",
         "parallelism-communication-budget",
-        "fabric-collective-traffic"
+        "fabric-collective-traffic",
+        "sharded-matmul-ownership",
+        "distributed-gradient-weighting",
+        "floating-point-reduction-order"
       ],
       "investigationIds": [
         "execution"
@@ -3629,6 +5854,38 @@
       ]
     },
     {
+      "lessonId": "ablation-reproduction-design",
+      "title": "Controlled comparisons and confounded improvement",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-4c90d922c4c3367f2c1e",
+        "url-641a177ce167ccc3545a"
+      ],
+      "dependentLessonIds": [
+        "tree-ensemble-baseline"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "ald-self-limiting-growth",
       "title": "ALD and self-limiting surface reactions",
       "domainId": "matter-fabrication",
@@ -3665,6 +5922,36 @@
       "investigationIds": [
         "manufacturing"
       ]
+    },
+    {
+      "lessonId": "audio-sampling-spectrum",
+      "title": "Audio sampling, windows and spectra",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-4299abb9a4bda899a5a0",
+        "url-57e5a9c5461f4e3d5031"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "beol-damascene-vias",
@@ -3750,40 +6037,6 @@
       ]
     },
     {
-      "lessonId": "checkpoint",
-      "title": "Distributed checkpoint and recovery state",
-      "domainId": "executable-software",
-      "priority": "normal",
-      "proposedReviewRole": "ml-systems-reviewer",
-      "updateSensitivity": "implementation-sensitive",
-      "proposedIntervalDays": 180,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-284d853c6b8e814d96db"
-      ],
-      "dependentLessonIds": [
-        "checkpoint-retained-work",
-        "orbital-radiation-recovery"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
-    },
-    {
       "lessonId": "checkpoint-retained-work",
       "title": "Checkpointing, failure and retained useful work",
       "domainId": "connected-infrastructure",
@@ -3814,7 +6067,9 @@
       "sourceIds": [
         "url-f90056df3cc6c567a4c2"
       ],
-      "dependentLessonIds": [],
+      "dependentLessonIds": [
+        "retained-work-restart-boundary"
+      ],
       "investigationIds": [
         "execution"
       ]
@@ -4128,6 +6383,41 @@
       ]
     },
     {
+      "lessonId": "coding-agent-patch-evidence",
+      "title": "A code patch needs execution evidence",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-d1f914c03e522b9ba0ba",
+        "url-266b0425901dc12fd66f"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "coherence-numa",
       "title": "Cache coherence and NUMA placement",
       "domainId": "circuits-architecture",
@@ -4232,7 +6522,9 @@
       ],
       "dependentLessonIds": [
         "kernel-locality-fusion",
-        "runtime-device-dispatch"
+        "runtime-device-dispatch",
+        "sharded-matmul-ownership",
+        "floating-point-reduction-order"
       ],
       "investigationIds": [
         "execution"
@@ -4280,6 +6572,41 @@
       "investigationIds": [
         "manufacturing"
       ]
+    },
+    {
+      "lessonId": "context-memory-provenance",
+      "title": "Context, retrieval and durable memory",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-99e58642fe77e6e136da",
+        "url-02ad74cdb0c9081ff689"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "coolant-loop-separation",
@@ -4362,6 +6689,35 @@
       ]
     },
     {
+      "lessonId": "dataset-human-judgment-lineage",
+      "title": "Human judgments, disagreement and dataset lineage",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-641a177ce167ccc3545a"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "decode-bandwidth-trace",
       "title": "Autoregressive decode and weight traffic",
       "domainId": "executable-software",
@@ -4395,11 +6751,206 @@
       ],
       "dependentLessonIds": [
         "disaggregated-serving",
-        "prefill-decode-tier-placement"
+        "prefill-decode-tier-placement",
+        "speculative-decoding-verification"
       ],
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "delegated-agent-protocols",
+      "title": "Delegated tasks, messages and artifacts",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-73e2793d3acb2dc410c6",
+        "url-1743ee34e2118e1db2a4"
+      ],
+      "dependentLessonIds": [
+        "multi-agent-coordination-cost"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "device-completion-reset-epochs",
+      "title": "Completion, reset and execution epochs",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "runtime-claim-reset-contract"
+      ],
+      "sourceIds": [
+        "url-edbb7de81e77373d7d26"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "distributed-gradient-weighting",
+      "title": "Uneven batches and the global gradient",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2027-03-06",
+        "reviewEventId": "agent-source-scope-distributed-gradient-weighting-integrated-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-06",
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          1
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "bridge-claim-ddp-mean"
+      ],
+      "sourceIds": [
+        "url-9017986ac40a5ff3d649",
+        "url-b0ca3660910bf3ab447c"
+      ],
+      "dependentLessonIds": [
+        "sequence-packing-loss-denominators",
+        "microbatch-equivalent-updates"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "dma-visibility-ownership",
+      "title": "DMA visibility, ordering and buffer lifetime",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "runtime-claim-dma-visibility"
+      ],
+      "sourceIds": [
+        "url-c08d21a11cc9bfda42c1",
+        "url-edbb7de81e77373d7d26"
+      ],
+      "dependentLessonIds": [
+        "device-completion-reset-epochs"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "document-extraction-validation",
+      "title": "Document fields become validated records",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-05999b788f6847881695"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "dram-cell-array-fabrication",
@@ -4439,6 +6990,47 @@
       "investigationIds": [
         "manufacturing"
       ]
+    },
+    {
+      "lessonId": "durable-actions-idempotency",
+      "title": "Durable actions and the ambiguous timeout",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-activity-idempotency"
+      ],
+      "sourceIds": [
+        "url-1743ee34e2118e1db2a4",
+        "url-23a0b3fa770742478d25",
+        "url-99e58642fe77e6e136da"
+      ],
+      "dependentLessonIds": [
+        "human-review-cancellation",
+        "delegated-agent-protocols"
+      ],
+      "investigationIds": []
     },
     {
       "lessonId": "electronic-silicon-crystal-growth",
@@ -4519,6 +7111,45 @@
       "investigationIds": [
         "manufacturing"
       ]
+    },
+    {
+      "lessonId": "event-queues-delivery",
+      "title": "Events, queues and backpressure",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-activity-idempotency"
+      ],
+      "sourceIds": [
+        "url-1743ee34e2118e1db2a4",
+        "url-23a0b3fa770742478d25"
+      ],
+      "dependentLessonIds": [
+        "durable-actions-idempotency"
+      ],
+      "investigationIds": []
     },
     {
       "lessonId": "expert-routing-budget",
@@ -4654,10 +7285,11 @@
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
         "checkedOnDates": [
-          "2026-09-06"
+          "2026-09-06",
+          "2026-09-07"
         ],
         "ageDaysRange": [
-          1,
+          0,
           1
         ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
@@ -4748,6 +7380,49 @@
       ]
     },
     {
+      "lessonId": "firmware-device-contract",
+      "title": "Firmware handoff and device readiness",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "runtime-claim-pci-lifecycle",
+        "runtime-claim-reset-contract"
+      ],
+      "sourceIds": [
+        "url-f4899f71852800e55556",
+        "url-edbb7de81e77373d7d26"
+      ],
+      "dependentLessonIds": [
+        "process-dma-address-spaces",
+        "device-completion-reset-epochs"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
       "lessonId": "flip-chip-abf-substrate",
       "title": "Flip-chip assembly and organic substrates",
       "domainId": "packaging-machines",
@@ -4791,6 +7466,75 @@
       ]
     },
     {
+      "lessonId": "floating-number-range-resolution",
+      "title": "Floating-point range, resolution and rounding",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-926e715b1413f53b6e68"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "floating-point-reduction-order",
+      "title": "Floating-point reductions and compiler permissions",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2027-03-06",
+        "reviewEventId": "agent-source-scope-floating-point-reduction-order-integrated-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "bridge-claim-reassociation"
+      ],
+      "sourceIds": [
+        "url-621e44b6c4d3c95335cc",
+        "url-d8459910e6f845e9ebc7"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
       "lessonId": "fpga-dsp-pipelines",
       "title": "FPGA fabrics, DSP blocks and adaptive pipelines",
       "domainId": "circuits-architecture",
@@ -4827,6 +7571,35 @@
       ]
     },
     {
+      "lessonId": "graph-message-passing",
+      "title": "Graph message passing and node identity",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-f5d4559d7df3a9423fa5"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "graph-tensor-ir",
       "title": "Model graph and tensor intermediate representation",
       "domainId": "executable-software",
@@ -4859,7 +7632,8 @@
       ],
       "dependentLessonIds": [
         "compiler-layout-lowering",
-        "memory-working-set-placement"
+        "memory-working-set-placement",
+        "reverse-mode-autodiff"
       ],
       "investigationIds": [
         "execution"
@@ -5035,6 +7809,47 @@
       ]
     },
     {
+      "lessonId": "human-review-cancellation",
+      "title": "Human review, interruption and cancellation",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-robot-actions"
+      ],
+      "sourceIds": [
+        "url-7dd57631bd243ad72e6d",
+        "url-1743ee34e2118e1db2a4",
+        "url-ded1739a35b66e438225"
+      ],
+      "dependentLessonIds": [
+        "robot-goal-plan-action",
+        "streaming-speech-turns"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "implantation-anneal-diffusion",
       "title": "Implantation, activation and diffusion",
       "domainId": "matter-fabrication",
@@ -5149,6 +7964,44 @@
       ],
       "investigationIds": [
         "manufacturing"
+      ]
+    },
+    {
+      "lessonId": "iommu-buffer-identity",
+      "title": "IOMMU permission and tensor identity",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "runtime-claim-dma-addresses"
+      ],
+      "sourceIds": [
+        "url-c08d21a11cc9bfda42c1"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": [
+        "execution"
       ]
     },
     {
@@ -5305,11 +8158,45 @@
       ],
       "dependentLessonIds": [
         "serving",
-        "decode-bandwidth-trace"
+        "decode-bandwidth-trace",
+        "speculative-decoding-verification",
+        "context-memory-provenance",
+        "long-context-adaptation"
       ],
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "linear-map-rank-subspace",
+      "title": "Linear maps, rank and retained directions",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-c3a48236566f3aa5c186"
+      ],
+      "dependentLessonIds": [
+        "low-rank-adaptation"
+      ],
+      "investigationIds": []
     },
     {
       "lessonId": "lithography",
@@ -5388,6 +8275,50 @@
       ]
     },
     {
+      "lessonId": "loaded-inverter-transition",
+      "title": "Loaded CMOS transfer, noise and transition delay",
+      "domainId": "circuits-architecture",
+      "priority": "normal",
+      "proposedReviewRole": "computer-architecture-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "cell-claim-l9",
+        "cell-claim-l10",
+        "cell-claim-l12",
+        "cell-claim-l14"
+      ],
+      "sourceIds": [
+        "url-f87f9d17cf51d5b6df2e",
+        "url-0eaee99172ff66579cb6",
+        "url-7d51a2151575f4d828c7",
+        "url-6ed04283540abd6ba803"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": [
+        "manufacturing"
+      ]
+    },
+    {
       "lessonId": "manufacturing-execution-dispatch",
       "title": "MES, dispatch and process release",
       "domainId": "matter-fabrication",
@@ -5406,10 +8337,11 @@
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
         "checkedOnDates": [
-          "2026-09-06"
+          "2026-09-06",
+          "2026-09-07"
         ],
         "ageDaysRange": [
-          1,
+          0,
           1
         ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
@@ -5417,7 +8349,8 @@
       "claimIds": [],
       "sourceIds": [
         "url-a79adb33bc68b29cca0a",
-        "url-897a0eb8b40ed4eece5e"
+        "url-897a0eb8b40ed4eece5e",
+        "url-1743ee34e2118e1db2a4"
       ],
       "dependentLessonIds": [
         "fab-ramp-cycle-time"
@@ -5463,6 +8396,46 @@
       "investigationIds": [
         "manufacturing"
       ]
+    },
+    {
+      "lessonId": "mcp-host-client-server",
+      "title": "A tool protocol is a boundary",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-protocol-boundary"
+      ],
+      "sourceIds": [
+        "url-d1aed5d46f787fd036cd",
+        "url-920caecd56af83238184",
+        "url-34fabf499cb7ad23d5fe"
+      ],
+      "dependentLessonIds": [
+        "delegated-agent-protocols"
+      ],
+      "investigationIds": []
     },
     {
       "lessonId": "memory-hierarchy-route",
@@ -5623,7 +8596,8 @@
         "url-8c5dbf932b53185449a8"
       ],
       "dependentLessonIds": [
-        "memory-system-qualification"
+        "memory-system-qualification",
+        "retained-work-restart-boundary"
       ],
       "investigationIds": [
         "manufacturing"
@@ -5717,8 +8691,8 @@
       ]
     },
     {
-      "lessonId": "moe",
-      "title": "Mixture of experts",
+      "lessonId": "model-artifact-rollout-drift",
+      "title": "Model artifacts, rollout and drift",
       "domainId": "learning-intelligence",
       "priority": "normal",
       "proposedReviewRole": "ml-methods-reviewer",
@@ -5734,20 +8708,21 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
       "claimIds": [],
       "sourceIds": [
-        "url-bf9cd21d7a7afdfffc44"
+        "url-b3e0a83cbe77dd86571b"
       ],
-      "dependentLessonIds": [
-        "expert-routing-budget"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "moe-expert-tier-placement",
@@ -5785,6 +8760,42 @@
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "multi-agent-coordination-cost",
+      "title": "Coordination can add work",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-be28ccd063ec5518d12e",
+        "url-73e2793d3acb2dc410c6",
+        "url-9e1bf2cb709d465ff34c"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "orbital-radiator-budget",
@@ -5897,6 +8908,49 @@
       "investigationIds": []
     },
     {
+      "lessonId": "oxide-to-cell-acceptance",
+      "title": "Oxide variation to electrical cell acceptance",
+      "domainId": "circuits-architecture",
+      "priority": "normal",
+      "proposedReviewRole": "computer-architecture-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "cell-claim-l8",
+        "cell-claim-l9"
+      ],
+      "sourceIds": [
+        "url-a49a816e24335bd08c83",
+        "url-f87f9d17cf51d5b6df2e",
+        "url-0eaee99172ff66579cb6"
+      ],
+      "dependentLessonIds": [
+        "loaded-inverter-transition"
+      ],
+      "investigationIds": [
+        "manufacturing"
+      ]
+    },
+    {
       "lessonId": "package-thermomechanical-reliability",
       "title": "Underfill, warpage, thermal paths and qualification",
       "domainId": "packaging-machines",
@@ -5964,7 +9018,9 @@
       "dependentLessonIds": [
         "expert-routing-budget",
         "parallelism-communication-budget",
-        "topology-job-admission"
+        "topology-job-admission",
+        "sharded-matmul-ownership",
+        "distributed-gradient-weighting"
       ],
       "investigationIds": [
         "execution"
@@ -6164,6 +9220,39 @@
       ]
     },
     {
+      "lessonId": "probability-conditioning-information",
+      "title": "Probability, likelihood and stable information",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-4c90d922c4c3367f2c1e",
+        "url-926e715b1413f53b6e68"
+      ],
+      "dependentLessonIds": [
+        "sampling-estimation-uncertainty",
+        "spatial-filter-patch-attention"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "process-chamber-control",
       "title": "A process chamber as a controlled reactor",
       "domainId": "matter-fabrication",
@@ -6205,6 +9294,47 @@
       ]
     },
     {
+      "lessonId": "process-dma-address-spaces",
+      "title": "Process, physical and device address spaces",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "runtime-claim-dma-addresses"
+      ],
+      "sourceIds": [
+        "url-c08d21a11cc9bfda42c1"
+      ],
+      "dependentLessonIds": [
+        "iommu-buffer-identity",
+        "dma-visibility-ownership"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
       "lessonId": "quantization",
       "title": "Quantization and numerical representation",
       "domainId": "executable-software",
@@ -6233,7 +9363,8 @@
       ],
       "dependentLessonIds": [
         "analog-photonic-research",
-        "chip-workload-contract"
+        "chip-workload-contract",
+        "floating-point-reduction-order"
       ],
       "investigationIds": [
         "execution"
@@ -6319,6 +9450,41 @@
       ]
     },
     {
+      "lessonId": "recommendation-ranking-feedback",
+      "title": "Ranking changes what is observed",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-d1afbdd521d08dcb8669",
+        "url-740d17d7701e4ade6d42"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "resist-track-development",
       "title": "Coat, bake, expose and develop",
       "domainId": "matter-fabrication",
@@ -6359,6 +9525,158 @@
       ]
     },
     {
+      "lessonId": "retained-work-restart-boundary",
+      "title": "When completed work survives a restart",
+      "domainId": "connected-infrastructure",
+      "priority": "normal",
+      "proposedReviewRole": "infrastructure-engineering-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2027-03-06",
+        "reviewEventId": "agent-source-scope-retained-work-integrated-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "instructor-claim-valid-checkpoint",
+        "instructor-claim-energy-boundary"
+      ],
+      "sourceIds": [
+        "url-f88c4f70e3f8b07e28f2",
+        "url-6780e95cc2c5019179b7"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "robot-feedback-control",
+      "title": "Feedback closes the action loop",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-95cbe5cc3de26b5b3aa4"
+      ],
+      "dependentLessonIds": [
+        "embodied-policy-evidence"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "robot-goal-plan-action",
+      "title": "Goals, plans and actions are different objects",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-robot-actions"
+      ],
+      "sourceIds": [
+        "url-ded1739a35b66e438225",
+        "url-961015435feccc45c4b7"
+      ],
+      "dependentLessonIds": [
+        "embodied-policy-evidence"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "robot-observation-frame",
+      "title": "Robot observations have coordinates and age",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-fb4783cdb07afdc41eec",
+        "url-961015435feccc45c4b7"
+      ],
+      "dependentLessonIds": [
+        "robot-goal-plan-action",
+        "robot-feedback-control"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "runtime-device-dispatch",
       "title": "Runtime, driver and device dispatch",
       "domainId": "executable-software",
@@ -6390,10 +9708,111 @@
         "url-d2a9bf55d39459717af6",
         "url-1349b4d186cf74c825d5"
       ],
-      "dependentLessonIds": [],
+      "dependentLessonIds": [
+        "firmware-device-contract"
+      ],
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "sampling-estimation-uncertainty",
+      "title": "Sampling variability and independent evidence",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-4c90d922c4c3367f2c1e"
+      ],
+      "dependentLessonIds": [
+        "ablation-reproduction-design",
+        "probability-calibration-abstention",
+        "audio-sampling-spectrum"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "sandbox-egress-secrets",
+      "title": "Execution boundaries for code and tools",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-266b0425901dc12fd66f",
+        "url-ffed88c1367ead566746"
+      ],
+      "dependentLessonIds": [
+        "coding-agent-patch-evidence"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "scalar-state-space-recurrence",
+      "title": "Recurrent state and convolution",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-14f9cbd4fdd753aaca97"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "scheduler",
@@ -6433,6 +9852,69 @@
       ]
     },
     {
+      "lessonId": "scientific-surrogate-validation",
+      "title": "A learned field still obeys an evidence boundary",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-13b5284f8c83f569ce0e"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "search-value-policy-boundary",
+      "title": "Search, value estimates and selected actions",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-f14fdc9c424614eb6b61"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "serving",
       "title": "Inference serving and request scheduling",
       "domainId": "executable-software",
@@ -6468,6 +9950,49 @@
         "tool-loop",
         "chip-workload-contract",
         "orbital-evidence-status"
+      ],
+      "investigationIds": [
+        "execution"
+      ]
+    },
+    {
+      "lessonId": "sharded-matmul-ownership",
+      "title": "Sharded matrix multiplication and result ownership",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "within-proposed-review-interval",
+        "lastCompletedOn": "2026-09-07",
+        "reviewAnchorOn": "2026-09-07",
+        "dueOn": "2027-03-06",
+        "reviewEventId": "agent-source-scope-sharded-matmul-ownership-integrated-2026-09-07",
+        "reviewerKind": "agent",
+        "reason": "The recorded source-scope review is within the proposed editorial interval as of the requested date; this is not a guarantee of correctness."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-06",
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          1
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "bridge-claim-partial-sum"
+      ],
+      "sourceIds": [
+        "url-ed51a189c6b8b58fe3dd",
+        "url-b0ca3660910bf3ab447c"
+      ],
+      "dependentLessonIds": [
+        "low-rank-adaptation"
       ],
       "investigationIds": [
         "execution"
@@ -6551,6 +10076,36 @@
       ]
     },
     {
+      "lessonId": "spatial-filter-patch-attention",
+      "title": "Local filters and patch attention",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-11325c9cc5b7fcbe8fe3",
+        "url-a7468c68516526913141"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "storage",
       "title": "Dataset and checkpoint storage hierarchy",
       "domainId": "connected-infrastructure",
@@ -6623,6 +10178,41 @@
       ]
     },
     {
+      "lessonId": "streaming-speech-turns",
+      "title": "Speech is a timed interaction",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-6a0565b6276538c01e50",
+        "url-ded1739a35b66e438225"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
       "lessonId": "systolic-array-dataflow",
       "title": "Systolic arrays and tensor dataflow",
       "domainId": "circuits-architecture",
@@ -6660,6 +10250,41 @@
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "temporal-forecast-validation",
+      "title": "Forecasts are tested forward in time",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-40f9e87fe3c3f421b3d0",
+        "url-b3e0a83cbe77dd86571b"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "temporary-carrier-thinning",
@@ -6704,6 +10329,41 @@
       ]
     },
     {
+      "lessonId": "tensor-index-contracts",
+      "title": "Tensor shapes, indices and contractions",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-c3a48236566f3aa5c186"
+      ],
+      "dependentLessonIds": [
+        "linear-map-rank-subspace",
+        "graph-message-passing",
+        "reverse-mode-autodiff",
+        "scalar-state-space-recurrence",
+        "spatial-filter-patch-attention"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "thermal-oxidation-interface",
       "title": "Thermal oxidation and the silicon interface",
       "domainId": "matter-fabrication",
@@ -6736,10 +10396,93 @@
         "url-e5458875317178eada40",
         "url-40addeae2482059de6fe"
       ],
-      "dependentLessonIds": [],
+      "dependentLessonIds": [
+        "oxide-to-cell-acceptance"
+      ],
       "investigationIds": [
         "manufacturing"
       ]
+    },
+    {
+      "lessonId": "tool-authority-identity",
+      "title": "User authority and service identity",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-34fabf499cb7ad23d5fe",
+        "url-4e6d674bf887d330a06d",
+        "url-3037596ca77782c0185f"
+      ],
+      "dependentLessonIds": [
+        "untrusted-content-boundary",
+        "human-review-cancellation",
+        "mcp-host-client-server",
+        "sandbox-egress-secrets"
+      ],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "tool-contracts-schemas",
+      "title": "Tool schemas and semantic validation",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-protocol-boundary"
+      ],
+      "sourceIds": [
+        "url-920caecd56af83238184"
+      ],
+      "dependentLessonIds": [
+        "tool-authority-identity",
+        "mcp-host-client-server",
+        "document-extraction-validation"
+      ],
+      "investigationIds": []
     },
     {
       "lessonId": "topology-job-admission",
@@ -6778,79 +10521,6 @@
       ]
     },
     {
-      "lessonId": "training-data",
-      "title": "Training data pipeline",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "implementation-sensitive",
-      "proposedIntervalDays": 180,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-46fd66187ec3e6aebdb5",
-        "url-29a0882390ee70638f8c",
-        "url-9237d7c1fc508040a2c6"
-      ],
-      "dependentLessonIds": [
-        "loss-optimizer"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
-    },
-    {
-      "lessonId": "training-memory-state",
-      "title": "Training state and activation rematerialization",
-      "domainId": "executable-software",
-      "priority": "normal",
-      "proposedReviewRole": "ml-systems-reviewer",
-      "updateSensitivity": "implementation-sensitive",
-      "proposedIntervalDays": 180,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [
-          "2026-09-06"
-        ],
-        "ageDaysRange": [
-          1,
-          1
-        ],
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-1480e50475d6c98e2ad0"
-      ],
-      "dependentLessonIds": [
-        "training-tier-placement"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
-    },
-    {
       "lessonId": "training-tier-placement",
       "title": "Training state across HBM, host memory and storage",
       "domainId": "executable-software",
@@ -6886,6 +10556,71 @@
       "investigationIds": [
         "execution"
       ]
+    },
+    {
+      "lessonId": "tree-ensemble-baseline",
+      "title": "A tree ensemble that learns residual corrections",
+      "domainId": "learning-intelligence",
+      "priority": "normal",
+      "proposedReviewRole": "ml-methods-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [],
+        "ageDaysRange": null,
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-820bcea558d7755161e3"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
+    },
+    {
+      "lessonId": "untrusted-content-boundary",
+      "title": "Retrieved text is data with a trust boundary",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [],
+      "sourceIds": [
+        "url-d1aed5d46f787fd036cd",
+        "url-920caecd56af83238184",
+        "url-34fabf499cb7ad23d5fe"
+      ],
+      "dependentLessonIds": [],
+      "investigationIds": []
     },
     {
       "lessonId": "wafer-finishing-geometry",
@@ -7008,6 +10743,47 @@
       ]
     },
     {
+      "lessonId": "workflow-graphs-state",
+      "title": "Workflow graphs and explicit state",
+      "domainId": "executable-software",
+      "priority": "normal",
+      "proposedReviewRole": "ml-systems-reviewer",
+      "updateSensitivity": "implementation-sensitive",
+      "proposedIntervalDays": 180,
+      "sourceReview": {
+        "status": "baseline-review-required",
+        "lastCompletedOn": null,
+        "dueOn": null,
+        "reviewEventId": null,
+        "reviewerKind": null,
+        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
+      },
+      "specialistReviewEventIds": [],
+      "inheritedMetadata": {
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
+        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
+      },
+      "claimIds": [
+        "automation-claim-workflow-state"
+      ],
+      "sourceIds": [
+        "url-ffc229d83891918f8206",
+        "url-be28ccd063ec5518d12e",
+        "url-50f7196cce5b11b05f19"
+      ],
+      "dependentLessonIds": [
+        "event-queues-delivery",
+        "telemetry-traces-evaluation"
+      ],
+      "investigationIds": []
+    },
+    {
       "lessonId": "yield-wafer-defect-model",
       "title": "Wafer maps and good-die yield",
       "domainId": "matter-fabrication",
@@ -7084,49 +10860,6 @@
       ]
     },
     {
-      "lessonId": "attention",
-      "title": "Self-attention",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [
-          "2026-09-06"
-        ],
-        "ageDaysRange": [
-          1,
-          1
-        ],
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-a7468c68516526913141",
-        "url-5727fed78bddc70147e9"
-      ],
-      "dependentLessonIds": [
-        "output-head",
-        "kv-cache",
-        "prefill-resource-trace",
-        "attention-io-tiling",
-        "crg-problem-statement"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
-    },
-    {
       "lessonId": "cdu",
       "title": "Coolant distribution unit and separated loops",
       "domainId": "connected-infrastructure",
@@ -7179,8 +10912,13 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
       "claimIds": [],
@@ -7533,43 +11271,6 @@
       ]
     },
     {
-      "lessonId": "embedding",
-      "title": "Embedding table",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-db64e40f66a319b915c9",
-        "url-1918837f4f2e373ed6b9"
-      ],
-      "dependentLessonIds": [
-        "positional-encoding",
-        "attention",
-        "feed-forward",
-        "residual-normalization"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
-    },
-    {
       "lessonId": "energy-bands",
       "title": "Energy bands and carriers",
       "domainId": "matter-fabrication",
@@ -7604,41 +11305,6 @@
       ],
       "investigationIds": [
         "switching"
-      ]
-    },
-    {
-      "lessonId": "feed-forward",
-      "title": "Feed-forward network",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-7febb7e905af5e40fb85"
-      ],
-      "dependentLessonIds": [
-        "residual-normalization",
-        "output-head",
-        "moe"
-      ],
-      "investigationIds": [
-        "execution"
       ]
     },
     {
@@ -7706,7 +11372,8 @@
       "dependentLessonIds": [
         "spacer",
         "finfet",
-        "gaa"
+        "gaa",
+        "oxide-to-cell-acceptance"
       ],
       "investigationIds": [
         "switching"
@@ -7828,46 +11495,11 @@
       "dependentLessonIds": [
         "nand",
         "flipflop",
-        "sram"
+        "sram",
+        "loaded-inverter-transition"
       ],
       "investigationIds": [
         "switching"
-      ]
-    },
-    {
-      "lessonId": "loss-optimizer",
-      "title": "Loss, gradients & optimizer",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-e41b8a2c1c7799deafe1",
-        "url-8f8d412c4de780f50406"
-      ],
-      "dependentLessonIds": [
-        "post-training",
-        "scaling-laws",
-        "training-memory-state"
-      ],
-      "investigationIds": [
-        "execution"
       ]
     },
     {
@@ -7906,7 +11538,8 @@
         "systolic-array-dataflow",
         "fpga-dsp-pipelines",
         "analog-photonic-research",
-        "memory-wall-trends"
+        "memory-wall-trends",
+        "floating-point-reduction-order"
       ],
       "investigationIds": [
         "switching",
@@ -7931,8 +11564,13 @@
       },
       "specialistReviewEventIds": [],
       "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
+        "checkedOnDates": [
+          "2026-09-07"
+        ],
+        "ageDaysRange": [
+          0,
+          0
+        ],
         "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
       },
       "claimIds": [],
@@ -7950,7 +11588,8 @@
         "sram",
         "dram-die",
         "voltage-regulator",
-        "dram-cell-array-fabrication"
+        "dram-cell-array-fabrication",
+        "oxide-to-cell-acceptance"
       ],
       "investigationIds": [
         "switching"
@@ -8025,41 +11664,6 @@
       ]
     },
     {
-      "lessonId": "output-head",
-      "title": "Output head & decoding",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-2cab3ea10b8b7ae2638f"
-      ],
-      "dependentLessonIds": [
-        "loss-optimizer",
-        "tool-loop",
-        "evaluation"
-      ],
-      "investigationIds": [
-        "execution"
-      ]
-    },
-    {
       "lessonId": "pn-junction",
       "title": "P–n junction and depletion region",
       "domainId": "matter-fabrication",
@@ -8121,7 +11725,8 @@
         "url-83213326f5835ccc3fd3"
       ],
       "dependentLessonIds": [
-        "attention"
+        "attention",
+        "long-context-adaptation"
       ],
       "investigationIds": [
         "execution"
@@ -8207,41 +11812,6 @@
       ],
       "investigationIds": [
         "manufacturing"
-      ]
-    },
-    {
-      "lessonId": "residual-normalization",
-      "title": "Residual stream & normalization",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-712837d07aa15d316802",
-        "url-e778b23064e784e2fcb9",
-        "url-c0695dd7ff75966fa30b"
-      ],
-      "dependentLessonIds": [
-        "output-head"
-      ],
-      "investigationIds": [
-        "execution"
       ]
     },
     {
@@ -8450,41 +12020,6 @@
       ],
       "investigationIds": [
         "manufacturing"
-      ]
-    },
-    {
-      "lessonId": "tokenizer",
-      "title": "Tokenizer",
-      "domainId": "learning-intelligence",
-      "priority": "normal",
-      "proposedReviewRole": "ml-methods-reviewer",
-      "updateSensitivity": "stable-principle",
-      "proposedIntervalDays": 365,
-      "sourceReview": {
-        "status": "baseline-review-required",
-        "lastCompletedOn": null,
-        "dueOn": null,
-        "reviewEventId": null,
-        "reviewerKind": null,
-        "reason": "No complete source-scope review is recorded. Source freshness is unknown."
-      },
-      "specialistReviewEventIds": [],
-      "inheritedMetadata": {
-        "checkedOnDates": [],
-        "ageDaysRange": null,
-        "interpretation": "Age of copied checkedOn metadata only; no independent check date is inferred and this does not satisfy baseline review."
-      },
-      "claimIds": [],
-      "sourceIds": [
-        "url-b6bef96e5a3ad28e5c4e",
-        "url-a2690ed31e8cc7e90c6d"
-      ],
-      "dependentLessonIds": [
-        "embedding",
-        "training-data"
-      ],
-      "investigationIds": [
-        "execution"
       ]
     },
     {

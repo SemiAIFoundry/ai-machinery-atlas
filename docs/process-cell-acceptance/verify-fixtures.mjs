@@ -1,0 +1,6 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import path from 'node:path';import {fileURLToPath} from 'node:url';import {createHash} from 'node:crypto';
+import {buildCellAcceptance,parseCellRecord} from '../../src/lib/process-cell-acceptance.ts';
+const directory=path.dirname(fileURLToPath(import.meta.url)),pack=JSON.parse(fs.readFileSync(path.join(directory,'scenarios.json'),'utf8'));
+for(const s of pack.scenarios){const r=buildCellAcceptance(parseCellRecord(JSON.stringify(s.record)).input);assert.deepEqual({specimenId:r.specimenId,parameters:r.parameters,noise:r.noise,timing:r.timing,accepted:r.accepted,gates:r.gates.map(g=>({id:g.id,pass:g.pass,actual:g.actual,limit:g.limit}))},s.expected,s.id);}
+const review=JSON.parse(fs.readFileSync(path.join(directory,'source-review.json'),'utf8'));for(const e of review.candidateFiles)assert.equal(createHash('sha256').update(fs.readFileSync(path.resolve(directory,'../..',e.path))).digest('hex'),e.sha256,e.path);
+for(const m of fs.readFileSync(path.join(directory,'README.md'),'utf8').matchAll(/\]\(([^)]+)\)/g))if(!/^https?:/.test(m[1]))assert.ok(fs.existsSync(path.resolve(directory,m[1].split('#')[0])),m[1]);console.log(`${pack.scenarios.length} complete fixtures, ${review.candidateFiles.length} hashes and portable local links verified.`);

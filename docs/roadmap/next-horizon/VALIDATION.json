@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-07T22:52:07.666Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root"
+  },
+  "scope": "Local implementation validation; not release authorization or completion of all N17 source/human acceptance.",
+  "build": {
+    "schemaVersion": 1,
+    "edition": "1.2.0",
+    "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+    "dirty": true,
+    "sourceSha256": "5216622bd7e8d6af250c7b2169a6e7320f5fcb46ace89931009e0bc32e43afab",
+    "contentSha256": "9b5b6f6e9f2f049eb0d9efbc64cbed04cd9c21a2aa2bb54a2e3145005b083683",
+    "modelVersions": {
+      "investigations": "atlas-investigations-1",
+      "processes": "process-mechanisms-1",
+      "learningPrompts": "investigation-prompts-1",
+      "architecture": "architecture-execution-1",
+      "fabrication": "atlas-fabrication-flow-1",
+      "operatingHall": "1",
+      "realization": "atlas-realization-1",
+      "memory": "atlas-memory-interfaces-1",
+      "sensor": "sensor-logistic-1",
+      "retrieval": "lexical-cited-answer-1",
+      "orbital": "1",
+      "progress": "progress-evidence-2",
+      "studioRecords": "atlas-studio-record-1",
+      "matrixNetwork": "matrix-network-transfer-1",
+      "decoderProjection": "decoder-query-machine-1",
+      "ranking": "exposure-aware-ranking-1",
+      "memoryWorkload": "memory-workload-bridge-1",
+      "factory": "factory-actual-checkpoint-1",
+      "dataLineage": "data-lineage-1",
+      "evaluation": "identified-evaluation-1",
+      "applicationDecisions": "application-decisions-1",
+      "processCell": "process-cell-acceptance-1",
+      "speculativeVerification": "authored-draft-target-greedy-1",
+      "serving": "causal-kv-serving-1",
+      "learnedRetrieval": "atlas-incident-learned-1",
+      "distributedLearning": "distributed-causal-gradient-2",
+      "aiFamilies": "ai-families-1",
+      "commissioning": "commissioning-execution-1",
+      "control": "closed-loop-1",
+      "hardwareReliability": "hardware-reliability-1",
+      "foundations": "foundations-1",
+      "modelLifecycle": "causal-decoder-lifecycle-1",
+      "automation": "atlas-automation-1",
+      "machineExecution": "machine-execution-1"
+    },
+    "builtAt": "2026-09-07T22:49:04.456Z"
+  },
+  "inventory": {
+    "lessons": 311,
+    "branches": 82,
+    "guidedPaths": 21,
+    "numericalLabs": 24,
+    "milestones": 83,
+    "engineeringExperiences": 28,
+    "scienceCards": 345,
+    "formalExpressions": 335,
+    "proseRelationships": 10,
+    "sourceUrls": 364,
+    "structuredClaims": 96
+  },
+  "automated": {
+    "fullSuite": {
+      "command": "npm test",
+      "passed": 729,
+      "failed": 0,
+      "sourceSha256": "501d8330c9fc9d107d825ce65ffea4e1e79c747d3c0c517f9593369db735ce10",
+      "contentSha256": "2d15660a4a3546bfdf28bba2ad61a688e2b73d3236ab21101aa087041ff9336a",
+      "scienceChecksPassed": 2117,
+      "additionalCurationTestsPassed": 14,
+      "instructorContractGroups": 9,
+      "originalScenarioContracts": 14
+    },
+    "subsequentChanges": "After the 729-test source-reviewed build, removed one source-recovery process/date sentence from the learner-facing HBM evidence note. Supplier statement, equation and numerical model behavior unchanged. Appended a presentation-scope review retaining original readings; rebuilt and reran complete content/science/curation validation plus five delivery/media checks.",
+    "finalBuild": {
+      "command": "npm run build",
+      "passed": true,
+      "typeScript": true
+    },
+    "finalFocusedTests": {
+      "command": "npm run validate:content; node --experimental-strip-types --test scripts/connected-walkthrough.test.mjs scripts/delivery.test.mjs",
+      "passed": 5,
+      "failed": 0,
+      "scienceChecksPassed": 2117
+    },
+    "entryJavaScript": {
+      "gzipBytes": 333706,
+      "compressionLevel": 9,
+      "budgetBytes": 350000
+    }
+  },
+  "media": {
+    "path": "public/connected/connected.mp4",
+    "sha256": "05ba66f3d933ff9ca1a5b7bbd94a6aaa0b30d7f708991d1f7347cf6b37d365ba",
+    "durationSeconds": 60,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "videoCodec": "H.264 High / yuv420p",
+    "audioCodec": "AAC 48 kHz stereo",
+    "fullStreamDecode": "passed",
+    "chapters": 10,
+    "captureIdentity": "Per-frame identities retained in examples/connected-walkthrough/capture-manifest.json; not relabeled to final build.",
+    "scope": "Edited actual UI captures with original instrumental music; multiple bounded specimens, not an uninterrupted recording or one physical simulation."
+  },
+  "browser": {
+    "record": "BROWSER-OBSERVATIONS.json",
+    "scope": "Selected real browser interactions on a desktop host, including 320 px emulation, keyboard controls, checkpoint restoration and caption boundaries."
+  },
+  "curation": {
+    "queue": "../../curation/curation-review-queue.json",
+    "summary": {
+      "lessons": 311,
+      "recordedReviewEvents": 23,
+      "byPriority": {
+        "high": 87,
+        "normal": 224
+      },
+      "bySourceReviewStatus": {
+        "baseline-review-required": 290,
+        "within-proposed-review-interval": 21
+      },
+      "specialistReviewEvents": 0
+    },
+    "sourceOrReviewDatesInvented": 0,
+    "reviewBatch": "../../curation/next-horizon-review/README.md",
+    "additionalReviewedLessons": 16
+  },
+  "remaining": [
+    "Complete baseline source-scope review for the 290 queued lessons; 21 current complete agent reviews and separately scoped experience checks are recorded.",
+    "Record actual human specialist and assistive-technology observations.",
+    "Physical iOS/Android checks and 6–9 learner sessions coordinated by the user.",
+    "Publication remains paused: no push, tag, deployment, version bump or release in this implementation pass."
+  ],
+  "logs": [
+    {
+      "path": "evidence/full-suite.log",
+      "sha256": "154e0044073c3e80c8c574866e40f028468a6cf238f573f47de29431ae1c9682"
+    },
+    {
+      "path": "evidence/final-build.log",
+      "sha256": "08a657fc51d8f65b759a89ccfc13c7438b7765da0395535e878cc5505dfd9165"
+    },
+    {
+      "path": "evidence/final-delivery-tests.log",
+      "sha256": "32e97d523e8bfffd6bc544d5c07ffcd363d2b7f99667f2dd1ab4661e770231ce"
+    },
+    {
+      "path": "evidence/media-decode.log",
+      "sha256": "d4f6d7117829644b852f4d745cb249eab1767ff091ac6b6ac3ead5d598c99ae5"
+    },
+    {
+      "path": "evidence/source-reviewed-full-suite.log",
+      "sha256": "1d99658600efe91dc5102bd0c371d88aad51e35730e217697f9339fbef199276"
+    },
+    {
+      "path": "evidence/source-reviewed-final-build.log",
+      "sha256": "2dc1441a39796a303ad65d6f66e934b4a38969a7c37a84791ca4593c0d2506d1"
+    },
+    {
+      "path": "evidence/source-reviewed-final-checks.log",
+      "sha256": "d69ccac4e309b52127195bf9b48cad31f6100c1cf31e72f84adbd71683139492"
+    }
+  ],
+  "priorValidation": "history/VALIDATION-before-baseline-review.json"
+}

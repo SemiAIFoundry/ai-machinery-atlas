@@ -1,0 +1,206 @@
+{
+  "record": {
+    "id": "floating-point-reduction-order",
+    "name": "Floating-point reductions and compiler permissions",
+    "shortName": "The order of a floating-point sum",
+    "role": "Distinguish algebraic equivalence, numerical error and bitwise reproducibility when compilation or collectives regroup arithmetic.",
+    "description": "Real-number addition is associative, but a floating-point implementation rounds intermediate results. Changing the reduction tree changes where those rounding steps occur. A compiler that vectorizes a sum or a distributed library that groups rank contributions differently can therefore produce different low bits, and cancellation can make the difference much larger relative to the final result. LLVM exposes reassociation as an explicit fast-math permission; permission to contract a multiply and add is a separate choice. Such options should be read as part of the numerical contract, not assumed to be enabled in every program. A fixed reduction schedule can improve repeatability without establishing that its answer is the most accurate. Conversely, a numerically acceptable answer need not be bitwise identical to another legal result. The small integer schedules elsewhere in the atlas deliberately avoid this issue by keeping every operation exactly representable. This lesson changes that arithmetic assumption while keeping the underlying sum visible.",
+    "mechanism": [
+      "Specify input representation, accumulator dtype, rounding mode and treatment of fused operations before comparing outputs.",
+      "Write out the intermediate additions imposed by the chosen serial, vector or distributed reduction order.",
+      "Round after each stated operation rather than rounding only the final real-number sum.",
+      "Inspect compiler reassociation and contraction permissions, plus the library and rank topology that determine the actual reduction tree.",
+      "Compare with an independent higher-precision or exact reference where available; use an absolute tolerance near cancellation and a justified relative tolerance elsewhere.",
+      "Validate downstream loss or task behavior separately. A repeatability check and a numerical-accuracy check answer different questions."
+    ],
+    "prerequisites": [
+      "mac",
+      "quantization",
+      "compiler-layout-lowering",
+      "nccl"
+    ],
+    "related": [
+      "sharded-matmul-ownership",
+      "distributed-gradient-weighting",
+      "evaluation",
+      "systolic-array-dataflow"
+    ],
+    "specs": [
+      {
+        "label": "Toy format",
+        "value": "IEEE-style binary32 rounding",
+        "context": "24 significand bits for normal values, nearest with ties to even."
+      },
+      {
+        "label": "Algebraic equality",
+        "value": "Same real-number expression",
+        "context": "Does not guarantee identical rounded intermediates."
+      },
+      {
+        "label": "Compiler permissions",
+        "value": "reassoc and contract differ",
+        "context": "An enabled reassociation can change reduction grouping; contraction can change rounding boundaries."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Expression and numerical contract",
+        "direction": "in",
+        "signal": "Operands, dtype, rounding, grouping and optimization permissions"
+      },
+      {
+        "name": "Checked numerical result",
+        "direction": "out",
+        "signal": "Computed value, reference difference and acceptance criterion"
+      }
+    ],
+    "science": [
+      {
+        "title": "Rounding makes grouping observable",
+        "equation": "fl(fl(a+b)+c) ≠ fl(a+fl(b+c)) in general",
+        "explanation": "fl denotes one rounding to the specified floating-point format. Intermediate representability determines the result.",
+        "assumptions": "The example uses finite binary32 values with round-to-nearest, ties-to-even; no underflow, overflow, NaNs, stochastic rounding or fused multiply-add."
+      },
+      {
+        "title": "Spacing at the chosen magnitude",
+        "equation": "ULP(2²⁴) = 2²⁴⁻²³ = 2; real sum = 2²⁴ + 1 − 2²⁴ = 1",
+        "explanation": "In the binary32 interval [2²⁴,2²⁵), adjacent representable values are two apart. The halfway sum 2²⁴+1 rounds to the even lower significand.",
+        "assumptions": "ULP here means the spacing immediately above 2²⁴. Spacing immediately below that power of two is 1; it is not constant across the boundary."
+      }
+    ],
+    "engineeringExample": "Let a=16,777,216=2²⁴, b=1 and c=−16,777,216, all representable in binary32. Group left: a+b is exactly 16,777,217 before rounding, halfway between representable 16,777,216 and 16,777,218. Ties-to-even gives 16,777,216; adding c then gives 0. Group right: b+c=−16,777,215 is representable, so adding a gives 1. The exact mathematical sum is 1. A deterministic left reduction repeats 0 and is reproducible, yet its absolute error is 1. A hypothetical acceptance condition |computed−reference|≤0.01 rejects 0 and accepts 1. That tolerance is an authored condition for this example, not an accuracy threshold for real training. Accumulating these three binary32 inputs with sufficiently precise binary64 additions produces 1; this does not guarantee that wider accumulation always eliminates error in larger problems.",
+    "learningObjective": "Reproduce both binary32 reduction orders and explain why compiler permissions, accuracy checks and reproducibility requirements must be specified separately.",
+    "misconception": "Bitwise repeatability does not prove closeness to the exact result, and algebraic equivalence does not prove bitwise identity.",
+    "check": {
+      "question": "With binary32 ties-to-even rounding, what is fl(fl(2²⁴+1)−2²⁴)?",
+      "options": [
+        "0",
+        "1",
+        "2"
+      ],
+      "answer": 0,
+      "explanation": "The first addition rounds back to 2²⁴ because adjacent representable values above it are two apart; subtraction then cancels to zero."
+    },
+    "checks": [
+      {
+        "question": "Why does grouping 2²⁴+(1−2²⁴) instead give 1?",
+        "options": [
+          "The inner result −16,777,215 is representable",
+          "The network repairs all numerical errors",
+          "The compiler changes the inputs"
+        ],
+        "answer": 0,
+        "explanation": "Below this power-of-two boundary the required integer is representable, so no information is lost in the inner sum."
+      },
+      {
+        "question": "Which evidence shows a result is accurate relative to a stated reference?",
+        "options": [
+          "Only repeating the same bit pattern",
+          "An error check against the independent reference",
+          "Only using more ranks"
+        ],
+        "answer": 1,
+        "explanation": "Repeatability and rank count do not establish numerical accuracy."
+      }
+    ],
+    "whyAI": "Gradient reductions, attention sums and low-precision accumulations connect compiler decisions to optimization and model outputs. A faster schedule must still satisfy a declared numerical and task-quality contract.",
+    "tradeoff": "Stricter ordering or wider accumulation can constrain transformations and consume resources. Their value depends on the actual error and reproducibility requirements; this example provides no throughput ranking.",
+    "evidenceNotes": "The NVIDIA guide supports finite-precision nonassociativity, and LLVM specifies the cited optimization permissions. The exact operands, intermediate values and 0.01 tolerance are authored. Tests use binary32 conversions locally and do not constitute a GPU, compiler or multi-rank experiment.",
+    "sourceIds": [
+      "cuda-fp32-associativity",
+      "llvm-fp-reassociation"
+    ],
+    "sources": [
+      {
+        "title": "NVIDIA CUDA 13.1.1 — Floating-Point Computation",
+        "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html"
+      },
+      {
+        "title": "LLVM — Language Reference, fast-math rewrite flags",
+        "url": "https://llvm.org/docs/LangRef.html#fast-math-flags"
+      }
+    ],
+    "workedTrace": {
+      "id": "binary32-cancellation",
+      "input": {
+        "a": 16777216,
+        "b": 1,
+        "c": -16777216,
+        "rounding": "nearest-ties-to-even",
+        "format": "binary32"
+      },
+      "left": {
+        "firstExact": 16777217,
+        "firstRounded": 16777216,
+        "result": 0
+      },
+      "right": {
+        "firstExact": -16777215,
+        "firstRounded": -16777215,
+        "result": 1
+      },
+      "exactReference": 1,
+      "absoluteTolerance": 0.01,
+      "leftPasses": false,
+      "rightPasses": true
+    },
+    "level": "software",
+    "branch": "Executable software",
+    "subbranch": "Distributed computation to useful output",
+    "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+    "kind": "system",
+    "workstream": "W11",
+    "visualFamily": "software-flow",
+    "labId": "library",
+    "investigationId": "execution",
+    "labScope": "The library contains related numerical models. This lesson’s explicit binary32 reduction counterexample is not an interactive floating-point emulator.",
+    "history": [],
+    "scope": "The library contains related numerical models. This lesson’s explicit binary32 reduction counterexample is not an interactive floating-point emulator."
+  },
+  "chapter": {
+    "id": "distributed-output-bridges",
+    "domainId": "executable-software",
+    "read": "Follow the worked values and declared numerical contract. Software boxes denote dependencies and ownership, not physical layers or measured timing."
+  },
+  "formalEquations": [
+    {
+      "latex": "\\operatorname{fl}\\!\\left(\\operatorname{fl}(a+b)+c\\right)\\ne\\operatorname{fl}\\!\\left(a+\\operatorname{fl}(b+c)\\right)\\quad\\text{in general}",
+      "text": "Rounding the inner addition before the outer one means regrouped additions can differ.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "fl",
+          "meaning": "One binary32 round-to-nearest ties-to-even operation in this example",
+          "unit": "operation"
+        },
+        {
+          "symbol": "a, b, c",
+          "meaning": "Exactly representable input operands",
+          "unit": "value"
+        }
+      ]
+    },
+    {
+      "latex": "\\Delta_{[2^{24},2^{25})}=2^{24-23}=2,\\qquad (2^{24}+1)-2^{24}=1\\quad\\text{over the reals}",
+      "text": "The spacing above two to the twenty-fourth in binary32 is two. The exact real-number sum with one and its negative is one.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Δ",
+          "meaning": "Adjacent representable spacing in the stated interval",
+          "unit": "value"
+        },
+        {
+          "symbol": "24",
+          "meaning": "Exponent at the chosen magnitude",
+          "unit": "count"
+        },
+        {
+          "symbol": "23",
+          "meaning": "Stored binary32 fraction-bit count",
+          "unit": "count"
+        }
+      ]
+    }
+  ]
+}

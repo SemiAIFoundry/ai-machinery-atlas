@@ -1,0 +1,28 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import path from 'node:path';
+const root=path.dirname(fileURLToPath(import.meta.url));
+const checks=[];
+function close(name,actual,expected,scope){assert.ok(Math.abs(actual-expected)<1e-12,name);checks.push({name,actual,expected,scope});}
+close('operating phase only',20*1+80*0,20,'MW; two distinct phases at one date and common power boundary');
+close('planned phase only',20*0+80*1,80,'MW; not operating capacity');
+close('eventual combined scope',20+80,100,'MW only if nonoverlapping and boundary-compatible; no readiness inference');
+close('compatible BOM bound',Math.min(Math.floor(150/1),Math.floor(400/4),Math.floor(120/1)),100,'packages from screened inputs, before remaining assembly losses');
+close('fractional package forbidden',Math.min(150,Math.floor(399/4),120),99,'whole packages');
+close('known absent required supply',Math.min(150,100,0),0,'known zero differs from unknown or unverified supply');
+close('annual energy',1*8760/1000,8.76,'GW*h /1000 = TWh; 365-day constant-load example');
+close('partial average load',.4*8760/1000,3.504,'TWh; nameplate 1 GW does not imply its full use');
+close('TWh to MWh',1000*1000,1000000,'MWh per TWh');
+close('backup at load boundary',20/10,2,'hours; usable output energy already accounts for stated losses/reserves');
+close('halve load under fixed-energy assumption',20/5,4,'hours only while usable-energy approximation remains applicable');
+close('inventory conservation',10+7-9,8,'same compatible item count per interval; no omitted scrap or rework');
+close('lead time labels',1+3,4,'three elapsed weekly intervals from start of week one');
+close('explicit half allocation',100*.5,50,'synthetic units, not an actual supplier share');
+close('latency-prioritized Site A',.8*1+.2*0,.8,'dimensionless scores with explicitly favorable normalized metrics');
+close('latency-prioritized Site B',.8*.2+.2*1,.36,'same normalized criteria and weights');
+close('readiness-prioritized Site A',.2*1+.8*0,.2,'different user preferences');
+close('readiness-prioritized Site B',.2*.2+.8*1,.84,'demonstrates preference reversal, not an objective location ranking');
+const result={schemaVersion:1,completedAt:new Date().toISOString(),actor:{kind:'agent',identifier:'/root/final_ledger_audit'},method:'Independent arithmetic; imports no atlas model or simulator. No source number or empirical validation is inferred from these synthetic calculations.',passed:checks.length,checks};
+fs.writeFileSync(path.join(root,'numerical-checks.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({passed:checks.length}));

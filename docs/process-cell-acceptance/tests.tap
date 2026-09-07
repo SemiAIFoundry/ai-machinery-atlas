@@ -1,0 +1,26 @@
+✔ default units and expected quantities anchor the named specimen (1.43625ms)
+✔ oxide variation propagates consistently into capacitance, beta and fixed-charge threshold (0.08875ms)
+✔ current regimes join continuously, saturate at the declared overdrive and turn off (0.063208ms)
+✔ balanced closed-form unity-gain points and conservative margins match (0.219625ms)
+✔ ideal switching input exposes an interval of current-balanced outputs (0.087917ms)
+✔ 54 process/load corners satisfy branch current balance and exact noise definitions (6.636625ms)
+✔ transfer analytic slopes match an independent centered numerical derivative (0.448583ms)
+✔ analytic delays match independent Simpson integration across 54 process/load corners (6.980834ms)
+✔ constant saturation-current segment obeys CΔV/I and integration is additive (0.127625ms)
+✔ delay scales exactly with load while static transfer/noise does not (0.46875ms)
+✔ geometry failure and asymmetric electrical failures stay distinct (0.130625ms)
+✔ transition timestamps advance monotonically and the 50% sample matches delay (0.11225ms)
+✔ invalid process domains, zero load and finite-time zero-voltage endpoint are rejected (0.187875ms)
+✔ portable records retain exact complete inputs and reject model mismatches (0.309917ms)
+✔ incompatible prior raw input is preserved before save and backup failure leaves active data (0.213375ms)
+✔ finite-time inverse of the delay integral preserves the model clock and charge swing (0.813375ms)
+✔ two complete lessons and eight canonical equations preserve valid graph references (221.347208ms)
+✔ authored material-to-cell worked examples match current model values (0.552875ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 315.315083

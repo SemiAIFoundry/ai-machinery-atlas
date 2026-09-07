@@ -1,0 +1,23 @@
+
+> ai-machinery-atlas@1.2.0 validate:content
+> node --experimental-strip-types scripts/validate-atlas.mjs && node scripts/validate-science.mjs && node docs/curation/validate-curation-manifest.mjs
+
+Missing records: [] Unassigned: []
+PASS: 311 complete lessons; 82 branches; 21 connected paths; geometry/isolation and numerical invariants.
+PASS: prerequisite DAG, relationship references, claim provenance and baseline preservation.
+2117/2117 scientific checks passed: 335 math cards, 10 prose relationships.
+Curation validation passed: 311 lessons, 364 source URLs and 96 claims.
+✔ connected footage retains captured pixels, exact build evidence and the delivered video (3.523208ms)
+✔ every captured experience has a current canonical destination and a readable alternative (174.777083ms)
+Entry JS: 333706 gzip bytes (level 9; local file measurement)
+✔ compressed entry JavaScript stays below the 350 kB budget (27.678917ms)
+✔ every authored lesson is independently loaded and content addressed (194.519041ms)
+✔ build identity carries independent source, content and model identity (0.468166ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 279.26825

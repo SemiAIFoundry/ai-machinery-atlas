@@ -1,0 +1,216 @@
+
+-- Executing script file `prove.ys' --
+
+1. Executing Verilog-2005 frontend: adder.v
+Parsing Verilog input from `adder.v' to AST representation.
+Generating RTLIL representation for module `\adder4'.
+Generating RTLIL representation for module `\atlas_adder'.
+Generating RTLIL representation for module `\adder_contract'.
+Successfully finished Verilog frontend.
+
+2. Executing PREP pass.
+
+2.1. Executing HIERARCHY pass (managing design hierarchy).
+
+2.1.1. Analyzing design hierarchy..
+Top module:  \adder_contract
+Used module:     \adder4
+
+2.1.2. Analyzing design hierarchy..
+Top module:  \adder_contract
+Used module:     \adder4
+Removing unused module `\atlas_adder'.
+Removed 1 unused modules.
+Mapping positional arguments of cell adder_contract.implementation (adder4).
+
+2.2. Executing PROC pass (convert processes to netlists).
+
+2.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Removed a total of 0 dead cases.
+
+2.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 0 redundant assignments.
+Promoted 0 assignments to connections.
+
+2.2.4. Executing PROC_INIT pass (extract init attributes).
+
+2.2.5. Executing PROC_ARST pass (detect async resets in processes).
+
+2.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+
+2.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+
+2.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+2.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+
+2.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+2.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+2.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_contract.
+Optimizing module adder4.
+<suppressed ~3 debug messages>
+
+2.3. Executing FLATTEN pass (flatten design).
+Deleting now unused module adder4.
+<suppressed ~1 debug messages>
+
+2.4. Executing FUTURE pass.
+
+2.5. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_contract.
+
+2.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \adder_contract..
+Removed 1 unused cells and 13 unused wires.
+<suppressed ~2 debug messages>
+
+2.7. Executing CHECK pass (checking for obvious problems).
+Checking module adder_contract...
+Found and reported 0 problems.
+
+2.8. Executing OPT pass (performing simple optimizations).
+
+2.8.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_contract.
+
+2.8.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\adder_contract'.
+Computing hashes of 23 cells of `\adder_contract'.
+Finding duplicate cells in `\adder_contract'.
+Computing hashes of 20 cells of `\adder_contract'.
+Finding duplicate cells in `\adder_contract'.
+<suppressed ~9 debug messages>
+Removed a total of 3 cells.
+
+2.8.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \adder_contract..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.8.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \adder_contract.
+Performed a total of 0 changes.
+
+2.8.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\adder_contract'.
+Computing hashes of 20 cells of `\adder_contract'.
+Finding duplicate cells in `\adder_contract'.
+Removed a total of 0 cells.
+
+2.8.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \adder_contract..
+Removed 0 unused cells and 3 unused wires.
+<suppressed ~1 debug messages>
+
+2.8.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_contract.
+
+2.8.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+2.8.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \adder_contract..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+2.8.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \adder_contract.
+Performed a total of 0 changes.
+
+2.8.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\adder_contract'.
+Computing hashes of 20 cells of `\adder_contract'.
+Finding duplicate cells in `\adder_contract'.
+Removed a total of 0 cells.
+
+2.8.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \adder_contract..
+
+2.8.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_contract.
+
+2.8.14. Finished fast OPT passes. (There is nothing left to do.)
+
+2.9. Executing WREDUCE pass (reducing word size of cells).
+Removed top 1 bits (of 5) from port A of cell adder_contract.$add$adder.v:29$26 ($add).
+Removed top 1 bits (of 5) from port B of cell adder_contract.$add$adder.v:29$26 ($add).
+
+2.10. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \adder_contract..
+
+2.11. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+2.12. Executing OPT pass (performing simple optimizations).
+
+2.12.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module adder_contract.
+
+2.12.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\adder_contract'.
+Computing hashes of 20 cells of `\adder_contract'.
+Finding duplicate cells in `\adder_contract'.
+Removed a total of 0 cells.
+
+2.12.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \adder_contract..
+
+2.12.4. Finished fast OPT passes.
+
+2.13. Executing SORT pass.
+
+2.14. Printing statistics.
+
+=== adder_contract ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       18 wires
+       46 wire bits
+        8 public wires
+       32 public wire bits
+        3 ports
+        9 port bits
+       20 cells
+        1   $add
+        7   $and
+        1   $eq
+        3   $or
+        1   $scopeinfo
+        7   $xor
+
+2.15. Executing CHECK pass (checking for obvious problems).
+Checking module adder_contract...
+Found and reported 0 problems.
+
+3. Executing SAT pass (solving SAT problems in the circuit).
+Using SAT solver `minisat`.
+
+Setting up SAT problem:
+Final constraint equation: { } = { }
+Imported 20 cells to SAT database.
+Import proof-constraint: \ok = 1'1
+Final proof equation: \ok = 1'1
+Import show expression: { \a \b \ok }
+
+Solving problem with 168 variables and 435 clauses..
+SAT proof finished - no model found: SUCCESS!
+
+                  /$$$$$$      /$$$$$$$$     /$$$$$$$    
+                 /$$__  $$    | $$_____/    | $$__  $$   
+                | $$  \ $$    | $$          | $$  \ $$   
+                | $$  | $$    | $$$$$       | $$  | $$   
+                | $$  | $$    | $$__/       | $$  | $$   
+                | $$/$$ $$    | $$          | $$  | $$   
+                |  $$$$$$/ /$$| $$$$$$$$ /$$| $$$$$$$//$$
+                 \____ $$$|__/|________/|__/|_______/|__/
+                       \__/                              
+

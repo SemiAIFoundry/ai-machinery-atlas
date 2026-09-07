@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "validatedAt": "2026-09-07T22:43:43.216Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root/final_ledger_audit",
+    "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+  },
+  "scope": "Six complete effective lessons, 11 lesson-source uses, eight distinct primary URLs, four distinct structured claims; one earlier finding retained.",
+  "events": 7,
+  "acceptedCurrent": 6,
+  "earlierChangesRequired": 1,
+  "independentArithmeticChecks": 18,
+  "currentFingerprintsMatchManifest": true,
+  "eventSchemaPass": true,
+  "snapshots": [
+    {
+      "lessonId": "capacity-phase-geography",
+      "beforeFingerprint": "fdd1df94d31a02e9ca5cff704431e83e3da41cacadd178cfc000b76130343e56",
+      "currentFingerprint": "7ff32f6cc05b65612de250ace78dbea37f6430133117e5e589e7819ff3457ee9",
+      "location": "docs/curation/next-horizon-review/infrastructure/capacity-phase-geography-reviewed-snapshot.json",
+      "sha256": "9286d0caf6ebb3c3f6f414309bf93d2a01ea0415a270e8dd7ffd551cf32e07f4"
+    },
+    {
+      "lessonId": "compatible-supply-capacity",
+      "beforeFingerprint": "d3cb1abf1262ccc17d7c95fee795ee6385985df060d6fb8e860ce18275f57b7b",
+      "currentFingerprint": "d3cb1abf1262ccc17d7c95fee795ee6385985df060d6fb8e860ce18275f57b7b",
+      "location": "docs/curation/next-horizon-review/infrastructure/compatible-supply-capacity-snapshot.json",
+      "sha256": "efc16e0e4f6183be547b2f3f5faec5a1216538b82dc7404e44f4960d8cfe4504"
+    },
+    {
+      "lessonId": "energy-forecast-boundaries",
+      "beforeFingerprint": "f427e2aea801958c5dc42ce1ffc853ec70c9ee8f062f0ae9befa38a991d55660",
+      "currentFingerprint": "f427e2aea801958c5dc42ce1ffc853ec70c9ee8f062f0ae9befa38a991d55660",
+      "location": "docs/curation/next-horizon-review/infrastructure/energy-forecast-boundaries-snapshot.json",
+      "sha256": "23b9df193537330b9b597ef4bf0888a64a0aadc94e1e3aace0ae24201d872787"
+    },
+    {
+      "lessonId": "grid-interconnection-readiness",
+      "beforeFingerprint": "cb80d0a139cc9dbb8b0449fa25c53ec56541568fac3c631884a9624d2427b2bd",
+      "currentFingerprint": "90d3cf400e8f57437f2b7c18239ca92da6d7051345e69c9c3ac6f80dae36160d",
+      "location": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-reviewed-snapshot.json",
+      "sha256": "b9d56c3ed4077e84513192aff835886de6dd090b33287fd79b2fa80432d01cc8"
+    },
+    {
+      "lessonId": "production-ramp-allocation",
+      "beforeFingerprint": "fe17238e7ad15a7f27f42cddf9a1ece457d75371a8e90f469f1ac2dcc6dc3ca9",
+      "currentFingerprint": "fe17238e7ad15a7f27f42cddf9a1ece457d75371a8e90f469f1ac2dcc6dc3ca9",
+      "location": "docs/curation/next-horizon-review/infrastructure/production-ramp-allocation-snapshot.json",
+      "sha256": "1d85a293a1a28da4fa85175b48565c6f634a078ed120e60232c2898eceb65780"
+    },
+    {
+      "lessonId": "regional-siting-access",
+      "beforeFingerprint": "20e727788f57f7eecab59b833472cb592db3ae6438323e500291850785b32b3c",
+      "currentFingerprint": "20e727788f57f7eecab59b833472cb592db3ae6438323e500291850785b32b3c",
+      "location": "docs/curation/next-horizon-review/infrastructure/regional-siting-access-snapshot.json",
+      "sha256": "33dd7eb89169362fd6c4dd2c74100d08663a2cf36be690275abee14eb9eed937"
+    }
+  ],
+  "unobserved": [
+    "human specialist review",
+    "physical device or assistive-technology checks",
+    "learner observations",
+    "complete world census",
+    "detailed LBNL full-report methodology"
+  ]
+}

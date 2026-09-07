@@ -1,0 +1,39 @@
+{
+  "validatedAt": "2026-09-07T22:42:57.385Z",
+  "validator": "docs/curation/curation-freshness.mjs validateEvents",
+  "lessonCount": 5,
+  "sourceUses": 12,
+  "distinctSourceUrls": 8,
+  "claimUses": 6,
+  "allCurrentFingerprintsMatched": true,
+  "allEventSchemaChecksPassed": true,
+  "snapshots": [
+    {
+      "lessonId": "attention",
+      "path": "docs/curation/next-horizon-review/learning/attention-5003a7dd139869db.json",
+      "sha256": "ade17360fb217defda82366032dfe645e03318f5c0a05193ff16e3e85b35af8e"
+    },
+    {
+      "lessonId": "attention-io-tiling",
+      "path": "docs/curation/next-horizon-review/learning/attention-io-tiling-95fec33cf0bde46c.json",
+      "sha256": "d2f2d4b731ad3046bdc657393c6f8c5b19d2fa9d0c128369f5d0bf2771597cea"
+    },
+    {
+      "lessonId": "causal-pretraining-objective",
+      "path": "docs/curation/next-horizon-review/learning/causal-pretraining-objective-2960d1d87946d474.json",
+      "sha256": "99c385a435b8f2f0cdd3276341d0d2494a8708e7300370e10138604eb1c13a08"
+    },
+    {
+      "lessonId": "checkpoint",
+      "path": "docs/curation/next-horizon-review/learning/checkpoint-b2b2450347be7341.json",
+      "sha256": "295facf756069df7612bb43862a75bcfd1850f3168d0a99ca7b44b11d07dae06"
+    },
+    {
+      "lessonId": "checkpoint-averaging-boundaries",
+      "path": "docs/curation/next-horizon-review/learning/checkpoint-averaging-boundaries-3c0cfe951befa203.json",
+      "sha256": "2a9a24fd6ed564ca3e72aeb18906123cdd473337e9060dc44e0468ff916ab451"
+    }
+  ],
+  "arithmeticResultSha256": "42fe9428e3d40b7f33c34c4d12aed6bb83f679eb9a10df737c249516230db8cd",
+  "focusedTestLogSha256": "431cd78746a4b2a9bca224172c7f181b5a4c26912e9796e5ab58377652975e2e"
+}

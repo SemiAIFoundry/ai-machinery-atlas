@@ -1,11 +1,9 @@
 import { Equation, type MathDefinition } from './equation';
-import original from '../lib/data/equations-original.json';
-import expansion from '../lib/data/equations-expansion.json';
-import infrastructure from '../lib/data/equations-infrastructure.json';
+import formalEquations from '../lib/generated/formal-equations';
 import type { RecordEntry, Chapter } from '../lib/atlas';
 import { Button } from './ui/button';
 import { FlaskConical } from 'lucide-react';
-const equations = { ...original, ...expansion, ...infrastructure } as Record<string, MathDefinition[]>;
+const equations=formalEquations as Record<string, MathDefinition[]>;
 export default function SciencePanel({ record, chapter, onLab }: { record: RecordEntry; chapter: Chapter; onLab: () => void }) {
   return <>
     <div className="detail-section first"><h3>The engineering question</h3><p>{chapter.question}</p></div>

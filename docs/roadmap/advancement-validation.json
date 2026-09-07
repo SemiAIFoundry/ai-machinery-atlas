@@ -1,0 +1,70 @@
+{
+  "status": "pass",
+  "checkedAt": "2026-09-07T18:44:26.159263+00:00",
+  "build": {
+    "schemaVersion": 1,
+    "edition": "1.2.0",
+    "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+    "dirty": true,
+    "sourceSha256": "0229ea0de814eb250c126a6f12b237ba4123990bcedd35f98412180789c67179",
+    "contentSha256": "4b33b786a3deb3a06915536416e804773595e2c9767f07d90f8e9023e3d87dbb",
+    "modelVersions": {
+      "investigations": "atlas-investigations-1",
+      "processes": "process-mechanisms-1",
+      "learningPrompts": "investigation-prompts-1",
+      "architecture": "architecture-execution-1",
+      "fabrication": "atlas-fabrication-flow-1",
+      "operatingHall": "1",
+      "realization": "atlas-realization-1",
+      "memory": "atlas-memory-interfaces-1",
+      "sensor": "sensor-logistic-1",
+      "retrieval": "lexical-cited-answer-1",
+      "orbital": "1",
+      "progress": "progress-evidence-2",
+      "studioRecords": "atlas-studio-record-1"
+    },
+    "builtAt": "2026-09-07T18:41:44.613Z"
+  },
+  "command": "npm test",
+  "mainTests": 249,
+  "curationTests": 14,
+  "totalTests": 263,
+  "failures": 0,
+  "scienceChecks": 1489,
+  "formalMathCards": 233,
+  "proseRelationships": 6,
+  "lessons": 229,
+  "branches": 63,
+  "paths": 16,
+  "labs": 24,
+  "milestones": 76,
+  "entryGzipBytes": 273042,
+  "entryBudgetBytes": 350000,
+  "instructorScenarios": 14,
+  "studioSourceUsesChecked": 62,
+  "studioPrimaryUrls": 57,
+  "additionalLessonSourceUsesChecked": 7,
+  "additionalLessonPrimaryUrls": 6,
+  "humanSpecialistReviews": 0,
+  "productionPublished": false,
+  "gitPushed": false,
+  "browser": {
+    "surface": "Codex in-app browser on macOS",
+    "responsiveWidths": [
+      320,
+      390
+    ],
+    "isPhysicalPhoneObservation": false,
+    "observations": "ADVANCEMENT-VALIDATION.md"
+  },
+  "movieSha256": "cb42920629f412a848cac1f27cee7faca2fec630760cbac73969fffcb00ea098",
+  "isolatedSourceVerification": {
+    "status": "pass",
+    "method": "Source copied to an isolated temporary directory and fully tested there using the existing installed dependency tree through a symbolic link. No original atlas source files are required by the isolated run. This does not claim a new npm ci/network-install check.",
+    "tests": 263,
+    "scienceChecks": 1489,
+    "instructorScenarios": 14,
+    "sourceSha256": "0229ea0de814eb250c126a6f12b237ba4123990bcedd35f98412180789c67179",
+    "sourceAndContentMatchReviewedBuild": true
+  }
+}

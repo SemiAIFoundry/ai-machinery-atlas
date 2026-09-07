@@ -1,0 +1,47 @@
+import type {LifecycleRun} from '../lib/model-lifecycle';
+import type {DistributedTrainingRun} from '../lib/model-lifecycle-distributed';
+const DataLineage=lazy(()=>import('./data-lineage-explorer'));
+const Factory=lazy(()=>import('./factory-execution'));
+const MemoryWorkload=lazy(()=>import('./memory-workload-explorer'));
+const Serving=lazy(()=>import('./model-lifecycle-serving'));
+const Cell=lazy(()=>import('./process-cell-acceptance'));
+const MatrixNetwork=lazy(()=>import('./matrix-network'));
+const Projection=lazy(()=>import('./decoder-projection'));
+const Ranking=lazy(()=>import('./ranking-application'));
+const Decisions=lazy(()=>import('./application-decisions'));
+const Evaluation=lazy(()=>import('./evaluation-report'));
+import {lazy,Suspense,useState} from 'react';
+import ResourceBoundary from './resource-boundary';
+import '../studio.css';
+import {lessonsForStudio,studioGroups} from '../lib/studio-lessons';
+import StudioRecordStore from './studio-record';
+const Architecture=lazy(()=>import('./architecture-execution'));
+const Fabrication=lazy(()=>import('./fabrication-explorer'));
+const Realization=lazy(()=>import('./realization-explorer'));
+const Memory=lazy(()=>import('./memory-explorer'));
+const Applications=lazy(()=>import('./evaluated-applications'));
+const Orbital=lazy(()=>import('./orbital-mission'));
+const Progress=lazy(()=>import('./progress-evidence'));
+const Hall=lazy(()=>import('./operating-hall'));
+const Foundations=lazy(()=>import('./foundation-explorer'));
+const Learning=lazy(()=>import('./model-lifecycle'));
+const Automation=lazy(()=>import('./automation-explorer'));
+import type {LearnedActionHandoff} from '../lib/automation-learned-bridge';
+const Commissioning=lazy(()=>import('./commissioning-execution'));
+const Retrieval=lazy(()=>import('./retrieval-learning-explorer'));
+const Distributed=lazy(()=>import('./model-lifecycle-distributed'));
+const Families=lazy(()=>import('./ai-family-explorer'));
+const Reliability=lazy(()=>import('./hardware-reliability'));
+const Control=lazy(()=>import('./closed-loop'));
+const Machine=lazy(()=>import('./machine-execution'));
+export const studioCases=[["fabrication", "Fabrication → acceptance"], ["memory", "Bit → memory system"], ["architecture", "Operation → architecture"], ["realization", "RTL → physical artifact"], ["hall", "Rack → retained work"], ["applications", "Data → evaluated application"], ["orbital", "Workload → orbital budgets"], ["progress", "Breakthroughs → capacity"], ["foundations", "Mathematical foundations"], ["learning", "Corpus → trained model"], ["automation", "Request → verified action"], ["machine", "Operation → timed memory"], ["reliability", "State → reliable work"], ["control", "Observation → controlled action"], ["commissioning", "Boot → owned device work"], ["retrieval", "Learned retrieval → proposal"], ["families", "Contrasting AI mechanisms"], ["distributed", "Examples → distributed update"], ["evaluation", "Evaluate an identified system"], ["decisions", "Forecasts & code contracts"], ["cell", "Oxide → electrical acceptance"], ["serving", "Checkpoint → serving queue"], ["data", "Source corpus → training batch"], ["factory", "Learned state → reliable factory job"], ["memory-workload", "Memory qualification → checked workload"], ["ranking", "Exposure → fitted ranking"], ["network", "Matrix bytes → network completion"], ["projection", "Learned projection → machine trace"]] as const;
+export type StudioId=typeof studioCases[number][0];
+
+export default function EngineeringStudio({id,onCase,onLesson,onCompare,onHistory}:{id:StudioId;onCase:(id:StudioId)=>void;onLesson:(id:string)=>void;onCompare:()=>void;onHistory:()=>void}){
+ const [checkpoint,setCheckpoint]=useState<LifecycleRun|null>(null),[distributedCheckpoint,setDistributedCheckpoint]=useState<DistributedTrainingRun|null>(null);
+ const [handoff,setHandoff]=useState<LearnedActionHandoff|null>(null);
+ const newExperience=id==='network'||id==='projection'||id==='ranking'||id==='memory-workload'||id==='factory'||id==='data'||id==='foundations'||id==='learning'||id==='automation'||id==='machine'||id==='reliability'||id==='control'||id==='commissioning'||id==='retrieval'||id==='families'||id==='distributed'||id==='evaluation'||id==='decisions'||id==='cell'||id==='serving';
+ const content=<ResourceBoundary key={id} name="learning experience"><Suspense fallback={<p>Loading the calculated mechanism…</p>}>{id==='projection'?<Projection checkpoint={checkpoint??undefined} onSelect={onLesson}/>:id==='network'?<MatrixNetwork onSelect={onLesson}/>:id==='ranking'?<Ranking onSelect={onLesson}/>:id==='memory-workload'?<MemoryWorkload onSelect={onLesson}/>:id==='factory'?<Factory checkpoint={checkpoint??undefined} onServing={run=>{setDistributedCheckpoint(run);onCase('serving');}} onSelect={onLesson}/>:id==='data'?<DataLineage onSelect={onLesson}/>:id==='foundations'?<Foundations onSelect={onLesson}/>:id==='learning'?<Learning checkpoint={checkpoint??undefined} onCheckpoint={setCheckpoint} onDistributed={run=>{setCheckpoint(run);onCase('distributed');}} onServing={run=>{setCheckpoint(run);setDistributedCheckpoint(null);onCase('serving');}} onSelect={onLesson}/>:id==='automation'?<Automation onSelect={onLesson} handoff={handoff}/>:id==='reliability'?<Reliability onSelect={onLesson}/>:id==='control'?<Control onSelect={onLesson}/>:id==='commissioning'?<Commissioning onSelect={onLesson}/>:id==='retrieval'?<Retrieval onSelect={onLesson} onAutomation={value=>{setHandoff(value);onCase('automation');}}/>:id==='evaluation'?<Evaluation onSelect={onLesson}/>:id==='decisions'?<Decisions onSelect={onLesson}/>:id==='cell'?<Cell onSelect={onLesson}/>:id==='serving'?<Serving checkpoint={checkpoint??undefined} distributedCheckpoint={distributedCheckpoint??undefined} onSelect={onLesson}/>:id==='distributed'?<Distributed checkpoint={checkpoint??undefined} onServing={run=>{setDistributedCheckpoint(run);onCase('serving');}} onSelect={onLesson}/>:id==='families'?<Families onSelect={onLesson}/>:<Machine onSelect={onLesson}/>}</Suspense>{id==='learning'&&checkpoint&&<div className="studio-checkpoint-handoffs"><button className="studio-checkpoint-handoff" onClick={()=>onCase('projection')}>Trace a projection from this checkpoint →</button><button className="studio-checkpoint-handoff" onClick={()=>onCase('factory')}>Run a factory job from this checkpoint →</button></div>}<section className="studio-continuation"><h3>Continue through the atlas</h3><div className="studio-lesson-links">{lessonsForStudio(id).map(x=><button key={x.lessonId} title={x.reason} onClick={()=>onLesson(x.lessonId)}>{x.label} →</button>)}</div></section></ResourceBoundary>;
+ const group=studioGroups.find(g=>(g.ids as readonly string[]).includes(id))!;
+ return <div className="engineering-studio"><label className="studio-mobile-picker">Engineering experience<select value={id} onChange={e=>onCase(e.target.value as StudioId)}>{studioGroups.map(g=><optgroup key={g.name} label={g.name}>{g.ids.map(key=><option key={key} value={key}>{studioCases.find(c=>c[0]===key)![1]}</option>)}</optgroup>)}</select></label><div className="studio-desktop-tabs"><div className="studio-groups" aria-label="Experience area">{studioGroups.map(g=><button key={g.name} aria-pressed={group.name===g.name} onClick={()=>onCase(g.ids[0])}>{g.name}</button>)}</div><div className="studio-tabs" aria-label="Engineering experience">{group.ids.map(key=><button key={key} aria-pressed={key===id} onClick={()=>onCase(key)}>{studioCases.find(c=>c[0]===key)![1]}</button>)}<button onClick={onCompare}>Architecture specimens ↗</button></div></div>{newExperience?content:<StudioRecordStore><ResourceBoundary key={id} name="engineering experience"><Suspense fallback={<p>Loading the calculated experience…</p>}>{id==='progress'?<Progress onSelectLesson={onLesson} onOpenHistory={onHistory} onOpenExperience={s=>onCase(s==='architecture-execution'?'architecture':'hall')}/>:id==='architecture'?<Architecture/>:id==='fabrication'?<Fabrication onLesson={onLesson}/>:id==='realization'?<Realization/>:id==='memory'?<Memory onLesson={onLesson}/>:id==='applications'?<Applications/>:id==='orbital'?<Orbital/>:<Hall/>}</Suspense><section className="studio-continuation"><h3>Continue through the atlas</h3><div className="studio-lesson-links">{lessonsForStudio(id).map(x=><button key={x.lessonId} title={x.reason} onClick={()=>onLesson(x.lessonId)}>{x.label} →</button>)}</div></section></ResourceBoundary></StudioRecordStore>}</div>;
+}

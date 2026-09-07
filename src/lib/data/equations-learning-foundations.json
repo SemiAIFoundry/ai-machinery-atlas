@@ -1,0 +1,277 @@
+{
+  "tensor-index-contracts": [
+    {
+      "kind": "math",
+      "latex": "C_{ij}=\\sum_{k=0}^{K-1}A_{ik}B_{kj}",
+      "text": "Each output entry sums the matching scalar products along the contracted axis k.",
+      "variables": [
+        {
+          "symbol": "Aᵢₖ,Bₖⱼ",
+          "meaning": "Indexed input elements",
+          "unit": "value"
+        },
+        {
+          "symbol": "Cᵢⱼ",
+          "meaning": "Completed output element",
+          "unit": "value"
+        },
+        {
+          "symbol": "i,j,k",
+          "meaning": "Row, column and reduction indices",
+          "unit": "index"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Shared dimension",
+          "unit": "count"
+        }
+      ]
+    }
+  ],
+  "linear-map-rank-subspace": [
+    {
+      "kind": "math",
+      "latex": "A=3uu^{\\mathsf T}+\\sigma_2vv^{\\mathsf T},\\quad A_1=3uu^{\\mathsf T},\\quad \\lVert A-A_1\\rVert_F=\\sigma_2",
+      "text": "The exact map adds two orthogonal outer products; dropping the second leaves Frobenius error equal to its nonnegative singular value.",
+      "variables": [
+        {
+          "symbol": "A,A₁",
+          "meaning": "Exact and rank-one maps",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "u,v",
+          "meaning": "Orthogonal unit vectors",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "σ₂",
+          "meaning": "Second singular value, from zero to three",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "probability-conditioning-information": [
+    {
+      "kind": "math",
+      "latex": "p_i=\\frac{e^{z_i-m}}{\\sum_j e^{z_j-m}},\\quad L=\\log\\sum_j e^{z_j-m}+m-z_y,\\quad \\frac{\\partial L}{\\partial z_i}=p_i-\\mathbf 1[i=y]",
+      "text": "Subtract the maximum score m, normalize shifted exponentials, compute target log loss, and differentiate to obtain probability minus target indicator.",
+      "variables": [
+        {
+          "symbol": "zᵢ,m",
+          "meaning": "Logit and maximum logit",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "pᵢ",
+          "meaning": "Predicted outcome probability",
+          "unit": "probability"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Observed target index",
+          "unit": "index"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Negative log likelihood",
+          "unit": "nats"
+        }
+      ]
+    }
+  ],
+  "floating-number-range-resolution": [
+    {
+      "kind": "math",
+      "latex": "x=(-1)^s\\begin{cases}2^{-2}\\,f/8,&e=0,\\\\2^{e-3}(1+f/8),&1\\le e\\le6.\\end{cases}",
+      "text": "Subnormals use exponent minus two without the implicit leading one; normal finite values use biased exponent e minus three and an implicit leading one.",
+      "variables": [
+        {
+          "symbol": "s",
+          "meaning": "Sign field",
+          "unit": "bit"
+        },
+        {
+          "symbol": "e",
+          "meaning": "Stored exponent field",
+          "unit": "integer"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Stored fraction field from zero to seven",
+          "unit": "integer"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Represented finite value",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "sampling-estimation-uncertainty": [
+    {
+      "kind": "math",
+      "latex": "\\Pr(K=k)={n\\choose k}p^k(1-p)^{n-k},\\quad \\mathbb E[K/n]=p,\\quad \\mathrm{Var}(K/n)=\\frac{p(1-p)}n",
+      "text": "The binomial count distribution has rate mean p and variance p times one minus p divided by the independent sample count.",
+      "variables": [
+        {
+          "symbol": "n",
+          "meaning": "Independent trial count",
+          "unit": "count"
+        },
+        {
+          "symbol": "K,k",
+          "meaning": "Success count and a possible count",
+          "unit": "count"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Declared success probability",
+          "unit": "probability"
+        }
+      ]
+    }
+  ],
+  "ablation-reproduction-design": [
+    {
+      "kind": "math",
+      "latex": "Y_i=b_{g(i)}+\\tau T_i,\\quad \\widehat\\Delta=\\overline Y_{T=1}-\\overline Y_{T=0}",
+      "text": "Synthetic outcome combines a group baseline and treatment contribution; the crude contrast compares observed group means.",
+      "variables": [
+        {
+          "symbol": "Yᵢ",
+          "meaning": "Authored synthetic outcome",
+          "unit": "outcome units"
+        },
+        {
+          "symbol": "b_g",
+          "meaning": "Baseline of group g",
+          "unit": "outcome units"
+        },
+        {
+          "symbol": "τ",
+          "meaning": "Authored treatment effect",
+          "unit": "outcome units"
+        },
+        {
+          "symbol": "Tᵢ",
+          "meaning": "Treatment indicator",
+          "unit": "zero or one"
+        },
+        {
+          "symbol": "Δ̂",
+          "meaning": "Crude observed contrast",
+          "unit": "outcome units"
+        }
+      ]
+    }
+  ],
+  "dataset-human-judgment-lineage": [
+    {
+      "kind": "math",
+      "latex": "a=\\frac{1}{n}\\sum_{i=1}^{n}\\mathbf1[y_i^{(1)}=y_i^{(2)}]",
+      "text": "Direct agreement is the fraction of examples on which the two original labels match.",
+      "variables": [
+        {
+          "symbol": "a",
+          "meaning": "Direct observed agreement",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Examples with both original judgments",
+          "unit": "count"
+        },
+        {
+          "symbol": "yᵢ⁽¹⁾,yᵢ⁽²⁾",
+          "meaning": "Original categorical labels",
+          "unit": "label"
+        }
+      ]
+    }
+  ],
+  "tree-ensemble-baseline": [
+    {
+      "kind": "math",
+      "latex": "F_{t+1}(x)=F_t(x)+\\eta h_t(x),\\quad h_t\\approx\\operatorname*{arg\\,min}_{h}\\sum_i\\big(y_i-F_t(x_i)-h(x_i)\\big)^2",
+      "text": "Fit a stump to current residuals and add a scaled contribution to the existing prediction function.",
+      "variables": [
+        {
+          "symbol": "F_t",
+          "meaning": "Current additive prediction",
+          "unit": "target units"
+        },
+        {
+          "symbol": "h_t",
+          "meaning": "Fitted residual stump",
+          "unit": "target units"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Shrinkage from zero to one",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "xᵢ,yᵢ",
+          "meaning": "Training feature and target",
+          "unit": "feature / target units"
+        }
+      ]
+    }
+  ],
+  "graph-message-passing": [
+    {
+      "kind": "math",
+      "latex": "H^{(l+1)}=\\operatorname{ReLU}\\!\\left(\\widetilde D^{-1/2}\\widetilde A\\widetilde D^{-1/2}H^{(l)}\\right)",
+      "text": "Normalize adjacency with self-loops, aggregate feature rows and apply ReLU using identity feature weights.",
+      "variables": [
+        {
+          "symbol": "H⁽ˡ⁾",
+          "meaning": "Node-feature matrix at layer l",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Ã",
+          "meaning": "Adjacency with self-loops",
+          "unit": "zero or one"
+        },
+        {
+          "symbol": "D̃",
+          "meaning": "Diagonal degree matrix",
+          "unit": "count"
+        }
+      ]
+    }
+  ],
+  "search-value-policy-boundary": [
+    {
+      "kind": "math",
+      "latex": "V_d(s)=\\begin{cases}u(s),&s\\text{ terminal},\\\\h(s),&d=0,\\\\\\max_a V_{d-1}(T(s,a)),&X\\text{ to move},\\\\\\min_a V_{d-1}(T(s,a)),&O\\text{ to move}.\\end{cases}",
+      "text": "Use terminal utility, or a boundary heuristic when depth is zero, otherwise alternate maximizing and minimizing over legal transitions.",
+      "variables": [
+        {
+          "symbol": "s,a",
+          "meaning": "Board state and legal action",
+          "unit": "discrete state / action"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Remaining lookahead depth",
+          "unit": "plies"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Rule-defined transition",
+          "unit": "function"
+        },
+        {
+          "symbol": "u,h,V",
+          "meaning": "Terminal utility, authored heuristic and search value",
+          "unit": "score"
+        }
+      ]
+    }
+  ]
+}

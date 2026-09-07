@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "agent-source-scope-hbm-silicon-intensity-recovered-2026-09-07",
+      "lessonId": "hbm-silicon-intensity",
+      "type": "source-scope",
+      "contentFingerprint": "84e8b7bff6480c6c4bde012b31da1e18004a5dfd647390862c574dcdb014789e",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/hbm-intensity/reviewed-snapshot.json",
+      "reviewedSourceIds": [
+        "url-f4f45053d1a6f5b9080a",
+        "url-dbd96dc7b5fd154235b2",
+        "url-e033a05c1723994e9007",
+        "url-d40dd97ba68c5279afc8"
+      ],
+      "reviewedClaimIds": [
+        "fab-claim-micron-intensity-pending"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author and primary-source scope reviewer"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-f4f45053d1a6f5b9080a",
+          "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Page 6, Turning to supply; HBM3E/D5 comparison paragraph"
+          ],
+          "notes": "Recovered the original dated PDF from Micron’s legacy investor-relations host; the previous investors.micron.com path redirects. The comparison is supplier-reported wafer supply for equal bits at one node. It gives no separately quantified stage losses. Following HBM4 language remains a forecast. The lesson now reflects recovered evidence without setting a lab default."
+        },
+        {
+          "sourceId": "url-dbd96dc7b5fd154235b2",
+          "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "April 19, 2024 announcement: base-die, TSV and TSMC advanced-logic-process paragraphs"
+          ],
+          "notes": "Supports separate DRAM stack/base-die functions and the announced logic-process collaboration. It does not establish a common process wafer budget or an observed manufacturing yield."
+        },
+        {
+          "sourceId": "url-e033a05c1723994e9007",
+          "url": "https://disco.co.jp/jp/ir/movie/doc/E_Tech_Briefing_2023.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Pages 27 and 31–35, KKM for Memory ICs (HBM)"
+          ],
+          "notes": "Shows distinct stack dies and representative thinning, TSV reveal, dicing and joining stages. The deck explicitly limits its process overview; no complete factory recipe, empirical intensity or universal loss factors are inferred."
+        },
+        {
+          "sourceId": "url-d40dd97ba68c5279afc8",
+          "url": "https://www.micron.com/products/memory/hbm/hbm3e",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Production-capable Micron HBM3E 36GB 12-high cube now available",
+            "FAQ: What is the capacity of HBM3E?"
+          ],
+          "notes": "Capacity/stack configurations illustrate why placement footprint and summed die area differ. Manufacturer performance comparisons are not used to derive an empirical wafer multiplier. The lesson does not treat living availability text as a current allocation census."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "fab-claim-micron-intensity-pending",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Historical supplier statement now directly read in the recovered PDF. Equal-bit/same-node denominator is explicit, loss decomposition is not invented, and no universal HBM or production-default interpretation is made. The stable claim ID retains its historical suffix; the old unresolved text is preserved in before-snapshot.json."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, knowledge check and related yield/stack-assembly boundaries. Independently checked 10 × 2 = 20 wafer-equivalents and geometric B=100, a=2, A=10, Y=0.5 → 40 wafers, equal to I=0.4 ×100. Reapplying the same 0.5 survival doubles 40 to 80 incorrectly. This tests accounting, not observed yield. Layer diagrams remain schematic; the HBM lab boundary is explicit. No human specialist, physical-device or learner approval is claimed."
+    }
+  ]
+}

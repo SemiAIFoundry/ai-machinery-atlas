@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "scope": "Primary-source mechanism guidance for the authored two-passage learned retrieval and conditional-token teaching model, plus a contrasting learned reranker reference. Agent review, not human scientific approval.",
+  "reviewedAt": "2026-09-07",
+  "reviewerType": "agent",
+  "sources": [
+    {
+      "id": "learned-dpr",
+      "url": "https://arxiv.org/html/2004.04906v3",
+      "version": "arXiv:2004.04906v3",
+      "locator": "Sections 3.1\u20133.2: separate encoders, dot-product similarity, positive/negative passage objective; rendered lines 89\u2013108",
+      "reviewedAt": "2026-09-07",
+      "reviewerType": "agent",
+      "supports": "A learned query/passage representation can be trained by negative log likelihood of the correct passage against alternatives.",
+      "doesNotSupport": "The toy mean encoder is not the paper's BERT/FAISS implementation. No retrieval benchmark, broad generalization or corpus-scale result transfers."
+    },
+    {
+      "id": "learned-teacher-forcing",
+      "url": "https://arxiv.org/abs/1506.03099",
+      "version": "arXiv:1506.03099v3",
+      "locator": "Abstract: true previous tokens in training, generated previous tokens in inference and accumulated-error discrepancy; rendered lines 16\u201318",
+      "reviewedAt": "2026-09-07",
+      "reviewerType": "agent",
+      "supports": "Distinguishing teacher-forced training inputs from generated-token inputs at inference.",
+      "doesNotSupport": "The toy decoder has no recurrent hidden state and does not implement scheduled sampling. No paper performance result transfers."
+    },
+    {
+      "id": "learned-rag",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "version": "arXiv:2005.11401v4",
+      "locator": "Abstract: parametric generator and retrieved nonparametric context; sequence versus per-token context formulations",
+      "reviewedAt": "2026-09-07",
+      "reviewerType": "agent",
+      "supports": "Separating learned generation parameters from retrieved reference material used as conditioning information.",
+      "doesNotSupport": "No paper model, joint marginalization, factuality benchmark or open-domain behavior is reproduced by these two action sentences."
+    },
+    {
+      "id": "learned-leakage",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage",
+      "version": "Official stable documentation returned 1.9.0 on review date; URL is unpinned",
+      "locator": "Sections 12.1\u201312.2, particularly train-only fit/preprocessing and test information leakage; rendered lines 77\u2013124",
+      "reviewedAt": "2026-09-07",
+      "reviewerType": "agent",
+      "supports": "Fit vocabulary/parameters using training inputs and keep held-out requests out of updates; repeated evaluation-driven choices limit independence.",
+      "doesNotSupport": "Four fixture paraphrases do not establish real-world generalization, calibration or safety."
+    },
+    {
+      "id": "learned-reranking-contrast",
+      "url": "https://arxiv.org/abs/1901.04085",
+      "version": "arXiv:1901.04085v5",
+      "locator": "Abstract only: query-based passage reranking using BERT; rendered lines 16\u201317. Architecture sections were not reviewed.",
+      "reviewedAt": "2026-09-07",
+      "reviewerType": "agent",
+      "supports": "A distinct passage-reranking stage can use a learned model; this source is a contrast to the experience's explicit authored entity-match rule.",
+      "doesNotSupport": "No BERT, learned cross scorer, paper architecture or benchmark result is implemented or transferred. The literal alias rule and its ambiguity/negation limitations are authored fixture behavior."
+    }
+  ]
+}

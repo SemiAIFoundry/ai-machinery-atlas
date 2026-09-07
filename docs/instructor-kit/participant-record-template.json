@@ -1,0 +1,142 @@
+{
+  "schema": "atlas-instructor-record-1",
+  "participantLabel": null,
+  "buildReference": null,
+  "sessionVariant": null,
+  "date": null,
+  "responses": [
+    {
+      "taskId": "F1",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "F2",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "F3",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "F4",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "A1",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "A2",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "A3",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "H1",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "H2",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "H3",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "H4",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "H5",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "H7",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "X1",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    },
+    {
+      "taskId": "X2",
+      "prediction": "",
+      "observedResult": "",
+      "calculationWithUnits": "",
+      "revisedExplanation": "",
+      "transferOrLimit": ""
+    }
+  ],
+  "optionalFacilitatorObservation": {
+    "observed": false,
+    "assistance": null,
+    "accessMethod": null,
+    "notes": null
+  },
+  "rubric": {
+    "calculation": null,
+    "mechanism": null,
+    "scope": null,
+    "transfer": null
+  },
+  "privacy": "No identifying information or account is required. This blank file contains no observed session."
+}

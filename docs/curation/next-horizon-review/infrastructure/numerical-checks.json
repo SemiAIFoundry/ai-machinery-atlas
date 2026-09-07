@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-09-07T22:42:00.550Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root/final_ledger_audit"
+  },
+  "method": "Independent arithmetic; imports no atlas model or simulator. No source number or empirical validation is inferred from these synthetic calculations.",
+  "passed": 18,
+  "checks": [
+    {
+      "name": "operating phase only",
+      "actual": 20,
+      "expected": 20,
+      "scope": "MW; two distinct phases at one date and common power boundary"
+    },
+    {
+      "name": "planned phase only",
+      "actual": 80,
+      "expected": 80,
+      "scope": "MW; not operating capacity"
+    },
+    {
+      "name": "eventual combined scope",
+      "actual": 100,
+      "expected": 100,
+      "scope": "MW only if nonoverlapping and boundary-compatible; no readiness inference"
+    },
+    {
+      "name": "compatible BOM bound",
+      "actual": 100,
+      "expected": 100,
+      "scope": "packages from screened inputs, before remaining assembly losses"
+    },
+    {
+      "name": "fractional package forbidden",
+      "actual": 99,
+      "expected": 99,
+      "scope": "whole packages"
+    },
+    {
+      "name": "known absent required supply",
+      "actual": 0,
+      "expected": 0,
+      "scope": "known zero differs from unknown or unverified supply"
+    },
+    {
+      "name": "annual energy",
+      "actual": 8.76,
+      "expected": 8.76,
+      "scope": "GW*h /1000 = TWh; 365-day constant-load example"
+    },
+    {
+      "name": "partial average load",
+      "actual": 3.504,
+      "expected": 3.504,
+      "scope": "TWh; nameplate 1 GW does not imply its full use"
+    },
+    {
+      "name": "TWh to MWh",
+      "actual": 1000000,
+      "expected": 1000000,
+      "scope": "MWh per TWh"
+    },
+    {
+      "name": "backup at load boundary",
+      "actual": 2,
+      "expected": 2,
+      "scope": "hours; usable output energy already accounts for stated losses/reserves"
+    },
+    {
+      "name": "halve load under fixed-energy assumption",
+      "actual": 4,
+      "expected": 4,
+      "scope": "hours only while usable-energy approximation remains applicable"
+    },
+    {
+      "name": "inventory conservation",
+      "actual": 8,
+      "expected": 8,
+      "scope": "same compatible item count per interval; no omitted scrap or rework"
+    },
+    {
+      "name": "lead time labels",
+      "actual": 4,
+      "expected": 4,
+      "scope": "three elapsed weekly intervals from start of week one"
+    },
+    {
+      "name": "explicit half allocation",
+      "actual": 50,
+      "expected": 50,
+      "scope": "synthetic units, not an actual supplier share"
+    },
+    {
+      "name": "latency-prioritized Site A",
+      "actual": 0.8,
+      "expected": 0.8,
+      "scope": "dimensionless scores with explicitly favorable normalized metrics"
+    },
+    {
+      "name": "latency-prioritized Site B",
+      "actual": 0.36000000000000004,
+      "expected": 0.36,
+      "scope": "same normalized criteria and weights"
+    },
+    {
+      "name": "readiness-prioritized Site A",
+      "actual": 0.2,
+      "expected": 0.2,
+      "scope": "different user preferences"
+    },
+    {
+      "name": "readiness-prioritized Site B",
+      "actual": 0.8400000000000001,
+      "expected": 0.84,
+      "scope": "demonstrates preference reversal, not an objective location ranking"
+    }
+  ]
+}

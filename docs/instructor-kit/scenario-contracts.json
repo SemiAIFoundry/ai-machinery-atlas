@@ -1,0 +1,1728 @@
+{
+  "schema": "atlas-instructor-scenarios-1",
+  "createdOn": "2026-09-07",
+  "modelFiles": [
+    {
+      "path": "src/lib/architecture-execution.ts",
+      "sha256": "6d3c396ba519adf0574a7db12c4d47125994bb38a242329bfb50fcf2b09dcf9a"
+    },
+    {
+      "path": "src/lib/fabrication-flow.ts",
+      "sha256": "d21059e731f94c9d985ae76d528cadcbfe1ac6e61f6d54a90b69be540cd85adf"
+    },
+    {
+      "path": "src/lib/operating-hall.ts",
+      "sha256": "789e5563e4ac2fe8ddd4f0fe838aa1b4fe5d318745149277ab370112eda43db0"
+    },
+    {
+      "path": "src/lib/operating-hall-scenarios.ts",
+      "sha256": "fa3aa642a472b2feda8b24b4cae356a868f9289c397f69fc4812680d60f46a1f"
+    }
+  ],
+  "scope": "Complete synthetic model inputs and reproducible expected outputs. Studio fragments select an experience, not all numeric inputs. No account or student identifier is required.",
+  "contracts": [
+    {
+      "id": "A1",
+      "experience": "architecture",
+      "modelVersion": "architecture-execution-1",
+      "lesson": "tensor-core",
+      "studio": "architecture",
+      "input": {
+        "a": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "b": [
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "size": 2,
+        "laneCount": 4,
+        "inactiveLanes": [],
+        "arraySize": 2
+      },
+      "expected": {
+        "output": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "traces": {
+          "scalar": {
+            "boundaryReads": 16,
+            "boundaryWrites": 4,
+            "localReads": 28,
+            "localWrites": 28,
+            "neighborHops": 0,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 8,
+            "physicalMacSlots": 8,
+            "activeMacFraction": 1
+          },
+          "vector": {
+            "boundaryReads": 12,
+            "boundaryWrites": 4,
+            "localReads": 32,
+            "localWrites": 32,
+            "neighborHops": 0,
+            "broadcastDeliveries": 8,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 4,
+            "physicalMacSlots": 16,
+            "activeMacFraction": 0.5
+          },
+          "simt": {
+            "boundaryReads": 16,
+            "boundaryWrites": 4,
+            "localReads": 28,
+            "localWrites": 28,
+            "neighborHops": 0,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 2,
+            "physicalMacSlots": 8,
+            "activeMacFraction": 1
+          },
+          "systolic": {
+            "boundaryReads": 8,
+            "boundaryWrites": 4,
+            "localReads": 28,
+            "localWrites": 28,
+            "neighborHops": 8,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 4,
+            "physicalMacSlots": 16,
+            "activeMacFraction": 0.5
+          }
+        }
+      }
+    },
+    {
+      "id": "A2",
+      "experience": "architecture",
+      "modelVersion": "architecture-execution-1",
+      "lesson": "tensor-core",
+      "studio": "architecture",
+      "input": {
+        "a": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "b": [
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "size": 2,
+        "laneCount": 4,
+        "inactiveLanes": [
+          1,
+          2,
+          3
+        ],
+        "arraySize": 2
+      },
+      "expected": {
+        "output": [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        "traces": {
+          "scalar": {
+            "boundaryReads": 16,
+            "boundaryWrites": 4,
+            "localReads": 28,
+            "localWrites": 28,
+            "neighborHops": 0,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 8,
+            "physicalMacSlots": 8,
+            "activeMacFraction": 1
+          },
+          "vector": {
+            "boundaryReads": 16,
+            "boundaryWrites": 4,
+            "localReads": 36,
+            "localWrites": 36,
+            "neighborHops": 0,
+            "broadcastDeliveries": 8,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 8,
+            "physicalMacSlots": 32,
+            "activeMacFraction": 0.25
+          },
+          "simt": {
+            "boundaryReads": 16,
+            "boundaryWrites": 4,
+            "localReads": 28,
+            "localWrites": 28,
+            "neighborHops": 0,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 8,
+            "physicalMacSlots": 32,
+            "activeMacFraction": 0.25
+          },
+          "systolic": {
+            "boundaryReads": 8,
+            "boundaryWrites": 4,
+            "localReads": 28,
+            "localWrites": 28,
+            "neighborHops": 8,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 8,
+            "macs": 8,
+            "scheduleSteps": 4,
+            "physicalMacSlots": 16,
+            "activeMacFraction": 0.5
+          }
+        }
+      }
+    },
+    {
+      "id": "A3",
+      "experience": "architecture",
+      "modelVersion": "architecture-execution-1",
+      "lesson": "tensor-core",
+      "studio": "architecture",
+      "input": {
+        "a": [
+          [
+            2,
+            -1,
+            0
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "b": [
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            0,
+            -1,
+            3
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "size": 3,
+        "laneCount": 4,
+        "inactiveLanes": [],
+        "arraySize": 2
+      },
+      "expected": {
+        "output": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "traces": {
+          "scalar": {
+            "boundaryReads": 54,
+            "boundaryWrites": 9,
+            "localReads": 90,
+            "localWrites": 90,
+            "neighborHops": 0,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 18,
+            "macs": 27,
+            "scheduleSteps": 27,
+            "physicalMacSlots": 27,
+            "activeMacFraction": 1
+          },
+          "vector": {
+            "boundaryReads": 36,
+            "boundaryWrites": 9,
+            "localReads": 99,
+            "localWrites": 99,
+            "neighborHops": 0,
+            "broadcastDeliveries": 27,
+            "distinctBoundaryReadAddresses": 18,
+            "macs": 27,
+            "scheduleSteps": 9,
+            "physicalMacSlots": 36,
+            "activeMacFraction": 0.75
+          },
+          "simt": {
+            "boundaryReads": 54,
+            "boundaryWrites": 9,
+            "localReads": 90,
+            "localWrites": 90,
+            "neighborHops": 0,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 18,
+            "macs": 27,
+            "scheduleSteps": 9,
+            "physicalMacSlots": 36,
+            "activeMacFraction": 0.75
+          },
+          "systolic": {
+            "boundaryReads": 36,
+            "boundaryWrites": 9,
+            "localReads": 90,
+            "localWrites": 90,
+            "neighborHops": 18,
+            "broadcastDeliveries": 0,
+            "distinctBoundaryReadAddresses": 18,
+            "macs": 27,
+            "scheduleSteps": 16,
+            "physicalMacSlots": 64,
+            "activeMacFraction": 0.421875
+          }
+        }
+      }
+    },
+    {
+      "id": "F1",
+      "experience": "fabrication",
+      "modelVersion": "atlas-fabrication-flow-1",
+      "lesson": "thermal-oxidation-interface",
+      "studio": "fabrication",
+      "input": {
+        "waferCount": 4,
+        "dieAreaMm2": 100,
+        "defectDensityCm2": 0.12,
+        "selectedCohort": 4,
+        "oxideNominalNm": 20,
+        "oxideBiasNm": 0,
+        "filmNominalNm": 100,
+        "depositionBiasNm": 0,
+        "thicknessVariationNm": 4,
+        "targetCdNm": 40,
+        "lithographyBiasNm": -2,
+        "cdVariationNm": 2,
+        "etchCdBiasNm": 2,
+        "maskInitialNm": 40,
+        "targetMaskSelectivity": 10,
+        "targetStopSelectivity": 40,
+        "overetchFraction": 0.08,
+        "toleranceScale": 1,
+        "uncertaintyScale": 1,
+        "interfaceRoute": "tc-ncf",
+        "alignmentOffsetUm": 0.1,
+        "contactResistanceMilliOhm": 20,
+        "bondStrengthMPa": 2,
+        "qualificationEvidence": "synthetic-pass",
+        "acceptedHbmStacks": 6400,
+        "assemblySlots": 1500,
+        "residualDieSurvival": 0.999,
+        "interfaceSurvival": 0.995,
+        "finalAssemblySurvival": 0.98
+      },
+      "expected": {
+        "filmNm": 100,
+        "developedCdNm": 38,
+        "transferredCdNm": 40,
+        "maskRemainingNm": 29.2,
+        "oxideRemainingNm": 19.8,
+        "grossDies": 597,
+        "eligibleDies": 597,
+        "reviewDies": 0,
+        "screenedGoodDies": 2117.966002880572,
+        "assemblyStarts": 800,
+        "acceptedOutput": 744.1797472709371,
+        "outputStatus": "accepted-within-example"
+      }
+    },
+    {
+      "id": "F2",
+      "experience": "fabrication",
+      "modelVersion": "atlas-fabrication-flow-1",
+      "lesson": "thermal-oxidation-interface",
+      "studio": "fabrication",
+      "input": {
+        "waferCount": 4,
+        "dieAreaMm2": 100,
+        "defectDensityCm2": 0.12,
+        "selectedCohort": 4,
+        "oxideNominalNm": 20,
+        "oxideBiasNm": 0,
+        "filmNominalNm": 100,
+        "depositionBiasNm": 0,
+        "thicknessVariationNm": 4,
+        "targetCdNm": 40,
+        "lithographyBiasNm": -2,
+        "cdVariationNm": 2,
+        "etchCdBiasNm": 2,
+        "maskInitialNm": 40,
+        "targetMaskSelectivity": 10,
+        "targetStopSelectivity": 40,
+        "overetchFraction": 0.08,
+        "toleranceScale": 1,
+        "uncertaintyScale": 3,
+        "interfaceRoute": "tc-ncf",
+        "alignmentOffsetUm": 0.1,
+        "contactResistanceMilliOhm": 20,
+        "bondStrengthMPa": 2,
+        "qualificationEvidence": "synthetic-pass",
+        "acceptedHbmStacks": 6400,
+        "assemblySlots": 1500,
+        "residualDieSurvival": 0.999,
+        "interfaceSurvival": 0.995,
+        "finalAssemblySurvival": 0.98
+      },
+      "expected": {
+        "filmNm": 100,
+        "developedCdNm": 38,
+        "transferredCdNm": 40,
+        "maskRemainingNm": 29.2,
+        "oxideRemainingNm": 19.8,
+        "grossDies": 597,
+        "eligibleDies": 81,
+        "reviewDies": 516,
+        "screenedGoodDies": 287.36222149635904,
+        "assemblyStarts": 143.68111074817952,
+        "acceptedOutput": 133.65571585523472,
+        "outputStatus": "accepted-within-example"
+      }
+    },
+    {
+      "id": "F3",
+      "experience": "fabrication",
+      "modelVersion": "atlas-fabrication-flow-1",
+      "lesson": "thermal-oxidation-interface",
+      "studio": "fabrication",
+      "input": {
+        "waferCount": 4,
+        "dieAreaMm2": 100,
+        "defectDensityCm2": 0.12,
+        "selectedCohort": 4,
+        "oxideNominalNm": 20,
+        "oxideBiasNm": 0,
+        "filmNominalNm": 100,
+        "depositionBiasNm": 0,
+        "thicknessVariationNm": 4,
+        "targetCdNm": 40,
+        "lithographyBiasNm": -2,
+        "cdVariationNm": 2,
+        "etchCdBiasNm": 2,
+        "maskInitialNm": 5,
+        "targetMaskSelectivity": 10,
+        "targetStopSelectivity": 40,
+        "overetchFraction": 0.08,
+        "toleranceScale": 1,
+        "uncertaintyScale": 1,
+        "interfaceRoute": "tc-ncf",
+        "alignmentOffsetUm": 0.1,
+        "contactResistanceMilliOhm": 20,
+        "bondStrengthMPa": 2,
+        "qualificationEvidence": "synthetic-pass",
+        "acceptedHbmStacks": 6400,
+        "assemblySlots": 1500,
+        "residualDieSurvival": 0.999,
+        "interfaceSurvival": 0.995,
+        "finalAssemblySurvival": 0.98
+      },
+      "expected": {
+        "filmNm": 100,
+        "developedCdNm": 38,
+        "transferredCdNm": 40,
+        "maskRemainingNm": -5.800000000000001,
+        "oxideRemainingNm": 19.8,
+        "grossDies": 597,
+        "eligibleDies": 0,
+        "reviewDies": 0,
+        "screenedGoodDies": 0,
+        "assemblyStarts": 0,
+        "acceptedOutput": 0,
+        "outputStatus": "no-eligible-dies"
+      }
+    },
+    {
+      "id": "F4",
+      "experience": "fabrication",
+      "modelVersion": "atlas-fabrication-flow-1",
+      "lesson": "thermal-oxidation-interface",
+      "studio": "fabrication",
+      "input": {
+        "waferCount": 4,
+        "dieAreaMm2": 100,
+        "defectDensityCm2": 0.12,
+        "selectedCohort": 4,
+        "oxideNominalNm": 20,
+        "oxideBiasNm": 0,
+        "filmNominalNm": 100,
+        "depositionBiasNm": 0,
+        "thicknessVariationNm": 4,
+        "targetCdNm": 40,
+        "lithographyBiasNm": -2,
+        "cdVariationNm": 2,
+        "etchCdBiasNm": 2,
+        "maskInitialNm": 40,
+        "targetMaskSelectivity": 10,
+        "targetStopSelectivity": 40,
+        "overetchFraction": 0.08,
+        "toleranceScale": 1,
+        "uncertaintyScale": 1,
+        "interfaceRoute": "tc-ncf",
+        "alignmentOffsetUm": 0.1,
+        "contactResistanceMilliOhm": 20,
+        "bondStrengthMPa": 2,
+        "qualificationEvidence": "not-provided",
+        "acceptedHbmStacks": 6400,
+        "assemblySlots": 1500,
+        "residualDieSurvival": 0.999,
+        "interfaceSurvival": 0.995,
+        "finalAssemblySurvival": 0.98
+      },
+      "expected": {
+        "filmNm": 100,
+        "developedCdNm": 38,
+        "transferredCdNm": 40,
+        "maskRemainingNm": 29.2,
+        "oxideRemainingNm": 19.8,
+        "grossDies": 597,
+        "eligibleDies": 597,
+        "reviewDies": 0,
+        "screenedGoodDies": 2117.966002880572,
+        "assemblyStarts": 800,
+        "acceptedOutput": 0,
+        "outputStatus": "qualification-pending"
+      }
+    },
+    {
+      "id": "H1",
+      "name": "One restart in a five-minute run",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "memory-to-hall-propagation",
+      "studio": "hall",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 32768 × 32768 × 32768 dense update: C ← AB + C",
+          "operationsPerStep": 70368744177664,
+          "memoryBytesPerStep": 34359738368,
+          "networkBytesPerStep": 8589934592,
+          "checkpointBytes": 8589934592,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 8,
+          "packagesPerRack": 8
+        },
+        "electrical": {
+          "facilityFeedLimitW": 120000,
+          "rackBusV": 48,
+          "rackInputLimitA": 250,
+          "packageBusV": 0.8,
+          "packageRailLimitA": 1500,
+          "conversionEfficiency": 0.92,
+          "pue": 1.25,
+          "auxiliaryRackW": 2000,
+          "packageRunW": 850,
+          "packageCheckpointW": 300,
+          "packageRecoveryW": 160
+        },
+        "cooling": {
+          "massFlowKgS": 3,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 10000000000000,
+          "memoryBytesPerPackageS": 250000000000,
+          "networkBytesPerRackS": 25000000000,
+          "networkHallLimitBytesS": 100000000000,
+          "checkpointBytesPerRackS": 2000000000,
+          "checkpointHallLimitBytesS": 8000000000,
+          "communication": "serialized"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 0
+        },
+        "checkpoint": {
+          "intervalRunS": 60,
+          "commitLatencyS": 0.2
+        },
+        "faults": [
+          {
+            "id": "worker-stop-150",
+            "atS": 150,
+            "recoveryDelayS": 20,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 300,
+        "sampleS": 1
+      },
+      "expected": {
+        "admittedRacks": 8,
+        "rackItW": 9565.217391304348,
+        "rackCurrentA": 199.2753623188406,
+        "packageCurrentA": 1062.5,
+        "service": {
+          "computeCapacityOpsS": 640000000000000,
+          "memoryCapacityBytesS": 16000000000000,
+          "networkCapacityBytesS": 100000000000,
+          "checkpointCapacityBytesS": 8000000000,
+          "computeS": 0.1099511627776,
+          "memoryS": 0.002147483648,
+          "localS": 0.1099511627776,
+          "communicationS": 0.08589934592,
+          "stepS": 0.1958505086976,
+          "stepsPerRunS": 5.105935167848018,
+          "checkpointWriteS": 1.073741824,
+          "checkpointTotalS": 1.273741824,
+          "stepsPerCheckpoint": 307,
+          "effectiveCheckpointRunS": 60.126106170163204,
+          "criticalPath": "compute bound + serialized communication"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 1398.164818161412,
+          "checkpointedSteps": 1228,
+          "volatileCompletedSteps": 31,
+          "inFlightWorkEquivalents": 0.2818293320504459,
+          "lostWorkEquivalents": 138.88298882936172,
+          "retainedUsefulSteps": 1259,
+          "workloadOperations": 98387102407410510,
+          "workloadMemoryBytes": 48040577347368.414,
+          "workloadNetworkBytes": 12010144336842.104,
+          "checkpointWriteBytes": 34359738368.00014,
+          "checkpointReadBytes": 8589934591.999963,
+          "itEnergyJ": 21750044.252427127,
+          "facilityEnergyJ": 27187555.31553392,
+          "coolantHeatJ": 21750044.252427127,
+          "facilityRejectedHeatJ": 27187555.31553392,
+          "runS": 273.83129088,
+          "checkpointS": 5.094967296,
+          "recoveryS": 21.073741823999995,
+          "notReadyS": 0,
+          "committedCheckpoints": 4,
+          "handledFaults": 1
+        },
+        "fault": {
+          "atS": 150,
+          "kind": "fault",
+          "faultId": "worker-stop-150",
+          "interruptedPhase": "run",
+          "lostWorkEquivalents": 138.88298882936172,
+          "detail": "worker-stop: discard 138.882989 uncheckpointed work-equivalents; repair/relaunch until 170.000000 s, then restore if a checkpoint exists."
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 4.196666666666666,
+          "checkpointedStepsPerWallS": 4.093333333333334,
+          "facilityJPerRetainedUsefulStep": 21594.563395976107,
+          "averageItW": 72500.14750809042,
+          "averageFacilityW": 90625.18438511307,
+          "effectivePue": 1.2500000000000007
+        }
+      }
+    },
+    {
+      "id": "H2",
+      "name": "Less coolant flow",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "memory-to-hall-propagation",
+      "studio": "hall",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 32768 × 32768 × 32768 dense update: C ← AB + C",
+          "operationsPerStep": 70368744177664,
+          "memoryBytesPerStep": 34359738368,
+          "networkBytesPerStep": 8589934592,
+          "checkpointBytes": 8589934592,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 8,
+          "packagesPerRack": 8
+        },
+        "electrical": {
+          "facilityFeedLimitW": 120000,
+          "rackBusV": 48,
+          "rackInputLimitA": 250,
+          "packageBusV": 0.8,
+          "packageRailLimitA": 1500,
+          "conversionEfficiency": 0.92,
+          "pue": 1.25,
+          "auxiliaryRackW": 2000,
+          "packageRunW": 850,
+          "packageCheckpointW": 300,
+          "packageRecoveryW": 160
+        },
+        "cooling": {
+          "massFlowKgS": 1.1,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 10000000000000,
+          "memoryBytesPerPackageS": 250000000000,
+          "networkBytesPerRackS": 25000000000,
+          "networkHallLimitBytesS": 100000000000,
+          "checkpointBytesPerRackS": 2000000000,
+          "checkpointHallLimitBytesS": 8000000000,
+          "communication": "serialized"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 0
+        },
+        "checkpoint": {
+          "intervalRunS": 60,
+          "commitLatencyS": 0.2
+        },
+        "faults": [
+          {
+            "id": "worker-stop-150",
+            "atS": 150,
+            "recoveryDelayS": 20,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 300,
+        "sampleS": 1
+      },
+      "expected": {
+        "admittedRacks": 4,
+        "rackItW": 9565.217391304348,
+        "rackCurrentA": 199.2753623188406,
+        "packageCurrentA": 1062.5,
+        "service": {
+          "computeCapacityOpsS": 320000000000000,
+          "memoryCapacityBytesS": 8000000000000,
+          "networkCapacityBytesS": 100000000000,
+          "checkpointCapacityBytesS": 8000000000,
+          "computeS": 0.2199023255552,
+          "memoryS": 0.004294967296,
+          "localS": 0.2199023255552,
+          "communicationS": 0.08589934592,
+          "stepS": 0.3058016714752,
+          "stepsPerRunS": 3.27009330974536,
+          "checkpointWriteS": 1.073741824,
+          "checkpointTotalS": 1.273741824,
+          "stepsPerCheckpoint": 197,
+          "effectiveCheckpointRunS": 60.2429292806144,
+          "criticalPath": "compute bound + serialized communication"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 895.4538723056237,
+          "checkpointedSteps": 788,
+          "volatileCompletedSteps": 19,
+          "inFlightWorkEquivalents": 0.27038507783020194,
+          "lostWorkEquivalents": 88.18348722779352,
+          "retainedUsefulSteps": 807,
+          "workloadOperations": 63011964463173040,
+          "workloadMemoryBytes": 30767560773033.71,
+          "workloadNetworkBytes": 7691890193258.428,
+          "checkpointWriteBytes": 34359738368.00014,
+          "checkpointReadBytes": 8589934591.999963,
+          "itEnergyJ": 10875022.126213564,
+          "facilityEnergyJ": 13593777.657766959,
+          "coolantHeatJ": 10875022.126213564,
+          "facilityRejectedHeatJ": 13593777.657766959,
+          "runS": 273.83129088,
+          "checkpointS": 5.094967296,
+          "recoveryS": 21.073741823999995,
+          "notReadyS": 0,
+          "committedCheckpoints": 4,
+          "handledFaults": 1
+        },
+        "fault": {
+          "atS": 150,
+          "kind": "fault",
+          "faultId": "worker-stop-150",
+          "interruptedPhase": "run",
+          "lostWorkEquivalents": 88.18348722779352,
+          "detail": "worker-stop: discard 88.183487 uncheckpointed work-equivalents; repair/relaunch until 170.000000 s, then restore if a checkpoint exists."
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 2.69,
+          "checkpointedStepsPerWallS": 2.6266666666666665,
+          "facilityJPerRetainedUsefulStep": 16844.829811359305,
+          "averageItW": 36250.07375404521,
+          "averageFacilityW": 45312.59219255653,
+          "effectivePue": 1.2500000000000004
+        }
+      }
+    },
+    {
+      "id": "H3",
+      "name": "A smaller facility feed",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "memory-to-hall-propagation",
+      "studio": "hall",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 32768 × 32768 × 32768 dense update: C ← AB + C",
+          "operationsPerStep": 70368744177664,
+          "memoryBytesPerStep": 34359738368,
+          "networkBytesPerStep": 8589934592,
+          "checkpointBytes": 8589934592,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 8,
+          "packagesPerRack": 8
+        },
+        "electrical": {
+          "facilityFeedLimitW": 60000,
+          "rackBusV": 48,
+          "rackInputLimitA": 250,
+          "packageBusV": 0.8,
+          "packageRailLimitA": 1500,
+          "conversionEfficiency": 0.92,
+          "pue": 1.25,
+          "auxiliaryRackW": 2000,
+          "packageRunW": 850,
+          "packageCheckpointW": 300,
+          "packageRecoveryW": 160
+        },
+        "cooling": {
+          "massFlowKgS": 3,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 10000000000000,
+          "memoryBytesPerPackageS": 250000000000,
+          "networkBytesPerRackS": 25000000000,
+          "networkHallLimitBytesS": 100000000000,
+          "checkpointBytesPerRackS": 2000000000,
+          "checkpointHallLimitBytesS": 8000000000,
+          "communication": "serialized"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 0
+        },
+        "checkpoint": {
+          "intervalRunS": 60,
+          "commitLatencyS": 0.2
+        },
+        "faults": [
+          {
+            "id": "worker-stop-150",
+            "atS": 150,
+            "recoveryDelayS": 20,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 300,
+        "sampleS": 1
+      },
+      "expected": {
+        "admittedRacks": 5,
+        "rackItW": 9565.217391304348,
+        "rackCurrentA": 199.2753623188406,
+        "packageCurrentA": 1062.5,
+        "service": {
+          "computeCapacityOpsS": 400000000000000,
+          "memoryCapacityBytesS": 10000000000000,
+          "networkCapacityBytesS": 100000000000,
+          "checkpointCapacityBytesS": 8000000000,
+          "computeS": 0.17592186044416,
+          "memoryS": 0.0034359738368,
+          "localS": 0.17592186044416,
+          "communicationS": 0.08589934592,
+          "stepS": 0.26182120636416,
+          "stepsPerRunS": 3.819400322405998,
+          "checkpointWriteS": 1.073741824,
+          "checkpointTotalS": 1.273741824,
+          "stepsPerCheckpoint": 230,
+          "effectiveCheckpointRunS": 60.218877463756805,
+          "criticalPath": "compute bound + serialized communication"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 1045.8713206719226,
+          "checkpointedSteps": 920,
+          "volatileCompletedSteps": 22,
+          "inFlightWorkEquivalents": 0.6911321775181598,
+          "lostWorkEquivalents": 103.18018849440445,
+          "retainedUsefulSteps": 942,
+          "workloadOperations": 73596651407118110,
+          "workloadMemoryBytes": 35935864944881.89,
+          "workloadNetworkBytes": 8983966236220.473,
+          "checkpointWriteBytes": 34359738368.00014,
+          "checkpointReadBytes": 8589934591.999963,
+          "itEnergyJ": 13593777.657766959,
+          "facilityEnergyJ": 16992222.072208695,
+          "coolantHeatJ": 13593777.657766959,
+          "facilityRejectedHeatJ": 16992222.072208695,
+          "runS": 273.83129088,
+          "checkpointS": 5.094967296,
+          "recoveryS": 21.073741823999995,
+          "notReadyS": 0,
+          "committedCheckpoints": 4,
+          "handledFaults": 1
+        },
+        "fault": {
+          "atS": 150,
+          "kind": "fault",
+          "faultId": "worker-stop-150",
+          "interruptedPhase": "run",
+          "lostWorkEquivalents": 103.18018849440445,
+          "detail": "worker-stop: discard 103.180188 uncheckpointed work-equivalents; repair/relaunch until 170.000000 s, then restore if a checkpoint exists."
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 3.14,
+          "checkpointedStepsPerWallS": 3.066666666666667,
+          "facilityJPerRetainedUsefulStep": 18038.45230595403,
+          "averageItW": 45312.59219255653,
+          "averageFacilityW": 56640.74024069565,
+          "effectivePue": 1.2499999999999998
+        }
+      }
+    },
+    {
+      "id": "H4",
+      "name": "Operations gate opens late",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "memory-to-hall-propagation",
+      "studio": "hall",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 32768 × 32768 × 32768 dense update: C ← AB + C",
+          "operationsPerStep": 70368744177664,
+          "memoryBytesPerStep": 34359738368,
+          "networkBytesPerStep": 8589934592,
+          "checkpointBytes": 8589934592,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 8,
+          "packagesPerRack": 8
+        },
+        "electrical": {
+          "facilityFeedLimitW": 120000,
+          "rackBusV": 48,
+          "rackInputLimitA": 250,
+          "packageBusV": 0.8,
+          "packageRailLimitA": 1500,
+          "conversionEfficiency": 0.92,
+          "pue": 1.25,
+          "auxiliaryRackW": 2000,
+          "packageRunW": 850,
+          "packageCheckpointW": 300,
+          "packageRecoveryW": 160
+        },
+        "cooling": {
+          "massFlowKgS": 3,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 10000000000000,
+          "memoryBytesPerPackageS": 250000000000,
+          "networkBytesPerRackS": 25000000000,
+          "networkHallLimitBytesS": 100000000000,
+          "checkpointBytesPerRackS": 2000000000,
+          "checkpointHallLimitBytesS": 8000000000,
+          "communication": "serialized"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 90
+        },
+        "checkpoint": {
+          "intervalRunS": 60,
+          "commitLatencyS": 0.2
+        },
+        "faults": [
+          {
+            "id": "worker-stop-150",
+            "atS": 150,
+            "recoveryDelayS": 20,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 300,
+        "sampleS": 1
+      },
+      "expected": {
+        "admittedRacks": 8,
+        "rackItW": 9565.217391304348,
+        "rackCurrentA": 199.2753623188406,
+        "packageCurrentA": 1062.5,
+        "service": {
+          "computeCapacityOpsS": 640000000000000,
+          "memoryCapacityBytesS": 16000000000000,
+          "networkCapacityBytesS": 100000000000,
+          "checkpointCapacityBytesS": 8000000000,
+          "computeS": 0.1099511627776,
+          "memoryS": 0.002147483648,
+          "localS": 0.1099511627776,
+          "communicationS": 0.08589934592,
+          "stepS": 0.1958505086976,
+          "stepsPerRunS": 5.105935167848018,
+          "checkpointWriteS": 1.073741824,
+          "checkpointTotalS": 1.273741824,
+          "stepsPerCheckpoint": 307,
+          "effectiveCheckpointRunS": 60.126106170163204,
+          "criticalPath": "compute bound + serialized communication"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 957.1203955432825,
+          "checkpointedSteps": 614,
+          "volatileCompletedSteps": 36,
+          "inFlightWorkEquivalents": 0.764285472401447,
+          "lostWorkEquivalents": 306.3561100708811,
+          "retainedUsefulSteps": 650,
+          "workloadOperations": 67351360261209820,
+          "workloadMemoryBytes": 32886406377543.86,
+          "workloadNetworkBytes": 8221601594385.965,
+          "checkpointWriteBytes": 17179869184.000153,
+          "checkpointReadBytes": 0,
+          "itEnergyJ": 15012096.277815651,
+          "facilityEnergyJ": 18765120.34726957,
+          "coolantHeatJ": 15012096.277815651,
+          "facilityRejectedHeatJ": 18765120.34726957,
+          "runS": 187.452516352,
+          "checkpointS": 2.5474836479999965,
+          "recoveryS": 20,
+          "notReadyS": 90,
+          "committedCheckpoints": 2,
+          "handledFaults": 1
+        },
+        "fault": {
+          "atS": 150,
+          "kind": "fault",
+          "faultId": "worker-stop-150",
+          "interruptedPhase": "run",
+          "lostWorkEquivalents": 306.3561100708811,
+          "detail": "worker-stop: discard 306.356110 uncheckpointed work-equivalents; repair/relaunch until 170.000000 s, then restore if a checkpoint exists."
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 2.1666666666666665,
+          "checkpointedStepsPerWallS": 2.046666666666667,
+          "facilityJPerRetainedUsefulStep": 28869.41591887626,
+          "averageItW": 50040.32092605217,
+          "averageFacilityW": 62550.401157565226,
+          "effectivePue": 1.2500000000000002
+        }
+      }
+    },
+    {
+      "id": "H5",
+      "name": "Checkpoint every 15 running seconds",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "memory-to-hall-propagation",
+      "studio": "hall",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 32768 × 32768 × 32768 dense update: C ← AB + C",
+          "operationsPerStep": 70368744177664,
+          "memoryBytesPerStep": 34359738368,
+          "networkBytesPerStep": 8589934592,
+          "checkpointBytes": 8589934592,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 8,
+          "packagesPerRack": 8
+        },
+        "electrical": {
+          "facilityFeedLimitW": 120000,
+          "rackBusV": 48,
+          "rackInputLimitA": 250,
+          "packageBusV": 0.8,
+          "packageRailLimitA": 1500,
+          "conversionEfficiency": 0.92,
+          "pue": 1.25,
+          "auxiliaryRackW": 2000,
+          "packageRunW": 850,
+          "packageCheckpointW": 300,
+          "packageRecoveryW": 160
+        },
+        "cooling": {
+          "massFlowKgS": 3,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 10000000000000,
+          "memoryBytesPerPackageS": 250000000000,
+          "networkBytesPerRackS": 25000000000,
+          "networkHallLimitBytesS": 100000000000,
+          "checkpointBytesPerRackS": 2000000000,
+          "checkpointHallLimitBytesS": 8000000000,
+          "communication": "serialized"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 0
+        },
+        "checkpoint": {
+          "intervalRunS": 15,
+          "commitLatencyS": 0.2
+        },
+        "faults": [
+          {
+            "id": "worker-stop-150",
+            "atS": 150,
+            "recoveryDelayS": 20,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 300,
+        "sampleS": 1
+      },
+      "expected": {
+        "admittedRacks": 8,
+        "rackItW": 9565.217391304348,
+        "rackCurrentA": 199.2753623188406,
+        "packageCurrentA": 1062.5,
+        "service": {
+          "computeCapacityOpsS": 640000000000000,
+          "memoryCapacityBytesS": 16000000000000,
+          "networkCapacityBytesS": 100000000000,
+          "checkpointCapacityBytesS": 8000000000,
+          "computeS": 0.1099511627776,
+          "memoryS": 0.002147483648,
+          "localS": 0.1099511627776,
+          "communicationS": 0.08589934592,
+          "stepS": 0.1958505086976,
+          "stepsPerRunS": 5.105935167848018,
+          "checkpointWriteS": 1.073741824,
+          "checkpointTotalS": 1.273741824,
+          "stepsPerCheckpoint": 77,
+          "effectiveCheckpointRunS": 15.0804891697152,
+          "criticalPath": "compute bound + serialized communication"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 1320.1211000743667,
+          "checkpointedSteps": 1232,
+          "volatileCompletedSteps": 73,
+          "inFlightWorkEquivalents": 0.7636134624483049,
+          "lostWorkEquivalents": 14.357486611918654,
+          "retainedUsefulSteps": 1305,
+          "workloadOperations": 92895263974669490,
+          "workloadMemoryBytes": 45359015612631.586,
+          "workloadNetworkBytes": 11339753903157.896,
+          "checkpointWriteBytes": 137438953472.00003,
+          "checkpointReadBytes": 8589934591.999963,
+          "itEnergyJ": 21165230.61497321,
+          "facilityEnergyJ": 26456538.268716536,
+          "coolantHeatJ": 21165230.61497321,
+          "facilityRejectedHeatJ": 26456538.268716536,
+          "runS": 258.54638899200006,
+          "checkpointS": 20.379869183999915,
+          "recoveryS": 21.073741823999995,
+          "notReadyS": 0,
+          "committedCheckpoints": 16,
+          "handledFaults": 1
+        },
+        "fault": {
+          "atS": 150,
+          "kind": "fault",
+          "faultId": "worker-stop-150",
+          "interruptedPhase": "run",
+          "lostWorkEquivalents": 14.357486611918654,
+          "detail": "worker-stop: discard 14.357487 uncheckpointed work-equivalents; repair/relaunch until 170.000000 s, then restore if a checkpoint exists."
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 4.35,
+          "checkpointedStepsPerWallS": 4.1066666666666665,
+          "facilityJPerRetainedUsefulStep": 20273.209401315355,
+          "averageItW": 70550.76871657737,
+          "averageFacilityW": 88188.46089572179,
+          "effectivePue": 1.250000000000001
+        }
+      }
+    },
+    {
+      "id": "H6",
+      "name": "An ideal overlap bound",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "memory-to-hall-propagation",
+      "studio": "hall",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 32768 × 32768 × 32768 dense update: C ← AB + C",
+          "operationsPerStep": 70368744177664,
+          "memoryBytesPerStep": 34359738368,
+          "networkBytesPerStep": 8589934592,
+          "checkpointBytes": 8589934592,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 8,
+          "packagesPerRack": 8
+        },
+        "electrical": {
+          "facilityFeedLimitW": 120000,
+          "rackBusV": 48,
+          "rackInputLimitA": 250,
+          "packageBusV": 0.8,
+          "packageRailLimitA": 1500,
+          "conversionEfficiency": 0.92,
+          "pue": 1.25,
+          "auxiliaryRackW": 2000,
+          "packageRunW": 850,
+          "packageCheckpointW": 300,
+          "packageRecoveryW": 160
+        },
+        "cooling": {
+          "massFlowKgS": 3,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 10000000000000,
+          "memoryBytesPerPackageS": 250000000000,
+          "networkBytesPerRackS": 25000000000,
+          "networkHallLimitBytesS": 100000000000,
+          "checkpointBytesPerRackS": 2000000000,
+          "checkpointHallLimitBytesS": 8000000000,
+          "communication": "fully-overlapped"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 0
+        },
+        "checkpoint": {
+          "intervalRunS": 60,
+          "commitLatencyS": 0.2
+        },
+        "faults": [
+          {
+            "id": "worker-stop-150",
+            "atS": 150,
+            "recoveryDelayS": 20,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 300,
+        "sampleS": 1
+      },
+      "expected": {
+        "admittedRacks": 8,
+        "rackItW": 9565.217391304348,
+        "rackCurrentA": 199.2753623188406,
+        "packageCurrentA": 1062.5,
+        "service": {
+          "computeCapacityOpsS": 640000000000000,
+          "memoryCapacityBytesS": 16000000000000,
+          "networkCapacityBytesS": 100000000000,
+          "checkpointCapacityBytesS": 8000000000,
+          "computeS": 0.1099511627776,
+          "memoryS": 0.002147483648,
+          "localS": 0.1099511627776,
+          "communicationS": 0.08589934592,
+          "stepS": 0.1099511627776,
+          "stepsPerRunS": 9.094947017729282,
+          "checkpointWriteS": 1.073741824,
+          "checkpointTotalS": 1.273741824,
+          "stepsPerCheckpoint": 546,
+          "effectiveCheckpointRunS": 60.033334876569604,
+          "criticalPath": "compute bound (communication fully overlapped)"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 2490.4810823500156,
+          "checkpointedSteps": 2184,
+          "volatileCompletedSteps": 57,
+          "inFlightWorkEquivalents": 0.40825849771511713,
+          "lostWorkEquivalents": 249.0728238523006,
+          "retainedUsefulSteps": 2241,
+          "workloadOperations": 175252026163200000,
+          "workloadMemoryBytes": 85572278400000,
+          "workloadNetworkBytes": 21393069600000,
+          "checkpointWriteBytes": 34359738368.00014,
+          "checkpointReadBytes": 8589934591.999963,
+          "itEnergyJ": 21750044.252427127,
+          "facilityEnergyJ": 27187555.31553392,
+          "coolantHeatJ": 21750044.252427127,
+          "facilityRejectedHeatJ": 27187555.31553392,
+          "runS": 273.83129088,
+          "checkpointS": 5.094967296,
+          "recoveryS": 21.073741823999995,
+          "notReadyS": 0,
+          "committedCheckpoints": 4,
+          "handledFaults": 1
+        },
+        "fault": {
+          "atS": 150,
+          "kind": "fault",
+          "faultId": "worker-stop-150",
+          "interruptedPhase": "run",
+          "lostWorkEquivalents": 249.0728238523006,
+          "detail": "worker-stop: discard 249.072824 uncheckpointed work-equivalents; repair/relaunch until 170.000000 s, then restore if a checkpoint exists."
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 7.47,
+          "checkpointedStepsPerWallS": 7.28,
+          "facilityJPerRetainedUsefulStep": 12131.885459854495,
+          "averageItW": 72500.14750809042,
+          "averageFacilityW": 90625.18438511307,
+          "effectivePue": 1.2500000000000007
+        }
+      }
+    },
+    {
+      "id": "H7",
+      "name": "Hand-checkable commit and restart",
+      "experience": "hall",
+      "modelVersion": 1,
+      "lesson": "retained-work-restart-boundary",
+      "studio": "hall",
+      "uiAvailability": "Complete contract executes with included runner; tiny service rates are not all exposed by the current browser controls.",
+      "input": {
+        "kind": "synthetic-operating-hall",
+        "version": 1,
+        "workload": {
+          "kind": "synthetic-fixed-global-workload",
+          "id": "dense-gemm-state-update",
+          "label": "Fixed 2 × 2 × 2 dense update: C ← AB + C",
+          "operationsPerStep": 16,
+          "memoryBytesPerStep": 128,
+          "networkBytesPerStep": 32,
+          "checkpointBytes": 32,
+          "assumptions": [
+            "One step updates one global dense C matrix. Count two operations per fused multiply-add; exclude setup and validation arithmetic.",
+            "A and B are immutable and recoverable outside the checkpoint; the changing state C is checkpointed. A small iteration counter is neglected.",
+            "Memory traffic is an ideal reuse bound: read A, B and old C once and write new C once. Actual implementations can move more bytes.",
+            "Send the complete C payload once across the modeled network boundary per step. This is a declared output-delivery scenario, not an all-reduce traffic formula.",
+            "Ideal work/data sharding across admitted packages. The network has an explicit aggregate receiver/fabric ceiling. No topology, locality, replication or queue model.",
+            "Fixed synthetic sustained service rates and phase powers; no numeric hardware value is sourced to a vendor or treated as a forecast.",
+            "Partial-step work/traffic counters are linear accounting approximations. Only whole completed steps count as useful; no claim about scientific accuracy or numerical convergence."
+          ]
+        },
+        "installed": {
+          "racks": 1,
+          "packagesPerRack": 1
+        },
+        "electrical": {
+          "facilityFeedLimitW": 100,
+          "rackBusV": 48,
+          "rackInputLimitA": 100,
+          "packageBusV": 1,
+          "packageRailLimitA": 100,
+          "conversionEfficiency": 1,
+          "pue": 1.25,
+          "auxiliaryRackW": 0,
+          "packageRunW": 8,
+          "packageCheckpointW": 4,
+          "packageRecoveryW": 2
+        },
+        "cooling": {
+          "massFlowKgS": 1,
+          "specificHeatJkgK": 4180,
+          "maxRiseK": 10
+        },
+        "service": {
+          "computeOpsPerPackageS": 32,
+          "memoryBytesPerPackageS": 256,
+          "networkBytesPerRackS": 64,
+          "networkHallLimitBytesS": 64,
+          "checkpointBytesPerRackS": 32,
+          "checkpointHallLimitBytesS": 32,
+          "communication": "serialized"
+        },
+        "commissioning": {
+          "electrical": 0,
+          "thermal": 0,
+          "fabric": 0,
+          "software": 0,
+          "operations": 0
+        },
+        "checkpoint": {
+          "intervalRunS": 8,
+          "commitLatencyS": 0.25
+        },
+        "faults": [
+          {
+            "id": "teaching-stop",
+            "atS": 12,
+            "recoveryDelayS": 2,
+            "cause": "worker-stop"
+          }
+        ],
+        "durationS": 20,
+        "sampleS": 0.25
+      },
+      "expected": {
+        "admittedRacks": 1,
+        "service": {
+          "computeCapacityOpsS": 32,
+          "memoryCapacityBytesS": 256,
+          "networkCapacityBytesS": 64,
+          "checkpointCapacityBytesS": 32,
+          "computeS": 0.5,
+          "memoryS": 0.5,
+          "localS": 0.5,
+          "communicationS": 0.5,
+          "stepS": 1,
+          "stepsPerRunS": 1,
+          "checkpointWriteS": 1,
+          "checkpointTotalS": 1.25,
+          "stepsPerCheckpoint": 8,
+          "effectiveCheckpointRunS": 8,
+          "criticalPath": "compute bound + serialized communication"
+        },
+        "final": {
+          "kind": "synthetic-work-and-energy-ledger",
+          "executedWorkEquivalents": 15.75,
+          "checkpointedSteps": 8,
+          "volatileCompletedSteps": 5,
+          "inFlightWorkEquivalents": 0,
+          "lostWorkEquivalents": 2.75,
+          "retainedUsefulSteps": 13,
+          "workloadOperations": 252,
+          "workloadMemoryBytes": 2016,
+          "workloadNetworkBytes": 504,
+          "checkpointWriteBytes": 32,
+          "checkpointReadBytes": 32,
+          "itEnergyJ": 137,
+          "facilityEnergyJ": 171.25,
+          "coolantHeatJ": 137,
+          "facilityRejectedHeatJ": 171.25,
+          "runS": 15.75,
+          "checkpointS": 1.25,
+          "recoveryS": 3,
+          "notReadyS": 0,
+          "committedCheckpoints": 1,
+          "handledFaults": 1
+        },
+        "events": [
+          {
+            "atS": 0,
+            "kind": "gate-ready",
+            "gate": "electrical",
+            "detail": "electrical gate opens (synthetic readiness event)."
+          },
+          {
+            "atS": 0,
+            "kind": "gate-ready",
+            "gate": "thermal",
+            "detail": "thermal gate opens (synthetic readiness event)."
+          },
+          {
+            "atS": 0,
+            "kind": "gate-ready",
+            "gate": "fabric",
+            "detail": "fabric gate opens (synthetic readiness event)."
+          },
+          {
+            "atS": 0,
+            "kind": "gate-ready",
+            "gate": "software",
+            "detail": "software gate opens (synthetic readiness event)."
+          },
+          {
+            "atS": 0,
+            "kind": "gate-ready",
+            "gate": "operations",
+            "detail": "operations gate opens (synthetic readiness event)."
+          },
+          {
+            "atS": 0,
+            "kind": "dispatch-start",
+            "detail": "1 racks start the fixed workload."
+          },
+          {
+            "atS": 8,
+            "kind": "checkpoint-start",
+            "detail": "Work pauses; write the complete global restart state."
+          },
+          {
+            "atS": 9,
+            "kind": "checkpoint-written",
+            "detail": "All checkpoint bytes written; atomic commit is still pending."
+          },
+          {
+            "atS": 9.25,
+            "kind": "checkpoint-committed",
+            "detail": "Checkpoint becomes restart-valid; prior volatile steps are now durable."
+          },
+          {
+            "atS": 12,
+            "kind": "fault",
+            "faultId": "teaching-stop",
+            "interruptedPhase": "run",
+            "lostWorkEquivalents": 2.75,
+            "detail": "worker-stop: discard 2.750000 uncheckpointed work-equivalents; repair/relaunch until 14.000000 s, then restore if a checkpoint exists."
+          },
+          {
+            "atS": 14,
+            "kind": "restore-start",
+            "detail": "Read the most recent committed global checkpoint."
+          },
+          {
+            "atS": 15,
+            "kind": "job-resume",
+            "detail": "Job resumes from its latest committed state."
+          }
+        ],
+        "atFault": {
+          "atS": 12,
+          "phase": "recovery-wait",
+          "rates": {
+            "executedWorkEquivalentsS": 0,
+            "operationsS": 0,
+            "workloadMemoryBytesS": 0,
+            "workloadNetworkBytesS": 0,
+            "checkpointWriteBytesS": 0,
+            "checkpointReadBytesS": 0,
+            "packageW": 2,
+            "packageCurrentA": 2,
+            "rackItW": 2,
+            "rackCurrentA": 0.041666666666666664,
+            "totalRackCurrentA": 0.041666666666666664,
+            "itW": 2,
+            "conversionLossW": 0,
+            "facilityOverheadW": 0.5,
+            "facilityW": 2.5,
+            "coolantHeatW": 2,
+            "coolantMassFlowKgS": 1,
+            "coolantRiseK": 0.0004784688995215311,
+            "facilityRejectedHeatW": 2.5
+          },
+          "counters": {
+            "kind": "synthetic-work-and-energy-ledger",
+            "executedWorkEquivalents": 10.75,
+            "checkpointedSteps": 8,
+            "volatileCompletedSteps": 0,
+            "inFlightWorkEquivalents": 0,
+            "lostWorkEquivalents": 2.75,
+            "retainedUsefulSteps": 8,
+            "workloadOperations": 172,
+            "workloadMemoryBytes": 1376,
+            "workloadNetworkBytes": 344,
+            "checkpointWriteBytes": 32,
+            "checkpointReadBytes": 0,
+            "itEnergyJ": 91,
+            "facilityEnergyJ": 113.75,
+            "coolantHeatJ": 91,
+            "facilityRejectedHeatJ": 113.75,
+            "runS": 10.75,
+            "checkpointS": 1.25,
+            "recoveryS": 0,
+            "notReadyS": 0,
+            "committedCheckpoints": 1,
+            "handledFaults": 1
+          }
+        },
+        "atHorizon": {
+          "atS": 20,
+          "phase": "run",
+          "rates": {
+            "executedWorkEquivalentsS": 1,
+            "operationsS": 16,
+            "workloadMemoryBytesS": 128,
+            "workloadNetworkBytesS": 32,
+            "checkpointWriteBytesS": 0,
+            "checkpointReadBytesS": 0,
+            "packageW": 8,
+            "packageCurrentA": 8,
+            "rackItW": 8,
+            "rackCurrentA": 0.16666666666666666,
+            "totalRackCurrentA": 0.16666666666666666,
+            "itW": 8,
+            "conversionLossW": 0,
+            "facilityOverheadW": 2,
+            "facilityW": 10,
+            "coolantHeatW": 8,
+            "coolantMassFlowKgS": 1,
+            "coolantRiseK": 0.0019138755980861245,
+            "facilityRejectedHeatW": 10
+          },
+          "counters": {
+            "kind": "synthetic-work-and-energy-ledger",
+            "executedWorkEquivalents": 15.75,
+            "checkpointedSteps": 8,
+            "volatileCompletedSteps": 5,
+            "inFlightWorkEquivalents": 0,
+            "lostWorkEquivalents": 2.75,
+            "retainedUsefulSteps": 13,
+            "workloadOperations": 252,
+            "workloadMemoryBytes": 2016,
+            "workloadNetworkBytes": 504,
+            "checkpointWriteBytes": 32,
+            "checkpointReadBytes": 32,
+            "itEnergyJ": 137,
+            "facilityEnergyJ": 171.25,
+            "coolantHeatJ": 137,
+            "facilityRejectedHeatJ": 171.25,
+            "runS": 15.75,
+            "checkpointS": 1.25,
+            "recoveryS": 3,
+            "notReadyS": 0,
+            "committedCheckpoints": 1,
+            "handledFaults": 1
+          }
+        },
+        "summary": {
+          "retainedUsefulStepsPerWallS": 0.65,
+          "checkpointedStepsPerWallS": 0.4,
+          "facilityJPerRetainedUsefulStep": 13.173076923076923,
+          "averageItW": 6.85,
+          "averageFacilityW": 8.5625,
+          "effectivePue": 1.25
+        }
+      }
+    }
+  ]
+}

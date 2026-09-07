@@ -1,0 +1,34 @@
+✔ all approved 37 new and 15 deepened IDs have exactly one disposition and canonical addition (0.665792ms)
+✔ new records are substantive and all checks have a declared valid answer (0.425584ms)
+✔ eight chapters have stable domains and exact nonoverlapping new-lesson ownership (0.064917ms)
+✔ combined authored prerequisites are valid, non-self, duplicate-free and acyclic (0.587791ms)
+✔ all equations strictly render with notation and no original entries are copied into additions (17.916333ms)
+✔ source claims reference existing lessons and checked primary locators without invented human review (0.559541ms)
+✔ learners see scope, not leaked authoring or implementation directions (0.264125ms)
+✔ deduplication and mixture examples retain different item and exposure denominators (0.057167ms)
+✔ packing and unequal microbatch examples demonstrate noncommuting normalization and clipping (0.059292ms)
+✔ synthetic selection, byte encoding and slice retention calculations use explicit inventories (0.098042ms)
+✔ branched reverse derivatives, parameter count and causal NLL have independent arithmetic (0.065541ms)
+✔ clipping and AdamW example preserve global direction and separate decay (0.101542ms)
+✔ continuation and replay examples prove a conflict rather than general catastrophic forgetting (0.047541ms)
+✔ KV payload scales linearly while an incompatible average can erase equivalent functions (0.061708ms)
+✔ SFT and pairwise losses preserve different denominators and score invariance (0.044792ms)
+✔ PPO advantage sign, reference KL and zero-variance group behavior are distinct (0.137584ms)
+✔ proxy failure, low-rank product and teacher gradient counterexamples remain explicit (0.052291ms)
+✔ calibration coverage and judge agreement do not imply correctness (0.0795ms)
+✔ retrieval mixture, candidate-set success and regression gates cannot substitute for one another (0.04025ms)
+✔ contrastive normalization, visual projection, audio frames and WER reproduce authored values (0.043ms)
+✔ diffusion, flow, representation error and target EMA have different targets (0.030208ms)
+✔ action-dependent rollout, imagined return and quantization retain physical boundaries (0.043792ms)
+✔ replanning example uses executed prefix and explicit timing assumptions (0.02075ms)
+✔ existing-lesson additions preserve independent shared-gradient, softmax and routing arithmetic (0.035584ms)
+✔ Adam, payload, bounded scaling and Wilson equations have independently checked values (0.038375ms)
+✔ critical semantic grouping retains the entire RMS mean-square root and Adam epsilon outside its root (0.582833ms)
+ℹ tests 26
+ℹ suites 0
+ℹ pass 26
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 200.473083

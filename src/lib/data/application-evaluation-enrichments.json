@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "entries": {
+    "probability-calibration-abstention": {
+      "appendDescription": "The identified-evaluation experience fits the sensor model on eight training rows, selects a scalar temperature using four separate calibration rows, and audits six diagnostic rows. Threshold and acceptance controls do not refit the weights. Empty probability bins and an empty accepted set retain unavailable metrics rather than becoming perfect scores. The small audit is exploratory, and repeated recipe selection against it is development feedback.",
+      "appendEngineeringExample": "The default executable audit uses temperature 0.5 selected on calibration rows. Its six diagnostic decisions are correct, mean binary log loss is approximately 0.13357 and Brier score is 0.02864. Requiring chosen-class probability exactly 1 accepts zero cases, so conditional error is unavailable. These are computed synthetic fixtures, not calibration evidence for a deployed classifier.",
+      "additionalRelated": [
+        "model-artifact-rollout-drift",
+        "data-quality-dedup-audit"
+      ]
+    },
+    "temporal-forecast-validation": {
+      "appendDescription": "The application-contract experience fits an actual five-coefficient ridge model to hours 1\u201323. Each rolling origin uses its latest observation, then recursively feeds predictions through the selected horizon. Later observations begin a new forecast but do not update model coefficients. A persistence baseline uses the exact same targets. A future-label intervention produces zero error while explicitly violating information availability.",
+      "appendEngineeringExample": "With a +4-unit shift beginning at hour 32, the default one-hour forecast scores 24 target rows. Its mean absolute error is about 3.26680 synthetic load units, while persistence achieves 1.10411 on the same rows. More fitting machinery does not guarantee the better forecast. At an eight-hour horizon the number of scored origins is 17, and the separately matched baseline must be reported again.",
+      "appendEvidenceNotes": "Executable ridge and recursive forecasting use original deterministic hourly data. They are not a real demand forecast, independent-sample confidence estimate or neural forecasting benchmark.",
+      "additionalRelated": [
+        "coding-agent-patch-evidence",
+        "evaluation"
+      ]
+    },
+    "coding-agent-patch-evidence": {
+      "appendDescription": "The application-contract experience executes four authored clamp patches under an explicit finite ordered-bound task. An identity function and an upper-only clamp both pass two interior examples. Boundary cases and an independently branched oracle expose the omitted behavior. The interface executes whitelisted functions corresponding to the displayed source; it does not run arbitrary imported code or claim a code-generating model.",
+      "appendEngineeringExample": "The independent finite oracle checks 7 choices of lower bound, all upper bounds at least as large through 3, and 11 integer inputs from \u22125 to 5: 28 \u00d7 11 = 308 triples. The ordered clamp passes every triple and all ten visible boundary examples. This remains a finite test domain, not a proof over every floating-point input.",
+      "additionalRelated": [
+        "temporal-forecast-validation",
+        "telemetry-traces-evaluation"
+      ]
+    }
+  }
+}

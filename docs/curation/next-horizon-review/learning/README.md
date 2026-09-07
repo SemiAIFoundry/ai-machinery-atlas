@@ -1,0 +1,15 @@
+# Learning source-scope review — 7 September 2026
+
+This bundle records actual agent review of five effective lesson snapshots: `attention`, `attention-io-tiling`, `causal-pretraining-objective`, `checkpoint` and `checkpoint-averaging-boundaries`. All five are accepted within their declared scope. The events cover 12 lesson–source uses, eight distinct source URLs and six lesson–claim uses. No human specialist, device or learner review is asserted.
+
+The reviewer `/root/learning_source_review` read the full merged lesson records, chapter interpretations, formal equations and linked structured claims through `loadCurrent`, then opened the primary passages listed in each event. The source dates record this actual review, not inherited ledger dates. PyTorch's stable URL redirected to the version 2.14 reference; both the original cited URL and inspected destination are recorded.
+
+`review-events.json` is an integration candidate, validated against the current manifest by `validateEvents`. Each event points to an immutable effective-content snapshot; `review-validation.json` identifies their SHA-256 hashes. Nothing in this bundle edits the shared event log, source content or review queue. A changed lesson fingerprint requires a subsequent review event.
+
+`arithmetic-results.json` records an independent finite-difference attention check, score-storage units, next-token likelihood/perplexity, a full 17 + 23 versus 40 update checkpoint comparison, and the exact weight-permutation counterexample. `check-arithmetic.mjs` reproduces these checks without overwriting the dated results. Run it from any directory with the repository's Node runtime. The `--write` option deliberately refuses to replace an existing result.
+
+Ten focused existing implementation tests also passed, including the independent decoder forward and gradient oracle, causal prefix invariance, uniform likelihood, packed-example boundaries, exact restart, idempotency and failed result-journal recovery. `focused-tests.log` preserves that run. These are implementation checks, not measured device performance.
+
+One useful source qualification emerged: OLMo 2's Table 14 contains a GSM* regression for one soup despite the table's broad caption. The atlas's qualified averaging lesson already avoids a universal improvement claim, so no content correction is required for these five snapshots. A worked online-softmax tile-merging exercise remains a useful future teaching addition; the current IO lesson explicitly identifies its library-only scope.
+
+Primary passages are identified in the event locators: [Transformer v7](https://arxiv.org/html/1706.03762v7), [FlashAttention PDF](https://arxiv.org/pdf/2205.14135), [OLMo 2 v1](https://arxiv.org/html/2501.00656v1), [Megatron Bridge packed sequences](https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html), [PyTorch checkpoint reference](https://docs.pytorch.org/docs/2.14/distributed.checkpoint.html), [Temporal replay](https://docs.temporal.io/workflow-execution) and [Temporal activities](https://docs.temporal.io/activities).

@@ -1,0 +1,1025 @@
+{
+  "lessonIds": [
+    "silicon-atom",
+    "crystal-lattice",
+    "energy-bands",
+    "doping",
+    "pn-junction",
+    "silicon-wafer",
+    "copper-conductor",
+    "dielectric",
+    "lithography",
+    "cmp",
+    "mosfet",
+    "gate-stack",
+    "channel",
+    "source-drain",
+    "contact",
+    "spacer",
+    "finfet",
+    "gaa",
+    "inverter",
+    "nand",
+    "flipflop",
+    "sram",
+    "adder",
+    "multiplier",
+    "mac",
+    "interconnect",
+    "clock",
+    "standard-cell",
+    "streaming-multiprocessor",
+    "tensor-core",
+    "register-file",
+    "shared-sram",
+    "l1-cache",
+    "l2-cache",
+    "on-chip-network",
+    "hbm-controller",
+    "nvlink-port",
+    "tensor-memory",
+    "tensor-memory-accelerator",
+    "gpu-die",
+    "hbm-stack",
+    "dram-die",
+    "through-silicon-via",
+    "interposer",
+    "microbump",
+    "package-substrate",
+    "thermal-interface",
+    "heat-spreader",
+    "coldplate",
+    "host-cpu",
+    "ddr-memory",
+    "lpddr-memory",
+    "pcie-interface",
+    "network-adapter",
+    "nvme-storage",
+    "voltage-regulator",
+    "power-supply",
+    "compute-baseboard",
+    "management-controller",
+    "grace-blackwell-superchip",
+    "rack",
+    "compute-tray",
+    "nvlink-switch",
+    "cable-cartridge",
+    "cdu",
+    "power-shelf",
+    "leaf-switch",
+    "spine-switch",
+    "optics",
+    "storage",
+    "ups",
+    "cooling-plant",
+    "scheduler",
+    "cuda",
+    "kernel",
+    "compiler",
+    "nccl",
+    "parallelism",
+    "checkpoint",
+    "serving",
+    "quantization",
+    "tokenizer",
+    "embedding",
+    "positional-encoding",
+    "attention",
+    "feed-forward",
+    "residual-normalization",
+    "output-head",
+    "kv-cache",
+    "moe",
+    "training-data",
+    "loss-optimizer",
+    "post-training",
+    "tool-loop",
+    "scaling-laws",
+    "evaluation",
+    "astra",
+    "electronic-silicon-crystal-growth",
+    "wafer-finishing-geometry",
+    "epitaxial-material-stack",
+    "contamination-and-surface-state",
+    "cleanroom-subfab-utilities",
+    "process-chamber-control",
+    "wafer-handling-genealogy",
+    "manufacturing-execution-dispatch",
+    "thermal-oxidation-interface",
+    "cvd-pvd-film-transport",
+    "ald-self-limiting-growth",
+    "resist-track-development",
+    "mask-opc-layout",
+    "lithography-resolution-focus",
+    "plasma-wet-etch-transfer",
+    "implantation-anneal-diffusion",
+    "clean-planarize-surface",
+    "wells-isolation-integration",
+    "fin-formation-integration",
+    "nanosheet-gate-last-integration",
+    "source-drain-contact-integration",
+    "beol-damascene-vias",
+    "interconnect-rc-materials",
+    "backside-power-dtco",
+    "fab-metrology-process-window",
+    "yield-wafer-defect-model",
+    "known-good-die-test",
+    "fab-ramp-cycle-time",
+    "flip-chip-abf-substrate",
+    "rdl-fanout-integration",
+    "cowos-s-silicon-interposer",
+    "cowos-r-l-routing",
+    "emib-local-bridge",
+    "soic-foveros-vertical-routes",
+    "bump-thermocompression-assembly",
+    "hybrid-bond-surface-alignment",
+    "temporary-carrier-thinning",
+    "package-thermomechanical-reliability",
+    "dram-cell-array-fabrication",
+    "hbm-tsv-reveal",
+    "hbm-stack-assembly-test",
+    "hbm-base-phy-controller",
+    "hbm-channel-generation-ras",
+    "hbm-silicon-intensity",
+    "cpu-out-of-order",
+    "cpu-vector-matrix",
+    "coherence-numa",
+    "simt-active-lanes",
+    "gpu-occupancy-pipeline",
+    "gpu-chiplet-locality",
+    "systolic-array-dataflow",
+    "aws-neuron-dataflow",
+    "inference-custom-silicon",
+    "fpga-dsp-pipelines",
+    "dpu-infrastructure-offload",
+    "wafer-scale-routing",
+    "analog-photonic-research",
+    "chip-workload-contract",
+    "chip-rtl-verification",
+    "chip-physical-closure",
+    "chip-tapeout-productization",
+    "chip-volume-economics",
+    "memory-hierarchy-route",
+    "memory-interface-choice",
+    "memory-wall-trends",
+    "graph-tensor-ir",
+    "compiler-layout-lowering",
+    "kernel-locality-fusion",
+    "runtime-device-dispatch",
+    "training-memory-state",
+    "prefill-resource-trace",
+    "decode-bandwidth-trace",
+    "attention-io-tiling",
+    "expert-routing-budget",
+    "parallelism-communication-budget",
+    "disaggregated-serving",
+    "die-link-compatibility",
+    "pcie-cxl-semantics",
+    "interface-signal-eye",
+    "power-integrity-budget",
+    "rack-reference-anatomy",
+    "scaleup-scaleout-boundaries",
+    "fabric-collective-traffic",
+    "optical-cpo-placement",
+    "rack-power-conversion",
+    "rack-dynamic-power",
+    "coolant-loop-separation",
+    "facility-heat-rejection",
+    "grid-interconnection-readiness",
+    "cluster-commissioning-gates",
+    "compatible-supply-capacity",
+    "production-ramp-allocation",
+    "topology-job-admission",
+    "checkpoint-retained-work",
+    "storage-input-checkpoint-path",
+    "capacity-phase-geography",
+    "energy-forecast-boundaries",
+    "water-boundary-accounting",
+    "regional-siting-access",
+    "orbital-evidence-status",
+    "orbital-solar-storage",
+    "orbital-radiator-budget",
+    "orbital-link-contacts",
+    "orbital-radiation-recovery",
+    "orbital-replacement-mass",
+    "orbital-lifecycle-economics",
+    "crg-problem-statement",
+    "crg-communication-graph",
+    "crg-architecture-contract",
+    "crg-chip-design-realization",
+    "crg-package-system-closure",
+    "crg-55-year-resolution",
+    "crg-verification-loop",
+    "hbm-stack-height-budget",
+    "hbm-stack-thermal-yield",
+    "hbm-tc-ncf-route",
+    "hbm-mr-muf-route",
+    "hbm-hybrid-bond-route",
+    "hbm-bonding-process-selection",
+    "hbf-read-tier-contract",
+    "hbf-latency-prefetch",
+    "memory-working-set-placement",
+    "training-tier-placement",
+    "prefill-decode-tier-placement",
+    "moe-expert-tier-placement",
+    "memory-to-hall-propagation",
+    "memory-system-qualification"
+  ],
+  "milestones": [
+    {
+      "year": 1947,
+      "title": "The point-contact transistor demonstrates solid-state amplification",
+      "significance": "Bell Labs developed the point-contact transistor in 1947. Controlling electrical behavior in a semiconductor opened a route beyond vacuum tubes toward much smaller active circuits; modern AI hardware descends from that physical switching and amplification foundation.",
+      "source": {
+        "title": "Nokia Bell Labs: Centennial archive",
+        "url": "https://www.nokia.com/about-us/newsroom/media-resources/nokia-bell-labs-centennial/"
+      },
+      "component": "mosfet"
+    },
+    {
+      "year": 1958,
+      "title": "Kilby demonstrates a working integrated circuit",
+      "significance": "On September 12, 1958, Jack Kilby demonstrated a working circuit at Texas Instruments with circuit elements formed in a semiconductor piece. Integration began replacing the assembly of many separate components with fabrication of related functions together.",
+      "source": {
+        "title": "Texas Instruments: The origin of the integrated circuit",
+        "url": "https://www.ti.com/about-ti/behind-chip/articles/from-idea-to-invention-the-origin-story-of-the-tiny-chip-that-changed-the-world.html"
+      },
+      "component": "standard-cell"
+    },
+    {
+      "year": 1959,
+      "title": "Noyce files a patent for planar semiconductor interconnection",
+      "significance": "Robert Noyce filed the application underlying US2981877 on July 30, 1959. Metal connections over an insulating surface supplied a practical route to connecting multiple semiconductor elements, complementing the integrated-circuit concept with a manufacturable interconnection approach.",
+      "source": {
+        "title": "Robert Noyce: US2981877A, Semiconductor device-and-lead structure",
+        "url": "https://patents.google.com/patent/US2981877A/en"
+      },
+      "component": "standard-cell"
+    },
+    {
+      "year": 1960,
+      "title": "Kahng files an insulated-gate field-effect device patent",
+      "significance": "Dawon Kahng’s US3102230 application was filed on May 31, 1960. The insulated-gate field-effect approach made an electric field the control mechanism for a semiconductor channel, a foundation for the MOS devices that later dominated dense integrated logic. This is a patent-filing milestone, not a claim that the first working device appeared on that date.",
+      "source": {
+        "title": "Dawon Kahng: US3102230A, Electric field controlled semiconductor device",
+        "url": "https://patents.google.com/patent/US3102230A/en"
+      },
+      "component": "mosfet"
+    },
+    {
+      "year": 1963,
+      "title": "Wanlass files complementary field-effect circuitry",
+      "significance": "Complementary n- and p-channel switching provided a path to low standby-power logic. The patent was filed in 1963 and granted in 1967.",
+      "source": {
+        "title": "Wanlass — US3356858A",
+        "url": "https://patents.google.com/patent/US3356858A/en"
+      },
+      "component": "inverter"
+    },
+    {
+      "year": 1965,
+      "title": "Deal–Grove oxidation model published",
+      "significance": "A reaction-and-diffusion model connects oxide thickness to time, with explicit limits that remain useful for understanding process models.",
+      "source": {
+        "title": "Deal and Grove — General Relationship for the Thermal Oxidation of Silicon",
+        "url": "https://www.columbia.edu/~leonard/TISSSite/mvbd.html"
+      },
+      "component": "thermal-oxidation-interface",
+      "eventType": "publication"
+    },
+    {
+      "year": 1968,
+      "title": "Dennard’s DRAM cell patent is granted",
+      "significance": "Robert Dennard’s field-effect memory patent, filed in 1967 after his 1966 work at IBM, was granted on June 4, 1968. A compact access device and charge-storage element established the basis for dense dynamic memory, with periodic restoration as part of normal operation.",
+      "source": {
+        "title": "Robert Dennard: US3387286A, Field-effect transistor memory",
+        "url": "https://patents.google.com/patent/US3387286A/en"
+      },
+      "component": ""
+    },
+    {
+      "year": 1971,
+      "title": "Intel introduces the 4004 microprocessor",
+      "significance": "Intel introduced the 4004 in November 1971. Integrating a programmable CPU on a chip made it practical to reuse a hardware design for different instruction sequences, advancing the general-purpose control layer that still coordinates modern accelerator systems.",
+      "source": {
+        "title": "Intel: Announcing a New Era of Integrated Electronics",
+        "url": "https://www.intel.com/content/www/us/en/history/virtual-vault/articles/the-intel-4004.html"
+      },
+      "component": "host-cpu"
+    },
+    {
+      "year": 1997,
+      "title": "Fully integrated copper wiring demonstrated",
+      "significance": "IBM reported integrated CMOS with multiple copper wiring levels, addressing interconnect resistance together with fabrication and reliability. This was a wiring breakthrough, not simply a smaller transistor.",
+      "source": {
+        "title": "Edelstein et al. — Full Copper Wiring, IEDM 1997",
+        "url": "https://research.ibm.com/publications/full-copper-wiring-in-a-sub-025-mm-cmos-ulsi-technology"
+      },
+      "component": "copper-conductor"
+    },
+    {
+      "year": 1997,
+      "title": "Integrated copper interconnect reported at IEDM",
+      "significance": "IBM’s paper describes a complete copper wiring integration and evaluated structures, connecting material choice to manufacturable interconnects.",
+      "source": {
+        "title": "IBM Research — Full copper wiring in a sub-0.25 μm CMOS ULSI technology",
+        "url": "https://research.ibm.com/publications/full-copper-wiring-in-a-sub-025-mm-cmos-ulsi-technology"
+      },
+      "component": "beol-damascene-vias",
+      "eventType": "publication"
+    },
+    {
+      "year": 1999,
+      "title": "GeForce 256 integrates transform and lighting into a GPU",
+      "significance": "NVIDIA’s GeForce 256 moved additional graphics geometry work into an integrated graphics processor. This product milestone helped establish the GPU as a powerful parallel processor; earlier graphics processors already existed, and the modern general-purpose compute model arrived through later architectural and software developments.",
+      "source": {
+        "title": "NVIDIA: GeForce 256 retrospective",
+        "url": "https://blogs.nvidia.com/blog/first-gpu-gaming-ai/"
+      },
+      "component": "streaming-multiprocessor"
+    },
+    {
+      "year": 2003,
+      "title": "Distributed word representations in a neural language model",
+      "significance": "Bengio and colleagues jointly learned word vectors and a sequence probability model, showing how shared continuous representations could generalize beyond previously observed word sequences.",
+      "source": {
+        "title": "Bengio et al. — A Neural Probabilistic Language Model",
+        "url": "https://www.jmlr.org/papers/v3/bengio03a.html"
+      },
+      "component": "embedding"
+    },
+    {
+      "year": 2006,
+      "title": "CUDA opens GPU execution to general computation",
+      "significance": "NVIDIA introduced the CUDA architecture in 2006, allowing computational workloads to use GPU throughput without expressing the problem through graphics APIs. A programmable parallel hierarchy gave researchers a practical path from scientific and numerical code to large numbers of GPU execution units.",
+      "source": {
+        "title": "NVIDIA CUDA Programming Guide: Introduction",
+        "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
+      },
+      "component": "cuda"
+    },
+    {
+      "year": 2007,
+      "title": "High-k and metal gates enter Intel’s 45 nm generation",
+      "significance": "Hafnium-based dielectric and metal electrodes addressed leakage and gate-control limits of thinning silicon dioxide and polysilicon. The 45 nm name identifies the process generation.",
+      "source": {
+        "title": "Intel — High-k and Metal Gate Research",
+        "url": "https://www.intel.com/pressroom/kits/advancedtech/doodle/ref_HiK-MG/high-k.htm"
+      },
+      "component": "gate-stack"
+    },
+    {
+      "year": 2007,
+      "title": "Intel announces high-k and metal-gate prototypes",
+      "significance": "The January release reports working processor prototypes using changed gate materials; it separately describes a future production plan.",
+      "source": {
+        "title": "Intel — High-k and metal-gate transistor announcement",
+        "url": "https://www.intel.com/pressroom/archive/releases/2007/20070128comp.htm"
+      },
+      "component": "nanosheet-gate-last-integration",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2010,
+      "title": "Pre-production NXE:3100 EUV system ships",
+      "significance": "The pre-production system moved 13.5 nm lithography closer to manufacturing integration. It preceded later production platforms and should not be mistaken for immediate universal EUV adoption.",
+      "source": {
+        "title": "ASML — Making EUV: From Lab to Fab",
+        "url": "https://www.asml.com/en/company/stories/2022/making-euv-lab-to-fab"
+      },
+      "component": "lithography"
+    },
+    {
+      "year": 2011,
+      "title": "Intel announces 3D Tri-Gate for the 22 nm generation",
+      "significance": "Multisurface gate control moved a major production logic platform beyond planar transistor geometry. This is an Intel commercialization milestone, not the first invention of every FinFET concept.",
+      "source": {
+        "title": "Intel — Three-Dimensional Tri-Gate Announcement",
+        "url": "https://www.intc.com/news-events/press-releases/detail/655/intel-reinvents-transistors-using-new-3-d-structure"
+      },
+      "component": "finfet"
+    },
+    {
+      "year": 2011,
+      "title": "Intel announces its Tri-Gate manufacturing transition",
+      "significance": "The May announcement places a three-dimensional gate architecture in a named manufacturing transition, distinct from earlier device invention and research.",
+      "source": {
+        "title": "Intel — Reinvents Transistors Using New 3-D Structure",
+        "url": "https://www.intc.com/news-events/press-releases/detail/655/intel-reinvents-transistors-using-new-3-d-structure"
+      },
+      "component": "fin-formation-integration",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2012,
+      "title": "TSMC CoWoS enters volume production",
+      "significance": "TSMC dates CoWoS volume production to 2012. The packaging platform evolved to integrate multiple logic dies and high-bandwidth memory through dense local interconnect, making the package an important part of system architecture.",
+      "source": {
+        "title": "TSMC: CoWoS platform history and technology",
+        "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      },
+      "component": "interposer"
+    },
+    {
+      "year": 2012,
+      "title": "CoWoS enters volume production, according to TSMC",
+      "significance": "TSMC’s route history dates volume production to 2012, establishing an adoption milestone rather than the invention of all interposer technology.",
+      "source": {
+        "title": "TSMC — CoWoS",
+        "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      },
+      "component": "cowos-s-silicon-interposer",
+      "eventType": "production"
+    },
+    {
+      "year": 2014,
+      "title": "Adam combines momentum with adaptive scaling",
+      "significance": "Kingma and Ba released the Adam preprint in December 2014; its conference publication followed at ICLR 2015. The method maintains first and second gradient-moment estimates.",
+      "source": {
+        "title": "Kingma & Ba — Adam: A Method for Stochastic Optimization",
+        "url": "https://arxiv.org/abs/1412.6980"
+      },
+      "component": "loss-optimizer"
+    },
+    {
+      "year": 2015,
+      "title": "Subword BPE enters neural translation",
+      "significance": "Sennrich, Haddow, and Birch adapted byte-pair segmentation to represent rare words as subword sequences. The preprint appeared in 2015; the conference paper followed at ACL 2016.",
+      "source": {
+        "title": "Sennrich et al. — Neural Machine Translation of Rare Words with Subword Units",
+        "url": "https://arxiv.org/abs/1508.07909"
+      },
+      "component": "tokenizer"
+    },
+    {
+      "year": 2016,
+      "title": "Pascal P100 combines HBM2 packaging with NVLink",
+      "significance": "Announced on April 5, 2016, Tesla P100 brought HBM2 memory in a CoWoS package together with NVLink in NVIDIA’s Pascal accelerator platform. Faster local memory and GPU-to-GPU communication addressed data movement alongside arithmetic, anticipating the system bottlenecks of larger neural networks.",
+      "source": {
+        "title": "NVIDIA: Tesla P100 launch announcement",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-delivers-massive-performance-leap-for-deep-learning-hpc-applications-with-nvidia-tesla-p100-accelerators-6622437"
+      },
+      "component": "hbm-stack"
+    },
+    {
+      "year": 2016,
+      "title": "Layer normalization removes dependence on batch statistics",
+      "significance": "Ba, Kiros, and Hinton proposed normalization within a training example, with the same normalization computation at training and inference. This became useful for sequence models with varying batch conditions.",
+      "source": {
+        "title": "Ba et al. — Layer Normalization",
+        "url": "https://arxiv.org/abs/1607.06450"
+      },
+      "component": "residual-normalization"
+    },
+    {
+      "year": 2017,
+      "title": "Attention Is All You Need",
+      "significance": "The Transformer demonstrated a sequence architecture organized around attention, enabling extensive parallel work during training.",
+      "source": {
+        "title": "Vaswani et al. — original paper",
+        "url": "https://arxiv.org/abs/1706.03762"
+      },
+      "component": "attention"
+    },
+    {
+      "year": 2017,
+      "title": "Volta introduces NVIDIA Tensor Cores",
+      "significance": "NVIDIA announced Volta and Tesla V100 on May 10, 2017. Dedicated Tensor Cores accelerated matrix arithmetic, aligning silicon execution more directly with the multiply-and-accumulate structure of deep learning instead of relying only on general-purpose arithmetic lanes.",
+      "source": {
+        "title": "NVIDIA: Volta GPU platform launch",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-launches-revolutionary-volta-gpu-platform-fueling-next-era-of-ai-and-high-performance-computing"
+      },
+      "component": "tensor-core"
+    },
+    {
+      "year": 2017,
+      "title": "Stacked nanosheet GAA results published",
+      "significance": "The IBM-affiliated VLSI paper reports a research device and integration features that illustrate the transition from fins to released sheets.",
+      "source": {
+        "title": "IBM Research — Stacked nanosheet gate-all-around transistor",
+        "url": "https://research.ibm.com/publications/stacked-nanosheet-gate-all-around-transistor-to-enable-scaling-beyond-finfet"
+      },
+      "component": "nanosheet-gate-last-integration",
+      "eventType": "publication"
+    },
+    {
+      "year": 2017,
+      "title": "First TPU performance paper published",
+      "significance": "The public inference TPU study connects a specialized matrix engine to measured production-workload constraints.",
+      "source": {
+        "title": "In-Datacenter Performance Analysis of a Tensor Processing Unit",
+        "url": "https://arxiv.org/abs/1704.04760"
+      },
+      "component": "systolic-array-dataflow",
+      "eventType": "publication"
+    },
+    {
+      "year": 2017,
+      "title": "Sparsely gated MoE paper published",
+      "significance": "Conditional expert execution makes active computation and total parameter storage distinct quantities.",
+      "source": {
+        "title": "Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer",
+        "url": "https://arxiv.org/abs/1701.06538"
+      },
+      "component": "expert-routing-budget",
+      "eventType": "publication"
+    },
+    {
+      "year": 2018,
+      "title": "GPT: generative pretraining for language understanding",
+      "significance": "A decoder-only Transformer pretrained on unlabeled text transferred to supervised language tasks, helping establish the GPT approach.",
+      "source": {
+        "title": "Radford et al. — Improving Language Understanding by Generative Pre-Training",
+        "url": "https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf"
+      },
+      "component": "training-data"
+    },
+    {
+      "year": 2018,
+      "title": "Intel demonstrates Foveros logic-on-logic stacking",
+      "significance": "The December Architecture Day demonstration illustrates active base and upper logic integration; the same release’s planned products remain future statements.",
+      "source": {
+        "title": "Intel — New Architectures and Technologies Target Expanded Market Opportunities",
+        "url": "https://www.intc.com/news-events/press-releases/detail/106/new-intel-architectures-and-technologies-target-expanded"
+      },
+      "component": "soic-foveros-vertical-routes",
+      "eventType": "demonstration"
+    },
+    {
+      "year": 2019,
+      "title": "GPT-2: broader zero-shot transfer",
+      "significance": "A larger language model demonstrated that a next-token objective could support multiple tasks through suitable text context, without separate task-specific training in the reported zero-shot setting.",
+      "source": {
+        "title": "Radford et al. — Language Models are Unsupervised Multitask Learners",
+        "url": "https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf"
+      },
+      "component": "output-head"
+    },
+    {
+      "year": 2019,
+      "title": "ZeRO preprint published",
+      "significance": "State partitioning provides a systematic way to reduce replicated training memory.",
+      "source": {
+        "title": "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models",
+        "url": "https://arxiv.org/abs/1910.02054"
+      },
+      "component": "training-memory-state",
+      "eventType": "publication"
+    },
+    {
+      "year": 2020,
+      "title": "GPT-3 and empirical scaling laws",
+      "significance": "Large autoregressive models showed broad few-shot capabilities while scaling studies quantified relationships among resources and loss.",
+      "source": {
+        "title": "Brown et al. — Language Models are Few-Shot Learners",
+        "url": "https://arxiv.org/abs/2005.14165"
+      },
+      "component": "scaling-laws"
+    },
+    {
+      "year": 2020,
+      "title": "GLU variants improve Transformer feed-forward blocks",
+      "significance": "Shazeer evaluated gated alternatives including SwiGLU and GEGLU in Transformer feed-forward sublayers, finding improvements over the tested ReLU and GELU baselines.",
+      "source": {
+        "title": "Shazeer — GLU Variants Improve Transformer",
+        "url": "https://arxiv.org/abs/2002.05202"
+      },
+      "component": "feed-forward"
+    },
+    {
+      "year": 2020,
+      "title": "CXL 2.0 specification announced",
+      "significance": "The disclosure distinguishes I/O, cache and memory roles on a PCIe physical foundation.",
+      "source": {
+        "title": "Compute Express Link 2.0 Specification Now Available",
+        "url": "https://computeexpresslink.org/blog/compute-express-link-2-0-specification-now-available-2374/"
+      },
+      "component": "pcie-cxl-semantics",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2021,
+      "title": "Large-model tensor, pipeline, and data parallelism analyzed together",
+      "significance": "The Megatron-LM study quantified interactions between parallelism strategies, emphasizing that model partitioning and hardware communication must be designed together.",
+      "source": {
+        "title": "Narayanan et al. — Efficient Large-Scale Language Model Training",
+        "url": "https://arxiv.org/abs/2104.04473"
+      },
+      "component": "parallelism"
+    },
+    {
+      "year": 2021,
+      "title": "RoFormer proposes rotary position embedding",
+      "significance": "The RoFormer preprint introduced RoPE, encoding position through query/key rotations so their interaction includes relative displacement.",
+      "source": {
+        "title": "Su et al. — RoFormer",
+        "url": "https://arxiv.org/abs/2104.09864"
+      },
+      "component": "positional-encoding"
+    },
+    {
+      "year": 2021,
+      "title": "Switch Transformer simplifies sparse routing",
+      "significance": "The Switch Transformer preprint investigated top-one expert routing and training techniques that made very large sparse Transformer models easier to train; it was published in JMLR in 2022.",
+      "source": {
+        "title": "Fedus et al. — Switch Transformers",
+        "url": "https://arxiv.org/abs/2101.03961"
+      },
+      "component": "moe"
+    },
+    {
+      "year": 2021,
+      "title": "Deduplication is measured as a training intervention",
+      "significance": "Lee and colleagues showed that removing repeated training material could reduce memorized output and train–test overlap while preserving or improving measured accuracy. Their preprint preceded ACL 2022 publication.",
+      "source": {
+        "title": "Lee et al. — Deduplicating Training Data Makes Language Models Better",
+        "url": "https://arxiv.org/abs/2107.06499"
+      },
+      "component": "training-data"
+    },
+    {
+      "year": 2021,
+      "title": "Integrated photonic tensor-core paper published",
+      "significance": "The experiment demonstrates optical parallel arithmetic while leaving system integration and precision as separate questions.",
+      "source": {
+        "title": "Parallel convolutional processing using an integrated photonic tensor core",
+        "url": "https://www.nature.com/articles/s41586-020-03070-1"
+      },
+      "component": "analog-photonic-research",
+      "eventType": "publication"
+    },
+    {
+      "year": 2022,
+      "title": "Compute-optimal training",
+      "significance": "The Chinchilla study emphasized balancing model size with sufficient training data under a fixed compute budget.",
+      "source": {
+        "title": "Hoffmann et al. — original paper",
+        "url": "https://arxiv.org/abs/2203.15556"
+      },
+      "component": "training-data"
+    },
+    {
+      "year": 2022,
+      "title": "FlashAttention",
+      "significance": "IO-aware attention showed how a better algorithm can reduce memory traffic while retaining exact attention semantics.",
+      "source": {
+        "title": "Dao et al. — original paper",
+        "url": "https://arxiv.org/abs/2205.14135"
+      },
+      "component": "attention"
+    },
+    {
+      "year": 2022,
+      "title": "Hopper adds FP8 Transformer Engine and asynchronous tensor movement",
+      "significance": "Introduced on March 22, 2022, Hopper combined a Transformer Engine with FP8 support, Tensor Memory Accelerator transfers, and thread-block clusters. The architecture extended both numerical efficiency and explicit coordination of movement and computation across the GPU hierarchy.",
+      "source": {
+        "title": "NVIDIA: Hopper Architecture In-Depth",
+        "url": "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/"
+      },
+      "component": "streaming-multiprocessor"
+    },
+    {
+      "year": 2022,
+      "title": "Grace CPU Superchip announces server LPDDR5X integration",
+      "significance": "The March 2022 Grace CPU Superchip announcement described an LPDDR5X memory subsystem with error correction in a data-center CPU platform. This is a Grace platform milestone, not the invention of LPDDR memory.",
+      "source": {
+        "title": "NVIDIA: Grace CPU Superchip announcement",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-introduces-grace-cpu-superchip"
+      },
+      "component": "lpddr-memory"
+    },
+    {
+      "year": 2022,
+      "title": "InstructGPT combines demonstrations and preferences",
+      "significance": "Ouyang and colleagues reported supervised instruction tuning followed by preference-based reinforcement learning, showing that user preference could improve without merely increasing parameter count.",
+      "source": {
+        "title": "Ouyang et al. — Training Language Models to Follow Instructions with Human Feedback",
+        "url": "https://arxiv.org/abs/2203.02155"
+      },
+      "component": "post-training"
+    },
+    {
+      "year": 2022,
+      "title": "ReAct interleaves language-model reasoning and actions",
+      "significance": "Yao and colleagues explored alternating reasoning and actions that gather observations from external environments. The preprint appeared in 2022 and the conference version at ICLR 2023.",
+      "source": {
+        "title": "Yao et al. — ReAct: Synergizing Reasoning and Acting in Language Models",
+        "url": "https://arxiv.org/abs/2210.03629"
+      },
+      "component": "tool-loop"
+    },
+    {
+      "year": 2022,
+      "title": "FlashAttention preprint published",
+      "significance": "IO-aware tiling connects attention algorithms directly to the GPU memory hierarchy.",
+      "source": {
+        "title": "FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness",
+        "url": "https://arxiv.org/abs/2205.14135"
+      },
+      "component": "attention-io-tiling",
+      "eventType": "publication"
+    },
+    {
+      "year": 2022,
+      "title": "Chiplet Actuary first preprint and DAC work",
+      "significance": "The cost analysis makes reuse, yield and heterogeneous packaging explicit design variables.",
+      "source": {
+        "title": "Chiplet Actuary: A Quantitative Cost Model and Multi-Chiplet Architecture Exploration",
+        "url": "https://arxiv.org/abs/2203.12268v4"
+      },
+      "component": "chip-volume-economics",
+      "eventType": "publication"
+    },
+    {
+      "year": 2023,
+      "title": "PagedAttention",
+      "significance": "Block-based KV management connected serving efficiency to careful handling of growing and shrinking request memory.",
+      "source": {
+        "title": "Kwon et al. — original paper",
+        "url": "https://arxiv.org/abs/2309.06180"
+      },
+      "component": "kv-cache"
+    },
+    {
+      "year": 2023,
+      "title": "Levels of AGI separates breadth from performance",
+      "significance": "Morris and colleagues proposed a framework for comparing capability breadth and performance while treating deployment autonomy separately, making progress claims more explicit than a single benchmark score.",
+      "source": {
+        "title": "Morris et al. — Levels of AGI for Operationalizing Progress on the Path to AGI",
+        "url": "https://arxiv.org/abs/2311.02462"
+      },
+      "component": "evaluation"
+    },
+    {
+      "year": 2023,
+      "title": "CoWoS-R reaches volume production, according to TSMC",
+      "significance": "The company’s living technical history dates its polymer/copper RDL-interposer route to 2023 production.",
+      "source": {
+        "title": "TSMC — CoWoS",
+        "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      },
+      "component": "cowos-r-l-routing",
+      "eventType": "production"
+    },
+    {
+      "year": 2023,
+      "title": "TPU v4 architecture paper published",
+      "significance": "The disclosure joins matrix computation, embedding support and reconfigurable optical system networking.",
+      "source": {
+        "title": "TPU v4: An Optically Reconfigurable Supercomputer for Machine Learning with Hardware Support for Embeddings",
+        "url": "https://arxiv.org/abs/2304.01433v3"
+      },
+      "component": "systolic-array-dataflow",
+      "eventType": "publication"
+    },
+    {
+      "year": 2023,
+      "title": "PagedAttention paper published",
+      "significance": "KV block management connects serving batch capacity to fragmentation and sharing.",
+      "source": {
+        "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+        "url": "https://arxiv.org/abs/2309.06180"
+      },
+      "component": "disaggregated-serving",
+      "eventType": "publication"
+    },
+    {
+      "year": 2023,
+      "title": "BoW signal/power-integrity study published",
+      "significance": "The ECTC study links a chiplet interface to package-specific electrical analysis.",
+      "source": {
+        "title": "Signal and Power Integrity Design and Analysis for BoW Interface for Chiplet Integration on Advanced Packaging",
+        "url": "https://research.ibm.com/publications/signal-and-power-integrity-design-and-analysis-for-bunch-of-wires-bow-interface-for-chiplet-integration-on-advanced-packaging"
+      },
+      "component": "interface-signal-eye",
+      "eventType": "publication"
+    },
+    {
+      "year": 2023,
+      "title": "TBIRD high-rate orbital pass demonstrated",
+      "significance": "The June pass provides a measured contact-volume example distinct from continuous service.",
+      "source": {
+        "title": "NASA’s Record-Breaking Laser Demo Completes Mission",
+        "url": "https://www.nasa.gov/directorates/somd/space-communications-navigation-program/nasas-record-breaking-laser-demo-completes-mission/"
+      },
+      "component": "orbital-link-contacts",
+      "eventType": "demonstration"
+    },
+    {
+      "year": 2023,
+      "title": "More memory dies within an HBM height envelope",
+      "significance": "A documented 12-layer HBM3 example connects thinning and assembly changes to a fixed mechanical envelope.",
+      "source": {
+        "title": "SK hynix — the team behind 12-layer HBM3",
+        "url": "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/"
+      },
+      "component": "hbm-stack-height-budget",
+      "eventType": "publication"
+    },
+    {
+      "year": 2024,
+      "title": "Blackwell extends acceleration from multiple dies to rack-scale systems",
+      "significance": "Announced on March 18, 2024, Blackwell joined two large logic dies within one GPU and paired new numerical formats with stronger GPU interconnect. Grace Blackwell systems brought CPU, GPU memory, scale-up networking, power, and cooling into a more tightly coordinated architecture; no specific proprietary model’s deployment is implied.",
+      "source": {
+        "title": "NVIDIA: Blackwell platform announcement",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing"
+      },
+      "component": "gpu-die"
+    },
+    {
+      "year": 2024,
+      "title": "GB200 NVL72 rack-scale architecture announced",
+      "significance": "The documented example integrates 72 GPUs through a large NVLink domain with purpose-built communication and liquid-cooling infrastructure. It illustrates system-level co-design rather than proving a model capability by itself.",
+      "source": {
+        "title": "NVIDIA — GB200 NVL72 Architecture, March 2024",
+        "url": "https://developer.nvidia.com/blog/nvidia-gb200-nvl72-delivers-trillion-parameter-llm-training-and-real-time-inference/"
+      },
+      "component": "rack"
+    },
+    {
+      "year": 2024,
+      "title": "CoWoS-L reaches volume production, according to TSMC",
+      "significance": "TSMC dates its initial CoWoS-L volume production to 2024; the route combines RDL with dense local silicon interconnects.",
+      "source": {
+        "title": "TSMC — CoWoS",
+        "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      },
+      "component": "cowos-r-l-routing",
+      "eventType": "production"
+    },
+    {
+      "year": 2024,
+      "title": "imec publishes its fine-pitch hybrid-bonding account",
+      "significance": "The February article explains research results presented at IEDM 2023; this milestone dates the article publication, not a new production line.",
+      "source": {
+        "title": "imec — Wafer-to-wafer hybrid bonding: 400 nm interconnect pitch",
+        "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch"
+      },
+      "component": "hybrid-bond-surface-alignment",
+      "eventType": "publication"
+    },
+    {
+      "year": 2024,
+      "title": "ASML and imec report prototype high-NA exposures",
+      "significance": "The June laboratory-opening announcement reports earlier 2024 prototype exposures and ecosystem work; it does not prove every projected production date.",
+      "source": {
+        "title": "ASML and imec — Joint High NA EUV Lithography Lab opens",
+        "url": "https://www.asml.com/en/news/press-releases/2024/asml-imec-opening-high-na-euv-lithography-lab"
+      },
+      "component": "lithography-resolution-focus",
+      "eventType": "demonstration"
+    },
+    {
+      "year": 2024,
+      "title": "Micron reports HBM3E volume production",
+      "significance": "The February release reports production of the specified 24 GB 8-high configuration while describing 12-high sampling separately.",
+      "source": {
+        "title": "Micron — HBM3E volume production begins",
+        "url": "https://investors.micron.com/news/press-release/2024/Micron-Commences-Volume-Production-of-Industry-Leading-HBM3E-Solution-to-Accelerate-the-Growth-of-AI-02-26-2024/default.aspx"
+      },
+      "component": "hbm-stack-assembly-test",
+      "eventType": "production"
+    },
+    {
+      "year": 2024,
+      "title": "WSE-3 and CS-3 announced",
+      "significance": "A third-generation wafer-scale specimen extends the comparison beyond conventional die-sized accelerator packages.",
+      "source": {
+        "title": "Cerebras announces third-generation Wafer Scale Engine",
+        "url": "https://www.cerebras.ai/press-release/cerebras-announces-third-generation-wafer-scale-engine"
+      },
+      "component": "wafer-scale-routing",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2024,
+      "title": "TC-NCF example for HBM3E 12H announced",
+      "significance": "The development announcement provides a dated alternative assembly route for high-stack memory.",
+      "source": {
+        "title": "Samsung — 36 GB HBM3E 12H development",
+        "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+      },
+      "component": "hbm-tc-ncf-route",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2025,
+      "title": "CUTLASS 3.8 exposes Blackwell Tensor Memory",
+      "significance": "The February 2025 CUTLASS 3.8 release added Blackwell SM100 support and exposed Tensor Memory as a distinct storage location, along with operations that move values between registers, shared memory, and Tensor Memory.",
+      "source": {
+        "title": "NVIDIA CUTLASS 3.8 release discussion",
+        "url": "https://github.com/NVIDIA/cutlass/discussions/2125"
+      },
+      "component": "tensor-memory"
+    },
+    {
+      "year": 2025,
+      "title": "NVIDIA CPO networking announced",
+      "significance": "The announcement supplies a named shift in optical-engine placement and integration responsibilities.",
+      "source": {
+        "title": "NVIDIA Announces Spectrum-X Photonics, Co-Packaged Optics Networking Switches",
+        "url": "https://nvidianews.nvidia.com/news/nvidia-spectrum-x-co-packaged-optics-networking-switches-ai-factories"
+      },
+      "component": "optical-cpo-placement",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2025,
+      "title": "Starcloud-1 compute demonstration reported",
+      "significance": "Provider-reported flight work supplies a bounded compute example, without proving fleet-scale service.",
+      "source": {
+        "title": "Starcloud-1",
+        "url": "https://www.starcloud.com/starcloud-1"
+      },
+      "component": "orbital-evidence-status",
+      "eventType": "demonstration"
+    },
+    {
+      "year": 2025,
+      "title": "Google announces orbital research and prototype plan",
+      "significance": "The planned learning mission separates a future flight objective from existing ground analysis.",
+      "source": {
+        "title": "Exploring a space-based, scalable AI infrastructure system design",
+        "url": "https://research.google/blog/exploring-a-space-based-scalable-ai-infrastructure-system-design/"
+      },
+      "component": "orbital-evidence-status",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "GPT-6 Astra released through the OpenAI API",
+      "significance": "The September 3 API changelog announced Astra for complex tasks using supplied context and tools, with tool calling through the Responses API. This is a product milestone, not a declaration of AGI.",
+      "source": {
+        "title": "OpenAI API Changelog — September 3, 2026",
+        "url": "https://developers.openai.com/api/docs/changelog"
+      },
+      "component": "astra"
+    },
+    {
+      "year": 2026,
+      "title": "Maia 200 announced with reported deployment",
+      "significance": "The provider disclosure illustrates inference-oriented silicon, software and system co-design at a dated evidence boundary.",
+      "source": {
+        "title": "Maia 200: The AI accelerator built for inference",
+        "url": "https://blogs.microsoft.com/blog/2026/01/26/maia-200-the-ai-accelerator-built-for-inference/"
+      },
+      "component": "inference-custom-silicon",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "IEA energy-and-AI outlook updated",
+      "significance": "The April report updates estimated baselines and conditional global demand projections.",
+      "source": {
+        "title": "Key Questions on Energy and AI: Executive Summary",
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+      },
+      "component": "energy-forecast-boundaries",
+      "eventType": "publication"
+    },
+    {
+      "year": 2026,
+      "title": "India AI hub groundbreaking announced",
+      "significance": "The construction milestone connects a computing site with surrounding power and network development.",
+      "source": {
+        "title": "Google AI Hub construction milestone in India",
+        "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+      },
+      "component": "regional-siting-access",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "EuroHPC gigafactory call launched",
+      "significance": "The procurement process illustrates future deployment scope and public access arrangements.",
+      "source": {
+        "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+      },
+      "component": "capacity-phase-geography",
+      "eventType": "announcement"
+    },
+    {
+      "year": 2026,
+      "title": "Suncatcher study revised",
+      "significance": "Version 2 is a pinned research reference for orbital system assumptions, ground tests and unresolved constraints.",
+      "source": {
+        "title": "Towards a future space-based, highly scalable AI infrastructure system design, v2",
+        "url": "https://arxiv.org/html/2511.19468v2"
+      },
+      "component": "orbital-lifecycle-economics",
+      "eventType": "publication"
+    },
+    {
+      "year": 2026,
+      "title": "First OCP HBF specification announced",
+      "significance": "The interface and software framework becomes a dated standardization milestone; validated deployment remains a separate step.",
+      "source": {
+        "title": "SK hynix — first HBF specifications at FMS 2026",
+        "url": "https://news.skhynix.com/en/hbf-at-fms-2026/"
+      },
+      "component": "hbf-read-tier-contract",
+      "eventType": "announcement"
+    }
+  ]
+}

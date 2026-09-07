@@ -1,0 +1,335 @@
+{
+  "record": {
+    "id": "sharded-matmul-ownership",
+    "name": "Sharded matrix multiplication and result ownership",
+    "shortName": "Partial sums and output shards",
+    "role": "Derive the communication operation from the partitioned matrix axis and the next consumer’s required result layout.",
+    "description": "A compiler must preserve both a tensor’s values and who owns them. Splitting matrix output rows gives different ranks independent output rows; splitting the contracted inner dimension gives each rank only part of every output sum. Those are different meanings of a local matrix product, even if the local arrays have similar shapes. JAX’s explicit sharding example forms local products and then reduces their partial sums. A sum all-reduce makes the completed result available at every rank. Reduce-scatter instead finishes the sum while distributing different output pieces, and all-gather can later assemble those pieces when a consumer needs a replica. Concatenating unfinished partial sums does not perform their missing arithmetic. This distinction connects tensor-axis information in a compiler to the collective scheduled over the network. It also prevents allocating replicas merely because the preceding stage happened to use all-reduce. A valid next operator may consume distributed rows directly, while another needs a different layout and an explicit conversion. The example below uses exactly representable small integers; its equality does not imply arbitrary floating-point reduction trees are bitwise identical.",
+    "mechanism": [
+      "Declare C = AB, the complete tensor shapes, stored element size and required consumer ownership before partitioning.",
+      "Split the inner dimension into disjoint sets Kᵣ; each rank receives matching columns of A and rows of B.",
+      "Compute Cᵣ locally. Each Cᵣ covers all output coordinates but contains only the products indexed by Kᵣ.",
+      "Add contributions with matching output coordinates. Use all-reduce for replicated C or reduce-scatter for completed disjoint output shards.",
+      "Retain row shards when the next operation can use them; all-gather only when the consumer requires the whole tensor.",
+      "Check every output against a separate dense reference, and count a sent payload once at its chosen link boundary. Input distribution, temporary buffers and protocol overhead are additional costs."
+    ],
+    "prerequisites": [
+      "compiler-layout-lowering",
+      "nccl",
+      "parallelism"
+    ],
+    "related": [
+      "systolic-array-dataflow",
+      "fabric-collective-traffic",
+      "runtime-device-dispatch",
+      "floating-point-reduction-order"
+    ],
+    "specs": [
+      {
+        "label": "Contracted-axis split",
+        "value": "Partial sums overlap in output coordinates",
+        "context": "Requires addition, not concatenation."
+      },
+      {
+        "label": "Output-row split",
+        "value": "Disjoint completed rows",
+        "context": "Concatenation can reconstruct the global output without summing corresponding rows."
+      },
+      {
+        "label": "Consumer contract",
+        "value": "Replicated or sharded result",
+        "context": "The useful collective is determined by the required layout."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Compiler sharding plan",
+        "direction": "in",
+        "signal": "Tensor shapes, partitioned axes, dtype and input ownership"
+      },
+      {
+        "name": "Consumer-ready output",
+        "direction": "out",
+        "signal": "Completed values with explicit per-rank coordinates"
+      }
+    ],
+    "science": [
+      {
+        "title": "Inner-dimension partition preserves the sum",
+        "equation": "Cᵣ[i,j] = Σk∈Kᵣ A[i,k]B[k,j]; C[i,j] = Σr Cᵣ[i,j]",
+        "explanation": "The disjoint Kᵣ sets cover the contracted dimension exactly once. Each rank contributes to the same output coordinates.",
+        "assumptions": "Exact real arithmetic or the small integer example; floating-point summation order can change rounding. No duplicated or omitted contracted indices."
+      },
+      {
+        "title": "Two-rank payload ledger",
+        "equation": "Qreduce-scatter = 8 bytes/rank; Qall-gather = 8 bytes/rank; Qcombined = 16 bytes/rank",
+        "explanation": "For this explicitly described two-rank, 2×2 float32-output schedule, each phase sends one two-element row per rank.",
+        "assumptions": "Logical payload sent by each rank in this chosen exchange; excludes initial input placement, headers, retransmission, local reads/writes and actual collective implementation details."
+      }
+    ],
+    "engineeringExample": "Use A = [[1,2],[3,4]] and B = [[5,6],[7,8]]. Rank 0 owns k=0 and forms C₀ = [[5,6],[15,18]]; rank 1 owns k=1 and forms C₁ = [[14,16],[28,32]]. Reduce-scatter with row ownership sends C₀ row 1 [15,18] from rank 0 to rank 1, and C₁ row 0 [14,16] in the opposite direction. Rank 0 adds [5,6]+[14,16]=[19,22]; rank 1 adds [15,18]+[28,32]=[43,50]. Each sends 8 payload bytes if elements are float32. If both consumers need all of C, all-gather exchanges these completed rows for another 8 bytes sent per rank. Both then hold [[19,22],[43,50]]. Total sent payload is 16 bytes per rank, 32 across the two senders; counting the matching receives again would double-count this network boundary. Concatenating the two original 2×2 partial matrices would create four rows and would leave their sums unfinished.",
+    "learningObjective": "Reconstruct the same 2×2 product from inner-dimension shards, choose a collective from output ownership, and reconcile the two-rank payload ledger.",
+    "misconception": "A shard can be an unfinished contribution to every output, not necessarily a disjoint piece of the finished output.",
+    "check": {
+      "question": "Each rank computed all output coordinates using a different half of the contracted dimension. Is concatenating those local arrays enough?",
+      "options": [
+        "No: matching coordinates still require a sum",
+        "Yes: more rows complete the dot products",
+        "Yes: any collective performs the missing multiplication"
+      ],
+      "answer": 0,
+      "explanation": "The local arrays are partial sums over different k indices. Reduce them before choosing replicated or sharded ownership."
+    },
+    "checks": [
+      {
+        "question": "After the stated reduce-scatter, which row belongs to rank 1?",
+        "options": [
+          "[14,16]",
+          "[43,50]",
+          "[19,22]"
+        ],
+        "answer": 1,
+        "explanation": "Rank 1 combines both partial contributions to the second output row."
+      },
+      {
+        "question": "How many payload bytes are sent across both ranks in the two stated phases?",
+        "options": [
+          "16 bytes",
+          "32 bytes",
+          "64 bytes"
+        ],
+        "answer": 1,
+        "explanation": "Two ranks each send 8 bytes in each of two phases. The same received bytes are not added again."
+      }
+    ],
+    "whyAI": "Distributed linear layers become correct only when the compiler and runtime finish the same tensor operation and deliver its expected ownership. Avoiding an unnecessary replica can also save memory and communication.",
+    "tradeoff": "A shard-preserving collective may save result replication, but a later consumer can reintroduce an all-gather or resharding cost. Logical bytes alone do not predict network latency.",
+    "evidenceNotes": "The sources establish sharding and collective semantics. All matrices, the two-row exchange schedule and byte counts here are synthetic. This is not an observed NCCL implementation, a topology model or a performance comparison.",
+    "sourceIds": [
+      "jax-sharded-matmul",
+      "nccl-layout-semantics"
+    ],
+    "sources": [
+      {
+        "title": "JAX — Manual parallelism with shard_map",
+        "url": "https://docs.jax.dev/en/latest/notebooks/shard_map.html"
+      },
+      {
+        "title": "NVIDIA NCCL — Collective Operations",
+        "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html"
+      }
+    ],
+    "workedTrace": {
+      "id": "two-rank-inner-split",
+      "arithmetic": "exact signed integer products and sums; four-byte representation used only for the payload ledger",
+      "input": {
+        "a": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "b": [
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "partitions": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "bytesPerElement": 4
+      },
+      "partialProducts": [
+        [
+          [
+            5,
+            6
+          ],
+          [
+            15,
+            18
+          ]
+        ],
+        [
+          [
+            14,
+            16
+          ],
+          [
+            28,
+            32
+          ]
+        ]
+      ],
+      "reduceScatterRows": [
+        [
+          19,
+          22
+        ],
+        [
+          43,
+          50
+        ]
+      ],
+      "gatheredByRank": [
+        [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ],
+        [
+          [
+            19,
+            22
+          ],
+          [
+            43,
+            50
+          ]
+        ]
+      ],
+      "phases": [
+        {
+          "id": "reduce-scatter",
+          "sends": [
+            {
+              "from": 0,
+              "to": 1,
+              "payload": [
+                15,
+                18
+              ],
+              "bytes": 8
+            },
+            {
+              "from": 1,
+              "to": 0,
+              "payload": [
+                14,
+                16
+              ],
+              "bytes": 8
+            }
+          ]
+        },
+        {
+          "id": "all-gather",
+          "sends": [
+            {
+              "from": 0,
+              "to": 1,
+              "payload": [
+                19,
+                22
+              ],
+              "bytes": 8
+            },
+            {
+              "from": 1,
+              "to": 0,
+              "payload": [
+                43,
+                50
+              ],
+              "bytes": 8
+            }
+          ]
+        }
+      ],
+      "totalSentBytes": 32
+    },
+    "level": "software",
+    "branch": "Executable software",
+    "subbranch": "Distributed computation to useful output",
+    "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+    "kind": "system",
+    "workstream": "W11",
+    "visualFamily": "software-flow",
+    "labId": "engineering",
+    "investigationId": "execution",
+    "labScope": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson.",
+    "history": [],
+    "deepLabId": "network",
+    "scope": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+  },
+  "chapter": {
+    "id": "distributed-output-bridges",
+    "domainId": "executable-software",
+    "read": "Follow the worked values and declared numerical contract. Software boxes denote dependencies and ownership, not physical layers or measured timing."
+  },
+  "formalEquations": [
+    {
+      "latex": "C^{(r)}_{ij}=\\sum_{k\\in K_r}A_{ik}B_{kj},\\qquad C_{ij}=\\sum_{r=0}^{P-1}C^{(r)}_{ij}",
+      "text": "Rank r sums products for its contracted indices K_r; completed C sums the rank contributions at matching coordinates.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Cij",
+          "meaning": "Completed matrix output element",
+          "unit": "value"
+        },
+        {
+          "symbol": "C(r)ij",
+          "meaning": "Partial contribution from rank r",
+          "unit": "value"
+        },
+        {
+          "symbol": "Aik, Bkj",
+          "meaning": "Input matrix elements",
+          "unit": "value"
+        },
+        {
+          "symbol": "Kr",
+          "meaning": "Disjoint contracted indices assigned to rank r",
+          "unit": "index set"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Number of participating ranks",
+          "unit": "count"
+        }
+      ]
+    },
+    {
+      "latex": "Q_{\\mathrm{RS}}=2\\times4=8\\ \\mathrm{bytes/rank},\\quad Q_{\\mathrm{AG}}=8\\ \\mathrm{bytes/rank},\\quad Q_{\\mathrm{sent}}=2(8+8)=32\\ \\mathrm{bytes}",
+      "text": "This two-rank schedule sends two float32 values per rank per phase: eight bytes for reduce-scatter and eight for all-gather, giving thirty-two bytes across both senders.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "QRS",
+          "meaning": "Payload sent by each rank in the chosen reduce-scatter exchange",
+          "unit": "bytes/rank"
+        },
+        {
+          "symbol": "QAG",
+          "meaning": "Payload sent by each rank in the chosen all-gather exchange",
+          "unit": "bytes/rank"
+        },
+        {
+          "symbol": "Qsent",
+          "meaning": "Payload sent across both ranks and both phases",
+          "unit": "bytes"
+        }
+      ]
+    }
+  ]
+}

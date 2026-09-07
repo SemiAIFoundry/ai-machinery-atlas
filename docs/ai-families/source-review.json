@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-07",
+  "actor": {
+    "kind": "agent",
+    "id": "/root",
+    "assistance": "Web retrieval and source reading"
+  },
+  "scope": "Named mathematical mechanisms read at primary sources; no independent domain specialist review",
+  "uses": [
+    {
+      "url": "https://arxiv.org/html/1701.06538v1",
+      "locator": "Sections 2\u20133",
+      "support": "Sparse selection and normalized expert mixtures",
+      "limit": "The atlas fits two scalar regressors with an authored gate; it does not reproduce the paper\u2019s learned gate or reported language results.",
+      "status": "AI source-scope read"
+    },
+    {
+      "url": "https://arxiv.org/html/2111.00396v3",
+      "locator": "Sections 2.3\u20132.4",
+      "support": "Recurrence and convolution representations of a linear state-space computation",
+      "limit": "The scalar teaching recurrence has no structured S4 parameterization, trained kernel or reported long-sequence result.",
+      "status": "AI source-scope read"
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.Conv2d.html",
+      "locator": "Definition of valid 2D cross-correlation and output shape",
+      "support": "A valid local cross-correlation produces a smaller output grid",
+      "limit": "The two filters and input images are authored; PyTorch is not executed in the browser.",
+      "status": "AI source-scope read"
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fft.html",
+      "locator": "Forward transform definition and normalization",
+      "support": "Negative-exponent discrete Fourier transform and default forward normalization",
+      "limit": "The atlas directly sums 32 terms; it does not execute an FFT library or report a PSD.",
+      "status": "AI source-scope read"
+    },
+    {
+      "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.windows.hann.html",
+      "locator": "Notes formula and sym parameter",
+      "support": "Symmetric Hann window uses N\u22121 in its cosine denominator",
+      "limit": "The finite window does not restore frequencies already lost by sampling.",
+      "status": "AI source-scope read"
+    },
+    {
+      "url": "https://arxiv.org/html/2006.11239v2",
+      "locator": "Sections 2\u20133, forward marginal and reverse-process equations",
+      "support": "Variance schedule, noisy marginal and epsilon-parameterized reverse mean",
+      "limit": "The atlas substitutes a nonparametric scalar regressor and finite schedule; the source does not validate its sample quality.",
+      "status": "AI source-scope read"
+    }
+  ]
+}

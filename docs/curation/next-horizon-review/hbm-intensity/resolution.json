@@ -1,0 +1,15 @@
+{
+  "recordedOn": "2026-09-07",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root",
+    "role": "AI integration author and primary-source scope reviewer"
+  },
+  "before": "before-snapshot.json",
+  "after": "reviewed-snapshot.json",
+  "finding": "Direct original PDF recovered; prior unresolved attribution replaced with a dated supplier claim under the same stable ID.",
+  "oldUrl": "https://investors.micron.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+  "recoveredUrl": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+  "formulaChanged": false,
+  "labDefaultsChanged": false
+}

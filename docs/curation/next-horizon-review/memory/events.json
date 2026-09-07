@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "agent-source-scope-hbf-latency-prefetch-2026-09-07",
+      "lessonId": "hbf-latency-prefetch",
+      "type": "source-scope",
+      "contentFingerprint": "b4642fc12ee8e9ea76de498cbe4a9a35359564d8ae1298c577f612ac9d8554f9",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbf-latency-prefetch-snapshot.json",
+      "reviewedSourceIds": [
+        "url-5d748862c1c9009aa823",
+        "url-f3280737ae7f629d9622"
+      ],
+      "reviewedClaimIds": [
+        "depth-claim-hbf-scope"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-5d748862c1c9009aa823",
+          "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "July 2025 fact sheet, page 3, footnote 1"
+          ],
+          "notes": "The comparison uses an internal per-kernel weight-read simulation; larger access units and longer latency are explicitly qualified. No arbitrary request, training-write or whole-service performance follows."
+        },
+        {
+          "sourceId": "url-f3280737ae7f629d9622",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/topics/topics-51.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "September 20, 2023, opening NAND access/erase explanation and Figure 1 discussion"
+          ],
+          "notes": "Page operations and block erasure impose different access and delay boundaries. This supports NAND distinctions only; its SSD sizes and timings are not substituted for HBF specifications."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "depth-claim-hbf-scope",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The internal simulation limitation and absence of general latency/page defaults remain explicit."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. 1e12 bytes/s × 20e-6 s = 20e6 bytes = 20 MB. 1024/16384 = 1/16 = 6.25%. Rates and request sizes are synthetic; page reuse invalidates the no-reuse efficiency assumption. Read-tier and hierarchy prerequisites preserve distinct transfer boundaries; placement permits a read-oriented scenario without asserting physically read-only NAND. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "agent-source-scope-hbf-read-tier-contract-2026-09-07",
+      "lessonId": "hbf-read-tier-contract",
+      "type": "source-scope",
+      "contentFingerprint": "4a4b09a05b0e4576fbd5d3a83ad75adf59ce50b61dfe2554bdb46f520cd7c5bd",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbf-read-tier-contract-snapshot.json",
+      "reviewedSourceIds": [
+        "url-b258a2363dd269464779",
+        "url-8a781a56ee79d98b61e8",
+        "url-1ea46f5723da8c34a3e2"
+      ],
+      "reviewedClaimIds": [
+        "depth-claim-hbf-spec"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-b258a2363dd269464779",
+          "url": "https://news.skhynix.com/en/hbf-at-fms-2026/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "August 4, 2026, paragraphs describing stack configurations, bandwidth grades and processor interconnect"
+          ],
+          "notes": "Confirms the dated announced specification range and UCIe interface. This is a specification announcement, without measured deployment throughput or a particular host compatibility certificate."
+        },
+        {
+          "sourceId": "url-8a781a56ee79d98b61e8",
+          "url": "https://investor.sandisk.com/node/8126/pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "August 3, 2026, page 1: release through OCP; system-interface/electrical/packaging/software guidelines paragraph"
+          ],
+          "notes": "Confirms the first technical-specification release and read/write software scope. The one-day date difference from the SK hynix release is retained as source-specific, not a contradiction or a shipping date."
+        },
+        {
+          "sourceId": "url-1ea46f5723da8c34a3e2",
+          "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "May 3, 2023 Q&A: Compliance Testing; repeatable/known latency; link initialization and compatibility data"
+          ],
+          "notes": "Training, negotiated link parameters and transaction behavior extend beyond a shared interface label. No HBF-specific signaling default is imported from this earlier UCIe discussion."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "depth-claim-hbf-spec",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Announced capacity/grades/interface remain dated and qualified; neither the announcement nor a common link establishes a volume-shipping workload result."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. 100e9 bytes / 1e12 bytes/s = 0.1 s payload-only floor. A positive usable rate, single direction and compatible decimal units are required. Interface-choice and link-compatibility prerequisites separate bandwidth arithmetic from negotiated compatibility. Geometry is an abstract topology, not a disclosed floorplan. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "agent-source-scope-hbm-base-phy-controller-2026-09-07",
+      "lessonId": "hbm-base-phy-controller",
+      "type": "source-scope",
+      "contentFingerprint": "e2cc45b841c55207b6e0220c3cd7e46670797745f07b5bc477e6b358cd17a19e",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbm-base-phy-controller-snapshot.json",
+      "reviewedSourceIds": [
+        "url-dbd96dc7b5fd154235b2",
+        "url-68876ab7e350dda637ab",
+        "url-506a55bc0c864af1071c"
+      ],
+      "reviewedClaimIds": [
+        "fab-claim-hbm4-organization",
+        "fab-claim-hbm-base-collaboration"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-dbd96dc7b5fd154235b2",
+          "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "April 19, 2024 announcement, base-die and advanced-logic-process collaboration paragraphs"
+          ],
+          "notes": "Supports distinct core/base-die roles and a planned process collaboration. Current production or host-controller relocation is not inferred."
+        },
+        {
+          "sourceId": "url-68876ab7e350dda637ab",
+          "url": "https://www.synopsys.com/designware-ip/interface-ip/hbm/hbm3-controller.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "HBM3 Controller IP overview and Highlights & Key Features: dynamic scheduling, refresh and DFI interface"
+          ],
+          "notes": "Identifies controller scheduling, protocol maintenance and the separate PHY interface. HBM3 configuration details are not generalized to every generation."
+        },
+        {
+          "sourceId": "url-506a55bc0c864af1071c",
+          "url": "https://www.synopsys.com/content/dam/synopsys/resources/dw/hbm4-phy-datasheet.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Page 1, Overview and Highlights; page 2, timing/skew and training; page 3 footer 05/27/26"
+          ],
+          "notes": "Confirms controller/PHY separation, disclosed channel organization and timing/training functions for this named IP. Its disclosure is not a shipped-stack performance benchmark."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "fab-claim-hbm4-organization",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The named PHY datasheet directly supports its aggregate width and channel partition; no deployed performance is inferred."
+        },
+        {
+          "claimId": "fab-claim-hbm-base-collaboration",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The 2024 base-die collaboration is a dated announcement, not proof of current qualification or allocation."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. 1/(8e9 transfers/s) = 125e-12 s. 32 × 64 = 64 × 32 = 2048 data bits. Capacity does not enter the unit-interval calculation. Controller and stack-assembly prerequisites preserve scheduling versus physical signaling versus storage ownership. The timing-margin expression is a declared illustrative additive budget, not a signoff equation. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "agent-source-scope-hbm-tc-ncf-route-2026-09-07",
+      "lessonId": "hbm-tc-ncf-route",
+      "type": "source-scope",
+      "contentFingerprint": "b0061f6f219670f9f41bcde4832ef6bfd63c6ddd1a6032aca3978ff92b4d0fe7",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbm-tc-ncf-route-snapshot.json",
+      "reviewedSourceIds": [
+        "url-ba853b10116d83397966"
+      ],
+      "reviewedClaimIds": [
+        "depth-claim-tcncf"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-ba853b10116d83397966",
+          "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "February 27, 2024 announcement: TC NCF, film thickness/voids, bump roles and final sampling paragraph"
+          ],
+          "notes": "Supports the named historical thermocompression-film route, metallic signal joints and sampling status. No generic recipe, curing schedule, yield ranking or serial tool throughput is taken from the announcement."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "depth-claim-tcncf",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The announced named route and sampling date are supported; production was a plan in that source."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. Twelve strictly serial placements at (0.3+0.7) s plus 3 s handling = 15 s occupied time. Parallel stations or batch curing would invalidate this serial occupancy prediction. Bump-joint and stack-height prerequisites preserve metallic conduction, insulating film and counted interfaces. The enlarged bond-line drawing and synthetic occupancy are not a process window. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "sources": [
+    {
+      "id": "instructor-scr-checkpoint",
+      "title": "LLNL SCR 3.1.0 — Integrate SCR",
+      "url": "https://scr.readthedocs.io/en/latest/users/integration.html",
+      "publisher": "Lawrence Livermore National Laboratory / SCR project",
+      "published": "3.1.0 documentation; page publication date not stated",
+      "checkedOn": "2026-09-07",
+      "locator": "Checkpoint: SCR_Complete_output(valid); Restart with SCR: SCR_Have_restart, SCR_Start_restart, SCR_Complete_restart",
+      "scope": "Completion/validity and available checkpoint restart. The atlas atomic commit delay, deterministic faults and all numerical values are synthetic."
+    },
+    {
+      "id": "instructor-lbnl-metering",
+      "title": "DOE/LBNL — Data Center Metering and Resource Guide",
+      "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf",
+      "publisher": "US Department of Energy / Lawrence Berkeley National Laboratory",
+      "published": "2017-02",
+      "checkedOn": "2026-09-07",
+      "locator": "Section 2.1, Power Usage Effectiveness; section 3.2, Energy vs. Power",
+      "scope": "Nested facility/IT energy boundary and distinction between power and energy. The fixed PUE and phase powers in H7 are not measured data."
+    }
+  ],
+  "claims": [
+    {
+      "id": "instructor-claim-valid-checkpoint",
+      "title": "Restart requires a valid available checkpoint",
+      "statement": "SCR defines checkpoint completion and validity, and provides an API to restart from available checkpoint state.",
+      "sourceId": "instructor-scr-checkpoint",
+      "lessonIds": [
+        "retained-work-restart-boundary"
+      ],
+      "status": "documented-mechanism",
+      "metric": "Checkpoint validity",
+      "value": "not numerical",
+      "unit": "not applicable",
+      "denominator": "SCR checkpoint/restart operation",
+      "period": "SCR 3.1.0 documentation",
+      "scope": "Software checkpoint validity; H7 uses a simpler synthetic atomic-commit rule.",
+      "limitations": "No vendor hardware fault rate, storage durability guarantee or universally optimal checkpoint policy is inferred.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "instructor-claim-energy-boundary",
+      "title": "Facility and IT energy are distinct nested boundaries",
+      "statement": "PUE compares facility energy with IT equipment energy; power is an energy rate.",
+      "sourceId": "instructor-lbnl-metering",
+      "lessonIds": [
+        "retained-work-restart-boundary"
+      ],
+      "status": "documented-principle",
+      "metric": "PUE",
+      "value": "ratio",
+      "unit": "dimensionless",
+      "denominator": "IT equipment energy over the same observation interval",
+      "period": "2017-02 guide",
+      "scope": "The example uses a constant synthetic ratio consistently over all phases.",
+      "limitations": "The chosen 1.25 is not an observed annual or fleet PUE, and PUE is not a productivity metric.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "syntheticCalculations": {
+    "contractId": "H7",
+    "basis": "Included executable operating-hall model; independently derived timeline and energy arithmetic",
+    "sourceEndorsement": false,
+    "retainedSteps": 13,
+    "durableSteps": 8,
+    "lostWorkEquivalents": 2.75,
+    "itEnergyJ": 137,
+    "facilityEnergyJ": 171.25
+  }
+}

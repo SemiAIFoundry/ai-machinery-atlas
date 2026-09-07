@@ -1,0 +1,1883 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "evaluated-applications-1",
+  "evidence": {
+    "status": "agent-authored-and-automatically-tested",
+    "specialistReview": null,
+    "humanLearnerValidation": null,
+    "createdOn": "2026-09-07",
+    "actorType": "agent"
+  },
+  "title": "Two applications, two ways to fail",
+  "scope": "Computed results on fully visible synthetic examples. No observed equipment data, private data, provider benchmark or real latency measurement.",
+  "applications": [
+    {
+      "id": "sensor-classifier",
+      "title": "Fit a sensor decision rule",
+      "objective": "Trace data normalization, logistic predictions, loss, batch gradients and parameter updates; judge a threshold on explicitly separate examples.",
+      "controls": [
+        {
+          "field": "steps",
+          "label": "Training updates",
+          "type": "integer",
+          "min": 0,
+          "max": 80,
+          "default": 24
+        },
+        {
+          "field": "learningRate",
+          "label": "Learning rate",
+          "type": "number",
+          "min": 0.01,
+          "max": 1,
+          "default": 0.3
+        },
+        {
+          "field": "featureSet",
+          "label": "Available features",
+          "type": "enum",
+          "values": [
+            "both",
+            "temperature",
+            "vibration"
+          ],
+          "default": "both"
+        },
+        {
+          "field": "l2",
+          "label": "L2 strength",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "field": "decisionThreshold",
+          "label": "Decision threshold",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.5
+        },
+        {
+          "field": "minimumRecall",
+          "label": "Required toy recall",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.8
+        },
+        {
+          "field": "maximumFalsePositiveRate",
+          "label": "Allowed toy false-positive rate",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.2
+        },
+        {
+          "field": "latencyBudgetUs",
+          "label": "Hypothetical latency budget (µs)",
+          "type": "number",
+          "min": 0,
+          "max": 10000,
+          "default": 25
+        }
+      ],
+      "split": {
+        "fit": "8 training samples only",
+        "evaluate": "6 distinct authored evaluation samples",
+        "normalization": "Mean and population standard deviation fitted on training only",
+        "labelConvention": "All authored examples label vibration at or above 2.5 mm/s as class 1. This is an invented toy rule, not an equipment limit or safety recommendation."
+      },
+      "data": {
+        "version": "synthetic-sensor-data-1",
+        "training": [
+          {
+            "id": "train-01",
+            "temperatureC": 25,
+            "vibrationMmS": 1,
+            "label": 0,
+            "note": "Synthetic ordinary condition"
+          },
+          {
+            "id": "train-02",
+            "temperatureC": 28,
+            "vibrationMmS": 1.2,
+            "label": 0,
+            "note": "Synthetic ordinary condition"
+          },
+          {
+            "id": "train-03",
+            "temperatureC": 31,
+            "vibrationMmS": 1.1,
+            "label": 0,
+            "note": "Synthetic ordinary condition"
+          },
+          {
+            "id": "train-04",
+            "temperatureC": 35,
+            "vibrationMmS": 1.8,
+            "label": 0,
+            "note": "Synthetic ordinary condition"
+          },
+          {
+            "id": "train-05",
+            "temperatureC": 37,
+            "vibrationMmS": 3,
+            "label": 1,
+            "note": "Synthetic inspection-needed label"
+          },
+          {
+            "id": "train-06",
+            "temperatureC": 40,
+            "vibrationMmS": 3.6,
+            "label": 1,
+            "note": "Synthetic inspection-needed label"
+          },
+          {
+            "id": "train-07",
+            "temperatureC": 43,
+            "vibrationMmS": 4,
+            "label": 1,
+            "note": "Synthetic inspection-needed label"
+          },
+          {
+            "id": "train-08",
+            "temperatureC": 46,
+            "vibrationMmS": 4.4,
+            "label": 1,
+            "note": "Synthetic inspection-needed label"
+          }
+        ],
+        "evaluation": [
+          {
+            "id": "eval-01",
+            "temperatureC": 27,
+            "vibrationMmS": 1.1,
+            "label": 0,
+            "note": "Held-out ordinary example"
+          },
+          {
+            "id": "eval-02",
+            "temperatureC": 34,
+            "vibrationMmS": 2.2,
+            "label": 0,
+            "note": "Held-out near-boundary example"
+          },
+          {
+            "id": "eval-03",
+            "temperatureC": 39,
+            "vibrationMmS": 3.1,
+            "label": 1,
+            "note": "Held-out inspection-needed example"
+          },
+          {
+            "id": "eval-04",
+            "temperatureC": 44,
+            "vibrationMmS": 3.8,
+            "label": 1,
+            "note": "Held-out inspection-needed example"
+          },
+          {
+            "id": "eval-05",
+            "temperatureC": 45,
+            "vibrationMmS": 1,
+            "label": 0,
+            "note": "Warm but low vibration: breaks the training correlation"
+          },
+          {
+            "id": "eval-06",
+            "temperatureC": 29,
+            "vibrationMmS": 3.8,
+            "label": 1,
+            "note": "Cool but high vibration: breaks the training correlation"
+          }
+        ]
+      },
+      "firstTrainingStep": {
+        "index": 0,
+        "before": {
+          "weights": [
+            0,
+            0
+          ],
+          "bias": 0
+        },
+        "rows": [
+          {
+            "sampleId": "train-01",
+            "features": [
+              -1.550073214529686,
+              -1.155424171049375
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 0,
+            "prediction": 1,
+            "correct": false,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic ordinary condition",
+            "weightGradient": [
+              -0.775036607264843,
+              -0.5777120855246874
+            ],
+            "biasGradient": 0.5
+          },
+          {
+            "sampleId": "train-02",
+            "features": [
+              -1.112405483368363,
+              -1.0026408095883006
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 0,
+            "prediction": 1,
+            "correct": false,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic ordinary condition",
+            "weightGradient": [
+              -0.5562027416841815,
+              -0.5013204047941503
+            ],
+            "biasGradient": 0.5
+          },
+          {
+            "sampleId": "train-03",
+            "features": [
+              -0.6747377522070398,
+              -1.0790324903188377
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 0,
+            "prediction": 1,
+            "correct": false,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic ordinary condition",
+            "weightGradient": [
+              -0.3373688761035199,
+              -0.5395162451594189
+            ],
+            "biasGradient": 0.5
+          },
+          {
+            "sampleId": "train-04",
+            "features": [
+              -0.09118077732527566,
+              -0.5442907252050775
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 0,
+            "prediction": 1,
+            "correct": false,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic ordinary condition",
+            "weightGradient": [
+              -0.04559038866263783,
+              -0.27214536260253874
+            ],
+            "biasGradient": 0.5
+          },
+          {
+            "sampleId": "train-05",
+            "features": [
+              0.20059771011560643,
+              0.3724094435613686
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 1,
+            "prediction": 1,
+            "correct": true,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic inspection-needed label",
+            "weightGradient": [
+              -0.10029885505780321,
+              -0.1862047217806843
+            ],
+            "biasGradient": -0.5
+          },
+          {
+            "sampleId": "train-06",
+            "features": [
+              0.6382654412769295,
+              0.8307595279445917
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 1,
+            "prediction": 1,
+            "correct": true,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic inspection-needed label",
+            "weightGradient": [
+              -0.31913272063846476,
+              -0.41537976397229587
+            ],
+            "biasGradient": -0.5
+          },
+          {
+            "sampleId": "train-07",
+            "features": [
+              1.0759331724382528,
+              1.1363262508667404
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 1,
+            "prediction": 1,
+            "correct": true,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic inspection-needed label",
+            "weightGradient": [
+              -0.5379665862191264,
+              -0.5681631254333702
+            ],
+            "biasGradient": -0.5
+          },
+          {
+            "sampleId": "train-08",
+            "features": [
+              1.5136009035995759,
+              1.4418929737888895
+            ],
+            "logit": 0,
+            "probability": 0.5,
+            "label": 1,
+            "prediction": 1,
+            "correct": true,
+            "crossEntropy": 0.6931471805599453,
+            "note": "Synthetic inspection-needed label",
+            "weightGradient": [
+              -0.7568004517997879,
+              -0.7209464868944447
+            ],
+            "biasGradient": -0.5
+          }
+        ],
+        "meanDataLossBefore": 0.6931471805599453,
+        "penaltyBefore": 0,
+        "objectiveBefore": 0.6931471805599453,
+        "dataGradient": {
+          "weights": [
+            -0.4285496534287956,
+            -0.4726735245201988
+          ],
+          "bias": 0
+        },
+        "regularizationGradient": {
+          "weights": [
+            0,
+            0
+          ],
+          "bias": 0
+        },
+        "gradient": {
+          "weights": [
+            -0.4285496534287956,
+            -0.4726735245201988
+          ],
+          "bias": 0
+        },
+        "after": {
+          "weights": [
+            0.12856489602863866,
+            0.14180205735605964
+          ],
+          "bias": 0
+        },
+        "objectiveAfter": 0.5799473461578404,
+        "evaluationAfter": {
+          "count": 6,
+          "tp": 3,
+          "tn": 2,
+          "fp": 1,
+          "fn": 0,
+          "accuracy": 0.8333333333333334,
+          "precision": 0.75,
+          "recall": 1,
+          "falsePositiveRate": 0.3333333333333333,
+          "meanCrossEntropy": 0.6303065839036534
+        }
+      },
+      "examples": {
+        "default": {
+          "options": {
+            "steps": 24,
+            "learningRate": 0.3,
+            "decisionThreshold": 0.5,
+            "featureSet": "both",
+            "l2": 0,
+            "minimumRecall": 0.8,
+            "maximumFalsePositiveRate": 0.2,
+            "latencyBudgetUs": 25,
+            "cost": {
+              "fixedLatencyUs": 20,
+              "featureMacLatencyUs": 0.02,
+              "sigmoidLatencyUs": 0.1
+            }
+          },
+          "parameters": {
+            "weights": [
+              1.1042573673792624,
+              1.3704370970391402
+            ],
+            "bias": 0.017713670569301072
+          },
+          "training": {
+            "count": 8,
+            "tp": 4,
+            "tn": 4,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1,
+            "precision": 1,
+            "recall": 1,
+            "falsePositiveRate": 0,
+            "meanCrossEntropy": 0.14930749756893721
+          },
+          "evaluation": {
+            "count": 6,
+            "tp": 3,
+            "tn": 3,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1,
+            "precision": 1,
+            "recall": 1,
+            "falsePositiveRate": 0,
+            "meanCrossEntropy": 0.34296213658863933
+          },
+          "errors": [],
+          "qualityGate": {
+            "basis": "User-selected teaching criteria on these 6 synthetic evaluation cases; no deployment certification.",
+            "recallPassed": true,
+            "falsePositiveRatePassed": true,
+            "passed": true
+          },
+          "resourceScenario": {
+            "basis": "Hypothetical additive per-reading cost, not browser or hardware timing. Binary64 coefficient payload only; excludes object/allocator/runtime overhead.",
+            "modeledInferenceUs": 20.14,
+            "latencyBudgetUs": 25,
+            "latencyPassed": true,
+            "activeFeatures": 2,
+            "coefficientWords": 3,
+            "coefficientPayloadBytes": 24,
+            "featurePayloadBytes": 16,
+            "trainingCoreFeatureMacs": 384,
+            "trainingCoreGradientFeatureProducts": 384,
+            "trainingCoreSigmoidCalls": 192,
+            "workCountScope": "Core batch-gradient calculations only. Extra evaluations, diagnostic traces, scaling, index/loop operations and exponent/log implementations are excluded from this resource scenario."
+          }
+        },
+        "temperatureOnly": {
+          "options": {
+            "steps": 24,
+            "learningRate": 0.3,
+            "decisionThreshold": 0.5,
+            "featureSet": "temperature",
+            "l2": 0,
+            "minimumRecall": 0.8,
+            "maximumFalsePositiveRate": 0.2,
+            "latencyBudgetUs": 25,
+            "cost": {
+              "fixedLatencyUs": 20,
+              "featureMacLatencyUs": 0.02,
+              "sigmoidLatencyUs": 0.1
+            }
+          },
+          "parameters": {
+            "weights": [
+              1.6449884904920495,
+              0
+            ],
+            "bias": -0.005707299760647431
+          },
+          "training": {
+            "count": 8,
+            "tp": 4,
+            "tn": 4,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1,
+            "precision": 1,
+            "recall": 1,
+            "falsePositiveRate": 0,
+            "meanCrossEntropy": 0.276056667039153
+          },
+          "evaluation": {
+            "count": 6,
+            "tp": 2,
+            "tn": 2,
+            "fp": 1,
+            "fn": 1,
+            "accuracy": 0.6666666666666666,
+            "precision": 0.6666666666666666,
+            "recall": 0.6666666666666666,
+            "falsePositiveRate": 0.3333333333333333,
+            "meanCrossEntropy": 0.8757266393049111
+          },
+          "errors": [
+            {
+              "sampleId": "eval-05",
+              "features": [
+                1.3677116598791348,
+                0
+              ],
+              "logit": 2.244162639052306,
+              "probability": 0.9041458256078602,
+              "label": 0,
+              "prediction": 1,
+              "correct": false,
+              "crossEntropy": 2.34492725913845,
+              "note": "Warm but low vibration: breaks the training correlation"
+            },
+            {
+              "sampleId": "eval-06",
+              "features": [
+                -0.9665162396479219,
+                0
+              ],
+              "logit": -1.5956153898551344,
+              "probability": 0.16859531703280559,
+              "label": 1,
+              "prediction": 0,
+              "correct": false,
+              "crossEntropy": 1.7802540094062667,
+              "note": "Cool but high vibration: breaks the training correlation"
+            }
+          ],
+          "qualityGate": {
+            "basis": "User-selected teaching criteria on these 6 synthetic evaluation cases; no deployment certification.",
+            "recallPassed": false,
+            "falsePositiveRatePassed": false,
+            "passed": false
+          },
+          "resourceScenario": {
+            "basis": "Hypothetical additive per-reading cost, not browser or hardware timing. Binary64 coefficient payload only; excludes object/allocator/runtime overhead.",
+            "modeledInferenceUs": 20.12,
+            "latencyBudgetUs": 25,
+            "latencyPassed": true,
+            "activeFeatures": 1,
+            "coefficientWords": 2,
+            "coefficientPayloadBytes": 16,
+            "featurePayloadBytes": 8,
+            "trainingCoreFeatureMacs": 192,
+            "trainingCoreGradientFeatureProducts": 192,
+            "trainingCoreSigmoidCalls": 192,
+            "workCountScope": "Core batch-gradient calculations only. Extra evaluations, diagnostic traces, scaling, index/loop operations and exponent/log implementations are excluded from this resource scenario."
+          }
+        },
+        "vibrationOnly": {
+          "options": {
+            "steps": 24,
+            "learningRate": 0.3,
+            "decisionThreshold": 0.5,
+            "featureSet": "vibration",
+            "l2": 0,
+            "minimumRecall": 0.8,
+            "maximumFalsePositiveRate": 0.2,
+            "latencyBudgetUs": 25,
+            "cost": {
+              "fixedLatencyUs": 20,
+              "featureMacLatencyUs": 0.02,
+              "sigmoidLatencyUs": 0.1
+            }
+          },
+          "parameters": {
+            "weights": [
+              0,
+              1.798992497738407
+            ],
+            "bias": 0.01636064706455607
+          },
+          "training": {
+            "count": 8,
+            "tp": 4,
+            "tn": 4,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1,
+            "precision": 1,
+            "recall": 1,
+            "falsePositiveRate": 0,
+            "meanCrossEntropy": 0.19151100022634265
+          },
+          "evaluation": {
+            "count": 6,
+            "tp": 3,
+            "tn": 3,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1,
+            "precision": 1,
+            "recall": 1,
+            "falsePositiveRate": 0,
+            "meanCrossEntropy": 0.23958358214395323
+          },
+          "errors": [],
+          "qualityGate": {
+            "basis": "User-selected teaching criteria on these 6 synthetic evaluation cases; no deployment certification.",
+            "recallPassed": true,
+            "falsePositiveRatePassed": true,
+            "passed": true
+          },
+          "resourceScenario": {
+            "basis": "Hypothetical additive per-reading cost, not browser or hardware timing. Binary64 coefficient payload only; excludes object/allocator/runtime overhead.",
+            "modeledInferenceUs": 20.12,
+            "latencyBudgetUs": 25,
+            "latencyPassed": true,
+            "activeFeatures": 1,
+            "coefficientWords": 2,
+            "coefficientPayloadBytes": 16,
+            "featurePayloadBytes": 8,
+            "trainingCoreFeatureMacs": 192,
+            "trainingCoreGradientFeatureProducts": 192,
+            "trainingCoreSigmoidCalls": 192,
+            "workCountScope": "Core batch-gradient calculations only. Extra evaluations, diagnostic traces, scaling, index/loop operations and exponent/log implementations are excluded from this resource scenario."
+          }
+        }
+      },
+      "questions": [
+        "Before updating, what sign should each mean weight gradient have?",
+        "Why does temperature-only training classify the warm, low-vibration example as positive?",
+        "Can changing the decision threshold correct both correlation-breaking errors without changing the learned ranking?",
+        "Does a lower training loss certify behavior on measurements unlike these examples?"
+      ],
+      "limitations": [
+        "The labels and sensor readings are authored synthetic teaching data, not observed equipment measurements or safety thresholds.",
+        "Normalization and updates use training data only. Repeatedly selecting settings after viewing the held-out examples turns them into development feedback, not an untouched test of generalization.",
+        "The decision threshold changes confusion counts without changing fitted parameters or cross-entropy. A low training loss does not prove useful behavior on shifted cases.",
+        "Temperature and vibration correlate in training; deliberately separated evaluation cases expose reliance on that correlation. This is an illustration, not causal identification.",
+        "Precision/recall/false-positive rates with a zero denominator are null, not silently scored as zero or one.",
+        "Quality and latency gates are separate, explicitly selected teaching constraints. No real application or vendor performance claim is made."
+      ],
+      "sourceIds": [
+        "stanford-logistic",
+        "sklearn-leakage",
+        "sklearn-metrics"
+      ]
+    },
+    {
+      "id": "cited-retrieval",
+      "title": "Retrieve, cite and evaluate a fact",
+      "objective": "Inspect term counts, corpus IDF, cosine products, top-K selection, deterministic answer construction and separate support/relevance grades.",
+      "controls": [
+        {
+          "field": "topK",
+          "label": "Retrieved passages",
+          "type": "integer",
+          "min": 1,
+          "max": 4,
+          "default": 2
+        },
+        {
+          "field": "minScore",
+          "label": "Minimum cosine score",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.1
+        },
+        {
+          "field": "answerMode",
+          "label": "Sentence-selection rule",
+          "type": "enum",
+          "values": [
+            "top-passage",
+            "slot-filtered"
+          ],
+          "default": "slot-filtered"
+        },
+        {
+          "field": "queryId",
+          "label": "Question to inspect",
+          "type": "enum",
+          "values": [
+            "tune-01",
+            "tune-02",
+            "tune-03",
+            "tune-04",
+            "tune-05",
+            "tune-06",
+            "question-01",
+            "question-02",
+            "question-03",
+            "question-04",
+            "question-05",
+            "question-06",
+            "question-07"
+          ],
+          "default": "question-03"
+        },
+        {
+          "field": "minimumTaskAccuracy",
+          "label": "Required toy task accuracy",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.8
+        },
+        {
+          "field": "maximumUnsupportedFraction",
+          "label": "Allowed unsupported-answer fraction",
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        {
+          "field": "latencyBudgetUs",
+          "label": "Hypothetical latency budget (µs)",
+          "type": "number",
+          "min": 0,
+          "max": 1000000,
+          "default": 100
+        }
+      ],
+      "split": {
+        "fit": "7 reference passages fit vocabulary/IDF; no query labels",
+        "tune": "6 tuning questions select among 11 score thresholds",
+        "evaluate": "7 distinct held-out questions; 5 answerable and 2 absent facts",
+        "answerBoundary": "Answer builder receives text and documents. Expected fact IDs are available only to the scorer."
+      },
+      "data": {
+        "version": "fictional-manual-data-1",
+        "documents": [
+          {
+            "id": "alder-interval",
+            "title": "Fictional Alder manual",
+            "text": "Alder sampling interval is 20 milliseconds.",
+            "facts": [
+              {
+                "id": "alder-interval-fact",
+                "documentId": "alder-interval",
+                "entity": "Alder",
+                "attribute": "sampleIntervalMs",
+                "value": 20,
+                "unit": "ms",
+                "statement": "Alder sampling interval is 20 milliseconds."
+              }
+            ]
+          },
+          {
+            "id": "alder-input",
+            "title": "Fictional Alder manual",
+            "text": "Alder input voltage limit is 3 volts.",
+            "facts": [
+              {
+                "id": "alder-input-fact",
+                "documentId": "alder-input",
+                "entity": "Alder",
+                "attribute": "inputLimitV",
+                "value": 3,
+                "unit": "V",
+                "statement": "Alder input voltage limit is 3 volts."
+              }
+            ]
+          },
+          {
+            "id": "alder-logs",
+            "title": "Fictional Alder manual",
+            "text": "Alder retains logs for 7 days.",
+            "facts": [
+              {
+                "id": "alder-logs-fact",
+                "documentId": "alder-logs",
+                "entity": "Alder",
+                "attribute": "logRetentionDays",
+                "value": 7,
+                "unit": "days",
+                "statement": "Alder retains logs for 7 days."
+              }
+            ]
+          },
+          {
+            "id": "birch-interval",
+            "title": "Fictional Birch manual",
+            "text": "Birch sampling interval is 50 milliseconds.",
+            "facts": [
+              {
+                "id": "birch-interval-fact",
+                "documentId": "birch-interval",
+                "entity": "Birch",
+                "attribute": "sampleIntervalMs",
+                "value": 50,
+                "unit": "ms",
+                "statement": "Birch sampling interval is 50 milliseconds."
+              }
+            ]
+          },
+          {
+            "id": "birch-input",
+            "title": "Fictional Birch manual",
+            "text": "Birch input voltage limit is 5 volts.",
+            "facts": [
+              {
+                "id": "birch-input-fact",
+                "documentId": "birch-input",
+                "entity": "Birch",
+                "attribute": "inputLimitV",
+                "value": 5,
+                "unit": "V",
+                "statement": "Birch input voltage limit is 5 volts."
+              }
+            ]
+          },
+          {
+            "id": "birch-logs",
+            "title": "Fictional Birch manual",
+            "text": "Birch retains logs for 14 days.",
+            "facts": [
+              {
+                "id": "birch-logs-fact",
+                "documentId": "birch-logs",
+                "entity": "Birch",
+                "attribute": "logRetentionDays",
+                "value": 14,
+                "unit": "days",
+                "statement": "Birch retains logs for 14 days."
+              }
+            ]
+          },
+          {
+            "id": "cedar-interval",
+            "title": "Fictional Cedar manual",
+            "text": "Cedar sampling interval is 20 milliseconds.",
+            "facts": [
+              {
+                "id": "cedar-interval-fact",
+                "documentId": "cedar-interval",
+                "entity": "Cedar",
+                "attribute": "sampleIntervalMs",
+                "value": 20,
+                "unit": "ms",
+                "statement": "Cedar sampling interval is 20 milliseconds."
+              }
+            ]
+          }
+        ],
+        "tuning": [
+          {
+            "id": "tune-01",
+            "question": "What is Alder sampling interval?",
+            "expectedFactIds": [
+              "alder-interval-fact"
+            ],
+            "note": "Tuning query; direct wording"
+          },
+          {
+            "id": "tune-02",
+            "question": "What is Birch input voltage limit?",
+            "expectedFactIds": [
+              "birch-input-fact"
+            ],
+            "note": "Tuning query; direct wording"
+          },
+          {
+            "id": "tune-03",
+            "question": "How many days does Alder retain logs?",
+            "expectedFactIds": [
+              "alder-logs-fact"
+            ],
+            "note": "Tuning query; retention wording"
+          },
+          {
+            "id": "tune-04",
+            "question": "What is Cedar sampling interval?",
+            "expectedFactIds": [
+              "cedar-interval-fact"
+            ],
+            "note": "Tuning query; direct wording"
+          },
+          {
+            "id": "tune-05",
+            "question": "What is Birch sampling interval?",
+            "expectedFactIds": [
+              "birch-interval-fact"
+            ],
+            "note": "Tuning query; direct wording"
+          },
+          {
+            "id": "tune-06",
+            "question": "What is Cedar log retention?",
+            "expectedFactIds": [],
+            "note": "Tuning query; this fact is absent from the corpus"
+          }
+        ],
+        "evaluation": [
+          {
+            "id": "question-01",
+            "question": "What is Alder input voltage limit?",
+            "expectedFactIds": [
+              "alder-input-fact"
+            ],
+            "note": "Held-out query about an indexed fact"
+          },
+          {
+            "id": "question-02",
+            "question": "What is Birch sampling cadence?",
+            "expectedFactIds": [
+              "birch-interval-fact"
+            ],
+            "note": "Held-out partial paraphrase"
+          },
+          {
+            "id": "question-03",
+            "question": "Alder is the old bench; what is Birch sampling interval?",
+            "expectedFactIds": [
+              "birch-interval-fact"
+            ],
+            "note": "Two entities; first-entity parsing is deliberately inadequate"
+          },
+          {
+            "id": "question-04",
+            "question": "How many days does Birch retain logs?",
+            "expectedFactIds": [
+              "birch-logs-fact"
+            ],
+            "note": "Held-out retention query"
+          },
+          {
+            "id": "question-05",
+            "question": "What is Cedar input voltage limit?",
+            "expectedFactIds": [],
+            "note": "Unanswerable in this corpus; an input limit must not be invented"
+          },
+          {
+            "id": "question-06",
+            "question": "What is the reading cadence of Alder?",
+            "expectedFactIds": [
+              "alder-interval-fact"
+            ],
+            "note": "Lexical paraphrase beyond the simple attribute parser"
+          },
+          {
+            "id": "question-07",
+            "question": "Who manufactured Birch?",
+            "expectedFactIds": [],
+            "note": "Unanswerable in this corpus; a related citation would not answer it"
+          }
+        ]
+      },
+      "selectedQuery": {
+        "queryId": "question-03",
+        "note": "Two entities; first-entity parsing is deliberately inadequate",
+        "expectedFactIds": [
+          "birch-interval-fact"
+        ],
+        "trace": {
+          "question": "Alder is the old bench; what is Birch sampling interval?",
+          "tokens": [
+            "alder",
+            "old",
+            "bench",
+            "birch",
+            "sampling",
+            "interval"
+          ],
+          "ignoredTerms": [
+            "old",
+            "bench"
+          ],
+          "queryWeights": [
+            {
+              "term": "alder",
+              "count": 1,
+              "documentFrequency": 3,
+              "idf": 0.8472978603872037,
+              "weight": 0.8472978603872037
+            },
+            {
+              "term": "birch",
+              "count": 1,
+              "documentFrequency": 3,
+              "idf": 0.8472978603872037,
+              "weight": 0.8472978603872037
+            },
+            {
+              "term": "interval",
+              "count": 1,
+              "documentFrequency": 3,
+              "idf": 0.8472978603872037,
+              "weight": 0.8472978603872037
+            },
+            {
+              "term": "sampling",
+              "count": 1,
+              "documentFrequency": 3,
+              "idf": 0.8472978603872037,
+              "weight": 0.8472978603872037
+            }
+          ],
+          "queryNorm": 1.6945957207744073,
+          "ranked": [
+            {
+              "documentId": "alder-interval",
+              "score": 0.6030920082857512,
+              "dot": 2.1537409926502,
+              "documentNorm": 2.10738456673201,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "alder",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                },
+                {
+                  "term": "interval",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                },
+                {
+                  "term": "sampling",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            },
+            {
+              "documentId": "birch-interval",
+              "score": 0.49254766755566537,
+              "dot": 2.1537409926502,
+              "documentNorm": 2.580352876074008,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "birch",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                },
+                {
+                  "term": "interval",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                },
+                {
+                  "term": "sampling",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            },
+            {
+              "documentId": "cedar-interval",
+              "score": 0.30918909584518056,
+              "dot": 1.4358273284334666,
+              "documentNorm": 2.74038726388808,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "interval",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                },
+                {
+                  "term": "sampling",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            },
+            {
+              "documentId": "alder-logs",
+              "score": 0.13957642066561077,
+              "dot": 0.7179136642167333,
+              "documentNorm": 3.0352471296606454,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "alder",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            },
+            {
+              "documentId": "birch-logs",
+              "score": 0.13957642066561077,
+              "dot": 0.7179136642167333,
+              "documentNorm": 3.0352471296606454,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "birch",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            },
+            {
+              "documentId": "alder-input",
+              "score": 0.12901898675621695,
+              "dot": 0.7179136642167333,
+              "documentNorm": 3.283616937668965,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "alder",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            },
+            {
+              "documentId": "birch-input",
+              "score": 0.12901898675621695,
+              "dot": 0.7179136642167333,
+              "documentNorm": 3.283616937668965,
+              "queryNorm": 1.6945957207744073,
+              "overlap": [
+                {
+                  "term": "birch",
+                  "queryWeight": 0.8472978603872037,
+                  "documentWeight": 0.8472978603872037,
+                  "product": 0.7179136642167333
+                }
+              ]
+            }
+          ],
+          "selectedDocumentIds": [
+            "alder-interval",
+            "birch-interval"
+          ],
+          "slots": {
+            "entity": "Alder",
+            "attribute": "sampleIntervalMs",
+            "mentionedEntities": [
+              "Alder",
+              "Birch"
+            ],
+            "rule": "First named known entity; explicit attribute keyword groups. No negation, coreference or general semantic understanding."
+          },
+          "answer": {
+            "text": "Alder sampling interval is 20 milliseconds.",
+            "fact": {
+              "id": "alder-interval-fact",
+              "documentId": "alder-interval",
+              "entity": "Alder",
+              "attribute": "sampleIntervalMs",
+              "value": 20,
+              "unit": "ms",
+              "statement": "Alder sampling interval is 20 milliseconds."
+            },
+            "citation": {
+              "documentId": "alder-interval",
+              "quote": "Alder sampling interval is 20 milliseconds."
+            }
+          },
+          "selectionReason": "Copy the first surviving fact matching the simple entity/attribute slots.",
+          "resourceScenario": {
+            "basis": "Hypothetical per-query additive cost; not observed runtime, provider latency or tokenizer billing.",
+            "dictionaryProbes": 28,
+            "weightProducts": 12,
+            "contextTokenCount": 12,
+            "contextTokenConvention": "ASCII word/number tokens before stop-word filtering; not LLM tokens.",
+            "modeledLatencyUs": 63.4,
+            "latencyBudgetUs": 100,
+            "latencyPassed": true
+          }
+        },
+        "grade": {
+          "answered": true,
+          "expectedAnswerAvailable": true,
+          "sourceSupported": true,
+          "answerValueCorrect": false,
+          "taskCorrect": false,
+          "citationChecks": {
+            "knownFact": true,
+            "correctDocument": true,
+            "exactFactFields": true,
+            "exactQuote": true
+          }
+        },
+        "retrievedExpected": true
+      },
+      "calibration": {
+        "basis": "Only tuning questions and their labels select this threshold. Highest tuning task accuracy wins; ties prefer the higher threshold.",
+        "usedQueryIds": [
+          "tune-01",
+          "tune-02",
+          "tune-03",
+          "tune-04",
+          "tune-05",
+          "tune-06"
+        ],
+        "trials": [
+          {
+            "minScore": 0,
+            "metrics": {
+              "count": 6,
+              "answered": 5,
+              "abstained": 1,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 6,
+              "incorrect": 0,
+              "taskAccuracy": 1,
+              "supportedAnswers": 5,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 1,
+              "retrievalRecallAtK": 1,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.1,
+            "metrics": {
+              "count": 6,
+              "answered": 5,
+              "abstained": 1,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 6,
+              "incorrect": 0,
+              "taskAccuracy": 1,
+              "supportedAnswers": 5,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 1,
+              "retrievalRecallAtK": 1,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.2,
+            "metrics": {
+              "count": 6,
+              "answered": 5,
+              "abstained": 1,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 6,
+              "incorrect": 0,
+              "taskAccuracy": 1,
+              "supportedAnswers": 5,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 1,
+              "retrievalRecallAtK": 1,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.3,
+            "metrics": {
+              "count": 6,
+              "answered": 5,
+              "abstained": 1,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 6,
+              "incorrect": 0,
+              "taskAccuracy": 1,
+              "supportedAnswers": 5,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 1,
+              "retrievalRecallAtK": 1,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.4,
+            "metrics": {
+              "count": 6,
+              "answered": 5,
+              "abstained": 1,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 6,
+              "incorrect": 0,
+              "taskAccuracy": 1,
+              "supportedAnswers": 5,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 1,
+              "retrievalRecallAtK": 1,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.5,
+            "metrics": {
+              "count": 6,
+              "answered": 5,
+              "abstained": 1,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 6,
+              "incorrect": 0,
+              "taskAccuracy": 1,
+              "supportedAnswers": 5,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 1,
+              "retrievalRecallAtK": 1,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.6,
+            "metrics": {
+              "count": 6,
+              "answered": 4,
+              "abstained": 2,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 5,
+              "incorrect": 1,
+              "taskAccuracy": 0.8333333333333334,
+              "supportedAnswers": 4,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 0.8,
+              "retrievalRecallAtK": 0.8,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.7,
+            "metrics": {
+              "count": 6,
+              "answered": 2,
+              "abstained": 4,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 3,
+              "incorrect": 3,
+              "taskAccuracy": 0.5,
+              "supportedAnswers": 2,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 0.4,
+              "retrievalRecallAtK": 0.4,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.8,
+            "metrics": {
+              "count": 6,
+              "answered": 1,
+              "abstained": 5,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 2,
+              "incorrect": 4,
+              "taskAccuracy": 0.3333333333333333,
+              "supportedAnswers": 1,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": 1,
+              "unsupportedFractionAmongAnswers": 0,
+              "correctAnswersAmongAnswerable": 0.2,
+              "retrievalRecallAtK": 0.2,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 0.9,
+            "metrics": {
+              "count": 6,
+              "answered": 0,
+              "abstained": 6,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 1,
+              "incorrect": 5,
+              "taskAccuracy": 0.16666666666666666,
+              "supportedAnswers": 0,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": null,
+              "unsupportedFractionAmongAnswers": null,
+              "correctAnswersAmongAnswerable": 0,
+              "retrievalRecallAtK": 0,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          },
+          {
+            "minScore": 1,
+            "metrics": {
+              "count": 6,
+              "answered": 0,
+              "abstained": 6,
+              "answerable": 5,
+              "unanswerable": 1,
+              "correct": 1,
+              "incorrect": 5,
+              "taskAccuracy": 0.16666666666666666,
+              "supportedAnswers": 0,
+              "unsupportedAnswers": 0,
+              "sourceSupportAmongAnswers": null,
+              "unsupportedFractionAmongAnswers": null,
+              "correctAnswersAmongAnswerable": 0,
+              "retrievalRecallAtK": 0,
+              "correctAbstentions": 1,
+              "unanswerableAbstentionRecall": 1
+            }
+          }
+        ],
+        "recommendedMinScore": 0.5
+      },
+      "examples": {
+        "default": {
+          "options": {
+            "topK": 2,
+            "minScore": 0.1,
+            "answerMode": "slot-filtered",
+            "queryId": "question-03",
+            "minimumTaskAccuracy": 0.8,
+            "maximumUnsupportedFraction": 0,
+            "latencyBudgetUs": 100,
+            "cost": {
+              "fixedLatencyUs": 50,
+              "dictionaryProbeLatencyUs": 0.05,
+              "contextTokenLatencyUs": 1
+            }
+          },
+          "tuning": {
+            "count": 6,
+            "answered": 5,
+            "abstained": 1,
+            "answerable": 5,
+            "unanswerable": 1,
+            "correct": 6,
+            "incorrect": 0,
+            "taskAccuracy": 1,
+            "supportedAnswers": 5,
+            "unsupportedAnswers": 0,
+            "sourceSupportAmongAnswers": 1,
+            "unsupportedFractionAmongAnswers": 0,
+            "correctAnswersAmongAnswerable": 1,
+            "retrievalRecallAtK": 1,
+            "correctAbstentions": 1,
+            "unanswerableAbstentionRecall": 1
+          },
+          "evaluation": {
+            "count": 7,
+            "answered": 4,
+            "abstained": 3,
+            "answerable": 5,
+            "unanswerable": 2,
+            "correct": 5,
+            "incorrect": 2,
+            "taskAccuracy": 0.7142857142857143,
+            "supportedAnswers": 4,
+            "unsupportedAnswers": 0,
+            "sourceSupportAmongAnswers": 1,
+            "unsupportedFractionAmongAnswers": 0,
+            "correctAnswersAmongAnswerable": 0.6,
+            "retrievalRecallAtK": 1,
+            "correctAbstentions": 2,
+            "unanswerableAbstentionRecall": 1
+          },
+          "errors": [
+            {
+              "queryId": "question-03",
+              "question": "Alder is the old bench; what is Birch sampling interval?",
+              "answer": {
+                "text": "Alder sampling interval is 20 milliseconds.",
+                "fact": {
+                  "id": "alder-interval-fact",
+                  "documentId": "alder-interval",
+                  "entity": "Alder",
+                  "attribute": "sampleIntervalMs",
+                  "value": 20,
+                  "unit": "ms",
+                  "statement": "Alder sampling interval is 20 milliseconds."
+                },
+                "citation": {
+                  "documentId": "alder-interval",
+                  "quote": "Alder sampling interval is 20 milliseconds."
+                }
+              },
+              "expectedFactIds": [
+                "birch-interval-fact"
+              ],
+              "grade": {
+                "answered": true,
+                "expectedAnswerAvailable": true,
+                "sourceSupported": true,
+                "answerValueCorrect": false,
+                "taskCorrect": false,
+                "citationChecks": {
+                  "knownFact": true,
+                  "correctDocument": true,
+                  "exactFactFields": true,
+                  "exactQuote": true
+                }
+              }
+            },
+            {
+              "queryId": "question-06",
+              "question": "What is the reading cadence of Alder?",
+              "answer": null,
+              "expectedFactIds": [
+                "alder-interval-fact"
+              ],
+              "grade": {
+                "answered": false,
+                "expectedAnswerAvailable": true,
+                "sourceSupported": null,
+                "answerValueCorrect": null,
+                "taskCorrect": false,
+                "citationChecks": null
+              }
+            }
+          ],
+          "qualityGate": {
+            "basis": "User-selected criteria on the explicitly listed synthetic held-out query set; source support and task relevance are scored separately.",
+            "accuracyPassed": false,
+            "sourceSupportPassed": true,
+            "passed": false
+          },
+          "indexResourceScenario": {
+            "basis": "Sparse payload convention only: one 32-bit term ID and one binary64 weight per nonzero pair. Excludes strings, metadata, postings pointers, runtime objects and index construction.",
+            "documentCount": 7,
+            "vocabularySize": 19,
+            "nonzeroWeights": 37,
+            "sparsePairPayloadBytes": 444
+          }
+        },
+        "topPassage": {
+          "options": {
+            "topK": 2,
+            "minScore": 0.1,
+            "answerMode": "top-passage",
+            "queryId": "question-03",
+            "minimumTaskAccuracy": 0.8,
+            "maximumUnsupportedFraction": 0,
+            "latencyBudgetUs": 100,
+            "cost": {
+              "fixedLatencyUs": 50,
+              "dictionaryProbeLatencyUs": 0.05,
+              "contextTokenLatencyUs": 1
+            }
+          },
+          "tuning": {
+            "count": 6,
+            "answered": 6,
+            "abstained": 0,
+            "answerable": 5,
+            "unanswerable": 1,
+            "correct": 5,
+            "incorrect": 1,
+            "taskAccuracy": 0.8333333333333334,
+            "supportedAnswers": 6,
+            "unsupportedAnswers": 0,
+            "sourceSupportAmongAnswers": 1,
+            "unsupportedFractionAmongAnswers": 0,
+            "correctAnswersAmongAnswerable": 1,
+            "retrievalRecallAtK": 1,
+            "correctAbstentions": 0,
+            "unanswerableAbstentionRecall": 0
+          },
+          "evaluation": {
+            "count": 7,
+            "answered": 7,
+            "abstained": 0,
+            "answerable": 5,
+            "unanswerable": 2,
+            "correct": 4,
+            "incorrect": 3,
+            "taskAccuracy": 0.5714285714285714,
+            "supportedAnswers": 7,
+            "unsupportedAnswers": 0,
+            "sourceSupportAmongAnswers": 1,
+            "unsupportedFractionAmongAnswers": 0,
+            "correctAnswersAmongAnswerable": 0.8,
+            "retrievalRecallAtK": 1,
+            "correctAbstentions": 0,
+            "unanswerableAbstentionRecall": 0
+          },
+          "errors": [
+            {
+              "queryId": "question-03",
+              "question": "Alder is the old bench; what is Birch sampling interval?",
+              "answer": {
+                "text": "Alder sampling interval is 20 milliseconds.",
+                "fact": {
+                  "id": "alder-interval-fact",
+                  "documentId": "alder-interval",
+                  "entity": "Alder",
+                  "attribute": "sampleIntervalMs",
+                  "value": 20,
+                  "unit": "ms",
+                  "statement": "Alder sampling interval is 20 milliseconds."
+                },
+                "citation": {
+                  "documentId": "alder-interval",
+                  "quote": "Alder sampling interval is 20 milliseconds."
+                }
+              },
+              "expectedFactIds": [
+                "birch-interval-fact"
+              ],
+              "grade": {
+                "answered": true,
+                "expectedAnswerAvailable": true,
+                "sourceSupported": true,
+                "answerValueCorrect": false,
+                "taskCorrect": false,
+                "citationChecks": {
+                  "knownFact": true,
+                  "correctDocument": true,
+                  "exactFactFields": true,
+                  "exactQuote": true
+                }
+              }
+            },
+            {
+              "queryId": "question-05",
+              "question": "What is Cedar input voltage limit?",
+              "answer": {
+                "text": "Alder input voltage limit is 3 volts.",
+                "fact": {
+                  "id": "alder-input-fact",
+                  "documentId": "alder-input",
+                  "entity": "Alder",
+                  "attribute": "inputLimitV",
+                  "value": 3,
+                  "unit": "V",
+                  "statement": "Alder input voltage limit is 3 volts."
+                },
+                "citation": {
+                  "documentId": "alder-input",
+                  "quote": "Alder input voltage limit is 3 volts."
+                }
+              },
+              "expectedFactIds": [],
+              "grade": {
+                "answered": true,
+                "expectedAnswerAvailable": false,
+                "sourceSupported": true,
+                "answerValueCorrect": false,
+                "taskCorrect": false,
+                "citationChecks": {
+                  "knownFact": true,
+                  "correctDocument": true,
+                  "exactFactFields": true,
+                  "exactQuote": true
+                }
+              }
+            },
+            {
+              "queryId": "question-07",
+              "question": "Who manufactured Birch?",
+              "answer": {
+                "text": "Birch sampling interval is 50 milliseconds.",
+                "fact": {
+                  "id": "birch-interval-fact",
+                  "documentId": "birch-interval",
+                  "entity": "Birch",
+                  "attribute": "sampleIntervalMs",
+                  "value": 50,
+                  "unit": "ms",
+                  "statement": "Birch sampling interval is 50 milliseconds."
+                },
+                "citation": {
+                  "documentId": "birch-interval",
+                  "quote": "Birch sampling interval is 50 milliseconds."
+                }
+              },
+              "expectedFactIds": [],
+              "grade": {
+                "answered": true,
+                "expectedAnswerAvailable": false,
+                "sourceSupported": true,
+                "answerValueCorrect": false,
+                "taskCorrect": false,
+                "citationChecks": {
+                  "knownFact": true,
+                  "correctDocument": true,
+                  "exactFactFields": true,
+                  "exactQuote": true
+                }
+              }
+            }
+          ],
+          "qualityGate": {
+            "basis": "User-selected criteria on the explicitly listed synthetic held-out query set; source support and task relevance are scored separately.",
+            "accuracyPassed": false,
+            "sourceSupportPassed": true,
+            "passed": false
+          },
+          "indexResourceScenario": {
+            "basis": "Sparse payload convention only: one 32-bit term ID and one binary64 weight per nonzero pair. Excludes strings, metadata, postings pointers, runtime objects and index construction.",
+            "documentCount": 7,
+            "vocabularySize": 19,
+            "nonzeroWeights": 37,
+            "sparsePairPayloadBytes": 444
+          }
+        }
+      },
+      "questions": [
+        "Which term products produce the top two passage scores?",
+        "Does the exact Alder citation answer a question asking about Birch?",
+        "When should a missing manual fact produce an abstention?",
+        "Why does retrieving the expected passage fail to guarantee that the selector uses it?"
+      ],
+      "limitations": [
+        "All reference facts describe a fictional manual; they are not real equipment specifications.",
+        "This is TF–IDF retrieval plus deterministic sentence selection, not a language model or a benchmark of general question answering.",
+        "Index fitting uses documents; threshold calibration uses only tuning queries. Repeatedly choosing settings after seeing held-out results makes those queries development feedback.",
+        "A citation can exactly support a copied sentence while that sentence answers the wrong entity or attribute. Such a response fails task correctness even with sourceSupportAmongAnswers = 1.",
+        "Exact support checks establish agreement with this closed corpus and fact schema, not truth in the world or semantic support for arbitrary generated prose.",
+        "The slot parser chooses the first named entity and narrow keywords. It deliberately does not solve negation, reference, paraphrase or competing entities.",
+        "Quality, abstention and hypothetical latency/payload estimates have separate denominators and assumptions. No vendor timing or broad capability claim is made."
+      ],
+      "sourceIds": [
+        "stanford-tfidf",
+        "stanford-query-vectors",
+        "sklearn-leakage"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "stanford-logistic",
+      "title": "CS229 Lecture Notes — logistic regression",
+      "authors": "Tengyu Ma and Andrew Ng",
+      "url": "https://cs229.stanford.edu/main_notes.pdf",
+      "locator": "Chapter 2, §2.1, printed pages 21–24; equations 2.1–2.6",
+      "sourceDate": "2026-08-23",
+      "checkedOn": "2026-09-07",
+      "checkedBy": {
+        "actorType": "agent",
+        "role": "automated implementation assistant"
+      },
+      "supports": "Sigmoid conditional model, Bernoulli log likelihood and logistic-loss gradient.",
+      "doesNotEstablish": "Our synthetic labels, learning-rate settings, cost assumptions or observed toy scores."
+    },
+    {
+      "id": "sklearn-leakage",
+      "title": "scikit-learn: Common pitfalls — data leakage",
+      "authors": "scikit-learn developers",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage",
+      "locator": "§12.2 and §12.2.1, Data leakage / How to avoid data leakage",
+      "sourceDate": null,
+      "checkedOn": "2026-09-07",
+      "checkedBy": {
+        "actorType": "agent",
+        "role": "automated implementation assistant"
+      },
+      "supports": "Fit preprocessing on training data; keep evaluation observations out of model fitting and selection.",
+      "doesNotEstablish": "This tiny authored split is representative, untouched after exploration or sufficient for real deployment."
+    },
+    {
+      "id": "sklearn-metrics",
+      "title": "scikit-learn: precision_score",
+      "authors": "scikit-learn developers",
+      "url": "https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html",
+      "locator": "Definition, See also recall_score, and Notes / zero_division parameter",
+      "sourceDate": null,
+      "checkedOn": "2026-09-07",
+      "checkedBy": {
+        "actorType": "agent",
+        "role": "automated implementation assistant"
+      },
+      "supports": "Precision TP/(TP+FP) and recall TP/(TP+FN), with explicit undefined-denominator handling.",
+      "doesNotEstablish": "Our null convention or user-selected quality thresholds are library defaults or industrial standards."
+    },
+    {
+      "id": "stanford-tfidf",
+      "title": "Introduction to Information Retrieval — Tf-idf weighting",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/tf-idf-weighting-1.html",
+      "locator": "§6.2.2, equation 22; inverse document frequency referenced at equation 21",
+      "sourceDate": "2008",
+      "checkedOn": "2026-09-07",
+      "checkedBy": {
+        "actorType": "agent",
+        "role": "automated implementation assistant"
+      },
+      "supports": "Term-frequency and inverse-document-frequency weighting; our explicit raw-TF, natural-log choice is a teaching variant.",
+      "doesNotEstablish": "Facts in the fictional manuals, a learned embedding model, or our slot parser."
+    },
+    {
+      "id": "stanford-query-vectors",
+      "title": "Introduction to Information Retrieval — Queries as vectors",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan and Hinrich Schütze",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/queries-as-vectors-1.html",
+      "locator": "§6.3.2, equation 27",
+      "sourceDate": "2008",
+      "checkedOn": "2026-09-07",
+      "checkedBy": {
+        "actorType": "agent",
+        "role": "automated implementation assistant"
+      },
+      "supports": "Query–document cosine similarity and ranking under a stated vector weighting convention.",
+      "doesNotEstablish": "Cosine is probability, exact source support implies responsiveness, or this case measures language-model quality."
+    }
+  ],
+  "costControls": {
+    "sensor": {
+      "fixedLatencyUs": {
+        "default": 20,
+        "min": 0,
+        "max": 10000
+      },
+      "featureMacLatencyUs": {
+        "default": 0.02,
+        "min": 0,
+        "max": 100
+      },
+      "sigmoidLatencyUs": {
+        "default": 0.1,
+        "min": 0,
+        "max": 100
+      }
+    },
+    "retrieval": {
+      "fixedLatencyUs": {
+        "default": 50,
+        "min": 0,
+        "max": 10000
+      },
+      "dictionaryProbeLatencyUs": {
+        "default": 0.05,
+        "min": 0,
+        "max": 10000
+      },
+      "contextTokenLatencyUs": {
+        "default": 1,
+        "min": 0,
+        "max": 10000
+      }
+    },
+    "basis": "All numbers are synthetic user-editable assumptions, not measured timing. Metrics from toy predictions remain unchanged when cost parameters change."
+  }
+}

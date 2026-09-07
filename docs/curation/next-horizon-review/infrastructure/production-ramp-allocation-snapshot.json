@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:38:43.614Z",
+  "lessonId": "production-ramp-allocation",
+  "contentFingerprint": "fe17238e7ad15a7f27f42cddf9a1ece457d75371a8e90f469f1ac2dcc6dc3ca9",
+  "record": {
+    "id": "production-ramp-allocation",
+    "level": "infrastructure",
+    "name": "Production ramps, inventory and allocation",
+    "shortName": "Production ramps, inventory and allocation",
+    "role": "Tracks time-dependent output and distinguishes qualified supply from a customer’s accessible share.",
+    "description": "A capacity announcement describes a plan or installed capability, while output ramps as equipment, process performance and qualification mature. Inventory can buffer delays, but repeated visits and queued work make factory cycle time longer than processing time. A finished product may then be reserved, contracted or allocated to a different customer. TSMC’s annual report describes customer-linked capacity planning without revealing private allocation shares. Physical output and access require separate accounting: completed equipment can exist without being allocated to the workload in question. Increasing a nominal monthly capacity input must not instantly create finished inventory before its lead time and qualification gates have elapsed.",
+    "specs": [
+      {
+        "label": "Three time concepts",
+        "value": "Processing, waiting and qualification delay",
+        "context": "All can affect first usable output without representing the same work."
+      },
+      {
+        "label": "Supply versus access",
+        "value": "Qualified production and allocated units",
+        "context": "Physical existence does not establish availability to a particular buyer."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Capacity plan and incoming inventory",
+        "direction": "in",
+        "signal": "Time-varying starts, lead times and screening assumptions"
+      },
+      {
+        "name": "Allocated qualified supply",
+        "direction": "out",
+        "signal": "Finished units released to a defined destination and date"
+      }
+    ],
+    "tradeoff": "Inventory improves resilience to some delays but consumes resources and can become mismatched when designs change; conservative ramps reduce overcommitment.",
+    "whyAI": "Hardware availability for a training program depends on arrival dates and allocation, not merely on a supplier’s eventual nameplate capacity.",
+    "related": [
+      "compatible-supply-capacity",
+      "capacity-phase-geography",
+      "scheduler"
+    ],
+    "sources": [
+      {
+        "title": "TSMC 2025 Annual Report",
+        "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf"
+      }
+    ],
+    "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+    "kind": "architecture",
+    "branch": "Data-center physical systems",
+    "subbranch": "Capacity, ramps and commissioning",
+    "mechanism": [
+      "Represent the announced or installed capability separately from actual starts and completed units.",
+      "Delay output by processing and waiting time, with qualification as its own release gate.",
+      "Update inventory as compatible inputs arrive and finished products consume them.",
+      "Allocate qualified output using explicit scenario rules rather than guessing confidential customer shares.",
+      "Compare the time-dependent delivered result with the intended deployment schedule and identify the current bottleneck."
+    ],
+    "misconception": "Capex is not production volume, and supplier capacity does not identify a customer’s allocated share.",
+    "check": {
+      "question": "Why can a capacity increase fail to improve next week’s deliveries?",
+      "options": [
+        "Lead time, qualification or another input can delay output",
+        "Capacity and inventory are always identical",
+        "All reservations disappear when a tool arrives"
+      ],
+      "answer": 0,
+      "explanation": "A change in possible starts takes time to propagate and may encounter another required input or release gate."
+    },
+    "science": [
+      {
+        "title": "Inventory conservation",
+        "equation": "I(t+1) = I(t) + arrivals(t) − consumption(t)",
+        "explanation": "Every term counts the same compatible item over the same time step.",
+        "assumptions": "No hidden scrap or rework; those flows must be explicitly added when modeled."
+      }
+    ],
+    "prerequisites": [
+      "compatible-supply-capacity"
+    ],
+    "learningObjective": "Model ramps and allocation without treating future capacity as immediate inventory.",
+    "workstream": "W09",
+    "visualFamily": "capacity-flow",
+    "engineeringExample": "Synthetic three-week lead time means extra starts in week one cannot become completed supply until week four at the earliest. A customer allocated half that output receives only that half, even if total factory output is larger.",
+    "evidenceNotes": "Allocation fractions and delays are synthetic. TSMC source material supports planning roles, not confidential queues, customer shares or current unit-per-month estimates.",
+    "labId": "engineering",
+    "scope": "Trace compatible component rates, a bounded qualification/ramp scenario and package backlog; this is not a detailed fab queue or operator-allocation simulator.",
+    "deepLabId": "capacity",
+    "investigationId": "manufacturing",
+    "labScope": "Trace compatible component rates, a bounded qualification/ramp scenario and package backlog; this is not a detailed fab queue or operator-allocation simulator."
+  },
+  "chapter": {
+    "id": "deep-capacity-readiness",
+    "domainId": "connected-infrastructure",
+    "read": "Separate processing, waiting, qualification, allocation and operation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "I(t+1)=I(t)+A(t)-C(t)",
+      "variables": [
+        {
+          "symbol": "I(t)",
+          "meaning": "Inventory at the beginning of discrete interval t",
+          "unit": "same compatible item units"
+        },
+        {
+          "symbol": "I(t+1)",
+          "meaning": "Inventory at the end of that interval",
+          "unit": "same compatible item units"
+        },
+        {
+          "symbol": "A(t)",
+          "meaning": "Arrivals during interval t",
+          "unit": "same compatible item units"
+        },
+        {
+          "symbol": "C(t)",
+          "meaning": "Consumption during interval t",
+          "unit": "same compatible item units"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Discrete interval index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Next inventory equals current inventory plus arrivals minus consumption during the same interval.",
+      "note": "A and C explicitly name the original arrivals and consumption functions; they are counts per interval, not unintegrated rates."
+    }
+  ],
+  "manifestLesson": {
+    "id": "production-ramp-allocation",
+    "title": "Production ramps, inventory and allocation",
+    "chapterId": "deep-capacity-readiness",
+    "domainId": "connected-infrastructure",
+    "workstream": "W09",
+    "contentFingerprint": "fe17238e7ad15a7f27f42cddf9a1ece457d75371a8e90f469f1ac2dcc6dc3ca9",
+    "scope": {
+      "role": "Tracks time-dependent output and distinguishes qualified supply from a customer’s accessible share.",
+      "learningObjective": "Model ramps and allocation without treating future capacity as immediate inventory.",
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "evidenceNotes": "Allocation fractions and delays are synthetic. TSMC source material supports planning roles, not confidential queues, customer shares or current unit-per-month estimates.",
+      "workedExample": "Synthetic three-week lead time means extra starts in week one cannot become completed supply until week four at the earliest. A customer allocated half that output receives only that half, even if total factory output is larger.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Inventory conservation",
+          "assumptions": "No hidden scrap or rework; those flows must be explicitly added when modeled.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Separate processing, waiting, qualification, allocation and operation."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-d060122a4bc0843887e6",
+        "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+        "title": "TSMC 2025 Annual Report",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "infra-claim-tsmc-planning",
+            "ledgerSourceId": "infra-src-tsmc"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "infra-claim-tsmc-planning"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "reported"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "status-sensitive",
+      "proposedIntervalDays": 30,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "infrastructure-engineering-reviewer",
+        "label": "Power, cooling and infrastructure reviewer",
+        "focus": "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Availability, readiness, allocation, forecast and announced specifications can change quickly; recheck on a status-changing event."
+      ],
+      "reviewFocus": [
+        "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "compatible-supply-capacity"
+      ],
+      "dependentLessonIds": [],
+      "relatedLessonIds": [
+        "compatible-supply-capacity",
+        "capacity-phase-geography",
+        "scheduler"
+      ],
+      "journeyIds": [],
+      "lab": {
+        "labId": "engineering",
+        "deepLabId": "capacity",
+        "scope": "Trace compatible component rates, a bounded qualification/ramp scenario and package backlog; this is not a detailed fab queue or operator-allocation simulator."
+      },
+      "primaryInvestigationId": "manufacturing",
+      "investigationIds": [
+        "manufacturing"
+      ],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": []
+    }
+  },
+  "claims": [
+    {
+      "id": "infra-claim-tsmc-planning",
+      "title": "Capacity planning versus customer allocation",
+      "statement": "TSMC’s 2025 annual report describes planning capacity with customers and their customers.",
+      "sourceId": "infra-src-tsmc",
+      "lessonIds": [
+        "production-ramp-allocation"
+      ],
+      "status": "reported",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "Company capacity-planning role",
+      "period": "2025 annual-report period, published 2026",
+      "scope": "Provider description of planning process",
+      "limitations": "Does not reveal customer queues, allocated shares or a transferable package-output-per-month default.",
+      "checkedOn": "2026-09-06"
+    }
+  ]
+}

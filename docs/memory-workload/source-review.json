@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "memory-workload-bridge-1",
+  "reviewedAt": "2026-09-07",
+  "reviewerType": "agent",
+  "reviewerId": "/root/visual_learning_assessment",
+  "scope": "Joined finite matrix/byte/ECC consumer mechanism; source guidance and independent software checks, not measured hardware or human scientific approval.",
+  "sources": [
+    {
+      "id": "joined-memory-microchip-timing",
+      "url": "https://onlinedocs.microchip.com/oxy/GUID-AFCB5DCC-964F-4BE7-AA46-C756FA87ED7B-en-US-21/GUID-A29420D1-4E36-4920-B9BB-DD0B63F5E787.html",
+      "version": "Libero SoC Design Suite Help Documentation, revision 2026.1, version 21",
+      "locator": "20.2.2.3.2, DDR Memory Timing, tables 20-23 and 20-24; rendered lines 444–499, especially tRAS/tRCD/tRP/tWR and tREFI/tRFC definitions",
+      "reviewedAt": "2026-09-07",
+      "supports": "Distinguishes command dependency intervals from refresh due interval and refresh service duration.",
+      "doesNotSupport": "No vendor parameter, numerical ns value, complete controller timing constraint set, clock rate or retention guarantee is transferred. The page's ECC bus-width description is outside this source claim and is not used to derive the custom code."
+    },
+    {
+      "id": "joined-memory-opentitan-ecc",
+      "url": "https://opentitan.org/book/util/design/index.html#ecc-generator-tool",
+      "version": "Living OpenTitan documentation retrieved on review date; not a pinned RTL revision",
+      "locator": "ECC Generator Tool section; rendered lines 183–192",
+      "reviewedAt": "2026-09-07",
+      "supports": "Separate generated encoder/decoder artifacts and independent verification artifacts for SECDED configurations.",
+      "doesNotSupport": "No OpenTitan RTL execution or equivalence proof was run. The custom extended-Hamming (8,4) mapping and guarantees are locally derived and independently tested, not attributed to unseen generator equations."
+    }
+  ],
+  "reusedImplementationScope": [
+    {"path":"src/lib/memory-interfaces.ts","use":"Stack layers, gate ordering, overlap and synthetic evidence, plus explicit logical payload address decoding.","limit":"No inference of error rate, resistance, clock or lifetime from overlap/temperature. Existing source provenance remains in the memory-explorer documentation; it is not newly marked reviewed here."},
+    {"path":"src/lib/numeric-math.ts","use":"Same hbmStack height and distributed heat-source calculation and bond-route constants.","limit":"All stack inputs remain synthetic; this bridge adds no calibrated physical model."},
+    {"path":"src/lib/machine-execution.ts","use":"Existing finite DRAM command/DMA-slot schedule; bridge independently replays data effects from decoded operand bytes.","limit":"Two-bank 1 KiB machine geometry differs from the stack address view. ECC time, parity traffic, initialization and real controller protocol completeness remain outside the schedule."},
+    {"path":"src/lib/hardware-reliability.ts","use":"Exact encodeSecded/decodeSecded arithmetic, applied independently to eight nibbles of each original signed word.","limit":"No fault-rate model, interleaving claim, vendor code or ECC repair of double errors."}
+  ],
+  "authoredParameters": ["20 ns remote staging startup", "8 ns per aligned 16-byte staging copy", "aggregate 32–192 B destination payload allocation budget", "persistent selected-codeword bit positions", "all existing machine/stack synthetic constants"],
+  "humanSpecialistReview": null,
+  "physicalMeasurement": null,
+  "externalSimulatorComparison": null,
+  "browserValidation": "Owned separately by root integration; no browser used by this package author."
+}

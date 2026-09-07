@@ -1,0 +1,614 @@
+{
+  "workflow-graphs-state": [
+    {
+      "kind": "math",
+      "latex": "s_{n+1}=f(s_n,e_n)",
+      "text": "The next workflow state is obtained by applying the declared transition function to the current state and observed event.",
+      "variables": [
+        {
+          "symbol": "sₙ",
+          "meaning": "Workflow state after n recorded transitions",
+          "unit": "state object"
+        },
+        {
+          "symbol": "eₙ",
+          "meaning": "Input, tool result or review event for this transition",
+          "unit": "event object"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Declared transition function",
+          "unit": "state transition"
+        }
+      ]
+    }
+  ],
+  "event-queues-delivery": [
+    {
+      "kind": "math",
+      "latex": "Q_{k+1}=Q_k+A_k-C_k-D_k",
+      "text": "Queued deliveries equal the previous queue plus arrivals, minus admissions into service and duplicate removals.",
+      "variables": [
+        {
+          "symbol": "Qₖ",
+          "meaning": "Queued delivery count at interval boundary k",
+          "unit": "deliveries"
+        },
+        {
+          "symbol": "Aₖ",
+          "meaning": "Arrivals during the interval",
+          "unit": "deliveries"
+        },
+        {
+          "symbol": "Cₖ",
+          "meaning": "Deliveries admitted into service",
+          "unit": "deliveries"
+        },
+        {
+          "symbol": "Dₖ",
+          "meaning": "Queued duplicates removed without service",
+          "unit": "deliveries"
+        }
+      ]
+    }
+  ],
+  "durable-actions-idempotency": [
+    {
+      "kind": "math",
+      "latex": "F_{k,p}\\!\\left(F_{k,p}(W)\\right)=F_{k,p}(W)",
+      "text": "Applying the same keyed action with the same payload to world state twice has the same effect as applying it once.",
+      "variables": [
+        {
+          "symbol": "W",
+          "meaning": "External environment, including the receipt ledger",
+          "unit": "state object"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Stable logical action key",
+          "unit": "identifier"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Exact action payload bound to the key",
+          "unit": "data object"
+        },
+        {
+          "symbol": "Fₖ,ₚ",
+          "meaning": "Service transition with an atomic keyed receipt",
+          "unit": "state transition"
+        }
+      ]
+    }
+  ],
+  "tool-contracts-schemas": [
+    {
+      "kind": "math",
+      "latex": "V_{\\mathrm{call}}=V_{\\mathrm{schema}}\\land V_{\\mathrm{domain}}",
+      "text": "A valid call in this example must satisfy both its input schema and current domain constraints.",
+      "variables": [
+        {
+          "symbol": "Vcall",
+          "meaning": "Validity of this call before authorization and task evaluation",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Vschema",
+          "meaning": "Required fields, types and ranges match",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Vdomain",
+          "meaning": "Resource, evidence and stock constraints match",
+          "unit": "Boolean"
+        }
+      ]
+    }
+  ],
+  "tool-authority-identity": [
+    {
+      "kind": "math",
+      "latex": "A=I\\land U\\land S\\land R",
+      "text": "An authorization decision here requires valid identity, matching audience, sufficient scope and resource policy.",
+      "variables": [
+        {
+          "symbol": "A",
+          "meaning": "Allowed request under the stated security contract",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "I",
+          "meaning": "Identity or credential validity",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "U",
+          "meaning": "Intended resource audience matches",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "S",
+          "meaning": "Granted scope permits the action",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "R",
+          "meaning": "Resource-specific policy permits this principal and operation",
+          "unit": "Boolean"
+        }
+      ]
+    }
+  ],
+  "untrusted-content-boundary": [
+    {
+      "kind": "relationship",
+      "text": "Reference content can inform a proposal; it cannot grant the runtime a new capability. A denied proposal must leave the protected external resource unchanged.",
+      "variables": []
+    }
+  ],
+  "human-review-cancellation": [
+    {
+      "kind": "relationship",
+      "text": "Approval binds the exact proposed action. Pause waits for input; cancellation stops further execution; compensation is a separate action against an existing effect.",
+      "variables": []
+    }
+  ],
+  "telemetry-traces-evaluation": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{wall}}=\\max_{p\\in\\mathcal P}\\sum_{i\\in p}t_i",
+      "text": "For a fixed dependency graph with unlimited resources, elapsed service time follows the longest dependency path.",
+      "variables": [
+        {
+          "symbol": "Twall",
+          "meaning": "Ideal elapsed service time for the graph",
+          "unit": "ms"
+        },
+        {
+          "symbol": "𝒫",
+          "meaning": "Dependency paths from entry to completion",
+          "unit": "path set"
+        },
+        {
+          "symbol": "tᵢ",
+          "meaning": "Duration of node i under the stated fixed schedule",
+          "unit": "ms"
+        }
+      ]
+    }
+  ],
+  "model-artifact-rollout-drift": [
+    {
+      "kind": "math",
+      "latex": "z=\\frac{x-\\mu_{\\mathrm{train}}}{\\sigma_{\\mathrm{train}}},\\qquad p=\\frac{1}{1+\\exp[-(wz+b)]}",
+      "text": "Standardize with the artifact’s training statistics, then apply the stored linear logit and sigmoid.",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Input feature in this one-feature example",
+          "unit": "feature units"
+        },
+        {
+          "symbol": "μtrain, σtrain",
+          "meaning": "Training mean and positive standard deviation stored with the model",
+          "unit": "feature units"
+        },
+        {
+          "symbol": "z",
+          "meaning": "Standardized feature",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "w, b",
+          "meaning": "Stored weight and bias",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Probability assigned to the authored positive label",
+          "unit": "0–1"
+        }
+      ]
+    }
+  ],
+  "mcp-host-client-server": [
+    {
+      "kind": "relationship",
+      "text": "Host policy selects and constrains capabilities; the client exchanges versioned protocol messages; the server executes an allowed tool contract. Discovery is separate from invocation and correctness.",
+      "variables": []
+    }
+  ],
+  "context-memory-provenance": [
+    {
+      "kind": "math",
+      "latex": "L_{\\mathrm{task}}+L_{\\mathrm{history}}+L_{\\mathrm{evidence}}+L_{\\mathrm{tools}}+L_{\\mathrm{output}}\\le C",
+      "text": "The sum of included input-token counts and reserved output tokens must fit the stated context capacity.",
+      "variables": [
+        {
+          "symbol": "Ltask, Lhistory, Levidence, Ltools",
+          "meaning": "Token counts of the named input components under one tokenizer",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "Loutput",
+          "meaning": "Reserved output-token capacity in this example",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "C",
+          "meaning": "Stated total context capacity",
+          "unit": "tokens"
+        }
+      ]
+    }
+  ],
+  "sandbox-egress-secrets": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{peak}}=\\max_t\\sum_{i\\in\\mathcal L(t)}B_i",
+      "text": "Peak live payload is the maximum sum of buffers that coexist at the same time.",
+      "variables": [
+        {
+          "symbol": "Bpeak",
+          "meaning": "Peak modeled live buffer payload",
+          "unit": "MiB"
+        },
+        {
+          "symbol": "𝓛(t)",
+          "meaning": "Buffers live at time t",
+          "unit": "buffer set"
+        },
+        {
+          "symbol": "Bᵢ",
+          "meaning": "Payload size of buffer i",
+          "unit": "MiB"
+        }
+      ]
+    }
+  ],
+  "retrieval-indexing-evaluation": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{Recall@}k=\\frac{|R_k\\cap G|}{|G|},\\qquad A_{\\mathrm{task}}=\\frac{N_{\\mathrm{correct}}}{N_{\\mathrm{questions}}}",
+      "text": "Retrieval recall counts retrieved relevant items over all relevant items; task accuracy counts correct outcomes over all evaluated questions.",
+      "variables": [
+        {
+          "symbol": "Rₖ",
+          "meaning": "Top-k retrieved item identifiers",
+          "unit": "set"
+        },
+        {
+          "symbol": "G",
+          "meaning": "Reference relevant item identifiers",
+          "unit": "nonempty set"
+        },
+        {
+          "symbol": "Ncorrect",
+          "meaning": "Task-correct outcomes, including any correctly required abstentions",
+          "unit": "count"
+        },
+        {
+          "symbol": "Nquestions",
+          "meaning": "All questions in the declared evaluation set",
+          "unit": "positive count"
+        },
+        {
+          "symbol": "Atask",
+          "meaning": "Task accuracy on that set",
+          "unit": "0–1"
+        }
+      ]
+    }
+  ],
+  "delegated-agent-protocols": [
+    {
+      "kind": "relationship",
+      "text": "A delegated task retains its identity across messages, input requests and artifact updates. Remote completion is checked against the parent’s task and authority before further effects.",
+      "variables": []
+    }
+  ],
+  "multi-agent-coordination-cost": [
+    {
+      "kind": "math",
+      "latex": "P(A\\cap B)=P(A)P(B\\mid A)",
+      "text": "The chance that both required subchecks succeed equals the first success probability times the second conditioned on it.",
+      "variables": [
+        {
+          "symbol": "A, B",
+          "meaning": "Success events for the two required subchecks",
+          "unit": "events"
+        },
+        {
+          "symbol": "P(A)",
+          "meaning": "Probability of success for the first subcheck",
+          "unit": "0–1"
+        },
+        {
+          "symbol": "P(B|A)",
+          "meaning": "Conditional success probability for the second",
+          "unit": "0–1"
+        }
+      ]
+    }
+  ],
+  "document-extraction-validation": [
+    {
+      "kind": "math",
+      "latex": "T=\\sum_{i=1}^{n}q_i p_i",
+      "text": "The exact subtotal in this fixture sums quantity times unit price across line items.",
+      "variables": [
+        {
+          "symbol": "T",
+          "meaning": "Subtotal excluding tax, discounts and fees",
+          "unit": "integer cents"
+        },
+        {
+          "symbol": "qᵢ",
+          "meaning": "Quantity for line item i",
+          "unit": "units"
+        },
+        {
+          "symbol": "pᵢ",
+          "meaning": "Unit price for line item i",
+          "unit": "cents per unit"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Number of line items",
+          "unit": "count"
+        }
+      ]
+    }
+  ],
+  "coding-agent-patch-evidence": [
+    {
+      "kind": "math",
+      "latex": "\\bar{x}=\\frac{1}{n}\\sum_{i=1}^{n}x_i,\\qquad n>0",
+      "text": "For a nonempty input list, the mean is its sum divided by its actual length.",
+      "variables": [
+        {
+          "symbol": "xᵢ",
+          "meaning": "Input element",
+          "unit": "value units"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Number of elements",
+          "unit": "positive integer"
+        },
+        {
+          "symbol": "x̄",
+          "meaning": "Arithmetic mean",
+          "unit": "same units as input"
+        }
+      ]
+    }
+  ],
+  "robot-observation-frame": [
+    {
+      "kind": "math",
+      "latex": "\\mathbf p_W=R_{WC}\\mathbf p_C+\\mathbf t_{WC},\\qquad \\Delta d\\le v_{\\max}\\Delta t",
+      "text": "Rotate a camera-frame point and add the camera origin in world coordinates; a stated speed bound limits motion over the observation age.",
+      "variables": [
+        {
+          "symbol": "pW, pC",
+          "meaning": "The same point expressed in world and camera coordinates",
+          "unit": "m"
+        },
+        {
+          "symbol": "RWC",
+          "meaning": "Rotation from camera axes to world axes",
+          "unit": "dimensionless matrix"
+        },
+        {
+          "symbol": "tWC",
+          "meaning": "Camera origin expressed in world coordinates",
+          "unit": "m"
+        },
+        {
+          "symbol": "vmax",
+          "meaning": "Assumed bound on relative speed",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "Δt",
+          "meaning": "Observation age in a compatible clock convention",
+          "unit": "s"
+        },
+        {
+          "symbol": "Δd",
+          "meaning": "Motion-induced change bounded under the assumption",
+          "unit": "m"
+        }
+      ]
+    }
+  ],
+  "robot-goal-plan-action": [
+    {
+      "kind": "math",
+      "latex": "T\\ge\\frac{L}{v_{\\max}}",
+      "text": "Traversal time is at least path length divided by the maximum permitted speed.",
+      "variables": [
+        {
+          "symbol": "T",
+          "meaning": "Traversal duration",
+          "unit": "s"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Length of the chosen feasible path",
+          "unit": "m"
+        },
+        {
+          "symbol": "vmax",
+          "meaning": "Positive upper bound on path speed",
+          "unit": "m/s"
+        }
+      ]
+    }
+  ],
+  "robot-feedback-control": [
+    {
+      "kind": "math",
+      "latex": "e_{n+1}=(1-K\\Delta t)e_n,\\qquad |1-K\\Delta t|<1\\ \\Longleftrightarrow\\ 0<K\\Delta t<2",
+      "text": "In this ideal sampled velocity-input model, error is multiplied by one minus gain times sample duration; convergence requires that multiplier’s magnitude be below one.",
+      "variables": [
+        {
+          "symbol": "eₙ",
+          "meaning": "Target minus current position at sample n",
+          "unit": "m"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Proportional velocity gain",
+          "unit": "1/s"
+        },
+        {
+          "symbol": "Δt",
+          "meaning": "Positive fixed sample duration",
+          "unit": "s"
+        }
+      ]
+    }
+  ],
+  "embodied-policy-evidence": [
+    {
+      "kind": "math",
+      "latex": "v(k)=-v_{\\max}+\\frac{2v_{\\max}k}{B-1},\\qquad \\Delta x=v(k)\\Delta t",
+      "text": "This authored uniform codec maps an integer bin to velocity, then integrates that ideal velocity over one interval.",
+      "variables": [
+        {
+          "symbol": "k",
+          "meaning": "Integer action bin from 0 through B−1",
+          "unit": "index"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Number of bins, at least two",
+          "unit": "count"
+        },
+        {
+          "symbol": "vmax",
+          "meaning": "Positive maximum encoded speed",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "v(k)",
+          "meaning": "Decoded velocity command",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "Δt",
+          "meaning": "Command interval",
+          "unit": "s"
+        },
+        {
+          "symbol": "Δx",
+          "meaning": "Ideal requested displacement",
+          "unit": "m"
+        }
+      ]
+    }
+  ],
+  "streaming-speech-turns": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{WER}=\\frac{S+D+I}{N_{\\mathrm{ref}}}",
+      "text": "Word error rate is substitutions plus deletions plus insertions divided by reference word count.",
+      "variables": [
+        {
+          "symbol": "S, D, I",
+          "meaning": "Aligned substitution, deletion and insertion counts",
+          "unit": "word edits"
+        },
+        {
+          "symbol": "Nref",
+          "meaning": "Number of words in the reference transcript",
+          "unit": "positive word count"
+        },
+        {
+          "symbol": "WER",
+          "meaning": "Edit ratio, which can exceed one with many insertions",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "recommendation-ranking-feedback": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{Precision@}k=\\frac{1}{k}\\sum_{i=1}^{k}\\mathbf 1[y_i=1]",
+      "text": "Precision at k is the fraction of the first k ranked items labeled relevant under the declared reference.",
+      "variables": [
+        {
+          "symbol": "k",
+          "meaning": "Positive evaluated list length",
+          "unit": "items"
+        },
+        {
+          "symbol": "yᵢ",
+          "meaning": "Independent binary relevance label at rank i",
+          "unit": "0 or 1"
+        },
+        {
+          "symbol": "1[·]",
+          "meaning": "Indicator equal to one when its condition holds",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "temporal-forecast-validation": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{MAE}=\\frac{1}{H}\\sum_{h=1}^{H}|y_h-\\widehat y_h|",
+      "text": "Mean absolute error averages the absolute forecast error over the declared positive number of horizons.",
+      "variables": [
+        {
+          "symbol": "H",
+          "meaning": "Number of evaluated horizons in this example",
+          "unit": "count"
+        },
+        {
+          "symbol": "yₕ",
+          "meaning": "Realized target at horizon h",
+          "unit": "target units"
+        },
+        {
+          "symbol": "ŷₕ",
+          "meaning": "Forecast issued at the stated origin",
+          "unit": "target units"
+        },
+        {
+          "symbol": "MAE",
+          "meaning": "Mean absolute error",
+          "unit": "target units"
+        }
+      ]
+    }
+  ],
+  "scientific-surrogate-validation": [
+    {
+      "kind": "math",
+      "latex": "r_i=\\frac{T_{i-1}-2T_i+T_{i+1}}{(\\Delta x)^2}",
+      "text": "The centered second-difference residual estimates the one-dimensional temperature curvature at an interior point.",
+      "variables": [
+        {
+          "symbol": "rᵢ",
+          "meaning": "Discrete residual for the source-free steady curvature condition",
+          "unit": "K/m²"
+        },
+        {
+          "symbol": "Tᵢ₋₁, Tᵢ, Tᵢ₊₁",
+          "meaning": "Neighboring grid temperatures",
+          "unit": "K"
+        },
+        {
+          "symbol": "Δx",
+          "meaning": "Positive uniform spatial spacing",
+          "unit": "m"
+        }
+      ]
+    }
+  ]
+}

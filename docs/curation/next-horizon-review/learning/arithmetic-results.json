@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-09-07T22:41:32.001Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root/learning_source_review"
+  },
+  "method": "Independent scalar calculations and finite differences; the 17+23 checkpoint reproduction executes the declared implementation and compares the entire state. This is not a device or human specialist review.",
+  "attention": {
+    "probabilities": [
+      0.25,
+      0.75
+    ],
+    "output": 5,
+    "finiteDifferenceDerivatives": [
+      -0.7499999999716066,
+      0.7500000000160155
+    ],
+    "epsilon": 0.00001,
+    "packedAllowedSlots": [
+      5,
+      6,
+      7
+    ],
+    "firstCausalOutput": 2
+  },
+  "attentionIoTiling": {
+    "scoreBytes": 33554432,
+    "scoreMiB": 32,
+    "heads": 1,
+    "requests": 1,
+    "bytesPerScore": 2
+  },
+  "causalPretraining": {
+    "totalNllNats": 2.772588722239781,
+    "includedTargets": 3,
+    "meanNllNats": 0.9241962407465937,
+    "perplexity": 2.519842099789746,
+    "uniformVocabulary": 9,
+    "uniformNll": 2.1972245773362196
+  },
+  "checkpoint": {
+    "decimalTB": 2,
+    "decimalGBps": 20,
+    "transferLowerBoundSeconds": 100,
+    "updatesBeforeSave": 17,
+    "updatesAfterRestore": 23,
+    "uninterruptedUpdates": 40,
+    "entireStateExactlyEqual": true,
+    "dataDraws": 80,
+    "fingerprint": "fc178436",
+    "resetMomentFingerprint": "c2bffc33",
+    "resetMomentsDiverges": true
+  },
+  "averaging": {
+    "firstCoefficient": 1,
+    "permutedCoefficient": 1,
+    "averagedCoefficient": 0,
+    "alignedScalarAverage": 2
+  },
+  "allAssertionsPassed": true
+}

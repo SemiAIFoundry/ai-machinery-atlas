@@ -1,0 +1,28 @@
+✔ default delivered operands yield eight MACs and the exact result (1.607333ms)
+✔ 256 binary matrix pairs match independent hand-calculated products (64.268792ms)
+✔ 480 commissioning, handoff and reset cases preserve ownership and work (62.431917ms)
+✔ ABI rejection precedes resources, submissions and DMA (0.126625ms)
+✔ virtual and device addresses converge on bytes without conflating namespaces (0.437209ms)
+✔ translation checks endpoints, direction, epoch, mask and ambiguous mappings (0.341375ms)
+✔ permitted wrong B mapping computes A squared without a protection exception (0.312167ms)
+✔ missing B supplies no arithmetic value and quiesces before returning ownership (0.171791ms)
+✔ omitted noncoherent input/output handoffs expose actual stale values (0.620458ms)
+✔ coherent data visibility preserves publication and lifetime requirements (1.105416ms)
+✔ early reuse rejection mutates neither cached nor memory buffer values (0.351916ms)
+✔ two-cell reset discards four MACs and retries with one publication (0.539292ms)
+✔ reset after any cell accounts even a fully written but uncommitted result (2.573625ms)
+✔ wrong-job, old-epoch, premature and duplicate completion records fail (0.461667ms)
+✔ signed extrema stay exact and snapshots own their mutable arrays (0.301167ms)
+✔ invalid fields, sparse matrices and record versions are rejected (0.214708ms)
+✔ saved replacement durably preserves incompatible raw text (0.15775ms)
+✔ backup failure retains active input and corrupt recovery remains exportable (0.110709ms)
+✔ runtime lesson pack has five complete linked lessons and eight valid canonical math cards (170.857459ms)
+✔ authored lesson numerical claims agree with the executable specimens (2.124709ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 382.480167

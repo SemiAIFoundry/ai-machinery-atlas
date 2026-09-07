@@ -1,0 +1,109 @@
+{
+  "scalar-state-space-recurrence": [
+    {
+      "kind": "math",
+      "latex": "h_t=a h_{t-1}+b x_t=\\sum_{j=r}^{t}b a^{t-j}x_j",
+      "text": "Explain why a recurrence and a convolution agree for the declared time-invariant system, and why a reset changes their history boundary.",
+      "variables": [
+        {
+          "symbol": "h_t",
+          "meaning": "Retained scalar state",
+          "unit": "state units"
+        },
+        {
+          "symbol": "a",
+          "meaning": "Time-invariant retention",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "b",
+          "meaning": "Input gain",
+          "unit": "state units per input unit"
+        },
+        {
+          "symbol": "x_j",
+          "meaning": "Input sample",
+          "unit": "input units"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Start of the current zero-state history interval",
+          "unit": "sample index"
+        }
+      ]
+    }
+  ],
+  "spatial-filter-patch-attention": [
+    {
+      "kind": "math",
+      "latex": "Y_{ij}=\\sum_{u=0}^{2}\\sum_{v=0}^{2}K_{uv}X_{i+u,j+v}",
+      "text": "Locate the receptive field and identify how local boundary coverage differs from content-dependent aggregation.",
+      "variables": [
+        {
+          "symbol": "X",
+          "meaning": "Five by five input image",
+          "unit": "pixel amplitude"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Three by three shared kernel",
+          "unit": "filter coefficient"
+        },
+        {
+          "symbol": "Y",
+          "meaning": "Three by three valid response",
+          "unit": "weighted amplitude"
+        },
+        {
+          "symbol": "i,j",
+          "meaning": "Output location",
+          "unit": "pixel index"
+        },
+        {
+          "symbol": "u,v",
+          "meaning": "Kernel coordinate",
+          "unit": "pixel index"
+        }
+      ]
+    }
+  ],
+  "audio-sampling-spectrum": [
+    {
+      "kind": "math",
+      "latex": "X_k=\\sum_{n=0}^{N-1}w_n x_n e^{-2\\pi i kn/N},\\qquad \\Delta f=\\frac{f_s}{N}",
+      "text": "Explain an observed alias and distinguish sample rate, observation duration, frequency-bin spacing and calibrated spectral density.",
+      "variables": [
+        {
+          "symbol": "X_k",
+          "meaning": "Complex transform at bin k",
+          "unit": "summed signal amplitude"
+        },
+        {
+          "symbol": "w_n",
+          "meaning": "Window coefficient",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "x_n",
+          "meaning": "Signal sample",
+          "unit": "signal amplitude"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Number of samples",
+          "unit": "samples"
+        },
+        {
+          "symbol": "f_s",
+          "meaning": "Sample rate",
+          "unit": "samples/s"
+        },
+        {
+          "symbol": "\u0394f",
+          "meaning": "Bin spacing",
+          "unit": "Hz"
+        }
+      ]
+    }
+  ]
+}

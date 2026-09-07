@@ -1,0 +1,3251 @@
+{
+  "version": "atlas-realization-1",
+  "target": "Lattice iCE40HX1K \u00b7 TQ144",
+  "seed": 7,
+  "constraintMHz": 100,
+  "contract": "Unsigned four-bit a + b produces five-bit q. Rising edge n captures the sum of the input sample at n\u22121; power-on fill is unspecified.",
+  "proof": {
+    "method": "Yosys SAT over all combinational input values",
+    "passed": true
+  },
+  "simulation": {
+    "method": "Icarus Verilog: RTL and mapped iCE40 primitive netlist",
+    "inputPairs": 256,
+    "passed": true
+  },
+  "cells": [
+    {
+      "name": "$gbuf_clk$SB_IO_IN_$glb_clk",
+      "type": "SB_GB",
+      "bel": "X13/Y9/gb",
+      "x": 13,
+      "y": 9,
+      "site": "gb",
+      "parameters": {},
+      "connections": {
+        "GLOBAL_BUFFER_OUTPUT": [
+          791
+        ],
+        "USER_SIGNAL_TO_GLOBAL_BUFFER": [
+          774
+        ]
+      },
+      "directions": {
+        "GLOBAL_BUFFER_OUTPUT": "output",
+        "USER_SIGNAL_TO_GLOBAL_BUFFER": "input"
+      }
+    },
+    {
+      "name": "a_sampled_SB_DFF_Q_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y3/lc7",
+      "x": 12,
+      "y": 3,
+      "site": "lc7",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          663
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          755
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "a_sampled_SB_DFF_Q_1_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y5/lc3",
+      "x": 12,
+      "y": 5,
+      "site": "lc3",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          669
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          757
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "a_sampled_SB_DFF_Q_2_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc1",
+      "x": 12,
+      "y": 4,
+      "site": "lc1",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          674
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          759
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "a_sampled_SB_DFF_Q_3_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc4",
+      "x": 12,
+      "y": 4,
+      "site": "lc4",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          678
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          761
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "b_sampled_SB_DFF_Q_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y3/lc1",
+      "x": 12,
+      "y": 3,
+      "site": "lc1",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          681
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          753
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "b_sampled_SB_DFF_Q_1_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X11/Y4/lc7",
+      "x": 11,
+      "y": 4,
+      "site": "lc7",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          685
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          751
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "b_sampled_SB_DFF_Q_2_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y3/lc3",
+      "x": 12,
+      "y": 3,
+      "site": "lc3",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          689
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          747
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "b_sampled_SB_DFF_Q_3_DFFLC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y6/lc5",
+      "x": 12,
+      "y": 6,
+      "site": "lc5",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          694
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": [
+          749
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "b[3]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y2/io0",
+      "x": 13,
+      "y": 2,
+      "site": "io0",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          747
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          688
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "b[1]$sb_io",
+      "type": "SB_IO",
+      "bel": "X0/Y4/io1",
+      "x": 0,
+      "y": 4,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          751
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          684
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "b[0]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y1/io1",
+      "x": 13,
+      "y": 1,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          753
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          680
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "a[3]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y3/io1",
+      "x": 13,
+      "y": 3,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          755
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          661
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "a[2]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y7/io0",
+      "x": 13,
+      "y": 7,
+      "site": "io0",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          757
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          667
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "$PACKER_GND",
+      "type": "ICESTORM_LC",
+      "bel": "X5/Y9/lc5",
+      "x": 5,
+      "y": 9,
+      "site": "lc5",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "0",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000000"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          742
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "a[0]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y7/io1",
+      "x": 13,
+      "y": 7,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          761
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          676
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "q[4]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y4/io1",
+      "x": 13,
+      "y": 4,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000011001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [],
+        "D_OUT_1": [],
+        "D_OUT_0": [
+          763
+        ],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          722
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "q[3]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y2/io1",
+      "x": 13,
+      "y": 2,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000011001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [],
+        "D_OUT_1": [],
+        "D_OUT_0": [
+          766
+        ],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          699
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "q[2]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y8/io1",
+      "x": 13,
+      "y": 8,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000011001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [],
+        "D_OUT_1": [],
+        "D_OUT_0": [
+          768
+        ],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          702
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "q[1]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y6/io1",
+      "x": 13,
+      "y": 6,
+      "site": "io1",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000011001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [],
+        "D_OUT_1": [],
+        "D_OUT_0": [
+          770
+        ],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          710
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "$PACKER_VCC",
+      "type": "ICESTORM_LC",
+      "bel": "X11/Y16/lc5",
+      "x": 11,
+      "y": 16,
+      "site": "lc5",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "0",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000000000000001"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          744
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [],
+        "CIN": [],
+        "I3": [],
+        "I2": [],
+        "I1": [],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q[0]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y6/io0",
+      "x": 13,
+      "y": 6,
+      "site": "io0",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000011001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [],
+        "D_OUT_1": [],
+        "D_OUT_0": [
+          772
+        ],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          714
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "clk$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y9/io0",
+      "x": 13,
+      "y": 9,
+      "site": "io0",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          774
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          656
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "a[1]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y4/io0",
+      "x": 13,
+      "y": 4,
+      "site": "io0",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          759
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          672
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "b[2]$sb_io",
+      "type": "SB_IO",
+      "bel": "X13/Y8/io0",
+      "x": 13,
+      "y": 8,
+      "site": "io0",
+      "parameters": {
+        "IO_STANDARD": "SB_LVCMOS",
+        "NEG_TRIGGER": "0",
+        "PULLUP": "0",
+        "PIN_TYPE": "00000000000000000000000000000001"
+      },
+      "connections": {
+        "D_IN_1": [],
+        "D_IN_0": [
+          749
+        ],
+        "D_OUT_1": [],
+        "D_OUT_0": [],
+        "OUTPUT_ENABLE": [],
+        "OUTPUT_CLK": [],
+        "INPUT_CLK": [],
+        "CLOCK_ENABLE": [],
+        "LATCH_INPUT_VALUE": [],
+        "PACKAGE_PIN": [
+          693
+        ]
+      },
+      "directions": {
+        "D_IN_1": "output",
+        "D_IN_0": "output",
+        "D_OUT_1": "input",
+        "D_OUT_0": "input",
+        "OUTPUT_ENABLE": "input",
+        "OUTPUT_CLK": "input",
+        "INPUT_CLK": "input",
+        "CLOCK_ENABLE": "input",
+        "LATCH_INPUT_VALUE": "input",
+        "PACKAGE_PIN": "inout"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y5/lc0",
+      "x": 12,
+      "y": 5,
+      "site": "lc0",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "0",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0011111100000011"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          726
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [],
+        "CIN": [],
+        "I3": [
+          706
+        ],
+        "I2": [
+          694
+        ],
+        "I1": [
+          669
+        ],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_4_D_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc6",
+      "x": 12,
+      "y": 4,
+      "site": "lc6",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "1100000011111100"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          763
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [
+          726
+        ],
+        "I2": [
+          689
+        ],
+        "I1": [
+          663
+        ],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_D_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc5",
+      "x": 12,
+      "y": 4,
+      "site": "lc5",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0011110011000011"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          766
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [
+          726
+        ],
+        "I2": [
+          689
+        ],
+        "I1": [
+          663
+        ],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_3_D_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc0",
+      "x": 12,
+      "y": 4,
+      "site": "lc0",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0000111111110000"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          772
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [
+          681
+        ],
+        "I2": [
+          678
+        ],
+        "I1": [],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_2_D_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc3",
+      "x": 12,
+      "y": 4,
+      "site": "lc3",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "1001011001011010"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          770
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [
+          681
+        ],
+        "I2": [
+          685
+        ],
+        "I1": [
+          678
+        ],
+        "I0": [
+          674
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y4/lc2",
+      "x": 12,
+      "y": 4,
+      "site": "lc2",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "0",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0001011101011111"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          706
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [],
+        "CIN": [],
+        "I3": [
+          681
+        ],
+        "I2": [
+          685
+        ],
+        "I1": [
+          678
+        ],
+        "I0": [
+          674
+        ]
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    },
+    {
+      "name": "q_SB_DFF_Q_1_D_SB_LUT4_O_LC",
+      "type": "ICESTORM_LC",
+      "bel": "X12/Y5/lc1",
+      "x": 12,
+      "y": 5,
+      "site": "lc1",
+      "parameters": {
+        "CIN_SET": "0",
+        "CIN_CONST": "0",
+        "ASYNC_SR": "0",
+        "SET_NORESET": "0",
+        "DFF_ENABLE": "1",
+        "CARRY_ENABLE": "0",
+        "NEG_CLK": "0",
+        "LUT_INIT": "0011110011000011"
+      },
+      "connections": {
+        "COUT": [],
+        "O": [
+          768
+        ],
+        "LO": [],
+        "SR": [],
+        "CEN": [],
+        "CLK": [
+          791
+        ],
+        "CIN": [],
+        "I3": [
+          706
+        ],
+        "I2": [
+          694
+        ],
+        "I1": [
+          669
+        ],
+        "I0": []
+      },
+      "directions": {
+        "COUT": "output",
+        "O": "output",
+        "LO": "output",
+        "SR": "input",
+        "CEN": "input",
+        "CLK": "input",
+        "CIN": "input",
+        "I3": "input",
+        "I2": "input",
+        "I1": "input",
+        "I0": "input"
+      }
+    }
+  ],
+  "nets": [
+    {
+      "name": "clk$SB_IO_IN_$glb_clk",
+      "bits": [
+        791
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_global:clk"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "wire": "lutff_global:clk"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "lutff_global:clk"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_global:clk"
+        },
+        {
+          "x": 0,
+          "y": 1,
+          "wire": "glb_netwk_2"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_global:clk"
+        }
+      ],
+      "route": "X12/Y3/lutff_global:clk;X12/Y3/0.1.glb_netwk_2.->.12.3.lutff_global:clk;1;X11/Y4/lutff_global:clk;X11/Y4/0.1.glb_netwk_2.->.11.4.lutff_global:clk;1;X12/Y6/lutff_global:clk;X12/Y6/0.1.glb_netwk_2.->.12.6.lutff_global:clk;1;X12/Y4/lutff_global:clk;X12/Y4/0.1.glb_netwk_2.->.12.4.lutff_global:clk;1;X0/Y1/glb_netwk_2;;1;X12/Y5/lutff_global:clk;X12/Y5/0.1.glb_netwk_2.->.12.5.lutff_global:clk;1"
+    },
+    {
+      "name": "q[4]$SB_IO_OUT",
+      "bits": [
+        763
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:out"
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "wire": "local_g1_6"
+        },
+        {
+          "x": 13,
+          "y": 4,
+          "wire": "io_1:D_OUT_0"
+        }
+      ],
+      "route": "X12/Y4/lutff_6:out;;1;X13/Y4/local_g1_6;X13/Y4/12.4.lutff_6:out.->.13.4.local_g1_6;1;X13/Y4/io_1:D_OUT_0;X13/Y4/13.4.local_g1_6.->.13.4.io_1:D_OUT_0;1"
+    },
+    {
+      "name": "q_SB_DFF_Q_D_SB_LUT4_O_I3[2]",
+      "bits": [
+        726
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:in_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:in_3_lut"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g1_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:in_1"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:in_3_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_5:in_0;X12/Y4/12.4.local_g1_0.->.12.4.lutff_5:in_0;1;X12/Y4/lutff_5:in_3_lut;X12/Y4/12.4.lutff_5:in_0.->.12.4.lutff_5:in_3_lut;1;X12/Y5/lutff_0:out;;1;X12/Y4/local_g1_0;X12/Y4/12.5.lutff_0:out.->.12.4.local_g1_0;1;X12/Y4/lutff_6:in_1;X12/Y4/12.4.local_g1_0.->.12.4.lutff_6:in_1;1;X12/Y4/lutff_6:in_3_lut;X12/Y4/12.4.lutff_6:in_1.->.12.4.lutff_6:in_3_lut;1"
+    },
+    {
+      "name": "q[0]$SB_IO_OUT",
+      "bits": [
+        772
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_0:out"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "sp4_v_b_8"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "sp4_h_r_8"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "wire": "local_g0_0"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "wire": "io_0:D_OUT_0"
+        }
+      ],
+      "route": "X12/Y4/lutff_0:out;;1;X12/Y6/sp4_v_b_8;X12/Y4/12.4.lutff_0:out.->.12.6.sp4_v_b_8;1;X12/Y6/sp4_h_r_8;X12/Y6/12.6.sp4_v_b_8.->.12.6.sp4_h_r_8;1;X13/Y6/local_g0_0;X13/Y6/12.6.sp4_h_r_8.->.13.6.local_g0_0;1;X13/Y6/io_0:D_OUT_0;X13/Y6/13.6.local_g0_0.->.13.6.io_0:D_OUT_0;1"
+    },
+    {
+      "name": "q[1]$SB_IO_OUT",
+      "bits": [
+        770
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:out"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "local_g0_3"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_5:in_2"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_5:in_3_lut"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_5:out"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "wire": "local_g0_5"
+        },
+        {
+          "x": 13,
+          "y": 6,
+          "wire": "io_1:D_OUT_0"
+        }
+      ],
+      "route": "X12/Y4/lutff_3:out;;1;X12/Y5/local_g0_3;X12/Y5/12.4.lutff_3:out.->.12.5.local_g0_3;1;X12/Y5/lutff_5:in_2;X12/Y5/12.5.local_g0_3.->.12.5.lutff_5:in_2;1;X12/Y5/lutff_5:in_3_lut;X12/Y5/12.5.lutff_5:in_2.->.12.5.lutff_5:in_3_lut;1;X12/Y5/lutff_5:out;X12/Y5/12.5.lutff_5:in_3_lut.->.12.5.lutff_5:out;1;X13/Y6/local_g0_5;X13/Y6/12.5.lutff_5:out.->.13.6.local_g0_5;1;X13/Y6/io_1:D_OUT_0;X13/Y6/13.6.local_g0_5.->.13.6.io_1:D_OUT_0;1"
+    },
+    {
+      "name": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3[2]",
+      "bits": [
+        706
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:in_3"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:in_3_lut"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:out"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "local_g0_2"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:in_0"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:in_3_lut"
+        }
+      ],
+      "route": "X12/Y5/lutff_1:in_3;X12/Y5/12.5.local_g0_2.->.12.5.lutff_1:in_3;1;X12/Y5/lutff_1:in_3_lut;X12/Y5/12.5.lutff_1:in_3.->.12.5.lutff_1:in_3_lut;1;X12/Y4/lutff_2:out;;1;X12/Y5/local_g0_2;X12/Y5/12.4.lutff_2:out.->.12.5.local_g0_2;1;X12/Y5/lutff_0:in_0;X12/Y5/12.5.local_g0_2.->.12.5.lutff_0:in_0;1;X12/Y5/lutff_0:in_3_lut;X12/Y5/12.5.lutff_0:in_0.->.12.5.lutff_0:in_3_lut;1"
+    },
+    {
+      "name": "q[2]$SB_IO_OUT",
+      "bits": [
+        768
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:out"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "sp4_v_b_7"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "sp4_h_r_7"
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "wire": "span4_vert_b_1"
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "wire": "local_g0_1"
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "wire": "io_1:D_OUT_0"
+        }
+      ],
+      "route": "X12/Y5/lutff_1:out;;1;X12/Y6/sp4_v_b_7;X12/Y5/12.5.lutff_1:out.->.12.6.sp4_v_b_7;1;X12/Y6/sp4_h_r_7;X12/Y6/12.6.sp4_v_b_7.->.12.6.sp4_h_r_7;1;X13/Y10/span4_vert_b_1;X13/Y6/12.6.sp4_h_r_7.->.13.10.span4_vert_b_1;1;X13/Y8/local_g0_1;X13/Y8/13.10.span4_vert_b_1.->.13.8.local_g0_1;1;X13/Y8/io_1:D_OUT_0;X13/Y8/13.8.local_g0_1.->.13.8.io_1:D_OUT_0;1"
+    },
+    {
+      "name": "q[3]$SB_IO_OUT",
+      "bits": [
+        766
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:out"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "local_g0_5"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_4:in_1"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_4:in_3_lut"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_4:out"
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "wire": "local_g1_4"
+        },
+        {
+          "x": 13,
+          "y": 2,
+          "wire": "io_1:D_OUT_0"
+        }
+      ],
+      "route": "X12/Y4/lutff_5:out;;1;X12/Y3/local_g0_5;X12/Y3/12.4.lutff_5:out.->.12.3.local_g0_5;1;X12/Y3/lutff_4:in_1;X12/Y3/12.3.local_g0_5.->.12.3.lutff_4:in_1;1;X12/Y3/lutff_4:in_3_lut;X12/Y3/12.3.lutff_4:in_1.->.12.3.lutff_4:in_3_lut;1;X12/Y3/lutff_4:out;X12/Y3/12.3.lutff_4:in_3_lut.->.12.3.lutff_4:out;1;X13/Y2/local_g1_4;X13/Y2/12.3.lutff_4:out.->.13.2.local_g1_4;1;X13/Y2/io_1:D_OUT_0;X13/Y2/13.2.local_g1_4.->.13.2.io_1:D_OUT_0;1"
+    },
+    {
+      "name": "b_sampled[2]",
+      "bits": [
+        694
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:in_1"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:in_2_lut"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "lutff_5:out"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "local_g1_5"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:in_2"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:in_2_lut"
+        }
+      ],
+      "route": "X12/Y5/lutff_1:in_1;X12/Y5/12.5.local_g1_5.->.12.5.lutff_1:in_1;1;X12/Y5/lutff_1:in_2_lut;X12/Y5/12.5.lutff_1:in_1.->.12.5.lutff_1:in_2_lut;1;X12/Y6/lutff_5:out;;1;X12/Y5/local_g1_5;X12/Y5/12.6.lutff_5:out.->.12.5.local_g1_5;1;X12/Y5/lutff_0:in_2;X12/Y5/12.5.local_g1_5.->.12.5.lutff_0:in_2;1;X12/Y5/lutff_0:in_2_lut;X12/Y5/12.5.lutff_0:in_2.->.12.5.lutff_0:in_2_lut;1"
+    },
+    {
+      "name": "b[2]$SB_IO_IN",
+      "bits": [
+        749
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 8,
+          "wire": "io_0:D_IN_0"
+        },
+        {
+          "x": 13,
+          "y": 10,
+          "wire": "span4_vert_b_0"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "sp4_h_r_1"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "local_g1_1"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "lutff_5:in_1"
+        },
+        {
+          "x": 12,
+          "y": 6,
+          "wire": "lutff_5:in_0_lut"
+        }
+      ],
+      "route": "X13/Y8/io_0:D_IN_0;;1;X13/Y10/span4_vert_b_0;X13/Y8/13.8.io_0:D_IN_0.->.13.10.span4_vert_b_0;1;X12/Y6/sp4_h_r_1;X13/Y6/13.10.span4_vert_b_0.->.12.6.sp4_h_r_1;1;X12/Y6/local_g1_1;X12/Y6/12.6.sp4_h_r_1.->.12.6.local_g1_1;1;X12/Y6/lutff_5:in_1;X12/Y6/12.6.local_g1_1.->.12.6.lutff_5:in_1;1;X12/Y6/lutff_5:in_0_lut;X12/Y6/12.6.lutff_5:in_1.->.12.6.lutff_5:in_0_lut;1"
+    },
+    {
+      "name": "b_sampled[3]",
+      "bits": [
+        689
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:in_2"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:in_2_lut"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_3:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g1_3"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:in_3"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:in_2_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_6:in_2;X12/Y4/12.4.local_g1_3.->.12.4.lutff_6:in_2;1;X12/Y4/lutff_6:in_2_lut;X12/Y4/12.4.lutff_6:in_2.->.12.4.lutff_6:in_2_lut;1;X12/Y3/lutff_3:out;;1;X12/Y4/local_g1_3;X12/Y4/12.3.lutff_3:out.->.12.4.local_g1_3;1;X12/Y4/lutff_5:in_3;X12/Y4/12.4.local_g1_3.->.12.4.lutff_5:in_3;1;X12/Y4/lutff_5:in_2_lut;X12/Y4/12.4.lutff_5:in_3.->.12.4.lutff_5:in_2_lut;1"
+    },
+    {
+      "name": "b[3]$SB_IO_IN",
+      "bits": [
+        747
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 2,
+          "wire": "io_0:D_IN_0"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "local_g0_4"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_3:in_3"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_3:in_0_lut"
+        }
+      ],
+      "route": "X13/Y2/io_0:D_IN_0;;1;X12/Y3/local_g0_4;X12/Y3/13.2.io_0:D_IN_0.->.12.3.local_g0_4;1;X12/Y3/lutff_3:in_3;X12/Y3/12.3.local_g0_4.->.12.3.lutff_3:in_3;1;X12/Y3/lutff_3:in_0_lut;X12/Y3/12.3.lutff_3:in_3.->.12.3.lutff_3:in_0_lut;1"
+    },
+    {
+      "name": "b_sampled[1]",
+      "bits": [
+        685
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_3"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_2_lut"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "wire": "lutff_7:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g1_7"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_2"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_2_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_3:in_3;X12/Y4/12.4.local_g1_7.->.12.4.lutff_3:in_3;1;X12/Y4/lutff_3:in_2_lut;X12/Y4/12.4.lutff_3:in_3.->.12.4.lutff_3:in_2_lut;1;X11/Y4/lutff_7:out;;1;X12/Y4/local_g1_7;X12/Y4/11.4.lutff_7:out.->.12.4.local_g1_7;1;X12/Y4/lutff_2:in_2;X12/Y4/12.4.local_g1_7.->.12.4.lutff_2:in_2;1;X12/Y4/lutff_2:in_2_lut;X12/Y4/12.4.lutff_2:in_2.->.12.4.lutff_2:in_2_lut;1"
+    },
+    {
+      "name": "b[1]$SB_IO_IN",
+      "bits": [
+        751
+      ],
+      "locations": [
+        {
+          "x": 0,
+          "y": 4,
+          "wire": "io_1:D_IN_0"
+        },
+        {
+          "x": 0,
+          "y": 4,
+          "wire": "span12_horz_4"
+        },
+        {
+          "x": 10,
+          "y": 4,
+          "wire": "sp12_h_r_0"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "wire": "local_g1_3"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "wire": "lutff_7:in_3"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "wire": "lutff_7:in_0_lut"
+        }
+      ],
+      "route": "X0/Y4/io_1:D_IN_0;;1;X0/Y4/span12_horz_4;X0/Y4/0.4.io_1:D_IN_0.->.0.4.span12_horz_4;1;X10/Y4/sp12_h_r_0;X10/Y4/0.4.span12_horz_4.->.10.4.sp12_h_r_0;1;X11/Y4/local_g1_3;X11/Y4/10.4.sp12_h_r_0.->.11.4.local_g1_3;1;X11/Y4/lutff_7:in_3;X11/Y4/11.4.local_g1_3.->.11.4.lutff_7:in_3;1;X11/Y4/lutff_7:in_0_lut;X11/Y4/11.4.lutff_7:in_3.->.11.4.lutff_7:in_0_lut;1"
+    },
+    {
+      "name": "b_sampled[0]",
+      "bits": [
+        681
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_0:in_1"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_0:in_3_lut"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_3_lut"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_1:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g0_1"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_1"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_3_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_0:in_1;X12/Y4/12.4.local_g0_1.->.12.4.lutff_0:in_1;1;X12/Y4/lutff_0:in_3_lut;X12/Y4/12.4.lutff_0:in_1.->.12.4.lutff_0:in_3_lut;1;X12/Y4/lutff_3:in_0;X12/Y4/12.4.local_g0_1.->.12.4.lutff_3:in_0;1;X12/Y4/lutff_3:in_3_lut;X12/Y4/12.4.lutff_3:in_0.->.12.4.lutff_3:in_3_lut;1;X12/Y3/lutff_1:out;;1;X12/Y4/local_g0_1;X12/Y4/12.3.lutff_1:out.->.12.4.local_g0_1;1;X12/Y4/lutff_2:in_1;X12/Y4/12.4.local_g0_1.->.12.4.lutff_2:in_1;1;X12/Y4/lutff_2:in_3_lut;X12/Y4/12.4.lutff_2:in_1.->.12.4.lutff_2:in_3_lut;1"
+    },
+    {
+      "name": "b[0]$SB_IO_IN",
+      "bits": [
+        753
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 1,
+          "wire": "io_1:D_IN_0"
+        },
+        {
+          "x": 12,
+          "y": 0,
+          "wire": "span4_horz_r_2"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "sp4_v_b_0"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "local_g1_5"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_1:in_3"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_1:in_0_lut"
+        }
+      ],
+      "route": "X13/Y1/io_1:D_IN_0;;1;X12/Y0/span4_horz_r_2;X13/Y1/13.1.io_1:D_IN_0.->.12.0.span4_horz_r_2;1;X12/Y4/sp4_v_b_0;X12/Y0/12.0.span4_horz_r_2.->.12.4.sp4_v_b_0;1;X12/Y3/local_g1_5;X12/Y3/12.4.sp4_v_b_0.->.12.3.local_g1_5;1;X12/Y3/lutff_1:in_3;X12/Y3/12.3.local_g1_5.->.12.3.lutff_1:in_3;1;X12/Y3/lutff_1:in_0_lut;X12/Y3/12.3.lutff_1:in_3.->.12.3.lutff_1:in_0_lut;1"
+    },
+    {
+      "name": "a_sampled[0]",
+      "bits": [
+        678
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_0:in_3"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_0:in_2_lut"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_2"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_1_lut"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_4:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g3_4"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_3"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_1_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_0:in_3;X12/Y4/12.4.local_g3_4.->.12.4.lutff_0:in_3;1;X12/Y4/lutff_0:in_2_lut;X12/Y4/12.4.lutff_0:in_3.->.12.4.lutff_0:in_2_lut;1;X12/Y4/lutff_3:in_2;X12/Y4/12.4.local_g3_4.->.12.4.lutff_3:in_2;1;X12/Y4/lutff_3:in_1_lut;X12/Y4/12.4.lutff_3:in_2.->.12.4.lutff_3:in_1_lut;1;X12/Y4/lutff_4:out;;1;X12/Y4/local_g3_4;X12/Y4/12.4.lutff_4:out.->.12.4.local_g3_4;1;X12/Y4/lutff_2:in_3;X12/Y4/12.4.local_g3_4.->.12.4.lutff_2:in_3;1;X12/Y4/lutff_2:in_1_lut;X12/Y4/12.4.lutff_2:in_3.->.12.4.lutff_2:in_1_lut;1"
+    },
+    {
+      "name": "a[0]$SB_IO_IN",
+      "bits": [
+        761
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 7,
+          "wire": "io_1:D_IN_0"
+        },
+        {
+          "x": 13,
+          "y": 8,
+          "wire": "span4_vert_b_2"
+        },
+        {
+          "x": 11,
+          "y": 4,
+          "wire": "sp4_h_r_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g1_5"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_4:in_2"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_4:in_0_lut"
+        }
+      ],
+      "route": "X13/Y7/io_1:D_IN_0;;1;X13/Y8/span4_vert_b_2;X13/Y7/13.7.io_1:D_IN_0.->.13.8.span4_vert_b_2;1;X11/Y4/sp4_h_r_0;X13/Y4/13.8.span4_vert_b_2.->.11.4.sp4_h_r_0;1;X12/Y4/local_g1_5;X12/Y4/11.4.sp4_h_r_0.->.12.4.local_g1_5;1;X12/Y4/lutff_4:in_2;X12/Y4/12.4.local_g1_5.->.12.4.lutff_4:in_2;1;X12/Y4/lutff_4:in_0_lut;X12/Y4/12.4.lutff_4:in_2.->.12.4.lutff_4:in_0_lut;1"
+    },
+    {
+      "name": "a_sampled[1]",
+      "bits": [
+        674
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_1"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_3:in_0_lut"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_1:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g1_1"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_2:in_0_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_3:in_1;X12/Y4/12.4.local_g1_1.->.12.4.lutff_3:in_1;1;X12/Y4/lutff_3:in_0_lut;X12/Y4/12.4.lutff_3:in_1.->.12.4.lutff_3:in_0_lut;1;X12/Y4/lutff_1:out;;1;X12/Y4/local_g1_1;X12/Y4/12.4.lutff_1:out.->.12.4.local_g1_1;1;X12/Y4/lutff_2:in_0;X12/Y4/12.4.local_g1_1.->.12.4.lutff_2:in_0;1;X12/Y4/lutff_2:in_0_lut;X12/Y4/12.4.lutff_2:in_0.->.12.4.lutff_2:in_0_lut;1"
+    },
+    {
+      "name": "a[1]$SB_IO_IN",
+      "bits": [
+        759
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 4,
+          "wire": "io_0:D_IN_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g3_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_1:in_0"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_1:in_0_lut"
+        }
+      ],
+      "route": "X13/Y4/io_0:D_IN_0;;1;X12/Y4/local_g3_0;X12/Y4/13.4.io_0:D_IN_0.->.12.4.local_g3_0;1;X12/Y4/lutff_1:in_0;X12/Y4/12.4.local_g3_0.->.12.4.lutff_1:in_0;1;X12/Y4/lutff_1:in_0_lut;X12/Y4/12.4.lutff_1:in_0.->.12.4.lutff_1:in_0_lut;1"
+    },
+    {
+      "name": "a_sampled[2]",
+      "bits": [
+        669
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:in_2"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_1:in_1_lut"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_3:out"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "local_g2_3"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:in_3"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_0:in_1_lut"
+        }
+      ],
+      "route": "X12/Y5/lutff_1:in_2;X12/Y5/12.5.local_g2_3.->.12.5.lutff_1:in_2;1;X12/Y5/lutff_1:in_1_lut;X12/Y5/12.5.lutff_1:in_2.->.12.5.lutff_1:in_1_lut;1;X12/Y5/lutff_3:out;;1;X12/Y5/local_g2_3;X12/Y5/12.5.lutff_3:out.->.12.5.local_g2_3;1;X12/Y5/lutff_0:in_3;X12/Y5/12.5.local_g2_3.->.12.5.lutff_0:in_3;1;X12/Y5/lutff_0:in_1_lut;X12/Y5/12.5.lutff_0:in_3.->.12.5.lutff_0:in_1_lut;1"
+    },
+    {
+      "name": "a[2]$SB_IO_IN",
+      "bits": [
+        757
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 7,
+          "wire": "io_0:D_IN_0"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "wire": "span4_vert_b_0"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "sp4_h_r_1"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "local_g0_1"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_3:in_2"
+        },
+        {
+          "x": 12,
+          "y": 5,
+          "wire": "lutff_3:in_0_lut"
+        }
+      ],
+      "route": "X13/Y7/io_0:D_IN_0;;1;X13/Y9/span4_vert_b_0;X13/Y7/13.7.io_0:D_IN_0.->.13.9.span4_vert_b_0;1;X12/Y5/sp4_h_r_1;X13/Y5/13.9.span4_vert_b_0.->.12.5.sp4_h_r_1;1;X12/Y5/local_g0_1;X12/Y5/12.5.sp4_h_r_1.->.12.5.local_g0_1;1;X12/Y5/lutff_3:in_2;X12/Y5/12.5.local_g0_1.->.12.5.lutff_3:in_2;1;X12/Y5/lutff_3:in_0_lut;X12/Y5/12.5.lutff_3:in_2.->.12.5.lutff_3:in_0_lut;1"
+    },
+    {
+      "name": "a_sampled[3]",
+      "bits": [
+        663
+      ],
+      "locations": [
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:in_3"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_6:in_1_lut"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_7:out"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "local_g0_7"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:in_2"
+        },
+        {
+          "x": 12,
+          "y": 4,
+          "wire": "lutff_5:in_1_lut"
+        }
+      ],
+      "route": "X12/Y4/lutff_6:in_3;X12/Y4/12.4.local_g0_7.->.12.4.lutff_6:in_3;1;X12/Y4/lutff_6:in_1_lut;X12/Y4/12.4.lutff_6:in_3.->.12.4.lutff_6:in_1_lut;1;X12/Y3/lutff_7:out;;1;X12/Y4/local_g0_7;X12/Y4/12.3.lutff_7:out.->.12.4.local_g0_7;1;X12/Y4/lutff_5:in_2;X12/Y4/12.4.local_g0_7.->.12.4.lutff_5:in_2;1;X12/Y4/lutff_5:in_1_lut;X12/Y4/12.4.lutff_5:in_2.->.12.4.lutff_5:in_1_lut;1"
+    },
+    {
+      "name": "a[3]$SB_IO_IN",
+      "bits": [
+        755
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 3,
+          "wire": "io_1:D_IN_0"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "local_g2_6"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_7:in_1"
+        },
+        {
+          "x": 12,
+          "y": 3,
+          "wire": "lutff_7:in_0_lut"
+        }
+      ],
+      "route": "X13/Y3/io_1:D_IN_0;;1;X12/Y3/local_g2_6;X12/Y3/13.3.io_1:D_IN_0.->.12.3.local_g2_6;1;X12/Y3/lutff_7:in_1;X12/Y3/12.3.local_g2_6.->.12.3.lutff_7:in_1;1;X12/Y3/lutff_7:in_0_lut;X12/Y3/12.3.lutff_7:in_1.->.12.3.lutff_7:in_0_lut;1"
+    },
+    {
+      "name": "clk$SB_IO_IN",
+      "bits": [
+        774
+      ],
+      "locations": [
+        {
+          "x": 13,
+          "y": 9,
+          "wire": "io_0:D_IN_0"
+        },
+        {
+          "x": 12,
+          "y": 9,
+          "wire": "sp4_h_r_0"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "wire": "local_g1_0"
+        },
+        {
+          "x": 13,
+          "y": 9,
+          "wire": "fabout"
+        }
+      ],
+      "route": "X13/Y9/io_0:D_IN_0;;1;X12/Y9/sp4_h_r_0;X13/Y9/13.9.io_0:D_IN_0.->.12.9.sp4_h_r_0;1;X13/Y9/local_g1_0;X13/Y9/12.9.sp4_h_r_0.->.13.9.local_g1_0;1;X13/Y9/fabout;X13/Y9/13.9.local_g1_0.->.13.9.fabout;1"
+    }
+  ],
+  "timing": {
+    "critical_paths": [
+      {
+        "from": "posedge clk$SB_IO_IN_$glb_clk",
+        "path": [
+          {
+            "delay": 0.5400000214576721,
+            "from": {
+              "cell": "a_sampled_SB_DFF_Q_2_DFFLC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "O"
+            },
+            "to": {
+              "cell": "a_sampled_SB_DFF_Q_2_DFFLC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "O"
+            },
+            "type": "clk-to-q"
+          },
+          {
+            "delay": 0.5879999995231628,
+            "from": {
+              "cell": "a_sampled_SB_DFF_Q_2_DFFLC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "O"
+            },
+            "net": "a_sampled[1]",
+            "sources": [
+              "adder.v:2.27-2.28"
+            ],
+            "to": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "I0"
+            },
+            "type": "routing"
+          },
+          {
+            "delay": 0.4480000138282776,
+            "from": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "I0"
+            },
+            "to": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "O"
+            },
+            "type": "logic"
+          },
+          {
+            "delay": 0.5879999995231628,
+            "from": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "O"
+            },
+            "net": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3[2]",
+            "sources": [
+              "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22"
+            ],
+            "to": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "I3"
+            },
+            "type": "routing"
+          },
+          {
+            "delay": 0.3149999976158142,
+            "from": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "I3"
+            },
+            "to": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "O"
+            },
+            "type": "logic"
+          },
+          {
+            "delay": 0.5879999995231628,
+            "from": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "O"
+            },
+            "net": "q_SB_DFF_Q_D_SB_LUT4_O_I3[2]",
+            "sources": [
+              "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22"
+            ],
+            "to": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "I3"
+            },
+            "type": "routing"
+          },
+          {
+            "delay": 0.33500000834465027,
+            "from": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "I3"
+            },
+            "to": {
+              "cell": "q_SB_DFF_Q_D_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                4
+              ],
+              "port": "I3"
+            },
+            "type": "setup"
+          }
+        ],
+        "to": "posedge clk$SB_IO_IN_$glb_clk"
+      },
+      {
+        "from": "<async>",
+        "path": [
+          {
+            "delay": 0,
+            "from": {
+              "cell": "b[1]$sb_io",
+              "loc": [
+                0,
+                4
+              ],
+              "port": "D_IN_0"
+            },
+            "to": {
+              "cell": "b[1]$sb_io",
+              "loc": [
+                0,
+                4
+              ],
+              "port": "D_IN_0"
+            },
+            "type": "source"
+          },
+          {
+            "delay": 1.6679999828338623,
+            "from": {
+              "cell": "b[1]$sb_io",
+              "loc": [
+                0,
+                4
+              ],
+              "port": "D_IN_0"
+            },
+            "net": "b[1]$SB_IO_IN",
+            "sources": [
+              "adder.v:15.46-15.47"
+            ],
+            "to": {
+              "cell": "b_sampled_SB_DFF_Q_1_DFFLC",
+              "loc": [
+                11,
+                4
+              ],
+              "port": "I0"
+            },
+            "type": "routing"
+          },
+          {
+            "delay": 0.46799999475479126,
+            "from": {
+              "cell": "b_sampled_SB_DFF_Q_1_DFFLC",
+              "loc": [
+                11,
+                4
+              ],
+              "port": "I0"
+            },
+            "to": {
+              "cell": "b_sampled_SB_DFF_Q_1_DFFLC",
+              "loc": [
+                11,
+                4
+              ],
+              "port": "I0"
+            },
+            "type": "setup"
+          }
+        ],
+        "to": "posedge clk$SB_IO_IN_$glb_clk"
+      },
+      {
+        "from": "posedge clk$SB_IO_IN_$glb_clk",
+        "path": [
+          {
+            "delay": 0.5400000214576721,
+            "from": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "O"
+            },
+            "to": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "O"
+            },
+            "type": "clk-to-q"
+          },
+          {
+            "delay": 1.6449999809265137,
+            "from": {
+              "cell": "q_SB_DFF_Q_1_D_SB_LUT4_O_LC",
+              "loc": [
+                12,
+                5
+              ],
+              "port": "O"
+            },
+            "net": "q[2]$SB_IO_OUT",
+            "sources": [
+              "adder.v:15.66-15.67"
+            ],
+            "to": {
+              "cell": "q[2]$sb_io",
+              "loc": [
+                13,
+                8
+              ],
+              "port": "D_OUT_0"
+            },
+            "type": "routing"
+          }
+        ],
+        "to": "<async>"
+      }
+    ],
+    "fmax": {
+      "clk$SB_IO_IN_$glb_clk": {
+        "achieved": 293.9447326660156,
+        "constraint": 100
+      }
+    },
+    "utilization": {
+      "ICESTORM_LC": {
+        "available": 1280,
+        "used": 17
+      },
+      "ICESTORM_PLL": {
+        "available": 1,
+        "used": 0
+      },
+      "ICESTORM_RAM": {
+        "available": 16,
+        "used": 0
+      },
+      "SB_GB": {
+        "available": 8,
+        "used": 1
+      },
+      "SB_IO": {
+        "available": 96,
+        "used": 14
+      },
+      "SB_WARMBOOT": {
+        "available": 1,
+        "used": 0
+      }
+    }
+  },
+  "mapped": {
+    "ports": {
+      "clk": {
+        "direction": "input",
+        "bits": [
+          2
+        ]
+      },
+      "a": {
+        "direction": "input",
+        "bits": [
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "b": {
+        "direction": "input",
+        "bits": [
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "q": {
+        "direction": "output",
+        "bits": [
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      }
+    },
+    "cells": [
+      {
+        "name": "a_sampled_SB_DFF_Q",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            6
+          ],
+          "Q": [
+            16
+          ]
+        }
+      },
+      {
+        "name": "a_sampled_SB_DFF_Q_1",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            5
+          ],
+          "Q": [
+            17
+          ]
+        }
+      },
+      {
+        "name": "a_sampled_SB_DFF_Q_2",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            4
+          ],
+          "Q": [
+            18
+          ]
+        }
+      },
+      {
+        "name": "a_sampled_SB_DFF_Q_3",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            3
+          ],
+          "Q": [
+            19
+          ]
+        }
+      },
+      {
+        "name": "b_sampled_SB_DFF_Q",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            7
+          ],
+          "Q": [
+            20
+          ]
+        }
+      },
+      {
+        "name": "b_sampled_SB_DFF_Q_1",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            8
+          ],
+          "Q": [
+            21
+          ]
+        }
+      },
+      {
+        "name": "b_sampled_SB_DFF_Q_2",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            10
+          ],
+          "Q": [
+            22
+          ]
+        }
+      },
+      {
+        "name": "b_sampled_SB_DFF_Q_3",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            9
+          ],
+          "Q": [
+            23
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            24
+          ],
+          "Q": [
+            14
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_1",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            25
+          ],
+          "Q": [
+            13
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_1_D_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "0011110011000011"
+        },
+        "connections": {
+          "I0": [
+            "0"
+          ],
+          "I1": [
+            17
+          ],
+          "I2": [
+            23
+          ],
+          "I3": [
+            26
+          ],
+          "O": [
+            25
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "0001011101011111"
+        },
+        "connections": {
+          "I0": [
+            18
+          ],
+          "I1": [
+            19
+          ],
+          "I2": [
+            21
+          ],
+          "I3": [
+            20
+          ],
+          "O": [
+            26
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_2",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            27
+          ],
+          "Q": [
+            12
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_2_D_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "1001011001011010"
+        },
+        "connections": {
+          "I0": [
+            18
+          ],
+          "I1": [
+            19
+          ],
+          "I2": [
+            21
+          ],
+          "I3": [
+            20
+          ],
+          "O": [
+            27
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_3",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            28
+          ],
+          "Q": [
+            11
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_3_D_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "0000111111110000"
+        },
+        "connections": {
+          "I0": [
+            "0"
+          ],
+          "I1": [
+            "0"
+          ],
+          "I2": [
+            19
+          ],
+          "I3": [
+            20
+          ],
+          "O": [
+            28
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_4",
+        "type": "SB_DFF",
+        "parameters": {},
+        "connections": {
+          "C": [
+            2
+          ],
+          "D": [
+            29
+          ],
+          "Q": [
+            15
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_4_D_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "1100000011111100"
+        },
+        "connections": {
+          "I0": [
+            "0"
+          ],
+          "I1": [
+            16
+          ],
+          "I2": [
+            22
+          ],
+          "I3": [
+            30
+          ],
+          "O": [
+            29
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_D_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "0011110011000011"
+        },
+        "connections": {
+          "I0": [
+            "0"
+          ],
+          "I1": [
+            16
+          ],
+          "I2": [
+            22
+          ],
+          "I3": [
+            30
+          ],
+          "O": [
+            24
+          ]
+        }
+      },
+      {
+        "name": "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O",
+        "type": "SB_LUT4",
+        "parameters": {
+          "LUT_INIT": "0011111100000011"
+        },
+        "connections": {
+          "I0": [
+            "0"
+          ],
+          "I1": [
+            17
+          ],
+          "I2": [
+            23
+          ],
+          "I3": [
+            26
+          ],
+          "O": [
+            30
+          ]
+        }
+      }
+    ]
+  },
+  "source": "// Four-bit unsigned addition with an explicitly preserved fifth carry bit.\nmodule adder4(input [3:0] a, b, output [4:0] sum);\n  wire [4:0] carry;\n  assign carry[0] = 1'b0;\n  genvar i;\n  generate for (i=0; i<4; i=i+1) begin: bit_slice\n    assign sum[i] = a[i] ^ b[i] ^ carry[i];\n    assign carry[i+1] = (a[i] & b[i]) | ((a[i] ^ b[i]) & carry[i]);\n  end endgenerate\n  assign sum[4] = carry[4];\nendmodule\n\n// At rising edge n, q captures the sum of inputs sampled at edge n-1.\n// Power-on state is unspecified; the testbench discards pipeline fill.\nmodule atlas_adder(input clk, input [3:0] a, b, output reg [4:0] q);\n  reg [3:0] a_sampled, b_sampled;\n  wire [4:0] sum;\n  adder4 arithmetic(a_sampled, b_sampled, sum);\n  always @(posedge clk) begin\n    a_sampled <= a;\n    b_sampled <= b;\n    q <= sum;\n  end\nendmodule\n\nmodule adder_contract(input [3:0] a, b, output ok);\n  wire [4:0] sum;\n  adder4 implementation(a,b,sum);\n  assign ok = sum == ({1'b0,a} + {1'b0,b});\nendmodule\n",
+  "tools": {
+    "yosys": "Yosys 0.68+post (git sha1 c12172fbae8af5e20f6fb52e3d4e92d56ed587b6, Release, AppleClang clang++ 21.0.0.21000101)",
+    "nextpnr": "\"nextpnr-ice40\" -- Next Generation Place and Route (Version )",
+    "iverilog": "Icarus Verilog version 13.0 (stable) (v13_0)"
+  },
+  "files": [
+    {
+      "path": "adder.v",
+      "sha256": "7bf0920c78445649f689fc3b8192fdeeedb10eb41133d22eddaf2aadb56025b1",
+      "bytes": 975
+    },
+    {
+      "path": "exhaustive-tb.v",
+      "sha256": "0b9fbf16f06d24775c88f525ae4a956eeb38087614a903ea5572c66dfc4bb8e3",
+      "bytes": 796
+    },
+    {
+      "path": "prove.ys",
+      "sha256": "cde89fa494ff084ba4fc1ced437e28b4c476c106295cdc50982954f313627693",
+      "bytes": 92
+    },
+    {
+      "path": "synthesize.ys",
+      "sha256": "45bfb055a87039eba1ee0ad5ee7ec873e6cb1de4aaf1452c16ccea85c2ca5d0b",
+      "bytes": 124
+    },
+    {
+      "path": "artifacts/mapped.json",
+      "sha256": "0e42ce0d5268ca2efb15e77968f3a71a05d3bec0ec68acd116f777a685de3d61",
+      "bytes": 337665
+    },
+    {
+      "path": "artifacts/mapped.v",
+      "sha256": "59962f2fdca69421894a28b47f85d9a09f56faff65d5e83b6359446fee3ad4e4",
+      "bytes": 3520
+    },
+    {
+      "path": "artifacts/routed.json",
+      "sha256": "33d3b724b499bc4a7d661ccc1138ab3f75eda445a61d0de0207cf4df68abaa2d",
+      "bytes": 59743
+    },
+    {
+      "path": "artifacts/timing.json",
+      "sha256": "943ffcf2a8d2d0e2642cddfb9dcd480f5583707ae089fa1258a2c5932d9257a6",
+      "bytes": 3508
+    },
+    {
+      "path": "artifacts/formal.log",
+      "sha256": "42f9cd9fe9bf2ec49e620914c6a41c77cbbb90fd0bd7876ff434ef0902dfd9ed",
+      "bytes": 7317
+    },
+    {
+      "path": "artifacts/rtl-simulation.log",
+      "sha256": "3aca28e79504e8cfac21c724b90d6f0ad844ec5ba68468c0cce04558cbff0b04",
+      "bytes": 135
+    },
+    {
+      "path": "artifacts/mapped-simulation.log",
+      "sha256": "3aca28e79504e8cfac21c724b90d6f0ad844ec5ba68468c0cce04558cbff0b04",
+      "bytes": 135
+    },
+    {
+      "path": "artifacts/adder.asc",
+      "sha256": "4756efbecbb5743824e08d81c4f0c0edd911d0e8b2e07999f3427b9d922a3787",
+      "bytes": 187874
+    },
+    {
+      "path": "artifacts/adder.bin",
+      "sha256": "86500a99138b25497c7192073d717fc8b24a9a7512f3fb0b90c1545cc97f368d",
+      "bytes": 32220
+    }
+  ],
+  "scope": [
+    "Actual FPGA resource mapping and routing from public tools, not an ASIC standard-cell layout or a transistor process model.",
+    "IO pins are automatically assigned. There is no board wiring contract, external IO timing constraint or hardware measurement.",
+    "The reported internal clock timing uses the nextpnr device model for this device and routing seed. It is not measured frequency or full timing signoff.",
+    "Functional proof and netlist simulation do not establish manufacturing yield, field reliability, broad CRG claims or AGI capability."
+  ]
+}

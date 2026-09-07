@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "agent-source-scope-capacity-phase-geography-2026-09-07-02-accepted",
+      "lessonId": "capacity-phase-geography",
+      "type": "source-scope",
+      "contentFingerprint": "7ff32f6cc05b65612de250ace78dbea37f6430133117e5e589e7819ff3457ee9",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/capacity-phase-geography-reviewed-snapshot.json",
+      "reviewedSourceIds": [
+        "url-775a7d4e10e6f3d6d135",
+        "url-cd619e3d4531c3e08830",
+        "url-c5e74c0f61b347fb8560"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-euro-call"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-775a7d4e10e6f3d6d135",
+          "url": "https://openai.com/index/five-new-stargate-sites/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "23 September 2025 article; 22 October update; opening project-capacity paragraph and paragraph beginning “The new Stargate sites being developed by Oracle” (rendered lines 24–32)"
+          ],
+          "notes": "Distinguishes planned additions and partnership roles from an already running Abilene phase. Supports dated status/entity separation; no present operating megawatt total is inferred."
+        },
+        {
+          "sourceId": "url-cd619e3d4531c3e08830",
+          "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "28 April 2026; introduction and groundbreaking paragraphs (lines 36–51); “Powering growth responsibly” (line 54); community impact paragraph (lines 57–62)"
+          ],
+          "notes": "Reports construction and associated cable, electrical, water and workforce initiatives. Supports the dated siting example; planned investment and infrastructure are not treated as completed local service."
+        },
+        {
+          "sourceId": "url-c5e74c0f61b347fb8560",
+          "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "30 July 2026; opening procurement/access paragraphs (lines 2, 9–13); “Who can apply” (18–20); “Funding Model” (24–28); “About the EuroHPC Joint Undertaking” (44)"
+          ],
+          "notes": "Future tender scope, possible multiple locations and access-time procurement are distinct from operating infrastructure. The seven-project maximum and separate factory/antenna categories support the qualified claim."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-euro-call",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as a dated maximum procurement scope for future projects. It is not seven operating facilities, and the differently defined factory and antenna counts are not equivalent capacity."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter and formal indicator equation. Nonoverlap, common units, snapshot time and unknown capacity are preserved. Independently checked 20 MW operating versus 80 MW planned and conditional 100 MW eventual scope. The commissioning prerequisite and regional-access dependency retain distinct readiness/access gates. The procedural world-network geometry is schematic, not an actual census. Root corrected the internal-process phrase; the before snapshot is retained. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-compatible-supply-capacity-2026-09-07-02-accepted",
+      "lessonId": "compatible-supply-capacity",
+      "type": "source-scope",
+      "contentFingerprint": "d3cb1abf1262ccc17d7c95fee795ee6385985df060d6fb8e860ce18275f57b7b",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/compatible-supply-capacity-snapshot.json",
+      "reviewedSourceIds": [
+        "url-9310331128e535e41368",
+        "url-d060122a4bc0843887e6"
+      ],
+      "reviewedClaimIds": [],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-9310331128e535e41368",
+          "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "CoWoS overview (lines 170–174); CoWoS-S integration paragraph (182); CoWoS-R and CoWoS-L descriptions (185–198)"
+          ],
+          "notes": "Documents heterogeneous logic/HBM/interposer/package integration, supporting converging compatible inputs. Does not provide the synthetic bill of materials, screened-input counts, remaining yields or queue assumptions."
+        },
+        {
+          "sourceId": "url-d060122a4bc0843887e6",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Letter to Shareholders, PDF page index 5, printed pages 008–009: customer-linked capacity paragraph and distinct fab phases (text lines 253–275)",
+            "Section 5.2 technology discussion, PDF page index 52 (lines 5322–5342); future CoWoS qualification in PDF index 53 (5604–5616)"
+          ],
+          "notes": "Company describes planning with customers and their customers, separates construction from production, and describes logic/HBM integration and qualification. Supplies no private allocation or synthetic production-rate defaults."
+        }
+      ],
+      "claimChecks": [],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter and formal minimum/floor equation. Independently derived min(150,400/4,120)=100; 399 stacks support only 99 whole packages. Already-screened inputs must not incur their earlier yield again; coavailability, compatibility, assembly slots and later loss remain explicit. HBM/substrate prerequisites and production-ramp dependency retain their separate quantities. The capacity-flow geometry and capacity lab are bounded abstractions, not measured fab throughput. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-energy-forecast-boundaries-2026-09-07-02-accepted",
+      "lessonId": "energy-forecast-boundaries",
+      "type": "source-scope",
+      "contentFingerprint": "f427e2aea801958c5dc42ce1ffc853ec70c9ee8f062f0ae9befa38a991d55660",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/energy-forecast-boundaries-snapshot.json",
+      "reviewedSourceIds": [
+        "url-e71ee1cf63ee4c12b5e0",
+        "url-00d2a95d1b2558230681"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-iea-baseline",
+        "infra-claim-iea-projection"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-e71ee1cf63ee4c12b5e0",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "“Our updated data centre electricity demand outlook sees near-term bottlenecks but longer-term upside” (lines 94–97)",
+            "“The AI and energy nexus continues to evolve rapidly” and report-scope paragraph (69–70)",
+            "Linked report overview: Published 16 April 2026"
+          ],
+          "notes": "Supports the estimated 2025 baseline and conditional central 2030 projection at global data-center scope, with AI-focused demand distinguished. The linked overview supplies the publication date; no forecast is treated as a measured future outcome."
+        },
+        {
+          "sourceId": "url-00d2a95d1b2558230681",
+          "url": "https://bies.lbl.gov/publications/united-states-data-center-energy-2025",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "“Date Published”: 06/2026 (lines 28–30); “Abstract” paragraphs on US scope, bottom-up equipment/cooling model and sensitivity scenarios (35–40)"
+          ],
+          "notes": "The laboratory abstract supports publication date, US geography and differing scenario methodology. Review does not claim inspection of the full report or its detailed derivation; that limitation remains explicit in the lesson."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-iea-baseline",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as the report’s estimated 2025 global data-center energy baseline; all-data-center scope includes non-AI uses."
+        },
+        {
+          "claimId": "infra-claim-iea-projection",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as the conditional central 2030 global projection, not an observed outcome or AI-only total."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter, units and both structured claims. The report scopes and publication dates are supported; overlapping US and global totals cannot be added. Independently checked 1 GW for 8760 h equals 8.76 TWh and a 0.4 GW average gives 3.504 TWh. The power-integral prerequisite uses the same fixed boundary; peak/nameplate power is not average demand. Schematic geography and library navigation do not claim a forecasting simulation. No full LBNL methodology review is implied. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-grid-interconnection-readiness-2026-09-07-01-changes-required",
+      "lessonId": "grid-interconnection-readiness",
+      "type": "source-scope",
+      "contentFingerprint": "cb80d0a139cc9dbb8b0449fa25c53ec56541568fac3c631884a9624d2427b2bd",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-snapshot.json",
+      "reviewedSourceIds": [
+        "url-2b5f76658b39305d88e5"
+      ],
+      "reviewedClaimIds": [],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "changes-required",
+      "sourceChecks": [
+        {
+          "sourceId": "url-2b5f76658b39305d88e5",
+          "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "14 January 2026; opening forecast/vetting paragraphs (37–39)",
+            "“Improving the Forecast for Large Load Additions” (68–76)",
+            "“Further Consideration for Large Load Additions” and “The Long-Term Forecast Process” (79–89)"
+          ],
+          "notes": "Supports regional request vetting, double-counting checks and firm versus non-firm planning commitments. Proposed measures are not generalized into global law. Battery arithmetic is independently derived, not attributed to PJM; the inconsistent winter headline is excluded."
+        }
+      ],
+      "claimChecks": [],
+      "checks": {
+        "unitsAndDenominators": "needs-change",
+        "modelAssumptions": "needs-change",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "The full earlier effective lesson was read. Its formal equation defines load-side already-usable energy, but the knowledge-check explanation says before losses/reserves and the science assumptions deduct conversion losses again. Correct the question, explanation and assumptions to one boundary before accepting the lesson. The two-hour arithmetic itself is correct. Source support and other declared limits pass. This finding is preserved after the subsequent corrected-content review."
+    },
+    {
+      "id": "agent-source-scope-grid-interconnection-readiness-2026-09-07-02-accepted",
+      "lessonId": "grid-interconnection-readiness",
+      "type": "source-scope",
+      "contentFingerprint": "90d3cf400e8f57437f2b7c18239ca92da6d7051345e69c9c3ac6f80dae36160d",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-reviewed-snapshot.json",
+      "reviewedSourceIds": [
+        "url-2b5f76658b39305d88e5"
+      ],
+      "reviewedClaimIds": [],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-2b5f76658b39305d88e5",
+          "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "14 January 2026; opening forecast/vetting paragraphs (37–39)",
+            "“Improving the Forecast for Large Load Additions” (68–76)",
+            "“Further Consideration for Large Load Additions” and “The Long-Term Forecast Process” (79–89)"
+          ],
+          "notes": "Supports regional request vetting, double-counting checks and firm versus non-firm planning commitments. Proposed measures are not generalized into global law. Battery arithmetic is independently derived, not attributed to PJM; the inconsistent winter headline is excluded."
+        }
+      ],
+      "claimChecks": [],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter and load-side formal equation. The prior check/assumption text mixed stored energy with load-side usable energy; root corrected it, and the complete revised record was re-read. Independently verified 20 MWh / 10 MW = 2 h with no repeated efficiency deduction. UPS uses a separately defined stored-energy boundary; power-supply losses are not double-counted here. Commissioning and hall links retain service/readiness gates and explicitly omit grid/battery engineering simulation. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-production-ramp-allocation-2026-09-07-02-accepted",
+      "lessonId": "production-ramp-allocation",
+      "type": "source-scope",
+      "contentFingerprint": "fe17238e7ad15a7f27f42cddf9a1ece457d75371a8e90f469f1ac2dcc6dc3ca9",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/production-ramp-allocation-snapshot.json",
+      "reviewedSourceIds": [
+        "url-d060122a4bc0843887e6"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-tsmc-planning"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-d060122a4bc0843887e6",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Letter to Shareholders, PDF page index 5, printed pages 008–009: customer-linked capacity paragraph and distinct fab phases (text lines 253–275)",
+            "Section 5.2 technology discussion, PDF page index 52 (lines 5322–5342); future CoWoS qualification in PDF index 53 (5604–5616)"
+          ],
+          "notes": "Company describes planning with customers and their customers, separates construction from production, and describes logic/HBM integration and qualification. Supplies no private allocation or synthetic production-rate defaults."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-tsmc-planning",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by the shareholder letter’s stated planning relationship. Retains company-reported scope and makes no customer-share, queue-position or output-rate inference."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter, conservation equation and planning claim. Inventory counts share one compatible item and interval; missing scrap/rework would require extra flows, and feasible consumption cannot exceed available inventory. Independently checked 10+7−9=8, three elapsed weekly intervals from week one reach week four, and half of 100 is 50. Lead time and allocation are authored scenarios, not TSMC data. Compatible-input and scheduling links distinguish supply from access; capacity-flow geometry is conceptual. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-regional-siting-access-2026-09-07-02-accepted",
+      "lessonId": "regional-siting-access",
+      "type": "source-scope",
+      "contentFingerprint": "20e727788f57f7eecab59b833472cb592db3ae6438323e500291850785b32b3c",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/regional-siting-access-snapshot.json",
+      "reviewedSourceIds": [
+        "url-cd619e3d4531c3e08830",
+        "url-c5e74c0f61b347fb8560"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-euro-call"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-cd619e3d4531c3e08830",
+          "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "28 April 2026; introduction and groundbreaking paragraphs (lines 36–51); “Powering growth responsibly” (line 54); community impact paragraph (lines 57–62)"
+          ],
+          "notes": "Reports construction and associated cable, electrical, water and workforce initiatives. Supports the dated siting example; planned investment and infrastructure are not treated as completed local service."
+        },
+        {
+          "sourceId": "url-c5e74c0f61b347fb8560",
+          "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "30 July 2026; opening procurement/access paragraphs (lines 2, 9–13); “Who can apply” (18–20); “Funding Model” (24–28); “About the EuroHPC Joint Undertaking” (44)"
+          ],
+          "notes": "Future tender scope, possible multiple locations and access-time procurement are distinct from operating infrastructure. The seven-project maximum and separate factory/antenna categories support the qualified claim."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-euro-call",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as a dated maximum procurement scope for future projects. It is not seven operating facilities, and the differently defined factory and antenna counts are not equivalent capacity."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter, normalized weighted-score equation and procurement claim. Source examples retain dated construction/procurement status. Dimensionless normalization and explicit user weights prevent an objective ranking claim. An independent two-criterion example reverses the preferred site when readiness/latency weights change. Phase identity and scheduler prerequisites preserve geographical capacity versus admission, while the topology connection preserves data-path constraints. World-network geometry is schematic and the library does not execute a real siting optimization. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    }
+  ]
+}

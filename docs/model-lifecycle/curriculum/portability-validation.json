@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-07T23:19:32.336448Z",
+  "actorType": "agent",
+  "actor": "/root/learning_source_review",
+  "scope": "Repository input packaging and file integrity only. No curriculum regeneration or scientific source recheck.",
+  "approvedInput": {
+    "path": "docs/model-lifecycle/curriculum/model-candidates.json",
+    "sha256": "330dd5a150f350e63a5af21c7588b4e871686341191b90318a03f550e58551c6",
+    "originalApprovedFileSha256": "d2c3928cd42a6bbd99a86f66031f53b05de3dface1f65faada804e8f857f52fe",
+    "normalization": {
+      "jsonPointer": "/existingEvidence/repo",
+      "replacement": ".",
+      "meaning": "Repository root; removes machine-local location metadata only."
+    },
+    "allOtherPlanningFieldsPreserved": true,
+    "candidateInventoryMatches": true,
+    "candidateCount": 52,
+    "familyCount": 8,
+    "initialSourceAnchorCount": 33
+  },
+  "inputCheck": {
+    "command": "python3 docs/model-lifecycle/curriculum/generate.py --check-inputs",
+    "executedFrom": [
+      "repository root",
+      "unrelated temporary directory"
+    ],
+    "exitCodes": [
+      0,
+      0
+    ],
+    "writes": 0
+  },
+  "focusedTestAttempt": {
+    "command": "node --experimental-strip-types --test scripts/model-lifecycle-curriculum.test.mjs",
+    "outcome": "interrupted-before-test-output",
+    "reason": "The filesystem marked the test and its curriculum inputs as compressed,dataless during packaging; reads blocked. The process was stopped. No new test pass or failure is inferred.",
+    "newPassingTestCount": null
+  },
+  "historicalMetadata": {
+    "manifests": [
+      "docs/model-lifecycle/curriculum/validation.json",
+      "docs/model-lifecycle/curriculum/source-review-manifest.json"
+    ],
+    "preservedUnmodified": true,
+    "interpretation": "Original source actors, dates, dispositions, test results and file snapshots retain their original meaning. Current file identities below supersede only the three portability-edited file identities; no source review status is advanced."
+  },
+  "currentFileIntegrity": [
+    {
+      "path": "docs/model-lifecycle/curriculum/generate.py",
+      "sha256": "9e68e6ae04fba180e43d4203fdde6b3f420c4c14cc7b2a15534d9125745d8a68"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/approved-candidates.json",
+      "sha256": "7968db5074dfa5380804cd26d25ca212ed3651b99a1996a3872967d59c81294d"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/README.md",
+      "sha256": "355a00fdbe5eda2e6774258c498e6645655d456040d1a148e038fe3598dbffd5"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/model-candidates.json",
+      "sha256": "330dd5a150f350e63a5af21c7588b4e871686341191b90318a03f550e58551c6"
+    }
+  ],
+  "curriculumDataFilesModified": false,
+  "personalAbsolutePathsInPortableInputs": 0,
+  "subsequentReleaseVerification": {
+    "observedAt": "2026-09-07T23:40:10.047480+00:00",
+    "actor": "/root",
+    "scope": "After restoring source into a temporary checkout outside iCloud and installing locked dependencies afresh, the full application suite passed, including the curriculum tests.",
+    "tests": 732,
+    "failures": 0,
+    "testConcurrency": 2,
+    "evidence": "docs/release-evidence/v1.3.0/preflight.log"
+  }
+}

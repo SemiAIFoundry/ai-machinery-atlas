@@ -79,7 +79,8 @@
       "summary": "Carry memory traffic into network, electrical, thermal, commissioning and retained-work accounting.",
       "ids": [
         "memory-to-hall-propagation",
-        "memory-system-qualification"
+        "memory-system-qualification",
+        "retained-work-restart-boundary"
       ],
       "question": "Where does a local memory improvement move the system’s limiting resource?",
       "read": "Racks and service paths depict system boundaries. No rack count or geometry certifies readiness; follow the qualification and measured-work evidence."
@@ -1399,6 +1400,112 @@
       "labId": "token-system-path",
       "branch": "Infrastructure",
       "subbranch": "Memory choices to commissioned useful work"
+    },
+    {
+      "id": "retained-work-restart-boundary",
+      "level": "infrastructure",
+      "name": "When completed work survives a restart",
+      "shortName": "Commit and retained work",
+      "role": "Distinguish completed, restart-durable, unfinished and lost work under a declared failure schedule.",
+      "description": "A running system can finish useful steps that have not yet reached a restart-valid checkpoint. A fault preserves the last committed checkpoint, discards later volatile progress and may interrupt a partially completed step. Recovery waits and checkpoint reads consume time and energy before new work resumes. Tracking each state prevents busy hardware, completed work and durable progress from becoming the same number.",
+      "mechanism": [
+        "Completed steps accumulate as volatile progress while the last committed checkpoint remains unchanged.",
+        "The example pauses execution at a whole-step boundary, writes its checkpoint and then performs an atomic commit; only that commit advances durable progress.",
+        "A fault preserves committed progress and transfers later completed and partial work to the lost-work ledger.",
+        "Repair and restore precede resumed execution. Their energy remains in the accounting, as does energy spent on work that must be repeated.",
+        "At the observation horizon, retained whole steps equal durable plus volatile completed steps. An unfinished step is excluded, and the horizon does not create a new checkpoint."
+      ],
+      "science": [
+        {
+          "title": "An exact work ledger for the example",
+          "equation": "Wexec = D + V + F + L; Wretained = D + V",
+          "explanation": "D is committed steps, V is volatile completed steps, F is the fraction of the current unfinished step, and L is cumulative discarded work equivalents. Every term uses the same whole-step workload definition.",
+          "assumptions": "One deterministic job, atomic checkpoint commits and prescribed faults. These are model state identities; useful means completed and still retained, not accuracy, convergence or application value."
+        },
+        {
+          "title": "Energy per retained step",
+          "equation": "e = Efacility / Wretained, for Wretained > 0",
+          "explanation": "Facility energy integrates all active phases, including lost work, checkpoint writes, commit waits, repair and restore. Dividing by retained whole steps exposes these costs.",
+          "assumptions": "Fixed synthetic phase powers and constant PUE. No value is reported when zero whole steps remain. Coolant heat and facility overhead are nested energy boundaries, not extra totals to add twice."
+        }
+      ],
+      "specs": [
+        {
+          "label": "Hand-checkable contract",
+          "value": "1 s per step; one fault at 12 s",
+          "context": "Synthetic H7 fixture: checkpoint after 8 running seconds, 1 s write and 0.25 s commit; 2 s repair and 1 s restore."
+        },
+        {
+          "label": "At the 20 s horizon",
+          "value": "13 retained whole steps; 8 restart-durable",
+          "context": "15.75 work equivalents executed; 2.75 discarded; no automatic checkpoint at the horizon."
+        },
+        {
+          "label": "Energy boundary",
+          "value": "137 J IT; 171.25 J facility",
+          "context": "Run/checkpoint/recovery powers are 8/4/2 W. Constant scenario PUE is 1.25, not an annual measured facility rating."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Mutable application state",
+          "direction": "in",
+          "signal": "Completed and partially completed progress under one workload contract"
+        },
+        {
+          "name": "Checkpoint storage",
+          "direction": "bidirectional",
+          "signal": "A complete written and committed state for restart; restore reads are distinct from writes"
+        },
+        {
+          "name": "Retained result and resource ledger",
+          "direction": "out",
+          "signal": "Durable, volatile, unfinished and lost work plus energy consumed over the same observation interval"
+        }
+      ],
+      "tradeoff": "More frequent checkpointing can reduce exposed progress but adds pauses and transfer work. The preferred interval depends on the particular workload, fault schedule and checkpoint service; this lesson establishes no universal optimum.",
+      "whyAI": "Long-running training and infrastructure workloads need recoverable state. Arithmetic activity alone does not establish that progress survives interruption.",
+      "prerequisites": [
+        "checkpoint-retained-work",
+        "memory-to-hall-propagation"
+      ],
+      "related": [
+        "checkpoint",
+        "cluster-commissioning-gates",
+        "memory-system-qualification"
+      ],
+      "misconception": "A completed computation is not necessarily durable after a restart, and losing its result does not erase the energy already spent.",
+      "check": {
+        "question": "In the H7 example, a checkpoint of step 8 commits at 9.25 s. Execution then runs at one step per second until a fault at 12 s. What survives immediately after the fault?",
+        "options": [
+          "8 durable steps survive; 2.75 later work equivalents are discarded.",
+          "10 whole steps survive because all completed steps are automatically durable.",
+          "10.75 useful steps survive, including the partially completed step."
+        ],
+        "answer": 0,
+        "explanation": "The last valid commit protects 8 steps. The 2 completed steps and 0.75 unfinished step executed afterward are volatile, so 2.75 work equivalents move to the lost-work ledger."
+      },
+      "learningObjective": "Calculate retained and restart-durable work from an explicit checkpoint/fault timeline, close the work and energy ledgers, and explain the limit of the result.",
+      "engineeringExample": "Synthetic H7: run 0–8 s; write 8–9 s; commit 9–9.25 s; run 9.25–12 s; repair 12–14 s; restore 14–15 s; run 15–20 s. Retained progress is 8 + 5 = 13 whole steps; executed work is 8 + 2.75 + 5 = 15.75 equivalents. IT energy is 15.75×8 + 1.25×4 + 3×2 = 137 J; facility energy is 1.25×137 = 171.25 J.",
+      "evidenceNotes": "The source documents checkpoint completion and valid restart, not this atomic timing or its invented numerical inputs. H7 executes with the included teaching runner; the current browser hall controls do not expose every small fixture rate. No human specialist review, instructor observation or learning efficacy result is claimed.",
+      "sources": [
+        {
+          "title": "LLNL SCR 3.1.0 — checkpoint completion and restart",
+          "url": "https://scr.readthedocs.io/en/latest/users/integration.html"
+        },
+        {
+          "title": "DOE/LBNL — Data Center Metering and Resource Guide",
+          "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf"
+        }
+      ],
+      "workstream": "W09",
+      "visualFamily": "hall-system",
+      "scale": "One step → checkpoint → restart → observation interval",
+      "kind": "system",
+      "labId": "library",
+      "labScope": "Use Engineering experiences → Rack → retained work. H7 is also available as a hand-checkable contract in the instructor pack.",
+      "branch": "Infrastructure",
+      "subbranch": "Memory choices to commissioned useful work"
     }
   ],
   "milestones": [
@@ -1526,6 +1633,42 @@
       "scope": "Research geometry, power maps and cooling assumptions",
       "limitations": "Simulation temperatures and mitigations are not universal HBM product measurements or operating limits.",
       "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "instructor-claim-valid-checkpoint",
+      "title": "Restart requires a valid available checkpoint",
+      "statement": "SCR defines checkpoint completion and validity, and provides an API to restart from available checkpoint state.",
+      "sourceId": "instructor-scr-checkpoint",
+      "lessonIds": [
+        "retained-work-restart-boundary"
+      ],
+      "status": "documented-mechanism",
+      "metric": "Checkpoint validity",
+      "value": "not numerical",
+      "unit": "not applicable",
+      "denominator": "SCR checkpoint/restart operation",
+      "period": "SCR 3.1.0 documentation",
+      "scope": "Software checkpoint validity; H7 uses a simpler synthetic atomic-commit rule.",
+      "limitations": "No vendor hardware fault rate, storage durability guarantee or universally optimal checkpoint policy is inferred.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "instructor-claim-energy-boundary",
+      "title": "Facility and IT energy are distinct nested boundaries",
+      "statement": "PUE compares facility energy with IT equipment energy; power is an energy rate.",
+      "sourceId": "instructor-lbnl-metering",
+      "lessonIds": [
+        "retained-work-restart-boundary"
+      ],
+      "status": "documented-principle",
+      "metric": "PUE",
+      "value": "ratio",
+      "unit": "dimensionless",
+      "denominator": "IT equipment energy over the same observation interval",
+      "period": "2017-02 guide",
+      "scope": "The example uses a constant synthetic ratio consistently over all phases.",
+      "limitations": "The chosen 1.25 is not an observed annual or fleet PUE, and PUE is not a productivity metric.",
+      "checkedOn": "2026-09-07"
     }
   ],
   "sources": [
@@ -1708,6 +1851,26 @@
       "checkedOn": "2026-09-06",
       "locator": "Representation and physical realization boundaries",
       "scope": "Use as an attributed research framing; no new universal theorem or performance validation is asserted here."
+    },
+    {
+      "id": "instructor-scr-checkpoint",
+      "title": "LLNL SCR 3.1.0 — Integrate SCR",
+      "url": "https://scr.readthedocs.io/en/latest/users/integration.html",
+      "publisher": "Lawrence Livermore National Laboratory / SCR project",
+      "published": "3.1.0 documentation; page publication date not stated",
+      "checkedOn": "2026-09-07",
+      "locator": "Checkpoint: SCR_Complete_output(valid); Restart with SCR: SCR_Have_restart, SCR_Start_restart, SCR_Complete_restart",
+      "scope": "Completion/validity and available checkpoint restart. The atlas atomic commit delay, deterministic faults and all numerical values are synthetic."
+    },
+    {
+      "id": "instructor-lbnl-metering",
+      "title": "DOE/LBNL — Data Center Metering and Resource Guide",
+      "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf",
+      "publisher": "US Department of Energy / Lawrence Berkeley National Laboratory",
+      "published": "2017-02",
+      "checkedOn": "2026-09-07",
+      "locator": "Section 2.1, Power Usage Effectiveness; section 3.2, Energy vs. Power",
+      "scope": "Nested facility/IT energy boundary and distinction between power and energy. The fixed PUE and phase powers in H7 are not measured data."
     }
   ]
 }

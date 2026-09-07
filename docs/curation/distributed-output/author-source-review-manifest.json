@@ -1,0 +1,1642 @@
+{
+  "schemaVersion": 1,
+  "contentPack": "distributed-output-bridges-1",
+  "checkedOn": "2026-09-07",
+  "actorType": "agent",
+  "status": "agent-primary-source-scope-checks",
+  "humanSpecialistReview": null,
+  "coverageBoundary": "Source locators support the stated mechanisms. Authored toy arithmetic is independently computed in tests; neither activity establishes specialist review, real distributed execution or measured performance.",
+  "sources": [
+    {
+      "title": "JAX — Manual parallelism with shard_map",
+      "url": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+      "locator": "Overview, matmul_basic: c_partialsum = dot(a_block, b_block), followed by lax.psum; collective sections all_gather and psum_scatter",
+      "version": "Living documentation retrieved 2026-09-07",
+      "scope": "Local matrix blocks, partial reduction and output shard assembly. No JAX runtime, compiler output or performance measurement is reproduced here.",
+      "sensitivity": "API and compiler behavior",
+      "triggers": [
+        "Changes to shard_map collective or output-sharding semantics",
+        "A lesson example changes input partitions or output ownership"
+      ],
+      "id": "jax-sharded-matmul",
+      "actorType": "agent",
+      "checkedOn": "2026-09-07",
+      "checkStatus": "primary-source-scope-checked",
+      "reviewRole": "Numerical/distributed-systems technical reviewer",
+      "humanSpecialistReview": null,
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not inferred from retrieval time; edition or paper year is recorded in version.",
+      "lessonIds": [
+        "sharded-matmul-ownership"
+      ],
+      "supersedes": [],
+      "recheckCadenceDays": 180,
+      "claimIds": [
+        "bridge-claim-partial-sum"
+      ]
+    },
+    {
+      "title": "NVIDIA NCCL — Collective Operations",
+      "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+      "locator": "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement",
+      "version": "Retrieved documentation identified as NCCL 2.31.2",
+      "scope": "Collective result layouts and matching participants. The two-rank traffic schedule is authored, not a traced NCCL algorithm.",
+      "sensitivity": "Library operation semantics",
+      "triggers": [
+        "Changed collective API or result ordering",
+        "A change to rank mapping, reduction operation or datatype"
+      ],
+      "id": "nccl-layout-semantics",
+      "actorType": "agent",
+      "checkedOn": "2026-09-07",
+      "checkStatus": "primary-source-scope-checked",
+      "reviewRole": "Numerical/distributed-systems technical reviewer",
+      "humanSpecialistReview": null,
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not inferred from retrieval time; edition or paper year is recorded in version.",
+      "lessonIds": [
+        "sharded-matmul-ownership",
+        "distributed-gradient-weighting"
+      ],
+      "supersedes": [],
+      "recheckCadenceDays": 180,
+      "claimIds": []
+    },
+    {
+      "title": "PyTorch v2.8.0 — DistributedDataParallel implementation and contract",
+      "url": "https://github.com/pytorch/pytorch/blob/v2.8.0/torch/nn/parallel/distributed.py",
+      "checkedUrl": "https://raw.githubusercontent.com/pytorch/pytorch/v2.8.0/torch/nn/parallel/distributed.py",
+      "locator": "DistributedDataParallel docstring, source lines 357–370: summed versus averaged loss and gradient averaging; join documentation lines 1613–1659 for different uneven-input semantics",
+      "version": "Pinned v2.8.0 source",
+      "scope": "The default gradient averaging convention and the separate meaning of joining after input exhaustion. The sample-count weighting derivation is authored mathematics, not a recommendation to change arbitrary custom communication hooks.",
+      "sensitivity": "Runtime reduction configuration",
+      "triggers": [
+        "A custom communication hook changes sum/mean scaling",
+        "Masked-token, sample-weight or accumulation conventions change",
+        "A new framework version or join policy is adopted"
+      ],
+      "id": "pytorch-ddp-weighting",
+      "actorType": "agent",
+      "checkedOn": "2026-09-07",
+      "checkStatus": "primary-source-scope-checked",
+      "reviewRole": "Numerical/distributed-systems technical reviewer",
+      "humanSpecialistReview": null,
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not inferred from retrieval time; edition or paper year is recorded in version.",
+      "lessonIds": [
+        "distributed-gradient-weighting"
+      ],
+      "supersedes": [],
+      "recheckCadenceDays": 365,
+      "claimIds": [
+        "bridge-claim-ddp-mean"
+      ]
+    },
+    {
+      "title": "NVIDIA CUDA 13.1.1 — Floating-Point Computation",
+      "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+      "locator": "§5.5.1.4 Associativity and §5.5.1.5 Fused Multiply-Add",
+      "version": "Archived CUDA 13.1.1 guide",
+      "scope": "Finite-precision nonassociativity and rounding boundaries. The 2^24 example is independently authored and tested with binary32 rounding, not a GPU run.",
+      "sensitivity": "Stable arithmetic; target execution choices vary",
+      "triggers": [
+        "A different dtype, rounding mode or accumulator is used",
+        "The example includes underflow, overflow or fused operations"
+      ],
+      "id": "cuda-fp32-associativity",
+      "actorType": "agent",
+      "checkedOn": "2026-09-07",
+      "checkStatus": "primary-source-scope-checked",
+      "reviewRole": "Numerical/distributed-systems technical reviewer",
+      "humanSpecialistReview": null,
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not inferred from retrieval time; edition or paper year is recorded in version.",
+      "lessonIds": [
+        "floating-point-reduction-order"
+      ],
+      "supersedes": [],
+      "recheckCadenceDays": 365,
+      "claimIds": []
+    },
+    {
+      "title": "LLVM — Language Reference, fast-math rewrite flags",
+      "url": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+      "locator": "Rewrite-based flags, shared-flag example; contract and reassoc definitions",
+      "version": "Living LLVM reference retrieved 2026-09-07",
+      "scope": "Reassociation permission and separate contraction permission in LLVM IR. No claim that every compiler enables these flags by default.",
+      "sensitivity": "Compiler IR semantics and flags",
+      "triggers": [
+        "Compiler version or fast-math configuration changes",
+        "A changed lowering alters the reduction tree or contraction"
+      ],
+      "id": "llvm-fp-reassociation",
+      "actorType": "agent",
+      "checkedOn": "2026-09-07",
+      "checkStatus": "primary-source-scope-checked",
+      "reviewRole": "Numerical/distributed-systems technical reviewer",
+      "humanSpecialistReview": null,
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not inferred from retrieval time; edition or paper year is recorded in version.",
+      "lessonIds": [
+        "floating-point-reduction-order"
+      ],
+      "supersedes": [],
+      "recheckCadenceDays": 180,
+      "claimIds": [
+        "bridge-claim-reassociation"
+      ]
+    },
+    {
+      "title": "Leviathan, Kalman and Matias — Fast Inference from Transformers via Speculative Decoding",
+      "url": "https://proceedings.mlr.press/v202/leviathan23a.html",
+      "checkedUrl": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+      "locator": "§2.3 and Algorithm 1, printed p3; §3.1 Equation (1) and its iid assumption; Appendix A.1 distribution proof",
+      "version": "ICML 2023, PMLR 202, pp. 19274–19286",
+      "scope": "Strict sampling correction preserves the target distribution in ideal arithmetic; the toy three-symbol distribution and time budgets are authored, not results from the paper or an actual serving system.",
+      "sensitivity": "Stable algorithm; serving implementations vary",
+      "triggers": [
+        "Different sampling transforms, proposal distribution or acceptance rule",
+        "Vocabulary/tokenizer or prefix alignment changes",
+        "A runtime claims speed or quality for a new workload"
+      ],
+      "id": "speculative-decoding-2023",
+      "actorType": "agent",
+      "checkedOn": "2026-09-07",
+      "checkStatus": "primary-source-scope-checked",
+      "reviewRole": "Probabilistic inference technical reviewer",
+      "humanSpecialistReview": null,
+      "sourcePublicationDate": null,
+      "sourcePublicationDateMeaning": "Not inferred from retrieval time; edition or paper year is recorded in version.",
+      "lessonIds": [
+        "speculative-decoding-verification"
+      ],
+      "supersedes": [],
+      "recheckCadenceDays": 365,
+      "claimIds": [
+        "bridge-claim-speculative-correction"
+      ]
+    }
+  ],
+  "lessonScopes": [
+    {
+      "lessonId": "sharded-matmul-ownership",
+      "scope": "The sources establish sharding and collective semantics. All matrices, the two-row exchange schedule and byte counts here are synthetic. This is not an observed NCCL implementation, a topology model or a performance comparison.",
+      "sourceIds": [
+        "jax-sharded-matmul",
+        "nccl-layout-semantics"
+      ],
+      "dependencies": [
+        "compiler-layout-lowering",
+        "nccl",
+        "parallelism"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claimIds": [
+        "bridge-claim-partial-sum"
+      ]
+    },
+    {
+      "lessonId": "distributed-gradient-weighting",
+      "scope": "The PyTorch source is pinned to v2.8.0 and supports the default averaging convention, not a claim about every backend or custom hook. The squared-error data, gradient weighting derivation and SGD step are authored examples. Join semantics after input exhaustion are outside this fixed-participant update.",
+      "sourceIds": [
+        "pytorch-ddp-weighting",
+        "nccl-layout-semantics"
+      ],
+      "dependencies": [
+        "loss-optimizer",
+        "training-data",
+        "parallelism",
+        "nccl"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claimIds": [
+        "bridge-claim-ddp-mean"
+      ]
+    },
+    {
+      "lessonId": "floating-point-reduction-order",
+      "scope": "The NVIDIA guide supports finite-precision nonassociativity, and LLVM specifies the cited optimization permissions. The exact operands, intermediate values and 0.01 tolerance are authored. Tests use binary32 conversions locally and do not constitute a GPU, compiler or multi-rank experiment.",
+      "sourceIds": [
+        "cuda-fp32-associativity",
+        "llvm-fp-reassociation"
+      ],
+      "dependencies": [
+        "mac",
+        "quantization",
+        "compiler-layout-lowering",
+        "nccl"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claimIds": [
+        "bridge-claim-reassociation"
+      ]
+    },
+    {
+      "lessonId": "speculative-decoding-verification",
+      "scope": "The cited ICML paper establishes the strict correction algorithm and the explicitly iid output-count formula. The toy probabilities, output-count distribution and all millisecond values are authored. No private model, serving implementation, benchmark speedup or quality improvement is asserted.",
+      "sourceIds": [
+        "speculative-decoding-2023"
+      ],
+      "dependencies": [
+        "output-head",
+        "decode-bandwidth-trace",
+        "kv-cache",
+        "evaluation"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claimIds": [
+        "bridge-claim-speculative-correction"
+      ]
+    }
+  ],
+  "reviewDispositions": {
+    "schemaVersion": 1,
+    "actor": {
+      "actorType": "agent",
+      "actorId": "/root/curriculum_assessment",
+      "role": "Content author, primary-source scope reader and numerical checker"
+    },
+    "reviewedOn": "2026-09-07",
+    "disposition": "agent-source-and-authored-math-checks-complete",
+    "notEstablished": [
+      "Human specialist review",
+      "Real compiler, accelerator or multi-rank execution",
+      "Real language-model inference benchmark",
+      "Device, accessibility or learner validation"
+    ],
+    "candidateFiles": [
+      {
+        "path": "src/lib/data/distributed-output-bridges.json",
+        "sha256": "d133761140c9c86366c6208be7e505689f3e0a0672df017bed02b03479be5b7c",
+        "encoding": "Exact UTF-8 file bytes"
+      },
+      {
+        "path": "src/lib/data/equations-distributed-output.json",
+        "sha256": "ff4db83bf41370db2a6b95f3fc49fb570bc6358aad34d110712c58752427e942",
+        "encoding": "Exact UTF-8 file bytes"
+      }
+    ],
+    "lessons": [
+      {
+        "lessonId": "sharded-matmul-ownership",
+        "actor": {
+          "actorType": "agent",
+          "actorId": "/root/curriculum_assessment",
+          "role": "Content author, primary-source scope reader and numerical checker"
+        },
+        "reviewedOn": "2026-09-07",
+        "sourceReferences": [
+          {
+            "title": "JAX — Manual parallelism with shard_map",
+            "url": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+            "sourceId": "jax-sharded-matmul",
+            "checkedUrl": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+            "locator": "Overview, matmul_basic: c_partialsum = dot(a_block, b_block), followed by lax.psum; collective sections all_gather and psum_scatter",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          },
+          {
+            "title": "NVIDIA NCCL — Collective Operations",
+            "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+            "sourceId": "nccl-layout-semantics",
+            "checkedUrl": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+            "locator": "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          }
+        ],
+        "historySourceReferences": [],
+        "claimIds": [
+          "bridge-claim-partial-sum"
+        ],
+        "checks": {
+          "unitsAndDenominators": {
+            "status": "checked-by-agent",
+            "note": "Confirmed matching output coordinates, 4 bytes per float32 element, 8 bytes sent per rank per phase and 32 bytes across both senders. Receives are not counted again; input placement and local traffic are excluded."
+          },
+          "modelAssumptions": {
+            "status": "checked-by-agent",
+            "note": "Checked disjoint contracted partitions, exact small integer arithmetic, declared two-rank row ownership and consumer-dependent all-gather; no real collective algorithm or topology timing is claimed."
+          },
+          "claimQualifiers": {
+            "status": "checked-by-agent",
+            "note": "The source claim is limited to the cited JAX example. NCCL supports collective semantics; the exchange and matrix values remain authored and not measured."
+          },
+          "dependencyAndVisualScope": {
+            "status": "checked-by-agent",
+            "note": "Prerequisites are existing compiler-layout-lowering, NCCL and parallelism. The chapter uses a logical software-flow scene; boxes do not encode a physical map. The static trace supplies the complete arithmetic."
+          }
+        },
+        "contentSnapshot": {
+          "lesson": {
+            "id": "sharded-matmul-ownership",
+            "name": "Sharded matrix multiplication and result ownership",
+            "shortName": "Partial sums and output shards",
+            "role": "Derive the communication operation from the partitioned matrix axis and the next consumer’s required result layout.",
+            "description": "A compiler must preserve both a tensor’s values and who owns them. Splitting matrix output rows gives different ranks independent output rows; splitting the contracted inner dimension gives each rank only part of every output sum. Those are different meanings of a local matrix product, even if the local arrays have similar shapes. JAX’s explicit sharding example forms local products and then reduces their partial sums. A sum all-reduce makes the completed result available at every rank. Reduce-scatter instead finishes the sum while distributing different output pieces, and all-gather can later assemble those pieces when a consumer needs a replica. Concatenating unfinished partial sums does not perform their missing arithmetic. This distinction connects tensor-axis information in a compiler to the collective scheduled over the network. It also prevents allocating replicas merely because the preceding stage happened to use all-reduce. A valid next operator may consume distributed rows directly, while another needs a different layout and an explicit conversion. The example below uses exactly representable small integers; its equality does not imply arbitrary floating-point reduction trees are bitwise identical.",
+            "mechanism": [
+              "Declare C = AB, the complete tensor shapes, stored element size and required consumer ownership before partitioning.",
+              "Split the inner dimension into disjoint sets Kᵣ; each rank receives matching columns of A and rows of B.",
+              "Compute Cᵣ locally. Each Cᵣ covers all output coordinates but contains only the products indexed by Kᵣ.",
+              "Add contributions with matching output coordinates. Use all-reduce for replicated C or reduce-scatter for completed disjoint output shards.",
+              "Retain row shards when the next operation can use them; all-gather only when the consumer requires the whole tensor.",
+              "Check every output against a separate dense reference, and count a sent payload once at its chosen link boundary. Input distribution, temporary buffers and protocol overhead are additional costs."
+            ],
+            "prerequisites": [
+              "compiler-layout-lowering",
+              "nccl",
+              "parallelism"
+            ],
+            "related": [
+              "systolic-array-dataflow",
+              "fabric-collective-traffic",
+              "runtime-device-dispatch",
+              "floating-point-reduction-order"
+            ],
+            "specs": [
+              {
+                "label": "Contracted-axis split",
+                "value": "Partial sums overlap in output coordinates",
+                "context": "Requires addition, not concatenation."
+              },
+              {
+                "label": "Output-row split",
+                "value": "Disjoint completed rows",
+                "context": "Concatenation can reconstruct the global output without summing corresponding rows."
+              },
+              {
+                "label": "Consumer contract",
+                "value": "Replicated or sharded result",
+                "context": "The useful collective is determined by the required layout."
+              }
+            ],
+            "interfaces": [
+              {
+                "name": "Compiler sharding plan",
+                "direction": "in",
+                "signal": "Tensor shapes, partitioned axes, dtype and input ownership"
+              },
+              {
+                "name": "Consumer-ready output",
+                "direction": "out",
+                "signal": "Completed values with explicit per-rank coordinates"
+              }
+            ],
+            "science": [
+              {
+                "title": "Inner-dimension partition preserves the sum",
+                "equation": "Cᵣ[i,j] = Σk∈Kᵣ A[i,k]B[k,j]; C[i,j] = Σr Cᵣ[i,j]",
+                "explanation": "The disjoint Kᵣ sets cover the contracted dimension exactly once. Each rank contributes to the same output coordinates.",
+                "assumptions": "Exact real arithmetic or the small integer example; floating-point summation order can change rounding. No duplicated or omitted contracted indices."
+              },
+              {
+                "title": "Two-rank payload ledger",
+                "equation": "Qreduce-scatter = 8 bytes/rank; Qall-gather = 8 bytes/rank; Qcombined = 16 bytes/rank",
+                "explanation": "For this explicitly described two-rank, 2×2 float32-output schedule, each phase sends one two-element row per rank.",
+                "assumptions": "Logical payload sent by each rank in this chosen exchange; excludes initial input placement, headers, retransmission, local reads/writes and actual collective implementation details."
+              }
+            ],
+            "engineeringExample": "Use A = [[1,2],[3,4]] and B = [[5,6],[7,8]]. Rank 0 owns k=0 and forms C₀ = [[5,6],[15,18]]; rank 1 owns k=1 and forms C₁ = [[14,16],[28,32]]. Reduce-scatter with row ownership sends C₀ row 1 [15,18] from rank 0 to rank 1, and C₁ row 0 [14,16] in the opposite direction. Rank 0 adds [5,6]+[14,16]=[19,22]; rank 1 adds [15,18]+[28,32]=[43,50]. Each sends 8 payload bytes if elements are float32. If both consumers need all of C, all-gather exchanges these completed rows for another 8 bytes sent per rank. Both then hold [[19,22],[43,50]]. Total sent payload is 16 bytes per rank, 32 across the two senders; counting the matching receives again would double-count this network boundary. Concatenating the two original 2×2 partial matrices would create four rows and would leave their sums unfinished.",
+            "learningObjective": "Reconstruct the same 2×2 product from inner-dimension shards, choose a collective from output ownership, and reconcile the two-rank payload ledger.",
+            "misconception": "A shard can be an unfinished contribution to every output, not necessarily a disjoint piece of the finished output.",
+            "check": {
+              "question": "Each rank computed all output coordinates using a different half of the contracted dimension. Is concatenating those local arrays enough?",
+              "options": [
+                "No: matching coordinates still require a sum",
+                "Yes: more rows complete the dot products",
+                "Yes: any collective performs the missing multiplication"
+              ],
+              "answer": 0,
+              "explanation": "The local arrays are partial sums over different k indices. Reduce them before choosing replicated or sharded ownership."
+            },
+            "checks": [
+              {
+                "question": "After the stated reduce-scatter, which row belongs to rank 1?",
+                "options": [
+                  "[14,16]",
+                  "[43,50]",
+                  "[19,22]"
+                ],
+                "answer": 1,
+                "explanation": "Rank 1 combines both partial contributions to the second output row."
+              },
+              {
+                "question": "How many payload bytes are sent across both ranks in the two stated phases?",
+                "options": [
+                  "16 bytes",
+                  "32 bytes",
+                  "64 bytes"
+                ],
+                "answer": 1,
+                "explanation": "Two ranks each send 8 bytes in each of two phases. The same received bytes are not added again."
+              }
+            ],
+            "whyAI": "Distributed linear layers become correct only when the compiler and runtime finish the same tensor operation and deliver its expected ownership. Avoiding an unnecessary replica can also save memory and communication.",
+            "tradeoff": "A shard-preserving collective may save result replication, but a later consumer can reintroduce an all-gather or resharding cost. Logical bytes alone do not predict network latency.",
+            "evidenceNotes": "The sources establish sharding and collective semantics. All matrices, the two-row exchange schedule and byte counts here are synthetic. This is not an observed NCCL implementation, a topology model or a performance comparison.",
+            "sourceIds": [
+              "jax-sharded-matmul",
+              "nccl-layout-semantics"
+            ],
+            "sources": [
+              {
+                "title": "JAX — Manual parallelism with shard_map",
+                "url": "https://docs.jax.dev/en/latest/notebooks/shard_map.html"
+              },
+              {
+                "title": "NVIDIA NCCL — Collective Operations",
+                "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html"
+              }
+            ],
+            "workedTrace": {
+              "id": "two-rank-inner-split",
+              "arithmetic": "exact signed integer products and sums; four-byte representation used only for the payload ledger",
+              "input": {
+                "a": [
+                  [
+                    1,
+                    2
+                  ],
+                  [
+                    3,
+                    4
+                  ]
+                ],
+                "b": [
+                  [
+                    5,
+                    6
+                  ],
+                  [
+                    7,
+                    8
+                  ]
+                ],
+                "partitions": [
+                  [
+                    0
+                  ],
+                  [
+                    1
+                  ]
+                ],
+                "bytesPerElement": 4
+              },
+              "partialProducts": [
+                [
+                  [
+                    5,
+                    6
+                  ],
+                  [
+                    15,
+                    18
+                  ]
+                ],
+                [
+                  [
+                    14,
+                    16
+                  ],
+                  [
+                    28,
+                    32
+                  ]
+                ]
+              ],
+              "reduceScatterRows": [
+                [
+                  19,
+                  22
+                ],
+                [
+                  43,
+                  50
+                ]
+              ],
+              "gatheredByRank": [
+                [
+                  [
+                    19,
+                    22
+                  ],
+                  [
+                    43,
+                    50
+                  ]
+                ],
+                [
+                  [
+                    19,
+                    22
+                  ],
+                  [
+                    43,
+                    50
+                  ]
+                ]
+              ],
+              "phases": [
+                {
+                  "id": "reduce-scatter",
+                  "sends": [
+                    {
+                      "from": 0,
+                      "to": 1,
+                      "payload": [
+                        15,
+                        18
+                      ],
+                      "bytes": 8
+                    },
+                    {
+                      "from": 1,
+                      "to": 0,
+                      "payload": [
+                        14,
+                        16
+                      ],
+                      "bytes": 8
+                    }
+                  ]
+                },
+                {
+                  "id": "all-gather",
+                  "sends": [
+                    {
+                      "from": 0,
+                      "to": 1,
+                      "payload": [
+                        19,
+                        22
+                      ],
+                      "bytes": 8
+                    },
+                    {
+                      "from": 1,
+                      "to": 0,
+                      "payload": [
+                        43,
+                        50
+                      ],
+                      "bytes": 8
+                    }
+                  ]
+                }
+              ],
+              "totalSentBytes": 32
+            },
+            "level": "software",
+            "branch": "Executable software",
+            "subbranch": "Distributed computation to useful output",
+            "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+            "kind": "system",
+            "workstream": "W11",
+            "visualFamily": "software-flow",
+            "labId": "library",
+            "investigationId": "execution",
+            "labScope": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+            "history": []
+          },
+          "equations": [
+            {
+              "latex": "C^{(r)}_{ij}=\\sum_{k\\in K_r}A_{ik}B_{kj},\\qquad C_{ij}=\\sum_{r=0}^{P-1}C^{(r)}_{ij}",
+              "text": "Rank r sums products for its contracted indices K_r; completed C sums the rank contributions at matching coordinates.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "Cij",
+                  "meaning": "Completed matrix output element",
+                  "unit": "value"
+                },
+                {
+                  "symbol": "C(r)ij",
+                  "meaning": "Partial contribution from rank r",
+                  "unit": "value"
+                },
+                {
+                  "symbol": "Aik, Bkj",
+                  "meaning": "Input matrix elements",
+                  "unit": "value"
+                },
+                {
+                  "symbol": "Kr",
+                  "meaning": "Disjoint contracted indices assigned to rank r",
+                  "unit": "index set"
+                },
+                {
+                  "symbol": "P",
+                  "meaning": "Number of participating ranks",
+                  "unit": "count"
+                }
+              ]
+            },
+            {
+              "latex": "Q_{\\mathrm{RS}}=2\\times4=8\\ \\mathrm{bytes/rank},\\quad Q_{\\mathrm{AG}}=8\\ \\mathrm{bytes/rank},\\quad Q_{\\mathrm{sent}}=2(8+8)=32\\ \\mathrm{bytes}",
+              "text": "This two-rank schedule sends two float32 values per rank per phase: eight bytes for reduce-scatter and eight for all-gather, giving thirty-two bytes across both senders.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "QRS",
+                  "meaning": "Payload sent by each rank in the chosen reduce-scatter exchange",
+                  "unit": "bytes/rank"
+                },
+                {
+                  "symbol": "QAG",
+                  "meaning": "Payload sent by each rank in the chosen all-gather exchange",
+                  "unit": "bytes/rank"
+                },
+                {
+                  "symbol": "Qsent",
+                  "meaning": "Payload sent across both ranks and both phases",
+                  "unit": "bytes"
+                }
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "bridge-claim-partial-sum",
+              "title": "A contracted-axis shard contributes partial output sums",
+              "statement": "JAX’s manual parallelism example completes local matrix products with a collective sum over the partitioned inner dimension.",
+              "sourceId": "jax-sharded-matmul",
+              "lessonIds": [
+                "sharded-matmul-ownership"
+              ],
+              "status": "reported",
+              "metric": "Operation or algorithm contract",
+              "value": "Qualitative semantics",
+              "unit": "",
+              "denominator": "The cited example or algorithm under its stated assumptions",
+              "period": "Documentation checked 2026-09-07",
+              "scope": "The cited matmul_basic example and its declared input/output partitioning",
+              "limitations": "This does not prescribe a universal sharding plan or imply the authored two-rank payload schedule is JAX-generated.",
+              "checkedOn": "2026-09-07"
+            }
+          ]
+        },
+        "snapshotSha256": "788381c4cf9b51c382e7660d0efb20c9b26726d851bfcc0638e6ce20d50c6a6f",
+        "snapshotEncoding": "UTF-8 JSON.stringify of contentSnapshot"
+      },
+      {
+        "lessonId": "distributed-gradient-weighting",
+        "actor": {
+          "actorType": "agent",
+          "actorId": "/root/curriculum_assessment",
+          "role": "Content author, primary-source scope reader and numerical checker"
+        },
+        "reviewedOn": "2026-09-07",
+        "sourceReferences": [
+          {
+            "title": "PyTorch v2.8.0 — DistributedDataParallel implementation and contract",
+            "url": "https://github.com/pytorch/pytorch/blob/v2.8.0/torch/nn/parallel/distributed.py",
+            "sourceId": "pytorch-ddp-weighting",
+            "checkedUrl": "https://raw.githubusercontent.com/pytorch/pytorch/v2.8.0/torch/nn/parallel/distributed.py",
+            "locator": "DistributedDataParallel docstring, source lines 357–370: summed versus averaged loss and gradient averaging; join documentation lines 1613–1659 for different uneven-input semantics",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          },
+          {
+            "title": "NVIDIA NCCL — Collective Operations",
+            "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+            "sourceId": "nccl-layout-semantics",
+            "checkedUrl": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+            "locator": "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          }
+        ],
+        "historySourceReferences": [],
+        "claimIds": [
+          "bridge-claim-ddp-mean"
+        ],
+        "checks": {
+          "unitsAndDenominators": {
+            "status": "checked-by-agent",
+            "note": "Checked eight valid equally weighted items, local counts 2/6, P=2 mean reducer, global gradient 2.5 and parameter update 9.75. Gradient and learning-rate units follow the declared loss/parameter convention."
+          },
+          "modelAssumptions": {
+            "status": "checked-by-agent",
+            "note": "Checked shared parameter w=10, separable squared-error loss, fixed participants, no momentum, clipping, weight decay or custom hook; item/token/mask denominator and accumulation window must be explicit."
+          },
+          "claimQualifiers": {
+            "status": "checked-by-agent",
+            "note": "The default averaging contract is tied to pinned PyTorch v2.8.0 source. Unequal local batch weighting is authored mathematics. Exhausted-rank join behavior is explicitly outside this example."
+          },
+          "dependencyAndVisualScope": {
+            "status": "checked-by-agent",
+            "note": "Existing loss, training-data, parallelism and NCCL lessons precede the addition. Logical communication does not prove the chosen statistical objective; no running distributed training system is depicted."
+          }
+        },
+        "contentSnapshot": {
+          "lesson": {
+            "id": "distributed-gradient-weighting",
+            "name": "Uneven batches and the global gradient",
+            "shortName": "Weight the global update",
+            "role": "Preserve the intended training objective when ranks contribute different numbers of valid examples or tokens.",
+            "description": "A synchronized gradient can be consistent across replicas and still represent the wrong objective. Suppose the intended loss is the mean over all valid training items in one optimizer update. A rank that averages two items and a rank that averages six have already divided by different denominators. Averaging their two gradient means assigns the smaller batch more influence per item. The global item mean instead weights each local mean by its valid-item count. PyTorch’s pinned DistributedDataParallel contract documents averaging gradients between workers, so the loss normalization and collective normalization must be considered together. The count can mean examples, unmasked target tokens or a sum of explicit sample weights; choosing it is part of the objective, not a hardware detail. This lesson derives one scalar update from a concrete squared-error loss. It assumes the same current parameter at both ranks and no cross-sample operation such as batch-dependent normalization. A rank exhausting its entire input stream is a separate synchronization problem: matching collective participation does not by itself fix per-item weighting.",
+            "mechanism": [
+              "Define which items count in the loss and record their global count N for this optimizer update. Exclude padding only when the objective says to exclude it.",
+              "Compute local loss sums or local means and retain the valid count associated with each reduction.",
+              "For a rank-mean reducer over P active participants, scale a local mean gradient by P nᵣ/N before the averaging collective. Equivalently reduce local sums and divide once by N.",
+              "During gradient accumulation, use the count over the entire update window rather than silently averaging unequal microbatch means.",
+              "Apply the same synchronized gradient and optimizer state transition at every replica, then compare the result with the unpartitioned reference objective.",
+              "Handle empty local contributions and exhausted ranks with explicit participation rules; never divide an empty local mean by zero or simply omit a required collective."
+            ],
+            "prerequisites": [
+              "loss-optimizer",
+              "training-data",
+              "parallelism",
+              "nccl"
+            ],
+            "related": [
+              "training-memory-state",
+              "evaluation",
+              "floating-point-reduction-order"
+            ],
+            "specs": [
+              {
+                "label": "Normalization unit",
+                "value": "Valid examples or tokens",
+                "context": "Choose the intended loss denominator explicitly."
+              },
+              {
+                "label": "Replica consistency",
+                "value": "Equal synchronized gradients",
+                "context": "Does not establish agreement with the desired global objective."
+              },
+              {
+                "label": "Runtime scope",
+                "value": "Default mean reduction",
+                "context": "Custom hooks, joined ranks or summed losses can change the scale."
+              }
+            ],
+            "interfaces": [
+              {
+                "name": "Per-rank loss contributions",
+                "direction": "in",
+                "signal": "Local sums or means, valid counts, shared parameter state"
+              },
+              {
+                "name": "Global optimizer update",
+                "direction": "out",
+                "signal": "One correctly normalized gradient applied consistently"
+              }
+            ],
+            "science": [
+              {
+                "title": "Global item-mean gradient",
+                "equation": "N = Σr nᵣ; g = (1/N) Σr nᵣ ḡᵣ",
+                "explanation": "Each local ḡᵣ is the mean of gradients for nᵣ valid equally weighted items. Multiply by nᵣ to recover the local sum.",
+                "assumptions": "N>0, same parameters and differentiable separable per-item loss. No cross-sample dependence; sample weights replace counts when the objective uses unequal weights."
+              },
+              {
+                "title": "Compensate a mean-across-ranks reducer",
+                "equation": "g = (1/P) Σr [(P nᵣ/N) ḡᵣ]; wnew = w − ηg",
+                "explanation": "The factor P nᵣ/N ensures the subsequent division by P leaves the intended global item mean.",
+                "assumptions": "P fixed participating ranks for this update; no custom reducer scaling. The scalar SGD update has no momentum, clipping, weight decay or loss scaling."
+              }
+            ],
+            "engineeringExample": "Take ℓ(w;y)=½(w−y)² at w=10. Rank 0 has targets [9,9], producing gradients [1,1], count 2 and mean 1. Rank 1 has [7,7,7,7,7,7], producing six gradients of 3, count 6 and mean 3. The unpartitioned objective has gradient (2×1+6×3)/8=2.5. Averaging rank means gives (1+3)/2=2 instead. With learning rate 0.1, correct SGD gives wnew=9.75; the unweighted rank mean gives 9.8. For a reducer that divides by P=2, scale the local means by 2×2/8=0.5 and 2×6/8=1.5. It then averages 0.5 and 4.5 to obtain 2.5. If the ranks each held four valid items, equal weighting would be appropriate. Token-level training needs the valid target-token count when that is the declared loss denominator; sequence counts need not be proportional.",
+            "learningObjective": "Derive and test a globally normalized gradient from unequal local batch means, then distinguish objective equivalence from replica synchronization.",
+            "misconception": "A mean across ranks is a mean across training items only when local denominators and weights make it so.",
+            "check": {
+              "question": "Two ranks have counts 2 and 6 and mean gradients 1 and 3. What is the global item-mean gradient?",
+              "options": [
+                "2",
+                "2.5",
+                "4"
+              ],
+              "answer": 1,
+              "explanation": "The weighted numerator is 2×1+6×3=20 across eight items, so the result is 2.5."
+            },
+            "checks": [
+              {
+                "question": "A mean-across-two-ranks reducer receives local means. Which scale factors preserve the eight-item objective?",
+                "options": [
+                  "1 and 1",
+                  "2 and 6",
+                  "0.5 and 1.5"
+                ],
+                "answer": 2,
+                "explanation": "Scaling by P nᵣ/N gives 0.5 and 1.5; the reducer then averages 0.5 and 4.5."
+              },
+              {
+                "question": "Does equal synchronized state prove the chosen sample weights were correct?",
+                "options": [
+                  "Yes",
+                  "No",
+                  "Only if the network is fast"
+                ],
+                "answer": 1,
+                "explanation": "All replicas can agree on the same incorrectly normalized gradient."
+              }
+            ],
+            "whyAI": "The number of completed updates is useful only relative to the training objective those updates optimize. Ragged data, masking and uneven accumulation can change that objective through an unnoticed denominator.",
+            "tradeoff": "Keeping exact counts and a reference objective adds bookkeeping and sometimes a small count reduction. It prevents an apparent scaling improvement from silently changing sample influence.",
+            "evidenceNotes": "The PyTorch source is pinned to v2.8.0 and supports the default averaging convention, not a claim about every backend or custom hook. The squared-error data, gradient weighting derivation and SGD step are authored examples. Join semantics after input exhaustion are outside this fixed-participant update.",
+            "sourceIds": [
+              "pytorch-ddp-weighting",
+              "nccl-layout-semantics"
+            ],
+            "sources": [
+              {
+                "title": "PyTorch v2.8.0 — DistributedDataParallel implementation and contract",
+                "url": "https://github.com/pytorch/pytorch/blob/v2.8.0/torch/nn/parallel/distributed.py"
+              },
+              {
+                "title": "NVIDIA NCCL — Collective Operations",
+                "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html"
+              }
+            ],
+            "workedTrace": {
+              "id": "uneven-squared-error",
+              "input": {
+                "parameter": 10,
+                "learningRate": 0.1,
+                "rankTargets": [
+                  [
+                    9,
+                    9
+                  ],
+                  [
+                    7,
+                    7,
+                    7,
+                    7,
+                    7,
+                    7
+                  ]
+                ]
+              },
+              "lossDefinition": "0.5 * (w-y)^2 per item; mean over all eight items",
+              "localCounts": [
+                2,
+                6
+              ],
+              "localGradientMeans": [
+                1,
+                3
+              ],
+              "globalGradient": 2.5,
+              "unweightedRankGradient": 2,
+              "meanReducerScales": [
+                0.5,
+                1.5
+              ],
+              "scaledLocalGradients": [
+                0.5,
+                4.5
+              ],
+              "correctNextParameter": 9.75,
+              "unweightedNextParameter": 9.8
+            },
+            "level": "software",
+            "branch": "Executable software",
+            "subbranch": "Distributed computation to useful output",
+            "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+            "kind": "system",
+            "workstream": "W11",
+            "visualFamily": "software-flow",
+            "labId": "library",
+            "investigationId": "execution",
+            "labScope": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+            "history": []
+          },
+          "equations": [
+            {
+              "latex": "N=\\sum_{r=0}^{P-1}n_r,\\qquad g=\\frac{1}{N}\\sum_{r=0}^{P-1}n_r\\bar g_r",
+              "text": "Sum local valid-item counts to N. Weight each local mean gradient by its count and divide their sum by N.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "N",
+                  "meaning": "Total valid equally weighted items in the update",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "nr",
+                  "meaning": "Valid items at rank r",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "P",
+                  "meaning": "Participating rank count",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "ḡr",
+                  "meaning": "Mean local gradient at shared parameter state",
+                  "unit": "loss/parameter"
+                },
+                {
+                  "symbol": "g",
+                  "meaning": "Global item-mean gradient",
+                  "unit": "loss/parameter"
+                }
+              ]
+            },
+            {
+              "latex": "g=\\frac{1}{P}\\sum_{r=0}^{P-1}\\left(\\frac{P n_r}{N}\\bar g_r\\right),\\qquad w_{\\mathrm{new}}=w-\\eta g",
+              "text": "Before a mean-across-ranks reduction, scale local mean gradients by P times n_r over N. Scalar SGD subtracts learning rate times global gradient.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "P",
+                  "meaning": "Fixed participants in the mean reducer",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "nr, N",
+                  "meaning": "Local and global valid-item counts",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "ḡr, g",
+                  "meaning": "Local and global mean gradients",
+                  "unit": "loss/parameter"
+                },
+                {
+                  "symbol": "w, wnew",
+                  "meaning": "Parameter before and after the update",
+                  "unit": "parameter"
+                },
+                {
+                  "symbol": "η",
+                  "meaning": "Learning rate for the declared objective scaling",
+                  "unit": "parameter²/loss"
+                }
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "bridge-claim-ddp-mean",
+              "title": "Loss normalization and gradient averaging must agree",
+              "statement": "The pinned PyTorch DistributedDataParallel contract states that gradients are averaged across workers and distinguishes summed from averaged local losses.",
+              "sourceId": "pytorch-ddp-weighting",
+              "lessonIds": [
+                "distributed-gradient-weighting"
+              ],
+              "status": "reported",
+              "metric": "Operation or algorithm contract",
+              "value": "Qualitative semantics",
+              "unit": "",
+              "denominator": "The cited example or algorithm under its stated assumptions",
+              "period": "PyTorch v2.8.0",
+              "scope": "Default gradient averaging described in the v2.8.0 class contract",
+              "limitations": "Custom communication hooks and joined-rank policies can alter scaling. The unequal-item weighting and squared-error inputs are an authored derivation.",
+              "checkedOn": "2026-09-07"
+            }
+          ]
+        },
+        "snapshotSha256": "507e3440228bff8db8ac98ce408fd9be2274947fcb3df60412537bd5ab183d49",
+        "snapshotEncoding": "UTF-8 JSON.stringify of contentSnapshot"
+      },
+      {
+        "lessonId": "floating-point-reduction-order",
+        "actor": {
+          "actorType": "agent",
+          "actorId": "/root/curriculum_assessment",
+          "role": "Content author, primary-source scope reader and numerical checker"
+        },
+        "reviewedOn": "2026-09-07",
+        "sourceReferences": [
+          {
+            "title": "NVIDIA CUDA 13.1.1 — Floating-Point Computation",
+            "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+            "sourceId": "cuda-fp32-associativity",
+            "checkedUrl": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+            "locator": "§5.5.1.4 Associativity and §5.5.1.5 Fused Multiply-Add",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          },
+          {
+            "title": "LLVM — Language Reference, fast-math rewrite flags",
+            "url": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+            "sourceId": "llvm-fp-reassociation",
+            "checkedUrl": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+            "locator": "Rewrite-based flags, shared-flag example; contract and reassoc definitions",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          }
+        ],
+        "historySourceReferences": [],
+        "claimIds": [
+          "bridge-claim-reassociation"
+        ],
+        "checks": {
+          "unitsAndDenominators": {
+            "status": "checked-by-agent",
+            "note": "Checked binary32 fraction bits versus 24-bit significand, spacing 2 above 2^24 and spacing 1 immediately below, left result 0/right result 1/exact reference 1. Tolerance 0.01 is synthetic absolute error."
+          },
+          "modelAssumptions": {
+            "status": "checked-by-agent",
+            "note": "Checked nearest ties-to-even, finite exactly representable inputs and rounding after each addition; no FMA, underflow, overflow or target-specific run is inferred."
+          },
+          "claimQualifiers": {
+            "status": "checked-by-agent",
+            "note": "LLVM reassociation is a permission, not an asserted universal default. Repeatability and numerical accuracy are distinct; neither test establishes a real compiler/GPU performance result."
+          },
+          "dependencyAndVisualScope": {
+            "status": "checked-by-agent",
+            "note": "Existing MAC, quantization, compiler and collective lessons supply the prerequisites. The software-flow view shows operations; the numerical trace states every rounding boundary."
+          }
+        },
+        "contentSnapshot": {
+          "lesson": {
+            "id": "floating-point-reduction-order",
+            "name": "Floating-point reductions and compiler permissions",
+            "shortName": "The order of a floating-point sum",
+            "role": "Distinguish algebraic equivalence, numerical error and bitwise reproducibility when compilation or collectives regroup arithmetic.",
+            "description": "Real-number addition is associative, but a floating-point implementation rounds intermediate results. Changing the reduction tree changes where those rounding steps occur. A compiler that vectorizes a sum or a distributed library that groups rank contributions differently can therefore produce different low bits, and cancellation can make the difference much larger relative to the final result. LLVM exposes reassociation as an explicit fast-math permission; permission to contract a multiply and add is a separate choice. Such options should be read as part of the numerical contract, not assumed to be enabled in every program. A fixed reduction schedule can improve repeatability without establishing that its answer is the most accurate. Conversely, a numerically acceptable answer need not be bitwise identical to another legal result. The small integer schedules elsewhere in the atlas deliberately avoid this issue by keeping every operation exactly representable. This lesson changes that arithmetic assumption while keeping the underlying sum visible.",
+            "mechanism": [
+              "Specify input representation, accumulator dtype, rounding mode and treatment of fused operations before comparing outputs.",
+              "Write out the intermediate additions imposed by the chosen serial, vector or distributed reduction order.",
+              "Round after each stated operation rather than rounding only the final real-number sum.",
+              "Inspect compiler reassociation and contraction permissions, plus the library and rank topology that determine the actual reduction tree.",
+              "Compare with an independent higher-precision or exact reference where available; use an absolute tolerance near cancellation and a justified relative tolerance elsewhere.",
+              "Validate downstream loss or task behavior separately. A repeatability check and a numerical-accuracy check answer different questions."
+            ],
+            "prerequisites": [
+              "mac",
+              "quantization",
+              "compiler-layout-lowering",
+              "nccl"
+            ],
+            "related": [
+              "sharded-matmul-ownership",
+              "distributed-gradient-weighting",
+              "evaluation",
+              "systolic-array-dataflow"
+            ],
+            "specs": [
+              {
+                "label": "Toy format",
+                "value": "IEEE-style binary32 rounding",
+                "context": "24 significand bits for normal values, nearest with ties to even."
+              },
+              {
+                "label": "Algebraic equality",
+                "value": "Same real-number expression",
+                "context": "Does not guarantee identical rounded intermediates."
+              },
+              {
+                "label": "Compiler permissions",
+                "value": "reassoc and contract differ",
+                "context": "An enabled reassociation can change reduction grouping; contraction can change rounding boundaries."
+              }
+            ],
+            "interfaces": [
+              {
+                "name": "Expression and numerical contract",
+                "direction": "in",
+                "signal": "Operands, dtype, rounding, grouping and optimization permissions"
+              },
+              {
+                "name": "Checked numerical result",
+                "direction": "out",
+                "signal": "Computed value, reference difference and acceptance criterion"
+              }
+            ],
+            "science": [
+              {
+                "title": "Rounding makes grouping observable",
+                "equation": "fl(fl(a+b)+c) ≠ fl(a+fl(b+c)) in general",
+                "explanation": "fl denotes one rounding to the specified floating-point format. Intermediate representability determines the result.",
+                "assumptions": "The example uses finite binary32 values with round-to-nearest, ties-to-even; no underflow, overflow, NaNs, stochastic rounding or fused multiply-add."
+              },
+              {
+                "title": "Spacing at the chosen magnitude",
+                "equation": "ULP(2²⁴) = 2²⁴⁻²³ = 2; real sum = 2²⁴ + 1 − 2²⁴ = 1",
+                "explanation": "In the binary32 interval [2²⁴,2²⁵), adjacent representable values are two apart. The halfway sum 2²⁴+1 rounds to the even lower significand.",
+                "assumptions": "ULP here means the spacing immediately above 2²⁴. Spacing immediately below that power of two is 1; it is not constant across the boundary."
+              }
+            ],
+            "engineeringExample": "Let a=16,777,216=2²⁴, b=1 and c=−16,777,216, all representable in binary32. Group left: a+b is exactly 16,777,217 before rounding, halfway between representable 16,777,216 and 16,777,218. Ties-to-even gives 16,777,216; adding c then gives 0. Group right: b+c=−16,777,215 is representable, so adding a gives 1. The exact mathematical sum is 1. A deterministic left reduction repeats 0 and is reproducible, yet its absolute error is 1. A hypothetical acceptance condition |computed−reference|≤0.01 rejects 0 and accepts 1. That tolerance is an authored condition for this example, not an accuracy threshold for real training. Accumulating these three binary32 inputs with sufficiently precise binary64 additions produces 1; this does not guarantee that wider accumulation always eliminates error in larger problems.",
+            "learningObjective": "Reproduce both binary32 reduction orders and explain why compiler permissions, accuracy checks and reproducibility requirements must be specified separately.",
+            "misconception": "Bitwise repeatability does not prove closeness to the exact result, and algebraic equivalence does not prove bitwise identity.",
+            "check": {
+              "question": "With binary32 ties-to-even rounding, what is fl(fl(2²⁴+1)−2²⁴)?",
+              "options": [
+                "0",
+                "1",
+                "2"
+              ],
+              "answer": 0,
+              "explanation": "The first addition rounds back to 2²⁴ because adjacent representable values above it are two apart; subtraction then cancels to zero."
+            },
+            "checks": [
+              {
+                "question": "Why does grouping 2²⁴+(1−2²⁴) instead give 1?",
+                "options": [
+                  "The inner result −16,777,215 is representable",
+                  "The network repairs all numerical errors",
+                  "The compiler changes the inputs"
+                ],
+                "answer": 0,
+                "explanation": "Below this power-of-two boundary the required integer is representable, so no information is lost in the inner sum."
+              },
+              {
+                "question": "Which evidence shows a result is accurate relative to a stated reference?",
+                "options": [
+                  "Only repeating the same bit pattern",
+                  "An error check against the independent reference",
+                  "Only using more ranks"
+                ],
+                "answer": 1,
+                "explanation": "Repeatability and rank count do not establish numerical accuracy."
+              }
+            ],
+            "whyAI": "Gradient reductions, attention sums and low-precision accumulations connect compiler decisions to optimization and model outputs. A faster schedule must still satisfy a declared numerical and task-quality contract.",
+            "tradeoff": "Stricter ordering or wider accumulation can constrain transformations and consume resources. Their value depends on the actual error and reproducibility requirements; this example provides no throughput ranking.",
+            "evidenceNotes": "The NVIDIA guide supports finite-precision nonassociativity, and LLVM specifies the cited optimization permissions. The exact operands, intermediate values and 0.01 tolerance are authored. Tests use binary32 conversions locally and do not constitute a GPU, compiler or multi-rank experiment.",
+            "sourceIds": [
+              "cuda-fp32-associativity",
+              "llvm-fp-reassociation"
+            ],
+            "sources": [
+              {
+                "title": "NVIDIA CUDA 13.1.1 — Floating-Point Computation",
+                "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html"
+              },
+              {
+                "title": "LLVM — Language Reference, fast-math rewrite flags",
+                "url": "https://llvm.org/docs/LangRef.html#fast-math-flags"
+              }
+            ],
+            "workedTrace": {
+              "id": "binary32-cancellation",
+              "input": {
+                "a": 16777216,
+                "b": 1,
+                "c": -16777216,
+                "rounding": "nearest-ties-to-even",
+                "format": "binary32"
+              },
+              "left": {
+                "firstExact": 16777217,
+                "firstRounded": 16777216,
+                "result": 0
+              },
+              "right": {
+                "firstExact": -16777215,
+                "firstRounded": -16777215,
+                "result": 1
+              },
+              "exactReference": 1,
+              "absoluteTolerance": 0.01,
+              "leftPasses": false,
+              "rightPasses": true
+            },
+            "level": "software",
+            "branch": "Executable software",
+            "subbranch": "Distributed computation to useful output",
+            "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+            "kind": "system",
+            "workstream": "W11",
+            "visualFamily": "software-flow",
+            "labId": "library",
+            "investigationId": "execution",
+            "labScope": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+            "history": []
+          },
+          "equations": [
+            {
+              "latex": "\\operatorname{fl}\\!\\left(\\operatorname{fl}(a+b)+c\\right)\\ne\\operatorname{fl}\\!\\left(a+\\operatorname{fl}(b+c)\\right)\\quad\\text{in general}",
+              "text": "Rounding the inner addition before the outer one means regrouped additions can differ.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "fl",
+                  "meaning": "One binary32 round-to-nearest ties-to-even operation in this example",
+                  "unit": "operation"
+                },
+                {
+                  "symbol": "a, b, c",
+                  "meaning": "Exactly representable input operands",
+                  "unit": "value"
+                }
+              ]
+            },
+            {
+              "latex": "\\Delta_{[2^{24},2^{25})}=2^{24-23}=2,\\qquad (2^{24}+1)-2^{24}=1\\quad\\text{over the reals}",
+              "text": "The spacing above two to the twenty-fourth in binary32 is two. The exact real-number sum with one and its negative is one.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "Δ",
+                  "meaning": "Adjacent representable spacing in the stated interval",
+                  "unit": "value"
+                },
+                {
+                  "symbol": "24",
+                  "meaning": "Exponent at the chosen magnitude",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "23",
+                  "meaning": "Stored binary32 fraction-bit count",
+                  "unit": "count"
+                }
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "bridge-claim-reassociation",
+              "title": "Reassociation permission can change floating-point results",
+              "statement": "LLVM’s reassoc fast-math flag permits algebraically equivalent regrouping of floating-point operations and warns that results can change.",
+              "sourceId": "llvm-fp-reassociation",
+              "lessonIds": [
+                "floating-point-reduction-order"
+              ],
+              "status": "reported",
+              "metric": "Operation or algorithm contract",
+              "value": "Qualitative semantics",
+              "unit": "",
+              "denominator": "The cited example or algorithm under its stated assumptions",
+              "period": "Documentation checked 2026-09-07",
+              "scope": "LLVM IR rewrite permission, separate from contraction",
+              "limitations": "This does not claim that every compiler enables reassociation by default or that the toy example measures a compiled GPU program.",
+              "checkedOn": "2026-09-07"
+            }
+          ]
+        },
+        "snapshotSha256": "5a19df2a236f0297e523f5be1427ebda5ba886e79602c6600c895ca601507ce2",
+        "snapshotEncoding": "UTF-8 JSON.stringify of contentSnapshot"
+      },
+      {
+        "lessonId": "speculative-decoding-verification",
+        "actor": {
+          "actorType": "agent",
+          "actorId": "/root/curriculum_assessment",
+          "role": "Content author, primary-source scope reader and numerical checker"
+        },
+        "reviewedOn": "2026-09-07",
+        "sourceReferences": [
+          {
+            "title": "Leviathan, Kalman and Matias — Fast Inference from Transformers via Speculative Decoding",
+            "url": "https://proceedings.mlr.press/v202/leviathan23a.html",
+            "sourceId": "speculative-decoding-2023",
+            "checkedUrl": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+            "locator": "§2.3 and Algorithm 1, printed p3; §3.1 Equation (1) and its iid assumption; Appendix A.1 distribution proof",
+            "checkedOn": "2026-09-07",
+            "actor": {
+              "actorType": "agent",
+              "actorId": "/root/curriculum_assessment",
+              "role": "Content author, primary-source scope reader and numerical checker"
+            }
+          }
+        ],
+        "historySourceReferences": [],
+        "claimIds": [
+          "bridge-claim-speculative-correction"
+        ],
+        "checks": {
+          "unitsAndDenominators": {
+            "status": "checked-by-agent",
+            "note": "Checked p/q normalization, acceptance mass 0.6, rejection mass 0.4, correction [1,0,0], final p, iid output count 1.96 and millisecond-to-second rates. Draft proposals are not all counted as output."
+          },
+          "modelAssumptions": {
+            "status": "checked-by-agent",
+            "note": "Checked aligned conditional distributions and vocabulary, exact strict residual correction, positive-denominator handling, iid acceptance only for the output-count example, no early stopping and separately synthetic time terms."
+          },
+          "claimQualifiers": {
+            "status": "checked-by-agent",
+            "note": "The theoretical distribution guarantee does not establish identical seeded samples, truth, quality improvement or measured acceleration. Increasing verification time reverses the toy throughput comparison."
+          },
+          "dependencyAndVisualScope": {
+            "status": "checked-by-agent",
+            "note": "Existing output-head, decode, KV and evaluation precede the addition. Static probability accounting complements those lessons and does not depict execution of an actual language model."
+          }
+        },
+        "contentSnapshot": {
+          "lesson": {
+            "id": "speculative-decoding-verification",
+            "name": "Speculative decoding: proposals and verified output",
+            "shortName": "Draft, verify and correct",
+            "role": "Account for target-distributed output tokens while separating draft work, verification and actual elapsed time.",
+            "description": "A draft model can propose several next tokens cheaply, but proposals are not yet accepted output. In strict speculative sampling, the target model evaluates the relevant conditional distributions and verifies the draft sequence in order. A proposal is accepted with a probability determined by the target-to-draft probability ratio. The first rejected position is corrected using the positive residual between the two distributions, and later proposals from that speculative branch are discarded. When all proposals are accepted, one additional target token can be emitted. This procedure preserves the target sampling distribution under its stated assumptions; it does not establish factual truth or force the same sampled text from the same random seed. The benefit can come from evaluating several target positions together and reusing data movement, while draft work, rejected work and additional state still consume resources. The exact three-symbol example below checks the sampling correction before considering a separately assumed timing budget.",
+            "mechanism": [
+              "Use target p and draft q distributions over the same token events and the same valid prefix, including any declared sampling transforms.",
+              "Sample a proposal x from q; when q(x)>0, accept it with probability min(1,p(x)/q(x)). A symbol with q(x)=0 cannot be proposed.",
+              "After the first rejection, sample a correction from normalized max(p−q,0) at that prefix and discard the later speculative branch.",
+              "If all γ proposals are accepted, draw the extra token from the target distribution conditioned on the full accepted prefix.",
+              "Count accepted prefix tokens plus the one correction or bonus token as output; count draft proposals and rejected target work separately.",
+              "Measure draft, target-verification, synchronization and state-management time on the actual workload before claiming a speedup. Distributional equivalence remains separate from factual or task correctness."
+            ],
+            "prerequisites": [
+              "output-head",
+              "decode-bandwidth-trace",
+              "kv-cache",
+              "evaluation"
+            ],
+            "related": [
+              "prefill-resource-trace",
+              "disaggregated-serving",
+              "runtime-device-dispatch",
+              "memory-working-set-placement"
+            ],
+            "specs": [
+              {
+                "label": "Preserved quantity",
+                "value": "Target sampling distribution",
+                "context": "Ideal strict correction; not a guarantee of the same random sample or true statements."
+              },
+              {
+                "label": "Output per verification",
+                "value": "1 through γ+1 tokens before stopping rules",
+                "context": "Accepted prefix plus a correction or a target bonus."
+              },
+              {
+                "label": "Resource boundary",
+                "value": "Draft and verification both cost work",
+                "context": "Batch verification latency is an implementation measurement, not implied by token count."
+              }
+            ],
+            "interfaces": [
+              {
+                "name": "Aligned target and draft distributions",
+                "direction": "in",
+                "signal": "Prefix-conditioned token probabilities and proposal sequence"
+              },
+              {
+                "name": "Verified continuation",
+                "direction": "out",
+                "signal": "Accepted prefix and corrected or bonus target token"
+              }
+            ],
+            "science": [
+              {
+                "title": "Acceptance and rejection correction",
+                "equation": "a(x)=min(1,p(x)/q(x)); r(x)=[p(x)−q(x)]+ / Σy[p(y)−q(y)]+",
+                "explanation": "For a proposed symbol, accept with a(x). After a rejection, sample from residual r. Total acceptance probability is α=Σx min(p(x),q(x)).",
+                "assumptions": "Finite normalized distributions with q(x)>0 for a proposed x. Use r only when its denominator is positive; if p=q no rejection occurs. Exact probability arithmetic and consistent prefixes are assumed."
+              },
+              {
+                "title": "Output count in the iid acceptance scenario",
+                "equation": "E[K] = Σj=0…γ αʲ; Rscenario = E[K]/(Tdraft + Tverify + Toverhead)",
+                "explanation": "K counts output tokens, including the correction or bonus. With iid acceptance probability α and no early stopping, the probability of accepting at least j proposals is αʲ.",
+                "assumptions": "The iid assumption is synthetic; actual acceptance varies with prefix. Time terms are separately declared seconds per verification round; no measured speedup, energy reduction or universal latency scaling is implied."
+              }
+            ],
+            "engineeringExample": "For symbols A/B/C, choose target p=[0.6,0.3,0.1] and draft q=[0.2,0.3,0.5]. Conditional acceptance is [1,1,0.2], so accepted probability mass is [0.2,0.3,0.1] and total α=0.6. The rejected mass is 0.4; normalized positive residual p−q is [1,0,0], so every correction in this toy case is A. The final output distribution is [0.2,0.3,0.1]+0.4×[1,0,0]=[0.6,0.3,0.1], exactly the target distribution. If γ=2 and acceptance events are independently 0.6 at both positions, output counts 1,2,3 have probabilities 0.4,0.24,0.36. Thus E[K]=1.96 tokens. Separately assume the two draft steps together take 2 ms, target verification 6 ms and overhead 1 ms: 1.96/0.009≈217.8 output tokens/s. A 6 ms single-token baseline would be 166.7 tokens/s under those assumptions. At 12 ms verification, the speculative scenario instead gives 130.7 tokens/s. Neither timing is measured or taken from the paper; acceptance alone does not establish acceleration.",
+            "learningObjective": "Recover the target distribution by exact probability accounting, then calculate output-per-round and a conditional throughput without treating proposals or assumptions as measured useful output.",
+            "misconception": "Accepting a draft token validates it against a sampling distribution, not against external facts; higher acceptance does not by itself prove lower latency.",
+            "check": {
+              "question": "In the stated toy distributions, a rejected proposal must be corrected from which distribution?",
+              "options": [
+                "The original draft [0.2,0.3,0.5]",
+                "The residual [1,0,0]",
+                "Any uniform distribution"
+              ],
+              "answer": 1,
+              "explanation": "The positive residual is [0.4,0,0], which normalizes to [1,0,0]. Adding its weighted contribution recovers the target probabilities."
+            },
+            "checks": [
+              {
+                "question": "Under iid α=0.6 with two proposals, what is the expected output count including correction or bonus?",
+                "options": [
+                  "1.2",
+                  "1.96",
+                  "3"
+                ],
+                "answer": 1,
+                "explanation": "The count expectation is 1+0.6+0.36=1.96."
+              },
+              {
+                "question": "Does preserving p establish that sampled statements are true?",
+                "options": [
+                  "Yes",
+                  "No",
+                  "Only when α=1"
+                ],
+                "answer": 1,
+                "explanation": "The target distribution can assign probability to factually wrong continuations."
+              }
+            ],
+            "whyAI": "Useful serving throughput counts the output that survives the verification algorithm and meets the task’s quality requirements. This connects decoding semantics, memory reuse and latency accounting.",
+            "tradeoff": "More proposals can expose useful parallel verification while increasing draft computation, temporary state and wasted work. Prefix-dependent acceptance and workload-specific target cost determine the result.",
+            "evidenceNotes": "The cited ICML paper establishes the strict correction algorithm and the explicitly iid output-count formula. The toy probabilities, output-count distribution and all millisecond values are authored. No private model, serving implementation, benchmark speedup or quality improvement is asserted.",
+            "sourceIds": [
+              "speculative-decoding-2023"
+            ],
+            "sources": [
+              {
+                "title": "Leviathan, Kalman and Matias — Fast Inference from Transformers via Speculative Decoding",
+                "url": "https://proceedings.mlr.press/v202/leviathan23a.html"
+              }
+            ],
+            "workedTrace": {
+              "id": "three-symbol-strict-correction",
+              "input": {
+                "symbols": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "target": [
+                  0.6,
+                  0.3,
+                  0.1
+                ],
+                "draft": [
+                  0.2,
+                  0.3,
+                  0.5
+                ],
+                "proposalCount": 2
+              },
+              "conditionalAcceptance": [
+                1,
+                1,
+                0.2
+              ],
+              "acceptedMass": [
+                0.2,
+                0.3,
+                0.1
+              ],
+              "acceptanceRate": 0.6,
+              "rejectionProbability": 0.4,
+              "correctionDistribution": [
+                1,
+                0,
+                0
+              ],
+              "outputDistribution": [
+                0.6,
+                0.3,
+                0.1
+              ],
+              "iidOutputCounts": {
+                "counts": [
+                  1,
+                  2,
+                  3
+                ],
+                "probabilities": [
+                  0.4,
+                  0.24,
+                  0.36
+                ],
+                "expected": 1.96
+              },
+              "timingAssumptions": {
+                "draftTotalMs": 2,
+                "verificationMs": 6,
+                "overheadMs": 1,
+                "baselineMsPerToken": 6
+              },
+              "conditionalTokensPerSecond": 217.77777777777777,
+              "slowerVerificationMs": 12,
+              "slowerConditionalTokensPerSecond": 130.66666666666666
+            },
+            "level": "software",
+            "branch": "Executable software",
+            "subbranch": "Distributed computation to useful output",
+            "scale": "Logical values and distributed ownership; no physical scale or vendor timing",
+            "kind": "system",
+            "workstream": "W11",
+            "visualFamily": "model-workload",
+            "labId": "library",
+            "investigationId": "execution",
+            "labScope": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+            "history": []
+          },
+          "equations": [
+            {
+              "latex": "a(x)=\\min\\!\\left(1,\\frac{p(x)}{q(x)}\\right),\\qquad r(x)=\\frac{[p(x)-q(x)]_+}{\\sum_y[p(y)-q(y)]_+},\\qquad \\alpha=\\sum_x\\min(p(x),q(x))",
+              "text": "Accept a proposed symbol using the target-to-draft ratio capped at one. After rejection, sample from the normalized positive target-minus-draft residual. Acceptance mass sums the minimum of each pair of probabilities.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "p(x), q(x)",
+                  "meaning": "Target and draft probabilities at the same prefix",
+                  "unit": "probability"
+                },
+                {
+                  "symbol": "a(x)",
+                  "meaning": "Conditional acceptance probability for q(x)>0",
+                  "unit": "probability"
+                },
+                {
+                  "symbol": "r(x)",
+                  "meaning": "Correction probability when residual mass is positive",
+                  "unit": "probability"
+                },
+                {
+                  "symbol": "[z]+",
+                  "meaning": "Positive part max(z,0)",
+                  "unit": "value"
+                },
+                {
+                  "symbol": "α",
+                  "meaning": "Total proposal-acceptance probability at this prefix",
+                  "unit": "probability"
+                }
+              ]
+            },
+            {
+              "latex": "\\mathbb{E}[K]=\\sum_{j=0}^{\\gamma}\\alpha^j,\\qquad R_{\\mathrm{scenario}}=\\frac{\\mathbb{E}[K]}{T_{\\mathrm{draft}}+T_{\\mathrm{verify}}+T_{\\mathrm{overhead}}}",
+              "text": "With iid acceptance and no early stop, expected output count is one plus powers of acceptance probability through the proposal count. Divide by the separately assumed total round time for a scenario token rate.",
+              "kind": "math",
+              "variables": [
+                {
+                  "symbol": "K",
+                  "meaning": "Output tokens, including the correction or bonus token",
+                  "unit": "tokens/round"
+                },
+                {
+                  "symbol": "γ",
+                  "meaning": "Maximum draft proposals in a verification round",
+                  "unit": "count"
+                },
+                {
+                  "symbol": "α",
+                  "meaning": "Assumed identical independent acceptance probability",
+                  "unit": "probability"
+                },
+                {
+                  "symbol": "Tdraft",
+                  "meaning": "Total draft time for the round",
+                  "unit": "s/round"
+                },
+                {
+                  "symbol": "Tverify",
+                  "meaning": "Target verification time for the round",
+                  "unit": "s/round"
+                },
+                {
+                  "symbol": "Toverhead",
+                  "meaning": "Other nonoverlapped round time",
+                  "unit": "s/round"
+                },
+                {
+                  "symbol": "Rscenario",
+                  "meaning": "Output rate under the time assumptions",
+                  "unit": "tokens/s"
+                }
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "bridge-claim-speculative-correction",
+              "title": "Strict speculative correction preserves a target distribution",
+              "statement": "The cited speculative-decoding algorithm uses acceptance and residual sampling to retain the target sampling distribution.",
+              "sourceId": "speculative-decoding-2023",
+              "lessonIds": [
+                "speculative-decoding-verification"
+              ],
+              "status": "research",
+              "metric": "Operation or algorithm contract",
+              "value": "Qualitative semantics",
+              "unit": "",
+              "denominator": "The cited example or algorithm under its stated assumptions",
+              "period": "ICML 2023",
+              "scope": "Algorithm 1 and its probability argument, with consistent conditional distributions",
+              "limitations": "The guarantee is distributional under the stated algorithm assumptions. It does not establish identical random samples, factual correctness or measured speed for an implementation.",
+              "checkedOn": "2026-09-07"
+            }
+          ]
+        },
+        "snapshotSha256": "753a3af8afeb1f6e89127e147f64bb6d5bcc5c043c2457b6511fdbbc96aae938",
+        "snapshotEncoding": "UTF-8 JSON.stringify of contentSnapshot"
+      }
+    ]
+  }
+}

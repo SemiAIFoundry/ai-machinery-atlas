@@ -1,0 +1,798 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-07T22:52:07.666Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root"
+  },
+  "browser": "Codex in-app browser, desktop host",
+  "buildScope": "Several local integration builds; per-case entry asset is recorded where observed. This is not physical iOS/Android or human assistive-technology observation.",
+  "observations": [
+    {
+      "case": "corpus-family-versus-document",
+      "viewport": [
+        320,
+        800
+      ],
+      "entryAsset": "index-BK-sH45M.js",
+      "actions": [
+        "Selected corpus experience from the native mobile selector",
+        "Changed whole-family split to individual-document split, keeping seed7"
+      ],
+      "observed": {
+        "familyCrossSplitPairs": 0,
+        "documentCrossSplitPairs": 5,
+        "documentTrainingRetained": "6/7",
+        "documentActiveShiftedTargets": 85,
+        "pageWidth": 320,
+        "dialogScrollWidth": 303,
+        "mathErrors": 0
+      },
+      "screenshot": "screenshots/data-lineage-320.png",
+      "screenshotSha256": "f8ee11053b167ed48730dafcda8337001edc34f8af9d8e1d6c019936ad490600"
+    },
+    {
+      "case": "cell-load-acceptance",
+      "viewport": [
+        320,
+        800
+      ],
+      "actions": [
+        "Opened electrical experience after the test build reload",
+        "Selected Logic passes, timing fails"
+      ],
+      "observed": {
+        "loadedDelayNs": 2.4774,
+        "oxideGate": "pass",
+        "logicGate": "pass",
+        "noiseGate": "pass",
+        "timingGate": "fail",
+        "pageWidth": 320,
+        "dialogScrollWidth": 303
+      }
+    },
+    {
+      "case": "forecast-and-code-navigation",
+      "viewport": [
+        320,
+        800
+      ],
+      "actions": [
+        "Selected newly registered Forecasts & code contracts",
+        "Changed Application mode to Check a proposed code patch"
+      ],
+      "observed": {
+        "forecastRows": 24,
+        "forecastMae": 3.2668,
+        "persistenceMae": 1.1041,
+        "identityExamplesPassed": "2/2",
+        "identityOraclePassed": "84/308",
+        "counterexamples": 224,
+        "pageWidth": 320,
+        "dialogScrollWidth": 303,
+        "mathErrors": 0
+      }
+    },
+    {
+      "case": "factory-readiness-recovery-serving",
+      "viewport": [
+        1280,
+        720
+      ],
+      "captureBuild": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "0053ea1aac22cf991496b9703610dc92aedddd983290ebe12f4b459f192b5987",
+        "contentSha256": "d3e2a279483079a14057445da9eed265bcecfd32096a4e1b401bef68cf15a8c5",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-1",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T21:36:05.412Z"
+      },
+      "actions": [
+        "Opened default actual factory job",
+        "Changed runtime readiness to wrong valid DMA mapping",
+        "Opened a fresh default factory workspace and carried accepted checkpoint to serving",
+        "Selected int4-symmetric and finished queue",
+        "Expanded authored draft verification"
+      ],
+      "observed": {
+        "defaultExecutedUpdates": 5,
+        "defaultRolledBackUpdates": 2,
+        "defaultDurableUpdates": 3,
+        "wrongMappingStatus": "semantic-mismatch; blocked",
+        "wrongMappingExecutedUpdates": 0,
+        "sourceWeightIdentityAtServing": "779c106a",
+        "quantizedCapacityBytes": 1536,
+        "quantizedPositions": 69,
+        "completedRequests": "3/3",
+        "iterations": 8,
+        "generatedTokens": 6,
+        "terminalOccupiedPositions": 0,
+        "draftProposed": [
+          "a",
+          "<eos>"
+        ],
+        "verifiedOutput": [
+          "v",
+          "b"
+        ],
+        "independentGreedy": [
+          "v",
+          "b"
+        ],
+        "acceptedProposalPrefix": 0,
+        "discardedTentativeKvPositions": 1,
+        "mathErrors": 0
+      },
+      "screenshot": "screenshots/verified-draft.png",
+      "screenshotSha256": "717b8287508020046329fc15b0217f661ff35cbda055eb9b00eb502431c50259"
+    },
+    {
+      "case": "connected-capture-tasks",
+      "recordedAt": "2026-09-07T22:16:44.842432+00:00",
+      "builds": [
+        {
+          "schemaVersion": 1,
+          "edition": "1.2.0",
+          "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+          "dirty": true,
+          "sourceSha256": "347aadc4a9ef25b674c300c5ffede5a79147692e360a5aaad5411894049dd67a",
+          "contentSha256": "88dcced3116ee6cf691d8d944adb98c78ffc108eb87720bd8224b600e8934749",
+          "modelVersions": {
+            "investigations": "atlas-investigations-1",
+            "processes": "process-mechanisms-1",
+            "learningPrompts": "investigation-prompts-1",
+            "architecture": "architecture-execution-1",
+            "fabrication": "atlas-fabrication-flow-1",
+            "operatingHall": "1",
+            "realization": "atlas-realization-1",
+            "memory": "atlas-memory-interfaces-1",
+            "sensor": "sensor-logistic-1",
+            "retrieval": "lexical-cited-answer-1",
+            "orbital": "1",
+            "progress": "progress-evidence-2",
+            "studioRecords": "atlas-studio-record-1",
+            "memoryWorkload": "memory-workload-bridge-1",
+            "factory": "factory-actual-checkpoint-1",
+            "dataLineage": "data-lineage-1",
+            "evaluation": "identified-evaluation-1",
+            "applicationDecisions": "application-decisions-1",
+            "processCell": "process-cell-acceptance-1",
+            "speculativeVerification": "authored-draft-target-greedy-1",
+            "serving": "causal-kv-serving-1",
+            "learnedRetrieval": "atlas-incident-learned-1",
+            "distributedLearning": "distributed-causal-gradient-2",
+            "aiFamilies": "ai-families-1",
+            "commissioning": "commissioning-execution-1",
+            "control": "closed-loop-1",
+            "hardwareReliability": "hardware-reliability-1",
+            "foundations": "foundations-1",
+            "modelLifecycle": "causal-decoder-lifecycle-1",
+            "automation": "atlas-automation-1",
+            "machineExecution": "machine-execution-1"
+          },
+          "builtAt": "2026-09-07T21:51:56.182Z"
+        },
+        {
+          "schemaVersion": 1,
+          "edition": "1.2.0",
+          "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+          "dirty": true,
+          "sourceSha256": "d2548353ee9954440987154bfe53a3c6551ce8ddfdadabf8e0a51a469602e44b",
+          "contentSha256": "ef415c169225037971ccaee7ed4f02b821a3485786afe9bf1037029a9fb06111",
+          "modelVersions": {
+            "investigations": "atlas-investigations-1",
+            "processes": "process-mechanisms-1",
+            "learningPrompts": "investigation-prompts-1",
+            "architecture": "architecture-execution-1",
+            "fabrication": "atlas-fabrication-flow-1",
+            "operatingHall": "1",
+            "realization": "atlas-realization-1",
+            "memory": "atlas-memory-interfaces-1",
+            "sensor": "sensor-logistic-1",
+            "retrieval": "lexical-cited-answer-1",
+            "orbital": "1",
+            "progress": "progress-evidence-2",
+            "studioRecords": "atlas-studio-record-1",
+            "ranking": "exposure-aware-ranking-1",
+            "memoryWorkload": "memory-workload-bridge-1",
+            "factory": "factory-actual-checkpoint-1",
+            "dataLineage": "data-lineage-1",
+            "evaluation": "identified-evaluation-1",
+            "applicationDecisions": "application-decisions-1",
+            "processCell": "process-cell-acceptance-1",
+            "speculativeVerification": "authored-draft-target-greedy-1",
+            "serving": "causal-kv-serving-1",
+            "learnedRetrieval": "atlas-incident-learned-1",
+            "distributedLearning": "distributed-causal-gradient-2",
+            "aiFamilies": "ai-families-1",
+            "commissioning": "commissioning-execution-1",
+            "control": "closed-loop-1",
+            "hardwareReliability": "hardware-reliability-1",
+            "foundations": "foundations-1",
+            "modelLifecycle": "causal-decoder-lifecycle-1",
+            "automation": "atlas-automation-1",
+            "machineExecution": "machine-execution-1"
+          },
+          "builtAt": "2026-09-07T22:02:24.958Z"
+        }
+      ],
+      "viewport": [
+        837,
+        910
+      ],
+      "evidence": "examples/connected-walkthrough/capture-manifest.json",
+      "observed": [
+        {
+          "experience": "cell",
+          "observation": "INV-01 nominal10nm oxide with four following inverter loads; evaluated230.996fF output load, DC unchanged,2.4774ns loaded timing exceeds1ns; analytic synthetic2um cell.",
+          "frame": "00-cell.png",
+          "sha256": "96903f52bde9316d2089bd15a5eb56a9a4dfcac641b7454c3ccde547c4741f2b"
+        },
+        {
+          "experience": "memory-workload",
+          "observation": "Selected B[0,0] bytes01 00 00 00; two flipped codeword data bits yield syndrome6/overall parity0; SECDED blocks at40ns without published C, though stack admission passes.",
+          "frame": "01-memory.png",
+          "sha256": "66ad80ce7a5fd77d37a67a0e892df84c223c01dfd7b5b2d10adf9c4a86dca13d"
+        },
+        {
+          "experience": "data",
+          "observation": "Train-only learned byte pair merges and causal row31, same sampled document, response mask boundary; separate byte-BPE specimen from fixed decoder vocabulary.",
+          "frame": "02-data.png",
+          "sha256": "e753eb169164a37af20336dfd60a925bd728a96e1b4bf59c2a274977f18d1743"
+        },
+        {
+          "experience": "learning",
+          "observation": "Actual seeded 320-update decoder 5fa84f48; copy development8/8, swap0/8; answer-position causal attention and NLL inspected; final evaluation unopened.",
+          "frame": "03-learning.png",
+          "sha256": "798aca9cfd633d94957c3dbe7da878369d2dc58b9fddb530e01f3e5ab331ac03"
+        },
+        {
+          "experience": "distributed",
+          "observation": "Two owned slices of 212 and 211 parameters, one padded zero; 30 targets; one committed update; every replica reconstructs 423 weights and gradients; 1e-9 centralized agreement. Partial shard barrier disabled before second owner.",
+          "frame": "04-distributed.png",
+          "sha256": "3dd2c00b3241adba28a562f48112b639772d5b866427730e2f50cf9ad8c9be99"
+        },
+        {
+          "experience": "serving",
+          "observation": "Actual checkpoint 9ef0dfee carried from distributed update; authored a,EOS rejects at position zero; target output v,b equals independent target greedy; one tentative KV row discarded.",
+          "frame": "05-serving.png",
+          "sha256": "ae2e7b2ba850f4afada35ffb03f4feef6de9120b6d985e9473aafc48457d8e30"
+        },
+        {
+          "experience": "retrieval",
+          "observation": "Frozen six-dimensional fitted retrieval and conditional token decoder; current FAN-7 manual supports generated five-token reservation; same proposal eligible for independently checked fictional runtime.",
+          "frame": "06-retrieval.png",
+          "sha256": "fbc45d28a47cd177ef30198507bbb9b6d079d588951a70d6ef608da868078295"
+        },
+        {
+          "experience": "automation",
+          "observation": "Same fitted proposal enters fictional lost-reply case, exact UI reservation approved by agent for QA, recovery yields1reservation1workorder with inventory conserved,5calls1error2effects;560syntheticms.",
+          "frame": "07-automation.png",
+          "sha256": "160ac0d88de01f34dab7011c6fcfeff33810cb6ae8f10d46f636ff0f7dfa516c"
+        },
+        {
+          "experience": "control",
+          "observation": "Fitted0.9 retention/0.2 gain;81 candidate four-step futures; actual0.2s discrete plant action; default final error0.0006m; task constraints independently checked; action effort not energy.",
+          "frame": "08-control.png",
+          "sha256": "44b351c8f9d96db6804d71f339709d4dd593537c361bd91e89aebe4758f7ab63"
+        },
+        {
+          "experience": "factory",
+          "observation": "Reproduced source5fa84f48 optimizer320 carried to factory;5executed/2rolledback/3durable, optimizer323 identity0bd56b4e, RNG1313532916 and12additionaldraws;30.8785assumeds,2981.789facilityJ. Committed state matches uninterrupted reference.",
+          "frame": "09-factory.png",
+          "sha256": "b25f9bb8c0f22891ab5bb5aa76f28bc19111399770e621305bfac0060c7a18bf"
+        }
+      ],
+      "limit": "Actual UI observations in bounded synthetic specimens. Sequence is edited, not continuous shared state across every specimen. Captured query projection UI had not yet been added."
+    },
+    {
+      "case": "large-factory-source-save-and-restore",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "d2548353ee9954440987154bfe53a3c6551ce8ddfdadabf8e0a51a469602e44b",
+        "contentSha256": "ef415c169225037971ccaee7ed4f02b821a3485786afe9bf1037029a9fb06111",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:02:24.958Z"
+      },
+      "actions": [
+        "Carried seed7 decoder after320updates into factory",
+        "Saved full workspace on this device",
+        "Selected seed7 to replace current source",
+        "Restored saved record"
+      ],
+      "observed": {
+        "restoredSourceStep": 320,
+        "sourceWeightIdentity": "5fa84f48",
+        "acceptedStep": 323,
+        "acceptedWeightIdentity": "0bd56b4e",
+        "dataDraws": 640,
+        "result": "Exact learned source and factory result restored"
+      },
+      "limit": "Restore mouse event timed out at tooling layer; subsequent UI inspection confirmed restoration completed. No repeated mutation was issued."
+    },
+    {
+      "case": "ranking-and-joined-memory-mobile",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "d2548353ee9954440987154bfe53a3c6551ce8ddfdadabf8e0a51a469602e44b",
+        "contentSha256": "ef415c169225037971ccaee7ed4f02b821a3485786afe9bf1037029a9fb06111",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:02:24.958Z"
+      },
+      "viewport": [
+        320,
+        800
+      ],
+      "observed": {
+        "pageWidth": 320,
+        "dialogScrollWidth": 303,
+        "mathErrors": 0,
+        "rankingDefaultMeanNDCG": 0.9218,
+        "rankingObservedOnlyMeanNDCG": 1,
+        "rankingZeroSupportWorlds": [
+          0.2708,
+          0.7708
+        ],
+        "rankingUnobservedRows": "48/96",
+        "memoryDoubleFault": "ecc-blocked at40ns",
+        "memoryReadTierDoubleFault": "ecc-blocked at84ns;44ns staging",
+        "memoryReadTier96ByteBudget": "placement-blocked at0ns;full144B still needed",
+        "browserErrors": []
+      },
+      "screenshot": "docs/roadmap/next-horizon/screenshots/ranking-zero-support-320.png",
+      "limit": "Desktop browser viewport emulation; physical touch devices and human assistive technology not observed."
+    },
+    {
+      "case": "learned-query-to-machine",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "3d398c16ad02c551be80167cd52769b4ed3d4c2afc1fd664c5145e71903b8421",
+        "contentSha256": "48c21c521051a42cae8ee376c08ea72e02d68d1291b02e915ccd248af4b42438",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "matrixNetwork": "matrix-network-transfer-1",
+          "decoderProjection": "decoder-query-machine-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:18:41.835Z"
+      },
+      "viewport": [
+        320,
+        800
+      ],
+      "source": {
+        "weightIdentity": "5fa84f48",
+        "step": 320,
+        "dataDraws": 640,
+        "finalTestOpened": false
+      },
+      "actions": [
+        "Trained decoder to320updates",
+        "Used explicit checkpoint-to-projection button",
+        "Changed integer bound99to7",
+        "Removed second B mapping"
+      ],
+      "observed": {
+        "fullInnerDimension": 6,
+        "machineTiles": 2,
+        "defaultMacs": 54,
+        "defaultMaxQueryError": 0.00928,
+        "lowRangeMaxQueryError": 0.15661,
+        "readTransactionBytesUnchanged": 832,
+        "mappingFaultMacs": 27,
+        "mappingFaultOutput": "withheld",
+        "pageWidth": 320,
+        "dialogScrollWidth": 303,
+        "mathErrors": 0
+      },
+      "limit": "Projection-slice numerical error only; no whole-model quality, packed-code bandwidth benefit or hardware latency."
+    },
+    {
+      "case": "finite-credit-network-mobile-and-keyboard",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "3d398c16ad02c551be80167cd52769b4ed3d4c2afc1fd664c5145e71903b8421",
+        "contentSha256": "48c21c521051a42cae8ee376c08ea72e02d68d1291b02e915ccd248af4b42438",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "matrixNetwork": "matrix-network-transfer-1",
+          "decoderProjection": "decoder-query-machine-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:18:41.835Z"
+      },
+      "viewport": [
+        320,
+        800
+      ],
+      "actions": [
+        "Selected network using mobile group selector",
+        "Inspected complete transfer",
+        "Omitted first segment",
+        "Used Home key to select one credit and End key for24tick receiver pause"
+      ],
+      "observed": {
+        "defaultPayloadBytes": 36,
+        "defaultPaddedBytes": 40,
+        "defaultReadyTick": 10,
+        "defaultPublishedTick": 37,
+        "defaultDrainedTick": 12,
+        "omissionMacs": 0,
+        "omissionOutput": "withheld",
+        "oneCreditPauseBackpressureTicks": 34,
+        "oneCreditPauseFinalUniqueBytes": 36,
+        "pageWidth": 320,
+        "dialogScrollWidth": 303,
+        "mathErrors": 0
+      },
+      "limit": "Synthetic credit and consumer ticks; not an observed network device."
+    },
+    {
+      "case": "final-build-projection-record-restoration",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "f5ba74fe93cb827cc5f719d5e5c593b18e2303bf67b1db3fd563dddac6db8912",
+        "contentSha256": "48c21c521051a42cae8ee376c08ea72e02d68d1291b02e915ccd248af4b42438",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "matrixNetwork": "matrix-network-transfer-1",
+          "decoderProjection": "decoder-query-machine-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:25:44.576Z"
+      },
+      "actions": [
+        "Saved the full checkpoint-bearing projection record",
+        "Hard-navigated to the final build",
+        "Restored the saved record"
+      ],
+      "observed": {
+        "weightIdentity": "5fa84f48",
+        "optimizerStep": 320,
+        "samplerDraws": 640,
+        "finalTestExposure": "not opened",
+        "mathErrors": 0
+      },
+      "screenshot": "screenshots/restored-projection.png",
+      "limit": "Desktop in-app browser persistence, not physical-device storage or whole-model accuracy."
+    },
+    {
+      "case": "final-companion-chapter-caption-boundary",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "f5ba74fe93cb827cc5f719d5e5c593b18e2303bf67b1db3fd563dddac6db8912",
+        "contentSha256": "48c21c521051a42cae8ee376c08ea72e02d68d1291b02e915ccd248af4b42438",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "matrixNetwork": "matrix-network-transfer-1",
+          "decoderProjection": "decoder-query-machine-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:25:44.576Z"
+      },
+      "actions": [
+        "Used chapter navigation to seek to 24 seconds",
+        "Inspected the captioned paused frame after cue-boundary correction"
+      ],
+      "observed": {
+        "durationSeconds": 60,
+        "currentTimeSeconds": 24,
+        "paused": true,
+        "videoWidth": 1920,
+        "videoHeight": 1080,
+        "captionMode": "showing",
+        "visuallyDisplayedCaptionCount": 1,
+        "videoError": null
+      },
+      "screenshot": "screenshots/captioned-companion.png",
+      "limit": "Screenshot and browser player observation; original per-frame capture identities remain preserved."
+    },
+    {
+      "case": "reviewed-hbm-and-grid-content",
+      "build": {
+        "schemaVersion": 1,
+        "edition": "1.2.0",
+        "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+        "dirty": true,
+        "sourceSha256": "5216622bd7e8d6af250c7b2169a6e7320f5fcb46ace89931009e0bc32e43afab",
+        "contentSha256": "9b5b6f6e9f2f049eb0d9efbc64cbed04cd9c21a2aa2bb54a2e3145005b083683",
+        "modelVersions": {
+          "investigations": "atlas-investigations-1",
+          "processes": "process-mechanisms-1",
+          "learningPrompts": "investigation-prompts-1",
+          "architecture": "architecture-execution-1",
+          "fabrication": "atlas-fabrication-flow-1",
+          "operatingHall": "1",
+          "realization": "atlas-realization-1",
+          "memory": "atlas-memory-interfaces-1",
+          "sensor": "sensor-logistic-1",
+          "retrieval": "lexical-cited-answer-1",
+          "orbital": "1",
+          "progress": "progress-evidence-2",
+          "studioRecords": "atlas-studio-record-1",
+          "matrixNetwork": "matrix-network-transfer-1",
+          "decoderProjection": "decoder-query-machine-1",
+          "ranking": "exposure-aware-ranking-1",
+          "memoryWorkload": "memory-workload-bridge-1",
+          "factory": "factory-actual-checkpoint-1",
+          "dataLineage": "data-lineage-1",
+          "evaluation": "identified-evaluation-1",
+          "applicationDecisions": "application-decisions-1",
+          "processCell": "process-cell-acceptance-1",
+          "speculativeVerification": "authored-draft-target-greedy-1",
+          "serving": "causal-kv-serving-1",
+          "learnedRetrieval": "atlas-incident-learned-1",
+          "distributedLearning": "distributed-causal-gradient-2",
+          "aiFamilies": "ai-families-1",
+          "commissioning": "commissioning-execution-1",
+          "control": "closed-loop-1",
+          "hardwareReliability": "hardware-reliability-1",
+          "foundations": "foundations-1",
+          "modelLifecycle": "causal-decoder-lifecycle-1",
+          "automation": "atlas-automation-1",
+          "machineExecution": "machine-execution-1"
+        },
+        "builtAt": "2026-09-07T22:49:04.456Z"
+      },
+      "actions": [
+        "Hard-navigated to HBM silicon-intensity lesson",
+        "Inspected primary-source link and opened Science",
+        "Navigated to grid readiness and selected two-hour answer",
+        "Opened grid Science panel"
+      ],
+      "observed": {
+        "hbmRecoveredPrimaryLink": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+        "hbmSourceRecoveryProcessHidden": true,
+        "hbmRenderedFormalExpressions": 1,
+        "hbmMathErrors": 0,
+        "gridAnswer": "Two hours; usable energy already accounts for losses and reserves",
+        "gridMathRendered": true,
+        "gridAssumptions": "Load-side usable-energy boundary retained"
+      },
+      "limit": "Desktop browser observation only. A text-read command timed out after the answer click; a subsequent read confirmed the completed action without repeating it."
+    }
+  ],
+  "limitations": [
+    "Desktop viewport emulation does not establish physical touch behavior, Safari or Android compatibility.",
+    "No screen-reader session, human specialist review or learner observation is claimed.",
+    "A dynamic-import error after replacing dist was resolved by reloading; it was a stale preview asset request, not an electrical model error.",
+    "A new browser tab was needed after the earlier tab session ended; preview service remained available."
+  ]
+}

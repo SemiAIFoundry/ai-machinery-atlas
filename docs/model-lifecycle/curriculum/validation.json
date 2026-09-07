@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-09-07",
+  "actorType": "agent",
+  "actor": "/root/curriculum_assessment",
+  "automatedOnly": true,
+  "newLessons": 37,
+  "existingLessonsDeepened": 15,
+  "chapters": 8,
+  "canonicalEquationAdditions": 52,
+  "sourceAnchors": 36,
+  "tests": {
+    "command": "node --experimental-strip-types --test scripts/model-lifecycle-curriculum.test.mjs",
+    "passed": 26,
+    "failed": 0,
+    "report": "test-results.txt"
+  },
+  "coreAndWorkspaceTests": {
+    "command": "node --experimental-strip-types --test scripts/model-lifecycle.test.mjs",
+    "passed": 26,
+    "failed": 0
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit --pretty false",
+    "exitCode": 0
+  },
+  "fileSnapshots": [
+    {
+      "path": "src/lib/data/model-lifecycle-learning.json",
+      "sha256": "9e79325d61494e633bc527c6610c82f6dfaf969ddc25d229b8b345c4daced52d"
+    },
+    {
+      "path": "src/lib/data/equations-model-lifecycle-learning.json",
+      "sha256": "9e0f27b85f118041498da2787bf4323847fa158a33a3ece2b41a04babcdc3fe5"
+    },
+    {
+      "path": "src/lib/data/model-lifecycle-enrichments.json",
+      "sha256": "acfbe1643bab8c648ff064308f7e2e5422869788989f528205f664ba8b32ac97"
+    },
+    {
+      "path": "scripts/model-lifecycle-curriculum.test.mjs",
+      "sha256": "21d01225e0d9843dd6050f1f47f6091aa3c4a724c7aa4fc776080137c111655c"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/generate.py",
+      "sha256": "8e73b4ab1b6c0ccc41b5d5cb0cca1a586395673126e9711e8a7d0cba716fea2b"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/approved-candidates.json",
+      "sha256": "d44a4467898ed7b81d66a9eab72a85eed0a8c59248b6d62fe065a7bc26849fa0"
+    },
+    {
+      "path": "docs/model-lifecycle/curriculum/README.md",
+      "sha256": "8f27b70bdf1cb1e68a486c09a498d68bc5a3a1b5add950f8fd00fa03c42ad92b"
+    }
+  ],
+  "limits": [
+    "No human specialist review asserted",
+    "No claim all 37 mechanisms are executable",
+    "No learner mastery or device interaction result inferred",
+    "Whole-repository integration validation remains root-owned"
+  ]
+}

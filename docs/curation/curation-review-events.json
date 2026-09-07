@@ -1,4 +1,1564 @@
 {
   "schemaVersion": 1,
-  "events": []
+  "events": [
+    {
+      "id": "agent-source-scope-retained-work-integrated-2026-09-07",
+      "lessonId": "retained-work-restart-boundary",
+      "type": "source-scope",
+      "contentFingerprint": "15565fc27d681dedf4f5538299a990ba44c4dbe60f5480c638cac16caf5247a4",
+      "contentSnapshotLocation": "docs/instructor-kit/integrated-source-review-snapshot.json",
+      "reviewedSourceIds": [
+        "url-f88c4f70e3f8b07e28f2",
+        "url-6780e95cc2c5019179b7"
+      ],
+      "reviewedClaimIds": [
+        "instructor-claim-valid-checkpoint",
+        "instructor-claim-energy-boundary"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI agent author performing source-scope and separate hand-arithmetic verification"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-f88c4f70e3f8b07e28f2",
+          "url": "https://scr.readthedocs.io/en/latest/users/integration.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Checkpoint: SCR_Complete_output(valid); Restart with SCR: SCR_Have_restart, SCR_Start_restart, SCR_Complete_restart"
+          ],
+          "notes": "Completion/validity and available checkpoint restart. The atlas atomic commit delay, deterministic faults and all numerical values are synthetic."
+        },
+        {
+          "sourceId": "url-6780e95cc2c5019179b7",
+          "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Section 2.1, Power Usage Effectiveness; section 3.2, Energy vs. Power"
+          ],
+          "notes": "Nested facility/IT energy boundary and distinction between power and energy. The fixed PUE and phase powers in H7 are not measured data."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "instructor-claim-valid-checkpoint",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Software checkpoint validity; H7 uses a simpler synthetic atomic-commit rule. No vendor hardware fault rate, storage durability guarantee or universally optimal checkpoint policy is inferred."
+        },
+        {
+          "claimId": "instructor-claim-energy-boundary",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The example uses a constant synthetic ratio consistently over all phases. The chosen 1.25 is not an observed annual or fleet PUE, and PUE is not a productivity metric."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Primary passages were opened and scoped. H7 arithmetic was derived separately from the simulator; interrupted-commit behavior was checked. Acceptance covers this source/content snapshot, not human specialist endorsement, renderer integration, classroom observation or learning efficacy. Author and source checker are the same agent; this is not independent human review. Integration scope check on 2026-09-07: compared every effective field, chapter interpretation and formal equation with the preserved candidate snapshot. Only labScope and scope navigation wording changed; both still direct learners to the hall experience or H7 instructor contract. Scientific content and equations are identical. This new event covers the actual integrated fingerprint; the earlier candidate snapshot remains available."
+    },
+    {
+      "id": "agent-source-scope-sharded-matmul-ownership-integrated-2026-09-07",
+      "lessonId": "sharded-matmul-ownership",
+      "type": "source-scope",
+      "contentFingerprint": "bbf534f25087167c27accf96c1791b613ec7d485c38e096bf540611012af3eeb",
+      "contentSnapshotLocation": "docs/curation/distributed-output/sharded-matmul-ownership-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-ed51a189c6b8b58fe3dd",
+        "url-b0ca3660910bf3ab447c"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-partial-sum"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-ed51a189c6b8b58fe3dd",
+          "url": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+          "checkedUrl": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Overview, matmul_basic: c_partialsum = dot(a_block, b_block), followed by lax.psum; collective sections all_gather and psum_scatter"
+          ],
+          "notes": "Local matrix blocks, partial reduction and output shard assembly. No JAX runtime, compiler output or performance measurement is reproduced here. Edition: Living documentation retrieved 2026-09-07. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        },
+        {
+          "sourceId": "url-b0ca3660910bf3ab447c",
+          "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedUrl": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement"
+          ],
+          "notes": "Collective result layouts and matching participants. The two-rank traffic schedule is authored, not a traced NCCL algorithm. Edition: Retrieved documentation identified as NCCL 2.31.2. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-partial-sum",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The source claim is limited to the cited JAX example. NCCL supports collective semantics; the exchange and matrix values remain authored and not measured. Preserved claim limit: This does not prescribe a universal sharding plan or imply the authored two-rank payload schedule is JAX-generated."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "sharded-matmul-ownership",
+        "authorSnapshotSha256": "788381c4cf9b51c382e7660d0efb20c9b26726d851bfcc0638e6ce20d50c6a6f"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labId",
+          "labScope",
+          "deepLabId",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-distributed-gradient-weighting-integrated-2026-09-07",
+      "lessonId": "distributed-gradient-weighting",
+      "type": "source-scope",
+      "contentFingerprint": "dd24e1656bca70395dedc96a9bbd722a3fee55ff73e1c18523c21ce5fdad3ddb",
+      "contentSnapshotLocation": "docs/curation/distributed-output/distributed-gradient-weighting-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-9017986ac40a5ff3d649",
+        "url-b0ca3660910bf3ab447c"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-ddp-mean"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-9017986ac40a5ff3d649",
+          "url": "https://github.com/pytorch/pytorch/blob/v2.8.0/torch/nn/parallel/distributed.py",
+          "checkedUrl": "https://raw.githubusercontent.com/pytorch/pytorch/v2.8.0/torch/nn/parallel/distributed.py",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "DistributedDataParallel docstring, source lines 357–370: summed versus averaged loss and gradient averaging; join documentation lines 1613–1659 for different uneven-input semantics"
+          ],
+          "notes": "The default gradient averaging convention and the separate meaning of joining after input exhaustion. The sample-count weighting derivation is authored mathematics, not a recommendation to change arbitrary custom communication hooks. Edition: Pinned v2.8.0 source. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        },
+        {
+          "sourceId": "url-b0ca3660910bf3ab447c",
+          "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedUrl": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement"
+          ],
+          "notes": "Collective result layouts and matching participants. The two-rank traffic schedule is authored, not a traced NCCL algorithm. Edition: Retrieved documentation identified as NCCL 2.31.2. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-ddp-mean",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The default averaging contract is tied to pinned PyTorch v2.8.0 source. Unequal local batch weighting is authored mathematics. Exhausted-rank join behavior is explicitly outside this example. Preserved claim limit: Custom communication hooks and joined-rank policies can alter scaling. The unequal-item weighting and squared-error inputs are an authored derivation."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "distributed-gradient-weighting",
+        "authorSnapshotSha256": "507e3440228bff8db8ac98ce408fd9be2274947fcb3df60412537bd5ab183d49"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labId",
+          "labScope",
+          "deepLabId",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-floating-point-reduction-order-integrated-2026-09-07",
+      "lessonId": "floating-point-reduction-order",
+      "type": "source-scope",
+      "contentFingerprint": "144b15638ed45d7558e1c664d8160c5f7ee267d4a392fb58efbb6399ca05b567",
+      "contentSnapshotLocation": "docs/curation/distributed-output/floating-point-reduction-order-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-621e44b6c4d3c95335cc",
+        "url-d8459910e6f845e9ebc7"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-reassociation"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-621e44b6c4d3c95335cc",
+          "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+          "checkedUrl": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "§5.5.1.4 Associativity and §5.5.1.5 Fused Multiply-Add"
+          ],
+          "notes": "Finite-precision nonassociativity and rounding boundaries. The 2^24 example is independently authored and tested with binary32 rounding, not a GPU run. Edition: Archived CUDA 13.1.1 guide. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        },
+        {
+          "sourceId": "url-d8459910e6f845e9ebc7",
+          "url": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+          "checkedUrl": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Rewrite-based flags, shared-flag example; contract and reassoc definitions"
+          ],
+          "notes": "Reassociation permission and separate contraction permission in LLVM IR. No claim that every compiler enables these flags by default. Edition: Living LLVM reference retrieved 2026-09-07. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-reassociation",
+          "outcome": "supported-with-qualifiers",
+          "notes": "LLVM reassociation is a permission, not an asserted universal default. Repeatability and numerical accuracy are distinct; neither test establishes a real compiler/GPU performance result. Preserved claim limit: This does not claim that every compiler enables reassociation by default or that the toy example measures a compiled GPU program."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "floating-point-reduction-order",
+        "authorSnapshotSha256": "5a19df2a236f0297e523f5be1427ebda5ba886e79602c6600c895ca601507ce2"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labScope",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-speculative-decoding-verification-integrated-2026-09-07",
+      "lessonId": "speculative-decoding-verification",
+      "type": "source-scope",
+      "contentFingerprint": "603777a95ef130dd59b2d2865abcfa226db667e73e5492d7b9fd73854bd4465c",
+      "contentSnapshotLocation": "docs/curation/distributed-output/speculative-decoding-verification-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-fd3d857f4120158d76d7"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-speculative-correction"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-fd3d857f4120158d76d7",
+          "url": "https://proceedings.mlr.press/v202/leviathan23a.html",
+          "checkedUrl": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "§2.3 and Algorithm 1, printed p3; §3.1 Equation (1) and its iid assumption; Appendix A.1 distribution proof"
+          ],
+          "notes": "Strict sampling correction preserves the target distribution in ideal arithmetic; the toy three-symbol distribution and time budgets are authored, not results from the paper or an actual serving system. Edition: ICML 2023, PMLR 202, pp. 19274–19286. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-speculative-correction",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The theoretical distribution guarantee does not establish identical seeded samples, truth, quality improvement or measured acceleration. Increasing verification time reverses the toy throughput comparison. Preserved claim limit: The guarantee is distributional under the stated algorithm assumptions. It does not establish identical random samples, factual correctness or measured speed for an implementation."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "speculative-decoding-verification",
+        "authorSnapshotSha256": "753a3af8afeb1f6e89127e147f64bb6d5bcc5c043c2457b6511fdbbc96aae938"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labId",
+          "labScope",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-hbm-silicon-intensity-recovered-2026-09-07",
+      "lessonId": "hbm-silicon-intensity",
+      "type": "source-scope",
+      "contentFingerprint": "84e8b7bff6480c6c4bde012b31da1e18004a5dfd647390862c574dcdb014789e",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/hbm-intensity/reviewed-snapshot.json",
+      "reviewedSourceIds": [
+        "url-f4f45053d1a6f5b9080a",
+        "url-dbd96dc7b5fd154235b2",
+        "url-e033a05c1723994e9007",
+        "url-d40dd97ba68c5279afc8"
+      ],
+      "reviewedClaimIds": [
+        "fab-claim-micron-intensity-pending"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author and primary-source scope reviewer"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-f4f45053d1a6f5b9080a",
+          "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Page 6, Turning to supply; HBM3E/D5 comparison paragraph"
+          ],
+          "notes": "Recovered the original dated PDF from Micron’s legacy investor-relations host; the previous investors.micron.com path redirects. The comparison is supplier-reported wafer supply for equal bits at one node. It gives no separately quantified stage losses. Following HBM4 language remains a forecast. The lesson now reflects recovered evidence without setting a lab default."
+        },
+        {
+          "sourceId": "url-dbd96dc7b5fd154235b2",
+          "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "April 19, 2024 announcement: base-die, TSV and TSMC advanced-logic-process paragraphs"
+          ],
+          "notes": "Supports separate DRAM stack/base-die functions and the announced logic-process collaboration. It does not establish a common process wafer budget or an observed manufacturing yield."
+        },
+        {
+          "sourceId": "url-e033a05c1723994e9007",
+          "url": "https://disco.co.jp/jp/ir/movie/doc/E_Tech_Briefing_2023.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Pages 27 and 31–35, KKM for Memory ICs (HBM)"
+          ],
+          "notes": "Shows distinct stack dies and representative thinning, TSV reveal, dicing and joining stages. The deck explicitly limits its process overview; no complete factory recipe, empirical intensity or universal loss factors are inferred."
+        },
+        {
+          "sourceId": "url-d40dd97ba68c5279afc8",
+          "url": "https://www.micron.com/products/memory/hbm/hbm3e",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Production-capable Micron HBM3E 36GB 12-high cube now available",
+            "FAQ: What is the capacity of HBM3E?"
+          ],
+          "notes": "Capacity/stack configurations illustrate why placement footprint and summed die area differ. Manufacturer performance comparisons are not used to derive an empirical wafer multiplier. The lesson does not treat living availability text as a current allocation census."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "fab-claim-micron-intensity-pending",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Historical supplier statement now directly read in the recovered PDF. Equal-bit/same-node denominator is explicit, loss decomposition is not invented, and no universal HBM or production-default interpretation is made. The stable claim ID retains its historical suffix; the old unresolved text is preserved in before-snapshot.json."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, knowledge check and related yield/stack-assembly boundaries. Independently checked 10 × 2 = 20 wafer-equivalents and geometric B=100, a=2, A=10, Y=0.5 → 40 wafers, equal to I=0.4 ×100. Reapplying the same 0.5 survival doubles 40 to 80 incorrectly. This tests accounting, not observed yield. Layer diagrams remain schematic; the HBM lab boundary is explicit. No human specialist, physical-device or learner approval is claimed."
+    },
+    {
+      "id": "agent-source-scope-hbf-latency-prefetch-2026-09-07",
+      "lessonId": "hbf-latency-prefetch",
+      "type": "source-scope",
+      "contentFingerprint": "b4642fc12ee8e9ea76de498cbe4a9a35359564d8ae1298c577f612ac9d8554f9",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbf-latency-prefetch-snapshot.json",
+      "reviewedSourceIds": [
+        "url-5d748862c1c9009aa823",
+        "url-f3280737ae7f629d9622"
+      ],
+      "reviewedClaimIds": [
+        "depth-claim-hbf-scope"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-5d748862c1c9009aa823",
+          "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "July 2025 fact sheet, page 3, footnote 1"
+          ],
+          "notes": "The comparison uses an internal per-kernel weight-read simulation; larger access units and longer latency are explicitly qualified. No arbitrary request, training-write or whole-service performance follows."
+        },
+        {
+          "sourceId": "url-f3280737ae7f629d9622",
+          "url": "https://www.kioxia.com/en-jp/rd/technology/topics/topics-51.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "September 20, 2023, opening NAND access/erase explanation and Figure 1 discussion"
+          ],
+          "notes": "Page operations and block erasure impose different access and delay boundaries. This supports NAND distinctions only; its SSD sizes and timings are not substituted for HBF specifications."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "depth-claim-hbf-scope",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The internal simulation limitation and absence of general latency/page defaults remain explicit."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. 1e12 bytes/s × 20e-6 s = 20e6 bytes = 20 MB. 1024/16384 = 1/16 = 6.25%. Rates and request sizes are synthetic; page reuse invalidates the no-reuse efficiency assumption. Read-tier and hierarchy prerequisites preserve distinct transfer boundaries; placement permits a read-oriented scenario without asserting physically read-only NAND. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "agent-source-scope-hbf-read-tier-contract-2026-09-07",
+      "lessonId": "hbf-read-tier-contract",
+      "type": "source-scope",
+      "contentFingerprint": "4a4b09a05b0e4576fbd5d3a83ad75adf59ce50b61dfe2554bdb46f520cd7c5bd",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbf-read-tier-contract-snapshot.json",
+      "reviewedSourceIds": [
+        "url-b258a2363dd269464779",
+        "url-8a781a56ee79d98b61e8",
+        "url-1ea46f5723da8c34a3e2"
+      ],
+      "reviewedClaimIds": [
+        "depth-claim-hbf-spec"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-b258a2363dd269464779",
+          "url": "https://news.skhynix.com/en/hbf-at-fms-2026/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "August 4, 2026, paragraphs describing stack configurations, bandwidth grades and processor interconnect"
+          ],
+          "notes": "Confirms the dated announced specification range and UCIe interface. This is a specification announcement, without measured deployment throughput or a particular host compatibility certificate."
+        },
+        {
+          "sourceId": "url-8a781a56ee79d98b61e8",
+          "url": "https://investor.sandisk.com/node/8126/pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "August 3, 2026, page 1: release through OCP; system-interface/electrical/packaging/software guidelines paragraph"
+          ],
+          "notes": "Confirms the first technical-specification release and read/write software scope. The one-day date difference from the SK hynix release is retained as source-specific, not a contradiction or a shipping date."
+        },
+        {
+          "sourceId": "url-1ea46f5723da8c34a3e2",
+          "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "May 3, 2023 Q&A: Compliance Testing; repeatable/known latency; link initialization and compatibility data"
+          ],
+          "notes": "Training, negotiated link parameters and transaction behavior extend beyond a shared interface label. No HBF-specific signaling default is imported from this earlier UCIe discussion."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "depth-claim-hbf-spec",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Announced capacity/grades/interface remain dated and qualified; neither the announcement nor a common link establishes a volume-shipping workload result."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. 100e9 bytes / 1e12 bytes/s = 0.1 s payload-only floor. A positive usable rate, single direction and compatible decimal units are required. Interface-choice and link-compatibility prerequisites separate bandwidth arithmetic from negotiated compatibility. Geometry is an abstract topology, not a disclosed floorplan. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "agent-source-scope-hbm-base-phy-controller-2026-09-07",
+      "lessonId": "hbm-base-phy-controller",
+      "type": "source-scope",
+      "contentFingerprint": "e2cc45b841c55207b6e0220c3cd7e46670797745f07b5bc477e6b358cd17a19e",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbm-base-phy-controller-snapshot.json",
+      "reviewedSourceIds": [
+        "url-dbd96dc7b5fd154235b2",
+        "url-68876ab7e350dda637ab",
+        "url-506a55bc0c864af1071c"
+      ],
+      "reviewedClaimIds": [
+        "fab-claim-hbm4-organization",
+        "fab-claim-hbm-base-collaboration"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-dbd96dc7b5fd154235b2",
+          "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "April 19, 2024 announcement, base-die and advanced-logic-process collaboration paragraphs"
+          ],
+          "notes": "Supports distinct core/base-die roles and a planned process collaboration. Current production or host-controller relocation is not inferred."
+        },
+        {
+          "sourceId": "url-68876ab7e350dda637ab",
+          "url": "https://www.synopsys.com/designware-ip/interface-ip/hbm/hbm3-controller.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "HBM3 Controller IP overview and Highlights & Key Features: dynamic scheduling, refresh and DFI interface"
+          ],
+          "notes": "Identifies controller scheduling, protocol maintenance and the separate PHY interface. HBM3 configuration details are not generalized to every generation."
+        },
+        {
+          "sourceId": "url-506a55bc0c864af1071c",
+          "url": "https://www.synopsys.com/content/dam/synopsys/resources/dw/hbm4-phy-datasheet.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Page 1, Overview and Highlights; page 2, timing/skew and training; page 3 footer 05/27/26"
+          ],
+          "notes": "Confirms controller/PHY separation, disclosed channel organization and timing/training functions for this named IP. Its disclosure is not a shipped-stack performance benchmark."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "fab-claim-hbm4-organization",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The named PHY datasheet directly supports its aggregate width and channel partition; no deployed performance is inferred."
+        },
+        {
+          "claimId": "fab-claim-hbm-base-collaboration",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The 2024 base-die collaboration is a dated announcement, not proof of current qualification or allocation."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. 1/(8e9 transfers/s) = 125e-12 s. 32 × 64 = 64 × 32 = 2048 data bits. Capacity does not enter the unit-interval calculation. Controller and stack-assembly prerequisites preserve scheduling versus physical signaling versus storage ownership. The timing-margin expression is a declared illustrative additive budget, not a signoff equation. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "agent-source-scope-hbm-tc-ncf-route-2026-09-07",
+      "lessonId": "hbm-tc-ncf-route",
+      "type": "source-scope",
+      "contentFingerprint": "b0061f6f219670f9f41bcde4832ef6bfd63c6ddd1a6032aca3978ff92b4d0fe7",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/memory/hbm-tc-ncf-route-snapshot.json",
+      "reviewedSourceIds": [
+        "url-ba853b10116d83397966"
+      ],
+      "reviewedClaimIds": [
+        "depth-claim-tcncf"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author performing primary-source scope and arithmetic review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-ba853b10116d83397966",
+          "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "February 27, 2024 announcement: TC NCF, film thickness/voids, bump roles and final sampling paragraph"
+          ],
+          "notes": "Supports the named historical thermocompression-film route, metallic signal joints and sampling status. No generic recipe, curing schedule, yield ranking or serial tool throughput is taken from the announcement."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "depth-claim-tcncf",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The announced named route and sampling date are supported; production was a plan in that source."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, source/claim scopes and prerequisite boundaries. Twelve strictly serial placements at (0.3+0.7) s plus 3 s handling = 15 s occupied time. Parallel stations or batch curing would invalidate this serial occupancy prediction. Bump-joint and stack-height prerequisites preserve metallic conduction, insulating film and counted interfaces. The enlarged bond-line drawing and synthetic occupancy are not a process window. This is agent source-scope review, not human specialist, physical memory or learner acceptance."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-attention",
+      "lessonId": "attention",
+      "type": "source-scope",
+      "contentFingerprint": "5003a7dd139869db36bcb05ca71c89f8683af5f45845e7c2173ae7c209463ffb",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/attention-5003a7dd139869db.json",
+      "reviewedSourceIds": [
+        "url-a7468c68516526913141",
+        "url-5727fed78bddc70147e9",
+        "url-8a455ddf634c62b2a780",
+        "url-d4823e472e1706a61a2a"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-transformer"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-a7468c68516526913141",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 7, section 3.1 Decoder: shifted embeddings and causal mask",
+            "Section 3.2.1 equation (1) and footnote 1: score scaling; section 3.2.2 learned Q/K/V projections",
+            "Sections 3.3–3.5: nonlinear position-wise layer, output probabilities and positional information; Table 1: dense pair complexity"
+          ],
+          "notes": "Read full primary HTML v7 through the abstract record and direct versioned URL. Supports the declared mechanism; the authored decoder is not the original architecture."
+        },
+        {
+          "sourceId": "url-5727fed78bddc70147e9",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Linked PDF, section 3.1, printed pages 4–5: tiling, rescaled normalization and recomputation",
+            "Algorithm 1 and Theorem 1, printed page 5: exact output definition and quadratic dense arithmetic",
+            "Section 3.2 and Figure 2, printed page 6: memory-model bounds and block-size-dependent results"
+          ],
+          "notes": "Opened abstract and linked 34-page PDF. Supports IO-aware dense attention, with numerical and configuration qualifications retained. No measured speedup is transferred to the atlas."
+        },
+        {
+          "sourceId": "url-8a455ddf634c62b2a780",
+          "url": "https://arxiv.org/html/1706.03762v7",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 7, section 3.1 Decoder: shifted embeddings and causal mask",
+            "Section 3.2.1 equation (1) and footnote 1: score scaling; section 3.2.2 learned Q/K/V projections",
+            "Sections 3.3–3.5: nonlinear position-wise layer, output probabilities and positional information; Table 1: dense pair complexity"
+          ],
+          "notes": "Read full primary HTML v7 through the abstract record and direct versioned URL. Supports the declared mechanism; the authored decoder is not the original architecture."
+        },
+        {
+          "sourceId": "url-d4823e472e1706a61a2a",
+          "url": "https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Packed Sequences, Overview: boundary-aware fine-tuning and distinction from concatenated pretraining datasets",
+            "Overview paragraph on cu_seqlens and omitted cross-sequence attention"
+          ],
+          "notes": "Supports isolation of packed examples. The atlas explicitly uses an authored mask implementation, not the documented fused variable-length kernels or a throughput claim."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-transformer",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported in sections 3.1–3.5. Research status and explicit distinction from the authored one-head pre-RMS/tanh decoder are retained."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independent scalar derivative, normalized mixture, mask and shape review passed. Scores are dimensionless; Q/K width agrees and the example always has an allowed key. The [5,6,7] packed boundary follows its stated document-instance rule. Upstream embeddings/MAC and downstream KV/output links are scoped communication paths, not private reasoning or fused-kernel execution. Exact arithmetic and selected core/packing tests are recorded separately."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-attention-io-tiling",
+      "lessonId": "attention-io-tiling",
+      "type": "source-scope",
+      "contentFingerprint": "95fec33cf0bde46c4cbad76ad384f21e52220c55f8d94a695c3a578d706dda10",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/attention-io-tiling-95fec33cf0bde46c.json",
+      "reviewedSourceIds": [
+        "url-5727fed78bddc70147e9"
+      ],
+      "reviewedClaimIds": [
+        "arch-claim-flash-method"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-5727fed78bddc70147e9",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Linked PDF, section 3.1, printed pages 4–5: tiling, rescaled normalization and recomputation",
+            "Algorithm 1 and Theorem 1, printed page 5: exact output definition and quadratic dense arithmetic",
+            "Section 3.2 and Figure 2, printed page 6: memory-model bounds and block-size-dependent results"
+          ],
+          "notes": "Opened abstract and linked 34-page PDF. Supports IO-aware dense attention, with numerical and configuration qualifications retained. No measured speedup is transferred to the atlas."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "arch-claim-flash-method",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by section 3.1 and Algorithm 1. Dense exact and block-sparse scopes remain distinct; no universal speedup is claimed."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independent storage calculation gives 33,554,432 bytes = 32 MiB for one head/request at two bytes per score. Allocation omits padding and extra tensors as declared; the lesson does not claim this removes quadratic arithmetic. Attention and locality prerequisites are suitable. The library mapping explicitly says there is no dedicated online-softmax calculator. A future numerical tile-merging exercise would deepen pedagogy, but is not required to correct the present scoped claims."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-causal-pretraining-objective",
+      "lessonId": "causal-pretraining-objective",
+      "type": "source-scope",
+      "contentFingerprint": "2960d1d87946d474e92f7a4a1bdc616eeb43b603b04a435ca19529185baa76b2",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/causal-pretraining-objective-2960d1d87946d474.json",
+      "reviewedSourceIds": [
+        "url-91e65f2aee755df9b416",
+        "url-8a455ddf634c62b2a780"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-transformer"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-91e65f2aee755df9b416",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 1, sections 2.1 and 2.3: pretraining and mid-training curricula",
+            "Section 4.2.2: microanneals; section 4.3, Table 14 and Mid-training soups: averaged checkpoints",
+            "Section 5: SFT, DPO and RLVR stages"
+          ],
+          "notes": "Read the specified v1 passages and table. Supports distinct recipe stages and evaluated averages; no OLMo measurements are reproduced by the authored examples."
+        },
+        {
+          "sourceId": "url-8a455ddf634c62b2a780",
+          "url": "https://arxiv.org/html/1706.03762v7",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 7, section 3.1 Decoder: shifted embeddings and causal mask",
+            "Section 3.2.1 equation (1) and footnote 1: score scaling; section 3.2.2 learned Q/K/V projections",
+            "Sections 3.3–3.5: nonlinear position-wise layer, output probabilities and positional information; Table 1: dense pair complexity"
+          ],
+          "notes": "Read full primary HTML v7 through the abstract record and direct versioned URL. Supports the declared mechanism; the authored decoder is not the original architecture."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-olmo2",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by sections 2.3, 4.3/Table 14 and 5. The statement promises evaluated averages, not improvement on every task or reproduction of OLMo."
+        },
+        {
+          "claimId": "ml-claim-transformer",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported in sections 3.1–3.5. Research status and explicit distinction from the authored one-head pre-RMS/tanh decoder are retained."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independently derived NLL 2.772588722239781 nats, mean 0.9241962407465937 over three included targets and perplexity 2.519842099789746. Uniform nine-token baseline gives ln(9). Positive probability, same mask/tokenization and nonzero target count are preserved. This formula is elementary likelihood arithmetic, not a claim that OLMo uses the exact toy loss recipe. Decoder/packing prerequisites and the explicitly bounded lifecycle lab preserve next-token versus answer-accuracy distinctions."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-checkpoint",
+      "lessonId": "checkpoint",
+      "type": "source-scope",
+      "contentFingerprint": "b2b2450347be734165a9b25da0350ffaf0ac68eda98fbc56c7abf9e4234f7c0a",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/checkpoint-b2b2450347be7341.json",
+      "reviewedSourceIds": [
+        "url-284d853c6b8e814d96db",
+        "url-23a0b3fa770742478d25",
+        "url-1743ee34e2118e1db2a4",
+        "url-91e65f2aee755df9b416"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-olmo2"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-284d853c6b8e814d96db",
+          "url": "https://docs.pytorch.org/docs/stable/distributed.checkpoint.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Stable reference redirects to https://docs.pytorch.org/docs/2.14/distributed.checkpoint.html (read this destination)",
+            "torch.distributed.checkpoint.save: local shards, Stateful serialization and cross-version compatibility warning",
+            "Stateful protocol; get_state_dict / set_state_dict: model and optimizer state"
+          ],
+          "notes": "Read the redirected primary version 2.14 reference. Supports sharded model/application state and optimizer restoration; exact binary64 restart is an atlas fixture, not a PyTorch portability promise."
+        },
+        {
+          "sourceId": "url-23a0b3fa770742478d25",
+          "url": "https://docs.temporal.io/workflow-execution",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Temporal Workflow Execution overview, Replays",
+            "Commands and awaitables: command generation checked against event history"
+          ],
+          "notes": "Supports replay from recorded events. The separate atlas journal and external receipt are authored objects; this source does not make a training checkpoint undo an external effect."
+        },
+        {
+          "sourceId": "url-1743ee34e2118e1db2a4",
+          "url": "https://docs.temporal.io/activities",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "What is a Temporal Activity?, overview paragraphs on external actions and idempotency",
+            "Overview paragraphs on failed attempts, heartbeat details and ActivityTaskCompleted history"
+          ],
+          "notes": "Supports distinct external activities and persisted results. The atlas checks lost-response recovery with an explicit keyed receipt; no exactly-once guarantee is inferred from retry alone."
+        },
+        {
+          "sourceId": "url-91e65f2aee755df9b416",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 1, sections 2.1 and 2.3: pretraining and mid-training curricula",
+            "Section 4.2.2: microanneals; section 4.3, Table 14 and Mid-training soups: averaged checkpoints",
+            "Section 5: SFT, DPO and RLVR stages"
+          ],
+          "notes": "Read the specified v1 passages and table. Supports distinct recipe stages and evaluated averages; no OLMo measurements are reproduced by the authored examples."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-olmo2",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by sections 2.3, 4.3/Table 14 and 5. The statement promises evaluated averages, not improvement on every task or reproduction of OLMo."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read all four primary references; independent decimal unit conversion gives the stated 100-second transfer floor. Executed 17 updates, serialized/restored and executed 23: the entire state equals 40 uninterrupted updates, with 80 draws and fingerprint fc178436. Reset moments yield c2bffc33. Selected journal tests confirm lost responses and failed result journaling preserve a committed keyed effect. Storage is upstream; continuation and idempotency are separate downstream contracts. No cross-device bitwise equality or external rollback is promised."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-checkpoint-averaging-boundaries",
+      "lessonId": "checkpoint-averaging-boundaries",
+      "type": "source-scope",
+      "contentFingerprint": "3c0cfe951befa203f898e134f5d3abc3186f2192ce930d36c36b6c8a3313d493",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/checkpoint-averaging-boundaries-3c0cfe951befa203.json",
+      "reviewedSourceIds": [
+        "url-91e65f2aee755df9b416"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-olmo2"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-91e65f2aee755df9b416",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 1, sections 2.1 and 2.3: pretraining and mid-training curricula",
+            "Section 4.2.2: microanneals; section 4.3, Table 14 and Mid-training soups: averaged checkpoints",
+            "Section 5: SFT, DPO and RLVR stages"
+          ],
+          "notes": "Read the specified v1 passages and table. Supports distinct recipe stages and evaluated averages; no OLMo measurements are reproduced by the authored examples."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-olmo2",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by sections 2.3, 4.3/Table 14 and 5. The statement promises evaluated averages, not improvement on every task or reproduction of OLMo."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independent exact linear-network calculation gives coefficients 1 and 1 before averaging and 0 afterward; compatible scalar averaging gives 2. Shape and coordinate alignment are correctly distinguished. OLMo Table 14 includes a GSM* regression for mix E (60.5 best single versus 43.0 soup), despite its broader caption; the atlas does not repeat a universal improvement claim. No averaging simulator or optimizer-resume guarantee is implied. Checkpoint/evaluation prerequisites correctly require a new identity and reserved evaluation."
+    },
+    {
+      "id": "agent-source-scope-capacity-phase-geography-2026-09-07-02-accepted",
+      "lessonId": "capacity-phase-geography",
+      "type": "source-scope",
+      "contentFingerprint": "7ff32f6cc05b65612de250ace78dbea37f6430133117e5e589e7819ff3457ee9",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/capacity-phase-geography-reviewed-snapshot.json",
+      "reviewedSourceIds": [
+        "url-775a7d4e10e6f3d6d135",
+        "url-cd619e3d4531c3e08830",
+        "url-c5e74c0f61b347fb8560"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-euro-call"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-775a7d4e10e6f3d6d135",
+          "url": "https://openai.com/index/five-new-stargate-sites/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "23 September 2025 article; 22 October update; opening project-capacity paragraph and paragraph beginning “The new Stargate sites being developed by Oracle” (rendered lines 24–32)"
+          ],
+          "notes": "Distinguishes planned additions and partnership roles from an already running Abilene phase. Supports dated status/entity separation; no present operating megawatt total is inferred."
+        },
+        {
+          "sourceId": "url-cd619e3d4531c3e08830",
+          "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "28 April 2026; introduction and groundbreaking paragraphs (lines 36–51); “Powering growth responsibly” (line 54); community impact paragraph (lines 57–62)"
+          ],
+          "notes": "Reports construction and associated cable, electrical, water and workforce initiatives. Supports the dated siting example; planned investment and infrastructure are not treated as completed local service."
+        },
+        {
+          "sourceId": "url-c5e74c0f61b347fb8560",
+          "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "30 July 2026; opening procurement/access paragraphs (lines 2, 9–13); “Who can apply” (18–20); “Funding Model” (24–28); “About the EuroHPC Joint Undertaking” (44)"
+          ],
+          "notes": "Future tender scope, possible multiple locations and access-time procurement are distinct from operating infrastructure. The seven-project maximum and separate factory/antenna categories support the qualified claim."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-euro-call",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as a dated maximum procurement scope for future projects. It is not seven operating facilities, and the differently defined factory and antenna counts are not equivalent capacity."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter and formal indicator equation. Nonoverlap, common units, snapshot time and unknown capacity are preserved. Independently checked 20 MW operating versus 80 MW planned and conditional 100 MW eventual scope. The commissioning prerequisite and regional-access dependency retain distinct readiness/access gates. The procedural world-network geometry is schematic, not an actual census. Root corrected the internal-process phrase; the before snapshot is retained. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-compatible-supply-capacity-2026-09-07-02-accepted",
+      "lessonId": "compatible-supply-capacity",
+      "type": "source-scope",
+      "contentFingerprint": "d3cb1abf1262ccc17d7c95fee795ee6385985df060d6fb8e860ce18275f57b7b",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/compatible-supply-capacity-snapshot.json",
+      "reviewedSourceIds": [
+        "url-9310331128e535e41368",
+        "url-d060122a4bc0843887e6"
+      ],
+      "reviewedClaimIds": [],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-9310331128e535e41368",
+          "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "CoWoS overview (lines 170–174); CoWoS-S integration paragraph (182); CoWoS-R and CoWoS-L descriptions (185–198)"
+          ],
+          "notes": "Documents heterogeneous logic/HBM/interposer/package integration, supporting converging compatible inputs. Does not provide the synthetic bill of materials, screened-input counts, remaining yields or queue assumptions."
+        },
+        {
+          "sourceId": "url-d060122a4bc0843887e6",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Letter to Shareholders, PDF page index 5, printed pages 008–009: customer-linked capacity paragraph and distinct fab phases (text lines 253–275)",
+            "Section 5.2 technology discussion, PDF page index 52 (lines 5322–5342); future CoWoS qualification in PDF index 53 (5604–5616)"
+          ],
+          "notes": "Company describes planning with customers and their customers, separates construction from production, and describes logic/HBM integration and qualification. Supplies no private allocation or synthetic production-rate defaults."
+        }
+      ],
+      "claimChecks": [],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter and formal minimum/floor equation. Independently derived min(150,400/4,120)=100; 399 stacks support only 99 whole packages. Already-screened inputs must not incur their earlier yield again; coavailability, compatibility, assembly slots and later loss remain explicit. HBM/substrate prerequisites and production-ramp dependency retain their separate quantities. The capacity-flow geometry and capacity lab are bounded abstractions, not measured fab throughput. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-energy-forecast-boundaries-2026-09-07-02-accepted",
+      "lessonId": "energy-forecast-boundaries",
+      "type": "source-scope",
+      "contentFingerprint": "f427e2aea801958c5dc42ce1ffc853ec70c9ee8f062f0ae9befa38a991d55660",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/energy-forecast-boundaries-snapshot.json",
+      "reviewedSourceIds": [
+        "url-e71ee1cf63ee4c12b5e0",
+        "url-00d2a95d1b2558230681"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-iea-baseline",
+        "infra-claim-iea-projection"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-e71ee1cf63ee4c12b5e0",
+          "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "“Our updated data centre electricity demand outlook sees near-term bottlenecks but longer-term upside” (lines 94–97)",
+            "“The AI and energy nexus continues to evolve rapidly” and report-scope paragraph (69–70)",
+            "Linked report overview: Published 16 April 2026"
+          ],
+          "notes": "Supports the estimated 2025 baseline and conditional central 2030 projection at global data-center scope, with AI-focused demand distinguished. The linked overview supplies the publication date; no forecast is treated as a measured future outcome."
+        },
+        {
+          "sourceId": "url-00d2a95d1b2558230681",
+          "url": "https://bies.lbl.gov/publications/united-states-data-center-energy-2025",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "“Date Published”: 06/2026 (lines 28–30); “Abstract” paragraphs on US scope, bottom-up equipment/cooling model and sensitivity scenarios (35–40)"
+          ],
+          "notes": "The laboratory abstract supports publication date, US geography and differing scenario methodology. Review does not claim inspection of the full report or its detailed derivation; that limitation remains explicit in the lesson."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-iea-baseline",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as the report’s estimated 2025 global data-center energy baseline; all-data-center scope includes non-AI uses."
+        },
+        {
+          "claimId": "infra-claim-iea-projection",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as the conditional central 2030 global projection, not an observed outcome or AI-only total."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter, units and both structured claims. The report scopes and publication dates are supported; overlapping US and global totals cannot be added. Independently checked 1 GW for 8760 h equals 8.76 TWh and a 0.4 GW average gives 3.504 TWh. The power-integral prerequisite uses the same fixed boundary; peak/nameplate power is not average demand. Schematic geography and library navigation do not claim a forecasting simulation. No full LBNL methodology review is implied. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-grid-interconnection-readiness-2026-09-07-01-changes-required",
+      "lessonId": "grid-interconnection-readiness",
+      "type": "source-scope",
+      "contentFingerprint": "cb80d0a139cc9dbb8b0449fa25c53ec56541568fac3c631884a9624d2427b2bd",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-snapshot.json",
+      "reviewedSourceIds": [
+        "url-2b5f76658b39305d88e5"
+      ],
+      "reviewedClaimIds": [],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "changes-required",
+      "sourceChecks": [
+        {
+          "sourceId": "url-2b5f76658b39305d88e5",
+          "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "14 January 2026; opening forecast/vetting paragraphs (37–39)",
+            "“Improving the Forecast for Large Load Additions” (68–76)",
+            "“Further Consideration for Large Load Additions” and “The Long-Term Forecast Process” (79–89)"
+          ],
+          "notes": "Supports regional request vetting, double-counting checks and firm versus non-firm planning commitments. Proposed measures are not generalized into global law. Battery arithmetic is independently derived, not attributed to PJM; the inconsistent winter headline is excluded."
+        }
+      ],
+      "claimChecks": [],
+      "checks": {
+        "unitsAndDenominators": "needs-change",
+        "modelAssumptions": "needs-change",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "The full earlier effective lesson was read. Its formal equation defines load-side already-usable energy, but the knowledge-check explanation says before losses/reserves and the science assumptions deduct conversion losses again. Correct the question, explanation and assumptions to one boundary before accepting the lesson. The two-hour arithmetic itself is correct. Source support and other declared limits pass. This finding is preserved after the subsequent corrected-content review."
+    },
+    {
+      "id": "agent-source-scope-grid-interconnection-readiness-2026-09-07-02-accepted",
+      "lessonId": "grid-interconnection-readiness",
+      "type": "source-scope",
+      "contentFingerprint": "90d3cf400e8f57437f2b7c18239ca92da6d7051345e69c9c3ac6f80dae36160d",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-reviewed-snapshot.json",
+      "reviewedSourceIds": [
+        "url-2b5f76658b39305d88e5"
+      ],
+      "reviewedClaimIds": [],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-2b5f76658b39305d88e5",
+          "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "14 January 2026; opening forecast/vetting paragraphs (37–39)",
+            "“Improving the Forecast for Large Load Additions” (68–76)",
+            "“Further Consideration for Large Load Additions” and “The Long-Term Forecast Process” (79–89)"
+          ],
+          "notes": "Supports regional request vetting, double-counting checks and firm versus non-firm planning commitments. Proposed measures are not generalized into global law. Battery arithmetic is independently derived, not attributed to PJM; the inconsistent winter headline is excluded."
+        }
+      ],
+      "claimChecks": [],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter and load-side formal equation. The prior check/assumption text mixed stored energy with load-side usable energy; root corrected it, and the complete revised record was re-read. Independently verified 20 MWh / 10 MW = 2 h with no repeated efficiency deduction. UPS uses a separately defined stored-energy boundary; power-supply losses are not double-counted here. Commissioning and hall links retain service/readiness gates and explicitly omit grid/battery engineering simulation. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-production-ramp-allocation-2026-09-07-02-accepted",
+      "lessonId": "production-ramp-allocation",
+      "type": "source-scope",
+      "contentFingerprint": "fe17238e7ad15a7f27f42cddf9a1ece457d75371a8e90f469f1ac2dcc6dc3ca9",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/production-ramp-allocation-snapshot.json",
+      "reviewedSourceIds": [
+        "url-d060122a4bc0843887e6"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-tsmc-planning"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-d060122a4bc0843887e6",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Letter to Shareholders, PDF page index 5, printed pages 008–009: customer-linked capacity paragraph and distinct fab phases (text lines 253–275)",
+            "Section 5.2 technology discussion, PDF page index 52 (lines 5322–5342); future CoWoS qualification in PDF index 53 (5604–5616)"
+          ],
+          "notes": "Company describes planning with customers and their customers, separates construction from production, and describes logic/HBM integration and qualification. Supplies no private allocation or synthetic production-rate defaults."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-tsmc-planning",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by the shareholder letter’s stated planning relationship. Retains company-reported scope and makes no customer-share, queue-position or output-rate inference."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter, conservation equation and planning claim. Inventory counts share one compatible item and interval; missing scrap/rework would require extra flows, and feasible consumption cannot exceed available inventory. Independently checked 10+7−9=8, three elapsed weekly intervals from week one reach week four, and half of 100 is 50. Lead time and allocation are authored scenarios, not TSMC data. Compatible-input and scheduling links distinguish supply from access; capacity-flow geometry is conceptual. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-regional-siting-access-2026-09-07-02-accepted",
+      "lessonId": "regional-siting-access",
+      "type": "source-scope",
+      "contentFingerprint": "20e727788f57f7eecab59b833472cb592db3ae6438323e500291850785b32b3c",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/infrastructure/regional-siting-access-snapshot.json",
+      "reviewedSourceIds": [
+        "url-cd619e3d4531c3e08830",
+        "url-c5e74c0f61b347fb8560"
+      ],
+      "reviewedClaimIds": [
+        "infra-claim-euro-call"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/final_ledger_audit",
+        "role": "AI source-scope reviewer reading complete effective lessons, checking primary passages and independently deriving bounded arithmetic; no human specialist review"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-cd619e3d4531c3e08830",
+          "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "28 April 2026; introduction and groundbreaking paragraphs (lines 36–51); “Powering growth responsibly” (line 54); community impact paragraph (lines 57–62)"
+          ],
+          "notes": "Reports construction and associated cable, electrical, water and workforce initiatives. Supports the dated siting example; planned investment and infrastructure are not treated as completed local service."
+        },
+        {
+          "sourceId": "url-c5e74c0f61b347fb8560",
+          "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "30 July 2026; opening procurement/access paragraphs (lines 2, 9–13); “Who can apply” (18–20); “Funding Model” (24–28); “About the EuroHPC Joint Undertaking” (44)"
+          ],
+          "notes": "Future tender scope, possible multiple locations and access-time procurement are distinct from operating infrastructure. The seven-project maximum and separate factory/antenna categories support the qualified claim."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "infra-claim-euro-call",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported as a dated maximum procurement scope for future projects. It is not seven operating facilities, and the differently defined factory and antenna counts are not equivalent capacity."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read every effective lesson field, chapter, normalized weighted-score equation and procurement claim. Source examples retain dated construction/procurement status. Dimensionless normalization and explicit user weights prevent an objective ranking claim. An independent two-criterion example reverses the preferred site when readiness/latency weights change. Phase identity and scheduler prerequisites preserve geographical capacity versus admission, while the topology connection preserves data-path constraints. World-network geometry is schematic and the library does not execute a real siting optimization. Acceptance is limited to this content/source snapshot; it does not certify complete infrastructure coverage, current operation of every referenced project, rendered-browser behavior, human expertise or learning effectiveness."
+    },
+    {
+      "id": "agent-source-scope-hbm-silicon-intensity-recovered-2026-09-07-02",
+      "lessonId": "hbm-silicon-intensity",
+      "type": "source-scope",
+      "contentFingerprint": "1b4390556192fe34236e6a9912d8f6ec207a08bb096ca449b66d15f4c1e0ed6b",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/hbm-intensity/reviewed-snapshot-02.json",
+      "reviewedSourceIds": [
+        "url-f4f45053d1a6f5b9080a",
+        "url-dbd96dc7b5fd154235b2",
+        "url-e033a05c1723994e9007",
+        "url-d40dd97ba68c5279afc8"
+      ],
+      "reviewedClaimIds": [
+        "fab-claim-micron-intensity-pending"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root",
+        "role": "AI integration author and primary-source scope reviewer"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-f4f45053d1a6f5b9080a",
+          "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Page 6, Turning to supply; HBM3E/D5 comparison paragraph"
+          ],
+          "notes": "Recovered the original dated PDF from Micron’s legacy investor-relations host; the previous investors.micron.com path redirects. The comparison is supplier-reported wafer supply for equal bits at one node. It gives no separately quantified stage losses. Following HBM4 language remains a forecast. The lesson now reflects recovered evidence without setting a lab default."
+        },
+        {
+          "sourceId": "url-dbd96dc7b5fd154235b2",
+          "url": "https://news.skhynix.com/en/sk-hynix-partners-with-tsmc-to-strengthen-hbm-technological-leadership/",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "April 19, 2024 announcement: base-die, TSV and TSMC advanced-logic-process paragraphs"
+          ],
+          "notes": "Supports separate DRAM stack/base-die functions and the announced logic-process collaboration. It does not establish a common process wafer budget or an observed manufacturing yield."
+        },
+        {
+          "sourceId": "url-e033a05c1723994e9007",
+          "url": "https://disco.co.jp/jp/ir/movie/doc/E_Tech_Briefing_2023.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Pages 27 and 31–35, KKM for Memory ICs (HBM)"
+          ],
+          "notes": "Shows distinct stack dies and representative thinning, TSV reveal, dicing and joining stages. The deck explicitly limits its process overview; no complete factory recipe, empirical intensity or universal loss factors are inferred."
+        },
+        {
+          "sourceId": "url-d40dd97ba68c5279afc8",
+          "url": "https://www.micron.com/products/memory/hbm/hbm3e",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Production-capable Micron HBM3E 36GB 12-high cube now available",
+            "FAQ: What is the capacity of HBM3E?"
+          ],
+          "notes": "Capacity/stack configurations illustrate why placement footprint and summed die area differ. Manufacturer performance comparisons are not used to derive an empirical wafer multiplier. The lesson does not treat living availability text as a current allocation census."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "fab-claim-micron-intensity-pending",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Historical supplier statement now directly read in the recovered PDF. Equal-bit/same-node denominator is explicit, loss decomposition is not invented, and no universal HBM or production-default interpretation is made. The stable claim ID retains its historical suffix; the old unresolved text is preserved in before-snapshot.json."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read the complete effective lesson, formal variables, knowledge check and related yield/stack-assembly boundaries. Independently checked 10 × 2 = 20 wafer-equivalents and geometric B=100, a=2, A=10, Y=0.5 → 40 wafers, equal to I=0.4 ×100. Reapplying the same 0.5 survival doubles 40 to 80 incorrectly. This tests accounting, not observed yield. Layer diagrams remain schematic; the HBM lab boundary is explicit. No human specialist, physical-device or learner approval is claimed. Subsequent presentation-only review removed the source-recovery process/date from the learner-facing paragraph. Supplier attribution, denominator, limitations, equations, source URLs and numerical examples are unchanged; previous source readings are retained, not redated. The earlier reviewed snapshot remains preserved."
+    }
+  ]
 }

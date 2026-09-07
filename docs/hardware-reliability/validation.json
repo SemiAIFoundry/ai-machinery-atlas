@@ -1,0 +1,17 @@
+{
+  "checkedOn": "2026-09-07",
+  "actorType": "AI agent",
+  "modelVersion": "hardware-reliability-1",
+  "nodeTests": {
+    "passed": 22,
+    "failed": 0,
+    "command": "node --experimental-strip-types --test scripts/hardware-reliability.test.mjs"
+  },
+  "strictScopedTypeScript": "passed",
+  "fixturesRecomputed": 11,
+  "localDocumentationLinks": "passed",
+  "physicalDeviceObservation": null,
+  "humanLearnerObservation": null,
+  "humanSpecialistReview": null,
+  "externalSimulatorComparison": null
+}

@@ -1,0 +1,235 @@
+{
+  "method": "Actual CUA browser screenshots captured while navigating and manipulating the working atlas. Edited state sequence with reading pauses and original score; not an uninterrupted screen recording.",
+  "durationS": 60,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 30,
+  "captureBuild": {
+    "schemaVersion": 1,
+    "edition": "1.2.0",
+    "commit": "b3c87e188a41f68def59031e39c8f89b30f4ad95",
+    "dirty": true,
+    "sourceSha256": "7f6f02277a38e7dabf6952a158a3b26c9c065aff978bcca84cef8f0197da37ca",
+    "contentSha256": "6e3baea782563a0f21c18f86036befb4f373248fcf081b73439ebcb187845804",
+    "modelVersions": {
+      "investigations": "atlas-investigations-1",
+      "processes": "process-mechanisms-1",
+      "learningPrompts": "investigation-prompts-1",
+      "architecture": "architecture-execution-1",
+      "fabrication": "atlas-fabrication-flow-1",
+      "operatingHall": "1",
+      "realization": "atlas-realization-1",
+      "memory": "atlas-memory-interfaces-1",
+      "sensor": "sensor-logistic-1",
+      "retrieval": "lexical-cited-answer-1",
+      "orbital": "1",
+      "progress": "progress-evidence-1",
+      "studioRecords": "atlas-studio-record-1"
+    },
+    "builtAt": "2026-09-07T17:59:57.536Z"
+  },
+  "frames": [
+    {
+      "file": "002-fabrication-3d.png",
+      "start": 0,
+      "end": 4,
+      "duration": 4,
+      "chapter": "01 / MATERIAL",
+      "title": "Matter becomes a device",
+      "caption": "Keep one specimen in view as growth and deposition change its material structure.",
+      "sha256": "adc1779fa68781d4f8a64a134a55af6a47278a16ed9ab43c9750d611fc807e50",
+      "capturedAt": "2026-09-07T18:01:00.916485+00:00"
+    },
+    {
+      "file": "003-fabrication-orbit.png",
+      "start": 4,
+      "end": 7,
+      "duration": 3,
+      "chapter": "01 / MATERIAL",
+      "title": "Inspect the same structure",
+      "caption": "Dimensioned cross-sections and optional 3D inspection carry the same material identity.",
+      "sha256": "adc1779fa68781d4f8a64a134a55af6a47278a16ed9ab43c9750d611fc807e50",
+      "capturedAt": "2026-09-07T18:01:01.413813+00:00"
+    },
+    {
+      "file": "004-fabrication-inspection.png",
+      "start": 7,
+      "end": 9,
+      "duration": 2,
+      "chapter": "01 / MATERIAL",
+      "title": "Measure before acceptance",
+      "caption": "A measurement and its uncertainty determine acceptance; geometry alone does not.",
+      "sha256": "9be9adac174f7433b310afb7b8aa4a97527b2918f19b8c586df83ca3b1aebcd2",
+      "capturedAt": "2026-09-07T18:01:02.237134+00:00"
+    },
+    {
+      "file": "005-memory-bank.png",
+      "start": 9,
+      "end": 13,
+      "duration": 4,
+      "chapter": "02 / MEMORY",
+      "title": "A bit has a physical path",
+      "caption": "Decode an address and issue a read. Bank state determines the next command sequence.",
+      "sha256": "9c6cdac364a9cf55129b62e21e3aa00d56dafbce224e9a5baeab611def79fb74",
+      "capturedAt": "2026-09-07T18:01:19.082675+00:00"
+    },
+    {
+      "file": "006-memory-stack.png",
+      "start": 13,
+      "end": 17,
+      "duration": 4,
+      "chapter": "02 / MEMORY",
+      "title": "Count every layer",
+      "caption": "Twelve dies change capacity, stack height, interfaces and the thermal budget together.",
+      "sha256": "8768b1eda036f611e1e1e326a6ca66ba6c5f359e2cbd5cba7773afa2fdd70579",
+      "capturedAt": "2026-09-07T18:01:19.648439+00:00"
+    },
+    {
+      "file": "007-architecture-wave.png",
+      "start": 17,
+      "end": 21,
+      "duration": 4,
+      "chapter": "03 / ARCHITECTURE",
+      "title": "Watch computation unfold",
+      "caption": "Follow operands through a systolic wavefront and inspect each partial sum.",
+      "sha256": "84c0ca1a890222efd957c67fdde535298e9f3029494c399850348ba6cac5a1c8",
+      "capturedAt": "2026-09-07T18:01:46.240824+00:00"
+    },
+    {
+      "file": "008-architecture-complete.png",
+      "start": 21,
+      "end": 25,
+      "duration": 4,
+      "chapter": "03 / ARCHITECTURE",
+      "title": "One result. Four schedules.",
+      "caption": "Scalar, vector, SIMT and systolic schedules preserve the same exact matrix result.",
+      "sha256": "3b6535e6691c2ab05f0660708e4038663026d3ba7ed8fc792a96d8b00b084af7",
+      "capturedAt": "2026-09-07T18:01:46.439607+00:00"
+    },
+    {
+      "file": "009-realization-contract.png",
+      "start": 25,
+      "end": 28,
+      "duration": 3,
+      "chapter": "04 / REALIZATION",
+      "title": "From intent to hardware",
+      "caption": "An arithmetic contract becomes RTL and a mapped netlist. A carry bit preserves 15 + 15.",
+      "sha256": "cabf9bb1ba61c4fb9574a84e24c47afdadc5d08df62c9a80e995f504b001dc5c",
+      "capturedAt": "2026-09-07T18:01:49.907939+00:00"
+    },
+    {
+      "file": "025-placement-final.png",
+      "start": 28,
+      "end": 32,
+      "duration": 4,
+      "chapter": "04 / REALIZATION",
+      "title": "Inspect the actual artifact",
+      "caption": "Explore placed cells, routed resources and timing from a reproducible FPGA tool flow.",
+      "sha256": "65c1663b8468295b826985148193a42f495ff30ae0ff60353b8d29d8b9d4e68d",
+      "capturedAt": "2026-09-07T18:06:21.798146+00:00"
+    },
+    {
+      "file": "011-hall-run.png",
+      "start": 32,
+      "end": 36,
+      "duration": 4,
+      "chapter": "05 / INFRASTRUCTURE",
+      "title": "Installed is only the start",
+      "caption": "Useful work requires power, cooling, data movement and commissioning to align.",
+      "sha256": "c4620216c20a63dda2f9ba425bf3b93ca37b989958929cabea62ceb4de8b2c69",
+      "capturedAt": "2026-09-07T18:02:20.466603+00:00"
+    },
+    {
+      "file": "013-hall-recovery-corrected.png",
+      "start": 36,
+      "end": 40,
+      "duration": 4,
+      "chapter": "05 / INFRASTRUCTURE",
+      "title": "What survives a fault?",
+      "caption": "Uncheckpointed work is lost. Follow replay, retained steps and the energy ledger.",
+      "sha256": "a1e0e01004531cb40f6dedd7bc77bba1b211e159480dac20bb7d587d5c3455bc",
+      "capturedAt": "2026-09-07T18:02:45.154828+00:00"
+    },
+    {
+      "file": "014-application-learning.png",
+      "start": 40,
+      "end": 44,
+      "duration": 4,
+      "chapter": "06 / APPLICATIONS",
+      "title": "Challenge what was learned",
+      "caption": "Training loss is only one signal. A broken correlation exposes two held-out errors.",
+      "sha256": "31e0ccc83548732f804bf630f320102aa7605a0af6769ce7d2168812535d1da4",
+      "capturedAt": "2026-09-07T18:02:48.722475+00:00"
+    },
+    {
+      "file": "016-application-retrieval-reviewed.png",
+      "start": 44,
+      "end": 48,
+      "duration": 4,
+      "chapter": "06 / APPLICATIONS",
+      "title": "Evidence and correctness",
+      "caption": "A citation can be supported while the answer targets the wrong entity. Evaluate both.",
+      "sha256": "0a439dc33957419a2e05ebed3529f5e1e351890f5bb2f17b47d83919d5eff01e",
+      "capturedAt": "2026-09-07T18:03:06.059748+00:00"
+    },
+    {
+      "file": "017-orbital-budgets.png",
+      "start": 48,
+      "end": 51,
+      "duration": 3,
+      "chapter": "07 / ORBITAL",
+      "title": "Computation beyond Earth",
+      "caption": "Power, battery, heat, storage and ground contacts constrain the same workload.",
+      "sha256": "beaacf12beb0a97fbf4fa7a623202a34b2efd60281ebb3d612d691cb1401e7d6",
+      "capturedAt": "2026-09-07T18:03:21.450701+00:00"
+    },
+    {
+      "file": "018-orbital-contact.png",
+      "start": 51,
+      "end": 54,
+      "duration": 3,
+      "chapter": "07 / ORBITAL",
+      "title": "Deliver the useful result",
+      "caption": "Retained onboard work and delivered products differ. Inspect the binding constraint.",
+      "sha256": "98a6b794b9b84e12987c88e839bb5258b458f0b34ed1ba7c3b9c2a87e5799abe",
+      "capturedAt": "2026-09-07T18:03:21.962681+00:00"
+    },
+    {
+      "file": "019-progress-attention.png",
+      "start": 54,
+      "end": 56,
+      "duration": 2,
+      "chapter": "08 / PROGRESS",
+      "title": "Trace each breakthrough",
+      "caption": "Connect a breakthrough to its mechanism, worked arithmetic and the next limiting step.",
+      "sha256": "77d19125e82507d97f0eb8dcd7cd3276565a6141855c73d114947218f2cbfa2b",
+      "capturedAt": "2026-09-07T18:03:38.057486+00:00"
+    },
+    {
+      "file": "022-progress-growth-corrected.png",
+      "start": 56,
+      "end": 58,
+      "duration": 2,
+      "chapter": "08 / PROGRESS",
+      "title": "Make the assumptions visible",
+      "caption": "Compare 3\u00d7 compute versus 2\u00d7 memory per two years as explicit conditional assumptions.",
+      "sha256": "845c3f8b1c2cc960f5a67623ac837bc4e3564e0be19b41dd9b677e1a25e51e9e",
+      "capturedAt": "2026-09-07T18:04:15.651452+00:00"
+    },
+    {
+      "file": "021-progress-capacity.png",
+      "start": 58,
+      "end": 60,
+      "duration": 2,
+      "chapter": "08 / PROGRESS",
+      "title": "Explore. Test. Understand.",
+      "caption": "Read capacity with its source date, physical boundary and operating status. Continue in the atlas.",
+      "sha256": "764b4481e697d471a4b84a6b6ef8c921580352c9f79dcba2a4b997f6e3d114ab",
+      "capturedAt": "2026-09-07T18:04:15.041944+00:00"
+    }
+  ],
+  "music": "Open Horizons: original procedural AI Atlas score. No sampled song or recording. See original-score-notes.txt.",
+  "artifactSha256": "cb42920629f412a848cac1f27cee7faca2fec630760cbac73969fffcb00ea098"
+}

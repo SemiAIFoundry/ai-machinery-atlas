@@ -1,27 +1,27 @@
 {
   "silicon-atom": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "crystal-lattice": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "energy-bands": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "doping": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "pn-junction": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "silicon-wafer": {
@@ -32,12 +32,12 @@
   },
   "copper-conductor": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "dielectric": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "lithography": {
@@ -59,7 +59,7 @@
   },
   "gate-stack": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "channel": {
@@ -69,77 +69,77 @@
   },
   "source-drain": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "contact": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "spacer": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "finfet": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "gaa": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "inverter": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "nand": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "flipflop": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "sram": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "adder": {
     "labId": "matrix",
-    "scope": "Inspect row–column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
+    "scope": "Inspect row\u2013column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
     "investigationId": "switching"
   },
   "multiplier": {
     "labId": "matrix",
-    "scope": "Inspect row–column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
+    "scope": "Inspect row\u2013column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
     "investigationId": "switching"
   },
   "mac": {
     "labId": "matrix",
-    "scope": "Inspect row–column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
+    "scope": "Inspect row\u2013column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
     "investigationId": "switching"
   },
   "interconnect": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "clock": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "standard-cell": {
     "labId": "library",
-    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson’s full mechanism.",
+    "scope": "Use the switching investigation to connect physical charge, circuit load and arithmetic; the numerical library has no standalone model of this lesson\u2019s full mechanism.",
     "investigationId": "switching"
   },
   "streaming-multiprocessor": {
@@ -149,12 +149,12 @@
   },
   "tensor-core": {
     "labId": "matrix",
-    "scope": "Inspect row–column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
+    "scope": "Inspect row\u2013column products and accumulated results in a small integer matrix; this does not simulate the individual gate network.",
     "investigationId": "switching"
   },
   "register-file": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "shared-sram": {
@@ -165,22 +165,22 @@
   },
   "l1-cache": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "l2-cache": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "on-chip-network": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "hbm-controller": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "nvlink-port": {
@@ -191,12 +191,12 @@
   },
   "tensor-memory": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "tensor-memory-accelerator": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "gpu-die": {
@@ -211,27 +211,27 @@
   },
   "dram-die": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "through-silicon-via": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "interposer": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "microbump": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "package-substrate": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "thermal-interface": {
@@ -251,7 +251,7 @@
   },
   "host-cpu": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "ddr-memory": {
@@ -266,7 +266,7 @@
   },
   "pcie-interface": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "network-adapter": {
@@ -277,27 +277,27 @@
   },
   "nvme-storage": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "voltage-regulator": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "power-supply": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "compute-baseboard": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "management-controller": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "grace-blackwell-superchip": {
@@ -313,7 +313,7 @@
   },
   "compute-tray": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "nvlink-switch": {
@@ -324,57 +324,57 @@
   },
   "cable-cartridge": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "cdu": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "power-shelf": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "leaf-switch": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "spine-switch": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "optics": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "storage": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "ups": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "cooling-plant": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "scheduler": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "cuda": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "kernel": {
@@ -384,7 +384,7 @@
   },
   "compiler": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "nccl": {
@@ -412,12 +412,12 @@
   },
   "quantization": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "tokenizer": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "embedding": {
@@ -428,7 +428,7 @@
   },
   "positional-encoding": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "attention": {
@@ -444,12 +444,12 @@
   },
   "residual-normalization": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "output-head": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "kv-cache": {
@@ -459,27 +459,27 @@
   },
   "moe": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "training-data": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "loss-optimizer": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "post-training": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "tool-loop": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "scaling-laws": {
@@ -488,77 +488,77 @@
   },
   "evaluation": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "astra": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "electronic-silicon-crystal-growth": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "wafer-finishing-geometry": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "epitaxial-material-stack": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "contamination-and-surface-state": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "cleanroom-subfab-utilities": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "process-chamber-control": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "wafer-handling-genealogy": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "manufacturing-execution-dispatch": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "thermal-oxidation-interface": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "cvd-pvd-film-transport": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "ald-self-limiting-growth": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "resist-track-development": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "mask-opc-layout": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "lithography-resolution-focus": {
@@ -569,12 +569,12 @@
   },
   "plasma-wet-etch-transfer": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "implantation-anneal-diffusion": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "clean-planarize-surface": {
@@ -585,42 +585,42 @@
   },
   "wells-isolation-integration": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "fin-formation-integration": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "nanosheet-gate-last-integration": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "source-drain-contact-integration": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "beol-damascene-vias": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "interconnect-rc-materials": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "backside-power-dtco": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "fab-metrology-process-window": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "yield-wafer-defect-model": {
@@ -631,42 +631,42 @@
   },
   "known-good-die-test": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "fab-ramp-cycle-time": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "flip-chip-abf-substrate": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "rdl-fanout-integration": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "cowos-s-silicon-interposer": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "cowos-r-l-routing": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "emib-local-bridge": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "soic-foveros-vertical-routes": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "bump-thermocompression-assembly": {
@@ -677,27 +677,27 @@
   },
   "hybrid-bond-surface-alignment": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "temporary-carrier-thinning": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "package-thermomechanical-reliability": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "dram-cell-array-fabrication": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "hbm-tsv-reveal": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "hbm-stack-assembly-test": {
@@ -708,12 +708,12 @@
   },
   "hbm-base-phy-controller": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "hbm-channel-generation-ras": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "hbm-silicon-intensity": {
@@ -724,32 +724,32 @@
   },
   "cpu-out-of-order": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "cpu-vector-matrix": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "coherence-numa": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "simt-active-lanes": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "gpu-occupancy-pipeline": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "gpu-chiplet-locality": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "systolic-array-dataflow": {
@@ -760,52 +760,52 @@
   },
   "aws-neuron-dataflow": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "inference-custom-silicon": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "fpga-dsp-pipelines": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "dpu-infrastructure-offload": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "wafer-scale-routing": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "analog-photonic-research": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "chip-workload-contract": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "chip-rtl-verification": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "chip-physical-closure": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "chip-tapeout-productization": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "chip-volume-economics": {
@@ -832,12 +832,12 @@
   },
   "graph-tensor-ir": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "compiler-layout-lowering": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "kernel-locality-fusion": {
@@ -859,7 +859,7 @@
   },
   "prefill-resource-trace": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "decode-bandwidth-trace": {
@@ -869,12 +869,12 @@
   },
   "attention-io-tiling": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "expert-routing-budget": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "parallelism-communication-budget": {
@@ -885,27 +885,27 @@
   },
   "disaggregated-serving": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "die-link-compatibility": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "pcie-cxl-semantics": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "interface-signal-eye": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "power-integrity-budget": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "rack-reference-anatomy": {
@@ -916,7 +916,7 @@
   },
   "scaleup-scaleout-boundaries": {
     "labId": "library",
-    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the execution investigation for the shared tensor-to-memory-to-result thread; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "execution"
   },
   "fabric-collective-traffic": {
@@ -927,27 +927,27 @@
   },
   "optical-cpo-placement": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "rack-power-conversion": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "rack-dynamic-power": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "coolant-loop-separation": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "facility-heat-rejection": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "grid-interconnection-readiness": {
@@ -988,30 +988,30 @@
   },
   "storage-input-checkpoint-path": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "execution"
   },
   "capacity-phase-geography": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "energy-forecast-boundaries": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions.",
     "investigationId": "manufacturing"
   },
   "water-boundary-accounting": {
     "labId": "library",
-    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+    "scope": "Browse the numerical library; no current calculator directly models this lesson\u2019s central mechanism."
   },
   "regional-siting-access": {
     "labId": "library",
-    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+    "scope": "Browse the numerical library; no current calculator directly models this lesson\u2019s central mechanism."
   },
   "orbital-evidence-status": {
     "labId": "library",
-    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+    "scope": "Browse the numerical library; no current calculator directly models this lesson\u2019s central mechanism."
   },
   "orbital-solar-storage": {
     "labId": "engineering",
@@ -1030,48 +1030,48 @@
   },
   "orbital-radiation-recovery": {
     "labId": "library",
-    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+    "scope": "Browse the numerical library; no current calculator directly models this lesson\u2019s central mechanism."
   },
   "orbital-replacement-mass": {
     "labId": "library",
-    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+    "scope": "Browse the numerical library; no current calculator directly models this lesson\u2019s central mechanism."
   },
   "orbital-lifecycle-economics": {
     "labId": "library",
-    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+    "scope": "No current calculator directly models this lesson\u2019s main mechanism. Use the library for related bounds while retaining their stated omissions."
   },
   "crg-problem-statement": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "crg-communication-graph": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "crg-architecture-contract": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "crg-chip-design-realization": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "crg-package-system-closure": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "crg-55-year-resolution": {
     "labId": "library",
-    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+    "scope": "Browse the numerical library; no current calculator directly models this lesson\u2019s central mechanism."
   },
   "crg-verification-loop": {
     "labId": "library",
-    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson’s full mechanism.",
+    "scope": "Use the manufacturing investigation to trace compatible inputs, assembly and operating constraints; no current standalone calculator models this lesson\u2019s full mechanism.",
     "investigationId": "manufacturing"
   },
   "hbm-stack-height-budget": {
@@ -1146,5 +1146,27 @@
     "scope": "Compare checkpoint overhead, interruptions and retained progress; storage transfer behavior and full system qualification remain separate tests.",
     "deepLabId": "recovery",
     "investigationId": "execution"
+  },
+  "retained-work-restart-boundary": {
+    "labId": "library",
+    "scope": "Use Engineering experiences \u2192 Rack \u2192 retained work, or the instructor pack\u2019s H7 worked contract."
+  },
+  "sharded-matmul-ownership": {
+    "labId": "engineering",
+    "deepLabId": "network",
+    "scope": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+  },
+  "distributed-gradient-weighting": {
+    "labId": "engineering",
+    "deepLabId": "network",
+    "scope": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+  },
+  "floating-point-reduction-order": {
+    "labId": "library",
+    "scope": "The library contains related numerical models. This lesson\u2019s explicit binary32 reduction counterexample is not an interactive floating-point emulator."
+  },
+  "speculative-decoding-verification": {
+    "labId": "kv",
+    "scope": "Explore the KV storage consequence of token length and concurrency. Draft/target acceptance and corrected sampling are worked explicitly in this lesson, not executed by the cache-size calculator."
   }
 }

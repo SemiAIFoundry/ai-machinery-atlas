@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "agent-source-scope-sharded-matmul-ownership-integrated-2026-09-07",
+      "lessonId": "sharded-matmul-ownership",
+      "type": "source-scope",
+      "contentFingerprint": "bbf534f25087167c27accf96c1791b613ec7d485c38e096bf540611012af3eeb",
+      "contentSnapshotLocation": "docs/curation/distributed-output/sharded-matmul-ownership-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-ed51a189c6b8b58fe3dd",
+        "url-b0ca3660910bf3ab447c"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-partial-sum"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-ed51a189c6b8b58fe3dd",
+          "url": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+          "checkedUrl": "https://docs.jax.dev/en/latest/notebooks/shard_map.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Overview, matmul_basic: c_partialsum = dot(a_block, b_block), followed by lax.psum; collective sections all_gather and psum_scatter"
+          ],
+          "notes": "Local matrix blocks, partial reduction and output shard assembly. No JAX runtime, compiler output or performance measurement is reproduced here. Edition: Living documentation retrieved 2026-09-07. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        },
+        {
+          "sourceId": "url-b0ca3660910bf3ab447c",
+          "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedUrl": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement"
+          ],
+          "notes": "Collective result layouts and matching participants. The two-rank traffic schedule is authored, not a traced NCCL algorithm. Edition: Retrieved documentation identified as NCCL 2.31.2. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-partial-sum",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The source claim is limited to the cited JAX example. NCCL supports collective semantics; the exchange and matrix values remain authored and not measured. Preserved claim limit: This does not prescribe a universal sharding plan or imply the authored two-rank payload schedule is JAX-generated."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "sharded-matmul-ownership",
+        "authorSnapshotSha256": "788381c4cf9b51c382e7660d0efb20c9b26726d851bfcc0638e6ce20d50c6a6f"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labId",
+          "labScope",
+          "deepLabId",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-distributed-gradient-weighting-integrated-2026-09-07",
+      "lessonId": "distributed-gradient-weighting",
+      "type": "source-scope",
+      "contentFingerprint": "dd24e1656bca70395dedc96a9bbd722a3fee55ff73e1c18523c21ce5fdad3ddb",
+      "contentSnapshotLocation": "docs/curation/distributed-output/distributed-gradient-weighting-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-9017986ac40a5ff3d649",
+        "url-b0ca3660910bf3ab447c"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-ddp-mean"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-9017986ac40a5ff3d649",
+          "url": "https://github.com/pytorch/pytorch/blob/v2.8.0/torch/nn/parallel/distributed.py",
+          "checkedUrl": "https://raw.githubusercontent.com/pytorch/pytorch/v2.8.0/torch/nn/parallel/distributed.py",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "DistributedDataParallel docstring, source lines 357–370: summed versus averaged loss and gradient averaging; join documentation lines 1613–1659 for different uneven-input semantics"
+          ],
+          "notes": "The default gradient averaging convention and the separate meaning of joining after input exhaustion. The sample-count weighting derivation is authored mathematics, not a recommendation to change arbitrary custom communication hooks. Edition: Pinned v2.8.0 source. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        },
+        {
+          "sourceId": "url-b0ca3660910bf3ab447c",
+          "url": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedUrl": "https://docs.nvidia.com/deeplearning/nccl/user-guide/docs/usage/collectives.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "AllReduce; AllGather; ReduceScatter; opening participation/count/datatype requirement"
+          ],
+          "notes": "Collective result layouts and matching participants. The two-rank traffic schedule is authored, not a traced NCCL algorithm. Edition: Retrieved documentation identified as NCCL 2.31.2. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-ddp-mean",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The default averaging contract is tied to pinned PyTorch v2.8.0 source. Unequal local batch weighting is authored mathematics. Exhausted-rank join behavior is explicitly outside this example. Preserved claim limit: Custom communication hooks and joined-rank policies can alter scaling. The unequal-item weighting and squared-error inputs are an authored derivation."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "distributed-gradient-weighting",
+        "authorSnapshotSha256": "507e3440228bff8db8ac98ce408fd9be2274947fcb3df60412537bd5ab183d49"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labId",
+          "labScope",
+          "deepLabId",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-floating-point-reduction-order-integrated-2026-09-07",
+      "lessonId": "floating-point-reduction-order",
+      "type": "source-scope",
+      "contentFingerprint": "144b15638ed45d7558e1c664d8160c5f7ee267d4a392fb58efbb6399ca05b567",
+      "contentSnapshotLocation": "docs/curation/distributed-output/floating-point-reduction-order-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-621e44b6c4d3c95335cc",
+        "url-d8459910e6f845e9ebc7"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-reassociation"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-621e44b6c4d3c95335cc",
+          "url": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+          "checkedUrl": "https://docs.nvidia.com/cuda/archive/13.1.1/cuda-programming-guide/05-appendices/mathematical-functions.html",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "§5.5.1.4 Associativity and §5.5.1.5 Fused Multiply-Add"
+          ],
+          "notes": "Finite-precision nonassociativity and rounding boundaries. The 2^24 example is independently authored and tested with binary32 rounding, not a GPU run. Edition: Archived CUDA 13.1.1 guide. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        },
+        {
+          "sourceId": "url-d8459910e6f845e9ebc7",
+          "url": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+          "checkedUrl": "https://llvm.org/docs/LangRef.html#fast-math-flags",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Rewrite-based flags, shared-flag example; contract and reassoc definitions"
+          ],
+          "notes": "Reassociation permission and separate contraction permission in LLVM IR. No claim that every compiler enables these flags by default. Edition: Living LLVM reference retrieved 2026-09-07. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-reassociation",
+          "outcome": "supported-with-qualifiers",
+          "notes": "LLVM reassociation is a permission, not an asserted universal default. Repeatability and numerical accuracy are distinct; neither test establishes a real compiler/GPU performance result. Preserved claim limit: This does not claim that every compiler enables reassociation by default or that the toy example measures a compiled GPU program."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "floating-point-reduction-order",
+        "authorSnapshotSha256": "5a19df2a236f0297e523f5be1427ebda5ba886e79602c6600c895ca601507ce2"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labScope",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    },
+    {
+      "id": "agent-source-scope-speculative-decoding-verification-integrated-2026-09-07",
+      "lessonId": "speculative-decoding-verification",
+      "type": "source-scope",
+      "contentFingerprint": "603777a95ef130dd59b2d2865abcfa226db667e73e5492d7b9fd73854bd4465c",
+      "contentSnapshotLocation": "docs/curation/distributed-output/speculative-decoding-verification-integrated-snapshot.json",
+      "reviewedSourceIds": [
+        "url-fd3d857f4120158d76d7"
+      ],
+      "reviewedClaimIds": [
+        "bridge-claim-speculative-correction"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-fd3d857f4120158d76d7",
+          "url": "https://proceedings.mlr.press/v202/leviathan23a.html",
+          "checkedUrl": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+          "checkedOn": "2026-09-07",
+          "checkedBy": {
+            "kind": "agent",
+            "identifier": "/root/curriculum_assessment",
+            "role": "Content author, primary-source scope reader and numerical checker"
+          },
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "§2.3 and Algorithm 1, printed p3; §3.1 Equation (1) and its iid assumption; Appendix A.1 distribution proof"
+          ],
+          "notes": "Strict sampling correction preserves the target distribution in ideal arithmetic; the toy three-symbol distribution and time budgets are authored, not results from the paper or an actual serving system. Edition: ICML 2023, PMLR 202, pp. 19274–19286. This is the author’s recorded scoped reading; the integration recorder did not reopen the source."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "bridge-claim-speculative-correction",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The theoretical distribution guarantee does not establish identical seeded samples, truth, quality improvement or measured acceleration. Increasing verification time reverses the toy throughput comparison. Preserved claim limit: The guarantee is distributional under the stated algorithm assumptions. It does not establish identical random samples, factual correctness or measured speed for an implementation."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Integration acceptance retains the author’s completed source and mathematical checks from the preserved source-review manifest. The source checker was /root/curriculum_assessment; /root/process_editor compared every integrated field and equation, assessed the explicit lab-link limits and independently reproduced the four worked examples. Only labId/labScope/deepLabId/scope mapping fields differ from the candidate. No source was reopened by the integration recorder, and no human specialist, device, classroom, real distributed execution or language-model performance review is inferred.",
+      "inheritedReviewEvidence": {
+        "path": "docs/curation/distributed-output/author-source-review-manifest.json",
+        "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36",
+        "lessonId": "speculative-decoding-verification",
+        "authorSnapshotSha256": "753a3af8afeb1f6e89127e147f64bb6d5bcc5c043c2457b6511fdbbc96aae938"
+      },
+      "integrationAssessment": {
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+        },
+        "assessedOn": "2026-09-07",
+        "changedFields": [
+          "labId",
+          "labScope",
+          "scope"
+        ],
+        "finding": "Lab navigation and calculator bounds are explicit; the authored scientific content, equations, structured claims and prerequisites are unchanged."
+      }
+    }
+  ]
+}

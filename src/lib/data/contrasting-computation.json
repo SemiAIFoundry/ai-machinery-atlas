@@ -1,0 +1,288 @@
+{
+  "id": "contrasting-computation",
+  "version": "contrasting-computation-1",
+  "title": "Recurrent, spatial and signal computation",
+  "chapters": [
+    {
+      "id": "contrasting-computational-structures",
+      "name": "Recurrent, spatial & signal computation",
+      "title": "Distinct representations, distinct assumptions",
+      "parent": "Learning systems and their foundations",
+      "band": 5,
+      "domainId": "learning-intelligence",
+      "scene": "learning-methods",
+      "scale": "States, pixels and sampled signals",
+      "summary": "Connect temporal state, local spatial structure and finite-frequency representations.",
+      "ids": [
+        "scalar-state-space-recurrence",
+        "spatial-filter-patch-attention",
+        "audio-sampling-spectrum"
+      ],
+      "question": "What information does each representation preserve or discard?",
+      "read": "These are computational structures with different coordinate systems, not physical layers above a model. The contrasting mechanisms experience exposes the actual arrays, recurrence and transform."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "scalar-state-space-recurrence",
+      "name": "Recurrent state and convolution",
+      "shortName": "Recurrent state and convolution",
+      "role": "Carry history in a state; recover the same output by an explicitly unrolled kernel.",
+      "description": "A sequence model needs a representation of what preceded the current observation. A linear state-space system updates a hidden state from its previous value and a new input, then reads out an output. For a time-invariant system, repeatedly substituting the state update expresses that output as a convolution with an impulse-response kernel. The recurrent and convolutional forms are two computations of the same declared map, with different scheduling and storage opportunities. The atlas reduces this relationship to one scalar state so every contribution can be inspected. Changing retention changes the temporal weighting. A reset deliberately discards earlier contributions. Modern structured and selective state-space architectures build on richer matrices, discretization, learned parameters and sometimes input-dependent transitions; their capabilities do not follow from this scalar example.",
+      "mechanism": [
+        "Start from zero state and sixteen specified input samples, with input gain b = 0.3.",
+        "At each sample compute h = a \u00d7 previous h + b \u00d7 input; retain exactly one state scalar.",
+        "Independently multiply every input since the last reset by b a raised to its age and sum the contributions.",
+        "Compare the two results and vary a across decay, sign alternation and growth."
+      ],
+      "learningObjective": "Explain why a recurrence and a convolution agree for the declared time-invariant system, and why a reset changes their history boundary.",
+      "engineeringExample": "With a = 0.7, b = 0.3 and the first four inputs [1, 0, 0, 0], recurrent states are [0.3, 0.21, 0.147, 0.1029]. The impulse kernel has those same first four values. Resetting before sample 2 makes that sample and the next zero, because the earlier impulse is no longer in the retained state. Setting a = \u22120.7 alternates the sign; a = 1.05 grows an isolated impulse instead of forgetting it.",
+      "evidenceNotes": "Zero initial state; a and b are constant within the episode; one scalar state; no trained S4, selective state-space model or learned long-memory guarantee. Numerical settings are original teaching fixtures. The named experience executes the stated bounded algorithm; no production performance or independent human review is claimed.",
+      "specs": [
+        {
+          "label": "Computational contract",
+          "value": "Carry history in a state; recover the same output by an explicitly unrolled kernel.",
+          "context": "Zero initial state; a and b are constant within the episode; one scalar state; no trained S4, selective state-space model or learned long-memory guarantee."
+        },
+        {
+          "label": "Learning evidence",
+          "value": "Inspectable executable specimen",
+          "context": "Inputs, intermediate values, exact output and a declared comparison or failure are available in Contrasting AI mechanisms."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Specified input",
+          "direction": "in",
+          "signal": "Start from zero state and sixteen specified input samples, with input gain b = 0.3."
+        },
+        {
+          "name": "Computed output",
+          "direction": "out",
+          "signal": "Explain why a recurrence and a convolution agree for the declared time-invariant system, and why a reset changes their history boundary."
+        }
+      ],
+      "tradeoff": "A compact recurrent state makes incremental execution possible, while parallel convolution can expose more training parallelism. Neither representation removes the need to choose and learn a suitable memory structure.",
+      "whyAI": "State-space and recurrent models provide a different way to represent temporal dependencies and workload memory from storing attention keys and values.",
+      "misconception": "One persistent scalar and a long sequence do not imply perfect long-term memory or task understanding.",
+      "check": {
+        "question": "Why must an input from before an explicit zero-state reset be excluded from the unrolled sum?",
+        "options": [
+          "A reset changes the input sample rate",
+          "The reset discards the state that carried that contribution",
+          "A convolution can never represent recurrence"
+        ],
+        "answer": 1,
+        "explanation": "The two forms agree only when they use the same initial/reset state and history interval."
+      },
+      "prerequisites": [
+        "tensor-index-contracts"
+      ],
+      "related": [
+        "graph-message-passing",
+        "attention",
+        "checkpoint"
+      ],
+      "sources": [
+        {
+          "title": "Gu et al., state spaces and recurrence/convolution \u00a72.3\u20132.4",
+          "url": "https://arxiv.org/html/2111.00396v3"
+        }
+      ],
+      "scale": "Abstract computation with explicit coordinate, sample and operation units",
+      "level": "model",
+      "kind": "model",
+      "workstream": "W11",
+      "science": [
+        {
+          "title": "Recurrent state and convolution \u00b7 governing computation",
+          "equation": "h_t=a h_{t-1}+b x_t=\\sum_{j=r}^{t}b a^{t-j}x_j",
+          "explanation": "With a = 0.7, b = 0.3 and the first four inputs [1, 0, 0, 0], recurrent states are [0.3, 0.21, 0.147, 0.1029]. The impulse kernel has those same first four values. Resetting before sample 2 makes that sample and the next zero, because the earlier impulse is no longer in the retained state. Setting a = \u22120.7 alternates the sign; a = 1.05 grows an isolated impulse instead of forgetting it.",
+          "assumptions": "Zero initial state; a and b are constant within the episode; one scalar state; no trained S4, selective state-space model or learned long-memory guarantee."
+        }
+      ],
+      "labScope": "Zero initial state; a and b are constant within the episode; one scalar state; no trained S4, selective state-space model or learned long-memory guarantee.",
+      "branch": "Contrasting computational structures",
+      "subbranch": "Recurrent state and convolution",
+      "history": []
+    },
+    {
+      "id": "spatial-filter-patch-attention",
+      "name": "Local filters and patch attention",
+      "shortName": "Local filters and patch attention",
+      "role": "Compare fixed local receptive fields with content-weighted patch aggregation.",
+      "description": "A convolutional layer shares a local kernel across spatial locations. The same coefficients can detect a similar pattern in more than one place, while stride, padding and kernel size determine which positions are seen. Patch attention instead calculates weights from the relationship between a query and candidate patches; those weights depend on input content. Both methods process structured arrays, but their connectivity and computation differ. The specimen uses a generated 5\u00d75 line image, two authored 3\u00d73 line filters and one query drawn from the center image patch. Its small arithmetic makes boundary effects and input-dependent attention visible. It deliberately separates a hand-built filter classifier from learned visual representations: fitting and evaluating a CNN or vision transformer would require training data, trainable projections, task losses and independent outcomes.",
+      "mechanism": [
+        "Generate a vertical or horizontal line at one of five positions and optionally erase the middle row.",
+        "Cross-correlate two 3\u00d73 authored filters at each of nine valid locations without padding.",
+        "Use the largest filter responses for an explicit line-orientation decision, retaining ties as ties.",
+        "Flatten nine overlapping patches, score each against the center query with a scaled dot product, normalize and combine their values."
+      ],
+      "learningObjective": "Locate the receptive field and identify how local boundary coverage differs from content-dependent aggregation.",
+      "engineeringExample": "A centered vertical line gives a maximum vertical-filter response of 3 and horizontal response of 1, so the simple classifier returns vertical. At the outermost column, valid convolution never centers its vertical filter there; the maximum vertical response becomes 0 while horizontal response is 1. The wrong label follows from the stated coverage, not from an invented accuracy score. Two filters \u00d7 nine output positions \u00d7 nine kernel entries require 162 MACs; nine patch scores \u00d7 nine coordinates require 81 dot-product MACs before attention normalization and value aggregation.",
+      "evidenceNotes": "Authored filters and one identity-projection patch query; stride one, no padding; no trained CNN, full ViT, learned positions or recognition benchmark. Numerical settings are original teaching fixtures. The named experience executes the stated bounded algorithm; no production performance or independent human review is claimed.",
+      "specs": [
+        {
+          "label": "Computational contract",
+          "value": "Compare fixed local receptive fields with content-weighted patch aggregation.",
+          "context": "Authored filters and one identity-projection patch query; stride one, no padding; no trained CNN, full ViT, learned positions or recognition benchmark."
+        },
+        {
+          "label": "Learning evidence",
+          "value": "Inspectable executable specimen",
+          "context": "Inputs, intermediate values, exact output and a declared comparison or failure are available in Contrasting AI mechanisms."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Specified input",
+          "direction": "in",
+          "signal": "Generate a vertical or horizontal line at one of five positions and optionally erase the middle row."
+        },
+        {
+          "name": "Computed output",
+          "direction": "out",
+          "signal": "Locate the receptive field and identify how local boundary coverage differs from content-dependent aggregation."
+        }
+      ],
+      "tradeoff": "Local weight sharing imposes useful spatial structure and bounded receptive fields. Content-dependent aggregation changes connectivity, while padding, tokenization and position handling still matter.",
+      "whyAI": "Vision, industrial inspection and multimodal systems turn sampled images into representations through concrete spatial and learned operations.",
+      "misconception": "An attention heatmap is not proof that the model understands an image, and authored filters are not a trained vision model.",
+      "check": {
+        "question": "Why does the edge-line fixture fail under this valid-convolution classifier?",
+        "options": [
+          "The vertical filter is never centered on that outermost column",
+          "All vertical lines are inherently ambiguous",
+          "More attention heads would prove the target label"
+        ],
+        "answer": 0,
+        "explanation": "The kernel placement and classifier are explicit. A boundary position outside the selected receptive-field centers can lose the intended filter response."
+      },
+      "prerequisites": [
+        "tensor-index-contracts",
+        "probability-conditioning-information"
+      ],
+      "related": [
+        "visual-language-bridge",
+        "image-text-contrastive-learning",
+        "attention"
+      ],
+      "sources": [
+        {
+          "title": "PyTorch Conv2d, cross-correlation and shape",
+          "url": "https://docs.pytorch.org/docs/2.14/generated/torch.nn.Conv2d.html"
+        },
+        {
+          "title": "Vaswani et al., scaled dot-product attention",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      ],
+      "scale": "Abstract computation with explicit coordinate, sample and operation units",
+      "level": "model",
+      "kind": "model",
+      "workstream": "W11",
+      "science": [
+        {
+          "title": "Local filters and patch attention \u00b7 governing computation",
+          "equation": "Y_{ij}=\\sum_{u=0}^{2}\\sum_{v=0}^{2}K_{uv}X_{i+u,j+v}",
+          "explanation": "A centered vertical line gives a maximum vertical-filter response of 3 and horizontal response of 1, so the simple classifier returns vertical. At the outermost column, valid convolution never centers its vertical filter there; the maximum vertical response becomes 0 while horizontal response is 1. The wrong label follows from the stated coverage, not from an invented accuracy score. Two filters \u00d7 nine output positions \u00d7 nine kernel entries require 162 MACs; nine patch scores \u00d7 nine coordinates require 81 dot-product MACs before attention normalization and value aggregation.",
+          "assumptions": "Authored filters and one identity-projection patch query; stride one, no padding; no trained CNN, full ViT, learned positions or recognition benchmark."
+        }
+      ],
+      "labScope": "Authored filters and one identity-projection patch query; stride one, no padding; no trained CNN, full ViT, learned positions or recognition benchmark.",
+      "branch": "Contrasting computational structures",
+      "subbranch": "Local filters and patch attention",
+      "history": []
+    },
+    {
+      "id": "audio-sampling-spectrum",
+      "name": "Audio sampling, windows and spectra",
+      "shortName": "Audio sampling, windows and spectra",
+      "role": "Recover a finite frequency representation and diagnose sampling ambiguity.",
+      "description": "An audio signal enters software as samples spaced in time. Their rate limits which frequency distinctions survive acquisition; a tone above half the sample rate can produce the same samples as a different lower-frequency tone. A finite observation also limits frequency resolution. Windowing controls how the observation boundary weights samples, trading aspects of spectral leakage and resolution. The discrete Fourier transform then sums the windowed samples against complex sinusoids. Speech systems often build further temporal features and learned encoders from sampled waveforms or time-frequency representations. The atlas starts with one short tone so the transform, units and alias are inspectable without suggesting that a spectral peak recognizes a phoneme or sentence.",
+      "mechanism": [
+        "Sample a sinusoid 32 times at either 8,000 or 16,000 samples per second.",
+        "Apply the declared symmetric Hann coefficients, or retain a rectangular observation.",
+        "Compute real and imaginary DFT components for bins zero through Nyquist.",
+        "Inspect normalized squared magnitude, bin spacing and the strongest sampled bin; compare the result with the original tone frequency."
+      ],
+      "learningObjective": "Explain an observed alias and distinguish sample rate, observation duration, frequency-bin spacing and calibrated spectral density.",
+      "engineeringExample": "At 8,000 samples/s, 32 samples span 4 ms and bins are 250 Hz apart. A 1,000 Hz tone lies at bin 4. Without a window its forward DFT has imaginary component \u221216 at that positive-frequency bin, so the displayed normalized bin power is 16\u00b2/32\u00b2 = 0.25. Its mirrored negative-frequency component supplies the other half of the mean-square signal energy, 0.5. A 7,000 Hz sinusoid sampled at 8,000 samples/s is the sign-reversed sample sequence of a 1,000 Hz tone, producing the same bin-power peak.",
+      "evidenceNotes": "One finite sampled tone and an explicitly normalized DFT; symmetric Hann window; no microphone, calibrated acoustic units, speech recognition or anti-aliasing hardware simulation. Numerical settings are original teaching fixtures. The named experience executes the stated bounded algorithm; no production performance or independent human review is claimed.",
+      "specs": [
+        {
+          "label": "Computational contract",
+          "value": "Recover a finite frequency representation and diagnose sampling ambiguity.",
+          "context": "One finite sampled tone and an explicitly normalized DFT; symmetric Hann window; no microphone, calibrated acoustic units, speech recognition or anti-aliasing hardware simulation."
+        },
+        {
+          "label": "Learning evidence",
+          "value": "Inspectable executable specimen",
+          "context": "Inputs, intermediate values, exact output and a declared comparison or failure are available in Contrasting AI mechanisms."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Specified input",
+          "direction": "in",
+          "signal": "Sample a sinusoid 32 times at either 8,000 or 16,000 samples per second."
+        },
+        {
+          "name": "Computed output",
+          "direction": "out",
+          "signal": "Explain an observed alias and distinguish sample rate, observation duration, frequency-bin spacing and calibrated spectral density."
+        }
+      ],
+      "tradeoff": "A higher sample rate can represent higher frequencies, while a longer observation improves bin spacing at a fixed rate. Windows alter finite-observation behavior; they do not recover information already lost to sampling.",
+      "whyAI": "Speech and audio interfaces depend on acquisition, buffering, representations and sequence objectives before any model can interpret the content.",
+      "misconception": "A largest spectral bin is not a recognized word, and a plotted normalized bin power is not automatically a calibrated power spectral density.",
+      "check": {
+        "question": "With 32 samples at 16,000 samples/s, what is the DFT bin spacing?",
+        "options": [
+          "250 Hz",
+          "8,000 Hz",
+          "500 Hz"
+        ],
+        "answer": 2,
+        "explanation": "Bin spacing is sample rate divided by sample count: 16,000 / 32 = 500 Hz."
+      },
+      "prerequisites": [
+        "sampling-estimation-uncertainty"
+      ],
+      "related": [
+        "speech-audio-sequence-objectives",
+        "streaming-speech-turns",
+        "floating-number-range-resolution"
+      ],
+      "sources": [
+        {
+          "title": "SciPy DFT convention",
+          "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.fft.fft.html"
+        },
+        {
+          "title": "SciPy symmetric Hann window definition",
+          "url": "https://docs.scipy.org/doc/scipy/reference/generated/scipy.signal.windows.hann.html"
+        }
+      ],
+      "scale": "Abstract computation with explicit coordinate, sample and operation units",
+      "level": "model",
+      "kind": "model",
+      "workstream": "W11",
+      "science": [
+        {
+          "title": "Audio sampling, windows and spectra \u00b7 governing computation",
+          "equation": "X_k=\\sum_{n=0}^{N-1}w_n x_n e^{-2\\pi i kn/N},\\qquad \\Delta f=\\frac{f_s}{N}",
+          "explanation": "At 8,000 samples/s, 32 samples span 4 ms and bins are 250 Hz apart. A 1,000 Hz tone lies at bin 4. Without a window its forward DFT has imaginary component \u221216 at that positive-frequency bin, so the displayed normalized bin power is 16\u00b2/32\u00b2 = 0.25. Its mirrored negative-frequency component supplies the other half of the mean-square signal energy, 0.5. A 7,000 Hz sinusoid sampled at 8,000 samples/s is the sign-reversed sample sequence of a 1,000 Hz tone, producing the same bin-power peak.",
+          "assumptions": "One finite sampled tone and an explicitly normalized DFT; symmetric Hann window; no microphone, calibrated acoustic units, speech recognition or anti-aliasing hardware simulation."
+        }
+      ],
+      "labScope": "One finite sampled tone and an explicitly normalized DFT; symmetric Hann window; no microphone, calibrated acoustic units, speech recognition or anti-aliasing hardware simulation.",
+      "branch": "Contrasting computational structures",
+      "subbranch": "Audio sampling, windows and spectra",
+      "history": []
+    }
+  ],
+  "sources": [],
+  "claims": [],
+  "milestones": []
+}

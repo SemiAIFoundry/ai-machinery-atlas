@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-09-07T22:46:33.357Z",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root",
+    "role": "Integration recorder; retains each event’s actual source reviewer"
+  },
+  "preservedEvents": 5,
+  "addedEvents": 17,
+  "acceptedCurrentLessons": 16,
+  "priorFindingEvents": 1,
+  "bundles": [
+    {
+      "path": "docs/curation/next-horizon-review/hbm-intensity/events.json",
+      "sha256": "85bd4a69b5a958d79a4dd18246c8a034397c8fc61e28012bb53be92db2b7f8d2"
+    },
+    {
+      "path": "docs/curation/next-horizon-review/memory/events.json",
+      "sha256": "85b62b6e36a4a961889b889b7fdc75ce3cf2c68ab77f59b8cbc81ea957977fd3"
+    },
+    {
+      "path": "docs/curation/next-horizon-review/learning/review-events.json",
+      "sha256": "1078ee15edcb30731d796e5f5d486ed635c79215c5a556b5d15eb4343c56992f"
+    },
+    {
+      "path": "docs/curation/next-horizon-review/infrastructure/source-review-events.json",
+      "sha256": "ae37483387993a1446680b35a79e8c6922cdb0626edd5f6daf422b1f0c056c9d"
+    }
+  ],
+  "snapshots": [
+    {
+      "eventId": "agent-source-scope-hbm-silicon-intensity-recovered-2026-09-07",
+      "lessonId": "hbm-silicon-intensity",
+      "path": "docs/curation/next-horizon-review/hbm-intensity/reviewed-snapshot.json",
+      "sha256": "b47f46665c79fe5fb2a26bed3917634acfcf839599a24941935f4c4194c63bbd",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-hbf-latency-prefetch-2026-09-07",
+      "lessonId": "hbf-latency-prefetch",
+      "path": "docs/curation/next-horizon-review/memory/hbf-latency-prefetch-snapshot.json",
+      "sha256": "95149efd896c3586452043dc1e2e361af7061aed06587a48ee219759ef210046",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-hbf-read-tier-contract-2026-09-07",
+      "lessonId": "hbf-read-tier-contract",
+      "path": "docs/curation/next-horizon-review/memory/hbf-read-tier-contract-snapshot.json",
+      "sha256": "4d3191dd70e67c9b623b9785c076df3d4b27ea323c38d0ef93927ba49091568e",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-hbm-base-phy-controller-2026-09-07",
+      "lessonId": "hbm-base-phy-controller",
+      "path": "docs/curation/next-horizon-review/memory/hbm-base-phy-controller-snapshot.json",
+      "sha256": "9ba131a060eebca5f7ca69b3c21f423109ba4468c9e585bb47ac4d84b30543ae",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-hbm-tc-ncf-route-2026-09-07",
+      "lessonId": "hbm-tc-ncf-route",
+      "path": "docs/curation/next-horizon-review/memory/hbm-tc-ncf-route-snapshot.json",
+      "sha256": "4e42ded9de06954e19b64dbb32638519820923bdd174910b931ab0d6755dc6e4",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "source-review-2026-09-07-learning-attention",
+      "lessonId": "attention",
+      "path": "docs/curation/next-horizon-review/learning/attention-5003a7dd139869db.json",
+      "sha256": "ade17360fb217defda82366032dfe645e03318f5c0a05193ff16e3e85b35af8e",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "source-review-2026-09-07-learning-attention-io-tiling",
+      "lessonId": "attention-io-tiling",
+      "path": "docs/curation/next-horizon-review/learning/attention-io-tiling-95fec33cf0bde46c.json",
+      "sha256": "d2f2d4b731ad3046bdc657393c6f8c5b19d2fa9d0c128369f5d0bf2771597cea",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "source-review-2026-09-07-learning-causal-pretraining-objective",
+      "lessonId": "causal-pretraining-objective",
+      "path": "docs/curation/next-horizon-review/learning/causal-pretraining-objective-2960d1d87946d474.json",
+      "sha256": "99c385a435b8f2f0cdd3276341d0d2494a8708e7300370e10138604eb1c13a08",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "source-review-2026-09-07-learning-checkpoint",
+      "lessonId": "checkpoint",
+      "path": "docs/curation/next-horizon-review/learning/checkpoint-b2b2450347be7341.json",
+      "sha256": "295facf756069df7612bb43862a75bcfd1850f3168d0a99ca7b44b11d07dae06",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "source-review-2026-09-07-learning-checkpoint-averaging-boundaries",
+      "lessonId": "checkpoint-averaging-boundaries",
+      "path": "docs/curation/next-horizon-review/learning/checkpoint-averaging-boundaries-3c0cfe951befa203.json",
+      "sha256": "2a9a24fd6ed564ca3e72aeb18906123cdd473337e9060dc44e0468ff916ab451",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-capacity-phase-geography-2026-09-07-02-accepted",
+      "lessonId": "capacity-phase-geography",
+      "path": "docs/curation/next-horizon-review/infrastructure/capacity-phase-geography-reviewed-snapshot.json",
+      "sha256": "9286d0caf6ebb3c3f6f414309bf93d2a01ea0415a270e8dd7ffd551cf32e07f4",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-compatible-supply-capacity-2026-09-07-02-accepted",
+      "lessonId": "compatible-supply-capacity",
+      "path": "docs/curation/next-horizon-review/infrastructure/compatible-supply-capacity-snapshot.json",
+      "sha256": "efc16e0e4f6183be547b2f3f5faec5a1216538b82dc7404e44f4960d8cfe4504",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-energy-forecast-boundaries-2026-09-07-02-accepted",
+      "lessonId": "energy-forecast-boundaries",
+      "path": "docs/curation/next-horizon-review/infrastructure/energy-forecast-boundaries-snapshot.json",
+      "sha256": "23b9df193537330b9b597ef4bf0888a64a0aadc94e1e3aace0ae24201d872787",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-grid-interconnection-readiness-2026-09-07-01-changes-required",
+      "lessonId": "grid-interconnection-readiness",
+      "path": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-snapshot.json",
+      "sha256": "f15afeaa0d028639dfaffae9d02cd50937cb4bf2314c5187fbaacd5a19bcc397",
+      "outcome": "changes-required"
+    },
+    {
+      "eventId": "agent-source-scope-grid-interconnection-readiness-2026-09-07-02-accepted",
+      "lessonId": "grid-interconnection-readiness",
+      "path": "docs/curation/next-horizon-review/infrastructure/grid-interconnection-readiness-reviewed-snapshot.json",
+      "sha256": "b9d56c3ed4077e84513192aff835886de6dd090b33287fd79b2fa80432d01cc8",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-production-ramp-allocation-2026-09-07-02-accepted",
+      "lessonId": "production-ramp-allocation",
+      "path": "docs/curation/next-horizon-review/infrastructure/production-ramp-allocation-snapshot.json",
+      "sha256": "1d85a293a1a28da4fa85175b48565c6f634a078ed120e60232c2898eceb65780",
+      "outcome": "accepted"
+    },
+    {
+      "eventId": "agent-source-scope-regional-siting-access-2026-09-07-02-accepted",
+      "lessonId": "regional-siting-access",
+      "path": "docs/curation/next-horizon-review/infrastructure/regional-siting-access-snapshot.json",
+      "sha256": "33dd7eb89169362fd6c4dd2c74100d08663a2cf36be690275abee14eb9eed937",
+      "outcome": "accepted"
+    }
+  ],
+  "checks": [
+    "All events satisfy date/actor/source/claim scope validation",
+    "Every immutable snapshot reconstructs its event fingerprint",
+    "All new accepted fingerprints match current effective lessons",
+    "Prior five events preserved unchanged",
+    "No source reading by another actor is relabeled as root reading"
+  ]
+}

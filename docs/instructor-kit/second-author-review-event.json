@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "events": [
+    {
+      "id": "agent-source-scope-retained-work-2026-09-07",
+      "lessonId": "retained-work-restart-boundary",
+      "type": "source-scope",
+      "contentFingerprint": "efa38a2e2116a22c8af6e7216adf90b96cbe2e24e562ca93f27b812f15a17845",
+      "contentSnapshotLocation": "docs/instructor-kit/second-author-review-snapshot.json",
+      "reviewedSourceIds": [
+        "url-f88c4f70e3f8b07e28f2",
+        "url-6780e95cc2c5019179b7"
+      ],
+      "reviewedClaimIds": [
+        "instructor-claim-valid-checkpoint",
+        "instructor-claim-energy-boundary"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/process_editor",
+        "role": "AI agent author performing source-scope and separate hand-arithmetic verification"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-f88c4f70e3f8b07e28f2",
+          "url": "https://scr.readthedocs.io/en/latest/users/integration.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Checkpoint: SCR_Complete_output(valid); Restart with SCR: SCR_Have_restart, SCR_Start_restart, SCR_Complete_restart"
+          ],
+          "notes": "Completion/validity and available checkpoint restart. The atlas atomic commit delay, deterministic faults and all numerical values are synthetic."
+        },
+        {
+          "sourceId": "url-6780e95cc2c5019179b7",
+          "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Section 2.1, Power Usage Effectiveness; section 3.2, Energy vs. Power"
+          ],
+          "notes": "Nested facility/IT energy boundary and distinction between power and energy. The fixed PUE and phase powers in H7 are not measured data."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "instructor-claim-valid-checkpoint",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Software checkpoint validity; H7 uses a simpler synthetic atomic-commit rule. No vendor hardware fault rate, storage durability guarantee or universally optimal checkpoint policy is inferred."
+        },
+        {
+          "claimId": "instructor-claim-energy-boundary",
+          "outcome": "supported-with-qualifiers",
+          "notes": "The example uses a constant synthetic ratio consistently over all phases. The chosen 1.25 is not an observed annual or fleet PUE, and PUE is not a productivity metric."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Primary passages were opened and scoped. H7 arithmetic was derived separately from the simulator; interrupted-commit behavior was checked. Acceptance covers this source/content snapshot, not human specialist endorsement, renderer integration, classroom observation or learning efficacy. Author and source checker are the same agent; this is not independent human review."
+    }
+  ]
+}

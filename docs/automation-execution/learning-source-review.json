@@ -1,0 +1,742 @@
+{
+  "checkedOn": "2026-09-07",
+  "actorType": "agent",
+  "humanSpecialistReview": null,
+  "scope": "Specific source sections or abstracts as recorded. Authored worked arithmetic and state contracts are separately tested; no external platform, model or robot execution is inferred.",
+  "sources": [
+    {
+      "id": "automation-a2a",
+      "title": "A2A specification",
+      "url": "https://a2a-protocol.org/latest/specification/",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Task state model, message/artifact and authentication/authorization section structure; latest URL is not version pinned.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "delegated-agent-protocols",
+        "multi-agent-coordination-cost"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-agent-patterns",
+      "title": "Building effective agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Definitions and workflow/agent pattern sections; attributed taxonomy rather than universal definition.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "workflow-graphs-state"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-chronos",
+      "title": "Chronos: Learning the Language of Time Series",
+      "url": "https://arxiv.org/abs/2403.07815v3",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: scaling/quantization of time series and probabilistic forecasting; no current accuracy claim.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "arXiv v3",
+      "actorType": "agent",
+      "lessonIds": [
+        "temporal-forecast-validation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-dlrm",
+      "title": "Deep Learning Recommendation Model for Personalization and Recommendation Systems",
+      "url": "https://arxiv.org/abs/1906.00091",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: categorical embeddings, dense features and parallelization implications.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "recommendation-ranking-feedback"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-donut",
+      "title": "OCR-free Document Understanding Transformer",
+      "url": "https://arxiv.org/abs/2111.15664v5",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: document image understanding, OCR error propagation and an OCR-free alternative.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "arXiv v5",
+      "actorType": "agent",
+      "lessonIds": [
+        "document-extraction-validation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-fno",
+      "title": "Fourier Neural Operator for Parametric Partial Differential Equations",
+      "url": "https://arxiv.org/abs/2010.08895v3",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: learning mappings between function spaces for parameterized PDE families; performance ratios not adopted.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "arXiv v3",
+      "actorType": "agent",
+      "lessonIds": [
+        "scientific-surrogate-validation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-langgraph-interrupts",
+      "title": "LangGraph · Interrupts",
+      "url": "https://docs.langchain.com/oss/python/langgraph/interrupts",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Interrupt/resume and idempotent side-effect guidance; the atlas uses its own local journal and approval contract.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "human-review-cancellation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-langgraph-persistence",
+      "title": "LangGraph persistence",
+      "url": "https://docs.langchain.com/oss/python/langgraph/persistence",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Checkpoint thread state, stores, persistence scope and in-memory limitation.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "durable-actions-idempotency",
+        "context-memory-provenance"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-langgraph-workflows",
+      "title": "LangGraph workflows and agents",
+      "url": "https://docs.langchain.com/oss/python/langgraph/workflows-agents",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Workflow patterns, orchestration, dynamic workers and state aggregation.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "workflow-graphs-state",
+        "multi-agent-coordination-cost"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-linux-namespaces",
+      "title": "Linux man-pages · namespaces(7)",
+      "url": "https://man7.org/linux/man-pages/man7/namespaces.7.html",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Description and namespace-type table: isolation of selected resource views; no container configuration is executed.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "sandbox-egress-secrets",
+        "coding-agent-patch-evidence"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-linux-seccomp",
+      "title": "Linux man-pages · seccomp(2)",
+      "url": "https://man7.org/linux/man-pages/man2/seccomp.2.html",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Filtering, errors and caveats; OS syscall restrictions are distinct from tool-level permissions.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "sandbox-egress-secrets"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-mcp-auth",
+      "title": "MCP authorization",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Token audience, scope, token transmission and bounded scope upgrades.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "2026-07-28",
+      "actorType": "agent",
+      "lessonIds": [
+        "tool-authority-identity",
+        "untrusted-content-boundary",
+        "mcp-host-client-server"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-mcp-core",
+      "title": "Model Context Protocol specification",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Host/client/server roles, JSON-RPC, core protocol and optional extensions. This revision uses stateless self-contained requests.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "2026-07-28",
+      "actorType": "agent",
+      "lessonIds": [
+        "untrusted-content-boundary",
+        "mcp-host-client-server"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-mcp-tools",
+      "title": "MCP tools",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Tool schemas, list/call methods, responses and trust limitations of annotations.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "2026-07-28",
+      "actorType": "agent",
+      "lessonIds": [
+        "tool-contracts-schemas",
+        "untrusted-content-boundary",
+        "mcp-host-client-server"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-moveit-scene",
+      "title": "MoveIt Planning Scene",
+      "url": "https://moveit.picknik.ai/main/doc/examples/planning_scene/planning_scene_tutorial.html",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Planning scene monitor, self/environment collision and constraint checks; tutorial, not physical safety certification.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "robot-observation-frame",
+        "robot-goal-plan-action"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-n8n-agent",
+      "title": "n8n AI Agent node",
+      "url": "https://docs.n8n.io/integrations/builtin/cluster-nodes/root-nodes/n8n-nodes-langchain.agent",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Agent node, connected chat model and tool subnodes. Product version comparisons not assessed.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "workflow-graphs-state"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-oauth-bcp",
+      "title": "OAuth 2.0 Security Best Current Practice",
+      "url": "https://www.rfc-editor.org/rfc/rfc9700.html",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract and section map, privilege/audience restriction; use MCP authorization for detailed worked protocol requirements.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "RFC 9700, January 2025",
+      "actorType": "agent",
+      "lessonIds": [
+        "tool-authority-identity"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-otel-genai",
+      "title": "OpenTelemetry GenAI semantic conventions",
+      "url": "https://github.com/open-telemetry/semantic-conventions-genai",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Repository README: spans, metrics, events, MCP/provider scope and generated specification organization. Detailed attribute schemas not reviewed.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "telemetry-traces-evaluation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-rag",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: neural retrieval, nonparametric index and parametric generation; no reproduction of reported performance.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "context-memory-provenance",
+        "retrieval-indexing-evaluation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-ranking-bias",
+      "title": "Joachims, Swaminathan and Schnabel · Unbiased Learning-to-Rank with Biased Feedback",
+      "url": "https://arxiv.org/abs/1608.04468",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: position-biased clicks and counterfactual/propensity treatment; no estimator or reported benchmark reproduced.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "recommendation-ranking-feedback"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-robot-control",
+      "title": "Lynch and Park · Modern Robotics 11.3",
+      "url": "https://modernrobotics.northwestern.edu/nu-gm-book-resource/11-3-motion-control-with-velocity-inputs-part-1-of-3/",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Transcript: direct velocity input, proportional position feedback, gain, saturation and model limitations. Sampled recurrence is derived independently here.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "robot-feedback-control",
+        "embodied-policy-evidence"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-robot-frames",
+      "title": "Lynch and Park · Modern Robotics 3.3.1",
+      "url": "https://modernrobotics.northwestern.edu/nu-gm-book-resource/3-3-1-homogeneous-transformation-matrices/",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Transcript: rigid transformations, point coordinates and frame composition; planar example is authored.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "robot-observation-frame"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-ros-actions",
+      "title": "ROS 2 Jazzy: Understanding actions",
+      "url": "https://raw.githubusercontent.com/ros2/ros2_documentation/jazzy/source/Concepts/Basic/About-Actions.rst",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Official source document: long-running goals, feedback, cancellation and preemption.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Jazzy documentation branch",
+      "actorType": "agent",
+      "lessonIds": [
+        "human-review-cancellation",
+        "robot-goal-plan-action",
+        "streaming-speech-turns"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-rt2",
+      "title": "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control",
+      "url": "https://arxiv.org/abs/2307.15818",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: robot observations/actions, trajectory plus vision-language data and action token representation.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "arXiv v1",
+      "actorType": "agent",
+      "lessonIds": [
+        "embodied-policy-evidence"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-sklearn-leakage",
+      "title": "scikit-learn · Common pitfalls and data leakage",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Train-only preprocessing and consistent transforms on held-out data; illustrative normalization arithmetic is authored.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Documentation or paper checked 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "model-artifact-rollout-drift",
+        "temporal-forecast-validation"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-spiffe",
+      "title": "SPIFFE overview",
+      "url": "https://spiffe.io/docs/latest/spiffe-about/overview/",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Overview paragraphs on workload identity, SVIDs and authentication; implementation comparison table not assessed.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "tool-authority-identity"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-swebench",
+      "title": "SWE-bench: Can Language Models Resolve Real-World GitHub Issues?",
+      "url": "https://arxiv.org/abs/2310.06770v3",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: repository issue-to-patch evaluation; historic model leaderboard scores not used.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "arXiv v3",
+      "actorType": "agent",
+      "lessonIds": [
+        "coding-agent-patch-evidence"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-tau-bench",
+      "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: simulated user/tools/policy tasks, final database goal-state evaluation and repeated-trial reliability; historical model scores not used.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "telemetry-traces-evaluation",
+        "retrieval-indexing-evaluation",
+        "multi-agent-coordination-cost"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-temporal-activities",
+      "title": "Temporal Activities",
+      "url": "https://docs.temporal.io/activities",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Activity execution, retries, idempotency and recorded results.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "event-queues-delivery",
+        "durable-actions-idempotency",
+        "human-review-cancellation",
+        "delegated-agent-protocols"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-temporal-history",
+      "title": "Temporal Workflow Execution",
+      "url": "https://docs.temporal.io/workflow-execution",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Workflow history and command replay against event history.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "Living source or paper inspected 2026-09-07",
+      "actorType": "agent",
+      "lessonIds": [
+        "event-queues-delivery",
+        "durable-actions-idempotency"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    },
+    {
+      "id": "automation-whisper",
+      "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+      "url": "https://arxiv.org/abs/2212.04356v1",
+      "publisher": "Primary author or official project documentation",
+      "published": "Publication date not established in this scoped review; see source edition",
+      "checkedOn": "2026-09-07",
+      "locator": "Abstract: audio-to-transcript model and released inference code; streaming turn management is a separate proposed system lesson.",
+      "scope": "Mechanism context only. Authored examples are independently checked; published benchmark claims are not reproduced or adopted.",
+      "version": "arXiv v1",
+      "actorType": "agent",
+      "lessonIds": [
+        "streaming-speech-turns"
+      ],
+      "sourcePublicationDate": null,
+      "humanSpecialistReview": null,
+      "recheckCadenceDays": 180,
+      "triggers": [
+        "Protocol or API edition changes",
+        "Worked example or executable scope changes",
+        "A new performance or physical capability claim is introduced"
+      ]
+    }
+  ]
+}

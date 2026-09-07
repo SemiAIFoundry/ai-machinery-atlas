@@ -1,0 +1,172 @@
+{
+  "record": {
+    "id": "hbm-tc-ncf-route",
+    "level": "package",
+    "name": "Thermocompression with non-conductive film",
+    "shortName": "Thermocompression with non-conductive film",
+    "role": "Trace a bump-based TC-NCF route and separate polymer behavior from electrical contact formation.",
+    "description": "Thermocompression bonding applies controlled temperature, force and alignment to form interconnections. In a TC-NCF route, a non-conductive film occupies the space between the mating dies while metallic bumps and pads carry the electrical connection. The polymer must deform and cure without blocking intended contacts or trapping unacceptable voids. Thin-die handling, film behavior and bump geometry are therefore coupled. TC-NCF is one thermocompression implementation, not a synonym for every bump process or every adhesive. Samsung’s February 2024 HBM3E 12H announcement gives a concrete historical application; it does not make one vendor’s process window universal.",
+    "mechanism": [
+      "Prepare bumped dies, compatible film and verified surface/handling conditions.",
+      "Place the film at its defined wafer or die stage; maintain the intended contact openings and contamination controls.",
+      "Align a die to the receiving die and apply the qualified thermal/force cycle for metallic contact and polymer flow/cure.",
+      "Repeat the specified stacking sequence while tracking placement error and cumulative warpage.",
+      "Inspect continuity, bond-line condition and voids; complete the product-specific reliability qualification."
+    ],
+    "science": [
+      {
+        "title": "Serial tool occupancy",
+        "equation": "tstack ≈ N (talign + tbond) + thandling",
+        "explanation": "This estimates occupied tool time for a strictly serial die-placement/bonding sequence.",
+        "assumptions": "No overlapping stations or batch operations. It is not factory cycle time, and route-specific curing may occupy different equipment."
+      }
+    ],
+    "specs": [
+      {
+        "label": "Electrical path",
+        "value": "Metallic bumps/pads",
+        "context": "NCF itself is electrically insulating."
+      },
+      {
+        "label": "Control variables",
+        "value": "Alignment, force, thermal cycle and film state",
+        "context": "Values are recipe- and material-specific, not supplied here."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Prepared die and film",
+        "direction": "in",
+        "signal": "Surface, metallurgy, rheology and alignment"
+      },
+      {
+        "name": "Bonded die pair",
+        "direction": "out",
+        "signal": "Electrical joints and cured/processed polymer interface"
+      }
+    ],
+    "tradeoff": "Sequential local bonding provides process control but tool occupancy, film flow and thin-die stress must close together.",
+    "whyAI": "A packaging decision changes manufacturable stack height, test yield and the number of usable HBM stacks delivered.",
+    "prerequisites": [
+      "bump-thermocompression-assembly",
+      "hbm-stack-height-budget"
+    ],
+    "related": [
+      "hbm-mr-muf-route",
+      "hbm-hybrid-bond-route",
+      "hbm-bonding-process-selection"
+    ],
+    "misconception": "NCF supplies insulation and mechanical support; metal joints provide the conductive path.",
+    "check": {
+      "question": "In TC-NCF, what carries current between memory dies?",
+      "options": [
+        "The metallic interconnections",
+        "The non-conductive film",
+        "The surrounding air gap"
+      ],
+      "answer": 0,
+      "explanation": "NCF supplies insulation and mechanical support; metal joints provide the conductive path."
+    },
+    "engineeringExample": "Synthetic serial flow: 12 placements × (0.3 s alignment + 0.7 s bonding) plus 3 s handling occupy 15 s. A different station layout could overlap work; this calculation predicts neither commercial throughput nor yield.",
+    "evidenceNotes": "Historical vendor example: Samsung reported an advanced TC-NCF route for its 2024 HBM3E 12H development. Sampling, qualification and volume production are distinct statuses.",
+    "sources": [
+      {
+        "title": "Samsung — 36 GB HBM3E 12H development",
+        "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+      }
+    ],
+    "learningObjective": "Trace a bump-based TC-NCF route and separate polymer behavior from electrical contact formation.",
+    "workstream": "W05",
+    "visualFamily": "hbm-detail",
+    "scale": "Inter-die contact and serial assembly sequence; enlarged bond lines",
+    "kind": "process",
+    "labId": "hbm-stack-build",
+    "branch": "Packaging",
+    "subbranch": "HBM bonding routes and process closure",
+    "scope": "Adjust stack layers, thickness, joint route, interface bandwidth and conditional yield; presets are synthetic, not supplier process windows.",
+    "investigationId": "manufacturing",
+    "labScope": "Adjust stack layers, thickness, joint route, interface bandwidth and conditional yield; presets are synthetic, not supplier process windows."
+  },
+  "chapter": {
+    "id": "deep-hbm-bond-route-closure",
+    "domainId": "packaging-machines",
+    "read": "The shared stack exposes the same endpoints. Read the selected route’s process steps for distinct transformations; geometry is not a proprietary cross-section, and solder bumps must not be inferred at a hybrid interface."
+  },
+  "formalEquations": [
+    {
+      "latex": "t_{\\mathrm{stack}}\\approx N(t_{\\mathrm{align}}+t_{\\mathrm{bond}})+t_{\\mathrm{handling}}",
+      "variables": [
+        {
+          "symbol": "tstack",
+          "meaning": "Serial tool occupancy per stack",
+          "unit": "s"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Placements in the modeled route",
+          "unit": "count"
+        },
+        {
+          "symbol": "talign",
+          "meaning": "Alignment/placement time per die",
+          "unit": "s"
+        },
+        {
+          "symbol": "tbond",
+          "meaning": "Bond occupancy time per die",
+          "unit": "s"
+        },
+        {
+          "symbol": "thandling",
+          "meaning": "Other occupied handling time per stack",
+          "unit": "s"
+        }
+      ],
+      "kind": "math",
+      "text": "tstack ≈ N (talign + tbond) + thandling"
+    }
+  ],
+  "contentFingerprint": "b0061f6f219670f9f41bcde4832ef6bfd63c6ddd1a6032aca3978ff92b4d0fe7",
+  "claims": [
+    {
+      "id": "depth-claim-tcncf",
+      "title": "A historical TC-NCF HBM example",
+      "statement": "Samsung’s February 2024 HBM3E 12H announcement identifies advanced TC-NCF and reports sampling at that date.",
+      "sourceId": "depth-src-tcncf",
+      "lessonIds": [
+        "hbm-tc-ncf-route"
+      ],
+      "status": "announced",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2024-02-27",
+      "scope": "Named HBM3E 12H development",
+      "limitations": "Historical status; later volume production and another vendor’s process cannot be inferred. No generic yield/cost ranking follows.",
+      "urlSourceId": "url-ba853b10116d83397966",
+      "inheritedCheckedOn": "2026-09-06",
+      "dateBasis": "Copied from existing claim ledger; not a review performed by this task.",
+      "supersedesClaimId": null,
+      "supersededByClaimId": null,
+      "reviewEventIds": []
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "url-ba853b10116d83397966",
+      "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram",
+      "title": "Samsung — 36 GB HBM3E 12H development",
+      "contexts": [
+        {
+          "field": "sources"
+        },
+        {
+          "field": "claim",
+          "claimId": "depth-claim-tcncf",
+          "ledgerSourceId": "depth-src-tcncf"
+        }
+      ]
+    }
+  ]
+}

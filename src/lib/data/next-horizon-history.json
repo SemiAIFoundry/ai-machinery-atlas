@@ -1,0 +1,78 @@
+{
+  "chapters": [],
+  "lessons": [],
+  "sources": [],
+  "claims": [],
+  "milestones": [
+    {
+      "year": 2017,
+      "title": "Temperature scaling reframes confidence as a calibration problem",
+      "significance": "A fitted probability can be systematically overconfident. Guo and colleagues evaluated post-processing calibration, including a single temperature parameter. The atlas connects this to separate calibration data, fixed model weights and explicit diagnostic bins; its six-case audit does not reproduce the paper\u2019s experiments.",
+      "source": {
+        "title": "Temperature scaling reframes confidence as a calibration problem",
+        "url": "https://arxiv.org/abs/1706.04599v2"
+      },
+      "component": "probability-calibration-abstention"
+    },
+    {
+      "year": 2020,
+      "title": "Dense Passage Retrieval learns query and passage representations",
+      "significance": "Karpukhin and colleagues trained separate query and passage encoders for retrieval. The bottleneck shifts from exact word matching to training and maintaining representations, an index and task-appropriate retrieval evidence. The atlas uses a tiny learned mean encoder, not the paper\u2019s BERT-based system.",
+      "source": {
+        "title": "Dense Passage Retrieval learns query and passage representations",
+        "url": "https://arxiv.org/abs/2004.04906"
+      },
+      "component": "retrieval-indexing-evaluation"
+    },
+    {
+      "year": 2020,
+      "title": "Denoising diffusion links learned noise prediction to generation",
+      "significance": "Ho and colleagues developed a variational diffusion formulation with a simplified training objective. Iterative reverse computation connects noisy training examples to generation cost and quality. The atlas\u2019s scalar nearest-neighbor denoiser demonstrates the equations within a much smaller approximation regime.",
+      "source": {
+        "title": "Denoising diffusion links learned noise prediction to generation",
+        "url": "https://arxiv.org/abs/2006.11239"
+      },
+      "component": "denoising-generative-objectives"
+    },
+    {
+      "year": 2021,
+      "title": "LoRA separates a frozen base from trainable low-rank changes",
+      "significance": "Hu and colleagues proposed training rank-decomposition matrices while retaining pretrained weights. The method addresses adaptation-state cost; it does not imply every task or layer is adequately represented at a chosen small rank. The atlas distinguishes trainable state, optimizer storage and inference merging.",
+      "source": {
+        "title": "LoRA separates a frozen base from trainable low-rank changes",
+        "url": "https://arxiv.org/abs/2106.09685v2"
+      },
+      "component": "low-rank-adaptation"
+    },
+    {
+      "year": 2021,
+      "title": "Structured state spaces connect long-sequence learning to recurrence and convolution",
+      "significance": "Gu and colleagues introduced S4 with a structured state-space parameterization. The underlying recurrence/convolution relationship exposes alternatives for sequence computation and memory. The atlas\u2019s scalar identity demonstrates that relationship without reproducing S4\u2019s trained kernel or benchmark claims.",
+      "source": {
+        "title": "Structured state spaces connect long-sequence learning to recurrence and convolution",
+        "url": "https://arxiv.org/abs/2111.00396"
+      },
+      "component": "scalar-state-space-recurrence"
+    },
+    {
+      "year": 2021,
+      "title": "HumanEval emphasizes functional tests for synthesized code",
+      "significance": "Chen and colleagues introduced a code benchmark that evaluates generated programs using tests. The change is in the evidence boundary: source text must satisfy executable behavior. The atlas tests four authored clamp candidates; it reports no code-model benchmark or pass@k estimate.",
+      "source": {
+        "title": "HumanEval emphasizes functional tests for synthesized code",
+        "url": "https://arxiv.org/abs/2107.03374v2"
+      },
+      "component": "coding-agent-patch-evidence"
+    },
+    {
+      "year": 2023,
+      "title": "Direct Preference Optimization changes the adaptation objective",
+      "significance": "Rafailov and colleagues expressed preference optimization using a classification-style objective tied to a reference policy. This reduces the need for a separate online reinforcement-learning loop for that objective, while leaving preference quality, coverage and downstream task evaluation as distinct concerns.",
+      "source": {
+        "title": "Direct Preference Optimization changes the adaptation objective",
+        "url": "https://arxiv.org/abs/2305.18290v3"
+      },
+      "component": "direct-preference-objective"
+    }
+  ]
+}

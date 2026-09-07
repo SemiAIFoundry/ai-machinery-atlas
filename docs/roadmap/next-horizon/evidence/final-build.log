@@ -1,0 +1,171 @@
+
+> ai-machinery-atlas@1.2.0 prebuild
+> node scripts/generate-equations.mjs && node scripts/generate-catalog.mjs && node --experimental-strip-types scripts/generate-learning-map.mjs && node scripts/package-learning-materials.mjs
+
+Generated navigation index and 311 independently cached lesson files.
+Generated lifecycle facets and scoped mechanisms for 311 canonical lessons.
+instructor-kit.zip: 56 files, 102592 bytes
+realization-artifact.zip: 54 files, 87450 bytes
+
+> ai-machinery-atlas@1.2.0 build
+> tsc --noEmit && vite build
+
+vite v8.0.13 building client environment for production...
+[2Ktransforming...✓ 2164 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              1.54 kB │ gzip:   0.76 kB
+dist/build-info.json                                         1.87 kB │ gzip:   0.85 kB
+dist/assets/KaTeX_Size3-Regular-CTq5MqoE.woff                4.42 kB
+dist/assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2               4.92 kB
+dist/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2               5.20 kB
+dist/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2               5.46 kB
+dist/assets/KaTeX_Size4-Regular-BF-4gkZK.woff                5.98 kB
+dist/assets/KaTeX_Size2-Regular-oD1tc_U0.woff                6.18 kB
+dist/assets/KaTeX_Size1-Regular-C195tn64.woff                6.49 kB
+dist/assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2         6.90 kB
+dist/assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2            6.91 kB
+dist/assets/KaTeX_Size3-Regular-DgpXs0kz.ttf                 7.58 kB
+dist/assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff          7.65 kB
+dist/assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff             7.71 kB
+dist/assets/KaTeX_Script-Regular-D3wIWfF6.woff2              9.64 kB
+dist/assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2          10.34 kB
+dist/assets/KaTeX_Size4-Regular-DWFBv043.ttf                10.36 kB
+dist/assets/KaTeX_Script-Regular-D5yQViql.woff              10.58 kB
+dist/assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2            11.31 kB
+dist/assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2               11.34 kB
+dist/assets/KaTeX_Size2-Regular-B7gKUWhC.ttf                11.50 kB
+dist/assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2           12.02 kB
+dist/assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2             12.21 kB
+dist/assets/KaTeX_Size1-Regular-Dbsnue_I.ttf                12.22 kB
+dist/assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff           12.31 kB
+dist/assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf          12.34 kB
+dist/assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf             12.36 kB
+dist/assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff             13.20 kB
+dist/assets/KaTeX_Fraktur-Bold-BsDP51OF.woff                13.29 kB
+dist/assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2         13.56 kB
+dist/assets/KaTeX_SansSerif-Italic-DN2j7dab.woff            14.11 kB
+dist/assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff              14.40 kB
+dist/assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff          16.02 kB
+dist/assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2            16.40 kB
+dist/assets/KaTeX_Math-Italic-t53AETM-.woff2                16.44 kB
+dist/assets/KaTeX_Script-Regular-C5JkGWo-.ttf               16.64 kB
+dist/assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2            16.78 kB
+dist/assets/KaTeX_Main-Italic-NWA7e6Wa.woff2                16.98 kB
+dist/assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff             18.66 kB
+dist/assets/KaTeX_Math-Italic-DA0__PXp.woff                 18.74 kB
+dist/assets/KaTeX_Main-BoldItalic-SpSLRI95.woff             19.41 kB
+dist/assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf            19.43 kB
+dist/assets/KaTeX_Fraktur-Regular-CB_wures.ttf              19.57 kB
+dist/assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf                 19.58 kB
+dist/assets/KaTeX_Main-Italic-BMLOBm91.woff                 19.67 kB
+dist/assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf             22.36 kB
+dist/assets/geist-mono-latin-pyAoGB9p.woff2                 23.10 kB
+dist/assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf               24.50 kB
+dist/assets/KaTeX_Main-Bold-Cx986IdX.woff2                  25.32 kB
+dist/assets/KaTeX_Main-Regular-B22Nviop.woff2               26.27 kB
+dist/assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf           27.55 kB
+dist/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2                28.07 kB
+dist/assets/geist-latin-BGnTDqni.woff2                      29.28 kB
+dist/assets/KaTeX_Main-Bold-Jm3AIy58.woff                   29.91 kB
+dist/assets/KaTeX_Main-Regular-Dr94JaBh.woff                30.77 kB
+dist/assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf              31.19 kB
+dist/assets/KaTeX_Math-Italic-flOr_0UB.ttf                  31.30 kB
+dist/assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf              32.96 kB
+dist/assets/KaTeX_AMS-Regular-DMm9YOAa.woff                 33.51 kB
+dist/assets/KaTeX_Main-Italic-3WenGoN9.ttf                  33.58 kB
+dist/assets/KaTeX_Main-Bold-waoOVXN0.ttf                    51.33 kB
+dist/assets/KaTeX_Main-Regular-ypZvNtVU.ttf                 53.58 kB
+dist/assets/KaTeX_AMS-Regular-DRggAlZN.ttf                  63.63 kB
+dist/assets/retrieval-learning-explorer-DHIUvSbu.css         1.36 kB │ gzip:   0.53 kB
+dist/assets/memory-workload-explorer-wHNFBmhn.css            1.44 kB │ gzip:   0.52 kB
+dist/assets/data-lineage-explorer-J4TDY-DW.css               1.51 kB │ gzip:   0.54 kB
+dist/assets/model-lifecycle-DiuAWFgX.css                     1.52 kB │ gzip:   0.63 kB
+dist/assets/closed-loop-ODr1OuoE.css                         1.56 kB │ gzip:   0.60 kB
+dist/assets/learning-map-BvN0Vgqg.css                        1.62 kB │ gzip:   0.61 kB
+dist/assets/ai-family-explorer-CjkjinsC.css                  1.66 kB │ gzip:   0.67 kB
+dist/assets/model-lifecycle-serving-DvO7KX84.css             1.70 kB │ gzip:   0.68 kB
+dist/assets/matrix-network-YIRBWOMm.css                      1.78 kB │ gzip:   0.59 kB
+dist/assets/model-lifecycle-distributed-CieFQl9k.css         1.90 kB │ gzip:   0.61 kB
+dist/assets/automation-explorer-pZUYyF-0.css                 1.93 kB │ gzip:   0.63 kB
+dist/assets/foundation-explorer-DofvRqvU.css                 2.29 kB │ gzip:   0.87 kB
+dist/assets/process-mechanism-1gCgwnz9.css                   3.32 kB │ gzip:   1.07 kB
+dist/assets/decoder-projection-B3ZhEnMo.css                  3.33 kB │ gzip:   1.03 kB
+dist/assets/factory-execution-DyCmNUr_.css                   4.67 kB │ gzip:   1.55 kB
+dist/assets/ranking-application-DaamO6Ni.css                 5.08 kB │ gzip:   1.60 kB
+dist/assets/process-cell-acceptance-D9Z26G8_.css             5.74 kB │ gzip:   1.76 kB
+dist/assets/commissioning-execution-JgSIFure.css             6.24 kB │ gzip:   1.74 kB
+dist/assets/hardware-reliability-Da-F-ojp.css                6.30 kB │ gzip:   1.60 kB
+dist/assets/numeric-workbench-zr4sIq8-.css                   6.95 kB │ gzip:   1.72 kB
+dist/assets/machine-execution-Bee8UVRv.css                   7.32 kB │ gzip:   2.00 kB
+dist/assets/engineering-studio-BH_Zlt6p.css                  7.43 kB │ gzip:   2.10 kB
+dist/assets/investigations-C0pOLDD-.css                      8.54 kB │ gzip:   2.16 kB
+dist/assets/equation-C7GNpW_k.css                           29.38 kB │ gzip:   7.93 kB
+dist/assets/index-0AWf6N-u.css                              86.97 kB │ gzip:  18.19 kB
+dist/assets/model-lifecycle-data-PKKuJH9Z.js                 1.84 kB │ gzip:   1.08 kB
+dist/assets/studio-primitives-DxYSz0ss.js                    3.32 kB │ gzip:   1.35 kB
+dist/assets/process-spatial-A63EO019.js                      3.38 kB │ gzip:   1.71 kB
+dist/assets/automation-fixtures-DpI4pPgR.js                  3.80 kB │ gzip:   1.69 kB
+dist/assets/numeric-labs-BEBtIEeg.js                         4.19 kB │ gzip:   2.04 kB
+dist/assets/equations-process-cell-learning-CaraupCw.js      4.54 kB │ gzip:   1.73 kB
+dist/assets/reference-system-CWPh44tD.js                     4.61 kB │ gzip:   2.32 kB
+dist/assets/portable-experiment-Bn_dFlqA.js                  6.01 kB │ gzip:   2.34 kB
+dist/assets/investigation-models-CnqenI35.js                 7.53 kB │ gzip:   3.34 kB
+dist/assets/numeric-math-DyWTxlHL.js                         8.43 kB │ gzip:   3.71 kB
+dist/assets/hardware-reliability-BzjGlq3G.js                 8.95 kB │ gzip:   3.96 kB
+dist/assets/architecture-execution-vJaxmHln.js               9.13 kB │ gzip:   3.19 kB
+dist/assets/foundation-models-xVdK5N3f.js                    9.16 kB │ gzip:   4.04 kB
+dist/assets/investigation-scene-DnP9O-eW.js                 10.15 kB │ gzip:   4.78 kB
+dist/assets/operating-hall-BU9Brxjx.js                      10.38 kB │ gzip:   3.76 kB
+dist/assets/orbital-mission-DNkdgP8b.js                     10.60 kB │ gzip:   3.92 kB
+dist/assets/specimen-comparison-Blrh4UGJ.js                 10.73 kB │ gzip:   3.90 kB
+dist/assets/realization-explorer-Cs4Nav-N.js                11.12 kB │ gzip:   4.20 kB
+dist/assets/sensor-application-ZMtgjirQ.js                  11.42 kB │ gzip:   4.02 kB
+dist/assets/fabrication-explorer-DjC4EYUC.js                11.45 kB │ gzip:   4.08 kB
+dist/assets/memory-explorer-DKAcC-QC.js                     11.50 kB │ gzip:   4.22 kB
+dist/assets/engineering-studio-BFQUOKs5.js                  11.92 kB │ gzip:   3.40 kB
+dist/assets/commissioning-execution-Bz6FbBpU.js             12.04 kB │ gzip:   4.83 kB
+dist/assets/architecture-execution-M7SCdff2.js              12.51 kB │ gzip:   5.45 kB
+dist/assets/automation-learned-bridge-DUl6vbjH.js           12.78 kB │ gzip:   4.87 kB
+dist/assets/evaluation-report-CNFmLfmo.js                   12.87 kB │ gzip:   5.02 kB
+dist/assets/operating-hall-Bp78_arQ.js                      13.37 kB │ gzip:   4.53 kB
+dist/assets/machine-execution-CmcvA36r.js                   13.93 kB │ gzip:   5.85 kB
+dist/assets/application-decisions-BchqkiWB.js               15.00 kB │ gzip:   6.08 kB
+dist/assets/memory-interfaces-CmHCo04u.js                   15.26 kB │ gzip:   6.14 kB
+dist/assets/lab-B2AVRqdJ.js                                 15.58 kB │ gzip:   5.77 kB
+dist/assets/evaluated-applications-BU6TbaM0.js              16.97 kB │ gzip:   5.13 kB
+dist/assets/model-lifecycle-distributed-Hnm1eHoF.js         17.76 kB │ gzip:   5.95 kB
+dist/assets/retrieval-learning-explorer-B1T_V78i.js         18.46 kB │ gzip:   5.99 kB
+dist/assets/model-lifecycle-workspace-BmTlw2yD.js           18.82 kB │ gzip:   7.28 kB
+dist/assets/commissioning-execution-CFOf9Pcy.js             19.28 kB │ gzip:   6.50 kB
+dist/assets/closed-loop-BMzxzlAh.js                         20.87 kB │ gzip:   7.30 kB
+dist/assets/model-lifecycle-distributed-CPGvmKCj.js         20.89 kB │ gzip:   6.95 kB
+dist/assets/hardware-reliability-cG0xvLmK.js                21.00 kB │ gzip:   6.19 kB
+dist/assets/deep-workbench-Bw9h3K3c.js                      21.34 kB │ gzip:   8.98 kB
+dist/assets/foundation-explorer-Z7pfw_Fe.js                 21.39 kB │ gzip:   6.85 kB
+dist/assets/model-lifecycle-DTibnQlY.js                     22.03 kB │ gzip:   7.45 kB
+dist/assets/numeric-workbench-BoPQwOLN.js                   22.73 kB │ gzip:   7.94 kB
+dist/assets/matrix-network-BneZvXkh.js                      22.98 kB │ gzip:   8.16 kB
+dist/assets/machine-execution-DzUN-ta0.js                   24.47 kB │ gzip:   7.89 kB
+dist/assets/process-cell-acceptance-BGCYkYMo.js             28.31 kB │ gzip:   9.97 kB
+dist/assets/ranking-application-wQWd2squ.js                 29.62 kB │ gzip:   9.99 kB
+dist/assets/memory-workload-explorer-CiJaWDfo.js            29.72 kB │ gzip:  10.81 kB
+dist/assets/decoder-projection-DvXwCJse.js                  30.07 kB │ gzip:  10.60 kB
+dist/assets/ai-family-explorer-Bh-GYe1z.js                  30.09 kB │ gzip:  10.47 kB
+dist/assets/data-lineage-explorer-BZdtMDOB.js               33.10 kB │ gzip:  10.94 kB
+dist/assets/investigations-D42IX4M9.js                      35.36 kB │ gzip:  12.22 kB
+dist/assets/model-lifecycle-serving-CT0r3b0X.js             37.44 kB │ gzip:  12.62 kB
+dist/assets/factory-execution-BNUOqe95.js                   39.39 kB │ gzip:  13.87 kB
+dist/assets/atlas-scene-Cf20yCw1.js                         40.36 kB │ gzip:  15.62 kB
+dist/assets/automation-explorer-DtO3K35v.js                 40.97 kB │ gzip:  12.79 kB
+dist/assets/progress-evidence-DdvCzyxA.js                   62.34 kB │ gzip:  17.46 kB
+dist/assets/studio-record-cPFEWc8S.js                       76.67 kB │ gzip:  27.64 kB
+dist/assets/process-mechanism-47uNqZeU.js                   78.15 kB │ gzip:  22.21 kB
+dist/assets/global-atlas-D1jGt36L.js                       124.88 kB │ gzip:  53.26 kB
+dist/assets/learning-map-Du_XRlhH.js                       140.73 kB │ gzip:  31.42 kB
+dist/assets/science-panel-S88iEsiA.js                      212.72 kB │ gzip:  59.34 kB
+dist/assets/equation-DAm-6lM2.js                           259.91 kB │ gzip:  77.90 kB
+dist/assets/OrbitControls-CKEmeXz2.js                      503.08 kB │ gzip: 127.08 kB
+dist/assets/index-CRjBEu3Z.js                            1,382.87 kB │ gzip: 337.24 kB
+
+✓ built in 696ms

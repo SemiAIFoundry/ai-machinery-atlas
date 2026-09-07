@@ -1,0 +1,1035 @@
+
+> ai-machinery-atlas@1.2.0 test
+> npm run build && npm run validate:content && node --experimental-strip-types --test scripts/deep-math.test.mjs scripts/numeric-math.test.mjs scripts/infrastructure-depth.test.mjs scripts/investigations.test.mjs scripts/learning-progress.test.mjs scripts/process-mechanisms.test.mjs scripts/delivery.test.mjs scripts/portable.test.mjs scripts/lesson-contract.test.mjs scripts/architecture-execution.test.mjs scripts/fabrication-flow.test.mjs scripts/operating-hall.test.mjs scripts/realization.test.mjs scripts/memory-interfaces.test.mjs scripts/memory-integration.test.mjs scripts/evaluated-applications.test.mjs scripts/orbital-mission.test.mjs scripts/progress-evidence.test.mjs scripts/studio-record.test.mjs scripts/studio-lessons.test.mjs scripts/distributed-output-bridges.test.mjs scripts/hardware-reliability.test.mjs scripts/closed-loop.test.mjs scripts/ai-family-models.test.mjs scripts/evaluation-report.test.mjs scripts/application-decisions.test.mjs scripts/portable-experiment-storage.test.mjs scripts/process-cell-acceptance.test.mjs scripts/model-lifecycle-serving.test.mjs scripts/model-lifecycle-speculation.test.mjs scripts/data-lineage.test.mjs scripts/factory-execution.test.mjs scripts/memory-workload-bridge.test.mjs scripts/ranking-application.test.mjs scripts/matrix-network.test.mjs scripts/decoder-projection.test.mjs scripts/connected-walkthrough.test.mjs scripts/automation-learning-model.test.mjs scripts/model-lifecycle-distributed.test.mjs scripts/commissioning-execution.test.mjs scripts/model-lifecycle-curriculum.test.mjs scripts/automation-learning.test.mjs scripts/learning-map.test.mjs scripts/foundation-models.test.mjs scripts/model-lifecycle.test.mjs scripts/automation-execution.test.mjs scripts/machine-execution.test.mjs && npm run validate:teaching
+
+
+> ai-machinery-atlas@1.2.0 prebuild
+> node scripts/generate-equations.mjs && node scripts/generate-catalog.mjs && node --experimental-strip-types scripts/generate-learning-map.mjs && node scripts/package-learning-materials.mjs
+
+Generated navigation index and 311 independently cached lesson files.
+Generated lifecycle facets and scoped mechanisms for 311 canonical lessons.
+instructor-kit.zip: 56 files, 102592 bytes
+realization-artifact.zip: 54 files, 87450 bytes
+
+> ai-machinery-atlas@1.2.0 build
+> tsc --noEmit && vite build
+
+vite v8.0.13 building client environment for production...
+[2Ktransforming...✓ 2164 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                              1.54 kB │ gzip:   0.76 kB
+dist/build-info.json                                         1.87 kB │ gzip:   0.85 kB
+dist/assets/KaTeX_Size3-Regular-CTq5MqoE.woff                4.42 kB
+dist/assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2               4.92 kB
+dist/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2               5.20 kB
+dist/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2               5.46 kB
+dist/assets/KaTeX_Size4-Regular-BF-4gkZK.woff                5.98 kB
+dist/assets/KaTeX_Size2-Regular-oD1tc_U0.woff                6.18 kB
+dist/assets/KaTeX_Size1-Regular-C195tn64.woff                6.49 kB
+dist/assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2         6.90 kB
+dist/assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2            6.91 kB
+dist/assets/KaTeX_Size3-Regular-DgpXs0kz.ttf                 7.58 kB
+dist/assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff          7.65 kB
+dist/assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff             7.71 kB
+dist/assets/KaTeX_Script-Regular-D3wIWfF6.woff2              9.64 kB
+dist/assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2          10.34 kB
+dist/assets/KaTeX_Size4-Regular-DWFBv043.ttf                10.36 kB
+dist/assets/KaTeX_Script-Regular-D5yQViql.woff              10.58 kB
+dist/assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2            11.31 kB
+dist/assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2               11.34 kB
+dist/assets/KaTeX_Size2-Regular-B7gKUWhC.ttf                11.50 kB
+dist/assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2           12.02 kB
+dist/assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2             12.21 kB
+dist/assets/KaTeX_Size1-Regular-Dbsnue_I.ttf                12.22 kB
+dist/assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff           12.31 kB
+dist/assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf          12.34 kB
+dist/assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf             12.36 kB
+dist/assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff             13.20 kB
+dist/assets/KaTeX_Fraktur-Bold-BsDP51OF.woff                13.29 kB
+dist/assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2         13.56 kB
+dist/assets/KaTeX_SansSerif-Italic-DN2j7dab.woff            14.11 kB
+dist/assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff              14.40 kB
+dist/assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff          16.02 kB
+dist/assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2            16.40 kB
+dist/assets/KaTeX_Math-Italic-t53AETM-.woff2                16.44 kB
+dist/assets/KaTeX_Script-Regular-C5JkGWo-.ttf               16.64 kB
+dist/assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2            16.78 kB
+dist/assets/KaTeX_Main-Italic-NWA7e6Wa.woff2                16.98 kB
+dist/assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff             18.66 kB
+dist/assets/KaTeX_Math-Italic-DA0__PXp.woff                 18.74 kB
+dist/assets/KaTeX_Main-BoldItalic-SpSLRI95.woff             19.41 kB
+dist/assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf            19.43 kB
+dist/assets/KaTeX_Fraktur-Regular-CB_wures.ttf              19.57 kB
+dist/assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf                 19.58 kB
+dist/assets/KaTeX_Main-Italic-BMLOBm91.woff                 19.67 kB
+dist/assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf             22.36 kB
+dist/assets/geist-mono-latin-pyAoGB9p.woff2                 23.10 kB
+dist/assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf               24.50 kB
+dist/assets/KaTeX_Main-Bold-Cx986IdX.woff2                  25.32 kB
+dist/assets/KaTeX_Main-Regular-B22Nviop.woff2               26.27 kB
+dist/assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf           27.55 kB
+dist/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2                28.07 kB
+dist/assets/geist-latin-BGnTDqni.woff2                      29.28 kB
+dist/assets/KaTeX_Main-Bold-Jm3AIy58.woff                   29.91 kB
+dist/assets/KaTeX_Main-Regular-Dr94JaBh.woff                30.77 kB
+dist/assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf              31.19 kB
+dist/assets/KaTeX_Math-Italic-flOr_0UB.ttf                  31.30 kB
+dist/assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf              32.96 kB
+dist/assets/KaTeX_AMS-Regular-DMm9YOAa.woff                 33.51 kB
+dist/assets/KaTeX_Main-Italic-3WenGoN9.ttf                  33.58 kB
+dist/assets/KaTeX_Main-Bold-waoOVXN0.ttf                    51.33 kB
+dist/assets/KaTeX_Main-Regular-ypZvNtVU.ttf                 53.58 kB
+dist/assets/KaTeX_AMS-Regular-DRggAlZN.ttf                  63.63 kB
+dist/assets/retrieval-learning-explorer-DHIUvSbu.css         1.36 kB │ gzip:   0.53 kB
+dist/assets/memory-workload-explorer-wHNFBmhn.css            1.44 kB │ gzip:   0.52 kB
+dist/assets/data-lineage-explorer-J4TDY-DW.css               1.51 kB │ gzip:   0.54 kB
+dist/assets/model-lifecycle-DiuAWFgX.css                     1.52 kB │ gzip:   0.63 kB
+dist/assets/closed-loop-ODr1OuoE.css                         1.56 kB │ gzip:   0.60 kB
+dist/assets/learning-map-BvN0Vgqg.css                        1.62 kB │ gzip:   0.61 kB
+dist/assets/ai-family-explorer-CjkjinsC.css                  1.66 kB │ gzip:   0.67 kB
+dist/assets/model-lifecycle-serving-DvO7KX84.css             1.70 kB │ gzip:   0.68 kB
+dist/assets/matrix-network-YIRBWOMm.css                      1.78 kB │ gzip:   0.59 kB
+dist/assets/model-lifecycle-distributed-CieFQl9k.css         1.90 kB │ gzip:   0.61 kB
+dist/assets/automation-explorer-pZUYyF-0.css                 1.93 kB │ gzip:   0.63 kB
+dist/assets/foundation-explorer-DofvRqvU.css                 2.29 kB │ gzip:   0.87 kB
+dist/assets/process-mechanism-1gCgwnz9.css                   3.32 kB │ gzip:   1.07 kB
+dist/assets/decoder-projection-B3ZhEnMo.css                  3.33 kB │ gzip:   1.03 kB
+dist/assets/factory-execution-DyCmNUr_.css                   4.67 kB │ gzip:   1.55 kB
+dist/assets/ranking-application-DaamO6Ni.css                 5.08 kB │ gzip:   1.60 kB
+dist/assets/process-cell-acceptance-D9Z26G8_.css             5.74 kB │ gzip:   1.76 kB
+dist/assets/commissioning-execution-JgSIFure.css             6.24 kB │ gzip:   1.74 kB
+dist/assets/hardware-reliability-Da-F-ojp.css                6.30 kB │ gzip:   1.60 kB
+dist/assets/numeric-workbench-zr4sIq8-.css                   6.95 kB │ gzip:   1.72 kB
+dist/assets/machine-execution-Bee8UVRv.css                   7.32 kB │ gzip:   2.00 kB
+dist/assets/engineering-studio-BH_Zlt6p.css                  7.43 kB │ gzip:   2.10 kB
+dist/assets/investigations-C0pOLDD-.css                      8.54 kB │ gzip:   2.16 kB
+dist/assets/equation-C7GNpW_k.css                           29.38 kB │ gzip:   7.93 kB
+dist/assets/index-0AWf6N-u.css                              86.97 kB │ gzip:  18.19 kB
+dist/assets/model-lifecycle-data-PKKuJH9Z.js                 1.84 kB │ gzip:   1.08 kB
+dist/assets/studio-primitives-C6j8o8sp.js                    3.32 kB │ gzip:   1.35 kB
+dist/assets/process-spatial-o0HwqSrE.js                      3.38 kB │ gzip:   1.71 kB
+dist/assets/automation-fixtures-DpI4pPgR.js                  3.80 kB │ gzip:   1.69 kB
+dist/assets/numeric-labs-BEBtIEeg.js                         4.19 kB │ gzip:   2.04 kB
+dist/assets/equations-process-cell-learning-CaraupCw.js      4.54 kB │ gzip:   1.73 kB
+dist/assets/reference-system-CWPh44tD.js                     4.61 kB │ gzip:   2.32 kB
+dist/assets/portable-experiment-ByEsd42Z.js                  6.01 kB │ gzip:   2.34 kB
+dist/assets/investigation-models-CnqenI35.js                 7.53 kB │ gzip:   3.34 kB
+dist/assets/numeric-math-DyWTxlHL.js                         8.43 kB │ gzip:   3.71 kB
+dist/assets/hardware-reliability-BzjGlq3G.js                 8.95 kB │ gzip:   3.96 kB
+dist/assets/architecture-execution-CRzC8Orj.js               9.13 kB │ gzip:   3.19 kB
+dist/assets/foundation-models-xVdK5N3f.js                    9.16 kB │ gzip:   4.04 kB
+dist/assets/investigation-scene-DGEoRfvM.js                 10.15 kB │ gzip:   4.78 kB
+dist/assets/operating-hall-B0pRAVgV.js                      10.38 kB │ gzip:   3.76 kB
+dist/assets/orbital-mission-CMcsI8-X.js                     10.60 kB │ gzip:   3.92 kB
+dist/assets/specimen-comparison-DogORCO7.js                 10.73 kB │ gzip:   3.90 kB
+dist/assets/realization-explorer-D2UflVxG.js                11.12 kB │ gzip:   4.20 kB
+dist/assets/sensor-application-ZMtgjirQ.js                  11.42 kB │ gzip:   4.02 kB
+dist/assets/fabrication-explorer-TkOHZiIn.js                11.45 kB │ gzip:   4.08 kB
+dist/assets/memory-explorer-Cjhq-3Fu.js                     11.50 kB │ gzip:   4.22 kB
+dist/assets/engineering-studio-BYzLNN-i.js                  11.92 kB │ gzip:   3.39 kB
+dist/assets/commissioning-execution-Bz6FbBpU.js             12.04 kB │ gzip:   4.83 kB
+dist/assets/architecture-execution-M7SCdff2.js              12.51 kB │ gzip:   5.45 kB
+dist/assets/automation-learned-bridge-DUl6vbjH.js           12.78 kB │ gzip:   4.87 kB
+dist/assets/evaluation-report-C3uqyt0F.js                   12.87 kB │ gzip:   5.02 kB
+dist/assets/operating-hall-Bp78_arQ.js                      13.37 kB │ gzip:   4.53 kB
+dist/assets/machine-execution-CmcvA36r.js                   13.93 kB │ gzip:   5.85 kB
+dist/assets/application-decisions-8Cw7LiEf.js               15.00 kB │ gzip:   6.07 kB
+dist/assets/memory-interfaces-CmHCo04u.js                   15.26 kB │ gzip:   6.14 kB
+dist/assets/lab-oXl5lqsM.js                                 15.58 kB │ gzip:   5.76 kB
+dist/assets/evaluated-applications-Zjy16bWs.js              16.97 kB │ gzip:   5.13 kB
+dist/assets/model-lifecycle-distributed-De_LQcms.js         17.76 kB │ gzip:   5.95 kB
+dist/assets/retrieval-learning-explorer-CtXGH-hx.js         18.46 kB │ gzip:   5.99 kB
+dist/assets/model-lifecycle-workspace-BmTlw2yD.js           18.82 kB │ gzip:   7.28 kB
+dist/assets/commissioning-execution-D_OS9hXj.js             19.28 kB │ gzip:   6.50 kB
+dist/assets/closed-loop-DtDOt1hP.js                         20.87 kB │ gzip:   7.30 kB
+dist/assets/model-lifecycle-distributed-CPGvmKCj.js         20.89 kB │ gzip:   6.95 kB
+dist/assets/hardware-reliability-BzTDLG9V.js                21.00 kB │ gzip:   6.19 kB
+dist/assets/deep-workbench-CE9hcAGt.js                      21.34 kB │ gzip:   8.98 kB
+dist/assets/foundation-explorer-D9u3MkzA.js                 21.39 kB │ gzip:   6.85 kB
+dist/assets/model-lifecycle-fum7EIzt.js                     22.03 kB │ gzip:   7.45 kB
+dist/assets/numeric-workbench-DIldtyNf.js                   22.73 kB │ gzip:   7.94 kB
+dist/assets/matrix-network-CBgXqKrx.js                      22.98 kB │ gzip:   8.16 kB
+dist/assets/machine-execution-D8rZEnFV.js                   24.47 kB │ gzip:   7.89 kB
+dist/assets/process-cell-acceptance-BeX2UWR4.js             28.31 kB │ gzip:   9.97 kB
+dist/assets/ranking-application-CgwageKZ.js                 29.62 kB │ gzip:   9.99 kB
+dist/assets/memory-workload-explorer-D19w_uwW.js            29.72 kB │ gzip:  10.80 kB
+dist/assets/decoder-projection-C9XI5xV1.js                  30.07 kB │ gzip:  10.60 kB
+dist/assets/ai-family-explorer-B0MKb3z8.js                  30.09 kB │ gzip:  10.47 kB
+dist/assets/data-lineage-explorer-D-X9m-hy.js               33.10 kB │ gzip:  10.93 kB
+dist/assets/investigations-D0ij00bV.js                      35.36 kB │ gzip:  12.22 kB
+dist/assets/model-lifecycle-serving-BojRIiMT.js             37.44 kB │ gzip:  12.61 kB
+dist/assets/factory-execution-Dmois95n.js                   39.39 kB │ gzip:  13.87 kB
+dist/assets/atlas-scene-g57H6m9Y.js                         40.36 kB │ gzip:  15.62 kB
+dist/assets/automation-explorer-BylDaihH.js                 40.97 kB │ gzip:  12.79 kB
+dist/assets/progress-evidence-DQVcTB_u.js                   62.34 kB │ gzip:  17.45 kB
+dist/assets/studio-record-D-GQtfz9.js                       76.67 kB │ gzip:  27.63 kB
+dist/assets/process-mechanism-BXpJl8B4.js                   78.15 kB │ gzip:  22.21 kB
+dist/assets/global-atlas-B-G9zxjV.js                       124.88 kB │ gzip:  53.26 kB
+dist/assets/learning-map-CRuv-ISI.js                       140.73 kB │ gzip:  31.42 kB
+dist/assets/science-panel-Cq2wIiia.js                      212.72 kB │ gzip:  59.34 kB
+dist/assets/equation-Cs4kxv2a.js                           259.91 kB │ gzip:  77.90 kB
+dist/assets/OrbitControls-CKEmeXz2.js                      503.08 kB │ gzip: 127.08 kB
+dist/assets/index-MLiyZCuQ.js                            1,383.11 kB │ gzip: 337.31 kB
+
+✓ built in 2.38s
+
+> ai-machinery-atlas@1.2.0 validate:content
+> node --experimental-strip-types scripts/validate-atlas.mjs && node scripts/validate-science.mjs && node docs/curation/validate-curation-manifest.mjs
+
+Missing records: [] Unassigned: []
+PASS: 311 complete lessons; 82 branches; 21 connected paths; geometry/isolation and numerical invariants.
+PASS: prerequisite DAG, relationship references, claim provenance and baseline preservation.
+2117/2117 scientific checks passed: 335 math cards, 10 prose relationships.
+Curation validation passed: 311 lessons, 364 source URLs and 96 claims.
+✔ expert least squares recovers distinct known functions, without fitting a gate (3.749083ms)
+✔ routing weights and capacity account for every accepted, dropped and partially served input (21.5235ms)
+✔ recurrent state agrees with independently unrolled weighted inputs after each reset (2.587042ms)
+✔ local cross-correlations match independent pixel dot products and expose valid-boundary failure (18.894708ms)
+✔ patch attention normalizes actual dot products and returns the weighted patch vector (7.861ms)
+✔ DFT detects a coherent tone and reconciles energy through Hermitian symmetry (35.185583ms)
+✔ sampling alias is an actual equality of samples and Hann uses its declared symmetric endpoints (0.9065ms)
+✔ denoising training examples obey the closed-form forward process, independently of generation (166.265834ms)
+✔ noise regression selects stored neighbors by distance and averages their noise labels (0.199875ms)
+✔ reverse transitions obey the mean/variance equation and final transition adds no noise (115.410833ms)
+✔ held-out noise error has its own denominator and balanced target even after biased training (60.807291ms)
+✔ family records retain exact inputs, reject unsupported state and preserve older raw text (5.468041ms)
+✔ default and matching numeric seeds do not reuse calibration or evaluation noise draws (35.758584ms)
+✔ finite-chain normal prior remains an explicit approximation and neighbor scope follows controls (10.957417ms)
+✔ noise regression and expert fitting reject nonfinite examples rather than emitting NaN predictions (0.478375ms)
+✔ zero-phase DC and Nyquist sinusoids have no identifiable sampled tone (0.362667ms)
+✔ small linear solver agrees with a known independent solution (0.835416ms)
+✔ fitted ridge satisfies the independently accumulated objective stationarity (2.220541ms)
+✔ future distribution shift cannot change fitted parameters (5.752875ms)
+✔ multi-step rollout uses own predictions until the next origin (11.842459ms)
+✔ future-label oracle has perfect error but fails temporal validity (0.964291ms)
+✔ persistence and forecast use exactly the same target rows (0.495958ms)
+✔ two passing examples do not establish the clamp contract (3.8315ms)
+✔ correct clamp satisfies independent branch oracle over all 308 declared inputs (4.297292ms)
+✔ portable application inputs reject incompatible or unknown content (12.102042ms)
+✔ documented 2×2 result is exact in all four schedules (156.012417ms)
+✔ signed 3×3 result is exact with no zero-skipping (13.159125ms)
+✔ all 256 pairs of binary 2×2 matrices preserve the independently calculated result (361.366292ms)
+✔ every legal four-lane mask remaps all work for both sizes and array sizes (109.949291ms)
+✔ two- and eight-lane cases include interior holes and a single enabled slot (26.604958ms)
+✔ bounded signed inputs including ±99 remain exact without overflow (295.622542ms)
+✔ zero matrices complete zero-valued outputs and retain all required MACs (1.959875ms)
+✔ 2×2 analytical slot and traffic counts distinguish declared reuse (0.331125ms)
+✔ 3×3 on a 2×2 systolic array has four sequential tiles and edge padding (1.503416ms)
+✔ 3×3 on a 3×3 systolic array exposes seven ticks with fill and drain (1.44525ms)
+✔ larger array padding does not inject operands or invent outputs (0.61825ms)
+✔ systolic tokens move one neighbor and one tick before consumption (2.232625ms)
+✔ systolic arrival equation is independently consistent for every MAC (1.370459ms)
+✔ vector broadcasts one A per group while SIMT retains logical per-thread reads (0.80775ms)
+✔ edge slots and excluded interior slots remain distinguishable (1.1995ms)
+✔ one enabled vector/SIMT slot preserves full work without a false parallel speedup (1.901916ms)
+✔ lane controls do not alter scalar or systolic output or schedule (4.107709ms)
+✔ inputs round-trip without mutation and preserve deterministic schedules (5.442458ms)
+✔ invalid shapes, sparse entries, dimensions and unsafe arithmetic inputs reject (0.8065ms)
+✔ invalid lane/array controls reject rather than dropping mathematical work (0.358333ms)
+✔ trace boundary language explicitly excludes vendor timing and hardware occupancy (0.910125ms)
+✔ normal task actually consumes two units and creates one linked work order in both modes (23.377792ms)
+✔ normal timing is hand-derived from four services, proposals, validations, admission and review (7.466792ms)
+✔ queue delay changes latency without changing outputs or service work (141.038625ms)
+✔ duplicate delivery is queued and deduplicated without a second set of calls (14.503333ms)
+✔ approval is required before reservation service and a stale fingerprint is rejected without change (3.696667ms)
+✔ declined review stops before any write (6.179417ms)
+✔ schema validation rejects wrong types, extra fields, nonintegral quantities and unknown tools (0.752958ms)
+✔ schema failure consumes a proposal but no service; authored repair is an actual subsequent valid call (61.523375ms)
+✔ write authority is independent of a valid schema and leaves inventory unchanged (12.774917ms)
+✔ malicious retrieved instructions remain visible data; proposed export is denied outside the policy (13.539417ms)
+✔ a supported wrong-entity work order fails the independent goal oracle despite policy completion (7.711292ms)
+✔ server idempotency returns the original effect and rejects changed arguments under the same key (0.3015ms)
+✔ lost reply records caller uncertainty while the external write is already committed (2.544958ms)
+✔ fixed retry and authored receipt lookup both recover one committed reservation (156.561584ms)
+✔ cancel before a write prevents effects; cancel after commit preserves the existing effect (8.335834ms)
+✔ manual cancellation while awaiting approval does not manufacture approval or a result (5.903542ms)
+✔ the exact sufficient call budget succeeds, one fewer does not silently complete (11.42675ms)
+✔ all 18 mode/case combinations are deterministic and independent replay verifies every final environment (699.595167ms)
+✔ every live prefix, including approval and uncertain write, is a valid replayable archive (160.808625ms)
+✔ forged output, inventory, approval and reordered events are rejected by import (14.66425ms)
+✔ scenario and archive resource/identity bounds reject untrusted input (17.454667ms)
+✔ returned snapshots and archives do not alias live state (1.984875ms)
+✔ reload during approval preserves the exact pending action and still requires approval (11.92275ms)
+✔ failed intent journal write prevents the external tool from starting (14.880666ms)
+✔ failed external commit keeps both old inventory and the durable pending service intent (11.757083ms)
+✔ commit followed by failed result journaling survives reload and replays without duplicate effect (26.42ms)
+✔ timeout-journal failure also reconciles the already committed effect after reload (21.524833ms)
+✔ import prepares a new environment slot before switching active identity; failed head write retains old run (8.798625ms)
+✔ backup failure prevents both active replacement and import without losing live work (13.531542ms)
+✔ invalid old raw journal is retained exactly before a new run starts and recovery exports it (0.57ms)
+✔ malformed environment is exported as exact raw recovery and not silently discarded (0.308375ms)
+✔ corrupted result in imported archive never replaces the active journal (6.900208ms)
+✔ a stale second workspace cannot overwrite a newer journal or perform an external effect (0.57375ms)
+✔ removing exported recovery requires its unchanged exact raw value and never changes active work (0.419875ms)
+✔ future model-policy port records provenance and passes through the same runtime gates (0.389625ms)
+✔ uniform scores have independently known losses and normalized stable probabilities (2.224042ms)
+✔ mean pooling counts repeated tokens and drops unknowns without adding hidden features (0.121333ms)
+✔ both encoder analytic gradients match independent central finite differences (5.667792ms)
+✔ conditional decoder context, previous-token and bias gradients match finite differences (42.058042ms)
+✔ actual fitting changes weights and materially lowers both numerical objectives (1.441666ms)
+✔ split requests are disjoint and held-out strings never enter vocabulary fitting (1.792791ms)
+✔ same seed and options reproduce weights and inference without mutating a frozen artifact (283.016166ms)
+✔ learned alias retrieval differs from exact token-overlap baseline on the same fan-nine request (0.485209ms)
+✔ decoder really depends on context, while missing context can still generate learned biases (0.599458ms)
+✔ stale context can expose unsupported generated facts, and an authored revision gate abstains (2.507291ms)
+✔ unseen vocabulary maps to zero query, rather than an invented semantic embedding (29.806ms)
+✔ versioned handoff recomputes generated tokens and rejects altered claims, inputs and weights (45.479084ms)
+✔ invalid nonfinite or unbounded artifact and request shapes are rejected before execution (8.110959ms)
+✔ durable learned proposal survives reload before proposal and still awaits exact human approval (120.2095ms)
+✔ wrong but source-supported learned proposal reaches actual wrong environment and fails task oracle (179.842875ms)
+✔ authority remains outside fitted parameters and rejects a valid learned reservation (44.710042ms)
+✔ missing or stale learned contexts stop the outer workflow without proposing a write (212.096875ms)
+✔ changed runtime source text invalidates the frozen learned context before reservation (47.133791ms)
+✔ learned reservation lost reply recovers one effect with the original idempotency identity (123.237625ms)
+✔ failed learned result append preserves committed effect and reload resumes the same model (98.059167ms)
+✔ journal import rejects a proposal inconsistent with the frozen learned artifact (78.03875ms)
+✔ existing authored journal remains compatible and cannot silently acquire a learned null payload (0.386375ms)
+✔ an injected external adapter cannot override a frozen learned proposal (2.122958ms)
+✔ duplicate delivery and both cancellation boundaries retain the learned runtime invariants (346.908583ms)
+✔ import before the learned proposal restores the frozen policy rather than an authored fallback (86.293083ms)
+✔ backup failure while replacing a learned run leaves both the raw old head and live model unchanged (5.869375ms)
+✔ a schema fault after learned generation is rejected without claiming the model produced that type (33.306542ms)
+✔ authored reranking changes a lexical candidate choice without changing fitted weights or retrieval scores (1.05275ms)
+✔ entity rule preserves retrieval order on ambiguous or unrecognized requests and cannot invent a missing candidate (2.0935ms)
+✔ entity matching is literal authored syntax and does not pretend to understand negation (0.288167ms)
+✔ context interventions occur after the recorded reranking stage (1.083ms)
+✔ old three-field requests and explicit disabled reranking retain identical results and valid handoffs (8.598708ms)
+✔ reranking provenance and chosen context survive durable reload and remain subject to the task oracle (208.332ms)
+✔ reranking does not grant write authority or conceal tampered selection evidence (116.906417ms)
+✔ reranker request modes reject coercible array values and fitting rejects NaN rates (0.425708ms)
+✔ 25 substantive authored lessons cover five chapters with stable referenced IDs (13.914458ms)
+✔ proposed prerequisites have no cycles through the current authored corpus (0.545083ms)
+✔ all 25 science entries are explicitly classified with strict canonical KaTeX and units (219.814084ms)
+✔ 13 enrichments are append-only and preserve original science/check/prerequisites by contract (0.634417ms)
+✔ source references and explicit agent/date/scope records cover every new lesson without human-review claims (0.688167ms)
+✔ queue and idempotency worked ledgers conserve distinct deliveries and external units (0.485666ms)
+✔ serial trace and parallel dependency timing have independently derived answers (0.596791ms)
+✔ normalizer swap changes a frozen logistic function without changing weights (0.266625ms)
+✔ context, live-buffer and retrieval metric boundaries use the correct denominators (0.203125ms)
+✔ coordinated work has distinct elapsed/work and explicitly conditional success (0.45275ms)
+✔ document totals and independent code examples catch plausible but incorrect outputs (12.88025ms)
+✔ planar frame transform and stale-observation motion bound preserve units and orientation (0.357042ms)
+✔ path speed bounds and sampled feedback stability are derived from their declared models (0.199542ms)
+✔ action codec and speech timings do not confuse symbols, velocity, displacement or error ratios (0.079792ms)
+✔ ranking, forecast and physical residual examples independently reproduce their claimed values (0.156833ms)
+✔ robotics and model/protocol explanations do not claim mechanisms that are not executed by E5 (6.906334ms)
+✔ system identification recovers independently selected linear coefficients and rejects unidentifiable calibration (4.417625ms)
+✔ the declared physical transition uses current velocity and preserves state until the next sample (2.477708ms)
+✔ search enumerates every bounded sequence and selects the independently evaluated minimum feasible cost (1.042167ms)
+✔ episode transitions and observed timestamps reconcile without exposing true state to the controller (162.336458ms)
+✔ nominal planner and simpler feedback both settle; comparative denominators remain identical (28.378833ms)
+✔ delay, bad model and deadline failures are actual applied-action consequences (94.011208ms)
+✔ plant intervention does not train on episode truth or rewrite calibration (11.378542ms)
+✔ portable inputs round-trip, reject unknown/version/nonfinite state and do not mutate source text (0.492208ms)
+✔ compute allowance cannot exceed the physical sampling period (7.318833ms)
+✔ nominal delayed velocity estimate matches the observation timestamp and effort has action-squared time units (116.199667ms)
+✔ calibration rejects nonfinite, unbounded or duplicate-identity rows and record encoder rejects invalid source identity (0.612834ms)
+✔ default delivered operands yield eight MACs and the exact result (5.74775ms)
+✔ 256 binary matrix pairs match independent hand-calculated products (335.963625ms)
+✔ 480 commissioning, handoff and reset cases preserve ownership and work (692.995583ms)
+✔ ABI rejection precedes resources, submissions and DMA (10.869625ms)
+✔ virtual and device addresses converge on bytes without conflating namespaces (1.065125ms)
+✔ translation checks endpoints, direction, epoch, mask and ambiguous mappings (0.729583ms)
+✔ permitted wrong B mapping computes A squared without a protection exception (0.628625ms)
+✔ missing B supplies no arithmetic value and quiesces before returning ownership (0.354833ms)
+✔ omitted noncoherent input/output handoffs expose actual stale values (1.708917ms)
+✔ coherent data visibility preserves publication and lifetime requirements (3.728375ms)
+✔ early reuse rejection mutates neither cached nor memory buffer values (0.73275ms)
+✔ two-cell reset discards four MACs and retries with one publication (0.966375ms)
+✔ reset after any cell accounts even a fully written but uncommitted result (8.940209ms)
+✔ wrong-job, old-epoch, premature and duplicate completion records fail (1.371875ms)
+✔ signed extrema stay exact and snapshots own their mutable arrays (0.712458ms)
+✔ invalid fields, sparse matrices and record versions are rejected (1.305666ms)
+✔ saved replacement durably preserves incompatible raw text (8.762541ms)
+✔ backup failure retains active input and corrupt recovery remains exportable (0.459042ms)
+✔ runtime lesson pack has five complete linked lessons and eight valid canonical math cards (982.510208ms)
+✔ authored lesson numerical claims agree with the executable specimens (16.868334ms)
+✔ connected footage retains captured pixels, exact build evidence and the delivered video (16.583583ms)
+✔ every captured experience has a current canonical destination and a readable alternative (1430.115875ms)
+✔ family assignment precedes transformations and never divides a known family (171.939041ms)
+✔ naive document splitting produces an actual cross-split exact duplicate that grouping prevents (73.42175ms)
+✔ normalization changes duplicate evidence without erasing originals or changing family IDs (42.041375ms)
+✔ near score counts shared three-word shingles instead of declaring semantic equivalence (6.599209ms)
+✔ deduplication removes repeated training pairs only and preserves a retained lineage pointer (42.638834ms)
+✔ hand-counted BPE replaces two ab pairs and adds exactly one content symbol (1.224541ms)
+✔ overlapping pair counts differ from applications and ties use numeric symbol IDs (6.2365ms)
+✔ merge training never crosses field boundaries or accepts held-out fields (2.38ms)
+✔ base bytes reconstruct unseen UTF-8 text without injecting structural tokens (0.453417ms)
+✔ encoded documents have structural boundaries and correct shifted response targets (0.453208ms)
+✔ sampler epochs are permutations and a saved cursor reconstructs uninterrupted draws (0.17575ms)
+✔ hand-constructed packing masks prompts, cross-document EOS targets and padding (4.5555ms)
+✔ packing retains every shifted target across blocks without admitting future context (219.2995ms)
+✔ repeated samples of a source document remain isolated packed instances (5.302084ms)
+✔ portable manifests reconstruct actual merges, splits, indices and masked blocks (220.624833ms)
+✔ strict records reject unknown fields, invalid indices/modes, byte size and source identity (16.6325ms)
+✔ the BPE experiment leaves the actual fixed nine-token lifecycle contract unchanged (10.630708ms)
+✔ actual trained checkpoint identity, normalized operands and decoder query slice are preserved (36.718875ms)
+✔ all six inner coordinates are used; a checkpoint with only the second half of WQ nonzero remains nonzero (5.014ms)
+✔ query weight orientation and token positions match exact source coordinates, including development prompts (103.152417ms)
+✔ symmetric nearest rounding is ties-away-from-zero and zero is exactly represented (0.281459ms)
+✔ quantization bound is independently checked over signed finite tile values (23.105ms)
+✔ actual machine MAC operands decode from the exact named signed-int32 little-endian payload (33.566042ms)
+✔ two integer products rescale independently before addition; scales and errors have independent references (18.164167ms)
+✔ integer range changes precision but never machine word size, MAC count or transfer denominators (33.304917ms)
+✔ bank, buffering and refresh controls change the machine schedule without changing query arithmetic (147.654958ms)
+✔ unmapped second tile has no accepted projection, fabricated error metric or combination event (4.812667ms)
+✔ event order disambiguates equal timestamps and exposes local versus joined clocks (25.893584ms)
+✔ zero query weights produce a zero reference, zero output, and undefined relative error (6.1165ms)
+✔ full trained checkpoint and exact selection roundtrip above 20k; outputs are recomputed (29.85975ms)
+✔ source exposure remains disclosed and final-test prompts cannot be selected (112.236292ms)
+✔ strict selection and envelope reject unknown fields, missing fields, bounds and model drift (21.19425ms)
+✔ source holes, erased values, invalid weights and oversized UTF-8 imports fail without mutation (9.999375ms)
+✔ word and tile helpers reject invalid shapes, nonintegers and sparse arrays (0.931375ms)
+✔ quantization error bounds hold across source seeds, training and development choices (191.511875ms)
+✔ wafer dimensions, zero defects and monotone losses (2.45525ms)
+✔ optical scaling preserves dimensions and independent powers of NA (0.32375ms)
+✔ CMP bounds retain local differences and expose overpolish (0.189583ms)
+✔ screened input yield and empirical HBM ratios do not double-count incoming losses (2.181708ms)
+✔ component normalization identifies the binding package stream (1.183125ms)
+✔ ramp conserves units, inventories and cumulative unmet demand (0.415125ms)
+✔ tiling changes modeled bytes without changing arithmetic (0.2575ms)
+✔ KV storage scales with concurrency, not parameter count (1.997791ms)
+✔ a one-rank collective requires no network traffic (0.300084ms)
+✔ power boundary and readiness constrain hall work (0.281875ms)
+✔ orbital heat, energy and links retain independent physical limits (0.625709ms)
+✔ fixed development is amortized by volume, and recovery losses are bounded for display (0.376625ms)
+✔ one-element GEMM has the same input and output boundary in all traffic models (0.259584ms)
+Entry JS: 333706 gzip bytes (level 9; local file measurement)
+✔ compressed entry JavaScript stays below the 350 kB budget (231.851708ms)
+✔ every authored lesson is independently loaded and content addressed (1186.004833ms)
+✔ build identity carries independent source, content and model identity (0.506958ms)
+✔ four additive lessons form one existing-domain chapter with valid identifiers and no prerequisite cycles (34.50225ms)
+✔ every lesson has substantive scoped explanation, worked content and multiple answerable checks (0.751791ms)
+✔ eight canonical equations render strictly and pair with populated scientific assumptions and variable units (23.132667ms)
+✔ all lesson source references are covered by scoped, actually dated agent checks without invented human review (0.274333ms)
+✔ pack evidence cards preserve source identity, applicable lessons and explicit non-performance limits (0.170833ms)
+✔ inner-dimension partials independently reconstruct the exact matrix and both receive layouts (0.305291ms)
+✔ the explicit two-phase exchange transports the correct row once at the sender boundary (0.136416ms)
+✔ different contracted-axis partitions preserve products across signed small matrix specimens (44.792875ms)
+✔ global gradient follows the actual eight-item squared-error objective and agrees with finite differences (13.347125ms)
+✔ sample-weighted rank means equal flattening for uneven groups; unweighted rank means need not (1.253458ms)
+✔ binary32 cancellation trace and reference error use two independent rounding mechanisms (0.680208ms)
+✔ binary32 spacing and ties-to-even are checked on both sides of the power-of-two boundary (0.145791ms)
+✔ speculative sampling recovers the exact toy target rather than accepting the draft unconditionally (0.59ms)
+✔ correction mass preserves target distributions across support gaps, equality and a simplex grid (2.227416ms)
+✔ iid output counts include the correction/bonus and handle zero and perfect acceptance (0.391334ms)
+✔ throughput uses separately assumed round times and can reverse the apparent acceleration (0.117209ms)
+✔ authored splits are explicit, finite, unique and contain independent correlation-breaking sensor examples (1.127542ms)
+✔ training-only normalization and every batch step match independent scalar reference for feature and regularization controls (33.810833ms)
+✔ analytic mean cross-entropy plus L2 gradient agrees with independent central differences; bias is unpenalized (0.316375ms)
+✔ changing held-out features and labels never changes normalization, gradient or fitted parameters (8.014125ms)
+✔ decision threshold changes decisions and display trace, but never fitting or cross-entropy (2.443542ms)
+✔ zero-step initial state is explicit and stable logistic loss handles extreme finite logits (0.384334ms)
+✔ default objective falls at each observed step; temperature-only failure is counted on shifted examples (6.721959ms)
+✔ confusion matrix denominators agree with hand-counted examples and undefined rates are null (1.015375ms)
+✔ sensor hypothetical cost is reproducible and cannot alter quality or fitted parameters (1.87ms)
+✔ sensor top-level validation rejects bad controls, overlap and degenerate training features (0.682583ms)
+✔ index IDF and every tuning/evaluation cosine score match independent dense-vector reference (15.55225ms)
+✔ term tokenization, repeated counts, unknown terms and empty-query score rules are explicit (17.764458ms)
+✔ topK and minimum similarity filter actual scores before answer selection (17.169833ms)
+✔ default closed-corpus support differs from task correctness on the wrong-entity question (11.770541ms)
+✔ an exact copied fact is insufficient when citation document, quote, response text or typed value is corrupted (0.342541ms)
+✔ abstention correctness uses answer availability, with null support when no answer is produced (0.146292ms)
+✔ first-passage policy yields all supported answers but fails the two unanswerable cases (15.212083ms)
+✔ threshold calibration is reproducible from tuning labels only, with explicit tie-breaking (32.161792ms)
+✔ answer construction is independent of expected labels while grading responds to changed labels (12.415875ms)
+✔ retrieval resource inputs affect only the hypothetical budget and match counted trace work (2.339916ms)
+✔ retrieval validation rejects invalid controls and broken references (1.45ms)
+✔ both applications accept frozen inputs, have deterministic JSON-safe output and resolve saved options (24.282916ms)
+✔ calibration uses a separate cohort and changes no trained parameter (66.54875ms)
+✔ threshold changes decisions without changing probability or fit identity (7.000875ms)
+✔ metric reference explicitly counts denominator and bins (1.194916ms)
+✔ zero accepted denominator is unavailable rather than perfect (3.653625ms)
+✔ a new sample ID does not conceal duplicated source-family identity (2.090291ms)
+✔ calibration bins use observed positive frequency, not classification accuracy (0.204917ms)
+✔ record reproduces artifacts and rejects altered results or configuration (5.481916ms)
+✔ evaluation update bounds agree with the underlying 80-step sensor model (2.96225ms)
+✔ baseline independently checks dimension conversion, stage identity, and accepted denominators (15.851958ms)
+✔ every complete square die fits the usable disk; cohorts conserve the population (17.338667ms)
+✔ oxidation moves both boundaries, whereas deposition adds material above the grown oxide (5.573417ms)
+✔ latent image preserves physical material; development removes resist while target stays intact (0.819209ms)
+✔ etch budget closes target, mask and stop consumption under the declared exposure (0.92875ms)
+✔ mask exhaustion propagates a failure without negative solids or a successful requested profile (0.373709ms)
+✔ inspection preserves geometry and selected cohort does not alter lot output (2.389625ms)
+✔ interval containment distinguishes supported pass, ambiguous review and definite failure (2.732542ms)
+✔ uncertainty and tolerance change acceptance, never the actual material geometry (8.841875ms)
+✔ the initial defect yield is not recharged to screened inputs during assembly (0.658125ms)
+✔ route geometry, geometric registration and electrical evidence remain distinct (0.743125ms)
+✔ missing or failed scoped qualification cannot be replaced by inspection or increased supply (1.304125ms)
+✔ all scalar extremes produce finite state, valid regions and bounded accepted output (20.645875ms)
+✔ input rejection is strict and evaluation is pure and reproducible (9.211292ms)
+✔ a translated hybrid upper die carries its dielectric surface with it (0.352917ms)
+✔ actual three-update result agrees with independent centralized objective and optimizer (43.145667ms)
+✔ carried trained source retains actual optimizer, RNG and exposure with no mutation (2007.621042ms)
+✔ hall power adapter matches existing model at all three physical power boundaries (1.278958ms)
+✔ baseline wall time and energy follow a hand-derived exclusive schedule (0.241917ms)
+✔ default partial-write recovery replays exactly two lost optimizer updates (0.613625ms)
+✔ all fault modes and checkpoint cadences preserve accounting and exact replay (7647.4435ms)
+✔ whole-job stop leaves only the earlier valid artifact and never publishes (317.409791ms)
+✔ partial checkpoint bytes and a fully written uncommitted checkpoint cannot replace old state (227.336166ms)
+✔ a completed earlier checkpoint restores weights, moments, cursor and RNG together (480.205167ms)
+✔ incomplete rank barrier leaves model and optimizer unchanged (0.853791ms)
+✔ rank failure counts finished gradients, separate partial elapsed slots, and concurrent wall time (570.878958ms)
+✔ slower rank changes the schedule and energy but not model state or payload (424.97325ms)
+✔ network throughput changes only serialization time; payload is counted once at transmission (227.2795ms)
+✔ checkpoint capacity accounts for old and new versions without deleting the old artifact (282.68125ms)
+✔ admission and runtime failures prevent actual model execution (310.535125ms)
+✔ every exported committed artifact is an actual compatible full numerical checkpoint (121.239125ms)
+✔ time cursor integrates partial traffic and energy without claiming a completed event early (2.288875ms)
+✔ strict inputs reject invalid dimensions, unknown fields and altered model identities (2.532792ms)
+✔ full portable workspace restores its trained source rather than silently restarting from seed (23.009917ms)
+✔ procedural final-test exposure survives older factory workspace restoration through shared journal (128.195666ms)
+✔ checkpoint preserves actual gradient ownership, owner optimizer slices and gathered replicas (28.14375ms)
+✔ tensor contraction agrees with independently enumerated reference and trace conservation (5.684ms)
+✔ rotating singular directions preserves discarded norm and matrix symmetry (0.560292ms)
+✔ stable likelihood, shift invariance and independent finite-difference derivatives (0.519375ms)
+✔ miniature float ties, subnormal transition, sign and overflow are explicit (1.948ms)
+✔ enumerated sampling distribution matches Bernoulli mean and variance (2.845ms)
+✔ confounded treatment contrast differs from authored effect and missing support stays visible (0.490792ms)
+✔ fitted stumps learn a reserved task and fail a changed relationship (4.586292ms)
+✔ graph aggregation is node permutation equivariant and edge sensitive (6.9235ms)
+✔ search preserves board and discovers terminal action independently of leaf heuristic (0.689083ms)
+✔ large common logits preserve nonzero cross entropy without catastrophic cancellation (0.214ms)
+✔ foundation record boundary rejects unknown fields, missing fields and invalid indices (0.849791ms)
+✔ Gray pointer cycle changes exactly one bit and decodes all eight states (0.955875ms)
+✔ default FIFO delivers all eight tagged values with conservative full/empty stalls (23.707458ms)
+✔ 360 clock/backpressure/reset scenarios retain exact ordering and cancellation accounting (81.914542ms)
+✔ simultaneous edges sample pre-edge opposite-domain pointers (0.235666ms)
+✔ coordinated reset cancels outstanding tags instead of claiming their delivery (0.234625ms)
+✔ reader-only reset produces an actual out-of-order counterexample (0.146792ms)
+✔ a short horizon reports remaining tags rather than declaring completion (0.182667ms)
+✔ all 16 valid codewords have zero checks and recover their four data bits (0.552334ms)
+✔ all 128 single-bit errors are corrected, including the overall parity bit (1.726292ms)
+✔ all 448 double-bit errors are detected and never supplied to the consumer (3.4335ms)
+✔ code construction agrees with a separately specified parity matrix (0.196666ms)
+✔ three-bit fixture can be miscorrected and its oracle mismatch remains explicit (0.427459ms)
+✔ double error restores a trusted checkpoint and recomputes lost work exactly once (0.203167ms)
+✔ recovery ledger holds for every fault step, checkpoint interval and payload (32.086458ms)
+✔ stop policy exposes completed versus checkpointed work and publishes no final result (0.143292ms)
+✔ healthy and correctable words need no restart (0.152875ms)
+✔ input and snapshots are copied; records restore only matching model identity (0.341291ms)
+✔ invalid clocks, reset bounds, bit patterns and sparse arrays reject (0.411334ms)
+✔ all codeword pairs establish minimum distance four (0.2245ms)
+✔ incompatible raw reliability records survive replacement exactly (0.251417ms)
+✔ backup quota failure preserves the prior active reliability record (0.254667ms)
+✔ corrupt recovery storage remains exportable and cannot be overwritten by save (0.135333ms)
+✔ selected HBM assembly route overrides shared stack geometry (0.746375ms)
+✔ all memory process stages retain learning links and inspection context (0.199ms)
+✔ every new science equation renders authored mathematics with symbol definitions (99.13825ms)
+✔ HBF numerical disclosure stays an announcement with a scoped dated source (1.844917ms)
+✔ manufacturing applies screened input yield once, then stack and package survival (5.866875ms)
+✔ changing stack count propagates capacity, height and compatibility across the same system (1.019292ms)
+✔ memory supply increase moves a constraint and does not increase output beyond the next station (0.586833ms)
+✔ residency conserves weight and KV bytes, HBF receives only read-only weights (1.199541ms)
+✔ all four-bit additions preserve carry and exact arithmetic (5.634875ms)
+✔ switch model conserves charge-step energy and load scaling (0.159416ms)
+✔ attention computation normalizes probabilities, masks future tokens and reconstructs the weighted value (0.35075ms)
+✔ scenario import restores deterministic outputs and rejects malformed state (1.284625ms)
+✔ damaged browser cases do not erase independent valid attempts (1.067583ms)
+✔ static memory fit does not imply append capacity; a smaller working set restores a runnable step (1.015291ms)
+✔ conflicting imports retain the original first attempt and displaced practice (1.169792ms)
+✔ facets keep every canonical lesson once and every link within the atlas (6.159625ms)
+✔ lifecycle is independent of physical band and exposes exact executable scope (0.366709ms)
+✔ lifecycle URL round-trips without changing lesson or marking learning complete (0.562167ms)
+✔ connected artifacts require an explicit executable entry and round-trip route (1.407208ms)
+✔ legacy progress migrates only when the question and option ordering are unchanged (1.192584ms)
+✔ new progress retains revision and rejects a reinterpreted answer (0.223375ms)
+✔ malformed answers and future versions do not become completed checks (0.280833ms)
+✔ every generated lesson satisfies all reader field contracts (121.514709ms)
+✔ matching identity cannot conceal malformed nested renderer data (0.592541ms)
+✔ signed default connects exact arithmetic to completed host-owned output (11.341917ms)
+✔ every bounded geometry and timing combination preserves commands, ownership and output (891.839708ms)
+✔ all binary 2×2 operand pairs agree with independent BigInt multiplication (124.576125ms)
+✔ extreme signed entries and zero-valued completed results remain exact (6.493375ms)
+✔ global layout changes traffic without changing mathematics (6.957584ms)
+✔ two staging slots overlap DMA and compute; one slot cannot (3.734125ms)
+✔ shared padding can add conflicts while memory still dominates elapsed time (6.529291ms)
+✔ same-address reads broadcast rather than becoming bank conflicts (1.167ms)
+✔ refresh occurs at legal boundaries and preserves data (3.439167ms)
+✔ unsafe consumption and slot reuse are rejected without corrupting safe work (7.602375ms)
+✔ missing input mapping blocks before any partially authorized DMA batch (2.166875ms)
+✔ range mapping distinguishes device addresses, physical addresses and permissions (0.68475ms)
+✔ synthetic byte address fields reconstruct every address in the declared space (0.393625ms)
+✔ state snapshots are independent and a time cursor includes all same-time effects (0.523375ms)
+✔ normalization rejects unknown fields, invalid controls and unsafe matrices (0.502167ms)
+✔ inputs and model-bound records round-trip without mutation (2.776375ms)
+✔ saving preserves incompatible raw input before replacing the active record (0.26125ms)
+✔ backup failure leaves the incompatible active record intact (0.304375ms)
+✔ multiple older inputs export their exact raw strings (0.188792ms)
+✔ unreadable recovery storage is exportable verbatim and blocks destructive save (0.134334ms)
+✔ the 2x2 source bytes, word identities and consumer dot products agree with hand arithmetic (10.772459ms)
+✔ signed little-endian conversion is independently checked at negative and sign-boundary values (0.298833ms)
+✔ independent column accumulation agrees for each specimen, tensor, flit width, credit count and delay boundary (93.008917ms)
+✔ single-credit timing has an independent stop-and-return recurrence (0.597833ms)
+✔ enough credits pipeline one flit per tick without equating injection width and latency (0.287458ms)
+✔ receiver pause retains finite slots and return latency blocks send until the credit arrives (0.573958ms)
+✔ receiver interval is evaluated on declared absolute eligible ticks (1.078541ms)
+✔ partial last slot padding never creates extra destination bytes or trainable operands (3.097ms)
+✔ each omitted segment leaves the exact destination hole, no MAC and all credits recovered (14.581042ms)
+✔ wrong transfer and tensor identity is rejected without copying any of that segment (0.40725ms)
+✔ duplicate delivery costs another slot but writes each identified destination byte only once (19.468792ms)
+✔ actual consumer completeness gate refuses every incomplete prefix including legitimate zero bytes (0.644625ms)
+✔ premature fixture invokes the same byte gate and computes only after identified assembly (1.083375ms)
+✔ valid identity with altered payload feeds wrong real operands rather than the reference matrix (0.476375ms)
+✔ consumer start is tied to destination readiness, while trailing credits can drain concurrently (1.018958ms)
+✔ all failure modes remain bounded at slow-link, slow-service, long-pause and flit-count extremes (64.943083ms)
+✔ record import is strict, bounded and recomputes source identity rather than trusting supplied outputs (17.84425ms)
+✔ invalid choices and cross-field fault indices cannot trigger giant or ambiguous simulations (0.503167ms)
+✔ mutation of a returned snapshot cannot change other snapshots, presets or replay (7.712875ms)
+✔ the adapter preserves every existing stack, thermal and workload boundary without a second parameter set (12.5095ms)
+✔ stack layers partition the existing height exactly and selecting a bit selects precisely one die (0.743084ms)
+✔ route changes use the existing gaps and thermal model, while hybrid receives no solder-strain inference (1.495458ms)
+✔ thermal/mechanical indicator has correct ppm, mm and micrometre conversion and scales with the declared excursion (1.743208ms)
+✔ known-good, post-bond, and qualification evidence remain separate from modeled survival (1.2445ms)
+✔ residency conserves weights and mutable KV; HBF is read-only and remote HBM staging closes once (1.258375ms)
+✔ static capacity and one-step execution recovery retain current atlas behavior (10.708083ms)
+✔ the context rejects inconsistent capacity, screened denominators and mutable flash; evaluation is pure (2.513917ms)
+✔ selected stack and bit trace connect to declared HBM residency without changing capacity or local address fields (0.426042ms)
+✔ the declared organization closes bytes, words, cells and each address stride (2.263167ms)
+✔ addresses beyond 32 bits survive exact round trips, including a 12-die non-power-of-two population (11.817625ms)
+✔ a bit selector changes the cell bit, never its byte address or physical mapping fields (0.415958ms)
+✔ changing one address field leaves all other decoded fields invariant (0.313458ms)
+✔ row access distinguishes cold activation, row hits, row conflicts and independent bank state (0.637375ms)
+✔ inputs reject aliases, incomplete documents, non-integers, nonfinite numbers and out-of-window addresses (0.6175ms)
+✔ equal bank addresses on different HBM stacks have independent open rows (0.264833ms)
+✔ actual two-matrix byte path gives hand-derived C and excludes padding from payload identity (88.57525ms)
+✔ 32-bit little-endian identity handles negative values and the sign boundary exactly (0.500625ms)
+✔ extended Hamming bit placement agrees with hand-derived payload 9 codeword (0.361625ms)
+✔ every one-bit error in every nibble returns the exact original word; all same-codeword pairs are detected (102.387667ms)
+✔ geometric and synthetic evidence failures block admission before staging, commands or MACs (151.305625ms)
+✔ positive contact overlap changes geometry without inventing timing or error-rate effects (22.016333ms)
+✔ selected die changes only the explicit stack-address translation, not synthetic machine banks or words (13.626625ms)
+✔ the payload allocation gate requires complete padded A/B/C allocations for all source tiers (10.154958ms)
+✔ remote staging copies the identical padded B bytes and serially shifts the machine boundary by hand-derived time (8.728583ms)
+✔ one injected data bit is corrected on every actual repeated selected-word read (3.478625ms)
+✔ detected double data error stops before affected compute and publishes no output or future events (15.618333ms)
+✔ unchecked faulty data changes C through actual operand values, matching a separate BigInt multiplication (93.605625ms)
+✔ three flips can report correction while still corrupting the same consumer output (8.25625ms)
+✔ int32 output store narrowing is explicit and matches independent BigInt modulo arithmetic (2.982208ms)
+✔ refresh changes commands and latency but never repairs the deliberately persistent fault (9.560291ms)
+✔ observed refresh time clips a straddling reservation and never counts future service (0.323667ms)
+✔ all double-fault stopped prefixes account only observed refresh and publish explicit machine/joined clocks (261.239834ms)
+✔ healthy bridge agrees with exact original machine consumer over schedule and placement combinations (428.031791ms)
+✔ every original word and nibble can be corrected without changing the bounded matrix result (904.965042ms)
+✔ strict portable input records round trip and reject forged identities or invalid fields before applying (12.157416ms)
+✔ returned states, byte ledgers and reference matrices cannot mutate a subsequent replay (28.252917ms)
+✔ all approved 37 new and 15 deepened IDs have exactly one disposition and canonical addition (1.533667ms)
+✔ new records are substantive and all checks have a declared valid answer (1.024709ms)
+✔ eight chapters have stable domains and exact nonoverlapping new-lesson ownership (0.140125ms)
+✔ combined authored prerequisites are valid, non-self, duplicate-free and acyclic (1.496291ms)
+✔ all equations strictly render with notation and no original entries are copied into additions (250.643458ms)
+✔ source claims reference existing lessons and checked primary locators without invented human review (3.499667ms)
+✔ learners see scope, not leaked authoring or implementation directions (0.627667ms)
+✔ deduplication and mixture examples retain different item and exposure denominators (0.149208ms)
+✔ packing and unequal microbatch examples demonstrate noncommuting normalization and clipping (2.539625ms)
+✔ synthetic selection, byte encoding and slice retention calculations use explicit inventories (0.481083ms)
+✔ branched reverse derivatives, parameter count and causal NLL have independent arithmetic (0.190417ms)
+✔ clipping and AdamW example preserve global direction and separate decay (0.14575ms)
+✔ continuation and replay examples prove a conflict rather than general catastrophic forgetting (0.109167ms)
+✔ KV payload scales linearly while an incompatible average can erase equivalent functions (0.089958ms)
+✔ SFT and pairwise losses preserve different denominators and score invariance (0.074958ms)
+✔ PPO advantage sign, reference KL and zero-variance group behavior are distinct (0.135709ms)
+✔ proxy failure, low-rank product and teacher gradient counterexamples remain explicit (0.066417ms)
+✔ calibration coverage and judge agreement do not imply correctness (0.142542ms)
+✔ retrieval mixture, candidate-set success and regression gates cannot substitute for one another (0.068875ms)
+✔ contrastive normalization, visual projection, audio frames and WER reproduce authored values (0.096584ms)
+✔ diffusion, flow, representation error and target EMA have different targets (0.05075ms)
+✔ action-dependent rollout, imagined return and quantization retain physical boundaries (0.082625ms)
+✔ replanning example uses executed prefix and explicit timing assumptions (0.044083ms)
+✔ existing-lesson additions preserve independent shared-gradient, softmax and routing arithmetic (0.076958ms)
+✔ Adam, payload, bounded scaling and Wilson equations have independently checked values (0.071708ms)
+✔ critical semantic grouping retains the entire RMS mean-square root and Adam epsilon outside its root (3.272625ms)
+✔ source model, moments and RNG are retained without mutating the lifecycle checkpoint (303.00225ms)
+✔ default uneven ranks own one short and three long actual examples with 6 and 24 targets (15.020875ms)
+✔ token next-token: every partition agrees with centralized objective and retained optimizer (783.324042ms)
+✔ token response-only: every partition agrees with centralized objective and retained optimizer (721.348625ms)
+✔ sample next-token: every partition agrees with centralized objective and retained optimizer (772.727208ms)
+✔ sample response-only: every partition agrees with centralized objective and retained optimizer (431.2665ms)
+✔ actual weighted gradients pass independent finite differences across every tensor group (315.157791ms)
+✔ equal rank means are numerically wrong for the default token and sample objectives (56.618ms)
+✔ token and sample objectives differ for unequal target lengths but response-only denominators coincide (37.095209ms)
+✔ missing contribution blocks optimizer commit and preserves all current model state (9.498958ms)
+✔ failure after submission invalidates the uncommitted contribution and an old attempt is rejected (27.184875ms)
+✔ failed restarted rank yields the same committed weights and moments as failure-free centralized work (105.4385ms)
+✔ duplicate submissions, old rounds and second optimizer commits are rejected (58.28075ms)
+✔ global clipping and nonzero Adam history agree with an independent update (134.233ms)
+✔ SGD uses the same reduced gradient and retained moments with a single step (63.864ms)
+✔ partial round checkpoint resumes exact attempts, batch and RNG without extra draws (130.271917ms)
+✔ multiple committed rounds resume deterministically from the distributed record (432.6895ms)
+✔ tampered numerator, target denominator, source examples and unknown fields are rejected before mutation (16.864291ms)
+✔ malicious giant records and invalid cross-field state fail bounded validation (11.454375ms)
+✔ import rejects corrupted submitted arithmetic and committed optimizer state (43.602209ms)
+✔ restart and round budgets prevent unbounded simulations while preserving final valid state (896.527208ms)
+✔ workspace import retains independent final exposure and rejects stale or invalid changes before journal mutation (2.665458ms)
+✔ padded rank ownership covers every real parameter exactly once without optimizing the last dummy slot (0.538167ms)
+✔ actual owned numerators and every gathered replica independently match centralized gradients and Adam state (210.383666ms)
+✔ an explicitly opened collective rejects missing owner shards without changing optimizer or filling them automatically (23.161166ms)
+✔ owned-shard failure invalidates the entire reduction; a restarted attempt cannot accept old shards (52.876542ms)
+✔ owned shard identity, denominator, range, padding, duplicate and arithmetic corruption are rejected (29.44625ms)
+✔ partial reduce-scatter checkpoint resumes exact owned state and all-gather (52.22025ms)
+✔ all-gather rejects missing, duplicate, stale and cross-owner parameter payloads (26.246959ms)
+✔ strict checkpoint import recomputes owned gradients, updates and every replica before accepting them (52.418541ms)
+✔ logical padded transfer and optimizer ownership accounting reconcile independently of checkpoint serialization (60.182667ms)
+✔ the next batch releases old collective payloads without changing the committed source of its optimizer state (40.383333ms)
+✔ initial: incremental cache agrees with the independently implemented complete tape forward at all eight positions (8.959583ms)
+✔ other-seed: incremental cache agrees with the independently implemented complete tape forward at all eight positions (22.951042ms)
+✔ learned: incremental cache agrees with the independently implemented complete tape forward at all eight positions (7.871209ms)
+✔ different prefill chunk boundaries preserve every cache row and final output exactly (3.363042ms)
+✔ cached past keys and values are reused unchanged and position encoding distinguishes repeated tokens (1.087667ms)
+✔ cache ownership, dimension, token and context bounds fail before modifying a cache (47.915416ms)
+✔ KV payload and arithmetic counts have independently checked denominators (4.258208ms)
+✔ greedy: actual serving output and per-request RNG agree with full-prefix generation (308.248875ms)
+✔ sample: actual serving output and per-request RNG agree with full-prefix generation (211.955167ms)
+✔ serving the learned checkpoint gives real learned first-answer matches without modifying training or optimizer state (288.97625ms)
+✔ policy, chunk size and batch capacity change scheduling but not independent sampled outputs (1433.265166ms)
+✔ continuous admission fills a freed slot while static policy waits for the remaining group (30.658166ms)
+✔ finite reservation delays requests, no iteration exceeds capacity, and all terminal caches are released (22.875042ms)
+✔ oversized requests are explicitly rejected without deadlock or model execution (1.219541ms)
+✔ cancellation of an active request releases its cache and preserves unrelated requests (20.380667ms)
+✔ pending and queued cancellation have explicit terminal state and no leaked reservations (4.858833ms)
+✔ an actual high EOS logit stops after one output and releases unconsumed reservation (12.121125ms)
+✔ active cache represents exactly processed prompt plus previously emitted tokens, never future outputs (18.268542ms)
+✔ full export/import resumes active KVs, scheduler state and RNG exactly (210.965708ms)
+✔ a committed distributed checkpoint serves its new weights without falsifying original lifecycle history (118.140333ms)
+✔ strict configuration rejects unknown keys, final-set prompts, oversized requests, duplicate identities and invalid bounds (1.486292ms)
+✔ bounded import rejects tampered outputs, KV, trace, clocks, RNG, reservations and unknown fields (29.465875ms)
+✔ malicious command histories cannot cause unlimited simulated work (13.110209ms)
+✔ workspace source import is transactional and preserves independent final exposure across old checkpoint restore (3.176292ms)
+✔ distributed source exposure is retained without changing its computed serving replay (29.806334ms)
+✔ symmetric int4 uses declared rounding, scale, nibble packing and exact independent unpacking (0.492ms)
+✔ quantized cache attention and output agree with independent quantize/dequantize arithmetic (9.690792ms)
+✔ quantization can alter a greedy token despite a small probability difference (4.297583ms)
+✔ same fixed byte capacity admits more approximate positions with scale overhead included (15.496042ms)
+✔ quantized serving imports replay packed codes, scales and approximate outputs (239.930667ms)
+✔ quantized logical scheduling remains independent of per-request sampled draws (93.196166ms)
+✔ matching authored proposals retain actual target cache and exactly match greedy generation (67.077875ms)
+✔ first mismatch discards the wrong-prefix cache and recomputes actual fallback state (6.468416ms)
+✔ second mismatch retains the accepted first-token KV and corrects only the output suffix (3.292ms)
+✔ every two-token authored proposal over the vocabulary produces the same bounded target greedy output (2466.715916ms)
+✔ verification probabilities use the declared conditional prefix and independent full forward (3.864333ms)
+✔ EOS prevents post-EOS speculative state from entering the committed cache (1.740333ms)
+✔ max context verification and input budgets are explicit (2.85625ms)
+✔ verification does not mutate source weights, prompt, proposal or RNG-bearing checkpoint (4.605917ms)
+✔ fixed corpus lineage splits precede fitting and contain disjoint prompt families (2.005708ms)
+✔ complete decoder forward matches an independent numerical implementation (14.080166ms)
+✔ all parameter groups have checked supervised gradients, including shared embedding paths (33.722458ms)
+✔ SFT masks remove prompt targets, use the correct denominator and retain response gradients (8.192667ms)
+✔ causal prefix outputs are invariant to later token changes and extension (1.787709ms)
+✔ zero output weights produce uniform probabilities and cross-entropy ln vocabulary (0.919083ms)
+✔ first SGD and Adam updates follow independently calculated update rules after clipping (48.123708ms)
+✔ same seed and checkpointed RNG/optimizer/cursor reproduce uninterrupted training exactly (731.716458ms)
+✔ pretraining learns reserved context compositions and beats a training-fitted unigram baseline (1634.519959ms)
+✔ actual SFT changes weights and acquires the deliberately incompatible rule, exposing retention loss (572.9035ms)
+✔ continuation keeps all-token supervision and replay samples both declared training domains (146.225833ms)
+✔ DPO loss and gradient match independent response likelihood-ratio calculation (36.232875ms)
+✔ DPO trains actual policy parameters while preserving its frozen reference; objective improvement is not task equivalence (540.873667ms)
+✔ reward samples come from the current policy with explicit checked outcomes and detached baselines (9.658958ms)
+✔ reward continuation is checkpoint reproducible with rollout RNG and finite updates (191.410084ms)
+✔ sampled score-function and exact KL gradients match an independent frozen-rollout surrogate (9.22125ms)
+✔ generation is actual autoregressive inference with a separate RNG and no weight updates (53.994875ms)
+✔ sealed-final reports require explicit opening, retain evaluated identity and are not recomputed after learning (134.715625ms)
+✔ checkpoint validation rejects unknown fields, nonfinite/oversized state, invalid source IDs and inconsistent counters (14.529084ms)
+✔ bounded CPU and invalid operation failures preserve the previous workspace (2.302917ms)
+✔ component workspace boundary retains final exposure across an older import and a new initialized run (4.868375ms)
+✔ imported exposed checkpoint persists independent disclosure before any explicit save (5.710792ms)
+✔ invalid and stale asynchronous imports preserve both the run and exposure journal (5.28725ms)
+✔ unavailable storage retains exposure within the mounted workspace and exported checkpoint (9.041ms)
+✔ corrupt saved bytes remain recoverable while an independent exposure marker survives load (0.566667ms)
+✔ fresh workspace stays procedurally unopened and does not manufacture an exposure write (0.985875ms)
+✔ an already mounted journal incorporates exposure recorded by another workspace before importing old state (0.752667ms)
+✔ HBM counts physical bonds including the base, but die count does not multiply interface bandwidth (6.264917ms)
+✔ distributed heat charges each segment only for the heat generated below it (7.7735ms)
+✔ screened-input yield is conditional and thermal/height constraints are independent of yield (0.85475ms)
+✔ weight bytes, mutable KV and per-step append have different scaling (23.704083ms)
+✔ placement conserves every weight and KV byte under both allocation priorities (51.248208ms)
+✔ extra HBF capacity cannot rescue mutable KV or an undersized SRAM tile (0.321166ms)
+✔ remote staging is capacity-checked and counts a physical HBM write plus read (0.247334ms)
+✔ transfer startup vanishes at zero bytes and concurrency hides latency waves without multiplying bandwidth (0.216375ms)
+✔ a larger downstream link stops helping after the source bandwidth becomes binding (2.310166ms)
+✔ one-rank decode has no collective traffic or startup even with many selected collectives (1.944334ms)
+✔ critical path uses maximum for overlap and sum for serial work, never duplicate package service (0.380583ms)
+✔ energy integrates baseline once; overlap saves baseline energy while dynamic resource energy is unchanged (7.7455ms)
+✔ batching reuses weights and extra ranks can replicate rather than endlessly shrink KV (0.327625ms)
+✔ lab IDs are unique, type-guarded, source-backed, and formula-ready (0.138916ms)
+✔ GEMM counts are derived from a tiny explicit multiply-add loop (2.045208ms)
+✔ no-fault timing and energy have a hand-derived answer (3.233625ms)
+✔ compute and memory form one max bound, not additive service or summed rates (1.925416ms)
+✔ a shared fabric ceiling prevents unlimited strong scaling of a fixed payload (0.483ms)
+✔ checkpoints wait for a complete step, and partial final work is not useful work (0.19325ms)
+✔ fault rollback, repair and checkpoint read consume separate, counted resources (0.283959ms)
+✔ a fault in an unfinished first commit cannot restart from that checkpoint (0.236792ms)
+✔ an earlier valid checkpoint survives an interrupted later checkpoint (0.180416ms)
+✔ commit wins an exact timestamp tie with a fault; zero-delay repair still reads bytes (0.2625ms)
+✔ overlapping repair waits form a union, not duplicated downtime or work losses (0.298291ms)
+✔ a fault during restore counts the interrupted read and starts a fresh read (0.179208ms)
+✔ checkpoint interval has both protection benefit and blocking overhead (1.212334ms)
+✔ last commissioning gate controls dispatch, and pre-dispatch job faults are explicit (3.219083ms)
+✔ whole-rack feed and coolant admission are independent and conservative (0.399625ms)
+✔ admission reserves the most demanding phase even when checkpoint load exceeds run load (0.107292ms)
+✔ voltage changes current at fixed power; branch current limits remain separate from feed W (0.272667ms)
+✔ conversion and PUE boundaries balance, without adding losses twice (0.189167ms)
+✔ at fixed admitted load, twice the water flow halves rise but does not halve heat (0.159667ms)
+✔ sampling frequency has no effect on event integration or final answers (0.989542ms)
+✔ all phase rates and every sampled ledger satisfy physical and accounting invariants (87.93725ms)
+✔ all authored examples are finite, typed, JSON serializable and independent inputs (105.224042ms)
+✔ invalid inputs and unsupported resolution are rejected explicitly (1.0855ms)
+✔ work plots preserve both sides of faults and atomic checkpoint commits (21.750875ms)
+✔ radiation constant agrees with its independent expression in exact SI constants (4.065959ms)
+✔ hand-derived no-fault products, bytes, and bus/radio/radiator energy (4.301083ms)
+✔ roofline local service uses max, and storage/commit service remains serial (0.5615ms)
+✔ reset during a partial write loses its uncommitted arithmetic exactly once (1.653292ms)
+✔ atomic commit wins a tie with reset; independent radio still drains a durable product (0.781167ms)
+✔ overlapping reset recovery intervals form a union, not duplicated downtime (2.09325ms)
+✔ contacts preserve partial receiver progress but free onboard slots only after acknowledgement (0.852167ms)
+✔ buffer backpressure couples contact timing to new useful work (1.213834ms)
+✔ sun/eclipse battery balance includes both efficiencies and does not invent solar energy (3.142959ms)
+✔ empty battery causes explicit housekeeping deficit, without negative charge (0.528125ms)
+✔ battery reserve protects housekeeping and optional loads resume with hysteresis (1.534875ms)
+✔ radiator T⁴ bound includes sink and environment heat, and blocks optional payload (0.47275ms)
+✔ battery charging loss can limit charge rate and curtail solar to satisfy heat bound (0.196792ms)
+✔ flux/cross-section context is dimensioned and never double-multiplies retained work (1.032166ms)
+✔ energy per delivered product accounts for initial battery energy, and closure is an explicit objective (0.758542ms)
+✔ sampling does not alter physical events, energy or retained work (16.541667ms)
+✔ full authored scenarios and 72 combinations conserve work, energy, time, and products (363.90125ms)
+✔ sensitivity reruns the event model without mutating the source scenario (70.847166ms)
+✔ unsupported inputs are rejected instead of producing silent NaN or invented contacts (10.158875ms)
+✔ initial incompatible raw record survives multiple subsequent ordinary saves exactly (124.981792ms)
+✔ legacy previous and invalid active raw values are both copied before first active replacement (0.598958ms)
+✔ a failed backup leaves the old active record and recovery bytes unchanged (0.669625ms)
+✔ a failed active write leaves the old head and a usable exact recovery copy, then retries safely (1.631667ms)
+✔ unreadable history is exported exactly and prevents replacement until explicitly cleared after export (0.642416ms)
+✔ capacity blocks the next save without dropping the oldest record and clearing exports permits continuation (0.919583ms)
+✔ recovery export identity prevents clearing newer history, including legacy changes (0.324958ms)
+✔ a stale second view cannot overwrite the newer active record or its history (0.228125ms)
+✔ UTF-8 record and cumulative recovery limits preserve exact previous data (11.127ms)
+✔ explicit factory limit saves and reopens a real trained-source workspace while default remains 20k (75.426333ms)
+✔ large supported records retain exact old data when backup or active write fails (20.135875ms)
+✔ per-experience UTF-8 maximum rejects oversized writes before changing recovery or active data (5.829542ms)
+✔ large records exhaust the unchanged history byte limit safely and resume only after explicit recovery clearance (87.228042ms)
+✔ the static build resolves its assets at a root and a GitHub Pages subdirectory (50.8835ms)
+✔ film runs from local resources and ships parseable authored JavaScript (7.473208ms)
+✔ the standalone app retains base-relative film navigation and portable metadata (197.836625ms)
+✔ source and static distributions retain exact license texts (8.26525ms)
+✔ default units and expected quantities anchor the named specimen (17.594ms)
+✔ oxide variation propagates consistently into capacitance, beta and fixed-charge threshold (0.302958ms)
+✔ current regimes join continuously, saturate at the declared overdrive and turn off (0.17ms)
+✔ balanced closed-form unity-gain points and conservative margins match (14.857041ms)
+✔ ideal switching input exposes an interval of current-balanced outputs (0.305042ms)
+✔ 54 process/load corners satisfy branch current balance and exact noise definitions (75.213458ms)
+✔ transfer analytic slopes match an independent centered numerical derivative (0.574583ms)
+✔ analytic delays match independent Simpson integration across 54 process/load corners (342.112375ms)
+✔ constant saturation-current segment obeys CΔV/I and integration is additive (0.314667ms)
+✔ delay scales exactly with load while static transfer/noise does not (1.208583ms)
+✔ geometry failure and asymmetric electrical failures stay distinct (0.68475ms)
+✔ transition timestamps advance monotonically and the 50% sample matches delay (0.726209ms)
+✔ invalid process domains, zero load and finite-time zero-voltage endpoint are rejected (0.999666ms)
+✔ portable records retain exact complete inputs and reject model mismatches (0.401084ms)
+✔ incompatible prior raw input is preserved before save and backup failure leaves active data (0.356416ms)
+✔ finite-time inverse of the delay integral preserves the model clock and charge swing (1.190792ms)
+✔ two complete lessons and eight canonical equations preserve valid graph references (967.4265ms)
+✔ authored material-to-cell worked examples match current model values (1.573875ms)
+✔ 14 routes and 84 states have bounded geometry, sources and valid mathematics (114.863ms)
+✔ thermal oxidation moves both oxide and consumed-silicon boundaries (0.15025ms)
+✔ NCF precedes bonding; MR–MUF forms joints before mold; hybrid has neither solder nor film (0.2785ms)
+✔ ALD purges remove gas pulse but preserve reacted surface (0.130583ms)
+✔ exposure retains resist; development preserves target film (0.587791ms)
+✔ etch consumes mask and exposes a failed requested profile when the mask exhausts (0.106625ms)
+✔ NA doubling halves relative resolution and quarters depth of focus (0.170625ms)
+✔ inspection preserves geometry where material does not change (0.758625ms)
+✔ default compute versus memory is 3× versus 2× per two years with independently indexed baselines (3.142542ms)
+✔ interval selector reinterprets declared factors without silently annualizing them (0.242125ms)
+✔ memory bandwidth, memory capacity and facility IT capacity keep different explicit metrics (0.220958ms)
+✔ growth controls handle equal and declining rates; unknown or contradictory controls fail (0.425ms)
+✔ integer divisible allocation conserves capacity and demand across exhaustive small inputs (69.176125ms)
+✔ hand-computed listed order, largest remainder and exact tie cases (0.338417ms)
+✔ package complementarity is min feasible throughput, with explicit material conservation and changed bottleneck (0.540416ms)
+✔ package whole-stack floor prevents using fractional complementary inputs (0.507709ms)
+✔ hall first-fit and strict-order give independently hand-packed whole-rack jobs (0.738209ms)
+✔ hall physical and whole-job constraints remain conserved over a parameter grid (1.493833ms)
+✔ gate and uniform-wire dimensional relations match independent arithmetic (0.464292ms)
+✔ parallel-lane byte rate handles bit conversion and payload efficiency once (0.220959ms)
+✔ small matrix example matches fixed independently known products and identity cases (1.416375ms)
+✔ Adam scalar trace has correct independently derived first-step correction and zero-gradient behavior (0.726666ms)
+✔ streaming softmax agrees with independent direct exponentials and permutation invariance (0.78225ms)
+✔ KV allocation records unique physical blocks, final-block slack and declared reservation baseline (0.551375ms)
+✔ bad resource inputs and identities are rejected rather than silently coerced (0.524542ms)
+✔ the guide preserves 76 exact milestone references and all selected lesson IDs are existing (3.54ms)
+✔ dated cases retain distinct statuses, scope limits, agent checks and explicit refresh rules (1.268292ms)
+✔ synthetic fixture arithmetic is reproducible and does not consume source observations (1.853292ms)
+✔ whole-rack boundaries handle decimal roundoff without accepting a meaningful power deficit (0.112916ms)
+✔ source freshness uses real recorded dates and never invents a review or auto-certifies truth (1.642ms)
+✔ six training users and two disjoint evaluation users have explicit population denominators (0.863792ms)
+✔ known logging probabilities come from the assignment rule, not observed frequencies (0.240666ms)
+✔ changing exposure seed or policy leaves authored potential outcomes fixed (1.080333ms)
+✔ unshown potential outcomes and usefulness grades never enter fitting samples (19.8635ms)
+✔ weighted logistic derivatives agree with independent centered differences (2.752959ms)
+✔ first actual gradient-descent update matches a direct weighted residual sum (0.437125ms)
+✔ stable logistic loss handles extreme finite logits (0.960667ms)
+✔ enumerating all exposure assignments proves fixed-score IPS expectation and denominator (0.312125ms)
+✔ zero-support worlds have identical observations and different population outcomes (0.342625ms)
+✔ positive probability with no observations is distinct from zero support (7.84775ms)
+✔ NDCG, precision and recall agree with hand-derived cutoff denominators (0.211875ms)
+✔ all 243 five-item grade combinations stay bounded and ideal rankings attain one (3.58325ms)
+✔ candidate rankings preserve all items, stable tie order and disjoint evaluation contract (0.467667ms)
+✔ macro evaluation is an equal-user mean, not a click-weighted or exposed-item average (0.103666ms)
+✔ known propensities do not repair a click objective that rewards popular low-usefulness items (14.285541ms)
+✔ weight concentration and clipping are computed from the actual exposed rows (8.124583ms)
+✔ bounded scenario variations have finite fitted states and decreasing convex objectives (139.820041ms)
+✔ strict inputs and records reject malformed or stale scenarios before restoration (5.551583ms)
+✔ all four mathematical definitions render strict HTML and MathML without heuristic parsing (52.018708ms)
+✔ all 256 input pairs traverse the actual exported LUT/register graph with a preserved carry (140.533375ms)
+✔ viewer extraction is tied to actual formal, simulation, placement, route and bitstream artifacts (32.436459ms)
+✔ all mechanism experiences have stable IDs and meaningful reading destinations (12.9675ms)
+✔ each explicit launch route has a valid lesson and the corresponding continuation context (2.768333ms)
+✔ representative lessons route to the mechanism they actually illustrate, independently of scale bands (0.418792ms)
+✔ a shared qualification boundary offers both relevant experiences in a stable order (0.25525ms)
+✔ outbound further reading does not imply that the experience simulates that lesson (0.232291ms)
+✔ unmodeled atomic physics, device switching, plant dynamics and orbital economics get no generic CTA (0.200542ms)
+✔ navigation has no completion or first-attempt side effects (2.414125ms)
+✔ every experience appears exactly once in desktop and mobile groups (0.212833ms)
+✔ every authored operating scenario and all model defaults pass current record validation (184.714458ms)
+✔ record edition, model identity, exact envelope, timestamp, size and JSON errors are rejected (4.35025ms)
+✔ unknown fields at every model option level cannot silently enter a workspace (6.362542ms)
+✔ numeric input types, matrix compatibility, fully disabled lanes and malformed scenarios fail before use (1.028209ms)
+✔ architecture cursor is constrained by the actual selected trace and specimen (37.749375ms)
+✔ training cursor and time controls obey paired settings, including zero-step and partial imports (5.636416ms)
+✔ memory address, package-stack and bank-state bounds remain linked to the same die count (1.641833ms)
+✔ import simulation budgets reject giant timelines, event storms, tiny services and battery chatter (3.919166ms)
+✔ progress records preserve named metric/period choices and reject out-of-range worked controls (2.362042ms)
+✔ invalid persisted data survives initialization and repeated default registration without any autosave (0.742417ms)
+✔ first edit preserves the exact incompatible record before writing the new edition, then saves normally (2.774292ms)
+✔ invalid JSON, empty raw storage and invalid controls are preserved verbatim on first save (0.866166ms)
+✔ import preserves incompatible raw separately from the latest current-edition undo workspace (2.469833ms)
+✔ failed durable preservation blocks both autosave and import without losing old active data or live edits (1.338458ms)
+✔ active-write failure retains the durable older raw and retry does not append a duplicate (0.506875ms)
+✔ older recovery accumulates across editions and sees an incompatible active record arriving after initialization (0.401459ms)
+✔ damaged recovery storage remains exportable and cannot be overwritten by a save or import (0.668792ms)
+✔ saved values survive fresh default registration and exported records are detached snapshots (2.376959ms)
+✔ invalid import preserves active inputs, active storage, backup and pending learner edits (0.618708ms)
+✔ backup-write failure and active-write failure cannot swap live workspace; previous backup is restored (1.067583ms)
+✔ successful import saves the latest pending workspace and canceled timer/effect callbacks cannot overwrite it (0.26325ms)
+✔ reordered asynchronous imports and edits during file reads cannot replace newer work (0.26025ms)
+✔ restore is a reversible workspace swap and storage failure does not falsely replace current inputs (0.439625ms)
+✔ latest edit wins debouncing, shutdown flushes it, and failed storage retains exportable inputs (0.397208ms)
+ℹ tests 729
+ℹ suites 0
+ℹ pass 729
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 17472.816458
+
+> ai-machinery-atlas@1.2.0 validate:teaching
+> node scripts/validate-teaching.mjs
+
+{
+  "status": "pass",
+  "contracts": 14,
+  "independentHandArithmetic": "pass",
+  "interruptedCommitCounterexample": "pass",
+  "lessonSchema": "pass",
+  "prerequisiteDAG": "pass",
+  "reviewEvent": "agent source-scope; no human specialist or observation",
+  "fingerprint": "efa38a2e2116a22c8af6e7216adf90b96cbe2e24e562ca93f27b812f15a17845",
+  "integratedFingerprint": "15565fc27d681dedf4f5538299a990ba44c4dbe60f5480c638cac16caf5247a4"
+}
+{
+  "status": "pass",
+  "contractGroups": 9,
+  "preservedContractGroups": 7,
+  "addedContractGroups": [
+    "joined-factory",
+    "joined-memory"
+  ],
+  "models": {
+    "factory": {
+      "factory": "factory-actual-checkpoint-1",
+      "decoder": "causal-decoder-lifecycle-1",
+      "distributed": "distributed-causal-gradient-2",
+      "commissioning": "commissioning-execution-1",
+      "hall": 1
+    },
+    "memoryWorkload": "memory-workload-bridge-1"
+  },
+  "checkedAt": "2026-09-07",
+  "actor": {
+    "type": "agent",
+    "id": "/root/curriculum_assessment"
+  },
+  "scope": "Existing seven groups preserved; added independent count, delta-time/energy, byte-capacity, dot-product, bit-change, staging and admission contracts. No learner, physical-device, assistive-technology or specialist observations."
+}
+{
+  "passed": true,
+  "counts": {
+    "experiences": 8,
+    "sourceUrls": 57,
+    "sourceUses": 62,
+    "recordedAgentChecks": 62,
+    "checksNotRecorded": 0
+  },
+  "errors": [],
+  "warnings": [
+    "docs/curation/curation-manifest.json: baseline has advanced since inventory. This addendum preserves its captured identity and does not overwrite it.",
+    "docs/curation/curation-review-events.json: baseline has advanced since inventory. This addendum preserves its captured identity and does not overwrite it."
+  ],
+  "snapshotChecks": {
+    "mode": "current-repository",
+    "changedFiles": [],
+    "changedLessons": [],
+    "missingFiles": []
+  }
+}
+✔ eight experiences have valid source, scope, actor, ownership and URL reverse links (16.994583ms)
+✔ a real model-scope change cannot reuse the experience fingerprint (5.191417ms)
+✔ a source-use qualifier edit invalidates a previous check (0.261958ms)
+✔ pending source uses cannot inherit dates, actor or accepted support (5.307083ms)
+✔ source checks cannot be future dated or impossible calendar dates (8.22775ms)
+✔ proposed deadlines start from the actual source-check day, not inventory date (0.268125ms)
+✔ agent metadata cannot become an unsupported human specialist approval (3.74675ms)
+✔ URL changes invalidate source identities and reverse index (2.661125ms)
+✔ complete fixture changes accepted → pending → explicit recheck and preserves both revisions (0.480541ms)
+✔ supersession rejects an orphaned predecessor or successor (0.221333ms)
+✔ the predecessor review cannot be relabeled to accept an unreviewed successor (0.125333ms)
+✔ fixtures must be explicitly isolated and cannot impersonate a human reviewer (0.1045ms)
+✔ fingerprints depend on statement, locator, exclusions and exact source identity (0.158333ms)
+✔ an actual addendum successor can remain pending while preserving its accepted predecessor (3.704875ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.167416
+{
+  "passed": true,
+  "fixture": true,
+  "states": [
+    {
+      "step": "before",
+      "state": "agent-recheck-recorded"
+    },
+    {
+      "step": "qualifier-change",
+      "state": "recheck-required"
+    },
+    {
+      "step": "after-explicit-recheck",
+      "state": "agent-recheck-recorded"
+    }
+  ],
+  "realReviewEventsWritten": 0
+}
+{
+  "status": "pass",
+  "integratedLessons": 4,
+  "effectiveSnapshots": 4,
+  "authorPrimarySourceUses": 7,
+  "exactSourceUrls": 6,
+  "claimScopes": 4,
+  "priorEventsPreserved": 1,
+  "independentArithmetic": "pass",
+  "humanSpecialistReviews": 0
+}

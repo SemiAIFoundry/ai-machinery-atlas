@@ -246,5 +246,13 @@
   "deep-memory-system-realization": {
     "domainId": "connected-infrastructure",
     "band": 3
+  },
+  "distributed-output-bridges": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "process-cell-bridge": {
+    "domainId": "circuits-architecture",
+    "band": 1
   }
 }

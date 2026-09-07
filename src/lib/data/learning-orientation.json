@@ -1,0 +1,58 @@
+{
+  "mathematical-foundations": {
+    "scene": "learning-math",
+    "read": "Select a concept to change the spatial representation: a contracted index across matrices, a rank-one projection, normalized probabilities, the seven bits of an E3M3 teaching number, or a Binomial(12, 0.5) distribution. Spatial height encodes the named quantity, not a physical scale. The mathematical foundations experience exposes exact values and interventions."
+  },
+  "data-evidence-foundations": {
+    "scene": "learning-data",
+    "read": "Source cards separate into three colored destination stacks while connecting lines retain identity. This is an orientation to lineage and partitioning; the depicted card count is illustrative. The corpus experience exposes actual example IDs, token masks and split membership."
+  },
+  "model-lifecycle-data": {
+    "scene": "learning-data",
+    "read": "Source cards separate into three colored destination stacks while connecting lines retain identity. This is an orientation to lineage and partitioning; the depicted card count is illustrative. The corpus experience exposes actual example IDs, token masks and split membership."
+  },
+  "contrasting-ai-methods": {
+    "scene": "learning-methods",
+    "read": "The selected concept changes the structure: a branching additive-tree or search representation, or four nodes exchanging messages. Geometry denotes an algorithmic relationship, not physical containment. Exact fitted values, messages and searched outcomes are available in the foundations experience."
+  },
+  "model-lifecycle-base-model": {
+    "scene": "learning-decoder",
+    "read": "Follow token-feature arrays into a triangular causal-attention pattern, projection matrices and a residual path. Array sizes here illustrate indexing and masking; the model experience shows the actual 423 parameters and all intermediate values. Layer spacing is conceptual."
+  },
+  "model-lifecycle-pretraining": {
+    "scene": "learning-decoder",
+    "read": "Follow token-feature arrays into a triangular causal-attention pattern, projection matrices and a residual path. Array sizes here illustrate indexing and masking; the model experience shows the actual 423 parameters and all intermediate values. Layer spacing is conceptual."
+  },
+  "model-lifecycle-continuation": {
+    "scene": "learning-adaptation",
+    "read": "A causal block sits beside a two-factor adaptation branch. The geometry locates parameters, state and possible update paths; it does not imply that every post-training technique uses low-rank adapters. Read the selected stage contract, then use the model experience for the actual objective and trainable state."
+  },
+  "model-lifecycle-posttraining": {
+    "scene": "learning-adaptation",
+    "read": "A causal block sits beside a two-factor adaptation branch. The geometry locates parameters, state and possible update paths; it does not imply that every post-training technique uses low-rank adapters. Read the selected stage contract, then use the model experience for the actual objective and trainable state."
+  },
+  "model-lifecycle-evaluation": {
+    "scene": "learning-evaluation",
+    "read": "Evidence cards produce candidate results, which pass an independent checking boundary before a task outcome. Colors separate these roles; they do not assert that any particular output is correct. Read the selected metric and denominator or inspect the named executable evaluation."
+  },
+  "model-lifecycle-multimodal": {
+    "scene": "learning-multimodal",
+    "read": "Patch planes and sampled-signal points enter modality projections and shared representation arrays. These are distinct input structures, not physical layers or a claim that every modality uses the same encoder. The selected lesson specifies its actual objective, shape and evidence."
+  },
+  "model-lifecycle-world-action": {
+    "scene": "learning-control",
+    "read": "An observed state feeds a branching prediction tree. One action changes a simulated object and closes the observation loop. The control experience supplies actual fitted parameters, selected actions, delayed measurements and checked outcomes; this orientation is not a physical robot."
+  },
+  "embodied-observation-action": {
+    "scene": "learning-control",
+    "read": "An observed state feeds a branching prediction tree. One action changes a simulated object and closes the observation loop. The control experience supplies actual fitted parameters, selected actions, delayed measurements and checked outcomes; this orientation is not a physical robot."
+  },
+  "evaluated-application-families": {
+    "scene": "learning-applications",
+    "read": "Source records become candidate results and cross a separate evidence check before a task outcome. This is the common application boundary, not an assertion that ranking, forecasting and code evaluation use the same model or metric. Each lesson states its own task contract."
+  },
+  "process-cell-bridge": {
+    "scene": "learning-cell",
+    "read": "A schematic complementary device pair shares an input and drives a load. The enlarged gate dielectric and capacitive load expose distinct physical roles. Geometry is conceptual; the electrical experience computes the named long-channel specimen, transfer curve and timed transition."
+  }
+}

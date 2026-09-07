@@ -1,0 +1,45 @@
+{
+  "schema": "atlas-scoped-source-review-1",
+  "actor": "Codex root AI agent",
+  "checkedOn": "2026-09-07",
+  "humanSpecialistReview": false,
+  "sources": [
+    {
+      "title": "Yosys SAT",
+      "url": "https://yosyshq.readthedocs.io/projects/yosys/en/v0.68/cmd/index_formal.html#sat-solve-a-sat-problem-in-the-circuit",
+      "locatorAndScope": "sat: -prove and -verify command semantics; native Yosys 0.68 help and formal.log also inspected.",
+      "status": "agent-scoped-reading"
+    },
+    {
+      "title": "Yosys iCE40 synthesis",
+      "url": "https://yosyshq.readthedocs.io/projects/yosys/en/v0.68/cmd/index_techlibs_ice40.html#synth-ice40-synthesis-for-ice40-fpgas",
+      "locatorAndScope": "synth_ice40: device, top and JSON output options and technology-mapping flow.",
+      "status": "agent-scoped-reading"
+    },
+    {
+      "title": "nextpnr iCE40",
+      "url": "https://github.com/YosysHQ/nextpnr/blob/main/docs/ice40.md",
+      "locatorAndScope": "Physical constraints: set_io and set_frequency; our unconstrained IO warning is retained.",
+      "status": "agent-scoped-reading"
+    },
+    {
+      "title": "IceStorm",
+      "url": "https://prjicestorm.readthedocs.io/en/latest/overview.html",
+      "locatorAndScope": "What are the IceStorm Tools → IcePack/IceUnpack; ASCII-to-bitstream transformation and supported HX1K/TQ144 target.",
+      "status": "agent-scoped-reading"
+    },
+    {
+      "title": "Icarus Verilog",
+      "url": "https://steveicarus.github.io/iverilog/",
+      "locatorAndScope": "Tool documentation index: simulation compiler/runtime, v13.0; native RTL and mapped simulation outputs inspected.",
+      "status": "agent-scoped-reading"
+    }
+  ],
+  "artifactEvidence": [
+    "artifacts/formal.log",
+    "artifacts/rtl-simulation.log",
+    "artifacts/mapped-simulation.log",
+    "artifacts/place-route.log"
+  ],
+  "limits": "Tool semantics and this bounded synthetic artifact only; no board measurement, fabrication qualification, ASIC signoff, or general CRG theorem validation."
+}

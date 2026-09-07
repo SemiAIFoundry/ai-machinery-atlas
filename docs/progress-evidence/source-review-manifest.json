@@ -1,0 +1,435 @@
+{
+  "schemaVersion": 1,
+  "status": "agent-source-scope-checks",
+  "createdOn": "2026-09-07",
+  "actorType": "agent",
+  "specialistReview": null,
+  "sources": [
+    {
+      "id": "kahng-1960",
+      "url": "https://patents.google.com/patent/US3102230A/en",
+      "title": "Dawon Kahng, US3102230A",
+      "locator": "Bibliographic filing date; Description, Figure 1A and dielectric/electrode discussion",
+      "sourceDate": "1960-05-31",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Filing and insulated-field device mechanism; the toy capacitor is not its measured geometry or performance.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "field-control"
+      ],
+      "lessonIds": [
+        "energy-bands",
+        "gate-stack",
+        "inverter",
+        "mosfet"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "copper-1997",
+      "url": "https://research.ibm.com/publications/full-copper-wiring-in-a-sub-025-mm-cmos-ulsi-technology",
+      "title": "IBM authors: Full copper wiring in a sub-0.25 \u00b5m CMOS ULSI technology",
+      "locator": "Publication date; Abstract paragraphs on integration and low-RC wiring",
+      "sourceDate": "1997-12-01",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Integrated copper wiring report; synthetic RC inputs are not extracted paper measurements.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "integrated-wiring"
+      ],
+      "lessonIds": [
+        "beol-damascene-vias",
+        "copper-conductor",
+        "interconnect-rc-materials"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "cuda-2006",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html",
+      "title": "NVIDIA CUDA Programming Guide",
+      "locator": "\u00a71.1.1, paragraph beginning In 2006",
+      "sourceDate": null,
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "CUDA introduction date and graphics-independent programmability; no historical speedup is imported.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "programmable-parallelism"
+      ],
+      "lessonIds": [
+        "cuda",
+        "gpu-occupancy-pipeline",
+        "kernel",
+        "simt-active-lanes"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "cowos-2012",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+      "title": "TSMC CoWoS technology overview",
+      "locator": "Overview, Since entering volume production in 2012; CoWoS-S section",
+      "sourceDate": null,
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Reported production history and logic/HBM interposer integration; lane example is synthetic.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "package-local-memory"
+      ],
+      "lessonIds": [
+        "compatible-supply-capacity",
+        "cowos-s-silicon-interposer",
+        "hbm-stack",
+        "interposer"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "adam-2014",
+      "url": "https://arxiv.org/abs/1412.6980",
+      "title": "Kingma and Ba: Adam",
+      "locator": "First submission 22 December 2014; PDF Algorithm 1 and \u00a72",
+      "sourceDate": "2014-12-22",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "First/second gradient moments and bias correction; no generic convergence or best-optimizer claim.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "optimizer-state"
+      ],
+      "lessonIds": [
+        "evaluation",
+        "loss-optimizer",
+        "training-memory-state"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "attention-2017",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "title": "Vaswani et al.: Attention Is All You Need",
+      "locator": "First submission 12 June 2017; \u00a73.2.1 scaled dot-product attention",
+      "sourceDate": "2017-06-12",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Scaled dot-product attention mechanism; two-key arithmetic is a new teaching example.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "attention-workload"
+      ],
+      "lessonIds": [
+        "attention",
+        "embedding",
+        "evaluation",
+        "positional-encoding"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "tpu-2017",
+      "url": "https://arxiv.org/abs/1704.04760",
+      "title": "Jouppi et al.: In-Datacenter Performance Analysis of a TPU",
+      "locator": "First submission 5 April 2017; \u00a72, printed p4, Figure 4 (systolic data flow)",
+      "sourceDate": "2017-04-05",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Published weight-stationary TPU architecture. R21 uses a distinct output-stationary teaching array; 2017 is paper date, not the 2015 deployment date.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "matrix-dataflow"
+      ],
+      "lessonIds": [
+        "mac",
+        "memory-hierarchy-route",
+        "systolic-array-dataflow"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "flash-2022",
+      "url": "https://arxiv.org/abs/2205.14135",
+      "title": "Dao et al.: FlashAttention",
+      "locator": "First submission 27 May 2022; \u00a73.1 and Algorithm 1",
+      "sourceDate": "2022-05-27",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Tiling and online softmax avoid full attention-matrix materialization; toy row is not a full kernel.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "attention-io"
+      ],
+      "lessonIds": [
+        "attention-io-tiling",
+        "kernel-locality-fusion",
+        "shared-sram"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "paged-2023",
+      "url": "https://arxiv.org/abs/2309.06180",
+      "title": "Kwon et al.: PagedAttention",
+      "locator": "First submission 12 September 2023; \u00a74.1\u20134.2 and block-table figures",
+      "sourceDate": "2023-09-12",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Block-based KV allocation mechanism; toy slot savings exclude metadata and measured throughput.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "kv-blocks"
+      ],
+      "lessonIds": [
+        "disaggregated-serving",
+        "kv-cache",
+        "serving"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "rack-2024",
+      "url": "https://developer.nvidia.com/blog/nvidia-gb200-nvl72-delivers-trillion-parameter-llm-training-and-real-time-inference/",
+      "title": "NVIDIA: GB200 NVL72 rack architecture",
+      "locator": "18 March 2024 date; A rack scale design, paragraphs on compute trays, cold plates and switch trays",
+      "sourceDate": "2024-03-18",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Announcement and rack integration features only; no vendor performance or power-number comparison.",
+      "family": "progress",
+      "relatedRecordIds": [
+        "rack-operability"
+      ],
+      "lessonIds": [
+        "cluster-commissioning-gates",
+        "coolant-loop-separation",
+        "rack",
+        "rack-power-conversion",
+        "topology-job-admission"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "tsmc-2026q2",
+      "url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf",
+      "title": "TSMC 2Q26 earnings-call transcript, hosted by TSMC",
+      "locator": "Printed p15: C.C. Wei response on CPU/GPU/XPU supply; printed p17: response to Haas Liu on backend shortage",
+      "sourceDate": "2026-07-16",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Public management statements only; no customer-level capacity, queue or wait-time data.",
+      "family": "capacity",
+      "relatedRecordIds": [
+        "tsmc-backend-allocation-2026q2"
+      ],
+      "lessonIds": [
+        "compatible-supply-capacity",
+        "cowos-s-silicon-interposer",
+        "production-ramp-allocation"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 90,
+      "supersedes": []
+    },
+    {
+      "id": "lbnl-queue-2026",
+      "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+      "title": "Berkeley Lab and GridTracker: Queued Up, 2026 Edition",
+      "locator": "Abstract coverage paragraph and Key highlights, first bullet; dataset cutoff end 2025",
+      "sourceDate": "2026-05",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Generation/storage transmission requests; excludes load, distribution and behind-the-meter interconnection.",
+      "family": "capacity",
+      "relatedRecordIds": [
+        "us-generator-queue-end-2025"
+      ],
+      "lessonIds": [
+        "capacity-phase-geography",
+        "energy-forecast-boundaries",
+        "grid-interconnection-readiness"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "incite-2026",
+      "url": "https://www.alcf.anl.gov/news/incite-program-awards-supercomputing-time-75-high-impact-projects-0",
+      "title": "Argonne: INCITE program awards time to 75 projects",
+      "locator": "Published 05/05/2026; first paragraph; selection paragraph; Robert Hager allocation bullet",
+      "sourceDate": "2026-05-05",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Public award counts and system-specific node-hours; awards are not usage, completed science or wait times.",
+      "family": "capacity",
+      "relatedRecordIds": [
+        "incite-awards-2026"
+      ],
+      "lessonIds": [
+        "evaluation",
+        "scheduler",
+        "topology-job-admission"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 365,
+      "supersedes": []
+    },
+    {
+      "id": "core-2026q2",
+      "url": "https://investors.corescientific.com/news-events/press-releases/detail/139/core-scientific-announces-second-quarter-2026-results",
+      "title": "Core Scientific: Second Quarter 2026 Results",
+      "locator": "Financial Summary and Operating Metrics, Billing MW row; Recent Business Developments; Term Library",
+      "sourceDate": "2026-07-28",
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Company-defined billable/leased capacity statuses; customer IT capacity differs from gross utility agreements.",
+      "family": "capacity",
+      "relatedRecordIds": [
+        "core-billable-versus-leased-2026q2"
+      ],
+      "lessonIds": [
+        "capacity-phase-geography",
+        "cluster-commissioning-gates",
+        "regional-siting-access"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 90,
+      "supersedes": []
+    },
+    {
+      "id": "galaxy-2026q2",
+      "url": "https://investor.galaxy.com/static-files/bd9f9727-1a8f-4fa1-8533-175e10020d7f",
+      "title": "Galaxy: Q2 2026 investor presentation",
+      "locator": "Cover as-of date; printed slide16 (PDF page16), Contracted Capacity, phase table and footnote3",
+      "sourceDate": null,
+      "sourceDateMeaning": "Identified source/event date where stated; null means not established. Observation cutoffs remain in the case.",
+      "scope": "Reported Helios phase delivery and contracted critical-IT/gross capacity; future phase dates remain projections.",
+      "family": "capacity",
+      "relatedRecordIds": [
+        "helios-phase-delivery-2026q2"
+      ],
+      "lessonIds": [
+        "capacity-phase-geography",
+        "cluster-commissioning-gates",
+        "rack-power-conversion"
+      ],
+      "reviewEvents": [
+        {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "read-primary-source-for-stated-scope",
+          "result": "Supported within recorded limitations; no specialist review implied."
+        }
+      ],
+      "reviewCadenceDays": 90,
+      "supersedes": []
+    }
+  ]
+}

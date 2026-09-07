@@ -1,0 +1,963 @@
+{
+  "schemaVersion": 1,
+  "version": "learning-ontology-1",
+  "areas": [
+    {
+      "id": "A",
+      "name": "Mathematics & computation"
+    },
+    {
+      "id": "B",
+      "name": "Data engineering"
+    },
+    {
+      "id": "C",
+      "name": "Model building & pretraining"
+    },
+    {
+      "id": "D",
+      "name": "Adaptation & post-training"
+    },
+    {
+      "id": "E",
+      "name": "AI architectures"
+    },
+    {
+      "id": "F",
+      "name": "Inference & model operations"
+    },
+    {
+      "id": "G",
+      "name": "Automation systems"
+    },
+    {
+      "id": "H",
+      "name": "Devices & chip realization"
+    },
+    {
+      "id": "I",
+      "name": "Processing & data movement"
+    },
+    {
+      "id": "J",
+      "name": "AI factories"
+    },
+    {
+      "id": "K",
+      "name": "Applications & control"
+    },
+    {
+      "id": "L",
+      "name": "Evaluation & human systems"
+    },
+    {
+      "id": "M",
+      "name": "Progress & frontiers"
+    }
+  ],
+  "stages": [
+    {
+      "id": "physical",
+      "name": "Realize the physical machine"
+    },
+    {
+      "id": "commission",
+      "name": "Commission & operate"
+    },
+    {
+      "id": "data",
+      "name": "Prepare data"
+    },
+    {
+      "id": "learn",
+      "name": "Learn parameters"
+    },
+    {
+      "id": "adapt",
+      "name": "Adapt the model"
+    },
+    {
+      "id": "evaluate",
+      "name": "Evaluate the system"
+    },
+    {
+      "id": "execute",
+      "name": "Execute an operation"
+    },
+    {
+      "id": "serve",
+      "name": "Serve a request"
+    },
+    {
+      "id": "act",
+      "name": "Act in an environment"
+    },
+    {
+      "id": "progress",
+      "name": "Assess progress"
+    }
+  ],
+  "chapters": {
+    "atomic": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "materials": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "fabrication": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "devices": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-wafer-materials": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-inside-the-fab": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-film-formation": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-pattern-transfer": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-device-integration": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-interconnect-power-integration": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-yield-test-ramp": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "logic": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "arithmetic": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "deep-silicon-design": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "crg-computation-realization": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "crg-physical-closure": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical"
+      ]
+    },
+    "bit-memory": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "compute": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "memory-hierarchy": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "on-chip": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-cpu-control": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-gpu-execution": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-dataflow-machines": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-offload-frontiers": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-memory-economics": {
+      "areas": [
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "integration": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "stacked-memory": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "thermal": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "host": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "io": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "power": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-package-foundations": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-advanced-package-routes": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-bonding-and-reliability": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-hbm-manufacturing": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-hbm-interface-supply": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-interface-budgets": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-hbm-height-closure": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-hbm-bond-route-closure": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "deep-hbf-access-contract": {
+      "areas": [
+        "H",
+        "I"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    },
+    "rack": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "fabric": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "facility": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-rack-fabrics": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-power-heat": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-capacity-readiness": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-useful-operation": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-global-resources": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-memory-system-realization": {
+      "areas": [
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "deep-orbital-physics": {
+      "areas": [
+        "J",
+        "M"
+      ],
+      "stages": [
+        "commission",
+        "progress"
+      ]
+    },
+    "deep-orbital-service": {
+      "areas": [
+        "J",
+        "M"
+      ],
+      "stages": [
+        "commission",
+        "progress"
+      ]
+    },
+    "runtime": {
+      "areas": [
+        "I",
+        "F"
+      ],
+      "stages": [
+        "execute"
+      ]
+    },
+    "deep-software-execution": {
+      "areas": [
+        "I",
+        "F"
+      ],
+      "stages": [
+        "execute"
+      ]
+    },
+    "distributed": {
+      "areas": [
+        "C",
+        "I"
+      ],
+      "stages": [
+        "learn",
+        "execute"
+      ]
+    },
+    "deep-distributed-work": {
+      "areas": [
+        "C",
+        "I"
+      ],
+      "stages": [
+        "learn",
+        "execute"
+      ]
+    },
+    "distributed-output-bridges": {
+      "areas": [
+        "C",
+        "I"
+      ],
+      "stages": [
+        "learn",
+        "execute"
+      ]
+    },
+    "serving": {
+      "areas": [
+        "F",
+        "I"
+      ],
+      "stages": [
+        "serve",
+        "execute"
+      ]
+    },
+    "deep-workload-memory": {
+      "areas": [
+        "F",
+        "I"
+      ],
+      "stages": [
+        "serve",
+        "execute"
+      ]
+    },
+    "deep-working-set-placement": {
+      "areas": [
+        "F",
+        "I"
+      ],
+      "stages": [
+        "serve",
+        "execute"
+      ]
+    },
+    "representation": {
+      "areas": [
+        "B",
+        "C"
+      ],
+      "stages": [
+        "data",
+        "learn"
+      ]
+    },
+    "transformer": {
+      "areas": [
+        "C",
+        "E"
+      ],
+      "stages": [
+        "learn",
+        "execute"
+      ]
+    },
+    "learning": {
+      "areas": [
+        "B",
+        "C",
+        "D",
+        "M"
+      ],
+      "stages": [
+        "data",
+        "learn",
+        "adapt",
+        "progress"
+      ]
+    },
+    "agent": {
+      "areas": [
+        "G",
+        "L",
+        "M"
+      ],
+      "stages": [
+        "act",
+        "evaluate",
+        "progress"
+      ]
+    },
+    "mathematical-foundations": {
+      "areas": [
+        "A"
+      ],
+      "stages": [
+        "data",
+        "learn",
+        "execute"
+      ]
+    },
+    "data-evidence-foundations": {
+      "areas": [
+        "B",
+        "L"
+      ],
+      "stages": [
+        "data",
+        "evaluate"
+      ]
+    },
+    "contrasting-ai-methods": {
+      "areas": [
+        "E",
+        "K"
+      ],
+      "stages": [
+        "learn",
+        "evaluate"
+      ]
+    },
+    "automated-task-runtime": {
+      "areas": [
+        "G"
+      ],
+      "stages": [
+        "act"
+      ]
+    },
+    "authority-and-context": {
+      "areas": [
+        "G",
+        "L"
+      ],
+      "stages": [
+        "act",
+        "evaluate"
+      ]
+    },
+    "delegated-task-systems": {
+      "areas": [
+        "G"
+      ],
+      "stages": [
+        "act"
+      ]
+    },
+    "evaluated-application-families": {
+      "areas": [
+        "F",
+        "K",
+        "L"
+      ],
+      "stages": [
+        "serve",
+        "act",
+        "evaluate"
+      ]
+    },
+    "embodied-observation-action": {
+      "areas": [
+        "K"
+      ],
+      "stages": [
+        "act",
+        "evaluate"
+      ]
+    },
+    "model-lifecycle-data": {
+      "areas": [
+        "B"
+      ],
+      "stages": [
+        "data"
+      ]
+    },
+    "model-lifecycle-base-model": {
+      "areas": [
+        "A",
+        "C"
+      ],
+      "stages": [
+        "learn",
+        "execute"
+      ]
+    },
+    "model-lifecycle-pretraining": {
+      "areas": [
+        "C"
+      ],
+      "stages": [
+        "learn"
+      ]
+    },
+    "model-lifecycle-continuation": {
+      "areas": [
+        "D"
+      ],
+      "stages": [
+        "adapt"
+      ]
+    },
+    "model-lifecycle-posttraining": {
+      "areas": [
+        "D"
+      ],
+      "stages": [
+        "adapt"
+      ]
+    },
+    "model-lifecycle-evaluation": {
+      "areas": [
+        "F",
+        "L"
+      ],
+      "stages": [
+        "serve",
+        "evaluate"
+      ]
+    },
+    "model-lifecycle-multimodal": {
+      "areas": [
+        "E"
+      ],
+      "stages": [
+        "learn",
+        "serve"
+      ]
+    },
+    "model-lifecycle-world-action": {
+      "areas": [
+        "E",
+        "K"
+      ],
+      "stages": [
+        "act"
+      ]
+    },
+    "hardware-runtime-boundaries": {
+      "areas": [
+        "I",
+        "J"
+      ],
+      "stages": [
+        "commission",
+        "execute"
+      ]
+    },
+    "contrasting-computational-structures": {
+      "areas": [
+        "A",
+        "E"
+      ],
+      "stages": [
+        "learn",
+        "execute"
+      ]
+    },
+    "process-cell-bridge": {
+      "areas": [
+        "H"
+      ],
+      "stages": [
+        "physical",
+        "execute"
+      ]
+    }
+  },
+  "lessonOverrides": {
+    "post-training": {
+      "areas": [
+        "D"
+      ],
+      "stages": [
+        "adapt"
+      ]
+    },
+    "evaluation": {
+      "areas": [
+        "L"
+      ],
+      "stages": [
+        "evaluate"
+      ]
+    },
+    "tool-loop": {
+      "areas": [
+        "G"
+      ],
+      "stages": [
+        "act"
+      ]
+    },
+    "astra": {
+      "areas": [
+        "M"
+      ],
+      "stages": [
+        "progress"
+      ]
+    },
+    "scaling-laws": {
+      "areas": [
+        "C",
+        "M"
+      ],
+      "stages": [
+        "learn",
+        "progress"
+      ]
+    },
+    "training-data": {
+      "areas": [
+        "B"
+      ],
+      "stages": [
+        "data"
+      ]
+    },
+    "loss-optimizer": {
+      "areas": [
+        "A",
+        "C"
+      ],
+      "stages": [
+        "learn"
+      ]
+    },
+    "management-controller": {
+      "areas": [
+        "I",
+        "J"
+      ],
+      "stages": [
+        "commission"
+      ]
+    },
+    "chip-volume-economics": {
+      "areas": [
+        "H",
+        "M"
+      ],
+      "stages": [
+        "physical",
+        "progress"
+      ]
+    },
+    "memory-wall-trends": {
+      "areas": [
+        "I",
+        "M"
+      ],
+      "stages": [
+        "execute",
+        "progress"
+      ]
+    },
+    "compatible-supply-capacity": {
+      "areas": [
+        "J",
+        "M"
+      ],
+      "stages": [
+        "commission",
+        "progress"
+      ]
+    },
+    "production-ramp-allocation": {
+      "areas": [
+        "J",
+        "M"
+      ],
+      "stages": [
+        "commission",
+        "progress"
+      ]
+    }
+  }
+}

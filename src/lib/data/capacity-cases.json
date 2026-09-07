@@ -1,0 +1,450 @@
+{
+  "schemaVersion": 1,
+  "asOfCuration": "2026-09-07",
+  "title": "Five dated capacity and allocation boundaries",
+  "evidenceStatus": "agent-source-check-only",
+  "specialistReview": null,
+  "aggregationPolicy": "Read cases independently. No total across cases, resource types, statuses, phases, parties or incompatible dates is supported.",
+  "cases": [
+    {
+      "id": "tsmc-backend-allocation-2026q2",
+      "title": "A public shortage statement is not a private customer queue",
+      "sourceIds": [
+        "tsmc-2026q2"
+      ],
+      "reportedAt": "2026-07-16",
+      "eventDate": "2026-07-16",
+      "lessonIds": [
+        "compatible-supply-capacity",
+        "production-ramp-allocation",
+        "cowos-s-silicon-interposer"
+      ],
+      "investigationIds": [
+        "manufacturing"
+      ],
+      "claim": "TSMC management described backend capacity as constrained and described coordinating wafer supply across CPU, GPU and other accelerator demand.",
+      "observations": [
+        {
+          "id": "backend-status",
+          "value": null,
+          "unit": "qualitative",
+          "asOf": "2026-07-16",
+          "status": "reported-operating-constraint",
+          "boundary": "Management-level backend capacity statement; no numerical package capacity denominator"
+        }
+      ],
+      "limitations": [
+        "No customer ordering, queue position, lead time, utilization or allocated wafer/package count is disclosed here.",
+        "Frontend wafers and backend packages have different process and unit boundaries."
+      ],
+      "doNotAggregateWith": [
+        "Any inferred named-customer order book",
+        "Synthetic package-allocation scenario"
+      ],
+      "recheck": {
+        "cadenceDays": 90,
+        "triggers": [
+          "Next quarterly call",
+          "Explicit correction or changed backend-status statement"
+        ],
+        "supersedes": [],
+        "supersedesScope": "A new statement can supersede current-status interpretation; retain this dated event.",
+        "reviewRole": "Technical editor with the source-domain reviewer when definitions or status change",
+        "lastSourceCheck": {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+        },
+        "reviewStatus": "agent-source-check-only",
+        "humanSpecialistReview": null
+      },
+      "curation": {
+        "actorType": "agent",
+        "role": "implementation and source-scope author",
+        "date": "2026-09-07"
+      }
+    },
+    {
+      "id": "us-generator-queue-end-2025",
+      "title": "A queue contains proposals, not commissioned supply",
+      "sourceIds": [
+        "lbnl-queue-2026"
+      ],
+      "reportedAt": "2026-05",
+      "eventDate": "2025-12-31",
+      "lessonIds": [
+        "grid-interconnection-readiness",
+        "capacity-phase-geography",
+        "energy-forecast-boundaries"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claim": "The 2026 report counts roughly 8,200 active projects at end 2025, with 1,312 GW of generation and approximately 749 GW of storage requests.",
+      "observations": [
+        {
+          "id": "active-projects",
+          "value": 8200,
+          "unit": "projects",
+          "asOf": "2025-12-31",
+          "status": "requested",
+          "boundary": "Approximate active transmission-interconnection project count"
+        },
+        {
+          "id": "generation",
+          "value": 1312,
+          "unit": "GW nameplate generation",
+          "asOf": "2025-12-31",
+          "status": "requested",
+          "boundary": "Generation requests within covered U.S. transmission queues"
+        },
+        {
+          "id": "storage",
+          "value": 749,
+          "unit": "GW storage power",
+          "asOf": "2025-12-31",
+          "status": "requested",
+          "boundary": "Storage power capacity in the same queue dataset; not GWh energy"
+        }
+      ],
+      "limitations": [
+        "Coverage represents about 98% of installed U.S. generating capacity; excludes load interconnection, distribution and behind-the-meter projects.",
+        "These requests are not operating data-center power or guaranteed future supply. Generation and storage nameplates are not equivalent firm energy."
+      ],
+      "doNotAggregateWith": [
+        "Data-center load queues",
+        "Operating generation inventory",
+        "Hybrid project count counted once per resource"
+      ],
+      "recheck": {
+        "cadenceDays": 365,
+        "triggers": [
+          "Next Queued Up edition",
+          "Dataset revision or coverage change"
+        ],
+        "supersedes": [],
+        "supersedesScope": "Use a new cutoff as a new snapshot; revised values for this cutoff supersede only matching observations.",
+        "reviewRole": "Technical editor with the source-domain reviewer when definitions or status change",
+        "lastSourceCheck": {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+        },
+        "reviewStatus": "agent-source-check-only",
+        "humanSpecialistReview": null
+      },
+      "curation": {
+        "actorType": "agent",
+        "role": "implementation and source-scope author",
+        "date": "2026-09-07"
+      }
+    },
+    {
+      "id": "incite-awards-2026",
+      "title": "An allocation grants a bounded resource entitlement",
+      "sourceIds": [
+        "incite-2026"
+      ],
+      "reportedAt": "2026-05-05",
+      "eventDate": "2026",
+      "lessonIds": [
+        "scheduler",
+        "topology-job-admission",
+        "evaluation"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claim": "INCITE announced 75 projects for 2026 after receiving 143 proposals; one listed project received distinct Aurora and Polaris awards.",
+      "observations": [
+        {
+          "id": "awarded-projects",
+          "value": 75,
+          "unit": "projects",
+          "asOf": "2026",
+          "status": "awarded",
+          "boundary": "2026 INCITE announced projects"
+        },
+        {
+          "id": "received-proposals",
+          "value": 143,
+          "unit": "proposals",
+          "asOf": "2026",
+          "status": "requested",
+          "boundary": "2026 call total received proposals"
+        },
+        {
+          "id": "example-aurora",
+          "value": 1000000,
+          "unit": "Aurora node-hours",
+          "asOf": "2026",
+          "status": "awarded",
+          "boundary": "Robert Hager project allocation on Aurora"
+        },
+        {
+          "id": "example-polaris",
+          "value": 250000,
+          "unit": "Polaris node-hours",
+          "asOf": "2026",
+          "status": "awarded",
+          "boundary": "Same project allocation on Polaris"
+        }
+      ],
+      "limitations": [
+        "Node-hours on different node architectures are not equal compute or energy.",
+        "Awards do not establish consumed time, queue waits, concurrent availability or scientific success."
+      ],
+      "doNotAggregateWith": [
+        "A system-independent FLOP-hour total",
+        "Completed useful work or calendar-duration estimates"
+      ],
+      "recheck": {
+        "cadenceDays": 365,
+        "triggers": [
+          "Revised award list",
+          "Next allocation year"
+        ],
+        "supersedes": [],
+        "supersedesScope": "Keep allocation years separate; a correction supersedes the named award, not all systems.",
+        "reviewRole": "Technical editor with the source-domain reviewer when definitions or status change",
+        "lastSourceCheck": {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+        },
+        "reviewStatus": "agent-source-check-only",
+        "humanSpecialistReview": null
+      },
+      "curation": {
+        "actorType": "agent",
+        "role": "implementation and source-scope author",
+        "date": "2026-09-07"
+      }
+    },
+    {
+      "id": "core-billable-versus-leased-2026q2",
+      "title": "Contracted capacity and started service are different states",
+      "sourceIds": [
+        "core-2026q2"
+      ],
+      "reportedAt": "2026-07-28",
+      "eventDate": "2026-06-30",
+      "lessonIds": [
+        "capacity-phase-geography",
+        "cluster-commissioning-gates",
+        "regional-siting-access"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claim": "Core Scientific reported 395 MW billing for Q2 2026 and approximately 1.1 GW leased customer capacity in the release’s business update.",
+      "observations": [
+        {
+          "id": "billable",
+          "value": 395,
+          "unit": "MW customer capacity",
+          "asOf": "2026-06-30",
+          "status": "in-service-billing",
+          "boundary": "Period-end customer capacity with service started and billing"
+        },
+        {
+          "id": "leased",
+          "value": 1100,
+          "unit": "MW customer capacity",
+          "asOf": "2026-07-28 report",
+          "status": "contracted",
+          "boundary": "Approximate reported business-update value; executed contracts whether or not service started"
+        }
+      ],
+      "limitations": [
+        "Do not subtract these observations as if they shared an exact cutoff.",
+        "Customer IT load is distinct from gross utility power agreements; billable is a subset status of leased capacity, not another inventory."
+      ],
+      "doNotAggregateWith": [
+        "Billable plus leased total",
+        "Gross utility agreements treated as IT load",
+        "Customer-side inventories of the same hosted sites"
+      ],
+      "recheck": {
+        "cadenceDays": 90,
+        "triggers": [
+          "Next quarterly metrics",
+          "Commissioning or contract-status revision"
+        ],
+        "supersedes": [],
+        "supersedesScope": "Replace only matched definitions and cutoff; preserve reported-date differences.",
+        "reviewRole": "Technical editor with the source-domain reviewer when definitions or status change",
+        "lastSourceCheck": {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+        },
+        "reviewStatus": "agent-source-check-only",
+        "humanSpecialistReview": null
+      },
+      "curation": {
+        "actorType": "agent",
+        "role": "implementation and source-scope author",
+        "date": "2026-09-07"
+      }
+    },
+    {
+      "id": "helios-phase-delivery-2026q2",
+      "title": "One delivered phase sits inside a larger contracted plan",
+      "sourceIds": [
+        "galaxy-2026q2"
+      ],
+      "reportedAt": null,
+      "eventDate": "2026-06-30",
+      "lessonIds": [
+        "capacity-phase-geography",
+        "rack-power-conversion",
+        "cluster-commissioning-gates"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "claim": "Galaxy reported delivery of Helios Phase I’s 133 MW critical IT in Q2 2026. The three-phase agreement covered 526 MW critical IT associated with about 800 MW gross power.",
+      "observations": [
+        {
+          "id": "phase1-delivered",
+          "value": 133,
+          "unit": "MW critical IT",
+          "asOf": "2026-Q2",
+          "status": "operating-delivered",
+          "boundary": "Phase I delivered capacity"
+        },
+        {
+          "id": "all-phases-contracted-it",
+          "value": 526,
+          "unit": "MW critical IT",
+          "asOf": "2026-06-30",
+          "status": "contracted",
+          "boundary": "Combined three-phase lease"
+        },
+        {
+          "id": "all-phases-gross",
+          "value": 800,
+          "unit": "MW gross power",
+          "asOf": "2026-06-30",
+          "status": "contracted",
+          "boundary": "Gross-power scope corresponding to three-phase lease"
+        },
+        {
+          "id": "phase2",
+          "value": 260,
+          "unit": "MW critical IT",
+          "asOf": "2026-06-30",
+          "status": "contracted-future",
+          "boundary": "Phase II initial rent projected Q2 2027"
+        },
+        {
+          "id": "phase3",
+          "value": 133,
+          "unit": "MW critical IT",
+          "asOf": "2026-06-30",
+          "status": "contracted-future",
+          "boundary": "Phase III initial rent projected 2028"
+        }
+      ],
+      "limitations": [
+        "Phase I is included in 526 MW; gross and IT describe the same development at different boundaries.",
+        "The 800/526 nameplate ratio is not measured PUE; future phase dates are not operating capacity."
+      ],
+      "doNotAggregateWith": [
+        "Phase I plus all-phase contracted IT",
+        "Gross plus IT capacity",
+        "A tenant inventory containing the same Helios lease"
+      ],
+      "recheck": {
+        "cadenceDays": 90,
+        "triggers": [
+          "Quarterly presentation",
+          "Phase commissioning, lease or energization revision"
+        ],
+        "supersedes": [],
+        "supersedesScope": "Update a phase status only with an explicit source; preserve prior projection and observation dates.",
+        "reviewRole": "Technical editor with the source-domain reviewer when definitions or status change",
+        "lastSourceCheck": {
+          "actorType": "agent",
+          "date": "2026-09-07",
+          "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+        },
+        "reviewStatus": "agent-source-check-only",
+        "humanSpecialistReview": null
+      },
+      "curation": {
+        "actorType": "agent",
+        "role": "implementation and source-scope author",
+        "date": "2026-09-07"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "tsmc-2026q2",
+      "title": "TSMC 2Q26 earnings-call transcript, hosted by TSMC",
+      "url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf",
+      "locator": "Printed p15: C.C. Wei response on CPU/GPU/XPU supply; printed p17: response to Haas Liu on backend shortage",
+      "sourceDate": "2026-07-16",
+      "scope": "Public management statements only; no customer-level capacity, queue or wait-time data.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "lbnl-queue-2026",
+      "title": "Berkeley Lab and GridTracker: Queued Up, 2026 Edition",
+      "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+      "locator": "Abstract coverage paragraph and Key highlights, first bullet; dataset cutoff end 2025",
+      "sourceDate": "2026-05",
+      "scope": "Generation/storage transmission requests; excludes load, distribution and behind-the-meter interconnection.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "incite-2026",
+      "title": "Argonne: INCITE program awards time to 75 projects",
+      "url": "https://www.alcf.anl.gov/news/incite-program-awards-supercomputing-time-75-high-impact-projects-0",
+      "locator": "Published 05/05/2026; first paragraph; selection paragraph; Robert Hager allocation bullet",
+      "sourceDate": "2026-05-05",
+      "scope": "Public award counts and system-specific node-hours; awards are not usage, completed science or wait times.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "core-2026q2",
+      "title": "Core Scientific: Second Quarter 2026 Results",
+      "url": "https://investors.corescientific.com/news-events/press-releases/detail/139/core-scientific-announces-second-quarter-2026-results",
+      "locator": "Financial Summary and Operating Metrics, Billing MW row; Recent Business Developments; Term Library",
+      "sourceDate": "2026-07-28",
+      "scope": "Company-defined billable/leased capacity statuses; customer IT capacity differs from gross utility agreements.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "galaxy-2026q2",
+      "title": "Galaxy: Q2 2026 investor presentation",
+      "url": "https://investor.galaxy.com/static-files/bd9f9727-1a8f-4fa1-8533-175e10020d7f",
+      "locator": "Cover as-of date; printed slide16 (PDF page16), Contracted Capacity, phase table and footnote3",
+      "sourceDate": null,
+      "scope": "Reported Helios phase delivery and contracted critical-IT/gross capacity; future phase dates remain projections.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    }
+  ]
+}

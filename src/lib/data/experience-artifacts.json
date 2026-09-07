@@ -1,0 +1,72 @@
+[
+  {
+    "experienceId": "learning",
+    "name": "Causal decoder checkpoint",
+    "boundary": "Corpus and objective \u2192 gradients \u2192 optimizer state \u2192 changed outputs"
+  },
+  {
+    "experienceId": "distributed",
+    "name": "Distributed optimizer checkpoint",
+    "boundary": "Reserved examples \u2192 rank attempts \u2192 weighted gradient \u2192 committed weights"
+  },
+  {
+    "experienceId": "serving",
+    "name": "Identified serving record",
+    "boundary": "Learned weights \u2192 per-request K/V and RNG \u2192 actual tokens \u2192 released capacity"
+  },
+  {
+    "experienceId": "retrieval",
+    "name": "Fitted reference and typed proposal",
+    "boundary": "Corpus \u2192 fitted embeddings \u2192 generated tokens \u2192 frozen action payload"
+  },
+  {
+    "experienceId": "automation",
+    "name": "Incident journal and durable receipts",
+    "boundary": "Proposed action \u2192 approval \u2192 separately durable environment \u2192 independently checked task"
+  },
+  {
+    "experienceId": "cell",
+    "name": "INV-01 electrical specimen",
+    "boundary": "Oxide thickness \u2192 coupled parameters \u2192 transfer and transition \u2192 acceptance gates"
+  },
+  {
+    "experienceId": "commissioning",
+    "name": "Matrix command and ownership",
+    "boundary": "Device readiness \u2192 VA/PA/IOVA identity \u2192 visible input \u2192 completion epoch"
+  },
+  {
+    "experienceId": "control",
+    "name": "Calibrated dynamics and episode",
+    "boundary": "Calibration transitions \u2192 fitted model \u2192 selected action \u2192 observed trajectory"
+  },
+  {
+    "experienceId": "data",
+    "name": "Corpus and packed-batch manifest",
+    "boundary": "Source family \u2192 split \u2192 fitted byte merges \u2192 sampler cursor \u2192 isolated causal targets"
+  },
+  {
+    "experienceId": "factory",
+    "name": "Durable factory training checkpoint",
+    "boundary": "Commissioned device \u2192 admitted job \u2192 actual gradient updates \u2192 serialized commit \u2192 recovered optimizer state"
+  },
+  {
+    "experienceId": "memory-workload",
+    "name": "Identified matrix word and memory trace",
+    "boundary": "Qualified stack/interface \u2192 staged B words \u2192 DRAM read and correction \u2192 MAC consumption \u2192 independently checked output"
+  },
+  {
+    "experienceId": "ranking",
+    "name": "Exposure log and fitted scoring record",
+    "boundary": "Known exposure \u2192 observed feedback \u2192 weighted fitting \u2192 disjoint-user ranking and usefulness audit"
+  },
+  {
+    "experienceId": "network",
+    "name": "Matrix payload and receiver assembly",
+    "boundary": "Identified operand \u2192 finite-credit link \u2192 validated destination bytes \u2192 independently checked matrix result"
+  },
+  {
+    "experienceId": "projection",
+    "name": "Learned query projection and precision adapter",
+    "boundary": "Checkpoint \u2192 actual normalized input and projection \u2192 explicit integer tiles \u2192 memory/MAC events \u2192 reconstruction error"
+  }
+]

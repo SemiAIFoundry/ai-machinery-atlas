@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-07",
+  "actorType": "agent",
+  "modelVersion": "causal-kv-serving-1",
+  "automated": {
+    "tests": 39,
+    "passed": 39,
+    "failed": 0,
+    "typecheck": "passed"
+  },
+  "referenceBound": {
+    "maxProbabilityDifference": 1e-10,
+    "reference": "Independent full-prefix tape forward; cache path uses ordinary-number incremental inference",
+    "scope": "Binary64 only; approximate KV reports numerical and greedy-token differences instead of requiring equality"
+  },
+  "workedPolicyComparison": {
+    "configuration": "seed7, request1 maxNew1, request3 arrival1, chunk1, capacity24",
+    "continuous": {
+      "request3Admit": 5,
+      "request3Complete": 12
+    },
+    "static": {
+      "request3Admit": 8,
+      "request3Complete": 15
+    },
+    "unit": "synthetic scheduling iterations"
+  },
+  "notEstablished": [
+    "Browser and physical-device review",
+    "Assistive technology and learner review",
+    "Specialist scientific review"
+  ],
+  "files": {
+    "src/lib/model-lifecycle-serving.ts": "99f58bcbd4fd07da73123a25ca5ff36d82594132faa82f93a0be53b7ddb5beb8",
+    "src/components/model-lifecycle-serving.tsx": "a82f5ac53ad9ab66310cc6269f4e1ce687585fdc36597d6d638eb0f321aa099b",
+    "src/components/model-lifecycle-serving.css": "aad43ca899c2be4ae69f1be9443e152f9f315dfe2cd23f7a964b6ea6963dc243",
+    "scripts/model-lifecycle-serving.test.mjs": "98cb0c4ee4bc70ad899af9bf06894a24ecb699dd699101e293bf97119b0e1eb9",
+    "src/lib/model-lifecycle-speculation.ts": "ecc614300f782bd6a5f9dd911f8fe6657bcf704b512beb1cab25ac1763dd6a53",
+    "scripts/model-lifecycle-speculation.test.mjs": "b2393804c06394a03a2e9473708bc7a0cb16d57f05753a9307448cc4bf15ed62"
+  },
+  "speculationModelVersion": "authored-draft-target-greedy-1"
+}

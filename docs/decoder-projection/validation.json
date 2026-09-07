@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "decoder-query-machine-1",
+  "validatedAt": "2026-09-07",
+  "actorType": "agent",
+  "actor": "/root/visual_learning_assessment",
+  "runtime": "v24.14.0",
+  "checks": [
+    {
+      "command": "node --experimental-strip-types --test scripts/decoder-projection.test.mjs scripts/machine-execution.test.mjs scripts/portable-experiment-storage.test.mjs",
+      "result": "passed",
+      "tests": 51,
+      "breakdown": {
+        "projection": 18,
+        "machine": 20,
+        "portable": 13
+      }
+    },
+    {
+      "command": "./node_modules/.bin/tsc --noEmit",
+      "result": "passed"
+    },
+    {
+      "command": "node --experimental-strip-types docs/decoder-projection/reproduce.mjs",
+      "result": "7 complete source-record fixtures regenerated"
+    }
+  ],
+  "limits": [
+    "Authoring-agent software checks; not independent authorship or specialist review.",
+    "Browser and handoff validation are owned separately by root.",
+    "No hardware measurements, full-model integer inference, answer-quality comparison or physical timing claim."
+  ],
+  "files": [
+    {
+      "path": "src/lib/decoder-projection.ts",
+      "bytes": 17031,
+      "sha256": "93e8863313ef295b3fd39c0fde1bc2d090e2df9fe1a1356812ef84288577e269"
+    },
+    {
+      "path": "src/components/decoder-projection.tsx",
+      "bytes": 19347,
+      "sha256": "c461b9f2510aa821b47280887bdcfc425e169fdac2ce62956a18c9c8aa65b9b0"
+    },
+    {
+      "path": "src/components/decoder-projection.css",
+      "bytes": 3342,
+      "sha256": "16a29edb2c04825c022ee5b9434971c72ace34128f4349bf74f979828635eb47"
+    },
+    {
+      "path": "scripts/decoder-projection.test.mjs",
+      "bytes": 14114,
+      "sha256": "3a91c13a4f6513e6fd83fe8fcc4ac6a648960b966550d6f0d4ee2716eaa78e87"
+    },
+    {
+      "path": "docs/decoder-projection/README.md",
+      "bytes": 10380,
+      "sha256": "5e084a236a589d3af3477440544de8eae934369a26f60f3e190fed4375c38bd0"
+    },
+    {
+      "path": "docs/decoder-projection/source-review.json",
+      "bytes": 4043,
+      "sha256": "ad94726bc29efa3fb0433e9ebd6ecddd089642000d066e161b0394834c639ec6"
+    },
+    {
+      "path": "docs/decoder-projection/reproduce.mjs",
+      "bytes": 1693,
+      "sha256": "0571b85f1e55eb97d542458a7d51013f5f06f25a78648d00ae257227be751ef9"
+    },
+    {
+      "path": "docs/decoder-projection/scenarios.json",
+      "bytes": 711392,
+      "sha256": "6400a4a3382e9e223bdd071a272ad10ff7561c10e0a2c9da0b80b1e9c603ea6b"
+    },
+    {
+      "path": "src/lib/model-lifecycle.ts",
+      "bytes": 27876,
+      "sha256": "5b01cdd348e82e7855c205af7f4d4dbb71e21320e73a696a211b625615c8e91d"
+    },
+    {
+      "path": "src/lib/model-lifecycle-data.ts",
+      "bytes": 2787,
+      "sha256": "c3deefb00776c2c9d85d6409b7f163b80532048fefdeab0c534fc5a2d4ea3dee"
+    },
+    {
+      "path": "src/lib/model-lifecycle-workspace.ts",
+      "bytes": 2156,
+      "sha256": "dfd802d8919bce0222fd1787f73589e0f7a24600abcd6be8b7ae6ef64442b10c"
+    },
+    {
+      "path": "src/lib/machine-execution.ts",
+      "bytes": 23626,
+      "sha256": "60ddd8b0a4d7d32283c0b69ab1918e8b26a098dab80275eb3cdc2424e9e00872"
+    },
+    {
+      "path": "src/lib/architecture-execution.ts",
+      "bytes": 21077,
+      "sha256": "6d3c396ba519adf0574a7db12c4d47125994bb38a242329bfb50fcf2b09dcf9a"
+    },
+    {
+      "path": "src/components/portable-experiment.tsx",
+      "bytes": 4277,
+      "sha256": "3acb9038050e2f0ce771dd9d523da300a7e23dddbc3dacada80293b795878074"
+    },
+    {
+      "path": "src/lib/portable-experiment-storage.ts",
+      "bytes": 4120,
+      "sha256": "4adab4a5129db3bf911c5da220ffbcd5c47694dc97d320bbb9c29ef00055a535"
+    },
+    {
+      "path": "src/components/studio-primitives.tsx",
+      "bytes": 3333,
+      "sha256": "0ba4d988270308c68379bf622ad3c14f31e1a022cd0101e92fa5ea8caea33f45"
+    },
+    {
+      "path": "src/components/equation.tsx",
+      "bytes": 1666,
+      "sha256": "5d5079cb851d0f5af835f99042e4265ce43360f8c7a9c3dc34aad197fcd68480"
+    }
+  ]
+}

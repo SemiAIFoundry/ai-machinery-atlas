@@ -1,0 +1,474 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:42:57.382Z",
+  "contentFingerprint": "5003a7dd139869db36bcb05ca71c89f8683af5f45845e7c2173ae7c209463ffb",
+  "record": {
+    "id": "attention",
+    "level": "model",
+    "name": "Self-attention",
+    "shortName": "Self-attention",
+    "role": "Exchange information between token representations.",
+    "description": "Self-attention computes content-dependent mixtures of information. Learned projections produce queries, keys, and values. Query–key dot products become scores; scaling, a causal mask when appropriate, and softmax turn them into weights. Those weights mix value vectors. Multiple heads can form different mixtures. A causal decoder prevents a position from using future tokens during training. The atlas displays a small matrix so the relationship between rows, columns, and weighted values remains visible.\n\nAttention learning differentiates both the value path and the probabilities controlling that mixture. A causal mask removes future positions from the allowed softmax support; it is not merely a visual annotation. The executable decoder exposes projected Q/K/V, scores, probabilities and the complete gradient graph. A small analytical example clarifies why changing one score can redistribute weight across all allowed values.\n\nPacking several examples into one input array adds a boundary condition to causal attention. In the corpus experience, a query may use only earlier or current positions from its own sampled document instance within the same block. Adjacent storage does not grant another document access to that context.",
+    "mechanism": [
+      "Project representations into Q, K, and V.",
+      "Form softmax(QKᵀ / √dₖ + mask).",
+      "Multiply the weights by V and combine heads.",
+      "Form scores only for positions the query may attend to.",
+      "Normalize those scores together and mix their value vectors.",
+      "Backpropagate through both softmax probabilities and value projections; verify prefix invariance under future-token changes.",
+      "Use document-instance IDs as well as causal position order when constructing allowed attention keys.",
+      "Keep shifted supervision separate from attention: a next-token label may be just outside the input block without becoming visible input context."
+    ],
+    "specs": [
+      {
+        "label": "Dense score shape",
+        "value": "T × T per head",
+        "context": "T is sequence length; algorithms need not store the full matrix."
+      },
+      {
+        "label": "Causality",
+        "value": "Future positions masked",
+        "context": "For an autoregressive decoder."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Representations",
+        "direction": "in",
+        "signal": "Queries, keys, values"
+      },
+      {
+        "name": "Residual stream",
+        "direction": "out",
+        "signal": "Context-dependent value mixtures"
+      }
+    ],
+    "tradeoff": "Dense attention has quadratic pairwise work in sequence length. IO-aware kernels reduce memory traffic while implementing the same attention mathematics, subject to finite-precision differences.",
+    "whyAI": "Attention makes relationships within context available to each token.",
+    "related": [
+      "embedding",
+      "positional-encoding",
+      "feed-forward",
+      "tensor-core",
+      "kv-cache",
+      "reverse-mode-autodiff",
+      "tiny-causal-decoder",
+      "training-data",
+      "tokenizer",
+      "loss-optimizer"
+    ],
+    "sources": [
+      {
+        "title": "Vaswani et al. — Attention Is All You Need",
+        "url": "https://arxiv.org/abs/1706.03762"
+      },
+      {
+        "title": "Dao et al. — FlashAttention",
+        "url": "https://arxiv.org/abs/2205.14135"
+      },
+      {
+        "title": "Attention Is All You Need",
+        "url": "https://arxiv.org/html/1706.03762v7"
+      },
+      {
+        "title": "Megatron Bridge 0.3.1 · packed sequence boundaries",
+        "url": "https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html"
+      }
+    ],
+    "scale": "Logical structure · mapped onto physical hardware",
+    "kind": "attention",
+    "misconception": "Attention weights are not a complete explanation of a model’s reasoning.",
+    "check": {
+      "question": "What does the attention weight matrix mix?",
+      "options": [
+        "CPU clocks",
+        "Value vectors",
+        "Raw electrical power"
+      ],
+      "answer": 1,
+      "explanation": "Each row weights the value vectors available to that query."
+    },
+    "branch": "Transformer computation",
+    "subbranch": "Communication between positions",
+    "science": [
+      {
+        "title": "Scaled dot-product attention",
+        "equation": "A = softmax_rows(QKᵀ / √dₖ + M); Y = AV; Var(qᵀk) ≈ dₖ",
+        "explanation": "Each row of A describes how one query mixes allowed value vectors. Dividing by √dₖ controls score scale: a sum of dₖ independent unit-variance products has variance dₖ. Without that adjustment, larger head widths can push softmax toward saturation. The matrix products expose why data reuse matters on GPU tensor units.",
+        "assumptions": "The variance argument assumes independent, zero-mean, unit-variance query/key coordinates; trained vectors need not satisfy it exactly. M is zero for allowed positions and negative infinity for masked positions. This is one attention head before output projection."
+      },
+      {
+        "title": "Trainable attention from Q/K/V through gradients · worked relation",
+        "equation": "o=\\sum_j a_jv_j,\\qquad \\frac{\\partial o}{\\partial s_j}=a_j(v_j-o)",
+        "explanation": "With allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.",
+        "assumptions": "Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections."
+      }
+    ],
+    "history": [
+      {
+        "year": 2017,
+        "title": "The Transformer replaces recurrent sequence processing",
+        "significance": "Attention Is All You Need demonstrated an encoder–decoder built from attention and position-wise transformations, enabling parallel processing across training positions. It did not establish that attention alone constitutes intelligence.",
+        "source": {
+          "title": "Vaswani et al. — Attention Is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762"
+        }
+      }
+    ],
+    "learningObjective": "Relate attention scores to a quadratic sequence interaction.",
+    "engineeringExample": "For sequence length T, the unstructured score matrix has T² entries per head; memory-aware kernels change movement without changing the mathematical dependency.\n\nWith allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.\n\nIf the second document begins at block slot5, its query at slot7 can attend to slots5,6,7. Slots0–4 belong to the prior example and slots8 onward are future context. When an EOS is followed by another document’s BOS, the corresponding cross-document prediction loss is masked.",
+    "evidenceNotes": "The displayed equation is a model abstraction; masks and precision are explicit assumptions.\n\nMode: executable causal attention gradients. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.\n\nThe experience constructs explicit masks and arrays. It does not execute fused variable-length attention or measure packing speedups. Documents crossing blocks lose earlier-block context in this declared specimen.",
+    "visualFamily": "model-workload",
+    "prerequisites": [
+      "embedding",
+      "positional-encoding",
+      "mac"
+    ],
+    "checks": [
+      {
+        "question": "What is the derivative of output with respect to the first score?",
+        "options": [
+          "−0.75.",
+          "+0.75.",
+          "Zero merely because attention probabilities sum to one."
+        ],
+        "answer": 0,
+        "explanation": "−0.75. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections."
+      },
+      {
+        "question": "A packed query at slot7 belongs to a document starting at slot5. Which keys are allowed by this specimen?",
+        "options": [
+          "Every earlier slot0–7",
+          "Only slots5–7",
+          "Only the next token at slot8"
+        ],
+        "answer": 1,
+        "explanation": "Both the same-instance constraint and causal order apply. Storage adjacency cannot override either boundary."
+      }
+    ],
+    "labId": "attention",
+    "scope": "Inspect the causal mask and normalized score weights for hand-chosen vectors; attention temperature is separate from output sampling.",
+    "investigationId": "execution",
+    "labScope": "Inspect the causal mask and normalized score weights for hand-chosen vectors; attention temperature is separate from output sampling."
+  },
+  "chapter": {
+    "id": "transformer",
+    "band": 5,
+    "name": "Transformer internals",
+    "scene": "model",
+    "scale": "Vectors → repeated blocks",
+    "title": "Inside a transforming representation",
+    "summary": "Attention, nonlinear features, residual paths, and expert routing.",
+    "ids": [
+      "attention",
+      "feed-forward",
+      "residual-normalization",
+      "moe",
+      "output-head"
+    ],
+    "question": "How do layers exchange and transform information?",
+    "read": "Follow token representations through repeated blocks. Arcs show causal information paths, not proof of a model’s private reasoning.",
+    "domainId": "learning-intelligence"
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}A&=\\operatorname{softmax}_{\\mathrm{rows}}\\!\\left(\\frac{QK^{\\mathsf T}}{\\sqrt{d_k}}+M\\right),\\qquad Y=AV\\\\\\operatorname{Var}(q^{\\mathsf T}k)&\\approx d_k\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "Q",
+          "meaning": "Query matrix for one attention head",
+          "unit": "real T_q × d_k array"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Key matrix",
+          "unit": "real T_k × d_k array"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Value matrix",
+          "unit": "real T_k × d_v array"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Row-normalized attention weights",
+          "unit": "dimensionless T_q × T_k array"
+        },
+        {
+          "symbol": "Y",
+          "meaning": "Mixed value output",
+          "unit": "real T_q × d_v array"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Additive attention mask: zero or negative infinity",
+          "unit": "dimensionless score array"
+        },
+        {
+          "symbol": "d_k",
+          "meaning": "Query/key width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "d_v",
+          "meaning": "Value width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "T_q,T_k",
+          "meaning": "Query and key position counts",
+          "unit": "counts"
+        },
+        {
+          "symbol": "q,k",
+          "meaning": "Individual query/key vectors in the variance argument",
+          "unit": "dimensionless d_k-coordinate vectors"
+        },
+        {
+          "symbol": "Var",
+          "meaning": "Variance under the stated coordinate distribution",
+          "unit": "squared score units"
+        }
+      ],
+      "text": "Attention weights are a row-wise softmax of query–key scores divided by the square root of head width, plus a mask. Multiplying weights by values gives the output. Under the stated independent unit-variance coordinate assumptions, the unscaled dot-product variance is approximately head width."
+    },
+    {
+      "kind": "math",
+      "latex": "o=\\sum_j a_jv_j,\\qquad \\frac{\\partial o}{\\partial s_j}=a_j(v_j-o)",
+      "text": "Trace a numerical softmax derivative through a causal value mixture.",
+      "variables": [
+        {
+          "symbol": "o",
+          "meaning": "Scalar attention output in this example",
+          "unit": "value units"
+        },
+        {
+          "symbol": "a_j",
+          "meaning": "Softmax probability over allowed keys",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "v_j",
+          "meaning": "Allowed scalar value",
+          "unit": "value units"
+        },
+        {
+          "symbol": "s_j",
+          "meaning": "Pre-softmax score",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "structuredClaims": [
+    {
+      "id": "ml-claim-transformer",
+      "title": "Attention Is All You Need · scoped mechanism",
+      "statement": "The Transformer combines attention, position-wise nonlinear maps and positional information, with masking in its decoder.",
+      "sourceId": "ml-source-transformer",
+      "lessonIds": [
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "embedding",
+        "attention",
+        "feed-forward",
+        "output-head"
+      ],
+      "status": "research",
+      "metric": "Mechanism and mathematical contract",
+      "value": "Qualitative scope; worked numbers are authored",
+      "unit": "",
+      "denominator": "The cited section and its declared assumptions",
+      "period": "Edition inspected 2026-09-07",
+      "scope": "Sections 3.1–3.5, equations 1–2, causal masking and positions",
+      "limitations": "Core is an authored one-head pre-RMS/tanh decoder with separate head, not the original encoder–decoder architecture.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "manifestLesson": {
+    "id": "attention",
+    "title": "Self-attention",
+    "chapterId": "transformer",
+    "domainId": "learning-intelligence",
+    "workstream": "legacy",
+    "contentFingerprint": "5003a7dd139869db36bcb05ca71c89f8683af5f45845e7c2173ae7c209463ffb",
+    "scope": {
+      "role": "Exchange information between token representations.",
+      "learningObjective": "Relate attention scores to a quadratic sequence interaction.",
+      "scale": "Logical structure · mapped onto physical hardware",
+      "evidenceNotes": "The displayed equation is a model abstraction; masks and precision are explicit assumptions.\n\nMode: executable causal attention gradients. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.\n\nThe experience constructs explicit masks and arrays. It does not execute fused variable-length attention or measure packing speedups. Documents crossing blocks lose earlier-block context in this declared specimen.",
+      "workedExample": "For sequence length T, the unstructured score matrix has T² entries per head; memory-aware kernels change movement without changing the mathematical dependency.\n\nWith allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.\n\nIf the second document begins at block slot5, its query at slot7 can attend to slots5,6,7. Slots0–4 belong to the prior example and slots8 onward are future context. When an EOS is followed by another document’s BOS, the corresponding cross-document prediction loss is masked.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Scaled dot-product attention",
+          "assumptions": "The variance argument assumes independent, zero-mean, unit-variance query/key coordinates; trained vectors need not satisfy it exactly. M is zero for allowed positions and negative infinity for masked positions. This is one attention head before output projection.",
+          "formalKind": "math"
+        },
+        {
+          "index": 1,
+          "title": "Trainable attention from Q/K/V through gradients · worked relation",
+          "assumptions": "Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Follow token representations through repeated blocks. Arcs show causal information paths, not proof of a model’s private reasoning."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-a7468c68516526913141",
+        "url": "https://arxiv.org/abs/1706.03762",
+        "title": "Vaswani et al. — Attention Is All You Need",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "history",
+            "index": 0,
+            "eventTitle": "The Transformer replaces recurrent sequence processing",
+            "eventYear": 2017
+          }
+        ]
+      },
+      {
+        "sourceId": "url-5727fed78bddc70147e9",
+        "url": "https://arxiv.org/abs/2205.14135",
+        "title": "Dao et al. — FlashAttention",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-8a455ddf634c62b2a780",
+        "url": "https://arxiv.org/html/1706.03762v7",
+        "title": "Attention Is All You Need",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "ml-claim-transformer",
+            "ledgerSourceId": "ml-source-transformer"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-d4823e472e1706a61a2a",
+        "url": "https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html",
+        "title": "Megatron Bridge 0.3.1 · packed sequence boundaries",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "ml-claim-transformer"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "research"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "ml-methods-reviewer",
+        "label": "ML methods and evaluation reviewer",
+        "focus": "Mathematical assumptions, training/inference distinctions, experimental scope and evaluation limits."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Research framing, model validity and replication status require explicit limitations and follow-up evidence."
+      ],
+      "reviewFocus": [
+        "Mathematical assumptions, training/inference distinctions, experimental scope and evaluation limits.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "embedding",
+        "positional-encoding",
+        "mac"
+      ],
+      "dependentLessonIds": [
+        "output-head",
+        "kv-cache",
+        "prefill-resource-trace",
+        "attention-io-tiling",
+        "crg-problem-statement",
+        "tiny-causal-decoder",
+        "long-context-adaptation",
+        "retrieval-supported-generation",
+        "visual-language-bridge",
+        "speech-audio-sequence-objectives",
+        "video-latent-prediction"
+      ],
+      "relatedLessonIds": [
+        "embedding",
+        "positional-encoding",
+        "feed-forward",
+        "tensor-core",
+        "kv-cache",
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder",
+        "training-data",
+        "tokenizer",
+        "loss-optimizer"
+      ],
+      "journeyIds": [
+        "token",
+        "algorithms",
+        "model-to-hall"
+      ],
+      "lab": {
+        "labId": "attention",
+        "deepLabId": null,
+        "scope": "Inspect the causal mask and normalized score weights for hand-chosen vectors; attention temperature is separate from output sampling."
+      },
+      "primaryInvestigationId": "execution",
+      "investigationIds": [
+        "execution"
+      ],
+      "engineeringRelationIds": [
+        "engineering-executes-kernel-attention",
+        "engineering-supplies-embedding-attention",
+        "engineering-supplies-kv-cache-attention",
+        "engineering-supplies-attention-residual-normalization"
+      ],
+      "engineeringSourceRelationIds": [
+        "engineering-supplies-embedding-attention"
+      ]
+    }
+  }
+}

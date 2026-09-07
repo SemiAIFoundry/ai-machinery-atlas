@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:38:43.614Z",
+  "lessonId": "regional-siting-access",
+  "contentFingerprint": "20e727788f57f7eecab59b833472cb592db3ae6438323e500291850785b32b3c",
+  "record": {
+    "id": "regional-siting-access",
+    "level": "infrastructure",
+    "name": "Siting, regional infrastructure and access to compute",
+    "shortName": "Siting, regional infrastructure and access to compute",
+    "role": "Connects location choices to service paths, resources and who can actually use capacity.",
+    "description": "Data-center siting combines electricity readiness, fiber routes, latency, climate, water, staffing and the needs of its users. A project can improve connectivity or electrical infrastructure while remaining under construction. Google’s India hub announcement explicitly links the site with surrounding infrastructure work, while EuroHPC’s gigafactory call describes a public access and procurement mechanism. These are different evidence categories from private installed hardware. Owner, operator and access model are separate attributes. Announced investment does not equal completed equipment, and nearby compute is not automatically available to every local user.",
+    "specs": [
+      {
+        "label": "Access states",
+        "value": "Owned, reserved, allocated and available",
+        "context": "Physical capacity and user access are separate ledgers."
+      },
+      {
+        "label": "Location objective",
+        "value": "Latency, readiness, resilience and resources",
+        "context": "Weights belong to an explicit scenario, not a universal ranking."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Workload and regional requirements",
+        "direction": "in",
+        "signal": "User locations, resource limits and access needs"
+      },
+      {
+        "name": "Siting/access decision",
+        "direction": "out",
+        "signal": "A bounded choice with evidence-backed tradeoffs"
+      }
+    ],
+    "tradeoff": "Proximity can reduce network delay while a different region may have earlier power availability; access rules and reservations can dominate physical nearness.",
+    "whyAI": "Useful compute capacity depends on admission and data paths, so geographical expansion matters through more than building counts.",
+    "related": [
+      "capacity-phase-geography",
+      "grid-interconnection-readiness",
+      "topology-job-admission"
+    ],
+    "sources": [
+      {
+        "title": "Google AI Hub construction milestone in India",
+        "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+      },
+      {
+        "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+      }
+    ],
+    "scale": "Facility phases to region and world; geography schematic",
+    "kind": "architecture",
+    "branch": "Global AI infrastructure",
+    "subbranch": "Global evidence and resource accounting",
+    "mechanism": [
+      "Define the users, data paths and service objectives that location must support.",
+      "Compare actual electrical, network and cooling readiness for the same time horizon.",
+      "Identify physical operators and the mechanism through which users receive compute access.",
+      "Model resource and latency tradeoffs with explicitly chosen scenario weights.",
+      "Keep construction announcements, funding commitments and operational service evidence separate."
+    ],
+    "misconception": "Investment dollars are not operating megawatts, and public access programs do not imply every listed facility is already commissioned.",
+    "check": {
+      "question": "Which question distinguishes accessible capacity from physical capacity?",
+      "options": [
+        "How many countries appear in the press release?",
+        "Who can obtain an allocation, under what conditions and date?",
+        "How large is the site’s sign?"
+      ],
+      "answer": 1,
+      "explanation": "Access depends on reservations, procurement and admission policy beyond the presence of equipment."
+    },
+    "science": [
+      {
+        "title": "Conditional site score",
+        "equation": "Score = Σi wi zi",
+        "explanation": "zi is a normalized scenario metric and wi a declared preference weight; the score is dimensionless.",
+        "assumptions": "A teaching decision aid, not an objective scientific ranking; normalization and uncertain inputs must be visible."
+      }
+    ],
+    "prerequisites": [
+      "capacity-phase-geography",
+      "scheduler"
+    ],
+    "learningObjective": "Explain siting and access tradeoffs without equating investment, geography and available service.",
+    "workstream": "W10",
+    "visualFamily": "world-network",
+    "engineeringExample": "Synthetic choice: Site A offers lower network delay but opens a year later; Site B opens sooner with a longer path. A batch-training user and an interactive-serving user can reasonably choose differently.",
+    "evidenceNotes": "No jurisdiction-specific legal advice or exhaustive regional census is provided. Public project and procurement statements support dated examples only.",
+    "labId": "library",
+    "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism.",
+    "labScope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+  },
+  "chapter": {
+    "id": "deep-global-resources",
+    "domainId": "connected-infrastructure",
+    "read": "Use dated phase records and explicit denominators before aggregation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "\\mathrm{Score}=\\sum_i w_i z_i",
+      "variables": [
+        {
+          "symbol": "Score",
+          "meaning": "Conditional scenario preference score",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "wᵢ",
+          "meaning": "Declared preference weight for criterion i",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "zᵢ",
+          "meaning": "Normalized metric value under the stated transformation",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "i",
+          "meaning": "Criterion index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "The scenario score sums normalized criterion values multiplied by declared preference weights.",
+      "note": "This is a preference-dependent decision aid, not an objective scientific ranking. Weight normalization is a chosen convention, not implied by the sum."
+    }
+  ],
+  "manifestLesson": {
+    "id": "regional-siting-access",
+    "title": "Siting, regional infrastructure and access to compute",
+    "chapterId": "deep-global-resources",
+    "domainId": "connected-infrastructure",
+    "workstream": "W10",
+    "contentFingerprint": "20e727788f57f7eecab59b833472cb592db3ae6438323e500291850785b32b3c",
+    "scope": {
+      "role": "Connects location choices to service paths, resources and who can actually use capacity.",
+      "learningObjective": "Explain siting and access tradeoffs without equating investment, geography and available service.",
+      "scale": "Facility phases to region and world; geography schematic",
+      "evidenceNotes": "No jurisdiction-specific legal advice or exhaustive regional census is provided. Public project and procurement statements support dated examples only.",
+      "workedExample": "Synthetic choice: Site A offers lower network delay but opens a year later; Site B opens sooner with a longer path. A batch-training user and an interactive-serving user can reasonably choose differently.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Conditional site score",
+          "assumptions": "A teaching decision aid, not an objective scientific ranking; normalization and uncertain inputs must be visible.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Use dated phase records and explicit denominators before aggregation."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-cd619e3d4531c3e08830",
+        "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+        "title": "Google AI Hub construction milestone in India",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-c5e74c0f61b347fb8560",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+        "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "infra-claim-euro-call",
+            "ledgerSourceId": "infra-src-eurohpc"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "infra-claim-euro-call"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "announced"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "status-sensitive",
+      "proposedIntervalDays": 30,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "infrastructure-engineering-reviewer",
+        "label": "Power, cooling and infrastructure reviewer",
+        "focus": "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Availability, readiness, allocation, forecast and announced specifications can change quickly; recheck on a status-changing event."
+      ],
+      "reviewFocus": [
+        "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "capacity-phase-geography",
+        "scheduler"
+      ],
+      "dependentLessonIds": [],
+      "relatedLessonIds": [
+        "capacity-phase-geography",
+        "grid-interconnection-readiness",
+        "topology-job-admission"
+      ],
+      "journeyIds": [
+        "manufacturing-order"
+      ],
+      "lab": {
+        "labId": "library",
+        "deepLabId": null,
+        "scope": "Browse the numerical library; no current calculator directly models this lesson’s central mechanism."
+      },
+      "primaryInvestigationId": null,
+      "investigationIds": [],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": []
+    }
+  },
+  "claims": [
+    {
+      "id": "infra-claim-euro-call",
+      "title": "EuroHPC gigafactory procurement scope",
+      "statement": "The July 2026 EuroHPC call seeks up to seven AI gigafactories through a future selection process.",
+      "sourceId": "infra-src-eurohpc",
+      "lessonIds": [
+        "capacity-phase-geography",
+        "regional-siting-access"
+      ],
+      "status": "announced",
+      "metric": "Maximum call scope",
+      "value": 7,
+      "unit": "gigafactories",
+      "denominator": "procurement call",
+      "period": "30 July 2026 announcement",
+      "scope": "Proposed procurement scope, not operating facility count",
+      "limitations": "Do not combine with 19 AI factories being implemented or 13 access/support antennas as equivalent operating sites.",
+      "checkedOn": "2026-09-06"
+    }
+  ]
+}

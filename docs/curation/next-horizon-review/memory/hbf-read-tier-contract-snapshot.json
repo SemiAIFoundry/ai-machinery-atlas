@@ -1,0 +1,195 @@
+{
+  "record": {
+    "id": "hbf-read-tier-contract",
+    "level": "software",
+    "name": "HBF: a read-oriented tier and its evidence boundary",
+    "shortName": "HBF: a read-oriented tier and its evidence boundary",
+    "role": "Distinguish an announced HBF interface/capacity specification from validated workload behavior.",
+    "description": "High Bandwidth Flash proposes a NAND-based tier near the processor, alongside the existing memory hierarchy. SK hynix’s August 2026 announcement describes up to 512 GB and bandwidth grades of approximately 0.4–3.0 TB/s, with UCIe connectivity. These are reported specification boundaries, not proof of sustained throughput on a deployed inference system. A capacity and read-bandwidth headline leaves access latency, request granularity, concurrency, write service and host software to be examined. NAND-based capacity can be attractive for read-heavy state, but it does not acquire DRAM semantics merely by sharing a package or a fast link.",
+    "mechanism": [
+      "Identify the source date and distinguish technical specification, sample, qualified component and shipping system.",
+      "Map the processor link, HBF controller and NAND array as separate interfaces; use the same transfer direction and byte convention.",
+      "Request latency, granularity, concurrency and read/write conditions before treating the headline rate as usable.",
+      "Keep mutable working state and recovery requirements in the placement contract rather than assuming every tensor can move to flash.",
+      "Measure application-level correctness, latency and energy on a named integration before claiming a deployment benefit."
+    ],
+    "science": [
+      {
+        "title": "Minimum bulk-read transfer time",
+        "equation": "ttransfer ≥ V / B",
+        "explanation": "Moving V payload bytes cannot take less than V/B at usable bandwidth B, even before initial access, scheduling or contention.",
+        "assumptions": "Single direction with compatible decimal units; B is a sustained payload assumption, not automatically an advertised interface maximum."
+      }
+    ],
+    "specs": [
+      {
+        "label": "Evidence snapshot",
+        "value": "Announced · 4 August 2026",
+        "context": "Reported specification: up to 512 GB; grades approximately 0.4–3.0 TB/s."
+      },
+      {
+        "label": "Interface",
+        "value": "UCIe in the announcement",
+        "context": "A common framework is not a drop-in compatibility or shipped-system certificate."
+      },
+      {
+        "label": "Still configuration-dependent",
+        "value": "Latency, granularity, read/write behavior",
+        "context": "The headline grades do not settle end-to-end service performance."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Processor/HBF interface",
+        "direction": "in",
+        "signal": "Requests, completion, error and transfer semantics"
+      },
+      {
+        "name": "NAND-backed capacity",
+        "direction": "out",
+        "signal": "Data with specified access and persistence behavior"
+      }
+    ],
+    "tradeoff": "More near-compute capacity may reduce remote movement, while page access, writes and integration requirements can move the performance bottleneck.",
+    "whyAI": "Large read-mostly parameter pools are a possible use case; they require a software and system plan that accounts for access behavior.",
+    "prerequisites": [
+      "memory-interface-choice",
+      "die-link-compatibility"
+    ],
+    "related": [
+      "hbf-latency-prefetch",
+      "memory-working-set-placement",
+      "memory-system-qualification"
+    ],
+    "misconception": "An interface/specification announcement and a measured shipping-system result are different evidence states.",
+    "check": {
+      "question": "What does the announced HBF bandwidth range establish?",
+      "options": [
+        "A reported specification range that still needs workload validation",
+        "Guaranteed HBM-equivalent random-access latency",
+        "Proof that every GPU can attach HBF today"
+      ],
+      "answer": 0,
+      "explanation": "An interface/specification announcement and a measured shipping-system result are different evidence states."
+    },
+    "engineeringExample": "Synthetic payload-only calculation: reading 100 GB at an assumed sustained 1 TB/s requires at least 0.1 s. No setup, concurrency loss or other work is included. The assumed usable rate is not a measured HBF benchmark.",
+    "evidenceNotes": "SK hynix and Sandisk identify the August 2026 milestone as specification release. The atlas has not verified a volume-shipping deployment from these announcements. Missing access metrics remain unknown rather than receiving SSD or HBM defaults.",
+    "sources": [
+      {
+        "title": "SK hynix — first HBF specifications at FMS 2026",
+        "url": "https://news.skhynix.com/en/hbf-at-fms-2026/"
+      },
+      {
+        "title": "Sandisk — release of first OCP HBF specification",
+        "url": "https://investor.sandisk.com/node/8126/pdf"
+      },
+      {
+        "title": "UCIe — introduction Q&A recap",
+        "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap"
+      }
+    ],
+    "learningObjective": "Distinguish an announced HBF interface/capacity specification from validated workload behavior.",
+    "workstream": "W11",
+    "visualFamily": "memory-route",
+    "scale": "Processor interface to NAND-backed capacity; logical topology, not a disclosed product floorplan",
+    "kind": "system",
+    "labId": "inference-placement",
+    "branch": "Memory",
+    "subbranch": "HBF interface, latency and access contract",
+    "scope": "Place read-only weights and mutable KV across specified tiers and inspect transfer paths; no HBF shipping-system benchmark or universal memory semantics are implied.",
+    "investigationId": "execution",
+    "labScope": "Place read-only weights and mutable KV across specified tiers and inspect transfer paths; no HBF shipping-system benchmark or universal memory semantics are implied."
+  },
+  "chapter": {
+    "id": "deep-hbf-access-contract",
+    "domainId": "packaging-machines",
+    "read": "The tier diagram is a logical teaching topology, not a disclosed HBF floorplan or an interoperability claim. Announced grades and synthetic latency/granularity inputs remain distinct."
+  },
+  "formalEquations": [
+    {
+      "latex": "t_{\\mathrm{transfer}}\\geq\\frac{V}{B}",
+      "variables": [
+        {
+          "symbol": "ttransfer",
+          "meaning": "Bulk transfer time lower bound",
+          "unit": "s"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Required payload volume",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Assumed usable read bandwidth",
+          "unit": "bytes/s"
+        }
+      ],
+      "kind": "math",
+      "text": "ttransfer ≥ V / B"
+    }
+  ],
+  "contentFingerprint": "4a4b09a05b0e4576fbd5d3a83ad75adf59ce50b61dfe2554bdb46f520cd7c5bd",
+  "claims": [
+    {
+      "id": "depth-claim-hbf-spec",
+      "title": "HBF specification milestone",
+      "statement": "SK hynix announced HBF specifications covering up to 512 GB, grades around 0.4–3.0 TB/s and UCIe connectivity.",
+      "sourceId": "depth-src-hbf",
+      "lessonIds": [
+        "hbf-read-tier-contract"
+      ],
+      "status": "announced",
+      "metric": "Capacity and bandwidth grades",
+      "value": "512 GB; approximately 0.4–3.0 TB/s",
+      "unit": "",
+      "denominator": "Announced stack configurations/grades",
+      "period": "2026-08-04",
+      "scope": "Reported HBF technical specification",
+      "limitations": "Not a measured shipping-system result; grade conditions, access latency, useful granularity and write service need configuration-specific evidence.",
+      "urlSourceId": "url-b258a2363dd269464779",
+      "inheritedCheckedOn": "2026-09-06",
+      "dateBasis": "Copied from existing claim ledger; not a review performed by this task.",
+      "supersedesClaimId": null,
+      "supersededByClaimId": null,
+      "reviewEventIds": []
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "url-b258a2363dd269464779",
+      "url": "https://news.skhynix.com/en/hbf-at-fms-2026/",
+      "title": "SK hynix — first HBF specifications at FMS 2026",
+      "contexts": [
+        {
+          "field": "sources"
+        },
+        {
+          "field": "claim",
+          "claimId": "depth-claim-hbf-spec",
+          "ledgerSourceId": "depth-src-hbf"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-8a781a56ee79d98b61e8",
+      "url": "https://investor.sandisk.com/node/8126/pdf",
+      "title": "Sandisk — release of first OCP HBF specification",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-1ea46f5723da8c34a3e2",
+      "url": "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+      "title": "UCIe — introduction Q&A recap",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    }
+  ]
+}

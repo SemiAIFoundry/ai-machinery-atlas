@@ -16,7 +16,10 @@ export function loadCurrent(repo=defaultRepo){
   new Function('require','exports',code)(name=>{const f=path.resolve(path.dirname(file),name);if(name.endsWith('.json')){files.add(f);return readJSON(f);}if(name.startsWith('.'))return module(f+'.ts');return require(name);},exports);return exports;
  }
  const atlas=module(path.join(repo,'src/lib/atlas-authoring.ts'));
- const equations=Object.assign({},...['original','expansion','infrastructure'].map(n=>{const f=path.join(repo,'src/lib/data/equations-'+n+'.json');files.add(f);return readJSON(f);}));
+ const registry=path.join(repo,'src/lib/data/equation-packs.json');files.add(registry);
+ const equations={};for(const name of readJSON(registry)){const f=path.join(repo,'src/lib/data',name);files.add(f);for(const [id,entries] of Object.entries(readJSON(f)))equations[id]=[...(equations[id]||[]),...entries];}
+ // Capture the Science renderer identity separately from each lesson’s authored equation fingerprint.
+ files.add(path.join(repo,'src/components/science-panel.tsx'));
  const engineeringRelations=readJSON(path.join(repo,'src/lib/data/engineering-relations.json'));
  const claims=atlas.contentPacks.flatMap(p=>p.claims),ledgerSources=atlas.contentPacks.flatMap(p=>p.sources);
  const fingerprint=r=>{const c=atlas.chapterFor(r.id);return sha(stable({record:r,chapter:{id:c.id,domainId:c.domainId,read:c.read},formalEquations:equations[r.id]||[]}));};

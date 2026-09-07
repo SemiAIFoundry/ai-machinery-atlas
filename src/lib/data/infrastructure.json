@@ -1228,21 +1228,21 @@
       ],
       "misconception": "An announced megawatt connection or generation project is not proof that a specific hall can draw that power today.",
       "check": {
-        "question": "A battery supports 10 MW and stores 20 MWh usable energy. What is its ideal duration at full output?",
+        "question": "A battery can deliver 20 MWh of usable energy at the load-side boundary while supplying a constant 10 MW. What is its ideal duration?",
         "options": [
           "Two hours",
           "Twenty hours",
           "An unlimited period"
         ],
         "answer": 0,
-        "explanation": "Duration is usable energy divided by output power, before losses and reserve requirements."
+        "explanation": "20 MWh divided by 10 MW gives two hours. Conversion losses and reserved energy have already been accounted for in the stated load-side usable energy."
       },
       "science": [
         {
           "title": "Backup duration",
           "equation": "t = Eusable / Pload",
-          "explanation": "Eusable is MWh, Pload MW and t hours.",
-          "assumptions": "Constant load and already-usable energy; conversion losses, degradation and reserve can shorten duration."
+          "explanation": "Eusable is energy deliverable at the load-side boundary in MWh, Pload is constant output power in MW, and t is hours.",
+          "assumptions": "Positive constant load; usable energy already accounts for conversion losses, reserves and the stated battery condition. Changing load, temperature or degradation requires a revised usable-energy estimate."
         }
       ],
       "prerequisites": [
@@ -1855,7 +1855,7 @@
       "workstream": "W10",
       "visualFamily": "world-network",
       "engineeringExample": "Synthetic campus has 20 MW operating and a separate 80 MW planned expansion. Its operating total remains 20 MW; 100 MW describes combined eventual scope only if both figures use the same boundary.",
-      "evidenceNotes": "The asset supplies evidence methods and a few public cases, not a complete world census. Root’s facility dataset carries the selected geographical records."
+      "evidenceNotes": "This lesson supplies evidence methods and selected public cases, not a complete world census. The atlas’s facility records preserve the selected geographical examples."
     },
     {
       "id": "energy-forecast-boundaries",

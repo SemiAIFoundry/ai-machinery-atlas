@@ -1,0 +1,61 @@
+[
+  {
+    "latex": "W_{\\mathrm{exec}}=D+V+F+L,\\qquad W_{\\mathrm{retained}}=D+V",
+    "variables": [
+      {
+        "symbol": "Wexec",
+        "meaning": "All executed work, including later replay",
+        "unit": "whole-step equivalents"
+      },
+      {
+        "symbol": "D",
+        "meaning": "Committed restart-durable completed steps",
+        "unit": "whole steps"
+      },
+      {
+        "symbol": "V",
+        "meaning": "Volatile completed steps still retained",
+        "unit": "whole steps"
+      },
+      {
+        "symbol": "F",
+        "meaning": "Current unfinished step fraction, from zero up to but excluding one",
+        "unit": "whole-step equivalents"
+      },
+      {
+        "symbol": "L",
+        "meaning": "Cumulative discarded completed and partial work",
+        "unit": "whole-step equivalents"
+      },
+      {
+        "symbol": "Wretained",
+        "meaning": "Currently retained complete steps",
+        "unit": "whole steps"
+      }
+    ],
+    "kind": "math",
+    "text": "Wexec = D + V + F + L; Wretained = D + V"
+  },
+  {
+    "latex": "e=\\frac{E_{\\mathrm{facility}}}{W_{\\mathrm{retained}}},\\qquad W_{\\mathrm{retained}}>0",
+    "variables": [
+      {
+        "symbol": "e",
+        "meaning": "Facility energy per currently retained complete step",
+        "unit": "J per step"
+      },
+      {
+        "symbol": "Efacility",
+        "meaning": "Integrated facility energy across all modeled phases",
+        "unit": "J"
+      },
+      {
+        "symbol": "Wretained",
+        "meaning": "Currently retained complete steps over the same interval",
+        "unit": "whole steps"
+      }
+    ],
+    "kind": "math",
+    "text": "e = Efacility / Wretained, for Wretained > 0"
+  }
+]

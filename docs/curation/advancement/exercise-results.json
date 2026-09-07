@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "fixture": true,
+  "realReviewEventsWritten": 0,
+  "rows": [
+    {
+      "step": "before",
+      "errors": [],
+      "queue": [
+        {
+          "claimId": "fixture:poisson:1",
+          "status": "agent-recheck-recorded",
+          "checkedOn": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "step": "qualifier-change",
+      "errors": [],
+      "queue": [
+        {
+          "claimId": "fixture:poisson:2",
+          "status": "recheck-required",
+          "checkedOn": null
+        }
+      ]
+    },
+    {
+      "step": "after-explicit-recheck",
+      "errors": [],
+      "queue": [
+        {
+          "claimId": "fixture:poisson:2",
+          "status": "agent-recheck-recorded",
+          "checkedOn": "2026-09-03"
+        }
+      ]
+    }
+  ]
+}

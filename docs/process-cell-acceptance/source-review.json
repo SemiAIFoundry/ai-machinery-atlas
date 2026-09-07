@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "process-cell-acceptance-1",
+  "scope": "Bounded N11 synthetic oxide-to-long-channel-inverter acceptance specimen. No foundry qualification or broader N11 closure.",
+  "checks": [
+    {
+      "id": "cell-mit-6012-l8",
+      "title": "MIT 6.012 Fall 2005 \u2014 Lecture 8",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/ba97ec0d4b75ff1049567a48e66b74a0_lec8.pdf",
+      "publisher": "MIT OpenCourseWare / Jes\u00fas del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 8, pages 10\u201312: threshold potential drops and oxide-capacitance dependence; pages 13\u201315: inversion charge",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred.",
+      "status": "scoped-primary-equation-comparison",
+      "accessMethod": "PDF text and equation extraction; no native simulator comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "supports": "Threshold potential drops and the oxide-capacitance-dependent fixed-charge term; inversion charge context.",
+      "limits": "Chosen intercept, depletion magnitude, matched polarity assumptions and perturbations are not a calibrated process recipe or source measurement.",
+      "lessonIds": [
+        "oxide-to-cell-acceptance"
+      ],
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Equation, scope or source locator changes",
+        "Model parameters, current regimes or capacitance assumptions change",
+        "A measured/foundry/modern-node or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "cell-mit-6012-l9",
+      "title": "MIT 6.012 Fall 2005 \u2014 Lecture 9",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/5c5960f14ae37d0a65478c4f3f628d98_lec9.pdf",
+      "publisher": "MIT OpenCourseWare / Jes\u00fas del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 9, pages 12\u201314: gradual-channel triode current and its valid drain-bias range",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred.",
+      "status": "scoped-primary-equation-comparison",
+      "accessMethod": "PDF text and equation extraction; no native simulator comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "supports": "The long-channel triode expression and its VDS \u2264 VGS \u2212 VT range.",
+      "limits": "No velocity saturation, mobility degradation, leakage, short-channel effect or commercial-node extrapolation.",
+      "lessonIds": [
+        "oxide-to-cell-acceptance",
+        "loaded-inverter-transition"
+      ],
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Equation, scope or source locator changes",
+        "Model parameters, current regimes or capacitance assumptions change",
+        "A measured/foundry/modern-node or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "cell-mit-6012-l10",
+      "title": "MIT 6.012 Fall 2005 \u2014 Lecture 10",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/0498bbf0f0e585507d9cfe5dc3bd54b1_lec10.pdf",
+      "publisher": "MIT OpenCourseWare / Jes\u00fas del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 10, page 6: saturation current; pages 12\u201313: channel-length modulation as an additional effect",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred.",
+      "status": "scoped-primary-equation-comparison",
+      "accessMethod": "PDF text and equation extraction; no native simulator comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "supports": "The first-order saturation expression and channel-length modulation as a separately omitted correction.",
+      "limits": "The implementation sets \u03bb=0 and explicitly exposes the resulting ideal DC transition interval.",
+      "lessonIds": [
+        "oxide-to-cell-acceptance",
+        "loaded-inverter-transition"
+      ],
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Equation, scope or source locator changes",
+        "Model parameters, current regimes or capacitance assumptions change",
+        "A measured/foundry/modern-node or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "cell-mit-6012-l12",
+      "title": "MIT 6.012 Fall 2005 \u2014 Lecture 12",
+      "url": "https://www.ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/74c08e0cdcdab837d4eaceaf2384d646_lec12.pdf",
+      "publisher": "MIT OpenCourseWare / Jes\u00fas del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 12, pages 6\u20138: unity-gain definitions and low/high noise margins; pages 11\u201312: 50% and 10\u201390% transition conventions",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred.",
+      "status": "scoped-primary-equation-comparison",
+      "accessMethod": "PDF text and equation extraction; no native simulator comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "supports": "Actual slope-minus-one input/output definitions, low/high static margins, 50% delay and 10\u201390% transition conventions.",
+      "limits": "No measured noise waveform, transient error probability or statistical robustness; actual unity-gain outputs are used rather than rail approximations.",
+      "lessonIds": [
+        "loaded-inverter-transition"
+      ],
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Equation, scope or source locator changes",
+        "Model parameters, current regimes or capacitance assumptions change",
+        "A measured/foundry/modern-node or external-simulator preset is proposed"
+      ]
+    },
+    {
+      "id": "cell-mit-6012-l14",
+      "title": "MIT 6.012 Fall 2005 \u2014 Lecture 14",
+      "url": "https://www.ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/6bec6dd1b07b02a1a84098b78f068cc3_lec14.pdf",
+      "publisher": "MIT OpenCourseWare / Jes\u00fas del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 14, pages 15\u201318: loaded pull-down/pull-up step-delay estimates; page 20: load-capacitance components",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred.",
+      "status": "scoped-primary-equation-comparison",
+      "accessMethod": "PDF text and equation extraction; no native simulator comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "supports": "Pull-up/pull-down loaded step behavior and separate load components.",
+      "limits": "The implementation integrates its declared current exactly rather than treating the lecture\u2019s constant-current estimate as an exact measurement. Constant oxide-area load omits bias-dependent and parasitic components.",
+      "lessonIds": [
+        "loaded-inverter-transition"
+      ],
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Equation, scope or source locator changes",
+        "Model parameters, current regimes or capacitance assumptions change",
+        "A measured/foundry/modern-node or external-simulator preset is proposed"
+      ]
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "src/lib/process-cell-acceptance.ts",
+      "sha256": "5d5335edad73276b8db5ab0f23bb84a9f3456a8979ea159bdc690b0d8b206ad6"
+    },
+    {
+      "path": "src/lib/process-cell-acceptance-record.ts",
+      "sha256": "3cfd4852821ebbf9bd36d101b4ac4eeaec8c288132dbc3741f04be95a7d0b94e"
+    },
+    {
+      "path": "src/components/process-cell-acceptance.tsx",
+      "sha256": "6ff30707217438d48ef3a33f1131cae10be7731f17cd73861bc82cbaff33d2a8"
+    },
+    {
+      "path": "src/components/process-cell-acceptance.css",
+      "sha256": "9e807e3828f59f93af439617c0c93ed6dbaedd26a9fa8f233625cac556da5ed5"
+    },
+    {
+      "path": "src/lib/data/process-cell-learning.json",
+      "sha256": "05efc5f809f5bc77aa4b97fcf9bdf4ec45edf512ce893884b3d69c407074c6ef"
+    },
+    {
+      "path": "src/lib/data/equations-process-cell-learning.json",
+      "sha256": "0b9faa5ef2efc2e65be8627bac3b6cbc0a1a265b6fc098b8c2e14b0955c64b41"
+    },
+    {
+      "path": "scripts/process-cell-acceptance.test.mjs",
+      "sha256": "7c7dd113440215ab2a0c38c09ae98ef542edb6b10d75e14022bfcfabd897133d"
+    }
+  ],
+  "reviewDispositions": [
+    {
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "checkedOn": "2026-09-07",
+      "checks": [
+        "Compared scoped primary physical relations and model-validity limits",
+        "Checked 54 corners against independent current balance and Simpson quadrature",
+        "Compared balanced analytic noise points and numerical derivatives",
+        "Validated two complete lessons, eight canonical equations and worked fixture numbers"
+      ],
+      "humanSpecialistReview": null
+    }
+  ],
+  "externalTools": {
+    "checkedOn": "2026-09-07",
+    "ngspiceOnPath": false,
+    "xyceOnPath": false,
+    "nativeSimulationRun": false,
+    "newInstallation": false
+  },
+  "physicalMeasurement": null,
+  "humanLearnerObservation": null,
+  "externalSimulatorComparison": null,
+  "presentationCheck": {
+    "checkedOn": "2026-09-07",
+    "actorType": "AI agent",
+    "scope": "INV-01 parameter relations now reuse the first three canonical oxide-to-cell-acceptance entries through the shared Equation renderer; text alternatives and symbols/units retained. No model changes.",
+    "formalism": "KaTeX HTML + MathML from the existing shared component",
+    "humanObservation": null
+  }
+}

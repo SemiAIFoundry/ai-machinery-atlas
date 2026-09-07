@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "experienceId": "serving",
+  "modelVersion": "causal-kv-serving-1",
+  "sourceModelVersion": "causal-decoder-lifecycle-1",
+  "actor": {
+    "type": "agent",
+    "id": "/root/curriculum_assessment"
+  },
+  "checkedAt": "2026-09-07",
+  "sourceReviewStatus": "Agent source-scope and numerical review; no specialist or human learner review implied",
+  "sources": [
+    {
+      "id": "serving-cache-mechanics",
+      "url": "https://huggingface.co/docs/transformers/v4.57.1/cache_explanation",
+      "locator": "Caching; Attention matrices; Cache class items 1\u20133; Cache position",
+      "supports": "Previously computed causal K/V can be retained; new entries and absolute positions advance with processed input tokens.",
+      "limits": "Versioned documentation checked. Our single-layer implementation uses the existing model normalization and positional conventions; no Transformers dependency or general training-cache claim.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "id": "serving-iteration-scheduling",
+      "url": "https://www.usenix.org/system/files/osdi22-yu.pdf",
+      "landingUrl": "https://www.usenix.org/conference/osdi22/presentation/yu",
+      "locator": "Section 3, S1 Iteration-level scheduling (PDF p. 5 / printed p. 525), selecting one iteration, updating request pool, joining/removing requests; abstract",
+      "supports": "Requests can join/leave at iteration boundaries rather than waiting for a whole request batch to finish.",
+      "limits": "Only the mechanism is used. Our logical lanes execute serially, reservation/FIFO rules are authored, and no paper speedup or distributed-runtime claim is reproduced.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "id": "serving-kv-capacity",
+      "url": "https://arxiv.org/html/2309.06180v1",
+      "locator": "Sections 2.1\u20132.3, equations 1\u20133, prompt/autoregressive phases; section 3 memory challenges and section 3.1 reserved slots; sections 4.1\u20134.3 define paged allocation for contrast",
+      "supports": "Autoregressive input/output dependency, cached K/V growth, iteration batching, and explicit KV-capacity limits.",
+      "limits": "No vLLM implementation, paged allocation, preemption, prefix sharing, hardware memory ratio or empirical speedup claimed. Numeric 96-byte denominator comes from our one-layer binary64 model, not the paper example.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "id": "serving-kv-quantization",
+      "url": "https://arxiv.org/html/2402.02750v2",
+      "locator": "Section 3.1 quantize/dequantize equation and error study; sections 3.2\u20133.3 grouping and residual-cache mechanisms",
+      "supports": "Quantization maps cache values to codes/scales, reconstructs values for attention and can alter downstream accuracy.",
+      "limits": "Our authored symmetric per-row signed 4-bit format is not KIVI grouping/asymmetric 2-bit or residual-cache algorithm; no paper accuracy/memory/speed results transferred.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    },
+    {
+      "id": "serving-speculative-verification",
+      "url": "https://proceedings.mlr.press/v202/leviathan23a/leviathan23a.pdf",
+      "locator": "Sections 2.1\u20132.3 and Algorithm 1, conditional proposal evaluation, first rejection, dependent suffix discard and output correction; sections 3.3\u20133.4 separate work from hardware-dependent wall time",
+      "supports": "Target verification must preserve valid conditioning state and correct at a rejected proposal; greedy argmax can be represented as a degenerate target distribution.",
+      "limits": "Our proposals are authored IDs, not learned. Verification is binary64 greedy with at most two outputs and explicit KV discard/recovery. No stochastic p/q acceptance, corrected distribution sampling, bonus output, parallel execution or measured acceleration claim.",
+      "checkedAt": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment"
+    }
+  ],
+  "lessonIds": [
+    "kv-cache",
+    "scheduler",
+    "serving",
+    "tiny-causal-decoder",
+    "checkpoint",
+    "distributed-gradient-weighting"
+  ],
+  "checks": {
+    "unitsAndDenominators": "96 binary64 numeric payload bytes per single-layer/single-head position; reserved and occupied distinct; logical scalar reads and multiply-add pairs exclude other arithmetic and hardware transactions; synthetic ticks do not mean time measurements. Quantized payload includes six packed code bytes plus sixteen scale bytes per position; same fixed byte capacity. Approximation error and greedy token changes explicitly separate from exact reference equality.",
+    "modelAssumptions": "423-parameter decoder, frozen source weights, independent request RNG, bounded inputs/outputs, conservative capacity reservation, FIFO, logical serial execution, no paged allocator or timing model. Optional per-row symmetric int4 KV with binary64 scales and dequantized arithmetic; authored two-token speculative proposal with exact binary64 target verification and dependent-cache discard.",
+    "claimQualifiers": "Numerical outputs and KV tensors are executed; schedule policies and resource limits are authored. Training/development fixture feedback is separated from final test. No empirical system speedups transferred. No learned draft, stochastic speculative sampling, KIVI implementation or speedup claim.",
+    "dependencyAndVisualScope": "Lifecycle/distributed full state retained; live cache and post-release diagnostic snapshot distinctly labeled; source exposure journal persists across old imports. UI exposes actual request outputs and computed cache values."
+  },
+  "pending": [
+    "Browser and physical-device review",
+    "Assistive technology and learner review",
+    "Specialist scientific review"
+  ],
+  "files": {
+    "src/lib/model-lifecycle-serving.ts": "99f58bcbd4fd07da73123a25ca5ff36d82594132faa82f93a0be53b7ddb5beb8",
+    "src/components/model-lifecycle-serving.tsx": "a82f5ac53ad9ab66310cc6269f4e1ce687585fdc36597d6d638eb0f321aa099b",
+    "src/components/model-lifecycle-serving.css": "aad43ca899c2be4ae69f1be9443e152f9f315dfe2cd23f7a964b6ea6963dc243",
+    "scripts/model-lifecycle-serving.test.mjs": "98cb0c4ee4bc70ad899af9bf06894a24ecb699dd699101e293bf97119b0e1eb9",
+    "src/lib/model-lifecycle-speculation.ts": "ecc614300f782bd6a5f9dd911f8fe6657bcf704b512beb1cab25ac1763dd6a53",
+    "scripts/model-lifecycle-speculation.test.mjs": "b2393804c06394a03a2e9473708bc7a0cb16d57f05753a9307448cc4bf15ed62"
+  },
+  "speculationModelVersion": "authored-draft-target-greedy-1"
+}

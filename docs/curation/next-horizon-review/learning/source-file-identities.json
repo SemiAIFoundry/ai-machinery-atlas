@@ -1,0 +1,205 @@
+{
+  "capturedAt": "2026-09-07T22:42:57.385Z",
+  "sourceFiles": [
+    {
+      "path": "src/components/science-panel.tsx",
+      "sha256": "cd990aef4177abeb65ae56409e955c29f6df08656bc5ac168f96e51bc65674b5",
+      "bytes": 1497
+    },
+    {
+      "path": "src/lib/atlas-authoring.ts",
+      "sha256": "5864907488d330e287021c508fc96a918f7bf68ed42f481b6bc4f52dba89a7b9",
+      "bytes": 24099
+    },
+    {
+      "path": "src/lib/data/application-evaluation-enrichments.json",
+      "sha256": "ce83a287349d4115f9e06223aa241b5e80cefb227f56b85836cb81c078baff0c",
+      "bytes": 3386
+    },
+    {
+      "path": "src/lib/data/architecture.json",
+      "sha256": "8d47578f4f45e7f883f9edc68fc1a59035c09ecb11bf088c63583e92b234564a",
+      "bytes": 199365
+    },
+    {
+      "path": "src/lib/data/automation-enrichments.json",
+      "sha256": "cc43da118a9543045805ea3ef4c3c3df1a0306c337518392f465909f68bedd6b",
+      "bytes": 30350
+    },
+    {
+      "path": "src/lib/data/automation-learning.json",
+      "sha256": "952036015b6d64460a1ca7b127797088c4a3d2316a90a1d96424b0509ed0505d",
+      "bytes": 213052
+    },
+    {
+      "path": "src/lib/data/chapter-domain-map.json",
+      "sha256": "24fe58e2c1972bb66b6fab33868b4c53c505eabbf5ff0d509ead3d456090ae36",
+      "bytes": 5353
+    },
+    {
+      "path": "src/lib/data/contrasting-computation.json",
+      "sha256": "34d5e01284bb1d5eee62c15c63e9b456b51bcd40456f294200dd8ad2d3a13bfa",
+      "bytes": 21250
+    },
+    {
+      "path": "src/lib/data/crg.json",
+      "sha256": "940454788b0f9b7c1bcfb357c2ca8734891450b35fb9b4c0d5e9541e16f2411d",
+      "bytes": 34287
+    },
+    {
+      "path": "src/lib/data/data-lineage-enrichments.json",
+      "sha256": "ef814cd36927d37e999b5e40ffe80f6b1e3dbcfe160f20e74c96684ed433465d",
+      "bytes": 6860
+    },
+    {
+      "path": "src/lib/data/distributed-output-bridges.json",
+      "sha256": "d133761140c9c86366c6208be7e505689f3e0a0672df017bed02b03479be5b7c",
+      "bytes": 51059
+    },
+    {
+      "path": "src/lib/data/domains.json",
+      "sha256": "35bf50fe7c1bff3d32fadbe9e071eaf1d292fca8768c19ecf55a4a73f813baa8",
+      "bytes": 571
+    },
+    {
+      "path": "src/lib/data/engineering-relations.json",
+      "sha256": "66194ced385edb45e0ae66ea5c6f9b8261dd71c8a4c1085dd28be2101b4ae2e8",
+      "bytes": 66163
+    },
+    {
+      "path": "src/lib/data/equation-packs.json",
+      "sha256": "2da830de4875fb6dfa3f229ee4007a120d3c9daf81b853a5c853bd9974d3f66f",
+      "bytes": 394
+    },
+    {
+      "path": "src/lib/data/equations-automation-learning.json",
+      "sha256": "ea87f6f076a24ef1efe478d616c8b05e704026695139a94b0c695a22f33bcfb8",
+      "bytes": 18696
+    },
+    {
+      "path": "src/lib/data/equations-contrasting-computation.json",
+      "sha256": "f6f3d7cd562b13ba1a4a9bf414eb3d5013f6f51599c2bcc84e41be6b1028c99d",
+      "bytes": 3013
+    },
+    {
+      "path": "src/lib/data/equations-distributed-output.json",
+      "sha256": "ff4db83bf41370db2a6b95f3fc49fb570bc6358aad34d110712c58752427e942",
+      "bytes": 8127
+    },
+    {
+      "path": "src/lib/data/equations-expansion.json",
+      "sha256": "9dbf7397eb1b4bef773e775b54adde5d2081540e8904d65954ac45e7b2ee6d72",
+      "bytes": 103458
+    },
+    {
+      "path": "src/lib/data/equations-hardware-runtime-learning.json",
+      "sha256": "290bb0869b31908412dc242f112f648da042e82ac05b6d35010e323dcba3c0a4",
+      "bytes": 6116
+    },
+    {
+      "path": "src/lib/data/equations-infrastructure.json",
+      "sha256": "747113933379bd31d7468a7fb5c9ad2c618026758baddf78da6e6e2bf2fe7f92",
+      "bytes": 17564
+    },
+    {
+      "path": "src/lib/data/equations-learning-foundations.json",
+      "sha256": "94ee0f97fd38a59bea9c82c7a5d320317096bd4785ffcb0866e1bedba4b6490f",
+      "bytes": 8423
+    },
+    {
+      "path": "src/lib/data/equations-model-lifecycle-learning.json",
+      "sha256": "9e0f27b85f118041498da2787bf4323847fa158a33a3ece2b41a04babcdc3fe5",
+      "bytes": 51639
+    },
+    {
+      "path": "src/lib/data/equations-original.json",
+      "sha256": "4c49ce8ce307985bc03ff1b40b235c329683d72d5c8ce1d0b88c40471b2a78b8",
+      "bytes": 106235
+    },
+    {
+      "path": "src/lib/data/equations-process-cell-learning.json",
+      "sha256": "0b9faa5ef2efc2e65be8627bac3b6cbc0a1a265b6fc098b8c2e14b0955c64b41",
+      "bytes": 6790
+    },
+    {
+      "path": "src/lib/data/expansion-description-overrides.json",
+      "sha256": "4d4f1efec31362f53e90cdc08741135364b42f0525445e7466e5edee1dc25461",
+      "bytes": 6947
+    },
+    {
+      "path": "src/lib/data/fabrication.json",
+      "sha256": "1578a3dddb8c20fffaa85260a02623d3d8ee769026d6240d5cc0c7bd3149cfb6",
+      "bytes": 278534
+    },
+    {
+      "path": "src/lib/data/hardware-runtime-learning.json",
+      "sha256": "9bb7d95d8ad032ea1b234ab39e0c224b67a11d3785e135858c7104ed8384fa8a",
+      "bytes": 43625
+    },
+    {
+      "path": "src/lib/data/infrastructure-depth.json",
+      "sha256": "05263c97f8071cad6b0019baa9768196dee6775e6ac7fec15f40f7034d6c20aa",
+      "bytes": 107827
+    },
+    {
+      "path": "src/lib/data/infrastructure.json",
+      "sha256": "4842252d63e138430b02d6582af4b8c1c590d21305ae1895f1e2ce378f5e423e",
+      "bytes": 184141
+    },
+    {
+      "path": "src/lib/data/learning-foundations.json",
+      "sha256": "b8e4683669595735112e115f1f57b87b3891ad30e5b84871826bf7154ea9d6ac",
+      "bytes": 66881
+    },
+    {
+      "path": "src/lib/data/learning-orientation.json",
+      "sha256": "b102ff385667b6b97abba68613026f6a2768324e6b200d69ec69bd705e176d20",
+      "bytes": 5287
+    },
+    {
+      "path": "src/lib/data/legacy-foundations.json",
+      "sha256": "05b797147035790b9795df936173800601b90e7ce8cc4578b9d70a0408bc8fa3",
+      "bytes": 60627
+    },
+    {
+      "path": "src/lib/data/lesson-lab-map.json",
+      "sha256": "f6d320331e23b72a38dec21471a6c217efc97a6bfaa84d9f3370a934b0c17b57",
+      "bytes": 61936
+    },
+    {
+      "path": "src/lib/data/model-lifecycle-enrichments.json",
+      "sha256": "acfbe1643bab8c648ff064308f7e2e5422869788989f528205f664ba8b32ac97",
+      "bytes": 53568
+    },
+    {
+      "path": "src/lib/data/model-lifecycle-learning.json",
+      "sha256": "9e79325d61494e633bc527c6610c82f6dfaf969ddc25d229b8b345c4daced52d",
+      "bytes": 306572
+    },
+    {
+      "path": "src/lib/data/next-horizon-history.json",
+      "sha256": "3311bda0a6dcbac4bfe5efb5a01746cbd99a023fc735371dc79e26fe27e06b0e",
+      "bytes": 4778
+    },
+    {
+      "path": "src/lib/data/process-cell-learning.json",
+      "sha256": "05efc5f809f5bc77aa4b97fcf9bdf4ec45edf512ce893884b3d69c407074c6ef",
+      "bytes": 29383
+    },
+    {
+      "path": "src/lib/data/records.json",
+      "sha256": "9a468bba63f86bf29b09e3ad42720dbd8ab9ca98cc0abf563e78e33aa8db8904",
+      "bytes": 444506
+    },
+    {
+      "path": "src/lib/legacy-enrichments.ts",
+      "sha256": "84437224ad514e118fd87a7c1b341265ffd811495fc94c107b94240681ef0064",
+      "bytes": 16951
+    },
+    {
+      "path": "src/lib/lesson-enrichment.ts",
+      "sha256": "bda43496bbbb28fe3de6bc796e1eeffc5cced56392f165ee335cc577ea3fae19",
+      "bytes": 1463
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "exposure-aware-ranking-1",
+  "input": {
+    "seed": 7,
+    "policy": "popularity",
+    "estimator": "ips",
+    "propensities": "known",
+    "clipWeight": 3,
+    "appeal": 0,
+    "steps": 300,
+    "regularization": 0.01,
+    "k": 3
+  }
+}

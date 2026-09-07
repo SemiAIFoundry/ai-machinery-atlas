@@ -1,0 +1,47 @@
+✔ initial: incremental cache agrees with the independently implemented complete tape forward at all eight positions (3.776542ms)
+✔ other-seed: incremental cache agrees with the independently implemented complete tape forward at all eight positions (2.978708ms)
+✔ learned: incremental cache agrees with the independently implemented complete tape forward at all eight positions (2.4885ms)
+✔ different prefill chunk boundaries preserve every cache row and final output exactly (1.76125ms)
+✔ cached past keys and values are reused unchanged and position encoding distinguishes repeated tokens (0.558208ms)
+✔ cache ownership, dimension, token and context bounds fail before modifying a cache (2.3275ms)
+✔ KV payload and arithmetic counts have independently checked denominators (2.585042ms)
+✔ greedy: actual serving output and per-request RNG agree with full-prefix generation (47.067417ms)
+✔ sample: actual serving output and per-request RNG agree with full-prefix generation (45.79875ms)
+✔ serving the learned checkpoint gives real learned first-answer matches without modifying training or optimizer state (37.700875ms)
+✔ policy, chunk size and batch capacity change scheduling but not independent sampled outputs (437.713375ms)
+✔ continuous admission fills a freed slot while static policy waits for the remaining group (12.178125ms)
+✔ finite reservation delays requests, no iteration exceeds capacity, and all terminal caches are released (8.846583ms)
+✔ oversized requests are explicitly rejected without deadlock or model execution (0.587916ms)
+✔ cancellation of an active request releases its cache and preserves unrelated requests (9.753334ms)
+✔ pending and queued cancellation have explicit terminal state and no leaked reservations (2.131417ms)
+✔ an actual high EOS logit stops after one output and releases unconsumed reservation (3.707875ms)
+✔ active cache represents exactly processed prompt plus previously emitted tokens, never future outputs (7.766541ms)
+✔ full export/import resumes active KVs, scheduler state and RNG exactly (95.396708ms)
+✔ a committed distributed checkpoint serves its new weights without falsifying original lifecycle history (34.092875ms)
+✔ strict configuration rejects unknown keys, final-set prompts, oversized requests, duplicate identities and invalid bounds (0.76275ms)
+✔ bounded import rejects tampered outputs, KV, trace, clocks, RNG, reservations and unknown fields (13.48025ms)
+✔ malicious command histories cannot cause unlimited simulated work (5.572875ms)
+✔ workspace source import is transactional and preserves independent final exposure across old checkpoint restore (1.694ms)
+✔ distributed source exposure is retained without changing its computed serving replay (12.913541ms)
+✔ symmetric int4 uses declared rounding, scale, nibble packing and exact independent unpacking (0.217334ms)
+✔ quantized cache attention and output agree with independent quantize/dequantize arithmetic (4.776625ms)
+✔ quantization can alter a greedy token despite a small probability difference (1.518792ms)
+✔ same fixed byte capacity admits more approximate positions with scale overhead included (7.394792ms)
+✔ quantized serving imports replay packed codes, scales and approximate outputs (110.847208ms)
+✔ quantized logical scheduling remains independent of per-request sampled draws (44.118458ms)
+✔ matching authored proposals retain actual target cache and exactly match greedy generation (10.465666ms)
+✔ first mismatch discards the wrong-prefix cache and recomputes actual fallback state (1.299958ms)
+✔ second mismatch retains the accepted first-token KV and corrects only the output suffix (1.328542ms)
+✔ every two-token authored proposal over the vocabulary produces the same bounded target greedy output (746.946ms)
+✔ verification probabilities use the declared conditional prefix and independent full forward (1.6145ms)
+✔ EOS prevents post-EOS speculative state from entering the committed cache (0.797458ms)
+✔ max context verification and input budgets are explicit (1.345125ms)
+✔ verification does not mutate source weights, prompt, proposal or RNG-bearing checkpoint (1.664917ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 39
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1284.35775

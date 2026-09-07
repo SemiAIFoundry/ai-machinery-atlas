@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-09-07",
+  "actor": {
+    "kind": "agent",
+    "identifier": "/root/process_editor",
+    "role": "AI integration reviewer retaining the author’s recorded primary-source and numerical checks"
+  },
+  "sourceCheckActor": {
+    "kind": "agent",
+    "identifier": "/root/curriculum_assessment",
+    "role": "Content author, primary-source scope reader and numerical checker"
+  },
+  "status": "pass",
+  "lessons": 4,
+  "sourceUses": 7,
+  "exactUrls": 6,
+  "claims": 4,
+  "liveSourceChecksByIntegrationRecorder": 0,
+  "humanSpecialistReviews": 0,
+  "sourceEvidence": {
+    "path": "docs/distributed-output-bridges/source-review-manifest.json",
+    "sha256": "b3d40e52e67598fe1abf7fbe089537fd1d6dd6f8c679a6bc28e0553cbeaa4e36"
+  },
+  "changes": [
+    {
+      "lessonId": "sharded-matmul-ownership",
+      "contentFingerprint": "bbf534f25087167c27accf96c1791b613ec7d485c38e096bf540611012af3eeb",
+      "mappingChanges": [
+        {
+          "field": "labId",
+          "candidate": "library",
+          "integrated": "engineering"
+        },
+        {
+          "field": "labScope",
+          "candidate": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+          "integrated": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+        },
+        {
+          "field": "deepLabId",
+          "candidate": null,
+          "integrated": "network"
+        },
+        {
+          "field": "scope",
+          "candidate": null,
+          "integrated": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+        }
+      ],
+      "authorChecks": {
+        "unitsAndDenominators": {
+          "status": "checked-by-agent",
+          "note": "Confirmed matching output coordinates, 4 bytes per float32 element, 8 bytes sent per rank per phase and 32 bytes across both senders. Receives are not counted again; input placement and local traffic are excluded."
+        },
+        "modelAssumptions": {
+          "status": "checked-by-agent",
+          "note": "Checked disjoint contracted partitions, exact small integer arithmetic, declared two-rank row ownership and consumer-dependent all-gather; no real collective algorithm or topology timing is claimed."
+        },
+        "claimQualifiers": {
+          "status": "checked-by-agent",
+          "note": "The source claim is limited to the cited JAX example. NCCL supports collective semantics; the exchange and matrix values remain authored and not measured."
+        },
+        "dependencyAndVisualScope": {
+          "status": "checked-by-agent",
+          "note": "Prerequisites are existing compiler-layout-lowering, NCCL and parallelism. The chapter uses a logical software-flow scene; boxes do not encode a physical map. The static trace supplies the complete arithmetic."
+        }
+      }
+    },
+    {
+      "lessonId": "distributed-gradient-weighting",
+      "contentFingerprint": "dd24e1656bca70395dedc96a9bbd722a3fee55ff73e1c18523c21ce5fdad3ddb",
+      "mappingChanges": [
+        {
+          "field": "labId",
+          "candidate": "library",
+          "integrated": "engineering"
+        },
+        {
+          "field": "labScope",
+          "candidate": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+          "integrated": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+        },
+        {
+          "field": "deepLabId",
+          "candidate": null,
+          "integrated": "network"
+        },
+        {
+          "field": "scope",
+          "candidate": null,
+          "integrated": "The ideal ring all-reduce lab varies communication payload, ranks, startup and bandwidth. It does not execute these matrix shards or alter the optimizer; the exact computation is worked through in this lesson."
+        }
+      ],
+      "authorChecks": {
+        "unitsAndDenominators": {
+          "status": "checked-by-agent",
+          "note": "Checked eight valid equally weighted items, local counts 2/6, P=2 mean reducer, global gradient 2.5 and parameter update 9.75. Gradient and learning-rate units follow the declared loss/parameter convention."
+        },
+        "modelAssumptions": {
+          "status": "checked-by-agent",
+          "note": "Checked shared parameter w=10, separable squared-error loss, fixed participants, no momentum, clipping, weight decay or custom hook; item/token/mask denominator and accumulation window must be explicit."
+        },
+        "claimQualifiers": {
+          "status": "checked-by-agent",
+          "note": "The default averaging contract is tied to pinned PyTorch v2.8.0 source. Unequal local batch weighting is authored mathematics. Exhausted-rank join behavior is explicitly outside this example."
+        },
+        "dependencyAndVisualScope": {
+          "status": "checked-by-agent",
+          "note": "Existing loss, training-data, parallelism and NCCL lessons precede the addition. Logical communication does not prove the chosen statistical objective; no running distributed training system is depicted."
+        }
+      }
+    },
+    {
+      "lessonId": "floating-point-reduction-order",
+      "contentFingerprint": "144b15638ed45d7558e1c664d8160c5f7ee267d4a392fb58efbb6399ca05b567",
+      "mappingChanges": [
+        {
+          "field": "labScope",
+          "candidate": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+          "integrated": "The library contains related numerical models. This lesson’s explicit binary32 reduction counterexample is not an interactive floating-point emulator."
+        },
+        {
+          "field": "scope",
+          "candidate": null,
+          "integrated": "The library contains related numerical models. This lesson’s explicit binary32 reduction counterexample is not an interactive floating-point emulator."
+        }
+      ],
+      "authorChecks": {
+        "unitsAndDenominators": {
+          "status": "checked-by-agent",
+          "note": "Checked binary32 fraction bits versus 24-bit significand, spacing 2 above 2^24 and spacing 1 immediately below, left result 0/right result 1/exact reference 1. Tolerance 0.01 is synthetic absolute error."
+        },
+        "modelAssumptions": {
+          "status": "checked-by-agent",
+          "note": "Checked nearest ties-to-even, finite exactly representable inputs and rounding after each addition; no FMA, underflow, overflow or target-specific run is inferred."
+        },
+        "claimQualifiers": {
+          "status": "checked-by-agent",
+          "note": "LLVM reassociation is a permission, not an asserted universal default. Repeatability and numerical accuracy are distinct; neither test establishes a real compiler/GPU performance result."
+        },
+        "dependencyAndVisualScope": {
+          "status": "checked-by-agent",
+          "note": "Existing MAC, quantization, compiler and collective lessons supply the prerequisites. The software-flow view shows operations; the numerical trace states every rounding boundary."
+        }
+      }
+    },
+    {
+      "lessonId": "speculative-decoding-verification",
+      "contentFingerprint": "603777a95ef130dd59b2d2865abcfa226db667e73e5492d7b9fd73854bd4465c",
+      "mappingChanges": [
+        {
+          "field": "labId",
+          "candidate": "library",
+          "integrated": "kv"
+        },
+        {
+          "field": "labScope",
+          "candidate": "Worked static arithmetic accompanies the execution investigation. Existing studio experiences provide context; no calculator here executes a real compiler, distributed library or language model.",
+          "integrated": "Explore the KV storage consequence of token length and concurrency. Draft/target acceptance and corrected sampling are worked explicitly in this lesson, not executed by the cache-size calculator."
+        },
+        {
+          "field": "scope",
+          "candidate": null,
+          "integrated": "Explore the KV storage consequence of token length and concurrency. Draft/target acceptance and corrected sampling are worked explicitly in this lesson, not executed by the cache-size calculator."
+        }
+      ],
+      "authorChecks": {
+        "unitsAndDenominators": {
+          "status": "checked-by-agent",
+          "note": "Checked p/q normalization, acceptance mass 0.6, rejection mass 0.4, correction [1,0,0], final p, iid output count 1.96 and millisecond-to-second rates. Draft proposals are not all counted as output."
+        },
+        "modelAssumptions": {
+          "status": "checked-by-agent",
+          "note": "Checked aligned conditional distributions and vocabulary, exact strict residual correction, positive-denominator handling, iid acceptance only for the output-count example, no early stopping and separately synthetic time terms."
+        },
+        "claimQualifiers": {
+          "status": "checked-by-agent",
+          "note": "The theoretical distribution guarantee does not establish identical seeded samples, truth, quality improvement or measured acceleration. Increasing verification time reverses the toy throughput comparison."
+        },
+        "dependencyAndVisualScope": {
+          "status": "checked-by-agent",
+          "note": "Existing output-head, decode, KV and evaluation precede the addition. Static probability accounting complements those lessons and does not depict execution of an actual language model."
+        }
+      }
+    }
+  ],
+  "independentArithmetic": {
+    "matrixOutput": [
+      [
+        19,
+        22
+      ],
+      [
+        43,
+        50
+      ]
+    ],
+    "bytesPerRankAcrossTwoPhases": 16,
+    "totalSentBytes": 32,
+    "globalMeanGradient": 2.5,
+    "sgdParameter": 9.75,
+    "unweightedRankMeanGradient": 2,
+    "unweightedSgdParameter": 9.8,
+    "binary32Left": 0,
+    "binary32Right": 1,
+    "exactRealSum": 1,
+    "correctedTargetDistribution": [
+      0.6,
+      0.3,
+      0.1
+    ],
+    "expectedOutputTokensPerRound": 1.96,
+    "scenarioOutputTokensPerSecond": 217.7777777777778,
+    "slowerVerificationTokensPerSecond": 130.66666666666666
+  },
+  "limitations": [
+    "This preserves scoped author source readings and local authored arithmetic, not a new live source review.",
+    "Lab continuation links do not create new implemented distributed or language-model execution.",
+    "No human specialist or learner observations are asserted."
+  ]
+}

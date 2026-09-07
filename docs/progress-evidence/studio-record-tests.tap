@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: every authored operating scenario and all model defaults pass current record validation
+ok 1 - every authored operating scenario and all model defaults pass current record validation
+  ---
+  duration_ms: 38.062666
+  type: 'test'
+  ...
+# Subtest: record edition, model identity, exact envelope, timestamp, size and JSON errors are rejected
+ok 2 - record edition, model identity, exact envelope, timestamp, size and JSON errors are rejected
+  ---
+  duration_ms: 0.873708
+  type: 'test'
+  ...
+# Subtest: unknown fields at every model option level cannot silently enter a workspace
+ok 3 - unknown fields at every model option level cannot silently enter a workspace
+  ---
+  duration_ms: 0.504
+  type: 'test'
+  ...
+# Subtest: numeric input types, matrix compatibility, fully disabled lanes and malformed scenarios fail before use
+ok 4 - numeric input types, matrix compatibility, fully disabled lanes and malformed scenarios fail before use
+  ---
+  duration_ms: 0.300583
+  type: 'test'
+  ...
+# Subtest: architecture cursor is constrained by the actual selected trace and specimen
+ok 5 - architecture cursor is constrained by the actual selected trace and specimen
+  ---
+  duration_ms: 7.068792
+  type: 'test'
+  ...
+# Subtest: training cursor and time controls obey paired settings, including zero-step and partial imports
+ok 6 - training cursor and time controls obey paired settings, including zero-step and partial imports
+  ---
+  duration_ms: 1.354208
+  type: 'test'
+  ...
+# Subtest: memory address, package-stack and bank-state bounds remain linked to the same die count
+ok 7 - memory address, package-stack and bank-state bounds remain linked to the same die count
+  ---
+  duration_ms: 0.442291
+  type: 'test'
+  ...
+# Subtest: import simulation budgets reject giant timelines, event storms, tiny services and battery chatter
+ok 8 - import simulation budgets reject giant timelines, event storms, tiny services and battery chatter
+  ---
+  duration_ms: 0.751083
+  type: 'test'
+  ...
+# Subtest: progress records preserve named metric/period choices and reject out-of-range worked controls
+ok 9 - progress records preserve named metric/period choices and reject out-of-range worked controls
+  ---
+  duration_ms: 0.428417
+  type: 'test'
+  ...
+# Subtest: invalid persisted data survives initialization and repeated default registration without any autosave
+ok 10 - invalid persisted data survives initialization and repeated default registration without any autosave
+  ---
+  duration_ms: 0.269458
+  type: 'test'
+  ...
+# Subtest: saved values survive fresh default registration and exported records are detached snapshots
+ok 11 - saved values survive fresh default registration and exported records are detached snapshots
+  ---
+  duration_ms: 0.148084
+  type: 'test'
+  ...
+# Subtest: invalid import preserves active inputs, active storage, backup and pending learner edits
+ok 12 - invalid import preserves active inputs, active storage, backup and pending learner edits
+  ---
+  duration_ms: 0.142209
+  type: 'test'
+  ...
+# Subtest: backup-write failure and active-write failure cannot swap live workspace; previous backup is restored
+ok 13 - backup-write failure and active-write failure cannot swap live workspace; previous backup is restored
+  ---
+  duration_ms: 0.138
+  type: 'test'
+  ...
+# Subtest: successful import saves the latest pending workspace and canceled timer/effect callbacks cannot overwrite it
+ok 14 - successful import saves the latest pending workspace and canceled timer/effect callbacks cannot overwrite it
+  ---
+  duration_ms: 0.089334
+  type: 'test'
+  ...
+# Subtest: reordered asynchronous imports and edits during file reads cannot replace newer work
+ok 15 - reordered asynchronous imports and edits during file reads cannot replace newer work
+  ---
+  duration_ms: 0.092458
+  type: 'test'
+  ...
+# Subtest: restore is a reversible workspace swap and storage failure does not falsely replace current inputs
+ok 16 - restore is a reversible workspace swap and storage failure does not falsely replace current inputs
+  ---
+  duration_ms: 0.153583
+  type: 'test'
+  ...
+# Subtest: latest edit wins debouncing, shutdown flushes it, and failed storage retains exportable inputs
+ok 17 - latest edit wins debouncing, shutdown flushes it, and failed storage retains exportable inputs
+  ---
+  duration_ms: 0.111084
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 128.798542

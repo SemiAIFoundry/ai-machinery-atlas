@@ -1,0 +1,50 @@
+{
+  "status": "pass",
+  "asOf": "2026-09-07",
+  "experiences": 8,
+  "sourceUrls": 57,
+  "sourceUses": 62,
+  "actualAgentSourceCheckUses": 62,
+  "pendingSourceChecks": 0,
+  "humanSpecialistReviews": 0,
+  "curationTests": 14,
+  "instructorContracts": 14,
+  "supersessionExercise": [
+    "agent-recheck-recorded",
+    "recheck-required",
+    "agent-recheck-recorded"
+  ],
+  "portableMarkdownLinks": "pass",
+  "privatePathsInGuidance": 0,
+  "sourceChecks": "Actual primary-source scope reading; no human specialist review inferred.",
+  "sourceModelSnapshotValidation": "pass after distributed-output integration and saved-record recovery preservation",
+  "lessonCorpus": 229,
+  "lessonReviewState": {
+    "baselineReviewRequired": 224,
+    "withinProposedReviewInterval": 5,
+    "specialistEvents": 0
+  },
+  "integratedContributionFingerprint": "15565fc27d681dedf4f5538299a990ba44c4dbe60f5480c638cac16caf5247a4",
+  "viewerInspection": {
+    "method": "source inspection, not browser execution",
+    "finding": "The exact final studio record implementation preserves older incompatible raw inputs before replacement and exposes a recovery export. Shared input validation, recovery and continuation mapping identities are captured. Scientific model equations and source uses for the eight experiences are unchanged; the four new worked lessons have separate curation events.",
+    "capturedSharedDependencies": [
+      "src/components/studio-primitives.tsx",
+      "src/components/studio-record.tsx",
+      "src/lib/studio-record.ts",
+      "src/lib/studio-lessons.ts",
+      "src/studio.css",
+      "src/components/process-spatial.tsx"
+    ]
+  },
+  "instructorPersistenceGuidance": "Verified against the saved engineering workspace implementation: compatible per-experience inputs persist; export/import and one recovery copy are explained; classroom scenarios explicitly start from their stated presets.",
+  "distributedOutputReview": {
+    "lessons": 4,
+    "exactPrimaryUrls": 6,
+    "sourceUses": 7,
+    "claimScopes": 4,
+    "sourceCheckActor": "/root/curriculum_assessment",
+    "integrationReviewActor": "/root/process_editor",
+    "humanSpecialistReviews": 0
+  }
+}

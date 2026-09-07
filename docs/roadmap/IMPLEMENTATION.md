@@ -1,3 +1,11 @@
+# Active implementation authorization · 7 September 2026
+
+The maintainer approved proceeding with the complete, additive roadmap and instructed that the review be assumed approved for continued implementation. All 30 requirements below remain in scope. The phase-gate language in the earlier candidate snapshot records its prior status; it no longer pauses construction. This authorization is not a claim that physical-device tests, learner sessions, specialist observations or instructor reuse occurred. GitHub release and deployment remain paused while the build is completed.
+
+Current extension work and verification are recorded in [ADVANCEMENT.md](ADVANCEMENT.md).
+
+---
+
 # Implementation ledger — current pilot candidate
 
 Prepared 7 September 2026 against the working candidate. This ledger maps **all 30 original ROADMAP.csv rows**, preserving their phases and dependency gates. It records implementation separately from scientific, accessible-task, physical-device and formative-learner acceptance. It does not authorize deployment or mark a phase-3 expansion complete.

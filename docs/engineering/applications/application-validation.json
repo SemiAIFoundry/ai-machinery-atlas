@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-07T17:17:28.043Z",
+  "actorType": "agent",
+  "nodeVersion": "v24.14.0",
+  "automatedTests": {
+    "count": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "strictTypecheck": {
+    "status": "passed",
+    "options": "--noEmit --strict --target ES2022 --module ESNext --moduleResolution Bundler --allowImportingTsExtensions"
+  },
+  "generatedFixtureAgreement": "passed",
+  "sourceScopeChecks": "passed",
+  "splits": {
+    "sensorTraining": 8,
+    "sensorEvaluation": 6,
+    "retrievalPassages": 7,
+    "retrievalTuningQueries": 6,
+    "retrievalEvaluationQueries": 7
+  },
+  "computedOutcomes": {
+    "sensorDefault": {
+      "count": 6,
+      "tp": 3,
+      "tn": 3,
+      "fp": 0,
+      "fn": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "falsePositiveRate": 0,
+      "meanCrossEntropy": 0.34296213658863933
+    },
+    "sensorTemperatureOnly": {
+      "count": 6,
+      "tp": 2,
+      "tn": 2,
+      "fp": 1,
+      "fn": 1,
+      "accuracy": 0.6666666666666666,
+      "precision": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "falsePositiveRate": 0.3333333333333333,
+      "meanCrossEntropy": 0.8757266393049111
+    },
+    "retrievalDefault": {
+      "count": 7,
+      "answered": 4,
+      "abstained": 3,
+      "answerable": 5,
+      "unanswerable": 2,
+      "correct": 5,
+      "incorrect": 2,
+      "taskAccuracy": 0.7142857142857143,
+      "supportedAnswers": 4,
+      "unsupportedAnswers": 0,
+      "sourceSupportAmongAnswers": 1,
+      "unsupportedFractionAmongAnswers": 0,
+      "correctAnswersAmongAnswerable": 0.6,
+      "retrievalRecallAtK": 1,
+      "correctAbstentions": 2,
+      "unanswerableAbstentionRecall": 1
+    }
+  },
+  "independentReferences": [
+    "Scalar normalization and batch-update loops over 27 feature/rate/L2 settings",
+    "Central finite differences of an independently expressed objective",
+    "Dense TF-IDF vector/cosine oracle on all 13 questions",
+    "Hand-counted confusion and abstention cases"
+  ],
+  "humanSpecialistReview": null,
+  "physicalDeviceValidation": null,
+  "learnerValidation": null,
+  "scope": "Outside-repository pure models, documentation and assets only; no app UI, release, deployment, vendor timing or population-level capability validation."
+}

@@ -1,0 +1,16 @@
+import path from 'node:path';
+import fs from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {readJSON,scopeFingerprint} from './curation-advancement-common.mjs';
+const here=path.dirname(fileURLToPath(import.meta.url));
+const d=readJSON(path.join(here,'engineering-curation-addendum.json'));
+const source=d.experiences.find(e=>e.id==='fabrication').sourceUses.find(s=>s.sourceLocalId==='nist-poisson');
+const original={id:'fixture:poisson:1',revision:1,sourceId:source.sourceId,locators:source.locators,statement:'For a Poisson event count with mean lambda, the zero-event probability is exp(-lambda).',exclusions:'The numerical density and die area are synthetic; no modern semiconductor yield curve is calibrated.',status:'current',supersedesClaimId:null,supersededByClaimId:null};original.fingerprint=scopeFingerprint(original);
+const event=(id,claim,date)=>({id,fixture:true,claimId:claim.id,scopeFingerprint:claim.fingerprint,actor:{kind:'agent',identifier:'fixture-ai-reviewer',role:'Simulated source checker in an isolated exercise'},checkedOn:date,completedOn:date,outcome:'accepted',notes:'FICTIONAL workflow event. No primary source was retrieved or specialist review conducted by this fixture.'});
+const before={schemaVersion:1,kind:'isolated-supersession-exercise',fixture:true,claims:[original],events:[event('fixture-review-1',original,'2026-09-01')]};
+const predecessor={...original,status:'superseded',supersededByClaimId:'fixture:poisson:2'};
+const successor={...original,id:'fixture:poisson:2',revision:2,status:'current',supersedesClaimId:original.id,supersededByClaimId:null,exclusions:'Uniform independent spatial defects and lambda = D0 A / 100 for D0 in cm^-2 and A in mm^2 are explicit synthetic assumptions. The geometric screening and Poisson survival factors remain separate denominators; the cited source does not calibrate modern semiconductor yield.'};successor.fingerprint=scopeFingerprint(successor);
+const afterEdit={...structuredClone(before),claims:[predecessor,successor]};
+const afterRecheck={...structuredClone(afterEdit),events:[...afterEdit.events,event('fixture-review-2',successor,'2026-09-03')]};
+const fixture={schemaVersion:1,fixture:true,purpose:'Demonstrate a qualifier change, reciprocal supersession, blocked review reuse and explicit recheck. These are complete isolated workflow documents, not actual current review events or a claim that NIST changed.',sourceUrl:d.sourceCatalog[source.sourceId].url,steps:[{id:'before',asOf:'2026-09-01',document:before,expected:[{claimId:original.id,status:'agent-recheck-recorded',checkedOn:'2026-09-01'}]},{id:'qualifier-change',asOf:'2026-09-02',trigger:'The teaching scope now states spatial assumptions and the area conversion explicitly.',document:afterEdit,expected:[{claimId:successor.id,status:'recheck-required',checkedOn:null}]},{id:'after-explicit-recheck',asOf:'2026-09-03',document:afterRecheck,expected:[{claimId:successor.id,status:'agent-recheck-recorded',checkedOn:'2026-09-03'}]}]};
+fs.writeFileSync(path.join(here,'supersession-recheck-fixture.json'),JSON.stringify(fixture,null,2)+'\n');

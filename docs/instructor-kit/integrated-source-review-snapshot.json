@@ -1,0 +1,175 @@
+{
+  "record": {
+    "id": "retained-work-restart-boundary",
+    "level": "infrastructure",
+    "name": "When completed work survives a restart",
+    "shortName": "Commit and retained work",
+    "role": "Distinguish completed, restart-durable, unfinished and lost work under a declared failure schedule.",
+    "description": "A running system can finish useful steps that have not yet reached a restart-valid checkpoint. A fault preserves the last committed checkpoint, discards later volatile progress and may interrupt a partially completed step. Recovery waits and checkpoint reads consume time and energy before new work resumes. Tracking each state prevents busy hardware, completed work and durable progress from becoming the same number.",
+    "mechanism": [
+      "Completed steps accumulate as volatile progress while the last committed checkpoint remains unchanged.",
+      "The example pauses execution at a whole-step boundary, writes its checkpoint and then performs an atomic commit; only that commit advances durable progress.",
+      "A fault preserves committed progress and transfers later completed and partial work to the lost-work ledger.",
+      "Repair and restore precede resumed execution. Their energy remains in the accounting, as does energy spent on work that must be repeated.",
+      "At the observation horizon, retained whole steps equal durable plus volatile completed steps. An unfinished step is excluded, and the horizon does not create a new checkpoint."
+    ],
+    "science": [
+      {
+        "title": "An exact work ledger for the example",
+        "equation": "Wexec = D + V + F + L; Wretained = D + V",
+        "explanation": "D is committed steps, V is volatile completed steps, F is the fraction of the current unfinished step, and L is cumulative discarded work equivalents. Every term uses the same whole-step workload definition.",
+        "assumptions": "One deterministic job, atomic checkpoint commits and prescribed faults. These are model state identities; useful means completed and still retained, not accuracy, convergence or application value."
+      },
+      {
+        "title": "Energy per retained step",
+        "equation": "e = Efacility / Wretained, for Wretained > 0",
+        "explanation": "Facility energy integrates all active phases, including lost work, checkpoint writes, commit waits, repair and restore. Dividing by retained whole steps exposes these costs.",
+        "assumptions": "Fixed synthetic phase powers and constant PUE. No value is reported when zero whole steps remain. Coolant heat and facility overhead are nested energy boundaries, not extra totals to add twice."
+      }
+    ],
+    "specs": [
+      {
+        "label": "Hand-checkable contract",
+        "value": "1 s per step; one fault at 12 s",
+        "context": "Synthetic H7 fixture: checkpoint after 8 running seconds, 1 s write and 0.25 s commit; 2 s repair and 1 s restore."
+      },
+      {
+        "label": "At the 20 s horizon",
+        "value": "13 retained whole steps; 8 restart-durable",
+        "context": "15.75 work equivalents executed; 2.75 discarded; no automatic checkpoint at the horizon."
+      },
+      {
+        "label": "Energy boundary",
+        "value": "137 J IT; 171.25 J facility",
+        "context": "Run/checkpoint/recovery powers are 8/4/2 W. Constant scenario PUE is 1.25, not an annual measured facility rating."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Mutable application state",
+        "direction": "in",
+        "signal": "Completed and partially completed progress under one workload contract"
+      },
+      {
+        "name": "Checkpoint storage",
+        "direction": "bidirectional",
+        "signal": "A complete written and committed state for restart; restore reads are distinct from writes"
+      },
+      {
+        "name": "Retained result and resource ledger",
+        "direction": "out",
+        "signal": "Durable, volatile, unfinished and lost work plus energy consumed over the same observation interval"
+      }
+    ],
+    "tradeoff": "More frequent checkpointing can reduce exposed progress but adds pauses and transfer work. The preferred interval depends on the particular workload, fault schedule and checkpoint service; this lesson establishes no universal optimum.",
+    "whyAI": "Long-running training and infrastructure workloads need recoverable state. Arithmetic activity alone does not establish that progress survives interruption.",
+    "prerequisites": [
+      "checkpoint-retained-work",
+      "memory-to-hall-propagation"
+    ],
+    "related": [
+      "checkpoint",
+      "cluster-commissioning-gates",
+      "memory-system-qualification"
+    ],
+    "misconception": "A completed computation is not necessarily durable after a restart, and losing its result does not erase the energy already spent.",
+    "check": {
+      "question": "In the H7 example, a checkpoint of step 8 commits at 9.25 s. Execution then runs at one step per second until a fault at 12 s. What survives immediately after the fault?",
+      "options": [
+        "8 durable steps survive; 2.75 later work equivalents are discarded.",
+        "10 whole steps survive because all completed steps are automatically durable.",
+        "10.75 useful steps survive, including the partially completed step."
+      ],
+      "answer": 0,
+      "explanation": "The last valid commit protects 8 steps. The 2 completed steps and 0.75 unfinished step executed afterward are volatile, so 2.75 work equivalents move to the lost-work ledger."
+    },
+    "learningObjective": "Calculate retained and restart-durable work from an explicit checkpoint/fault timeline, close the work and energy ledgers, and explain the limit of the result.",
+    "engineeringExample": "Synthetic H7: run 0–8 s; write 8–9 s; commit 9–9.25 s; run 9.25–12 s; repair 12–14 s; restore 14–15 s; run 15–20 s. Retained progress is 8 + 5 = 13 whole steps; executed work is 8 + 2.75 + 5 = 15.75 equivalents. IT energy is 15.75×8 + 1.25×4 + 3×2 = 137 J; facility energy is 1.25×137 = 171.25 J.",
+    "evidenceNotes": "The source documents checkpoint completion and valid restart, not this atomic timing or its invented numerical inputs. H7 executes with the included teaching runner; the current browser hall controls do not expose every small fixture rate. No human specialist review, instructor observation or learning efficacy result is claimed.",
+    "sources": [
+      {
+        "title": "LLNL SCR 3.1.0 — checkpoint completion and restart",
+        "url": "https://scr.readthedocs.io/en/latest/users/integration.html"
+      },
+      {
+        "title": "DOE/LBNL — Data Center Metering and Resource Guide",
+        "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf"
+      }
+    ],
+    "workstream": "W09",
+    "visualFamily": "hall-system",
+    "scale": "One step → checkpoint → restart → observation interval",
+    "kind": "system",
+    "labId": "library",
+    "labScope": "Use Engineering experiences → Rack → retained work, or the instructor pack’s H7 worked contract.",
+    "branch": "Infrastructure",
+    "subbranch": "Memory choices to commissioned useful work",
+    "scope": "Use Engineering experiences → Rack → retained work, or the instructor pack’s H7 worked contract."
+  },
+  "chapter": {
+    "id": "deep-memory-system-realization",
+    "domainId": "connected-infrastructure",
+    "read": "Racks and service paths depict system boundaries. No rack count or geometry certifies readiness; follow the qualification and measured-work evidence."
+  },
+  "formalEquations": [
+    {
+      "latex": "W_{\\mathrm{exec}}=D+V+F+L,\\qquad W_{\\mathrm{retained}}=D+V",
+      "variables": [
+        {
+          "symbol": "Wexec",
+          "meaning": "All executed work, including later replay",
+          "unit": "whole-step equivalents"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Committed restart-durable completed steps",
+          "unit": "whole steps"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Volatile completed steps still retained",
+          "unit": "whole steps"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Current unfinished step fraction, from zero up to but excluding one",
+          "unit": "whole-step equivalents"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Cumulative discarded completed and partial work",
+          "unit": "whole-step equivalents"
+        },
+        {
+          "symbol": "Wretained",
+          "meaning": "Currently retained complete steps",
+          "unit": "whole steps"
+        }
+      ],
+      "kind": "math",
+      "text": "Wexec = D + V + F + L; Wretained = D + V"
+    },
+    {
+      "latex": "e=\\frac{E_{\\mathrm{facility}}}{W_{\\mathrm{retained}}},\\qquad W_{\\mathrm{retained}}>0",
+      "variables": [
+        {
+          "symbol": "e",
+          "meaning": "Facility energy per currently retained complete step",
+          "unit": "J per step"
+        },
+        {
+          "symbol": "Efacility",
+          "meaning": "Integrated facility energy across all modeled phases",
+          "unit": "J"
+        },
+        {
+          "symbol": "Wretained",
+          "meaning": "Currently retained complete steps over the same interval",
+          "unit": "whole steps"
+        }
+      ],
+      "kind": "math",
+      "text": "e = Efacility / Wretained, for Wretained > 0"
+    }
+  ]
+}

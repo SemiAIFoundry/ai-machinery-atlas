@@ -1,0 +1,33 @@
+WEBVTT
+
+fabrication
+00:00:00.000 --> 00:00:09.000
+Inspect a grown and deposited material structure, then compare dimensions with stated acceptance limits.
+
+memory
+00:00:09.000 --> 00:00:17.000
+Trace a bit through its bank, die and stack. Prior bank state changes the next read.
+
+architecture
+00:00:17.000 --> 00:00:25.000
+The matrix result stays exact while schedules, operand reuse and transfers change.
+
+realization
+00:00:25.000 --> 00:00:32.000
+An arithmetic contract becomes an inspectable netlist, routed resources and timing evidence.
+
+hall
+00:00:32.000 --> 00:00:40.000
+Power and cooling admit the racks. Checkpoints determine which completed work survives a fault.
+
+applications
+00:00:40.000 --> 00:00:48.000
+Inspect a classifier’s mistakes and a cited answer. Source support and task correctness are different tests.
+
+orbital
+00:00:48.000 --> 00:00:54.000
+Energy, heat rejection and contact time constrain retained and delivered products.
+
+progress
+00:00:54.000 --> 00:01:00.000
+Inspect attention, conditional compute and memory-bandwidth growth, then dated capacity evidence.

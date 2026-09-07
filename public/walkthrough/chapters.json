@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "title": "Follow the machinery",
+  "durationS": 60,
+  "description": "Actual atlas interface captures, edited with pauses for reading and the original atlas score.",
+  "chapters": [
+    {
+      "id": "fabrication",
+      "startS": 0,
+      "endS": 9,
+      "title": "A material transformation",
+      "lessonId": "thermal-oxidation-interface",
+      "studioId": "fabrication",
+      "caption": "Inspect a grown and deposited material structure, then compare dimensions with stated acceptance limits.",
+      "transcript": "Inspect the grown oxide and deposited film on one identified silicon specimen, then its patterned cross-section at inspection. The original silicon surface provides a reference. Synthetic measurements and their uncertainty are compared with stated acceptance limits."
+    },
+    {
+      "id": "memory",
+      "startS": 9,
+      "endS": 17,
+      "title": "A bit in a memory system",
+      "lessonId": "hbm-channel-generation-ras",
+      "studioId": "memory",
+      "caption": "Trace a bit through its bank, die and stack. Prior bank state changes the next read.",
+      "transcript": "Compose a teaching address through a bank, die and HBM stack. A closed bank, an open-row hit and a row conflict require different command sequences. Stack structure and working-set placement have separate, declared limits."
+    },
+    {
+      "id": "architecture",
+      "startS": 17,
+      "endS": 25,
+      "title": "One operation, four organizations",
+      "lessonId": "systolic-array-dataflow",
+      "studioId": "architecture",
+      "caption": "The matrix result stays exact while schedules, operand reuse and transfers change.",
+      "transcript": "Inspect one matrix product in scalar, vector, SIMT and systolic organizations. Partial sums and transfers expose how each teaching schedule executes the same arithmetic. These schedule steps do not rank measured hardware speed."
+    },
+    {
+      "id": "realization",
+      "startS": 25,
+      "endS": 32,
+      "title": "From a contract to hardware",
+      "lessonId": "chip-rtl-verification",
+      "studioId": "realization",
+      "caption": "An arithmetic contract becomes an inspectable netlist, routed resources and timing evidence.",
+      "transcript": "Inspect an actual small FPGA adder artifact: its RTL, mapped logic, register states, placed resources and routes. The timing report is a tool estimate for that artifact. It does not establish measured board behavior or ASIC qualification."
+    },
+    {
+      "id": "hall",
+      "startS": 32,
+      "endS": 40,
+      "title": "Work that survives a restart",
+      "lessonId": "retained-work-restart-boundary",
+      "studioId": "hall",
+      "caption": "Power and cooling admit the racks. Checkpoints determine which completed work survives a fault.",
+      "transcript": "Follow a fixed workload through rack admission, readiness, execution and recovery. The timeline distinguishes executed work, currently retained whole steps and restart-durable checkpoints. Current, heat, coolant flow and energy use the same declared system boundary."
+    },
+    {
+      "id": "applications",
+      "startS": 40,
+      "endS": 48,
+      "title": "Test the application result",
+      "lessonId": "evaluation",
+      "studioId": "applications",
+      "caption": "Inspect a classifier’s mistakes and a cited answer. Source support and task correctness are different tests.",
+      "transcript": "Evaluate a classifier on separate authored cases, including cases that break its training correlation. In a second example, inspect a deterministic retrieval pipeline: a correctly cited fact can still answer the wrong question. Hypothetical resource costs remain separate from measured accuracy on these examples."
+    },
+    {
+      "id": "orbital",
+      "startS": 48,
+      "endS": 54,
+      "title": "Close the orbital budgets",
+      "lessonId": "orbital-solar-storage",
+      "studioId": "orbital",
+      "caption": "Energy, heat rejection and contact time constrain retained and delivered products.",
+      "transcript": "Trace synthetic products through prescribed sunlight and eclipse, battery storage, radiator limits and ground contacts. Retained complete products include those already delivered; the onboard buffer holds the remainder. Passing these finite-horizon checks does not establish a flight-ready mission."
+    },
+    {
+      "id": "progress",
+      "startS": 54,
+      "endS": 60,
+      "title": "Breakthroughs and finite capacity",
+      "lessonId": "compatible-supply-capacity",
+      "studioId": "progress",
+      "caption": "Inspect attention, conditional compute and memory-bandwidth growth, then dated capacity evidence.",
+      "transcript": "Inspect attention weights and the resulting weighted value. Compare assumed 3× compute growth with 2× memory-bandwidth growth every two years, starting from equal indices; this is a conditional scenario, not a fitted forecast. Read capacity evidence with its source date, physical boundary and operating status. Continue through the lesson links or the separate Ascent companion."
+    }
+  ]
+}

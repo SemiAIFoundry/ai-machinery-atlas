@@ -1,0 +1,664 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "architecture-execution-1",
+  "title": "One operation across four architectures",
+  "operation": "C[i,j] = sum from k=0 to n−1 of A[i,k] B[k,j]; C starts at zero",
+  "reviewStatus": "Agent-authored dataflow and automated checks; no human specialist review or hardware measurement claimed.",
+  "sources": [
+    {
+      "id": "matrix-definition",
+      "title": "Netlib reference BLAS — DGEMM",
+      "url": "https://www.netlib.org/blas/dgemm.f",
+      "publisher": "Reference BLAS authors / Netlib",
+      "edition": "Source documentation; routine origin dated 8 February 1989 in Further Details",
+      "locator": "Purpose, lines 27–36; α=1, β=0, untransposed specialization",
+      "checkedOn": "2026-09-07",
+      "supports": "The standard matrix-product contract and dimensions.",
+      "scopeLimit": "This teaching module uses bounded exact integers and its own schedules; it neither calls DGEMM nor reproduces its double-precision implementation."
+    },
+    {
+      "id": "riscv-vector-v1",
+      "title": "Official archived RISC-V vector specification v1.0",
+      "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc",
+      "publisher": "RISC-V vector specification contributors",
+      "edition": "v1.0 tag; archived frozen public-review text",
+      "locator": "§5.4 active/inactive/tail elements; §6.4 stripmining; §7 vector loads/stores; §11.13 vector-scalar integer multiply-add",
+      "checkedOn": "2026-09-07",
+      "supports": "Explicit vector elements, masked/tail handling, stripmining and vector-scalar integer accumulate semantics.",
+      "scopeLimit": "The selected teaching width and work remapping do not specify physical RVV hardware, instruction timing or a complete implementation of architectural mask/tail policies."
+    },
+    {
+      "id": "cuda-simt-guide",
+      "title": "NVIDIA CUDA Programming Guide — SIMT execution model",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/03-advanced/advanced-kernel-programming.html#simt-execution-model",
+      "publisher": "NVIDIA",
+      "edition": "Living programming guide, accessed 7 September 2026",
+      "locator": "§3.2.2.1 SIMT Execution Model and §3.2.2.1.1 Independent Thread Scheduling",
+      "checkedOn": "2026-09-07",
+      "supports": "Thread-owned state, common issued work and active/inactive threads; NVIDIA warp width is 32.",
+      "scopeLimit": "Two/four/eight-slot teaching groups are not real CUDA warps. No branch divergence, synchronization, coalescing, resident-warp occupancy or device timing is modeled."
+    },
+    {
+      "id": "kung-systolic-1982",
+      "title": "H. T. Kung — Why Systolic Architectures?",
+      "url": "https://www.eecs.harvard.edu/~htk/publication/1982-kung-why-systolic-architecture.pdf",
+      "publisher": "IEEE Computer; author-hosted copy",
+      "edition": "Volume 15, issue 1, January 1982, pp. 37–46",
+      "locator": "p. 37: opening explanation of rhythmic data movement through processing elements and reuse",
+      "checkedOn": "2026-09-07",
+      "supports": "Regular local dataflow and reuse through interconnected processing elements.",
+      "scopeLimit": "The precise output-stationary tile, skew equations and traffic convention are original teaching choices tested here; this is not a proprietary accelerator reconstruction."
+    }
+  ],
+  "controls": [
+    {
+      "field": "a,b",
+      "label": "Matrix entries",
+      "values": "Square 2×2 or 3×3 matrices; integer entries −99…99",
+      "appliesTo": [
+        "scalar",
+        "vector",
+        "simt",
+        "systolic"
+      ]
+    },
+    {
+      "field": "laneCount",
+      "label": "Teaching group slots",
+      "values": [
+        2,
+        4,
+        8
+      ],
+      "appliesTo": [
+        "vector",
+        "simt"
+      ]
+    },
+    {
+      "field": "inactiveLanes",
+      "label": "Excluded teaching slots",
+      "values": "Unique zero-based indices; at least one slot stays enabled; mathematical work is remapped",
+      "appliesTo": [
+        "vector",
+        "simt"
+      ]
+    },
+    {
+      "field": "arraySize",
+      "label": "Systolic array rows and columns",
+      "values": [
+        2,
+        3
+      ],
+      "appliesTo": [
+        "systolic"
+      ]
+    }
+  ],
+  "displayTerms": {
+    "schedule": "Synthetic issue slots or wavefront ticks; not measured cycles",
+    "occupancy": "Active MAC fraction; not GPU resident-warp occupancy",
+    "boundaryTraffic": "Logical boundary word accesses; not physical DRAM transactions",
+    "localTraffic": "Explicit modeled operand-latch and accumulator accesses",
+    "neighborTraffic": "Operand hops to a neighboring PE, arriving one tick later",
+    "outputs": "Distinguish partialOutput from completed output cells"
+  },
+  "workedCases": [
+    {
+      "id": "two-default",
+      "label": "Two by two, four enabled lanes",
+      "input": {
+        "a": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "b": [
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "laneCount": 4,
+        "inactiveLanes": [],
+        "arraySize": 2
+      },
+      "expectedOutput": [
+        [
+          19,
+          22
+        ],
+        [
+          43,
+          50
+        ]
+      ],
+      "expected": {
+        "scalar": {
+          "boundaryReads": 16,
+          "boundaryWrites": 4,
+          "localReads": 28,
+          "localWrites": 28,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 8,
+          "physicalMacSlots": 8,
+          "activeMacFraction": 1
+        },
+        "vector": {
+          "boundaryReads": 12,
+          "boundaryWrites": 4,
+          "localReads": 32,
+          "localWrites": 32,
+          "neighborHops": 0,
+          "broadcastDeliveries": 8,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 4,
+          "physicalMacSlots": 16,
+          "activeMacFraction": 0.5
+        },
+        "simt": {
+          "boundaryReads": 16,
+          "boundaryWrites": 4,
+          "localReads": 28,
+          "localWrites": 28,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 2,
+          "physicalMacSlots": 8,
+          "activeMacFraction": 1
+        },
+        "systolic": {
+          "boundaryReads": 8,
+          "boundaryWrites": 4,
+          "localReads": 28,
+          "localWrites": 28,
+          "neighborHops": 8,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 4,
+          "physicalMacSlots": 16,
+          "activeMacFraction": 0.5
+        }
+      }
+    },
+    {
+      "id": "three-default",
+      "label": "Three by three, full three by three array",
+      "input": {
+        "a": [
+          [
+            2,
+            -1,
+            0
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "b": [
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            0,
+            -1,
+            3
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "laneCount": 4,
+        "inactiveLanes": [],
+        "arraySize": 3
+      },
+      "expectedOutput": [
+        [
+          2,
+          5,
+          -1
+        ],
+        [
+          5,
+          1,
+          10
+        ],
+        [
+          4,
+          1,
+          3
+        ]
+      ],
+      "expected": {
+        "scalar": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 27,
+          "physicalMacSlots": 27,
+          "activeMacFraction": 1
+        },
+        "vector": {
+          "boundaryReads": 36,
+          "boundaryWrites": 9,
+          "localReads": 99,
+          "localWrites": 99,
+          "neighborHops": 0,
+          "broadcastDeliveries": 27,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 9,
+          "physicalMacSlots": 36,
+          "activeMacFraction": 0.75
+        },
+        "simt": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 9,
+          "physicalMacSlots": 36,
+          "activeMacFraction": 0.75
+        },
+        "systolic": {
+          "boundaryReads": 18,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 36,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 7,
+          "physicalMacSlots": 63,
+          "activeMacFraction": 0.42857142857142855
+        }
+      }
+    },
+    {
+      "id": "three-small-array",
+      "label": "Three by three tiled onto a two by two array",
+      "input": {
+        "a": [
+          [
+            2,
+            -1,
+            0
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "b": [
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            0,
+            -1,
+            3
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "laneCount": 4,
+        "inactiveLanes": [],
+        "arraySize": 2
+      },
+      "expectedOutput": [
+        [
+          2,
+          5,
+          -1
+        ],
+        [
+          5,
+          1,
+          10
+        ],
+        [
+          4,
+          1,
+          3
+        ]
+      ],
+      "expected": {
+        "scalar": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 27,
+          "physicalMacSlots": 27,
+          "activeMacFraction": 1
+        },
+        "vector": {
+          "boundaryReads": 36,
+          "boundaryWrites": 9,
+          "localReads": 99,
+          "localWrites": 99,
+          "neighborHops": 0,
+          "broadcastDeliveries": 27,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 9,
+          "physicalMacSlots": 36,
+          "activeMacFraction": 0.75
+        },
+        "simt": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 9,
+          "physicalMacSlots": 36,
+          "activeMacFraction": 0.75
+        },
+        "systolic": {
+          "boundaryReads": 36,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 18,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 16,
+          "physicalMacSlots": 64,
+          "activeMacFraction": 0.421875
+        }
+      }
+    },
+    {
+      "id": "three-one-lane",
+      "label": "Three by three, one enabled vector/SIMT lane",
+      "input": {
+        "a": [
+          [
+            2,
+            -1,
+            0
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            0,
+            1,
+            2
+          ]
+        ],
+        "b": [
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            0,
+            -1,
+            3
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "laneCount": 4,
+        "inactiveLanes": [
+          0,
+          1,
+          2
+        ],
+        "arraySize": 3
+      },
+      "expectedOutput": [
+        [
+          2,
+          5,
+          -1
+        ],
+        [
+          5,
+          1,
+          10
+        ],
+        [
+          4,
+          1,
+          3
+        ]
+      ],
+      "expected": {
+        "scalar": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 27,
+          "physicalMacSlots": 27,
+          "activeMacFraction": 1
+        },
+        "vector": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 117,
+          "localWrites": 117,
+          "neighborHops": 0,
+          "broadcastDeliveries": 27,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 27,
+          "physicalMacSlots": 108,
+          "activeMacFraction": 0.25
+        },
+        "simt": {
+          "boundaryReads": 54,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 27,
+          "physicalMacSlots": 108,
+          "activeMacFraction": 0.25
+        },
+        "systolic": {
+          "boundaryReads": 18,
+          "boundaryWrites": 9,
+          "localReads": 90,
+          "localWrites": 90,
+          "neighborHops": 36,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 18,
+          "macs": 27,
+          "scheduleSteps": 7,
+          "physicalMacSlots": 63,
+          "activeMacFraction": 0.42857142857142855
+        }
+      }
+    },
+    {
+      "id": "two-edge-array",
+      "label": "Two by two, edge padding in a three by three array",
+      "input": {
+        "a": [
+          [
+            1,
+            2
+          ],
+          [
+            3,
+            4
+          ]
+        ],
+        "b": [
+          [
+            5,
+            6
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "laneCount": 4,
+        "inactiveLanes": [],
+        "arraySize": 3
+      },
+      "expectedOutput": [
+        [
+          19,
+          22
+        ],
+        [
+          43,
+          50
+        ]
+      ],
+      "expected": {
+        "scalar": {
+          "boundaryReads": 16,
+          "boundaryWrites": 4,
+          "localReads": 28,
+          "localWrites": 28,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 8,
+          "physicalMacSlots": 8,
+          "activeMacFraction": 1
+        },
+        "vector": {
+          "boundaryReads": 12,
+          "boundaryWrites": 4,
+          "localReads": 32,
+          "localWrites": 32,
+          "neighborHops": 0,
+          "broadcastDeliveries": 8,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 4,
+          "physicalMacSlots": 16,
+          "activeMacFraction": 0.5
+        },
+        "simt": {
+          "boundaryReads": 16,
+          "boundaryWrites": 4,
+          "localReads": 28,
+          "localWrites": 28,
+          "neighborHops": 0,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 2,
+          "physicalMacSlots": 8,
+          "activeMacFraction": 1
+        },
+        "systolic": {
+          "boundaryReads": 8,
+          "boundaryWrites": 4,
+          "localReads": 28,
+          "localWrites": 28,
+          "neighborHops": 8,
+          "broadcastDeliveries": 0,
+          "distinctBoundaryReadAddresses": 8,
+          "macs": 8,
+          "scheduleSteps": 4,
+          "physicalMacSlots": 36,
+          "activeMacFraction": 0.2222222222222222
+        }
+      }
+    }
+  ],
+  "learningPrompts": [
+    {
+      "id": "mask-invariant",
+      "prediction": "Will excluding a vector/SIMT lane change C, the number of required MACs, or the grouping?",
+      "explanation": "Locate the remapped outputs and compare active, masked and edge slots.",
+      "transfer": "Would masking outputs without this work remapping preserve the result?",
+      "reasoning": "C and n³ MACs stay unchanged; work groups can increase. A real mask alone does not complete omitted outputs."
+    },
+    {
+      "id": "edge-wavefront",
+      "prediction": "What changes when the 3×3 problem uses a 2×2 array?",
+      "explanation": "Trace four output tiles, skewed injection, neighbor reuse and edge PEs.",
+      "transfer": "Does using more PEs guarantee better efficiency on a smaller problem?",
+      "reasoning": "Tiling can reload inputs, while a larger array can leave edge slots idle. Real scheduling and hardware costs remain unspecified."
+    },
+    {
+      "id": "performance-boundary",
+      "prediction": "Can fewer teaching slots identify the fastest processor?",
+      "explanation": "Name the omitted memory, pipeline, clock and software assumptions.",
+      "transfer": "Design a fair measured comparison with the same output, precision, workload and system boundary.",
+      "reasoning": "The toy schedules demonstrate mechanisms. They do not define comparable physical durations or a vendor ranking."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+ "schemaVersion":1,
+ "reviewedAt":"2026-09-07",
+ "reviewerType":"agent",
+ "scope":"Mechanism guidance for original fictional corpus construction. No human scientific approval or source dataset reuse.",
+ "sources":[
+  {"id":"lineage-bpe","url":"https://arxiv.org/html/1508.07909v5","version":"arXiv:1508.07909v5","locator":"Section 3.2, iterative adjacent-pair count and replacement; rendered lines104–135","reviewedAt":"2026-09-07","reviewerType":"agent","supports":"Deterministic iterative merge learning and vocabulary growth.","doesNotSupport":"The whole-field UTF-8 byte variant is authored and differs from the paper's character/word representation. No translation result transfers."},
+  {"id":"lineage-duplicates","url":"https://arxiv.org/abs/2107.06499","version":"arXiv:2107.06499v2","locator":"Abstract, rendered lines16–18: duplicate examples, repeated substrings and train-test overlap","reviewedAt":"2026-09-07","reviewerType":"agent","supports":"Inspecting duplicates and evaluation overlap as distinct data-construction concerns.","doesNotSupport":"A fixture flag does not establish a memorization rate, accuracy change or benchmark contamination rate."},
+  {"id":"lineage-group-split","url":"https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GroupShuffleSplit.html","version":"Official stable page returned1.9.0 on review date; URL unpinned","locator":"Class description and note that sizes refer to groups, rendered lines638–670","reviewedAt":"2026-09-07","reviewerType":"agent","supports":"Treating known groups as split units and retaining reproducible split parameters.","doesNotSupport":"The authored three-way shuffle is not a scikit-learn reproduction; grouping does not guarantee unseen semantics or unrecognized lineage."},
+  {"id":"lineage-packing","url":"https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html","version":"Megatron Bridge0.3.1 documentation","locator":"Overview, rendered lines197–209: concatenation, boundary-aware SFT and block triangular masks versus variable-length kernels","reviewedAt":"2026-09-07","reviewerType":"agent","supports":"Separating packed examples through attention boundaries and distinguishing labels/padding from useful examples.","doesNotSupport":"No FlashAttention, variable-length kernel, GPU utilization or production training throughput is measured by these arrays."}
+ ]
+}

@@ -1,0 +1,209 @@
+{
+  "record": {
+    "id": "hbf-latency-prefetch",
+    "level": "software",
+    "name": "HBF latency, transfer granularity and prefetch",
+    "shortName": "HBF latency, transfer granularity and prefetch",
+    "role": "Explain why matching read bandwidth does not guarantee matching request latency or useful-byte efficiency.",
+    "description": "Bandwidth measures a stream; latency measures the delay before a particular dependency can proceed. NAND access and the controller’s request unit can make a small useful read consume a much larger transfer. Concurrency and prefetch can hide some delays when the next address is known early, but cannot make an unexpected dependency arrive before it is requested. Sandisk’s 2025 fact sheet explicitly qualifies its performance comparison with higher HBF latency and larger pages than HBM, using a particular internal weight-reading simulation. Writes also require their own service model: NAND programming, erasure, garbage collection and wear do not disappear behind a wider host link.",
+    "mechanism": [
+      "Measure the useful request size separately from controller granularity and actual fetched bytes.",
+      "Separate first-access latency, queue time, transfer time and completion overhead.",
+      "Issue independent reads concurrently where the software knows their addresses; budget outstanding bytes and staging space.",
+      "Prefetch predictable state far enough ahead, measuring misses and wasted transfers when prediction fails.",
+      "Specify write rate, program/erase behavior, amplification and endurance for the actual configuration; do not substitute a read-bandwidth grade."
+    ],
+    "science": [
+      {
+        "title": "Useful-byte efficiency",
+        "equation": "Buseful ≤ Bphysical u/g",
+        "explanation": "A transaction fetches g bytes but only u are consumed before eviction. Coalescing or reuse can improve the ratio.",
+        "assumptions": "0 < u ≤ g, no later use of the remaining bytes; this is traffic efficiency, not a measured HBF result."
+      },
+      {
+        "title": "Concurrency to cover latency",
+        "equation": "Qflight ≥ Btarget L",
+        "explanation": "Sustaining a target byte rate over latency L needs approximately that rate times latency in flight.",
+        "assumptions": "Steady independent requests, adequate resources, no contention or dependency stalls; necessary capacity is not sufficient throughput proof."
+      }
+    ],
+    "specs": [
+      {
+        "label": "Missing HBF defaults",
+        "value": "Do not invent latency or page size",
+        "context": "Scenario inputs are hypothetical until a pinned specification or measurement supplies them."
+      },
+      {
+        "label": "Reads versus writes",
+        "value": "Different access operations",
+        "context": "Read-dominant does not mean physically read-only or unlimited endurance."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Prefetch planner",
+        "direction": "in",
+        "signal": "Future address, issue time and useful-byte prediction"
+      },
+      {
+        "name": "Staging memory",
+        "direction": "out",
+        "signal": "Ready data plus occupancy and miss evidence"
+      }
+    ],
+    "tradeoff": "Aggressive prefetch can hide latency but consumes staging memory and bandwidth, especially when addresses or expert choices are unpredictable.",
+    "whyAI": "A model that fits in a large tier can still stall if its access pattern cannot expose enough predictable parallelism.",
+    "prerequisites": [
+      "hbf-read-tier-contract",
+      "memory-hierarchy-route"
+    ],
+    "related": [
+      "moe-expert-tier-placement",
+      "prefill-decode-tier-placement",
+      "kernel-locality-fusion"
+    ],
+    "misconception": "Useful-byte efficiency is 1/16 for this synthetic access pattern; batching nearby accesses or reuse can change it.",
+    "check": {
+      "question": "A request fetches 16 KiB but consumes 1 KiB with no reuse. What fraction is immediately useful?",
+      "options": [
+        "1/16",
+        "All of it because peak bandwidth is high",
+        "16 times the fetched volume"
+      ],
+      "answer": 0,
+      "explanation": "Useful-byte efficiency is 1/16 for this synthetic access pattern; batching nearby accesses or reuse can change it."
+    },
+    "engineeringExample": "Synthetic access: 1 TB/s with 20 µs completion latency requires at least 20 MB outstanding in the simple concurrency model. A 16 KiB fetch with only 1 KiB consumed has 6.25% useful-byte efficiency. Neither latency nor granularity is an HBF product specification.",
+    "evidenceNotes": "The Sandisk fact sheet’s comparison concerns internal testing/simulation of reading 8-bit pretrained Llama 3.1 405B weights, one kernel at a time on an xPU performance model. It does not establish arbitrary random reads, training writes or end-to-end serving parity. KIOXIA supports general NAND access distinctions, not HBF timing numbers.",
+    "sources": [
+      {
+        "title": "Sandisk — HBF fact sheet",
+        "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf"
+      },
+      {
+        "title": "KIOXIA — NAND erase operations and latency",
+        "url": "https://www.kioxia.com/en-jp/rd/technology/topics/topics-51.html"
+      }
+    ],
+    "learningObjective": "Explain why matching read bandwidth does not guarantee matching request latency or useful-byte efficiency.",
+    "workstream": "W11",
+    "visualFamily": "memory-route",
+    "scale": "Request granularity, queues and staging buffers; abstract dataflow",
+    "kind": "system",
+    "labId": "inference-placement",
+    "branch": "Memory",
+    "subbranch": "HBF interface, latency and access contract",
+    "scope": "Place read-only weights and mutable KV across specified tiers and inspect transfer paths; no HBF shipping-system benchmark or universal memory semantics are implied.",
+    "investigationId": "execution",
+    "labScope": "Place read-only weights and mutable KV across specified tiers and inspect transfer paths; no HBF shipping-system benchmark or universal memory semantics are implied."
+  },
+  "chapter": {
+    "id": "deep-hbf-access-contract",
+    "domainId": "packaging-machines",
+    "read": "The tier diagram is a logical teaching topology, not a disclosed HBF floorplan or an interoperability claim. Announced grades and synthetic latency/granularity inputs remain distinct."
+  },
+  "formalEquations": [
+    {
+      "latex": "B_{\\mathrm{useful}}\\leq B_{\\mathrm{physical}}\\frac{u}{g}",
+      "variables": [
+        {
+          "symbol": "Buseful",
+          "meaning": "Rate of useful bytes consumed",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "Bphysical",
+          "meaning": "Actual transferred payload rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "u",
+          "meaning": "Useful bytes from a transaction",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Fetched bytes per transaction",
+          "unit": "bytes"
+        }
+      ],
+      "kind": "math",
+      "text": "Buseful ≤ Bphysical u/g"
+    },
+    {
+      "latex": "Q_{\\mathrm{flight}}\\geq B_{\\mathrm{target}}L",
+      "variables": [
+        {
+          "symbol": "Qflight",
+          "meaning": "Required outstanding payload",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "Btarget",
+          "meaning": "Target transfer rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Request-to-completion latency",
+          "unit": "s"
+        }
+      ],
+      "kind": "math",
+      "text": "Qflight ≥ Btarget L"
+    }
+  ],
+  "contentFingerprint": "b4642fc12ee8e9ea76de498cbe4a9a35359564d8ae1298c577f612ac9d8554f9",
+  "claims": [
+    {
+      "id": "depth-claim-hbf-scope",
+      "title": "Scope of the historical HBF comparison",
+      "statement": "Sandisk’s July 2025 fact sheet states higher HBF latency and larger pages than HBM; its performance comparison is limited to an internal 8-bit pretrained-weight simulation.",
+      "sourceId": "depth-src-hbf-detail",
+      "lessonIds": [
+        "hbf-latency-prefetch"
+      ],
+      "status": "reported",
+      "metric": "",
+      "value": "",
+      "unit": "",
+      "denominator": "",
+      "period": "2025-07",
+      "scope": "Llama 3.1 405B weight reads; one kernel at a time on an xPU performance model",
+      "limitations": "Do not generalize to arbitrary random reads, writes, complete serving systems or training. The atlas supplies no unverified HBF latency/granularity default.",
+      "urlSourceId": "url-5d748862c1c9009aa823",
+      "inheritedCheckedOn": "2026-09-06",
+      "dateBasis": "Copied from existing claim ledger; not a review performed by this task.",
+      "supersedesClaimId": null,
+      "supersededByClaimId": null,
+      "reviewEventIds": []
+    }
+  ],
+  "sources": [
+    {
+      "sourceId": "url-5d748862c1c9009aa823",
+      "url": "https://documents.sandisk.com/content/dam/asset-library/en_us/assets/public/sandisk/collateral/company/Sandisk-HBF-Fact-Sheet.pdf",
+      "title": "Sandisk — HBF fact sheet",
+      "contexts": [
+        {
+          "field": "sources"
+        },
+        {
+          "field": "claim",
+          "claimId": "depth-claim-hbf-scope",
+          "ledgerSourceId": "depth-src-hbf-detail"
+        }
+      ]
+    },
+    {
+      "sourceId": "url-f3280737ae7f629d9622",
+      "url": "https://www.kioxia.com/en-jp/rd/technology/topics/topics-51.html",
+      "title": "KIOXIA — NAND erase operations and latency",
+      "contexts": [
+        {
+          "field": "sources"
+        }
+      ]
+    }
+  ]
+}

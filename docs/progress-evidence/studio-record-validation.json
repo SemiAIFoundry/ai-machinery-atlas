@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-07T18:08:18.142Z",
+  "actorType": "agent",
+  "schema": "atlas-studio-record-1",
+  "automatedTests": {
+    "count": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "strictTypecheck": "passed in full repository check",
+  "sourceFiles": [
+    {
+      "path": "src/lib/studio-record.ts",
+      "sha256": "dfcbdfd7132e6f92c9a8c048537a57d8065668f1af42057f5fee9f177bbeb588",
+      "bytes": 13619
+    },
+    {
+      "path": "src/components/studio-record.tsx",
+      "sha256": "ed0c5b0069dbfd03ecec83e0458a0815cc28ed01e5e7457b8384724008bf3ceb",
+      "bytes": 3950
+    },
+    {
+      "path": "scripts/studio-record.test.mjs",
+      "sha256": "50437b05917c18ef90504f4659b5e7f9d1339a75ab42836d819ffbd9b45c565d",
+      "bytes": 13933
+    }
+  ],
+  "validatedBehaviors": [
+    "Per-model required fields, unknown nested options, exact record envelope and identity",
+    "Paired matrix/scheme/index, sensor steps/cursor, memory die/address/stack/banks, duration/time",
+    "Bounded simulation preflight before full model validation",
+    "Mount/default registration leaves invalid saved raw data untouched",
+    "Storage transaction commits active record before swapping live values",
+    "Failed/invalid import preserves active inputs and active storage",
+    "Recovery swap and storage failure handling",
+    "Generation guard rejects canceled timers and stale component writes",
+    "Import tickets reject reordered file reads and edits during import",
+    "Latest edits persist on debounce and page/unmount flush",
+    "Progress views, metrics, intervals, allocations and worked controls",
+    "The same UTF-8 byte limit applies to stored/exported JSON and uploaded files"
+  ],
+  "limits": {
+    "maximumScenarioListEntries": 100,
+    "maximumRegularSamples": 2001,
+    "maximumEstimatedTransitions": 5000,
+    "maximumEstimatedSampleComparisons": 25000000,
+    "maximumRecordBytes": 250000
+  },
+  "scope": "Controller/model tests and source-level React lifecycle review. Physical-device, browser rendering, assistive-technology, human-learner and specialist reviews are not established by these tests.",
+  "limitations": [
+    "Cell/net highlight strings are bounded and resolved against the lazily fetched artifact by the realization component.",
+    "Fabrication section 0 or 1 is stored across stages; the component clamps it to the current stage sections.",
+    "LocalStorage atomicity applies to the active key. If both an active write and backup rollback fail, the prior backup can change, while the live workspace and active record remain unchanged."
+  ]
+}

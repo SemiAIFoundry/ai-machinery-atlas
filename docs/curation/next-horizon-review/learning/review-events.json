@@ -1,0 +1,353 @@
+{
+  "schemaVersion": 1,
+  "reviewCompletedAt": "2026-09-07T22:42:57.384Z",
+  "scope": "Five exact effective lesson snapshots only; accepted agent source-scope review is not human specialist or learner validation.",
+  "events": [
+    {
+      "id": "source-review-2026-09-07-learning-attention",
+      "lessonId": "attention",
+      "type": "source-scope",
+      "contentFingerprint": "5003a7dd139869db36bcb05ca71c89f8683af5f45845e7c2173ae7c209463ffb",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/attention-5003a7dd139869db.json",
+      "reviewedSourceIds": [
+        "url-a7468c68516526913141",
+        "url-5727fed78bddc70147e9",
+        "url-8a455ddf634c62b2a780",
+        "url-d4823e472e1706a61a2a"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-transformer"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-a7468c68516526913141",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 7, section 3.1 Decoder: shifted embeddings and causal mask",
+            "Section 3.2.1 equation (1) and footnote 1: score scaling; section 3.2.2 learned Q/K/V projections",
+            "Sections 3.3–3.5: nonlinear position-wise layer, output probabilities and positional information; Table 1: dense pair complexity"
+          ],
+          "notes": "Read full primary HTML v7 through the abstract record and direct versioned URL. Supports the declared mechanism; the authored decoder is not the original architecture."
+        },
+        {
+          "sourceId": "url-5727fed78bddc70147e9",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Linked PDF, section 3.1, printed pages 4–5: tiling, rescaled normalization and recomputation",
+            "Algorithm 1 and Theorem 1, printed page 5: exact output definition and quadratic dense arithmetic",
+            "Section 3.2 and Figure 2, printed page 6: memory-model bounds and block-size-dependent results"
+          ],
+          "notes": "Opened abstract and linked 34-page PDF. Supports IO-aware dense attention, with numerical and configuration qualifications retained. No measured speedup is transferred to the atlas."
+        },
+        {
+          "sourceId": "url-8a455ddf634c62b2a780",
+          "url": "https://arxiv.org/html/1706.03762v7",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 7, section 3.1 Decoder: shifted embeddings and causal mask",
+            "Section 3.2.1 equation (1) and footnote 1: score scaling; section 3.2.2 learned Q/K/V projections",
+            "Sections 3.3–3.5: nonlinear position-wise layer, output probabilities and positional information; Table 1: dense pair complexity"
+          ],
+          "notes": "Read full primary HTML v7 through the abstract record and direct versioned URL. Supports the declared mechanism; the authored decoder is not the original architecture."
+        },
+        {
+          "sourceId": "url-d4823e472e1706a61a2a",
+          "url": "https://docs.nvidia.com/nemo/megatron-bridge/0.3.1/training/packed-sequences.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Packed Sequences, Overview: boundary-aware fine-tuning and distinction from concatenated pretraining datasets",
+            "Overview paragraph on cu_seqlens and omitted cross-sequence attention"
+          ],
+          "notes": "Supports isolation of packed examples. The atlas explicitly uses an authored mask implementation, not the documented fused variable-length kernels or a throughput claim."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-transformer",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported in sections 3.1–3.5. Research status and explicit distinction from the authored one-head pre-RMS/tanh decoder are retained."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independent scalar derivative, normalized mixture, mask and shape review passed. Scores are dimensionless; Q/K width agrees and the example always has an allowed key. The [5,6,7] packed boundary follows its stated document-instance rule. Upstream embeddings/MAC and downstream KV/output links are scoped communication paths, not private reasoning or fused-kernel execution. Exact arithmetic and selected core/packing tests are recorded separately."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-attention-io-tiling",
+      "lessonId": "attention-io-tiling",
+      "type": "source-scope",
+      "contentFingerprint": "95fec33cf0bde46c4cbad76ad384f21e52220c55f8d94a695c3a578d706dda10",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/attention-io-tiling-95fec33cf0bde46c.json",
+      "reviewedSourceIds": [
+        "url-5727fed78bddc70147e9"
+      ],
+      "reviewedClaimIds": [
+        "arch-claim-flash-method"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-5727fed78bddc70147e9",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Linked PDF, section 3.1, printed pages 4–5: tiling, rescaled normalization and recomputation",
+            "Algorithm 1 and Theorem 1, printed page 5: exact output definition and quadratic dense arithmetic",
+            "Section 3.2 and Figure 2, printed page 6: memory-model bounds and block-size-dependent results"
+          ],
+          "notes": "Opened abstract and linked 34-page PDF. Supports IO-aware dense attention, with numerical and configuration qualifications retained. No measured speedup is transferred to the atlas."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "arch-claim-flash-method",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by section 3.1 and Algorithm 1. Dense exact and block-sparse scopes remain distinct; no universal speedup is claimed."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independent storage calculation gives 33,554,432 bytes = 32 MiB for one head/request at two bytes per score. Allocation omits padding and extra tensors as declared; the lesson does not claim this removes quadratic arithmetic. Attention and locality prerequisites are suitable. The library mapping explicitly says there is no dedicated online-softmax calculator. A future numerical tile-merging exercise would deepen pedagogy, but is not required to correct the present scoped claims."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-causal-pretraining-objective",
+      "lessonId": "causal-pretraining-objective",
+      "type": "source-scope",
+      "contentFingerprint": "2960d1d87946d474e92f7a4a1bdc616eeb43b603b04a435ca19529185baa76b2",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/causal-pretraining-objective-2960d1d87946d474.json",
+      "reviewedSourceIds": [
+        "url-91e65f2aee755df9b416",
+        "url-8a455ddf634c62b2a780"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-olmo2",
+        "ml-claim-transformer"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-91e65f2aee755df9b416",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 1, sections 2.1 and 2.3: pretraining and mid-training curricula",
+            "Section 4.2.2: microanneals; section 4.3, Table 14 and Mid-training soups: averaged checkpoints",
+            "Section 5: SFT, DPO and RLVR stages"
+          ],
+          "notes": "Read the specified v1 passages and table. Supports distinct recipe stages and evaluated averages; no OLMo measurements are reproduced by the authored examples."
+        },
+        {
+          "sourceId": "url-8a455ddf634c62b2a780",
+          "url": "https://arxiv.org/html/1706.03762v7",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 7, section 3.1 Decoder: shifted embeddings and causal mask",
+            "Section 3.2.1 equation (1) and footnote 1: score scaling; section 3.2.2 learned Q/K/V projections",
+            "Sections 3.3–3.5: nonlinear position-wise layer, output probabilities and positional information; Table 1: dense pair complexity"
+          ],
+          "notes": "Read full primary HTML v7 through the abstract record and direct versioned URL. Supports the declared mechanism; the authored decoder is not the original architecture."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-olmo2",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by sections 2.3, 4.3/Table 14 and 5. The statement promises evaluated averages, not improvement on every task or reproduction of OLMo."
+        },
+        {
+          "claimId": "ml-claim-transformer",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported in sections 3.1–3.5. Research status and explicit distinction from the authored one-head pre-RMS/tanh decoder are retained."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independently derived NLL 2.772588722239781 nats, mean 0.9241962407465937 over three included targets and perplexity 2.519842099789746. Uniform nine-token baseline gives ln(9). Positive probability, same mask/tokenization and nonzero target count are preserved. This formula is elementary likelihood arithmetic, not a claim that OLMo uses the exact toy loss recipe. Decoder/packing prerequisites and the explicitly bounded lifecycle lab preserve next-token versus answer-accuracy distinctions."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-checkpoint",
+      "lessonId": "checkpoint",
+      "type": "source-scope",
+      "contentFingerprint": "b2b2450347be734165a9b25da0350ffaf0ac68eda98fbc56c7abf9e4234f7c0a",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/checkpoint-b2b2450347be7341.json",
+      "reviewedSourceIds": [
+        "url-284d853c6b8e814d96db",
+        "url-23a0b3fa770742478d25",
+        "url-1743ee34e2118e1db2a4",
+        "url-91e65f2aee755df9b416"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-olmo2"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-284d853c6b8e814d96db",
+          "url": "https://docs.pytorch.org/docs/stable/distributed.checkpoint.html",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Stable reference redirects to https://docs.pytorch.org/docs/2.14/distributed.checkpoint.html (read this destination)",
+            "torch.distributed.checkpoint.save: local shards, Stateful serialization and cross-version compatibility warning",
+            "Stateful protocol; get_state_dict / set_state_dict: model and optimizer state"
+          ],
+          "notes": "Read the redirected primary version 2.14 reference. Supports sharded model/application state and optimizer restoration; exact binary64 restart is an atlas fixture, not a PyTorch portability promise."
+        },
+        {
+          "sourceId": "url-23a0b3fa770742478d25",
+          "url": "https://docs.temporal.io/workflow-execution",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Temporal Workflow Execution overview, Replays",
+            "Commands and awaitables: command generation checked against event history"
+          ],
+          "notes": "Supports replay from recorded events. The separate atlas journal and external receipt are authored objects; this source does not make a training checkpoint undo an external effect."
+        },
+        {
+          "sourceId": "url-1743ee34e2118e1db2a4",
+          "url": "https://docs.temporal.io/activities",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "What is a Temporal Activity?, overview paragraphs on external actions and idempotency",
+            "Overview paragraphs on failed attempts, heartbeat details and ActivityTaskCompleted history"
+          ],
+          "notes": "Supports distinct external activities and persisted results. The atlas checks lost-response recovery with an explicit keyed receipt; no exactly-once guarantee is inferred from retry alone."
+        },
+        {
+          "sourceId": "url-91e65f2aee755df9b416",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 1, sections 2.1 and 2.3: pretraining and mid-training curricula",
+            "Section 4.2.2: microanneals; section 4.3, Table 14 and Mid-training soups: averaged checkpoints",
+            "Section 5: SFT, DPO and RLVR stages"
+          ],
+          "notes": "Read the specified v1 passages and table. Supports distinct recipe stages and evaluated averages; no OLMo measurements are reproduced by the authored examples."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-olmo2",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by sections 2.3, 4.3/Table 14 and 5. The statement promises evaluated averages, not improvement on every task or reproduction of OLMo."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Read all four primary references; independent decimal unit conversion gives the stated 100-second transfer floor. Executed 17 updates, serialized/restored and executed 23: the entire state equals 40 uninterrupted updates, with 80 draws and fingerprint fc178436. Reset moments yield c2bffc33. Selected journal tests confirm lost responses and failed result journaling preserve a committed keyed effect. Storage is upstream; continuation and idempotency are separate downstream contracts. No cross-device bitwise equality or external rollback is promised."
+    },
+    {
+      "id": "source-review-2026-09-07-learning-checkpoint-averaging-boundaries",
+      "lessonId": "checkpoint-averaging-boundaries",
+      "type": "source-scope",
+      "contentFingerprint": "3c0cfe951befa203f898e134f5d3abc3186f2192ce930d36c36b6c8a3313d493",
+      "contentSnapshotLocation": "docs/curation/next-horizon-review/learning/checkpoint-averaging-boundaries-3c0cfe951befa203.json",
+      "reviewedSourceIds": [
+        "url-91e65f2aee755df9b416"
+      ],
+      "reviewedClaimIds": [
+        "ml-claim-olmo2"
+      ],
+      "completedOn": "2026-09-07",
+      "reviewer": {
+        "kind": "agent",
+        "identifier": "/root/learning_source_review",
+        "role": "Bounded primary-source and arithmetic reviewer; not a human specialist"
+      },
+      "outcome": "accepted",
+      "sourceChecks": [
+        {
+          "sourceId": "url-91e65f2aee755df9b416",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07",
+          "access": "accessible",
+          "support": "supports-scoped-use",
+          "locators": [
+            "Version 1, sections 2.1 and 2.3: pretraining and mid-training curricula",
+            "Section 4.2.2: microanneals; section 4.3, Table 14 and Mid-training soups: averaged checkpoints",
+            "Section 5: SFT, DPO and RLVR stages"
+          ],
+          "notes": "Read the specified v1 passages and table. Supports distinct recipe stages and evaluated averages; no OLMo measurements are reproduced by the authored examples."
+        }
+      ],
+      "claimChecks": [
+        {
+          "claimId": "ml-claim-olmo2",
+          "outcome": "supported-with-qualifiers",
+          "notes": "Supported by sections 2.3, 4.3/Table 14 and 5. The statement promises evaluated averages, not improvement on every task or reproduction of OLMo."
+        }
+      ],
+      "checks": {
+        "unitsAndDenominators": "pass",
+        "modelAssumptions": "pass",
+        "claimQualifiers": "pass",
+        "dependencyAndVisualScope": "pass"
+      },
+      "notes": "Independent exact linear-network calculation gives coefficients 1 and 1 before averaging and 0 afterward; compatible scalar averaging gives 2. Shape and coordinate alignment are correctly distinguished. OLMo Table 14 includes a GSM* regression for mix E (60.5 best single versus 43.0 soup), despite its broader caption; the atlas does not repeat a universal improvement claim. No averaging simulator or optimizer-resume guarantee is implied. Checkpoint/evaluation prerequisites correctly require a new identity and reserved evaluation."
+    }
+  ]
+}

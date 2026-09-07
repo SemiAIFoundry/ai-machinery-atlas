@@ -1,0 +1,19 @@
+OPEN HORIZONS — ORIGINAL AI ATLAS WALKTHROUGH SCORE
+Original instrumental music created for the AI Atlas walkthrough using deterministic Python/NumPy synthesis. No existing songs, samples, recordings, or voice were used.
+
+Duration: exactly 60.000 seconds / 2,880,000 frames.
+Format: stereo 48 kHz, 16-bit PCM WAV.
+Tempo: 128 BPM; 32 bars of 4/4.
+Harmony: C major with A minor contrast; Cmaj9, Gadd9, Am7, Fmaj9, and voiced inversions; final Cadd9 at 56.25 seconds.
+
+0:00–0:07.5  Warm, open piano voicings and a wide, slow pad.
+0:07.5–0:15  Gentle bass and arpeggio lift.
+0:15–0:30    Original melodic motif and tasteful electronic percussion.
+0:30–0:45    Harmonic contrast and evolving upper texture; gradual swell.
+0:45–0:52.5  Uplifting melodic climax.
+0:52.5–0:56.25  Cadential descent and rhythmic release.
+0:56.25–1:00   Resolving Cadd9 and a clean fade to silence.
+
+All instrumental timbres, percussion, and reverb are synthesized in compose_score.py. The output has 2 dB peak headroom, no clipped samples, and gentle fades. The music may be further attenuated when mixed with the UI walkthrough.
+
+Optional credit: “Open Horizons — original score created for AI Atlas with Codex.”

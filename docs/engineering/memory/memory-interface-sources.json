@@ -1,0 +1,79 @@
+{
+  "schema": "atlas-mechanism-sources-1",
+  "checkedAt": "2026-09-07",
+  "scope": "Primary sources motivate mechanisms. All added address, interface geometry and mismatch controls are explicit teaching assumptions. Existing atlas numeric models remain authoritative for stack and workload totals.",
+  "sources": [
+    {
+      "id": "samsung-tcncf",
+      "title": "Samsung Develops Industry-First 36GB HBM3E 12H DRAM",
+      "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram",
+      "locator": "February 27, 2024; advanced TC-NCF process discussion",
+      "supports": "A named HBM implementation uses thermocompression with non-conductive film; bumps and supporting material have distinct roles.",
+      "excludes": "The atlas does not reproduce Samsung geometry, process conditions, yield, thermal results or product qualification."
+    },
+    {
+      "id": "sk-mrmuf",
+      "title": "SK hynix: Small Size, Big Impact",
+      "url": "https://news.skhynix.com/en/small-size-big-impact/",
+      "locator": "Advanced MR-MUF section",
+      "supports": "Mass reflow forms interconnects and molded underfill occupies the inter-die region; these are separate material and process roles.",
+      "excludes": "No vendor throughput, alloy composition, pad dimensions or route superiority is inferred. The atlas remains a material-role illustration."
+    },
+    {
+      "id": "imec-hybrid",
+      "title": "imec: Wafer-to-wafer hybrid bonding \u2014 pushing the boundaries to 400nm interconnect pitch",
+      "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch",
+      "locator": "February 19, 2024; Current process flow and Accurate control of surface topography sections",
+      "supports": "Hybrid bonding combines prepared dielectric surfaces and copper interconnects; surface preparation and registration matter.",
+      "excludes": "The reported research test vehicle is not a qualified HBM product. Atlas pad width, exaggerated local gap and acceptance offsets are synthetic; overlap does not determine resistance, yield or lifetime."
+    },
+    {
+      "id": "micron-hbm-hierarchy",
+      "title": "Micron HBM3E product information",
+      "url": "https://www.micron.com/products/memory/hbm/hbm3e",
+      "locator": "FAQ: difference between HBM2 and HBM3E",
+      "supports": "HBM devices expose a channel and pseudo-channel hierarchy; Micron describes 16 channels and 32 pseudo-channels for HBM3E.",
+      "excludes": "The atlas two-channel-slices-per-die teaching map, word width, bank counts, rows, columns and address order are not Micron specifications. Existing model dimensions and bandwidths are not replaced with product claims."
+    },
+    {
+      "id": "intel-hbm-address",
+      "title": "Intel HBM2 Interface FPGA IP User Guide, UG-20031",
+      "url": "https://cdrdv2-public.intel.com/705204/ug-20031-18-1-1-683189-705204.pdf",
+      "locator": "2018.12.24 edition; printed page 21, Address reordering and auto-precharge policy",
+      "supports": "Controller configuration maps system-side addresses into memory address fields and can change that ordering. Locality and page-hit behavior depend on policy.",
+      "excludes": "This source is HBM2 controller documentation. Its address widths and protocol modes are not copied into the synthetic map; the explorer is not an AXI/HBM controller or hardware simulator."
+    },
+    {
+      "id": "microchip-bank-access",
+      "title": "Microchip: Optimized Access Functionality",
+      "url": "https://onlinedocs.microchip.com/oxy/GUID-B822915F-C375-4172-91BD-AB6F326EB783-en-US-1/GUID-F3B24B38-CBB2-434E-A89A-EC8BB4810756.html",
+      "locator": "Section 3.6.5.5",
+      "supports": "Access depends on bank and open-row state. A conflicting row requires precharge and activation before a read; access scheduling can overlap work across banks.",
+      "excludes": "Only command ordering is illustrated. DDR timings, HBM timing compliance, arbitration, refresh, bank groups and PHY operation are not modeled."
+    },
+    {
+      "id": "nasa-cte",
+      "title": "NASA/JPL EEE Parts Bulletin: CGA Assemblies under Thermal Cycling",
+      "url": "https://nepp.nasa.gov/files/24512/13_JPL_EEE_Parts_Bulletin_Vol%205%20Issue%203%20JuneJuly%20rec%207%2023%2013.pdf",
+      "locator": "June/July 2013, Volume 5 Issue 3; Equation 1 on printed page 2, discussion on pages 3\u20134",
+      "supports": "Differential thermal expansion depends on CTE mismatch, temperature excursion and distance from a neutral point. Dividing free displacement by joint height gives a global geometric shear indicator. Workmanship, use conditions and qualification require separate evidence.",
+      "excludes": "The source concerns CGA/package-board assemblies, not qualified HBM bonds. Its relationship is used only as an unconstrained teaching analogy for solder-bearing routes, never as calibrated local strain, stress, fatigue life or hybrid-bond mechanics."
+    },
+    {
+      "id": "paged-attention",
+      "title": "Kwon et al.: Efficient Memory Management for Large Language Model Serving with PagedAttention",
+      "url": "https://arxiv.org/abs/2309.06180",
+      "locator": "SOSP 2023 paper, abstract and memory-management motivation",
+      "supports": "KV cache grows dynamically and its placement/management affects serving capacity.",
+      "excludes": "The existing atlas uses aggregate byte accounting, not PagedAttention allocation, paging, fragmentation or benchmark results. The contiguous tier layout is an explicit illustration."
+    },
+    {
+      "id": "sandisk-hbf",
+      "title": "Sandisk: Scaling the Memory Wall \u2014 Behind High Bandwidth Flash for AI Inferencing",
+      "url": "https://www.sandisk.com/company/newsroom/blogs/2025/scaling-beyond-the-wall-inside-sandisks-high-bandwidth-flash-for-ai",
+      "locator": "August 6, 2025; What is HBF?, Scaling beyond the memory wall, and disclosure 1",
+      "supports": "HBF is NAND-based and the cited performance exploration focuses on reading pretrained weights.",
+      "excludes": "The atlas read-only HBF policy is a teaching allocation choice, not a claim that flash cannot be programmed. Vendor simulated speedups, sample dates, capacity and bandwidth claims do not replace atlas parameters or establish current product availability."
+    }
+  ]
+}

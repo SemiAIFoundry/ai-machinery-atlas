@@ -1,0 +1,1514 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "hardware-reliability-1",
+  "scope": "Complete input records; deterministic expected outputs recomputed from the bounded model. These are teaching fixtures, not hardware observations.",
+  "scenarios": [
+    {
+      "id": "default",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 7,
+            "discardedSteps": 1,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 8,
+            "restores": 1
+          },
+          "eventCount": 21
+        }
+      }
+    },
+    {
+      "id": "coordinated-reset",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "both",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 5,
+            "canceled": 3,
+            "pending": 0,
+            "writeStalls": 6,
+            "emptyReadEdges": 4
+          },
+          "violation": null,
+          "lastEventTick": 45,
+          "eventCount": 29
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 7,
+            "discardedSteps": 1,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 8,
+            "restores": 1
+          },
+          "eventCount": 21
+        }
+      }
+    },
+    {
+      "id": "unsafe-reader-reset",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "reader-only",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "contract-violation",
+          "totals": {
+            "accepted": 8,
+            "consumed": 2,
+            "canceled": 0,
+            "pending": 6,
+            "writeStalls": 7,
+            "emptyReadEdges": 4
+          },
+          "violation": "At tick 35, reader observed tag-4; next accepted tag was tag-2.",
+          "lastEventTick": 35,
+          "eventCount": 23
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 7,
+            "discardedSteps": 1,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 8,
+            "restores": 1
+          },
+          "eventCount": 21
+        }
+      }
+    },
+    {
+      "id": "bursty-reader",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "bursty",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 20,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 90,
+          "eventCount": 55
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 7,
+            "discardedSteps": 1,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 8,
+            "restores": 1
+          },
+          "eventCount": 21
+        }
+      }
+    },
+    {
+      "id": "finite-horizon",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "writePeriod": 7,
+          "readPeriod": 7,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 40
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "incomplete",
+          "totals": {
+            "accepted": 4,
+            "consumed": 2,
+            "canceled": 0,
+            "pending": 2,
+            "writeStalls": 1,
+            "emptyReadEdges": 3
+          },
+          "violation": null,
+          "lastEventTick": 35,
+          "eventCount": 6
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 7,
+            "discardedSteps": 1,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 8,
+            "restores": 1
+          },
+          "eventCount": 21
+        }
+      }
+    },
+    {
+      "id": "clean-codeword",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 0,
+            "overallParity": 0,
+            "classification": "clean",
+            "correctedPosition": null,
+            "correctedBits": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": 9,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 0
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 0
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": true,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 6,
+            "discardedSteps": 0,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 6,
+            "restores": 0
+          },
+          "eventCount": 17
+        }
+      }
+    },
+    {
+      "id": "single-data-bit",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            3
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 1,
+            "classification": "single-corrected",
+            "correctedPosition": 3,
+            "correctedBits": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": 9,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": true,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 6,
+            "discardedSteps": 0,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 6,
+            "restores": 0
+          },
+          "eventCount": 17
+        }
+      }
+    },
+    {
+      "id": "single-overall-parity-bit",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            8
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            0
+          ],
+          "decoded": {
+            "syndrome": 0,
+            "overallParity": 1,
+            "classification": "overall-corrected",
+            "correctedPosition": 8,
+            "correctedBits": [
+              0,
+              0,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": 9,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 0
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 0
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": true,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 6,
+            "discardedSteps": 0,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 6,
+            "restores": 0
+          },
+          "eventCount": 17
+        }
+      }
+    },
+    {
+      "id": "stop-after-double-error",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "stop",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "blocked",
+          "finalSum": null,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 3,
+            "discardedSteps": 0,
+            "completedSteps": 3,
+            "checkpointSteps": 2,
+            "reads": 4,
+            "restores": 0
+          },
+          "eventCount": 10
+        }
+      }
+    },
+    {
+      "id": "checkpoint-every-three",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 3,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 3,
+            "overallParity": 0,
+            "classification": "double-detected",
+            "correctedPosition": null,
+            "correctedBits": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              0,
+              1,
+              1
+            ],
+            "payload": null,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 1
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": true,
+          "fixtureTruthMatches": null,
+          "status": "complete",
+          "finalSum": 54,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 6,
+            "discardedSteps": 0,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 7,
+            "restores": 1
+          },
+          "eventCount": 18
+        }
+      }
+    },
+    {
+      "id": "out-of-guarantee-triple-error",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "hardware-reliability-1",
+        "fifo": {
+          "values": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88
+          ],
+          "writePeriod": 2,
+          "readPeriod": 5,
+          "consumer": "ready",
+          "reset": "none",
+          "resetAt": 23,
+          "horizon": 120
+        },
+        "ecc": {
+          "payload": 9,
+          "flips": [
+            1,
+            2,
+            3
+          ],
+          "faultStep": 4,
+          "checkpointEvery": 2,
+          "recovery": "restore-healthy",
+          "steps": 6
+        }
+      },
+      "expected": {
+        "fifo": {
+          "status": "complete",
+          "totals": {
+            "accepted": 8,
+            "consumed": 8,
+            "canceled": 0,
+            "pending": 0,
+            "writeStalls": 10,
+            "emptyReadEdges": 2
+          },
+          "violation": null,
+          "lastEventTick": 50,
+          "eventCount": 31
+        },
+        "ecc": {
+          "encoded": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "received": [
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            1,
+            1
+          ],
+          "decoded": {
+            "syndrome": 0,
+            "overallParity": 1,
+            "classification": "overall-corrected",
+            "correctedPosition": 8,
+            "correctedBits": [
+              1,
+              1,
+              0,
+              1,
+              0,
+              0,
+              1,
+              0
+            ],
+            "payload": 8,
+            "parityChecks": [
+              {
+                "mask": 1,
+                "positions": [
+                  1,
+                  3,
+                  5,
+                  7
+                ],
+                "value": 0
+              },
+              {
+                "mask": 2,
+                "positions": [
+                  2,
+                  3,
+                  6,
+                  7
+                ],
+                "value": 0
+              },
+              {
+                "mask": 4,
+                "positions": [
+                  4,
+                  5,
+                  6,
+                  7
+                ],
+                "value": 0
+              }
+            ]
+          },
+          "withinGuarantee": false,
+          "fixtureTruthMatches": false,
+          "status": "silent-corruption-in-fixture",
+          "finalSum": 53,
+          "referenceSum": 54,
+          "totals": {
+            "executedSteps": 6,
+            "discardedSteps": 0,
+            "completedSteps": 6,
+            "checkpointSteps": 6,
+            "reads": 6,
+            "restores": 0
+          },
+          "eventCount": 17
+        }
+      }
+    }
+  ]
+}

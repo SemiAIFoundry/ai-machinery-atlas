@@ -1,0 +1,13 @@
+✔ connected footage retains captured pixels, exact build evidence and the delivered video (7.886708ms)
+✔ every captured experience has a current canonical destination and a readable alternative (201.044291ms)
+✔ both companions ship relative external players for script-src self (1.515959ms)
+✔ regenerating the connected companion also copies its executable player (31.084542ms)
+✔ the shipped player seeks chapters without changing pause and updates accessible state (1.265166ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 285.388416

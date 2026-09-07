@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "validatedAt": "2026-09-07T16:55:30.509Z",
+  "modelVersion": "architecture-execution-1",
+  "nodeVersion": "v24.14.0",
+  "tests": 21,
+  "passed": 21,
+  "failed": 0,
+  "independentBinaryMatrixPairs": 256,
+  "legalFourLaneMasksPerSizeAndArray": 15,
+  "workedCases": 5,
+  "primarySourceRecords": 4,
+  "typescript": {
+    "status": "pass",
+    "mode": "Standalone strict noEmit; no app imports"
+  },
+  "checks": [
+    "Exact independent BigInt output and ordered accumulator traces",
+    "Named local-state replay and output write-once completion",
+    "All legal four-lane masks, interior holes, one enabled slot and array edge cases",
+    "Analytic logical traffic counts and wavefront slot counts",
+    "Actual neighbor-token provenance and one-tick arrival",
+    "Source catalog IDs, worked-case regeneration and asset hashes"
+  ],
+  "limitations": [
+    "Synthetic schedule units have no measured duration.",
+    "Logical traffic is not physical DRAM/cache transactions.",
+    "Active MAC fraction is not GPU occupancy.",
+    "No human specialist review or hardware measurement is claimed."
+  ]
+}

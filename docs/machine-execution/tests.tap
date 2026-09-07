@@ -1,0 +1,28 @@
+✔ signed default connects exact arithmetic to completed host-owned output (2.737791ms)
+✔ every bounded geometry and timing combination preserves commands, ownership and output (99.56225ms)
+✔ all binary 2×2 operand pairs agree with independent BigInt multiplication (6.538084ms)
+✔ extreme signed entries and zero-valued completed results remain exact (1.187667ms)
+✔ global layout changes traffic without changing mathematics (0.350625ms)
+✔ two staging slots overlap DMA and compute; one slot cannot (0.297042ms)
+✔ shared padding can add conflicts while memory still dominates elapsed time (0.2935ms)
+✔ same-address reads broadcast rather than becoming bank conflicts (0.160125ms)
+✔ refresh occurs at legal boundaries and preserves data (0.467583ms)
+✔ unsafe consumption and slot reuse are rejected without corrupting safe work (1.043708ms)
+✔ missing input mapping blocks before any partially authorized DMA batch (0.155583ms)
+✔ range mapping distinguishes device addresses, physical addresses and permissions (0.295ms)
+✔ synthetic byte address fields reconstruct every address in the declared space (0.179542ms)
+✔ state snapshots are independent and a time cursor includes all same-time effects (0.223ms)
+✔ normalization rejects unknown fields, invalid controls and unsafe matrices (0.133125ms)
+✔ inputs and model-bound records round-trip without mutation (1.472416ms)
+✔ saving preserves incompatible raw input before replacing the active record (0.143209ms)
+✔ backup failure leaves the incompatible active record intact (0.134083ms)
+✔ multiple older inputs export their exact raw strings (0.073625ms)
+✔ unreadable recovery storage is exportable verbatim and blocks destructive save (0.075125ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 181.85225

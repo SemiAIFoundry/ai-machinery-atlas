@@ -1,8 +1,8 @@
 {
   "name": "ai-machinery-atlas",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "private": true,
-  "description": "A 3D atoms-to-intelligence atlas of chip design, fabrication, packaging, HBM, architectures, infrastructure, models, and CRG, with formal mathematics, numerical labs, cited history, and The Ascent film.",
+  "description": "A 3D atoms-to-intelligence learning atlas with 311 lessons and 28 engineering experiences spanning chip design, fabrication, packaging, infrastructure, model learning, automation and CRG, with formal mathematics and cinematic companions.",
   "license": "SEE LICENSE IN LICENSE",
   "author": "Semi AI Foundry, LLC",
   "homepage": "https://semiaifoundry.com/ai-atlas/",
@@ -14,11 +14,12 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "npm run build && npm run validate:content && node --experimental-strip-types --test scripts/deep-math.test.mjs scripts/numeric-math.test.mjs scripts/infrastructure-depth.test.mjs scripts/investigations.test.mjs scripts/learning-progress.test.mjs scripts/process-mechanisms.test.mjs scripts/delivery.test.mjs scripts/portable.test.mjs",
-    "predev": "node scripts/generate-catalog.mjs",
-    "prebuild": "node scripts/generate-catalog.mjs",
+    "test": "npm run build && npm run validate:content && node --experimental-strip-types --test scripts/deep-math.test.mjs scripts/numeric-math.test.mjs scripts/infrastructure-depth.test.mjs scripts/investigations.test.mjs scripts/learning-progress.test.mjs scripts/process-mechanisms.test.mjs scripts/delivery.test.mjs scripts/portable.test.mjs scripts/lesson-contract.test.mjs scripts/architecture-execution.test.mjs scripts/fabrication-flow.test.mjs scripts/operating-hall.test.mjs scripts/realization.test.mjs scripts/memory-interfaces.test.mjs scripts/memory-integration.test.mjs scripts/evaluated-applications.test.mjs scripts/orbital-mission.test.mjs scripts/progress-evidence.test.mjs scripts/studio-record.test.mjs scripts/studio-lessons.test.mjs scripts/distributed-output-bridges.test.mjs scripts/hardware-reliability.test.mjs scripts/closed-loop.test.mjs scripts/ai-family-models.test.mjs scripts/evaluation-report.test.mjs scripts/application-decisions.test.mjs scripts/portable-experiment-storage.test.mjs scripts/process-cell-acceptance.test.mjs scripts/model-lifecycle-serving.test.mjs scripts/model-lifecycle-speculation.test.mjs scripts/data-lineage.test.mjs scripts/factory-execution.test.mjs scripts/memory-workload-bridge.test.mjs scripts/ranking-application.test.mjs scripts/matrix-network.test.mjs scripts/decoder-projection.test.mjs scripts/connected-walkthrough.test.mjs scripts/automation-learning-model.test.mjs scripts/model-lifecycle-distributed.test.mjs scripts/commissioning-execution.test.mjs scripts/model-lifecycle-curriculum.test.mjs scripts/automation-learning.test.mjs scripts/learning-map.test.mjs scripts/foundation-models.test.mjs scripts/model-lifecycle.test.mjs scripts/automation-execution.test.mjs scripts/machine-execution.test.mjs && npm run validate:teaching",
+    "predev": "node scripts/generate-equations.mjs && node scripts/generate-catalog.mjs && node --experimental-strip-types scripts/generate-learning-map.mjs",
+    "prebuild": "node scripts/generate-equations.mjs && node scripts/generate-catalog.mjs && node --experimental-strip-types scripts/generate-learning-map.mjs && node scripts/package-learning-materials.mjs",
     "validate:content": "node --experimental-strip-types scripts/validate-atlas.mjs && node scripts/validate-science.mjs && node docs/curation/validate-curation-manifest.mjs",
-    "curation:refresh": "node docs/curation/build-curation-manifest.mjs"
+    "curation:refresh": "node docs/curation/build-curation-manifest.mjs",
+    "validate:teaching": "node scripts/validate-teaching.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

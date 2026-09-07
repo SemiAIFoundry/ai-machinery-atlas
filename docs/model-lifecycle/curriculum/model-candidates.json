@@ -1,0 +1,2645 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-09-07",
+  "assessmentKind": "planning-only",
+  "countsAreNotQuotas": true,
+  "existingEvidence": {
+    "checkedOn": "2026-09-07",
+    "actorType": "agent",
+    "actor": "/root/curriculum_assessment",
+    "repo": ".",
+    "scope": "Current working source tree, including uncommitted/untracked authored modules; no application edits performed.",
+    "records": 229,
+    "chapters": 63,
+    "domainCounts": [
+      {
+        "id": "matter-fabrication",
+        "name": "Matter & fabrication",
+        "lessonCount": 46
+      },
+      {
+        "id": "circuits-architecture",
+        "name": "Circuits & architecture",
+        "lessonCount": 50
+      },
+      {
+        "id": "packaging-machines",
+        "name": "Packaging & machines",
+        "lessonCount": 50
+      },
+      {
+        "id": "connected-infrastructure",
+        "name": "Connected infrastructure",
+        "lessonCount": 39
+      },
+      {
+        "id": "executable-software",
+        "name": "Executable software",
+        "lessonCount": 29
+      },
+      {
+        "id": "learning-intelligence",
+        "name": "Learning & intelligence",
+        "lessonCount": 15
+      }
+    ],
+    "legacyModelTaggedIds": [
+      "tokenizer",
+      "embedding",
+      "positional-encoding",
+      "attention",
+      "feed-forward",
+      "residual-normalization",
+      "output-head",
+      "kv-cache",
+      "moe",
+      "training-data",
+      "loss-optimizer",
+      "post-training",
+      "tool-loop",
+      "scaling-laws",
+      "evaluation",
+      "astra"
+    ],
+    "measurements": {
+      "sensor": {
+        "trainingExamples": 8,
+        "evaluationExamples": 6,
+        "defaultEvaluation": {
+          "count": 6,
+          "tp": 3,
+          "tn": 3,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0,
+          "meanCrossEntropy": 0.34296213658863933
+        },
+        "temperatureOnlyEvaluation": {
+          "count": 6,
+          "tp": 2,
+          "tn": 2,
+          "fp": 1,
+          "fn": 1,
+          "accuracy": 0.6666666666666666,
+          "precision": 0.6666666666666666,
+          "recall": 0.6666666666666666,
+          "falsePositiveRate": 0.3333333333333333,
+          "meanCrossEntropy": 0.8757266393049111
+        }
+      },
+      "retrieval": {
+        "documents": 7,
+        "tuningQueries": 6,
+        "evaluationQueries": 7,
+        "defaultEvaluation": {
+          "count": 7,
+          "answered": 4,
+          "abstained": 3,
+          "answerable": 5,
+          "unanswerable": 2,
+          "correct": 5,
+          "incorrect": 2,
+          "taskAccuracy": 0.7142857142857143,
+          "supportedAnswers": 4,
+          "unsupportedAnswers": 0,
+          "sourceSupportAmongAnswers": 1,
+          "unsupportedFractionAmongAnswers": 0,
+          "correctAnswersAmongAnswerable": 0.6,
+          "retrievalRecallAtK": 1,
+          "correctAbstentions": 2,
+          "unanswerableAbstentionRecall": 1
+        }
+      }
+    },
+    "corpusSha256": "7d9a2a85088a5b07f2483be762711798dac4b825f8d8e13015c50bbcd37c2dd6",
+    "fileSnapshots": [
+      {
+        "file": "src/lib/atlas-authoring.ts",
+        "sha256": "cad67b48249ef6029e76603862380fb12694c074c4699a6c0a75fae6a2c5f687"
+      },
+      {
+        "file": "src/lib/data/records.json",
+        "sha256": "9a468bba63f86bf29b09e3ad42720dbd8ab9ca98cc0abf563e78e33aa8db8904"
+      },
+      {
+        "file": "src/lib/legacy-enrichments.ts",
+        "sha256": "84437224ad514e118fd87a7c1b341265ffd811495fc94c107b94240681ef0064"
+      },
+      {
+        "file": "src/lib/data/legacy-foundations.json",
+        "sha256": "05b797147035790b9795df936173800601b90e7ce8cc4578b9d70a0408bc8fa3"
+      },
+      {
+        "file": "src/lib/data/infrastructure-depth.json",
+        "sha256": "05263c97f8071cad6b0019baa9768196dee6775e6ac7fec15f40f7034d6c20aa"
+      },
+      {
+        "file": "src/lib/data/distributed-output-bridges.json",
+        "sha256": "d133761140c9c86366c6208be7e505689f3e0a0672df017bed02b03479be5b7c"
+      },
+      {
+        "file": "src/lib/application-data.ts",
+        "sha256": "bc1a6959b73225526c99a38739b4e4f0ff3ea7ec7660730dc1e0160bceeab73f"
+      },
+      {
+        "file": "src/lib/sensor-application.ts",
+        "sha256": "9ce2787d5ea81512a8b5b087fb1b84e791b2f77a67e1f3a8e402f85763922066"
+      },
+      {
+        "file": "src/lib/retrieval-application.ts",
+        "sha256": "16ff80f4b9eb60ac54b905e64d61ce22ad93b30cb9c61c50df46849a9066c638"
+      },
+      {
+        "file": "src/lib/investigation-models.ts",
+        "sha256": "1b314e08f506708d73d9c00e6abe0a518c8fd0eb9cd4c46066d2a5aadbdb3727"
+      },
+      {
+        "file": "src/lib/lab-math.ts",
+        "sha256": "fea2f569a33d2906ff109c6975f8ae9dd99f92785bf87b56267de77c1025d4ff"
+      },
+      {
+        "file": "src/lib/progress-evidence.ts",
+        "sha256": "5830b8132e30f1e04da8c49cb08f11616fce6ae39139ba39d7e790b6d3dfff94"
+      }
+    ],
+    "evidenceBoundary": "Runtime outputs are current toy computations. Source checks are planning anchors. No new classroom, human, accessibility-device, specialist or physical measurement review is implied."
+  },
+  "families": [
+    {
+      "id": "data",
+      "name": "Data, tokenization and sampling",
+      "purpose": "Make the effective training distribution inspectable rather than treating tokens as a homogeneous commodity."
+    },
+    {
+      "id": "base-model",
+      "name": "Build and differentiate the base model",
+      "purpose": "Join existing forward mechanisms into an initialized model with real gradients and measurable predictions."
+    },
+    {
+      "id": "pretraining",
+      "name": "Run, diagnose and reproduce pretraining",
+      "purpose": "Turn an objective into a stable, restartable experiment with controlled budgets."
+    },
+    {
+      "id": "continuation",
+      "name": "Continued and mid-training",
+      "purpose": "Adapt an existing checkpoint while measuring retained and acquired behavior."
+    },
+    {
+      "id": "posttraining",
+      "name": "Supervision, preferences and reinforcement learning",
+      "purpose": "Separate training signals and algorithms, then inspect actual policy changes and proxy failures."
+    },
+    {
+      "id": "evaluation",
+      "name": "Evaluation and useful model systems",
+      "purpose": "Measure quality, uncertainty and failure under a stated system/task contract."
+    },
+    {
+      "id": "multimodal",
+      "name": "Vision, audio and generative representations",
+      "purpose": "Teach modality-specific representation, objective and evaluation choices."
+    },
+    {
+      "id": "world-action",
+      "name": "World prediction, policies and closed-loop action",
+      "purpose": "Distinguish predicting observations, choosing actions and controlling a changing environment."
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "data-forge",
+      "name": "Corpus to effective training distribution",
+      "priority": "P0",
+      "controls": [
+        "document family and split",
+        "filter/dedup threshold",
+        "BPE merges",
+        "source sampling weights",
+        "seed"
+      ],
+      "computedEvidence": [
+        "retained lineage and overlap ledger",
+        "actual tokenization trace",
+        "expected and realized source exposure"
+      ],
+      "learnerAcceptance": "Repair a contaminated split and an overrepresented source while retaining a declared target-domain coverage floor.",
+      "limits": "Small authored/permissioned corpus; no claim of production-scale cleaning or automatic legal clearance."
+    },
+    {
+      "id": "tiny-lm",
+      "name": "An inspectable language model that actually learns",
+      "priority": "P0",
+      "controls": [
+        "small decoder width/context",
+        "seed",
+        "objective mask",
+        "batch/accumulation",
+        "optimizer and learning rate",
+        "step/checkpoint"
+      ],
+      "computedEvidence": [
+        "actual weights and gradients",
+        "forward/backward tensor trace",
+        "train/development loss and unigram baseline",
+        "generated sequence",
+        "real tensor-element and operation ledger"
+      ],
+      "learnerAcceptance": "Find a deliberately wrong mask or missing gradient, repair it, reproduce a reference update and demonstrate bounded held-out learning.",
+      "limits": "Small enough for bounded portable computation; precomputed reference checkpoints may supplement, not replace, actual visible updates. No frontier capability claim."
+    },
+    {
+      "id": "checkpoint-forks",
+      "name": "Continuation, adapters and retention",
+      "priority": "P0",
+      "controls": [
+        "base checkpoint",
+        "new-domain mixture",
+        "replay rate",
+        "optimizer reset/preserve",
+        "trainable state",
+        "position configuration"
+      ],
+      "computedEvidence": [
+        "A/B loss curves",
+        "checkpoint lineage",
+        "resumption equivalence",
+        "trainable/frozen tensor hashes"
+      ],
+      "learnerAcceptance": "Meet a new-domain objective while keeping a declared old-domain regression tolerance; show the tradeoff rather than just the best new score.",
+      "limits": "Continual-learning outcomes depend on the selected tasks; a successful toy replay experiment is not universal forgetting prevention."
+    },
+    {
+      "id": "posttraining-bench",
+      "name": "Demonstrations, preferences and checkable rewards",
+      "priority": "P0",
+      "controls": [
+        "SFT token mask",
+        "preferred/rejected pair",
+        "reference policy",
+        "beta",
+        "rollout group",
+        "verifier",
+        "adapter rank"
+      ],
+      "computedEvidence": [
+        "per-token or per-pair loss",
+        "actual parameter/policy changes",
+        "reward and KL with separate denominators",
+        "independent task regressions"
+      ],
+      "learnerAcceptance": "Choose an objective from the feedback available, reproduce a numerical update, then detect reward hacking on a different scoring rule.",
+      "limits": "Finite policy and tiny decoder tracks make algorithms inspectable; toy policy updates must not be marketed as an RLHF reproduction or safety certification."
+    },
+    {
+      "id": "evaluation-bench",
+      "name": "An experiment that can fail honestly",
+      "priority": "P0",
+      "controls": [
+        "sealed task split",
+        "checkpoint/system version",
+        "decision/abstention threshold",
+        "rubric",
+        "sampling/verification budget"
+      ],
+      "computedEvidence": [
+        "confusion/coverage/error denominators",
+        "calibration plots",
+        "uncertainty intervals",
+        "paired regression cases",
+        "compute and latency assumptions separately"
+      ],
+      "learnerAcceptance": "Select a model using development data, justify a final-test conclusion with uncertainty, and decline an unsupported deployment/generalization claim.",
+      "limits": "Human/specialist review remains separate; no automated test-count threshold demonstrates learner mastery."
+    },
+    {
+      "id": "training-budget",
+      "name": "Measured small-run scaling versus fitted assumptions",
+      "priority": "P1",
+      "controls": [
+        "parameter width",
+        "unique data and repeated tokens",
+        "training tokens",
+        "seed",
+        "allocation budget"
+      ],
+      "computedEvidence": [
+        "actual small-run losses",
+        "parameter/operation ledger",
+        "fit residuals and held-out predictions"
+      ],
+      "learnerAcceptance": "Reject a fit outside its measured regime and choose a budget allocation supported by the available runs.",
+      "limits": "Browser time is not accelerator throughput; toy scaling is not a vendor or AGI forecast."
+    },
+    {
+      "id": "evidence-agent",
+      "name": "A learned answer within a controlled evidence/tool loop",
+      "priority": "P1",
+      "controls": [
+        "retriever",
+        "question",
+        "generator checkpoint",
+        "tool allowlist",
+        "observation failure",
+        "verification rule"
+      ],
+      "computedEvidence": [
+        "retrieved passages",
+        "generated claims and support mapping",
+        "tool state/action log",
+        "task correctness and failure recovery"
+      ],
+      "learnerAcceptance": "Diagnose a cited but irrelevant answer and a tool failure; preserve unauthorized-action rejection while completing an allowed alternative.",
+      "limits": "Synthetic environment with no real external effects. Retain current TF–IDF baseline so added neural machinery earns its cost."
+    },
+    {
+      "id": "multimodal-pairs",
+      "name": "Learn a cross-modal representation",
+      "priority": "P1",
+      "controls": [
+        "paired examples",
+        "held-out compositions",
+        "image/text perturbation",
+        "frozen versus trainable layers",
+        "objective"
+      ],
+      "computedEvidence": [
+        "similarity matrix",
+        "projection shapes",
+        "actual gradients",
+        "modality ablation and held-out errors"
+      ],
+      "learnerAcceptance": "Show whether an answer depends on the image/audio rather than a text shortcut.",
+      "limits": "Tiny authored examples; audio data needs explicit consent/rights and a separately reviewed representation."
+    },
+    {
+      "id": "generative-paths",
+      "name": "From noise to samples through a learned field",
+      "priority": "P1",
+      "controls": [
+        "2D training distribution",
+        "noise/time",
+        "seed",
+        "loss choice",
+        "sampling steps"
+      ],
+      "computedEvidence": [
+        "denoising or vector-field updates",
+        "sample trajectories",
+        "held-out error and diversity diagnostics"
+      ],
+      "learnerAcceptance": "Explain the difference between training steps and sampling steps and demonstrate the error of an incompatible sampler/objective.",
+      "limits": "Two-dimensional numerical data makes equations inspectable; visual appeal is not evidence of physical world understanding."
+    },
+    {
+      "id": "world-policy",
+      "name": "Predict, plan or learn a policy, then act",
+      "priority": "P1",
+      "controls": [
+        "small environment",
+        "observation/action history",
+        "learned transition model",
+        "rollout horizon",
+        "policy/planner",
+        "latency assumption",
+        "environment shift"
+      ],
+      "computedEvidence": [
+        "actual trained prediction errors",
+        "simulated state transitions",
+        "imagined versus environment returns",
+        "action units and bounds",
+        "closed-loop recovery"
+      ],
+      "learnerAcceptance": "Expose model exploitation or compounding prediction error, shorten/replan or collect informative data, and evaluate the resulting policy in withheld states.",
+      "limits": "Simulation only; no claims of physical robot safety or specialist control-system review."
+    }
+  ],
+  "sources": [
+    {
+      "id": "autograd",
+      "title": "PyTorch autograd mechanics",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/autograd.html",
+      "locator": "How autograd encodes the history; saved tensors",
+      "scope": "Reverse-mode graph and saved intermediate mechanics; portable teaching engine would be an independent small implementation.",
+      "reviewDepth": "official-documentation",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "adamw",
+      "title": "Decoupled Weight Decay Regularization",
+      "url": "https://arxiv.org/abs/1711.05101",
+      "locator": "Abstract",
+      "scope": "Decoupled weight decay is distinct from coupling L2 regularization into adaptive gradients.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "switch",
+      "title": "Switch Transformers",
+      "url": "https://arxiv.org/abs/2101.03961",
+      "locator": "Abstract",
+      "scope": "Sparse expert routing and training stability; exact auxiliary-loss conventions need full mathematical review before implementation.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "rag",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "url": "https://arxiv.org/abs/2005.11401",
+      "locator": "Abstract",
+      "scope": "Learned generation with retrieved non-parametric memory; the proposed source-support metric is a separate teaching contract.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "react",
+      "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+      "url": "https://arxiv.org/abs/2210.03629",
+      "locator": "Abstract",
+      "scope": "Interleave language-model outputs with environment observations; permission enforcement remains an explicit runtime design.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "olmo2",
+      "title": "2 OLMo 2 Furious",
+      "url": "https://arxiv.org/html/2501.00656v1",
+      "locator": "§2.3, §3 headings, §4 headings, §5 opening",
+      "scope": "Concrete disclosed stage boundaries, annealing and pipeline; one research recipe, not universal nomenclature.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "fineweb",
+      "title": "The FineWeb Datasets",
+      "url": "https://arxiv.org/html/2406.17557v1",
+      "locator": "§3.1–3.4",
+      "scope": "Controlled data-ablation design, filtering and deduplication; no claim that one quality score suits every population.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "dapt",
+      "title": "Don’t Stop Pretraining",
+      "url": "https://aclanthology.org/2020.acl-main.740/",
+      "locator": "Abstract and bibliographic record",
+      "scope": "Domain/task adaptive pretraining in the reported classification study; not guaranteed gains for every decoder or domain.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "tulu3",
+      "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
+      "url": "https://arxiv.org/html/2411.15124v1",
+      "locator": "§3–7 headings, §4.3, §7.3–7.4 headings, Appendix B.3 locator",
+      "scope": "Curation, SFT, preferences, RLVR and development/unseen evaluation are separate recipe components.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "sft-doc",
+      "title": "TRL SFT Trainer",
+      "url": "https://huggingface.co/docs/trl/sft_trainer",
+      "locator": "Training on assistant messages only; loss-type documentation",
+      "scope": "Implementation anchor for assistant/completion-only loss options; mutable documentation must be version-pinned before implementation.",
+      "reviewDepth": "official-documentation",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "instructgpt",
+      "title": "Training language models to follow instructions with human feedback",
+      "url": "https://arxiv.org/abs/2203.02155",
+      "locator": "Abstract",
+      "scope": "Demonstrations, preference labels and reinforcement learning are distinct steps; human preference is not universal quality.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "dpo",
+      "title": "Direct Preference Optimization",
+      "url": "https://arxiv.org/html/2305.18290v3",
+      "locator": "§3–4, especially §4 opening",
+      "scope": "Preference optimization can use policy/reference likelihood ratios without a separately executed reward-model RL loop; derivation assumptions remain explicit.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "ppo",
+      "title": "Proximal Policy Optimization Algorithms",
+      "url": "https://arxiv.org/abs/1707.06347",
+      "locator": "Abstract",
+      "scope": "Policy updates alternate sampling and surrogate optimization; exact clipped objective and implementation need full derivation review.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "r1",
+      "title": "DeepSeek-R1",
+      "url": "https://arxiv.org/html/2501.12948v1",
+      "locator": "§2.1–2.2.1",
+      "scope": "Distinct R1-Zero and cold-start R1 paths, grouped rollouts and relative reward baseline; use mechanisms, not leaderboard or capability generalization.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "overoptimization",
+      "title": "Scaling Laws for Reward Model Overoptimization",
+      "url": "https://arxiv.org/abs/2210.10760",
+      "locator": "Abstract",
+      "scope": "Proxy optimization can diverge from a separate reference evaluation; proposed toy failure is an authored illustration.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "lora",
+      "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+      "url": "https://arxiv.org/abs/2106.09685",
+      "locator": "Abstract",
+      "scope": "Freeze base parameters and train low-rank changes; rank is a constraint on the update, not a quality guarantee.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "helm",
+      "title": "Holistic Evaluation of Language Models",
+      "url": "https://arxiv.org/abs/2211.09110",
+      "locator": "Abstract",
+      "scope": "Evaluate multiple scenarios and metrics under stated conditions; the planned test protocol is not a HELM reproduction.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "calibration",
+      "title": "On Calibration of Modern Neural Networks",
+      "url": "https://arxiv.org/abs/1706.04599",
+      "locator": "Abstract",
+      "scope": "Calibration and predictive accuracy are distinct; temperature scaling is a candidate calibrated on separate development data.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "chinchilla",
+      "title": "Training Compute-Optimal Large Language Models",
+      "url": "https://arxiv.org/abs/2203.15556",
+      "locator": "Abstract",
+      "scope": "Parameter/token allocation depends on budget and measured training regime; no general intelligence law.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "bpe",
+      "title": "Neural Machine Translation of Rare Words with Subword Units",
+      "url": "https://aclanthology.org/P16-1162/",
+      "locator": "Abstract and bibliographic record",
+      "scope": "Subword segmentation/BPE anchor; the proposed miniature corpus and merge trace are authored.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "transformer",
+      "title": "Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "locator": "Abstract",
+      "scope": "Transformer attention architecture anchor; a tiny decoder is a scoped adaptation, not an exact reproduction of the encoder–decoder paper.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "dedup",
+      "title": "Deduplicating Training Data Makes Language Models Better",
+      "url": "https://arxiv.org/abs/2107.06499",
+      "locator": "Abstract",
+      "scope": "Repeated training text and train/evaluation overlap motivate distinct diagnostic checks.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "yarn",
+      "title": "YaRN: Efficient Context Window Extension of Large Language Models",
+      "url": "https://arxiv.org/abs/2309.00071",
+      "locator": "Abstract",
+      "scope": "Position extension is an adaptation mechanism requiring evaluation; increasing a context field is insufficient.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "clip",
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "url": "https://arxiv.org/abs/2103.00020",
+      "locator": "Abstract",
+      "scope": "Learn image/text representations from paired data; planned small contrastive task does not reproduce CLIP scale.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "llava",
+      "title": "Visual Instruction Tuning",
+      "url": "https://arxiv.org/abs/2304.08485",
+      "locator": "Abstract",
+      "scope": "Connect visual representations and language through visual instruction tuning; no universal visual reasoning claim.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "whisper",
+      "title": "Robust Speech Recognition via Large-Scale Weak Supervision",
+      "url": "https://arxiv.org/abs/2212.04356",
+      "locator": "Abstract",
+      "scope": "Speech learning from audio/text supervision; timestamps, alignment and error denominators need specific implementation sources.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "ddpm",
+      "title": "Denoising Diffusion Probabilistic Models",
+      "url": "https://arxiv.org/abs/2006.11239",
+      "locator": "Abstract",
+      "scope": "Denoising objective and iterative generation provide a different model family; proposed small numerical task needs equation-level implementation review.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "flow",
+      "title": "Flow Matching for Generative Modeling",
+      "url": "https://arxiv.org/abs/2210.02747",
+      "locator": "Abstract",
+      "scope": "Learning a vector field along probability paths is distinct from token likelihood training.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "vjepa2",
+      "title": "V-JEPA 2",
+      "url": "https://arxiv.org/html/2506.09985v1",
+      "locator": "Introduction, Figure 2 text, §3.1",
+      "scope": "Action-free masked video representation learning, frozen encoder, action-conditioned prediction and planning are separate stages; no robot generality claim.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "dreamer",
+      "title": "Mastering Diverse Domains through World Models",
+      "url": "https://arxiv.org/html/2301.04104v2",
+      "locator": "Learning algorithm; World model learning; Figure 3; actor/critic paragraph",
+      "scope": "Learn transition/reward representations and train behavior with imagined trajectories; deployment policy sampling is distinct from online lookahead planning.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "openvla",
+      "title": "OpenVLA: An Open-Source Vision-Language-Action Model",
+      "url": "https://arxiv.org/html/2406.09246v1",
+      "locator": "§3.1–3.2, action discretization paragraph; §6 locator",
+      "scope": "VLM features, robot action tokens and robot-data adaptation; quantile bins and deployment boundaries are recipe-specific.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "diffusion-policy",
+      "title": "Diffusion Policy",
+      "url": "https://arxiv.org/html/2303.04137v5",
+      "locator": "Closed-loop action sequences; §9 limitations",
+      "scope": "Action trajectory generation plus receding-horizon execution; imitation data and inference latency remain constraints.",
+      "reviewDepth": "section-excerpt",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    },
+    {
+      "id": "distill",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "url": "https://arxiv.org/abs/1503.02531",
+      "locator": "Abstract",
+      "scope": "Teacher–student transfer is distinct from quantizing storage; candidate requires independent student evaluation.",
+      "reviewDepth": "abstract",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "actor": "/root/curriculum_assessment",
+      "status": "planning-anchor-checked",
+      "specialistReview": "not-performed",
+      "verificationLimit": "This is a scoped source check for planning; not a complete equation, implementation, dataset-license or reproduction review."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "training-data",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "data",
+      "title": "Dataset lineage and reproducible splits",
+      "existingLessonIds": [
+        "training-data"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "tokenizer"
+      ],
+      "artifactId": "data-forge",
+      "acceptanceTask": "Given twelve source documents, group near duplicates before splitting, retain provenance and produce disjoint document-family train/development/test manifests. Show which intervention changes the effective training distribution.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "fineweb",
+          "url": "https://arxiv.org/html/2406.17557v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "dedup",
+          "url": "https://arxiv.org/abs/2107.06499",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "tokenizer",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "data",
+      "title": "Train a tokenizer, then encode unseen text",
+      "existingLessonIds": [
+        "tokenizer"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [],
+      "artifactId": "data-forge",
+      "acceptanceTask": "Perform every merge on a small corpus, resolve a declared tie deterministically, encode held-out words with fallback, and show that fitting merges on test text invalidates the split.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "bpe",
+          "url": "https://aclanthology.org/P16-1162/",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "data-quality-dedup-audit",
+      "action": "new",
+      "priority": "P0",
+      "family": "data",
+      "title": "Filtering, duplication and contamination",
+      "existingLessonIds": [],
+      "proposedLessonId": "data-quality-dedup-audit",
+      "prerequisites": [
+        "training-data"
+      ],
+      "artifactId": "data-forge",
+      "acceptanceTask": "Compare exact hashes, normalized duplicates and a declared near-duplicate threshold on a labeled twelve-document set; report false merges, retained unique content and leaked evaluation families separately.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "fineweb",
+          "url": "https://arxiv.org/html/2406.17557v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "dedup",
+          "url": "https://arxiv.org/abs/2107.06499",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "data-mixture-sampling",
+      "action": "new",
+      "priority": "P0",
+      "family": "data",
+      "title": "Mixtures, epochs and exposure",
+      "existingLessonIds": [],
+      "proposedLessonId": "data-mixture-sampling",
+      "prerequisites": [
+        "training-data"
+      ],
+      "artifactId": "data-forge",
+      "acceptanceTask": "For pools of 100 and 20 unique tokens with a 240-token budget and a 3:1 sampling mix, compute expected exposures of 1.8 and 3 epochs; then run seeded sampling and distinguish expectation from realization.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "fineweb",
+          "url": "https://arxiv.org/html/2406.17557v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "sequence-packing-loss-denominators",
+      "action": "new",
+      "priority": "P0",
+      "family": "data",
+      "title": "Packing documents and masking valid targets",
+      "existingLessonIds": [],
+      "proposedLessonId": "sequence-packing-loss-denominators",
+      "prerequisites": [
+        "tokenizer",
+        "distributed-gradient-weighting"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Pack short documents into equal-length rows, draw causal/document masks, count valid shifted targets and reproduce the token-weighted loss with an unequal-length batch. Show why mean-of-sequence-means differs.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "sft-doc",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "synthetic-data-selection-feedback",
+      "action": "new",
+      "priority": "P1",
+      "family": "data",
+      "title": "Synthetic supervision and selection loops",
+      "existingLessonIds": [],
+      "proposedLessonId": "synthetic-data-selection-feedback",
+      "prerequisites": [
+        "training-data",
+        "evaluation"
+      ],
+      "artifactId": "data-forge",
+      "acceptanceTask": "Track generator, verifier and selected examples in a toy arithmetic corpus; separate duplicate answers, selection bias and held-out task success. Show one erroneous verifier admitting a wrong answer.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "r1",
+          "url": "https://arxiv.org/html/2501.12948v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "data-coverage-language-slices",
+      "action": "new",
+      "priority": "P1",
+      "family": "data",
+      "title": "Coverage across language and source slices",
+      "existingLessonIds": [],
+      "proposedLessonId": "data-coverage-language-slices",
+      "prerequisites": [
+        "training-data",
+        "tokenizer"
+      ],
+      "artifactId": "data-forge",
+      "acceptanceTask": "For an authored multi-script corpus, compare UTF-8 bytes, tokens, retained documents and loss by slice; justify a sampling change without equating lower token count with better language understanding.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "fineweb",
+          "url": "https://arxiv.org/html/2406.17557v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "helm",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "embedding",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "base-model",
+      "title": "Learned lookup gradients and tied weights",
+      "existingLessonIds": [
+        "embedding"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "tokenizer",
+        "loss-optimizer"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "For repeated token IDs, accumulate gradients into the shared embedding row; if output weights are tied, include the output-path contribution and verify against finite differences.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "transformer",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "attention",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "base-model",
+      "title": "Trainable attention from Q/K/V through gradients",
+      "existingLessonIds": [
+        "attention"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "embedding",
+        "positional-encoding"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Compute projections, masked scores, probabilities and value mixing for a two-token example, then trace one Q/K/V gradient and prove that a future token cannot influence an earlier causal output.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "transformer",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "feed-forward",
+      "action": "deepen",
+      "priority": "P1",
+      "family": "base-model",
+      "title": "Nonlinear features and block-level learning",
+      "existingLessonIds": [
+        "feed-forward"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "embedding",
+        "loss-optimizer"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Train a small nonlinear block on a task a linear readout cannot fit, show its intermediate features and gradients, and count parameters under the exact chosen activation/bias convention.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "transformer",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "residual-normalization",
+      "action": "deepen",
+      "priority": "P1",
+      "family": "base-model",
+      "title": "Activation scale and gradient flow",
+      "existingLessonIds": [
+        "residual-normalization"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "loss-optimizer",
+        "feed-forward"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Compare otherwise identical short runs with an identity residual, without it, and with a declared normalization; plot actual activation/gradient norms and report failures without promising universal convergence.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "output-head",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "base-model",
+      "title": "Likelihood, cross-entropy and sampled output",
+      "existingLessonIds": [
+        "output-head"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "attention"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "For logits [0, ln 2, ln 3] and target class three, compute probability 1/2, loss ln 2 and logit gradient [1/6, 1/3, -1/2]; separate greedy choice from seeded categorical sampling.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "transformer",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "reverse-mode-autodiff",
+      "action": "new",
+      "priority": "P0",
+      "family": "base-model",
+      "title": "A differentiable computation graph",
+      "existingLessonIds": [],
+      "proposedLessonId": "reverse-mode-autodiff",
+      "prerequisites": [
+        "loss-optimizer",
+        "graph-tensor-ir"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Backpropagate through a branched scalar graph with a reused parameter, compare analytic derivatives with central finite differences, and locate a deliberately omitted branch contribution.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "autograd",
+          "url": "https://docs.pytorch.org/docs/2.14/notes/autograd.html",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "tiny-causal-decoder",
+      "action": "new",
+      "priority": "P0",
+      "family": "base-model",
+      "title": "Assemble an initialized causal language model",
+      "existingLessonIds": [],
+      "proposedLessonId": "tiny-causal-decoder",
+      "prerequisites": [
+        "embedding",
+        "attention",
+        "feed-forward",
+        "residual-normalization",
+        "output-head",
+        "reverse-mode-autodiff"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Assemble a bounded decoder and train it on a documented synthetic sequence task; expose every tensor shape, loss and parameter update, beat a unigram baseline on a reserved split, and fail a deliberately impossible generalization claim.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "transformer",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "moe",
+      "action": "deepen",
+      "priority": "P2",
+      "family": "base-model",
+      "title": "Routing losses, sparse gradients and expert collapse",
+      "existingLessonIds": [
+        "moe"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "loss-optimizer",
+        "expert-routing-budget"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Route six authored tokens to three experts, count expert loads and actual active gradients, then compare a declared balance penalty with dropped-token behavior. Review the exact selected auxiliary-loss convention before implementation.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "switch",
+          "url": "https://arxiv.org/abs/2101.03961",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "loss-optimizer",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "pretraining",
+      "title": "Compute gradients before applying the optimizer",
+      "existingLessonIds": [
+        "loss-optimizer"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "output-head",
+        "training-data"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Derive gradients from an actual loss, execute SGD and Adam state updates on the same mini-batch, and independently verify the first update. Preserve the existing supplied-gradient example as an introductory substep.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "causal-pretraining-objective",
+      "action": "new",
+      "priority": "P0",
+      "family": "pretraining",
+      "title": "Next-token supervision from raw sequences",
+      "existingLessonIds": [],
+      "proposedLessonId": "causal-pretraining-objective",
+      "prerequisites": [
+        "tiny-causal-decoder",
+        "sequence-packing-loss-denominators"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Shift tokens and targets correctly, compute token-mean negative log-likelihood and perplexity, compare to a fitted unigram baseline, and diagnose an unshifted-target leak.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "transformer",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "optimizer-schedule-stability",
+      "action": "new",
+      "priority": "P0",
+      "family": "pretraining",
+      "title": "Initialization, learning rate and stable updates",
+      "existingLessonIds": [],
+      "proposedLessonId": "optimizer-schedule-stability",
+      "prerequisites": [
+        "loss-optimizer",
+        "residual-normalization"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Hold data order and initialization seed fixed; compare a stable run and an excessive learning rate, inspect gradient norms and clipping, then distinguish AdamW decay from an L2 term. Equation-level optimizer source review is a completion gate.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "adamw",
+          "url": "https://arxiv.org/abs/1711.05101",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "microbatch-equivalent-updates",
+      "action": "new",
+      "priority": "P0",
+      "family": "pretraining",
+      "title": "Gradient accumulation under a fixed global objective",
+      "existingLessonIds": [],
+      "proposedLessonId": "microbatch-equivalent-updates",
+      "prerequisites": [
+        "distributed-gradient-weighting",
+        "loss-optimizer"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "Partition seven valid targets into micro-batches of two and five; recover the full-batch update by token weighting and show why clipping each micro-batch or stepping the optimizer twice changes it.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "sft-doc",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "checkpoint",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "pretraining",
+      "title": "Restart the same learning experiment",
+      "existingLessonIds": [
+        "checkpoint"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "loss-optimizer"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "Stop after step k, serialize weights, optimizer, scheduler, RNG, data cursor and tokenizer/config identity; resume and match an uninterrupted deterministic CPU run. Compare a weights-only restart and explain the mismatch.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "training-memory-state",
+      "action": "deepen",
+      "priority": "P1",
+      "family": "pretraining",
+      "title": "Training tensors with actual lifetimes",
+      "existingLessonIds": [
+        "training-memory-state"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "tiny-causal-decoder",
+        "loss-optimizer"
+      ],
+      "artifactId": "tiny-lm",
+      "acceptanceTask": "From the same tiny decoder run, inventory real weights, gradients, moments and retained activations; rematerialize one operation and compare peak live elements and extra operation count, keeping hardware timing separate.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "scaling-laws",
+      "action": "deepen",
+      "priority": "P1",
+      "family": "pretraining",
+      "title": "Fit a bounded compute/data experiment",
+      "existingLessonIds": [
+        "scaling-laws"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "causal-pretraining-objective",
+        "evaluation"
+      ],
+      "artifactId": "training-budget",
+      "acceptanceTask": "Use several actual small runs at controlled token/parameter budgets, keep a validation slice out of fitting, compare an empirical fit with observed residuals, and explain why the toy curve cannot forecast frontier capability.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "chinchilla",
+          "url": "https://arxiv.org/abs/2203.15556",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "fineweb",
+          "url": "https://arxiv.org/html/2406.17557v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "model-lifecycle-stage-contract",
+      "action": "new",
+      "priority": "P0",
+      "family": "continuation",
+      "title": "Describe a stage by its changed contract",
+      "existingLessonIds": [],
+      "proposedLessonId": "model-lifecycle-stage-contract",
+      "prerequisites": [
+        "training-data",
+        "loss-optimizer",
+        "post-training"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "Classify three disclosed or authored stage transitions by checkpoint, data, objective, trainable state, optimizer policy and evaluation gate; explain why mid-training is a recipe label rather than a unique loss function.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "dapt",
+          "url": "https://aclanthology.org/2020.acl-main.740/",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "domain-adaptive-continuation",
+      "action": "new",
+      "priority": "P0",
+      "family": "continuation",
+      "title": "Continue language modeling on a new domain",
+      "existingLessonIds": [],
+      "proposedLessonId": "domain-adaptive-continuation",
+      "prerequisites": [
+        "causal-pretraining-objective",
+        "checkpoint"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "Start from the same saved base model, train on a second authored domain under a fixed token budget, and report both domain-A and domain-B loss before and after; compare with retrieval or prompting that leaves weights unchanged.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "dapt",
+          "url": "https://aclanthology.org/2020.acl-main.740/",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "replay-retention-forgetting",
+      "action": "new",
+      "priority": "P0",
+      "family": "continuation",
+      "title": "Retention, replay and transfer",
+      "existingLessonIds": [],
+      "proposedLessonId": "replay-retention-forgetting",
+      "prerequisites": [
+        "domain-adaptive-continuation"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "Compare B-only continuation with a fixed-budget A/B replay mix across several seeds; plot the two-domain loss tradeoff and distinguish observed retention from guaranteed continual-learning performance.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "dapt",
+          "url": "https://aclanthology.org/2020.acl-main.740/",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "long-context-adaptation",
+      "action": "new",
+      "priority": "P1",
+      "family": "continuation",
+      "title": "Context extension is a learned-use test",
+      "existingLessonIds": [],
+      "proposedLessonId": "long-context-adaptation",
+      "prerequisites": [
+        "positional-encoding",
+        "attention",
+        "kv-cache",
+        "domain-adaptive-continuation"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "Extend the declared positional configuration and training examples; evaluate retrieval of an earlier symbol at new distances, masked causal correctness and KV cost separately. A larger accepted input must not count as success.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "yarn",
+          "url": "https://arxiv.org/abs/2309.00071",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "checkpoint-averaging-boundaries",
+      "action": "new",
+      "priority": "P2",
+      "family": "continuation",
+      "title": "Compatible weight averaging and regressions",
+      "existingLessonIds": [],
+      "proposedLessonId": "checkpoint-averaging-boundaries",
+      "prerequisites": [
+        "checkpoint",
+        "evaluation"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "Average matching checkpoints from a shared initialization and compare both tasks; reject mismatched tokenizers/shapes and demonstrate why averaging unrelated permutations need not preserve behavior.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "olmo2",
+          "url": "https://arxiv.org/html/2501.00656v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "post-training",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "posttraining",
+      "title": "Choose supervision by the behavior being learned",
+      "existingLessonIds": [
+        "post-training"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "loss-optimizer",
+        "evaluation"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "For the same prompt, distinguish a demonstration, preference pair, learned reward and checkable outcome; state the optimized quantity and show an actual parameter update for one chosen method.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "instructgpt",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "sft-chat-loss-masks",
+      "action": "new",
+      "priority": "P0",
+      "family": "posttraining",
+      "title": "Instruction tuning and assistant-only loss",
+      "existingLessonIds": [],
+      "proposedLessonId": "sft-chat-loss-masks",
+      "prerequisites": [
+        "sequence-packing-loss-denominators",
+        "causal-pretraining-objective",
+        "post-training"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Render a two-turn chat template, mark every trained target including end-of-turn tokens, compute assistant-only versus all-token loss, and demonstrate a wrong-role mask changing the learned response.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "sft-doc",
+          "url": "https://huggingface.co/docs/trl/sft_trainer",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "preference-reward-model",
+      "action": "new",
+      "priority": "P0",
+      "family": "posttraining",
+      "title": "Learn a reward from pairwise choices",
+      "existingLessonIds": [],
+      "proposedLessonId": "preference-reward-model",
+      "prerequisites": [
+        "post-training",
+        "loss-optimizer"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Fit a tiny pairwise reward model on explicit preferred/rejected outputs; inspect probability and gradient for a score difference of ln 3, yielding preference probability 0.75, and evaluate on unseen preference pairs.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "instructgpt",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "dpo",
+          "url": "https://arxiv.org/html/2305.18290v3",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "direct-preference-objective",
+      "action": "new",
+      "priority": "P0",
+      "family": "posttraining",
+      "title": "DPO policy/reference likelihood ratios",
+      "existingLessonIds": [],
+      "proposedLessonId": "direct-preference-objective",
+      "prerequisites": [
+        "sft-chat-loss-masks",
+        "preference-reward-model"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Calculate a complete two-response DPO loss and one policy update from declared reference and current probabilities; freeze the reference and show that swapped labels or changed beta alter the update.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "dpo",
+          "url": "https://arxiv.org/html/2305.18290v3",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "policy-gradient-kl-control",
+      "action": "new",
+      "priority": "P1",
+      "family": "posttraining",
+      "title": "Rollouts, advantages and PPO constraints",
+      "existingLessonIds": [],
+      "proposedLessonId": "policy-gradient-kl-control",
+      "prerequisites": [
+        "preference-reward-model",
+        "output-head"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Use a finite two-action environment to compute sampled returns, a stated baseline, probability ratios, clipping and KL separately; compare the surrogate with actual expected reward and reject a stale rollout-policy identifier.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "ppo",
+          "url": "https://arxiv.org/abs/1707.06347",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "instructgpt",
+          "url": "https://arxiv.org/abs/2203.02155",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "verifiable-reward-group-updates",
+      "action": "new",
+      "priority": "P1",
+      "family": "posttraining",
+      "title": "Verifiers, grouped advantages and RLVR",
+      "existingLessonIds": [],
+      "proposedLessonId": "verifiable-reward-group-updates",
+      "prerequisites": [
+        "policy-gradient-kl-control",
+        "evaluation"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Score four candidate arithmetic outputs with a disclosed verifier; compute relative group advantages including the all-equal reward case, perform a bounded update and test on novel problems. Separate R1-Zero from cold-start pipelines.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "r1",
+          "url": "https://arxiv.org/html/2501.12948v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "reward-proxy-overoptimization",
+      "action": "new",
+      "priority": "P0",
+      "family": "posttraining",
+      "title": "When reward improves but the task gets worse",
+      "existingLessonIds": [],
+      "proposedLessonId": "reward-proxy-overoptimization",
+      "prerequisites": [
+        "preference-reward-model",
+        "evaluation"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Introduce a length-biased reward in an authored answer task; optimize it while measuring hidden correctness and concision separately, then identify the step where the proxy and task diverge.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "overoptimization",
+          "url": "https://arxiv.org/abs/2210.10760",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "low-rank-adaptation",
+      "action": "new",
+      "priority": "P1",
+      "family": "posttraining",
+      "title": "Frozen base weights and trainable adapters",
+      "existingLessonIds": [],
+      "proposedLessonId": "low-rank-adaptation",
+      "prerequisites": [
+        "loss-optimizer",
+        "sharded-matmul-ownership"
+      ],
+      "artifactId": "checkpoint-forks",
+      "acceptanceTask": "For a 4×6 weight matrix and rank one, count ten adapter parameters, multiply the low-rank update explicitly, train only adapters and verify unchanged base weights; compare to full tuning at the same task boundary.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "lora",
+          "url": "https://arxiv.org/abs/2106.09685",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "teacher-student-distillation",
+      "action": "new",
+      "priority": "P1",
+      "family": "posttraining",
+      "title": "Transfer outputs without confusing size with quality",
+      "existingLessonIds": [],
+      "proposedLessonId": "teacher-student-distillation",
+      "prerequisites": [
+        "output-head",
+        "evaluation"
+      ],
+      "artifactId": "posttraining-bench",
+      "acceptanceTask": "Train a smaller student from a supplied teacher distribution, compare soft versus hard targets and held-out results, and distinguish distillation loss from imitation of a generated explanation or quantized storage.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "distill",
+          "url": "https://arxiv.org/abs/1503.02531",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "r1",
+          "url": "https://arxiv.org/html/2501.12948v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "evaluation",
+      "action": "deepen",
+      "priority": "P0",
+      "family": "evaluation",
+      "title": "A development protocol and an independent final test",
+      "existingLessonIds": [
+        "evaluation"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "output-head"
+      ],
+      "artifactId": "evaluation-bench",
+      "acceptanceTask": "Predeclare test distribution, scoring rules and denominator; compare two saved checkpoints on disjoint development/final-test cases with uncertainty intervals and failure slices, and record when repeated test viewing makes it development data.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "helm",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "calibration",
+          "url": "https://arxiv.org/abs/1706.04599",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "probability-calibration-abstention",
+      "action": "new",
+      "priority": "P0",
+      "family": "evaluation",
+      "title": "Confidence, errors and refusal to guess",
+      "existingLessonIds": [],
+      "proposedLessonId": "probability-calibration-abstention",
+      "prerequisites": [
+        "evaluation",
+        "output-head"
+      ],
+      "artifactId": "evaluation-bench",
+      "acceptanceTask": "Calibrate on development predictions only, compare Brier/log loss and a reliability diagram, then plot error among answered cases against coverage as an abstention threshold changes. Include empty-denominator cases.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "calibration",
+          "url": "https://arxiv.org/abs/1706.04599",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "helm",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "judge-rubric-agreement",
+      "action": "new",
+      "priority": "P1",
+      "family": "evaluation",
+      "title": "Human and model judgments under a rubric",
+      "existingLessonIds": [],
+      "proposedLessonId": "judge-rubric-agreement",
+      "prerequisites": [
+        "evaluation",
+        "preference-reward-model"
+      ],
+      "artifactId": "evaluation-bench",
+      "acceptanceTask": "Score authored answer pairs under correctness, style and source-support rubrics; counterbalance order and length, compare judge disagreement against an explicit reference, and keep subjective preference separate from factual correctness.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "helm",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "retrieval-supported-generation",
+      "action": "new",
+      "priority": "P1",
+      "family": "evaluation",
+      "title": "From lexical retrieval to model answers with evidence",
+      "existingLessonIds": [],
+      "proposedLessonId": "retrieval-supported-generation",
+      "prerequisites": [
+        "tool-loop",
+        "evaluation",
+        "attention"
+      ],
+      "artifactId": "evidence-agent",
+      "acceptanceTask": "Preserve the existing deterministic retrieval baseline, add a bounded learned generator, independently score retrieved evidence, source support and question relevance, and expose one supported but irrelevant answer.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "helm",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "rag",
+          "url": "https://arxiv.org/abs/2005.11401",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "tool-loop",
+      "action": "deepen",
+      "priority": "P1",
+      "family": "evaluation",
+      "title": "A model policy with validated observations and actions",
+      "existingLessonIds": [
+        "tool-loop"
+      ],
+      "proposedLessonId": null,
+      "prerequisites": [
+        "evaluation",
+        "output-head"
+      ],
+      "artifactId": "evidence-agent",
+      "acceptanceTask": "Run a synthetic tool environment with a logged state transition and a rejecting permission validator; inject a tool failure or misleading observation, and show how action success differs from an apparently plausible final answer.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "react",
+          "url": "https://arxiv.org/abs/2210.03629",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "test-time-search-verification",
+      "action": "new",
+      "priority": "P1",
+      "family": "evaluation",
+      "title": "Sampling more candidates versus selecting correct ones",
+      "existingLessonIds": [],
+      "proposedLessonId": "test-time-search-verification",
+      "prerequisites": [
+        "output-head",
+        "evaluation",
+        "speculative-decoding-verification"
+      ],
+      "artifactId": "evaluation-bench",
+      "acceptanceTask": "Under a fixed generation/verification budget, compare one sample, several samples and a declared verifier; measure final accuracy and verifier errors separately and explain why pass@k is not selected-answer accuracy.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "r1",
+          "url": "https://arxiv.org/html/2501.12948v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "model-system-regression-contract",
+      "action": "new",
+      "priority": "P0",
+      "family": "evaluation",
+      "title": "Version the entire evaluated system",
+      "existingLessonIds": [],
+      "proposedLessonId": "model-system-regression-contract",
+      "prerequisites": [
+        "evaluation",
+        "checkpoint",
+        "tool-loop"
+      ],
+      "artifactId": "evaluation-bench",
+      "acceptanceTask": "Change one of model, tokenizer, prompt, retriever, tool, verifier or decoding policy while preserving all others; identify which previous measurements are comparable and run predeclared rollback conditions.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "helm",
+          "url": "https://arxiv.org/abs/2211.09110",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "tulu3",
+          "url": "https://arxiv.org/html/2411.15124v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "image-text-contrastive-learning",
+      "action": "new",
+      "priority": "P1",
+      "family": "multimodal",
+      "title": "Pair images and captions in a shared representation",
+      "existingLessonIds": [],
+      "proposedLessonId": "image-text-contrastive-learning",
+      "prerequisites": [
+        "embedding",
+        "loss-optimizer",
+        "evaluation"
+      ],
+      "artifactId": "multimodal-pairs",
+      "acceptanceTask": "Train on an authored grid of colored shapes and captions, calculate a contrastive similarity matrix and retrieval accuracy, then hold out shape–color compositions and diagnose a shortcut.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "clip",
+          "url": "https://arxiv.org/abs/2103.00020",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "visual-language-bridge",
+      "action": "new",
+      "priority": "P1",
+      "family": "multimodal",
+      "title": "Patches, projection and visual instruction tuning",
+      "existingLessonIds": [],
+      "proposedLessonId": "visual-language-bridge",
+      "prerequisites": [
+        "image-text-contrastive-learning",
+        "attention",
+        "sft-chat-loss-masks"
+      ],
+      "artifactId": "multimodal-pairs",
+      "acceptanceTask": "Trace patch-feature shapes into language-model input width, identify frozen versus trainable parameters, and answer paired visual questions with counterfactual image swaps and an image-ignored baseline.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "llava",
+          "url": "https://arxiv.org/abs/2304.08485",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "openvla",
+          "url": "https://arxiv.org/html/2406.09246v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "speech-audio-sequence-objectives",
+      "action": "new",
+      "priority": "P2",
+      "family": "multimodal",
+      "title": "Audio representation, alignment and transcript loss",
+      "existingLessonIds": [],
+      "proposedLessonId": "speech-audio-sequence-objectives",
+      "prerequisites": [
+        "tokenizer",
+        "attention",
+        "evaluation"
+      ],
+      "artifactId": "multimodal-pairs",
+      "acceptanceTask": "Use a tiny permissioned or authored audio/transcript set, inspect time frames and target alignment, compute edit counts with explicit reference-word denominator, and expose a noise or speaker shift. Source the selected representation before implementation.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "whisper",
+          "url": "https://arxiv.org/abs/2212.04356",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "denoising-generative-objectives",
+      "action": "new",
+      "priority": "P1",
+      "family": "multimodal",
+      "title": "Train a denoiser and sample iteratively",
+      "existingLessonIds": [],
+      "proposedLessonId": "denoising-generative-objectives",
+      "prerequisites": [
+        "loss-optimizer",
+        "evaluation"
+      ],
+      "artifactId": "generative-paths",
+      "acceptanceTask": "Fit a bounded two-dimensional denoising task; expose noisy sample, noise level, prediction and loss, then compare a fixed random seed across sampling-step counts. Contrast the DDPM noise objective with a declared flow vector-field objective.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "ddpm",
+          "url": "https://arxiv.org/abs/2006.11239",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "flow",
+          "url": "https://arxiv.org/abs/2210.02747",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "video-latent-prediction",
+      "action": "new",
+      "priority": "P1",
+      "family": "multimodal",
+      "title": "Predict temporal representations without generating pixels",
+      "existingLessonIds": [],
+      "proposedLessonId": "video-latent-prediction",
+      "prerequisites": [
+        "image-text-contrastive-learning",
+        "attention"
+      ],
+      "artifactId": "world-policy",
+      "acceptanceTask": "Mask a moving-object sequence and train a feature predictor against a declared target representation; compare shuffled versus ordered frames and explain why feature prediction is different from visual realism.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "vjepa2",
+          "url": "https://arxiv.org/html/2506.09985v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "action-conditioned-world-model",
+      "action": "new",
+      "priority": "P1",
+      "family": "world-action",
+      "title": "Predict transitions conditional on actions",
+      "existingLessonIds": [],
+      "proposedLessonId": "action-conditioned-world-model",
+      "prerequisites": [
+        "video-latent-prediction",
+        "loss-optimizer",
+        "evaluation"
+      ],
+      "artifactId": "world-policy",
+      "acceptanceTask": "Learn a small environment transition model from action-labeled trajectories; compare held-out one-step and multi-step error, then change an action while holding starting state fixed and inspect the changed predicted transition.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "vjepa2",
+          "url": "https://arxiv.org/html/2506.09985v1",
+          "checkedOn": "2026-09-07"
+        },
+        {
+          "id": "dreamer",
+          "url": "https://arxiv.org/html/2301.04104v2",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "imagined-rollouts-policy-learning",
+      "action": "new",
+      "priority": "P1",
+      "family": "world-action",
+      "title": "Learn behavior from a model and test in the environment",
+      "existingLessonIds": [],
+      "proposedLessonId": "imagined-rollouts-policy-learning",
+      "prerequisites": [
+        "action-conditioned-world-model",
+        "policy-gradient-kl-control"
+      ],
+      "artifactId": "world-policy",
+      "acceptanceTask": "Train a bounded policy using imagined transitions, compare return in the learned model with return in the actual toy environment, and reveal a policy exploiting model error. Keep imagined training and real-time planning distinct.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "dreamer",
+          "url": "https://arxiv.org/html/2301.04104v2",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "vision-language-action-interface",
+      "action": "new",
+      "priority": "P1",
+      "family": "world-action",
+      "title": "Translate learned representations into robot action units",
+      "existingLessonIds": [],
+      "proposedLessonId": "vision-language-action-interface",
+      "prerequisites": [
+        "visual-language-bridge",
+        "action-conditioned-world-model"
+      ],
+      "artifactId": "world-policy",
+      "acceptanceTask": "Map a synthetic position range to discrete action bins and back, compute quantization error in physical units, and reject mismatched coordinate frames, action rates or actuator bounds before simulated execution.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "openvla",
+          "url": "https://arxiv.org/html/2406.09246v1",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    },
+    {
+      "id": "diffusion-action-horizon",
+      "action": "new",
+      "priority": "P2",
+      "family": "world-action",
+      "title": "Predict action chunks and replan with feedback",
+      "existingLessonIds": [],
+      "proposedLessonId": "diffusion-action-horizon",
+      "prerequisites": [
+        "denoising-generative-objectives",
+        "action-conditioned-world-model"
+      ],
+      "artifactId": "world-policy",
+      "acceptanceTask": "Generate an action chunk in a toy control task, execute only a declared prefix, perturb the environment and replan; compare success, accumulated error and assumed inference latency with open-loop execution.",
+      "completionEvidence": [
+        "A learner-produced prediction, trace or decision before revealing the answer.",
+        "An independent reference calculation or implementation check appropriate to the mechanism.",
+        "An explicit failure case, assumptions and denominator inventory.",
+        "Content/source review and observed learner testing remain separate completion gates."
+      ],
+      "sourceAnchors": [
+        {
+          "id": "diffusion-policy",
+          "url": "https://arxiv.org/html/2303.04137v5",
+          "checkedOn": "2026-09-07"
+        }
+      ],
+      "status": "proposed-not-implemented",
+      "scope": "Acceptance task is an authored teaching proposal, not an empirical result or copied research recipe."
+    }
+  ],
+  "implementationOrder": [
+    "P0: data and evaluation contracts, minimal differentiation and actual tiny-LM learning.",
+    "P0: continuation forks and SFT/preference updates with the same saved model.",
+    "P1: stability, independent evaluation, RLVR and useful model-system experiments.",
+    "P1/P2: multimodal and world/action tracks, opened with their representation/control prerequisites."
+  ],
+  "dependencySemantics": "prerequisites prepare the proposed task. For deepen entries they describe an advanced revisit, not replacement prerequisites for the introductory lesson. The candidate plan is not directly importable into the application.",
+  "validation": {
+    "existingLessonIdsValid": true,
+    "newIdsDoNotCollide": true,
+    "allCandidatesHaveAcceptanceAndSources": true,
+    "allArtifactsResolve": true,
+    "newUnitSubgraphAcyclic": true,
+    "existingPrerequisiteGraphUnchanged": true,
+    "candidateCount": 52,
+    "deepenCount": 15,
+    "newCount": 37
+  }
+}

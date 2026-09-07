@@ -1,0 +1,640 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "progress-evidence-2",
+  "curation": {
+    "actorType": "agent",
+    "role": "implementation and source-scope author",
+    "date": "2026-09-07"
+  },
+  "scope": "All assumptions and quantities in these exercises are synthetic. Source cases explain boundaries but supply no numerical inputs to the exercises.",
+  "growth": {
+    "functionName": "compareGrowthIndices",
+    "options": {
+      "scenario": "compute-memory",
+      "memoryMetric": "bandwidth",
+      "periodYears": 2,
+      "computeFactor": 3,
+      "comparisonFactor": 2
+    },
+    "result": {
+      "modelVersion": "progress-evidence-2",
+      "options": {
+        "scenario": "compute-memory",
+        "memoryMetric": "bandwidth",
+        "periodYears": 2,
+        "periods": 5,
+        "startYear": 2026,
+        "computeFactor": 3,
+        "comparisonFactor": 2
+      },
+      "scenarioLabel": "Compute versus memory",
+      "comparisonLabel": "Memory bandwidth",
+      "basis": "Synthetic conditional assumptions: 3× compute versus 2× memory bandwidth per 2-year interval. These are adjustable assumptions, not an empirical law, fitted historical series or forecast.",
+      "metrics": {
+        "compute": "Assumed peak dense FP16 FLOP/s per reference accelerator; keep the operation, precision and device boundary identical across periods.",
+        "comparison": "Assumed memory-interface bandwidth in bytes/s per reference accelerator; keep the interface and raw-versus-payload convention identical across periods."
+      },
+      "period": "2 calendar years per step from 2026; changing the interval reinterprets the factors and does not annualize them.",
+      "normalization": "Each metric is independently indexed to 100 in the base year; no absolute hardware specification is supplied.",
+      "rows": [
+        {
+          "period": 0,
+          "year": 2026,
+          "computeIndex": 100,
+          "comparisonIndex": 100,
+          "relativeIndexRatio": 1
+        },
+        {
+          "period": 1,
+          "year": 2028,
+          "computeIndex": 300,
+          "comparisonIndex": 200,
+          "relativeIndexRatio": 1.5
+        },
+        {
+          "period": 2,
+          "year": 2030,
+          "computeIndex": 900,
+          "comparisonIndex": 400,
+          "relativeIndexRatio": 2.25
+        },
+        {
+          "period": 3,
+          "year": 2032,
+          "computeIndex": 2700,
+          "comparisonIndex": 800,
+          "relativeIndexRatio": 3.375
+        },
+        {
+          "period": 4,
+          "year": 2034,
+          "computeIndex": 8100,
+          "comparisonIndex": 1600,
+          "relativeIndexRatio": 5.0625
+        },
+        {
+          "period": 5,
+          "year": 2036,
+          "computeIndex": 24300,
+          "comparisonIndex": 3200,
+          "relativeIndexRatio": 7.59375
+        }
+      ],
+      "limitation": "The ratio compares relative changes of independently normalized indices. It cannot establish an actual performance deficit, arithmetic intensity, usable FLOP/s, queue, efficiency or a physical conversion between unlike units. A memory-bandwidth index and a memory-capacity index describe different constraints."
+    },
+    "controls": [
+      {
+        "field": "scenario",
+        "values": [
+          "compute-memory",
+          "compute-facility"
+        ],
+        "default": "compute-memory"
+      },
+      {
+        "field": "memoryMetric",
+        "values": [
+          "bandwidth",
+          "capacity"
+        ],
+        "default": "bandwidth"
+      },
+      {
+        "field": "periodYears",
+        "values": [
+          1,
+          2
+        ],
+        "default": 2
+      },
+      {
+        "field": "computeFactor",
+        "min": 0.1,
+        "max": 10,
+        "default": 3
+      },
+      {
+        "field": "comparisonFactor",
+        "min": 0.1,
+        "max": 10,
+        "default": 2
+      },
+      {
+        "field": "periods",
+        "min": 0,
+        "max": 10,
+        "default": 5
+      }
+    ],
+    "lessonIds": [
+      "scaling-laws",
+      "hbm-stack",
+      "memory-hierarchy-route",
+      "energy-forecast-boundaries",
+      "capacity-phase-geography"
+    ],
+    "alternatives": [
+      {
+        "options": {
+          "scenario": "compute-memory",
+          "memoryMetric": "capacity",
+          "periodYears": 2
+        },
+        "result": {
+          "modelVersion": "progress-evidence-2",
+          "options": {
+            "scenario": "compute-memory",
+            "memoryMetric": "capacity",
+            "periodYears": 2,
+            "periods": 5,
+            "startYear": 2026,
+            "computeFactor": 3,
+            "comparisonFactor": 2
+          },
+          "scenarioLabel": "Compute versus memory",
+          "comparisonLabel": "Memory capacity",
+          "basis": "Synthetic conditional assumptions: 3× compute versus 2× memory capacity per 2-year interval. These are adjustable assumptions, not an empirical law, fitted historical series or forecast.",
+          "metrics": {
+            "compute": "Assumed peak dense FP16 FLOP/s per reference accelerator; keep the operation, precision and device boundary identical across periods.",
+            "comparison": "Assumed memory capacity in bytes per reference accelerator; keep the memory tier, capacity convention and device boundary identical across periods."
+          },
+          "period": "2 calendar years per step from 2026; changing the interval reinterprets the factors and does not annualize them.",
+          "normalization": "Each metric is independently indexed to 100 in the base year; no absolute hardware specification is supplied.",
+          "rows": [
+            {
+              "period": 0,
+              "year": 2026,
+              "computeIndex": 100,
+              "comparisonIndex": 100,
+              "relativeIndexRatio": 1
+            },
+            {
+              "period": 1,
+              "year": 2028,
+              "computeIndex": 300,
+              "comparisonIndex": 200,
+              "relativeIndexRatio": 1.5
+            },
+            {
+              "period": 2,
+              "year": 2030,
+              "computeIndex": 900,
+              "comparisonIndex": 400,
+              "relativeIndexRatio": 2.25
+            },
+            {
+              "period": 3,
+              "year": 2032,
+              "computeIndex": 2700,
+              "comparisonIndex": 800,
+              "relativeIndexRatio": 3.375
+            },
+            {
+              "period": 4,
+              "year": 2034,
+              "computeIndex": 8100,
+              "comparisonIndex": 1600,
+              "relativeIndexRatio": 5.0625
+            },
+            {
+              "period": 5,
+              "year": 2036,
+              "computeIndex": 24300,
+              "comparisonIndex": 3200,
+              "relativeIndexRatio": 7.59375
+            }
+          ],
+          "limitation": "The ratio compares relative changes of independently normalized indices. It cannot establish an actual performance deficit, arithmetic intensity, usable FLOP/s, queue, efficiency or a physical conversion between unlike units. A memory-bandwidth index and a memory-capacity index describe different constraints."
+        }
+      },
+      {
+        "options": {
+          "scenario": "compute-facility",
+          "periodYears": 1
+        },
+        "result": {
+          "modelVersion": "progress-evidence-2",
+          "options": {
+            "scenario": "compute-facility",
+            "memoryMetric": "bandwidth",
+            "periodYears": 1,
+            "periods": 5,
+            "startYear": 2026,
+            "computeFactor": 3,
+            "comparisonFactor": 2
+          },
+          "scenarioLabel": "Compute versus facility IT capacity",
+          "comparisonLabel": "Commissioned IT capacity",
+          "basis": "Synthetic conditional assumptions: 3× compute versus 2× commissioned it capacity per 1-year interval. These are adjustable assumptions, not an empirical law, fitted historical series or forecast.",
+          "metrics": {
+            "compute": "Assumed peak dense FP16 FLOP/s per reference accelerator; keep the operation, precision and device boundary identical across periods.",
+            "comparison": "Assumed commissioned facility IT-power capacity in MW; keep the commissioning and facility boundary identical across periods."
+          },
+          "period": "1 calendar years per step from 2026; changing the interval reinterprets the factors and does not annualize them.",
+          "normalization": "Each metric is independently indexed to 100 in the base year; no absolute hardware specification is supplied.",
+          "rows": [
+            {
+              "period": 0,
+              "year": 2026,
+              "computeIndex": 100,
+              "comparisonIndex": 100,
+              "relativeIndexRatio": 1
+            },
+            {
+              "period": 1,
+              "year": 2027,
+              "computeIndex": 300,
+              "comparisonIndex": 200,
+              "relativeIndexRatio": 1.5
+            },
+            {
+              "period": 2,
+              "year": 2028,
+              "computeIndex": 900,
+              "comparisonIndex": 400,
+              "relativeIndexRatio": 2.25
+            },
+            {
+              "period": 3,
+              "year": 2029,
+              "computeIndex": 2700,
+              "comparisonIndex": 800,
+              "relativeIndexRatio": 3.375
+            },
+            {
+              "period": 4,
+              "year": 2030,
+              "computeIndex": 8100,
+              "comparisonIndex": 1600,
+              "relativeIndexRatio": 5.0625
+            },
+            {
+              "period": 5,
+              "year": 2031,
+              "computeIndex": 24300,
+              "comparisonIndex": 3200,
+              "relativeIndexRatio": 7.59375
+            }
+          ],
+          "limitation": "The ratio compares relative changes of independently normalized indices. It cannot establish an actual performance deficit, arithmetic intensity, usable FLOP/s, queue, efficiency or a physical conversion between unlike units. A memory-bandwidth index and a memory-capacity index describe different constraints."
+        }
+      }
+    ]
+  },
+  "scenarios": [
+    {
+      "id": "package-complements",
+      "functionName": "allocatePackageCapacity",
+      "options": {},
+      "result": {
+        "modelVersion": "progress-evidence-2",
+        "options": {
+          "logicDies": 120,
+          "hbmStacks": 640,
+          "stacksPerPackage": 8,
+          "assemblySlots": 90,
+          "testSlots": 75,
+          "policy": "listed-order",
+          "demands": [
+            {
+              "id": "request-a",
+              "units": 50
+            },
+            {
+              "id": "request-b",
+              "units": 40
+            },
+            {
+              "id": "request-c",
+              "units": 20
+            }
+          ]
+        },
+        "basis": "Synthetic single-period package allocation. All dies/stacks are compatible and already qualified; each assembly and test slot completes one package. No yield loss, rework, lead time or vendor/customer data is modeled.",
+        "constraints": {
+          "logicDies": 120,
+          "hbmEquivalents": 80,
+          "assemblySlots": 90,
+          "testSlots": 75
+        },
+        "capacity": 75,
+        "bindingConstraints": [
+          "testSlots"
+        ],
+        "allocation": {
+          "capacity": 75,
+          "policy": "listed-order",
+          "requested": 110,
+          "allocated": 75,
+          "unused": 0,
+          "rows": [
+            {
+              "id": "request-a",
+              "index": 0,
+              "requested": 50,
+              "ideal": null,
+              "allocated": 50,
+              "remainder": 0,
+              "unmet": 0
+            },
+            {
+              "id": "request-b",
+              "index": 1,
+              "requested": 40,
+              "ideal": null,
+              "allocated": 25,
+              "remainder": 0,
+              "unmet": 15
+            },
+            {
+              "id": "request-c",
+              "index": 2,
+              "requested": 20,
+              "ideal": null,
+              "allocated": 0,
+              "remainder": 0,
+              "unmet": 20
+            }
+          ],
+          "policyScope": "Requests served in input order with partial shipment allowed; no private customer priority is inferred."
+        },
+        "used": {
+          "logicDies": 75,
+          "hbmStacks": 600,
+          "assemblySlots": 75,
+          "testSlots": 75
+        },
+        "remaining": {
+          "logicDies": 45,
+          "hbmStacks": 40,
+          "assemblySlots": 15,
+          "testSlots": 0
+        },
+        "scope": "Finite arithmetic illustrates complementarity and an allocation rule, not TSMC production, a wafer-equivalent conversion, observed availability or a customer queue."
+      },
+      "alternative": {
+        "options": {
+          "policy": "proportional"
+        },
+        "result": {
+          "modelVersion": "progress-evidence-2",
+          "options": {
+            "logicDies": 120,
+            "hbmStacks": 640,
+            "stacksPerPackage": 8,
+            "assemblySlots": 90,
+            "testSlots": 75,
+            "policy": "proportional",
+            "demands": [
+              {
+                "id": "request-a",
+                "units": 50
+              },
+              {
+                "id": "request-b",
+                "units": 40
+              },
+              {
+                "id": "request-c",
+                "units": 20
+              }
+            ]
+          },
+          "basis": "Synthetic single-period package allocation. All dies/stacks are compatible and already qualified; each assembly and test slot completes one package. No yield loss, rework, lead time or vendor/customer data is modeled.",
+          "constraints": {
+            "logicDies": 120,
+            "hbmEquivalents": 80,
+            "assemblySlots": 90,
+            "testSlots": 75
+          },
+          "capacity": 75,
+          "bindingConstraints": [
+            "testSlots"
+          ],
+          "allocation": {
+            "capacity": 75,
+            "policy": "proportional",
+            "requested": 110,
+            "allocated": 75,
+            "unused": 0,
+            "rows": [
+              {
+                "id": "request-a",
+                "index": 0,
+                "requested": 50,
+                "ideal": 34.09090909090909,
+                "allocated": 34,
+                "remainder": 0.09090909090909349,
+                "unmet": 16
+              },
+              {
+                "id": "request-b",
+                "index": 1,
+                "requested": 40,
+                "ideal": 27.272727272727273,
+                "allocated": 27,
+                "remainder": 0.2727272727272734,
+                "unmet": 13
+              },
+              {
+                "id": "request-c",
+                "index": 2,
+                "requested": 20,
+                "ideal": 13.636363636363637,
+                "allocated": 14,
+                "remainder": 0.6363636363636367,
+                "unmet": 6
+              }
+            ],
+            "policyScope": "Integer largest-remainder apportionment, input order breaks exact ties; units can be split across requests."
+          },
+          "used": {
+            "logicDies": 75,
+            "hbmStacks": 600,
+            "assemblySlots": 75,
+            "testSlots": 75
+          },
+          "remaining": {
+            "logicDies": 45,
+            "hbmStacks": 40,
+            "assemblySlots": 15,
+            "testSlots": 0
+          },
+          "scope": "Finite arithmetic illustrates complementarity and an allocation rule, not TSMC production, a wafer-equivalent conversion, observed availability or a customer queue."
+        }
+      },
+      "lessonIds": [
+        "compatible-supply-capacity",
+        "production-ramp-allocation"
+      ],
+      "question": "After increasing test slots to 100, which complementary input limits packages, and what happens to allocation?"
+    },
+    {
+      "id": "whole-rack-admission",
+      "functionName": "allocateHallCapacity",
+      "options": {},
+      "result": {
+        "modelVersion": "progress-evidence-2",
+        "options": {
+          "installedRacks": 12,
+          "commissionedRacks": 9,
+          "facilityInputMW": 1.2,
+          "pue": 1.2,
+          "itMWPerRack": 0.1,
+          "coolingITMW": 0.85,
+          "policy": "first-fit",
+          "demands": [
+            {
+              "id": "job-a",
+              "units": 5
+            },
+            {
+              "id": "job-b",
+              "units": 4
+            },
+            {
+              "id": "job-c",
+              "units": 3
+            }
+          ]
+        },
+        "basis": "Synthetic simultaneous admission of whole-rack jobs. PUE is a fixed scenario conversion factor, not a measured site value; all allocated IT power becomes heat. No network/memory compatibility, topology, priorities, job duration or wait times are modeled.",
+        "itPowerBudgetMW": 1,
+        "constraints": {
+          "installed": 12,
+          "commissioned": 9,
+          "power": 10,
+          "cooling": 8
+        },
+        "capacity": 8,
+        "bindingConstraints": [
+          "cooling"
+        ],
+        "allocation": {
+          "rows": [
+            {
+              "id": "job-a",
+              "requested": 5,
+              "allocated": 5,
+              "unmet": 0,
+              "remainingRacks": 3,
+              "reason": "Entire request fits."
+            },
+            {
+              "id": "job-b",
+              "requested": 4,
+              "allocated": 0,
+              "unmet": 4,
+              "remainingRacks": 3,
+              "reason": "Entire request does not fit remaining racks."
+            },
+            {
+              "id": "job-c",
+              "requested": 3,
+              "allocated": 3,
+              "unmet": 0,
+              "remainingRacks": 0,
+              "reason": "Entire request fits."
+            }
+          ],
+          "allocated": 8,
+          "unused": 0,
+          "unmet": 4
+        },
+        "loads": {
+          "itMW": 0.8,
+          "facilityMW": 0.96,
+          "overheadMW": 0.15999999999999998,
+          "rejectedITHeatMW": 0.8
+        },
+        "scope": "First-fit skips an oversized waiting request; strict-order stops admitting subsequent requests. Neither is asserted to be an actual public-computing or commercial scheduler policy."
+      },
+      "alternative": {
+        "options": {
+          "policy": "strict-order"
+        },
+        "result": {
+          "modelVersion": "progress-evidence-2",
+          "options": {
+            "installedRacks": 12,
+            "commissionedRacks": 9,
+            "facilityInputMW": 1.2,
+            "pue": 1.2,
+            "itMWPerRack": 0.1,
+            "coolingITMW": 0.85,
+            "policy": "strict-order",
+            "demands": [
+              {
+                "id": "job-a",
+                "units": 5
+              },
+              {
+                "id": "job-b",
+                "units": 4
+              },
+              {
+                "id": "job-c",
+                "units": 3
+              }
+            ]
+          },
+          "basis": "Synthetic simultaneous admission of whole-rack jobs. PUE is a fixed scenario conversion factor, not a measured site value; all allocated IT power becomes heat. No network/memory compatibility, topology, priorities, job duration or wait times are modeled.",
+          "itPowerBudgetMW": 1,
+          "constraints": {
+            "installed": 12,
+            "commissioned": 9,
+            "power": 10,
+            "cooling": 8
+          },
+          "capacity": 8,
+          "bindingConstraints": [
+            "cooling"
+          ],
+          "allocation": {
+            "rows": [
+              {
+                "id": "job-a",
+                "requested": 5,
+                "allocated": 5,
+                "unmet": 0,
+                "remainingRacks": 3,
+                "reason": "Entire request fits."
+              },
+              {
+                "id": "job-b",
+                "requested": 4,
+                "allocated": 0,
+                "unmet": 4,
+                "remainingRacks": 3,
+                "reason": "Entire request does not fit remaining racks."
+              },
+              {
+                "id": "job-c",
+                "requested": 3,
+                "allocated": 0,
+                "unmet": 3,
+                "remainingRacks": 3,
+                "reason": "Earlier request blocks strict-order admission."
+              }
+            ],
+            "allocated": 5,
+            "unused": 3,
+            "unmet": 7
+          },
+          "loads": {
+            "itMW": 0.5,
+            "facilityMW": 0.6,
+            "overheadMW": 0.09999999999999998,
+            "rejectedITHeatMW": 0.5
+          },
+          "scope": "First-fit skips an oversized waiting request; strict-order stops admitting subsequent requests. Neither is asserted to be an actual public-computing or commercial scheduler policy."
+        }
+      },
+      "lessonIds": [
+        "cluster-commissioning-gates",
+        "topology-job-admission"
+      ],
+      "question": "Why can strict-order leave racks unused even though a later job fits?"
+    }
+  ]
+}

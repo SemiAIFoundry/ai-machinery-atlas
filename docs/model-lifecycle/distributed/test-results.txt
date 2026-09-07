@@ -1,0 +1,40 @@
+✔ source model, moments and RNG are retained without mutating the lifecycle checkpoint (21.308084ms)
+✔ default uneven ranks own one short and three long actual examples with 6 and 24 targets (4.693666ms)
+✔ token next-token: every partition agrees with centralized objective and retained optimizer (97.020584ms)
+✔ token response-only: every partition agrees with centralized objective and retained optimizer (75.390833ms)
+✔ sample next-token: every partition agrees with centralized objective and retained optimizer (72.07775ms)
+✔ sample response-only: every partition agrees with centralized objective and retained optimizer (66.921625ms)
+✔ actual weighted gradients pass independent finite differences across every tensor group (49.539416ms)
+✔ equal rank means are numerically wrong for the default token and sample objectives (14.23125ms)
+✔ token and sample objectives differ for unequal target lengths but response-only denominators coincide (8.24125ms)
+✔ missing contribution blocks optimizer commit and preserves all current model state (3.490291ms)
+✔ failure after submission invalidates the uncommitted contribution and an old attempt is rejected (6.447541ms)
+✔ failed restarted rank yields the same committed weights and moments as failure-free centralized work (29.815875ms)
+✔ duplicate submissions, old rounds and second optimizer commits are rejected (18.455125ms)
+✔ global clipping and nonzero Adam history agree with an independent update (42.271583ms)
+✔ SGD uses the same reduced gradient and retained moments with a single step (15.069084ms)
+✔ partial round checkpoint resumes exact attempts, batch and RNG without extra draws (32.803625ms)
+✔ multiple committed rounds resume deterministically from the distributed record (150.325166ms)
+✔ tampered numerator, target denominator, source examples and unknown fields are rejected before mutation (5.23775ms)
+✔ malicious giant records and invalid cross-field state fail bounded validation (3.288792ms)
+✔ import rejects corrupted submitted arithmetic and committed optimizer state (16.108042ms)
+✔ restart and round budgets prevent unbounded simulations while preserving final valid state (369.714625ms)
+✔ workspace import retains independent final exposure and rejects stale or invalid changes before journal mutation (1.32225ms)
+✔ padded rank ownership covers every real parameter exactly once without optimizing the last dummy slot (0.262708ms)
+✔ actual owned numerators and every gathered replica independently match centralized gradients and Adam state (95.828667ms)
+✔ an explicitly opened collective rejects missing owner shards without changing optimizer or filling them automatically (11.227708ms)
+✔ owned-shard failure invalidates the entire reduction; a restarted attempt cannot accept old shards (27.206667ms)
+✔ owned shard identity, denominator, range, padding, duplicate and arithmetic corruption are rejected (15.893292ms)
+✔ partial reduce-scatter checkpoint resumes exact owned state and all-gather (27.401167ms)
+✔ all-gather rejects missing, duplicate, stale and cross-owner parameter payloads (12.41825ms)
+✔ strict checkpoint import recomputes owned gradients, updates and every replica before accepting them (27.404583ms)
+✔ logical padded transfer and optimizer ownership accounting reconcile independently of checkpoint serialization (31.861417ms)
+✔ the next batch releases old collective payloads without changing the committed source of its optimizer state (21.461375ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 32
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1456.172875

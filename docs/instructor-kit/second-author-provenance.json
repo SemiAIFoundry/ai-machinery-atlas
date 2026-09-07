@@ -1,0 +1,28 @@
+{
+  "author": {
+    "kind": "agent",
+    "identifier": "/root/process_editor",
+    "role": "AI agent contributor and learning-material author"
+  },
+  "authoredOn": "2026-09-07",
+  "sourceScopeChecker": {
+    "kind": "agent",
+    "identifier": "/root/process_editor",
+    "role": "Primary-source scope and independent arithmetic check"
+  },
+  "contentFingerprint": "efa38a2e2116a22c8af6e7216adf90b96cbe2e24e562ca93f27b812f15a17845",
+  "humanSpecialistReview": {
+    "status": "not-performed",
+    "reviewer": null
+  },
+  "independentHumanAuthor": false,
+  "instructorObservation": {
+    "status": "not-performed",
+    "sessions": 0
+  },
+  "learnerObservation": {
+    "status": "not-performed",
+    "sessions": 0
+  },
+  "reviewLimit": "Agent author and source checker are the same actor. Software checks and hand-derived arithmetic are independent calculation paths, not independent human review."
+}

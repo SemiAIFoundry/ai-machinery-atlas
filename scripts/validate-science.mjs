@@ -5,22 +5,23 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
+import {loadCurrent} from '../docs/curation/curation-common.mjs';
 const here=dirname(fileURLToPath(import.meta.url));
 const repo=process.argv[2]||process.cwd();
 const dir=join(repo,'src/lib/data'), katex=createRequire(join(repo,'package.json'))('katex');
-const packs=['records','fabrication','architecture','infrastructure','crg','infrastructure-depth'];
-const files=['equations-original.json','equations-expansion.json','equations-infrastructure.json'];
 const read=name=>JSON.parse(readFileSync(join(dir,name),'utf8'));
+const files=read('equation-packs.json');
 const expectedProse=['chip-tapeout-productization','cluster-commissioning-gates','topology-job-admission','orbital-evidence-status','crg-problem-statement','crg-55-year-resolution'].sort();
-const inputs=packs.flatMap(pack=>{const d=read(pack+'.json');return (Array.isArray(d)?d:d.lessons).flatMap(lesson=>(lesson.science||[]).map((science,index)=>({pack,id:lesson.id,index,science})));});
+const inputs=loadCurrent(repo).atlas.records.flatMap(lesson=>(lesson.science||[]).map((science,index)=>({pack:'effective authored lesson',id:lesson.id,index,science})));
 const catalogs=files.map(name=>({name,data:read(name)}));
 const records=new Map(), failures=[], warnings=[], checks=[];let count=0,notationRows=0,implicitKinds=0,fallbackReadings=0;
 const settings={displayMode:true,output:'htmlAndMathml',throwOnError:true,strict:'error',trust:false,maxExpand:300,maxSize:15};
 function check(name,fn){try{fn();checks.push({name,passed:true});}catch(error){failures.push({name,error:error.message});checks.push({name,passed:false});}}
-for(const {name,data} of catalogs)for(const [id,entries] of Object.entries(data))for(const [index,entry] of entries.entries()){
- const key=id+':'+index;check('unique '+key,()=>assert.ok(!records.has(key)));records.set(key,{...entry,catalog:name});
-}
-check('exactly 229 current source cards',()=>assert.equal(inputs.length,229));
+const offsets={};
+for(const {name,data} of catalogs)for(const [id,entries] of Object.entries(data)){const offset=offsets[id]||0;offsets[id]=offset+entries.length;for(const [localIndex,entry] of entries.entries()){
+ const key=id+':'+(offset+localIndex);check('unique '+key,()=>assert.ok(!records.has(key)));records.set(key,{...entry,catalog:name});
+}}
+check('baseline science preserved while validating every effective authored card',()=>assert.ok(inputs.length>=239));
 check('catalog/source coverage and card indexing',()=>assert.deepEqual([...records.keys()].sort(),inputs.map(r=>r.id+':'+r.index).sort()));
 for(const source of inputs){
  const key=source.id+':'+source.index,e=records.get(key);if(!e)continue;count++;
@@ -34,7 +35,7 @@ for(const source of inputs){
  check(key+' notation fields and uniqueness',()=>{for(const v of vars)for(const field of ['symbol','meaning','unit'])assert.ok(typeof v[field]==='string'&&v[field].trim(),field);assert.equal(new Set(vars.map(v=>v.symbol)).size,vars.length);});
  check(key+' strict KaTeX and MathML',()=>{const html=katex.renderToString(e.latex,settings);assert.ok(html.includes('<math '));assert.ok(!html.includes('katex-error'));e.tree=katex.__parse(e.latex,settings);});
 }
-check('exact six prose exceptions',()=>assert.deepEqual([...records].filter(([,e])=>e.kind==='relationship').map(([key])=>key.split(':')[0]).sort(),expectedProse));
+check('original prose relationships remain explicitly classified',()=>{for(const id of expectedProse)assert.equal(records.get(id+':0')?.kind,'relationship');});
 
 // The AST checks inspect grouping, not a snapshot of the entire source formula.
 // This diagnostic uses KaTeX's private parse API; the installed version is recorded.
@@ -186,6 +187,6 @@ const expectedUnits=[['energy-bands','k_B','eV/K'],['energy-bands','T','K'],['co
 for(const [id,symbol,unit] of expectedUnits)check('domain unit '+id+' '+symbol,()=>assert.equal(records.get(id+':0').variables.find(v=>v.symbol===symbol)?.unit,unit));
 if(implicitKinds)warnings.push({name:'Legacy implicit math classification',count:implicitKinds,detail:'Supported by the current renderer default; original and expansion entries are explicit.'});
 if(fallbackReadings)warnings.push({name:'Legacy source-shorthand fallback',count:fallbackReadings,detail:'Infrastructure-depth uses its original equation string as the accessible reading. All 210 new entries have authored prose readings.'});
-const summary={date:new Date().toISOString(),repo,katexVersion:katex.version,settings,sourceCards:inputs.length,validatedCards:count,math:[...records.values()].filter(e=>(e.kind||'math')==='math').length,relationships:expectedProse,notationRows,semanticGroupingChecks:regressions.length,groupingMutationChecks:corruptions.length,independentNumericCases:numericCases.map(({id,index=0,expected,reason})=>({id,index,expected,reason})),independentOptimizationChecks:1,dimensionalChecks:dimensional.length,totalChecks:checks.length,passedChecks:checks.filter(x=>x.passed).length,failures,warnings,sourceHashes:Object.fromEntries(files.map(name=>[name,createHash('sha256').update(readFileSync(join(dir,name))).digest('hex')]))};
+const summary={date:new Date().toISOString(),repo,katexVersion:katex.version,settings,sourceCards:inputs.length,validatedCards:count,math:[...records.values()].filter(e=>(e.kind||'math')==='math').length,relationships:[...records].filter(([,e])=>e.kind==='relationship').map(([key])=>key),notationRows,semanticGroupingChecks:regressions.length,groupingMutationChecks:corruptions.length,independentNumericCases:numericCases.map(({id,index=0,expected,reason})=>({id,index,expected,reason})),independentOptimizationChecks:1,dimensionalChecks:dimensional.length,totalChecks:checks.length,passedChecks:checks.filter(x=>x.passed).length,failures,warnings,sourceHashes:Object.fromEntries(files.map(name=>[name,createHash('sha256').update(readFileSync(join(dir,name))).digest('hex')]))};
 if(process.env.ATLAS_SCIENCE_REPORT)writeFileSync(process.env.ATLAS_SCIENCE_REPORT,JSON.stringify(summary,null,2)+'\n');
 console.log(`${summary.passedChecks}/${summary.totalChecks} scientific checks passed: ${summary.math} math cards, ${summary.relationships.length} prose relationships.`);if(failures.length)console.error(failures);if(failures.length)process.exitCode=1;

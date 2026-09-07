@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 1,
+  "mergeContract": "Append prose and mechanism/example/evidence material; append independent checks, related IDs and sources with de-duplication. Preserve original descriptions, science, primary check, prerequisites and all original sources.",
+  "entries": {
+    "tool-loop": {
+      "appendDescription": "An observable tool loop needs a contract for effects as well as returned text. The durable incident experience now executes proposals through schema validation, authority, exact human review, service and receipt recording. Its fixed workflow and bounded branching policy are authored code. Their visible decisions demonstrate runtime boundaries without claiming a language model generated them. A future real-model adapter must identify its model/configuration and preserve the same runtime checks.",
+      "appendMechanism": [
+        "A proposed call remains separate from permission and the external effect; the caller observes the returned result or explicit uncertainty.",
+        "After a write commits but its response is lost, a receipt or idempotent retry resolves the original action before another dependent action starts."
+      ],
+      "appendEngineeringExample": "In the commit-timeout case, reserving two FILTER-A units leaves two of the original four units before the caller has any successful response. The fixed workflow retries the same keyed action; the authored policy looks up the receipt. Both can finish with one reservation and one work order. Neither can infer that the timeout meant no effect occurred.",
+      "appendEvidenceNotes": "The executable extension is a fictional local environment with two authored policies. It adds no claim of real LLM agency, MCP conformance or production durability. Model parameters, invocation context and the workflow journal remain separate objects.",
+      "additionalChecks": [
+        {
+          "question": "What does a lost tool response establish about whether the write committed?",
+          "options": [
+            "It establishes no effect",
+            "It leaves the outcome uncertain until checked",
+            "It automatically authorizes a second logical write"
+          ],
+          "answer": 1,
+          "explanation": "Transport failure does not determine external state; check the original keyed effect."
+        }
+      ],
+      "additionalRelated": [
+        "durable-actions-idempotency",
+        "tool-contracts-schemas",
+        "human-review-cancellation"
+      ],
+      "additionalSources": [
+        {
+          "title": "Temporal Activities",
+          "url": "https://docs.temporal.io/activities"
+        },
+        {
+          "title": "MCP tools",
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools"
+        }
+      ]
+    },
+    "serving": {
+      "appendDescription": "A request-level explanation should retain arrival, admission, service and completion as separate states. Resource bounds for a decode step do not by themselves determine which queued request runs next. A scheduling policy also owns live sequence state and must release or preserve it correctly after completion, cancellation and handoff. A useful comparison holds the request trace and service assumptions fixed while changing only the scheduling policy.",
+      "appendMechanism": [
+        "Request timestamps and state transitions distinguish queue wait, first-token delay and later inter-token intervals.",
+        "A canceled or completed request releases its owned state under an explicit policy; a workload bound alone does not simulate that transition."
+      ],
+      "appendEngineeringExample": "For a hypothetical request that arrives at 0 ms, is admitted at 30 ms and returns its first token at 80 ms, queue wait is 30 ms and time to first token is 80 ms. If 100 later inter-token intervals each take 5 ms, its final token arrives at 580 ms. Summing a separate device enqueue duration into every interval without identifying a dependency would double-count or misplace overhead.",
+      "appendEvidenceNotes": "This additive trace is worked synthetic timing. It does not extend the existing resource calculator into a measured queueing engine or claim current vendor service rates.",
+      "additionalChecks": [
+        {
+          "question": "A request arrives at 0 ms and returns its first token at 80 ms after 30 ms queueing. What is TTFT?",
+          "options": [
+            "30 ms",
+            "50 ms",
+            "80 ms"
+          ],
+          "answer": 2,
+          "explanation": "TTFT is measured from arrival to first token and includes the queue interval."
+        }
+      ],
+      "additionalRelated": [
+        "event-queues-delivery",
+        "telemetry-traces-evaluation",
+        "runtime-device-dispatch"
+      ],
+      "additionalSources": [
+        {
+          "title": "vLLM — Inference and Serving Documentation",
+          "url": "https://docs.vllm.ai/en/latest/"
+        },
+        {
+          "title": "Kwon et al. — Efficient Memory Management with PagedAttention",
+          "url": "https://arxiv.org/abs/2309.06180"
+        }
+      ]
+    },
+    "runtime-device-dispatch": {
+      "appendDescription": "Buffer ownership and completion events connect an asynchronous command queue to correct values. Host code returning from enqueue does not establish that a device has finished reading or writing a buffer. A dependent consumer must wait for the required event, while unrelated work may overlap if the runtime and hardware permit it. The resulting timeline is a causal dependency model; a drawing of software layers alone cannot demonstrate the hazards.",
+      "appendMechanism": [
+        "A buffer remains live until all required consumers complete, according to the actual stream/event dependency contract.",
+        "Timing reports distinguish CPU submission work, queued delay, device service and synchronization rather than treating them as one interchangeable duration."
+      ],
+      "appendEngineeringExample": "Suppose a CPU submits a kernel in 0.02 ms and the kernel needs 5 ms of device service. Reusing its input at 0.02 ms is unsafe under a contract requiring the buffer through completion. With immediate service and no other overhead, the earliest safe reuse is 5 ms after submission began. Waiting 5 ms by an assumed timer is still weaker evidence than the actual completion event when queueing can vary.",
+      "appendEvidenceNotes": "This is a worked dependency and lifetime example. It does not execute a CUDA stream, driver or real device event and does not change the original bounded calculator scope.",
+      "additionalChecks": [
+        {
+          "question": "What permits safe reuse of a buffer consumed asynchronously?",
+          "options": [
+            "The CPU enqueue call returned",
+            "The required device consumer completion is established",
+            "The buffer name has not changed"
+          ],
+          "answer": 1,
+          "explanation": "Submission and completion are different events; the consumer lifetime determines reuse."
+        }
+      ],
+      "additionalRelated": [
+        "graph-tensor-ir",
+        "compiler-layout-lowering",
+        "telemetry-traces-evaluation"
+      ],
+      "additionalSources": [
+        {
+          "title": "CUDA C++ Programming Guide",
+          "url": "https://docs.nvidia.com/cuda/cuda-c-programming-guide/"
+        },
+        {
+          "title": "XLA:GPU Architecture Overview",
+          "url": "https://openxla.org/xla/gpu_architecture"
+        }
+      ]
+    },
+    "graph-tensor-ir": {
+      "appendDescription": "A graph representation can carry shapes and operator semantics while leaving memory placement and execution schedules unresolved. When this graph is lowered, each representation needs a checkable relation to the same intended output. Equal array dimensions do not establish equal axis meaning. Explicit input/output examples and value ownership let a reader determine what was preserved instead of treating a compiler stage as a decorative box.",
+      "appendMechanism": [
+        "The graph declares which axes are contracted, broadcast or retained before any physical buffer is chosen.",
+        "A lowered implementation is compared against an independent reference on a stated arithmetic domain and input set."
+      ],
+      "appendEngineeringExample": "For X=[[1,2]] and W=[[3],[4]], XW is [[11]]. Adding bias −12 and applying ReLU gives [[0]]. Applying ReLU before adding the bias instead gives [[−1]], so moving operations because their intermediate shapes match changes the function. A legal fusion can eliminate materialized intermediates only while preserving the specified order and result.",
+      "appendEvidenceNotes": "The arithmetic is an authored exact example. It does not claim that a real compiler performs this invalid transformation or that a new compiler implementation has been executed.",
+      "additionalChecks": [
+        {
+          "question": "Can operations be reordered merely because their intermediate shapes match?",
+          "options": [
+            "Yes, shape equality proves semantic equality",
+            "No, the function and dependencies must be preserved",
+            "Yes, if all operators use the same dtype"
+          ],
+          "answer": 1,
+          "explanation": "The bias/ReLU example has the same shapes but a different output after reordering."
+        }
+      ],
+      "additionalRelated": [
+        "compiler-layout-lowering",
+        "coding-agent-patch-evidence"
+      ],
+      "additionalSources": [
+        {
+          "title": "StableHLO specification",
+          "url": "https://openxla.org/stablehlo/spec"
+        }
+      ]
+    },
+    "compiler-layout-lowering": {
+      "appendDescription": "A layout choice is meaningful when the indexed values, storage ownership and next consumer are named together. A transpose may be a view with changed strides or a materialized reorder; the latter consumes bytes and time that the former does not automatically incur. A schedule that improves locality must retain the operator’s axis semantics and account for any conversion needed by its consumer.",
+      "appendMechanism": [
+        "Logical coordinate-to-value meaning survives layout changes even when physical addresses differ.",
+        "The next consumer determines whether a strided view is acceptable or a contiguous materialization and synchronization are needed."
+      ],
+      "appendEngineeringExample": "A row-major 2×3 array [[1,2,3],[4,5,6]] has element strides (3,1). Its 3×2 transpose view uses strides (1,3) and logically yields [[1,4],[2,5],[3,6]]. A separate contiguous two-byte representation of that result contains 12 payload bytes. If it is materialized by reading and writing each value once, the chosen local memory boundary sees 24 payload bytes, not merely the 12-byte output size.",
+      "appendEvidenceNotes": "These are logical address and payload counts for a synthetic array. They exclude cache effects, allocator overhead and measured compiler/device performance.",
+      "additionalChecks": [
+        {
+          "question": "What is the payload traffic for reading and writing six two-byte elements once during a transpose copy?",
+          "options": [
+            "12 bytes",
+            "24 bytes",
+            "Six bytes"
+          ],
+          "answer": 1,
+          "explanation": "Six elements × two bytes × one read and one write is 24 payload bytes at that boundary."
+        }
+      ],
+      "additionalRelated": [
+        "graph-tensor-ir",
+        "runtime-device-dispatch",
+        "sharded-matmul-ownership"
+      ],
+      "additionalSources": [
+        {
+          "title": "XLA:GPU Architecture Overview",
+          "url": "https://openxla.org/xla/gpu_architecture"
+        },
+        {
+          "title": "StableHLO specification",
+          "url": "https://openxla.org/stablehlo/spec"
+        }
+      ]
+    },
+    "disaggregated-serving": {
+      "appendDescription": "A prefill/decode split hands off sequence state as well as service work. The downstream worker needs compatible model, representation and ownership before it can consume transferred KV data. A partially transferred or stale state cannot be treated as a complete handoff merely because the sending request returned. Keeping the same request identity through queueing and transfer makes those failure boundaries visible.",
+      "appendMechanism": [
+        "The handoff declares which sequence/model state is transferred, who owns it and what confirms a complete usable copy.",
+        "Queue imbalance, retransmission and state conversion are additional to the simple payload transfer bound."
+      ],
+      "appendEngineeringExample": "A synthetic 2 GB KV payload over an effective 25 GB/s path has a payload-only lower bound of 0.08 s, or 80 ms. If a required state-conversion step takes another 10 ms and is serialized after transfer, the handoff path needs at least 90 ms under those assumptions. It cannot be added as free overlap without a dependency argument. An interrupted transfer also needs a rule for discarding or resuming partial state.",
+      "appendEvidenceNotes": "The handoff extension is worked timing and ownership analysis. It is not a measured disaggregated server, network protocol or real-model KV exchange.",
+      "additionalChecks": [
+        {
+          "question": "Can a decoder consume an incomplete handoff simply because some KV bytes arrived?",
+          "options": [
+            "Yes, all partial state is equivalent",
+            "No, its declared valid-state and ownership contract must be met",
+            "Yes, if the link is fast"
+          ],
+          "answer": 1,
+          "explanation": "Arrival of some bytes does not establish a complete sequence representation suitable for decode."
+        }
+      ],
+      "additionalRelated": [
+        "runtime-device-dispatch",
+        "context-memory-provenance",
+        "event-queues-delivery"
+      ],
+      "additionalSources": [
+        {
+          "title": "DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving",
+          "url": "https://arxiv.org/abs/2401.09670"
+        },
+        {
+          "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+          "url": "https://arxiv.org/abs/2309.06180"
+        }
+      ]
+    },
+    "training-data": {
+      "appendDescription": "Training examples also have an availability and transformation history. A label may arrive after an input was first observed, and preprocessing fitted on future or held-out cases can leak information across the evaluation boundary. A deployed artifact should retain which split supplied each learned statistic so later predictions can be reproduced without silently refitting on new data.",
+      "appendMechanism": [
+        "Feature construction and normalizer fitting use only the allowed training information.",
+        "Evaluation and later monitoring retain their own sample and label-availability boundaries rather than being folded back into the training statistic."
+      ],
+      "appendEngineeringExample": "If a training-only normalizer has mean 60 and standard deviation 10, input 70 maps to 1. Recomputing a mean of 70 using a later population maps the same input to 0. Comparing model predictions before and after that change as if only the weights mattered hides a preprocessing change. The new artifact lesson gives a logistic example where the resulting threshold decision reverses.",
+      "appendEvidenceNotes": "The sensor datasets and numeric normalization values are authored. They establish a leakage/artifact mechanism, not field data quality or generalization on real equipment.",
+      "additionalChecks": [
+        {
+          "question": "Should held-out evaluation labels or future observations fit a preprocessing statistic used to claim an earlier forecast?",
+          "options": [
+            "Yes, more data always improves the experiment",
+            "No, that violates the stated availability boundary",
+            "Only if the resulting accuracy increases"
+          ],
+          "answer": 1,
+          "explanation": "The comparison must use information that was allowed at training or prediction time."
+        }
+      ],
+      "additionalRelated": [
+        "model-artifact-rollout-drift",
+        "temporal-forecast-validation"
+      ],
+      "additionalSources": [
+        {
+          "title": "scikit-learn · Common pitfalls and data leakage",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+        }
+      ]
+    },
+    "loss-optimizer": {
+      "appendDescription": "A training objective, a decision threshold and an operational acceptance criterion answer different questions. Updating weights changes the predictive function; moving a threshold changes decisions for the same probabilities. Neither operation should be concealed inside an evaluation comparison. A frozen artifact and separate test set make these changes traceable into later deployment decisions.",
+      "appendMechanism": [
+        "The optimizer updates model parameters using the defined training loss and regularization.",
+        "Evaluation keeps thresholds and accepted error tradeoffs explicit instead of claiming that lower loss necessarily produces a better application."
+      ],
+      "appendEngineeringExample": "For fixed predicted probabilities [0.2,0.6,0.8], a threshold of 0.5 gives decisions [0,1,1], while threshold 0.7 gives [0,0,1]. The weights and all three probabilities are unchanged. With labels [0,0,1], the second threshold removes one false positive on these three cases. This does not prove that 0.7 is better on future data; selecting it using the held-out test would also compromise that test’s independence.",
+      "appendEvidenceNotes": "The threshold arithmetic is authored. The existing sensor experience executes actual logistic updates, while these three probabilities are a separate worked decision example.",
+      "additionalChecks": [
+        {
+          "question": "A decision threshold changes from 0.5 to 0.7 with fixed model outputs. What necessarily changes?",
+          "options": [
+            "The fitted weights",
+            "The training labels",
+            "Potential binary decisions, without requiring retraining"
+          ],
+          "answer": 2,
+          "explanation": "Thresholding is a downstream decision rule; it can change labels without changing the fitted predictor."
+        }
+      ],
+      "additionalRelated": [
+        "model-artifact-rollout-drift",
+        "evaluation"
+      ],
+      "additionalSources": [
+        {
+          "title": "scikit-learn · Common pitfalls and data leakage",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html#data-leakage"
+        }
+      ]
+    },
+    "evaluation": {
+      "appendDescription": "The durable incident experience adds a task-state oracle to the existing distinction between source support and answer correctness. The oracle checks actual reservations, work orders, inventory conservation and prohibited exports. It does not accept the worker’s completion status as its label. Repeated trials can later assess reliability, but a deterministic fixture run is only evidence for its declared case.",
+      "appendMechanism": [
+        "The evaluation target specifies acceptable environment state and forbidden effects independently of the policy.",
+        "Source support, task correctness, abstention and tool error rates retain distinct denominators and interpretations."
+      ],
+      "appendEngineeringExample": "In the wrong-entity incident, the authored policy completes one FAN-9 work order supported by the FAN-9 manual. Source support is 1/1, yet the original FAN-7 task is wrong. In the canceled-after-commit case the reservation exists but the required work order does not, so task success is false even though an external write succeeded. These outcomes expose errors that counting successful calls would miss.",
+      "appendEvidenceNotes": "The examples use fictional environments and deterministic authored policies. They do not reproduce τ-bench cases or establish a real agent’s reliability or benchmark score.",
+      "additionalChecks": [
+        {
+          "question": "Every call succeeded and the source supports the FAN-9 work order, but the task requested FAN-7. Is the task correct?",
+          "options": [
+            "Yes, because all calls succeeded",
+            "No, because the environment fails the original goal",
+            "Yes, because the citation is valid"
+          ],
+          "answer": 1,
+          "explanation": "Call status and source support do not replace the original task contract."
+        }
+      ],
+      "additionalRelated": [
+        "workflow-graphs-state",
+        "telemetry-traces-evaluation",
+        "retrieval-indexing-evaluation"
+      ],
+      "additionalSources": [
+        {
+          "title": "τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains",
+          "url": "https://arxiv.org/abs/2406.12045"
+        }
+      ]
+    },
+    "post-training": {
+      "appendDescription": "Changed system behavior can come from several boundaries: updated weights, a new prompt or context, a retrieval collection, a tool contract or a runtime policy. Only the first is necessarily a model-parameter update. Evaluation should identify which artifact changed and preserve the other conditions when attributing an improvement. A runtime repair should not be described as teaching the model unless a learning procedure actually occurred.",
+      "appendMechanism": [
+        "Behavioral comparisons bind model, data, prompts, tools and runtime policy to distinct versions.",
+        "A fixed task suite checks regressions after the selected change rather than attributing every outcome difference to post-training."
+      ],
+      "appendEngineeringExample": "The same fictional malformed quantity is rejected in both incident modes. The fixed workflow stops; the authored branching policy repairs the string into an integer and continues. This behavior difference comes entirely from application control code, with no trained model or parameter update. It is useful engineering progress, but it is not evidence of post-training a language model.",
+      "appendEvidenceNotes": "The incident policy is explicitly authored. The extension distinguishes behavioral system changes from actual weight adaptation and makes no claim of new post-training execution.",
+      "additionalChecks": [
+        {
+          "question": "An application adds a branch that repairs malformed tool arguments, without changing model weights. What changed?",
+          "options": [
+            "The runtime policy",
+            "Necessarily the model’s post-training weights",
+            "The tokenizer’s vocabulary"
+          ],
+          "answer": 0,
+          "explanation": "A new application branch changes system behavior independently of model training."
+        }
+      ],
+      "additionalRelated": [
+        "workflow-graphs-state",
+        "model-artifact-rollout-drift"
+      ],
+      "additionalSources": [
+        {
+          "title": "Building effective agents",
+          "url": "https://www.anthropic.com/engineering/building-effective-agents"
+        }
+      ]
+    },
+    "checkpoint": {
+      "appendDescription": "A checkpoint restores the kind of state it actually contains. Training checkpoints may include weights, optimizer moments and random-number state; inference state can include sequence-specific KV; a workflow journal records decisions, intents and observations. An external receipt belongs to an effect that may already have committed outside the worker. These objects should have separate identities and restore rules.",
+      "appendMechanism": [
+        "Restoration validates the saved object’s model/content or workflow identity before reusing it.",
+        "A workflow restart reconciles any external keyed effect whose response was not durably recorded rather than assuming restored computation rolls the effect back."
+      ],
+      "appendEngineeringExample": "The incident journal can end at a valid approved reservation intent while its environment already stores reservation-1. Restoring only that journal does not return the two consumed FILTER-A units. Recovery checks the one pending service against the environment receipt and returns the original outcome. In contrast, restoring a training checkpoint can repeat arithmetic from saved parameters but cannot by itself undo inventory in a separate service.",
+      "appendEvidenceNotes": "The local E5 journal/receipt replay is executable. It is separate from the operating hall’s retained computational-work model and from actual distributed training checkpoint formats.",
+      "additionalChecks": [
+        {
+          "question": "Does restoring a training checkpoint automatically undo a committed tool reservation?",
+          "options": [
+            "Yes, all saved state is interchangeable",
+            "No, the reservation is an external effect with a separate contract",
+            "Only if the checkpoint is recent"
+          ],
+          "answer": 1,
+          "explanation": "A training state restore does not reverse a separate external service’s committed state."
+        }
+      ],
+      "additionalRelated": [
+        "durable-actions-idempotency",
+        "context-memory-provenance",
+        "retained-work-restart-boundary"
+      ],
+      "additionalSources": [
+        {
+          "title": "Temporal Workflow Execution",
+          "url": "https://docs.temporal.io/workflow-execution"
+        },
+        {
+          "title": "Temporal Activities",
+          "url": "https://docs.temporal.io/activities"
+        }
+      ]
+    },
+    "astra": {
+      "appendDescription": "A model service can be studied through its observable interface without inventing its private internals. A recorded request, tool proposal, output event, configuration identity and timing observation establish different facts from an undisclosed architecture diagram. When a real model adapter is added to an execution experience, its observable proposals should be preserved and passed through the same runtime checks as any other policy.",
+      "appendMechanism": [
+        "A trace names the actual service/model configuration and records observable input/output fields at a declared boundary.",
+        "Runtime authority, approval and external task checks remain independent of the service’s product identity or confidence."
+      ],
+      "appendEngineeringExample": "A captured service response might propose reserve_part for FAN-7 with quantity two. That establishes an observable proposed call, not that the service has permission to execute it, that a reservation occurred, or how many hidden layers produced it. The current incident experience uses an authored policy and a future adapter contract; it does not invoke Astra or another real model.",
+      "appendEvidenceNotes": "No new private architecture, current product capability or actual-model execution claim is introduced. The existing public-service source boundary remains intact.",
+      "additionalChecks": [
+        {
+          "question": "What does a recorded model tool proposal establish?",
+          "options": [
+            "An observable requested operation",
+            "That the operation already committed",
+            "The model’s undisclosed parameter count"
+          ],
+          "answer": 0,
+          "explanation": "The proposal is one observable output; permissions, execution and private internals are separate questions."
+        }
+      ],
+      "additionalRelated": [
+        "tool-contracts-schemas",
+        "tool-authority-identity",
+        "telemetry-traces-evaluation"
+      ],
+      "additionalSources": [
+        {
+          "title": "MCP tools",
+          "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools"
+        }
+      ]
+    },
+    "manufacturing-execution-dispatch": {
+      "appendDescription": "A model recommendation can be an input to dispatch without becoming the authority that releases a lot or selects equipment. Route eligibility, holds, qualification, current state and authorized decisions remain distinct control conditions. The fictional incident workflow illustrates this boundary using inventory and work orders; it should not be mistaken for an implementation of a real fab’s MES or private dispatch algorithm.",
+      "appendMechanism": [
+        "A recommendation retains its model/data provenance and the asset or lot identity to which it applies.",
+        "An authorized dispatch evaluates current holds and qualification before creating a concrete operational effect."
+      ],
+      "appendEngineeringExample": "Suppose a classifier flags a hypothetical chamber for inspection while a lot is held pending qualification. The flag may create an inspection recommendation, but it does not release the hold. A workflow may seek the authorized review and record a work order; it still cannot mark the lot eligible merely because a model prediction was confident. This separates prediction quality from the controlled operational action.",
+      "appendEvidenceNotes": "The scenario is fictional and qualitative. No manufacturing recipe, production dispatch scheduler, equipment interface or real lot release is executed or inferred.",
+      "additionalChecks": [
+        {
+          "question": "A model recommends processing a held lot. What establishes whether dispatch may proceed?",
+          "options": [
+            "The confidence score alone",
+            "Current route/hold/qualification and authorization conditions",
+            "Whether the recommendation is fluent"
+          ],
+          "answer": 1,
+          "explanation": "Dispatch authority and eligibility remain external operational constraints, not model-generated permissions."
+        }
+      ],
+      "additionalRelated": [
+        "tool-authority-identity",
+        "workflow-graphs-state",
+        "evaluation"
+      ],
+      "additionalSources": [
+        {
+          "title": "Temporal Activities",
+          "url": "https://docs.temporal.io/activities"
+        }
+      ]
+    }
+  }
+}

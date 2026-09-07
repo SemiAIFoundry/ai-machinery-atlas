@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "decoder-query-machine-1",
+  "reviewedAt": "2026-09-07",
+  "reviewerType": "agent",
+  "reviewerId": "/root/visual_learning_assessment",
+  "scope": "Actual selected checkpoint operator with an authored precision adapter; mathematical source guidance and independent numerical references, not hardware measurement or independent specialist approval.",
+  "sources": [
+    {
+      "id": "projection-rmsnorm",
+      "url": "https://arxiv.org/abs/1910.07467",
+      "version": "arXiv:1910.07467v1, 2019",
+      "locator": "Abstract, rendered lines 16–18: root mean square rescaling and removal of re-centering",
+      "reviewedAt": "2026-09-07",
+      "supports": "RMS normalization separates rescaling from re-centering.",
+      "doesNotSupport": "Only the abstract was read for this package; no unseen full-paper equation, epsilon, gain choice, architecture or benchmark result is claimed reviewed. The exact toy normalization is verified against model-lifecycle.ts."
+    },
+    {
+      "id": "projection-integer-quantization",
+      "url": "https://arxiv.org/html/1712.05877v1",
+      "version": "arXiv:1712.05877v1, 2017",
+      "locator": "Sections 2.1 and 2.2, equations (1)–(5), rendered lines 96–128; adjacent section 2.4 accumulator discussion, lines 147–155",
+      "reviewedAt": "2026-09-07",
+      "supports": "Separate operand scales and zero points; integer product accumulation and product-of-scales relationship to the corresponding real matrix product; a wider integer accumulator than quantized operands.",
+      "doesNotSupport": "No transfer of the paper's hardware speed, accuracy, memory reduction or training outcomes. This adapter uses authored symmetric zero-point-zero tiles, signed-int32 storage for every operand code and binary64 host rescaling, not the full affine fixed-point integer-only pipeline or quantization-aware training."
+    }
+  ],
+  "reusedImplementationScope": [
+    {"path":"src/lib/model-lifecycle.ts","use":"Validated complete source checkpoint, actual position-added embeddings, actual query projection, tensor layout and original binary64 query reference.","limit":"Only a selected 3×3 query slice is carried into the machine; no attention/loss/backpropagation/whole-model metric is recomputed through the precision adapter."},
+    {"path":"src/lib/model-lifecycle-data.ts","use":"Versioned synthetic nine-token vocabulary, known training/development family IDs and exact prompt order.","limit":"No new tokenizer or data construction. Final-test examples are excluded."},
+    {"path":"src/lib/machine-execution.ts","use":"Actual finite mapped-word delivery, DMA-slot ownership, integer MAC replay, DRAM commands, output writes and host completion.","limit":"Existing authored two-bank geometry and ns constants. Independent machine invocation and refresh origin per tile; no complete hardware runtime or physical error-rate claim."},
+    {"path":"src/lib/model-lifecycle-workspace.ts","use":"Sticky procedural final-test exposure disclosure on carried/restored/exported state.","limit":"Not cryptographic secrecy or authentication."},
+    {"path":"src/components/portable-experiment.tsx","use":"Bounded full-checkpoint local save/export/import and exact older-record recovery with the explicit 650000-byte per-experience limit.","limit":"The shared manual textarea remains 20000 characters; browser quota and recovery-history limits remain visible."}
+  ],
+  "authoredParameters": ["Fixed prompt positions and query channels 0–2", "Full inner dimension 6 split into 0–2 and 3–5", "Independent max-absolute operand scale per 3×3 tile", "Symmetric integer magnitude 7, 31 or 99", "Round ties away from zero", "Signed-int32 little-endian words", "Two sequential independent machine invocations", "Optional second-tile B mapping failure"],
+  "humanSpecialistReview": null,
+  "physicalMeasurement": null,
+  "externalSimulatorComparison": null,
+  "browserValidation": "Owned separately by root integration; no browser used by this package author."
+}

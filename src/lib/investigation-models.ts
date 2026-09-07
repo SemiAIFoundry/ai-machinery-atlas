@@ -109,7 +109,9 @@ export function attentionScenario(query: number, temperature: number) {
 }
 
 export type LearningAttempt = { prediction: string; explanation: string; transfer: string; savedAt: string; scenario: Scenario };
-export type InvestigationDocument = typeof learningContract & { caseId: InvestigationId; scenario: Scenario; firstAttempt?: LearningAttempt; practice?: LearningAttempt };
+export type LearningHistoryEntry = {reason:'previous-practice'|'imported-first'; attempt:LearningAttempt};
+export type LearningRecord = {firstAttempt?:LearningAttempt;practice?:LearningAttempt;history?:LearningHistoryEntry[]};
+export type InvestigationDocument = typeof learningContract & LearningRecord & { caseId: InvestigationId; scenario: Scenario };
 function readAttempt(value: unknown): LearningAttempt | undefined {
   if (value === undefined) return undefined;
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw Error('Invalid learning record.');
@@ -121,10 +123,12 @@ export function readInvestigationDocument(text: string): InvestigationDocument {
   if (text.length > 100000) throw Error('The learning file is too large.');
   const v = JSON.parse(text);
   if (!v || v.version !== investigationVersion || v.contentVersion !== learningContract.contentVersion || v.checkVersion !== learningContract.checkVersion || !validInvestigationId(v.caseId)) throw Error('This learning file uses an unsupported model version.');
-  return { ...learningContract, caseId: v.caseId, scenario: validateScenario(v.scenario), firstAttempt: readAttempt(v.firstAttempt), practice: readAttempt(v.practice) };
+  if(v.history!==undefined&&(!Array.isArray(v.history)||v.history.length>4))throw Error('This learning file has too many archived records.');
+  const history:LearningHistoryEntry[]=(v.history||[]).map((h:unknown)=>{if(!h||typeof h!=='object'||!('reason' in h)||!('attempt' in h)||(h.reason!=='previous-practice'&&h.reason!=='imported-first'))throw Error('Invalid archived record.');const attempt=readAttempt(h.attempt);if(!attempt)throw Error('Missing archived attempt.');return {reason:h.reason,attempt};});
+  return { ...learningContract, caseId: v.caseId, scenario: validateScenario(v.scenario), firstAttempt: readAttempt(v.firstAttempt), practice: readAttempt(v.practice),history };
 }
 
-export type BrowserLearningState = { scenario: Scenario; work: Partial<Record<InvestigationId, {firstAttempt?: LearningAttempt; practice?: LearningAttempt}>>; warnings: string[] };
+export type BrowserLearningState = { scenario: Scenario; work: Partial<Record<InvestigationId, LearningRecord>>; warnings: string[] };
 /** Recover independent valid records without converting a damaged case into data loss. */
 export function readBrowserLearningState(text: string): BrowserLearningState {
   const saved = JSON.parse(text);
@@ -139,9 +143,21 @@ export function readBrowserLearningState(text: string): BrowserLearningState {
     try {
       const stored = saved.work[caseId];
       if (!stored || typeof stored !== 'object' || Array.isArray(stored)) throw Error('Invalid case record.');
-      const doc = readInvestigationDocument(JSON.stringify({...learningContract,caseId,scenario,firstAttempt:stored.firstAttempt,practice:stored.practice}));
-      work[caseId] = {firstAttempt:doc.firstAttempt,practice:doc.practice};
+      const doc = readInvestigationDocument(JSON.stringify({...learningContract,caseId,scenario,firstAttempt:stored.firstAttempt,practice:stored.practice,history:stored.history}));
+      work[caseId] = {firstAttempt:doc.firstAttempt,practice:doc.practice,history:doc.history};
     } catch { warnings.push(`The ${caseId} learning record could not be restored.`); }
   }
   return {scenario,work,warnings};
+}
+
+/** Keep local first work and retain displaced import records rather than silently overwriting them. */
+export function mergeLearningRecords(current:LearningRecord|undefined,incoming:LearningRecord):LearningRecord {
+ const same=(a:LearningAttempt|undefined,b:LearningAttempt|undefined)=>JSON.stringify(a)===JSON.stringify(b);
+ const firstAttempt=current?.firstAttempt||incoming.firstAttempt,practice=incoming.practice||current?.practice;
+ const history:LearningHistoryEntry[]=[...(current?.history||[]),...(incoming.history||[])];
+ if(current?.practice&&incoming.practice&&!same(current.practice,incoming.practice))history.push({reason:'previous-practice',attempt:current.practice});
+ if(current?.firstAttempt&&incoming.firstAttempt&&!same(current.firstAttempt,incoming.firstAttempt))history.push({reason:'imported-first',attempt:incoming.firstAttempt});
+ const unique=history.filter((h,i,all)=>!same(h.attempt,firstAttempt)&&!same(h.attempt,practice)&&all.findIndex(x=>same(x.attempt,h.attempt))===i);
+ if(unique.length>4)throw Error('This import would exceed the four-record history limit. Export both records and keep them separately; your saved work has not changed.');
+ return {firstAttempt,practice,history:unique};
 }

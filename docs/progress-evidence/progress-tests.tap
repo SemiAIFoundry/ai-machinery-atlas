@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: default compute versus memory is 3× versus 2× per two years with independently indexed baselines
+ok 1 - default compute versus memory is 3× versus 2× per two years with independently indexed baselines
+  ---
+  duration_ms: 1.173584
+  type: 'test'
+  ...
+# Subtest: interval selector reinterprets declared factors without silently annualizing them
+ok 2 - interval selector reinterprets declared factors without silently annualizing them
+  ---
+  duration_ms: 0.088458
+  type: 'test'
+  ...
+# Subtest: memory bandwidth, memory capacity and facility IT capacity keep different explicit metrics
+ok 3 - memory bandwidth, memory capacity and facility IT capacity keep different explicit metrics
+  ---
+  duration_ms: 0.148458
+  type: 'test'
+  ...
+# Subtest: growth controls handle equal and declining rates; unknown or contradictory controls fail
+ok 4 - growth controls handle equal and declining rates; unknown or contradictory controls fail
+  ---
+  duration_ms: 0.296625
+  type: 'test'
+  ...
+# Subtest: integer divisible allocation conserves capacity and demand across exhaustive small inputs
+ok 5 - integer divisible allocation conserves capacity and demand across exhaustive small inputs
+  ---
+  duration_ms: 6.710916
+  type: 'test'
+  ...
+# Subtest: hand-computed listed order, largest remainder and exact tie cases
+ok 6 - hand-computed listed order, largest remainder and exact tie cases
+  ---
+  duration_ms: 0.1155
+  type: 'test'
+  ...
+# Subtest: package complementarity is min feasible throughput, with explicit material conservation and changed bottleneck
+ok 7 - package complementarity is min feasible throughput, with explicit material conservation and changed bottleneck
+  ---
+  duration_ms: 0.212416
+  type: 'test'
+  ...
+# Subtest: package whole-stack floor prevents using fractional complementary inputs
+ok 8 - package whole-stack floor prevents using fractional complementary inputs
+  ---
+  duration_ms: 0.152125
+  type: 'test'
+  ...
+# Subtest: hall first-fit and strict-order give independently hand-packed whole-rack jobs
+ok 9 - hall first-fit and strict-order give independently hand-packed whole-rack jobs
+  ---
+  duration_ms: 0.2055
+  type: 'test'
+  ...
+# Subtest: hall physical and whole-job constraints remain conserved over a parameter grid
+ok 10 - hall physical and whole-job constraints remain conserved over a parameter grid
+  ---
+  duration_ms: 0.368833
+  type: 'test'
+  ...
+# Subtest: gate and uniform-wire dimensional relations match independent arithmetic
+ok 11 - gate and uniform-wire dimensional relations match independent arithmetic
+  ---
+  duration_ms: 0.095542
+  type: 'test'
+  ...
+# Subtest: parallel-lane byte rate handles bit conversion and payload efficiency once
+ok 12 - parallel-lane byte rate handles bit conversion and payload efficiency once
+  ---
+  duration_ms: 0.059791
+  type: 'test'
+  ...
+# Subtest: small matrix example matches fixed independently known products and identity cases
+ok 13 - small matrix example matches fixed independently known products and identity cases
+  ---
+  duration_ms: 0.245958
+  type: 'test'
+  ...
+# Subtest: Adam scalar trace has correct independently derived first-step correction and zero-gradient behavior
+ok 14 - Adam scalar trace has correct independently derived first-step correction and zero-gradient behavior
+  ---
+  duration_ms: 0.211542
+  type: 'test'
+  ...
+# Subtest: streaming softmax agrees with independent direct exponentials and permutation invariance
+ok 15 - streaming softmax agrees with independent direct exponentials and permutation invariance
+  ---
+  duration_ms: 0.217084
+  type: 'test'
+  ...
+# Subtest: KV allocation records unique physical blocks, final-block slack and declared reservation baseline
+ok 16 - KV allocation records unique physical blocks, final-block slack and declared reservation baseline
+  ---
+  duration_ms: 0.101291
+  type: 'test'
+  ...
+# Subtest: bad resource inputs and identities are rejected rather than silently coerced
+ok 17 - bad resource inputs and identities are rejected rather than silently coerced
+  ---
+  duration_ms: 0.131792
+  type: 'test'
+  ...
+# Subtest: the guide preserves 76 exact milestone references and all selected lesson IDs are existing
+ok 18 - the guide preserves 76 exact milestone references and all selected lesson IDs are existing
+  ---
+  duration_ms: 0.740458
+  type: 'test'
+  ...
+# Subtest: dated cases retain distinct statuses, scope limits, agent checks and explicit refresh rules
+ok 19 - dated cases retain distinct statuses, scope limits, agent checks and explicit refresh rules
+  ---
+  duration_ms: 0.287292
+  type: 'test'
+  ...
+# Subtest: synthetic fixture arithmetic is reproducible and does not consume source observations
+ok 20 - synthetic fixture arithmetic is reproducible and does not consume source observations
+  ---
+  duration_ms: 0.259
+  type: 'test'
+  ...
+# Subtest: whole-rack boundaries handle decimal roundoff without accepting a meaningful power deficit
+ok 21 - whole-rack boundaries handle decimal roundoff without accepting a meaningful power deficit
+  ---
+  duration_ms: 0.029625
+  type: 'test'
+  ...
+# Subtest: source freshness uses real recorded dates and never invents a review or auto-certifies truth
+ok 22 - source freshness uses real recorded dates and never invents a review or auto-certifies truth
+  ---
+  duration_ms: 0.81875
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 75.350917

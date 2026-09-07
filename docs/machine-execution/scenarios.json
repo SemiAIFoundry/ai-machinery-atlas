@@ -1,0 +1,814 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "machine-execution-1",
+  "scenarios": [
+    {
+      "id": "default",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "none"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 18,
+          "refreshes": 6,
+          "refreshBusyNs": 72,
+          "computeBusyNs": 90
+        },
+        "eventCount": 144,
+        "firstFailure": null
+      }
+    },
+    {
+      "id": "strided-b",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "column-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "none"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 724,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 480,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 18,
+          "refreshes": 7,
+          "refreshBusyNs": 84,
+          "computeBusyNs": 90
+        },
+        "eventCount": 155,
+        "firstFailure": null
+      }
+    },
+    {
+      "id": "one-slot",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 1,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "none"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 722,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 18,
+          "refreshes": 7,
+          "refreshBusyNs": 84,
+          "computeBusyNs": 90
+        },
+        "eventCount": 145,
+        "firstFailure": null
+      }
+    },
+    {
+      "id": "shared-padding",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 1,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "none"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 24,
+          "refreshes": 6,
+          "refreshBusyNs": 72,
+          "computeBusyNs": 96
+        },
+        "eventCount": 144,
+        "firstFailure": null
+      }
+    },
+    {
+      "id": "refresh-disabled",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 0,
+          "fault": "none"
+        }
+      },
+      "expected": {
+        "status": "complete",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 562,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 18,
+          "refreshes": 0,
+          "refreshBusyNs": 0,
+          "computeBusyNs": 90
+        },
+        "eventCount": 134,
+        "firstFailure": null
+      }
+    },
+    {
+      "id": "early-consume",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "early-consume"
+        }
+      },
+      "expected": {
+        "status": "complete-with-guard-rejection",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 18,
+          "refreshes": 6,
+          "refreshBusyNs": 72,
+          "computeBusyNs": 90
+        },
+        "eventCount": 145,
+        "firstFailure": "Rejected early compute: operands are still owned by DMA. No partial sum changes."
+      }
+    },
+    {
+      "id": "reuse-in-flight",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "reuse-in-flight"
+        }
+      },
+      "expected": {
+        "status": "complete-with-guard-rejection",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "totals": {
+          "durationNs": 652,
+          "macs": 27,
+          "requestedReadBytes": 216,
+          "distinctInputBytes": 72,
+          "readTransactionBytes": 416,
+          "writeTransactionBytes": 48,
+          "sharedRounds": 18,
+          "refreshes": 6,
+          "refreshBusyNs": 72,
+          "computeBusyNs": 90
+        },
+        "eventCount": 145,
+        "firstFailure": "Rejected slot reuse: the first DMA still owns this slot. Original data and safe schedule are retained."
+      }
+    },
+    {
+      "id": "unmapped-b",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "machine-execution-1",
+        "input": {
+          "a": [
+            [
+              2,
+              -1,
+              0
+            ],
+            [
+              1,
+              3,
+              2
+            ],
+            [
+              0,
+              1,
+              2
+            ]
+          ],
+          "b": [
+            [
+              1,
+              2,
+              1
+            ],
+            [
+              0,
+              -1,
+              3
+            ],
+            [
+              2,
+              1,
+              0
+            ]
+          ],
+          "size": 3,
+          "globalLayout": "row-major",
+          "bankPlacement": "same-bank",
+          "alignmentBytes": 0,
+          "sharedPadding": 0,
+          "buffers": 2,
+          "macNs": 8,
+          "refreshEveryNs": 96,
+          "fault": "unmapped-b"
+        }
+      },
+      "expected": {
+        "status": "mapping-blocked",
+        "reference": [
+          [
+            2,
+            5,
+            -1
+          ],
+          [
+            5,
+            1,
+            10
+          ],
+          [
+            4,
+            1,
+            3
+          ]
+        ],
+        "finalOutput": null,
+        "totals": {
+          "durationNs": 0,
+          "macs": 0,
+          "requestedReadBytes": 0,
+          "distinctInputBytes": 0,
+          "readTransactionBytes": 0,
+          "writeTransactionBytes": 0,
+          "sharedRounds": 0,
+          "refreshes": 0,
+          "refreshBusyNs": 0,
+          "computeBusyNs": 0
+        },
+        "eventCount": 3,
+        "firstFailure": "IOMMU teaching guard denied read at IOVA 8192 (16 bytes)."
+      }
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "validatedAt": "2026-09-07T18:06:45.507Z",
+  "actorType": "agent",
+  "nodeVersion": "v24.14.0",
+  "automatedTests": {
+    "count": 22,
+    "passed": 22,
+    "failed": 0
+  },
+  "strictTypecheck": {
+    "status": "passed",
+    "scope": "Strict portable model check; skipLibCheck for external ambient declarations."
+  },
+  "fixtureAgreement": "passed",
+  "preservedMilestones": 76,
+  "progressSteps": 10,
+  "capacityCases": 5,
+  "scopedPrimarySources": 15,
+  "syntheticExercises": {
+    "growthComparators": 3,
+    "finiteAllocations": 2
+  },
+  "independentArithmeticCoverage": {
+    "smallDivisibleAllocationCases": 10206,
+    "hallParameterCases": 96
+  },
+  "sourceChecks": {
+    "actorType": "agent",
+    "date": "2026-09-07",
+    "meaning": "Primary-source scope reads, separate from automated model validation."
+  },
+  "humanSpecialistReview": null,
+  "browserOrDeviceValidation": null,
+  "learnerValidation": null,
+  "referenceSnapshotLessonIds": 224,
+  "currentAuthoredLessonIds": 225,
+  "currentLessonReferenceCheck": "All selected guide/case/allocation lesson IDs exist in loadAuthoredAtlas().records.",
+  "modelVersion": "progress-evidence-2",
+  "sourceFiles": [
+    {
+      "path": "src/lib/progress-evidence.ts",
+      "sha256": "5830b8132e30f1e04da8c49cb08f11616fce6ae39139ba39d7e790b6d3dfff94",
+      "bytes": 17389
+    },
+    {
+      "path": "src/lib/data/progress-atlas.json",
+      "sha256": "59a9b55a0b87e12c6cd32277d7206cd4e1ffb3730aad96d804a5e5f36a2fb272",
+      "bytes": 37088
+    },
+    {
+      "path": "src/lib/data/capacity-cases.json",
+      "sha256": "b8a61009ce64e6efe06a82b6c6469d32e27a4f079b02351bf004865e9a8b3e7d",
+      "bytes": 17480
+    },
+    {
+      "path": "scripts/progress-evidence.test.mjs",
+      "sha256": "52b27bce3ad50b3155b80376ae65054f944e2eec21738c9d26172d31265cd0ea",
+      "bytes": 13806
+    }
+  ]
+}

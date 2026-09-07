@@ -1,0 +1,1062 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "progress-evidence-2",
+  "title": "Breakthroughs change the limiting step",
+  "curation": {
+    "actorType": "agent",
+    "role": "implementation and source-scope author",
+    "date": "2026-09-07"
+  },
+  "humanSpecialistReview": null,
+  "scope": "Ten selected explanatory routes through an existing longer history, not a complete causal history or a claim that progress follows one inevitable path.",
+  "timelinePreservation": {
+    "policy": "Add a guided route; do not replace, deduplicate, reorder or shorten the original combined timeline.",
+    "existingCount": 76,
+    "snapshotSha256": "9b6fe421ede2eb9e29188afefd56926c0b632a59cc5dc2ae949b1e4adb148ed6",
+    "matching": "year + exact title + component + source URL"
+  },
+  "steps": [
+    {
+      "id": "field-control",
+      "order": 1,
+      "year": 1960,
+      "title": "Control a channel with an insulated electrode",
+      "milestone": {
+        "year": 1960,
+        "title": "Kahng files an insulated-gate field-effect device patent",
+        "component": "mosfet",
+        "sourceUrl": "https://patents.google.com/patent/US3102230A/en"
+      },
+      "lessonIds": [
+        "energy-bands",
+        "mosfet",
+        "gate-stack",
+        "inverter"
+      ],
+      "investigationIds": [
+        "switching"
+      ],
+      "breakthrough": "Kahng filed the cited insulated-field circuit patent in 1960; this is a specific filing milestone, not a sole-inventor claim for all modern transistors.",
+      "mechanism": "An insulated electrode changes the electric field and surface charge. Gate capacitance connects voltage control to charge and energy.",
+      "experience": {
+        "functionName": "idealGateCharge",
+        "input": [],
+        "result": {
+          "capacitanceF": 2e-15,
+          "voltageV": 0.8,
+          "chargeC": 1.6000000000000002e-15,
+          "storedEnergyJ": 6.400000000000001e-16,
+          "basis": "Ideal fixed capacitor, not transistor current, leakage or a historic device measurement."
+        },
+        "question": "At fixed capacitance, what happens to stored energy when gate voltage doubles?",
+        "uiTarget": {
+          "lessonId": "mosfet"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "Control of semiconductor conduction without a conducting gate connection.",
+        "remaining": "Interface quality, leakage, electrostatics and fabrication variability still constrain a usable switch."
+      },
+      "sourceIds": [
+        "kahng-1960"
+      ]
+    },
+    {
+      "id": "integrated-wiring",
+      "order": 2,
+      "year": 1997,
+      "title": "Make connections a designed part of the chip",
+      "milestone": {
+        "year": 1997,
+        "title": "Fully integrated copper wiring demonstrated",
+        "component": "copper-conductor",
+        "sourceUrl": "https://research.ibm.com/publications/full-copper-wiring-in-a-sub-025-mm-cmos-ulsi-technology"
+      },
+      "lessonIds": [
+        "copper-conductor",
+        "beol-damascene-vias",
+        "interconnect-rc-materials"
+      ],
+      "investigationIds": [
+        "manufacturing",
+        "execution"
+      ],
+      "breakthrough": "The 1997 integrated-copper report connected materials and fabrication changes to a usable multilevel wiring process.",
+      "mechanism": "Wire resistance and capacitance impose a timescale even after transistor switching becomes fast.",
+      "experience": {
+        "functionName": "lumpedWireRC",
+        "input": [],
+        "result": {
+          "resistanceOhm": 2000.0000000000002,
+          "capacitanceF": 2e-13,
+          "timeConstantS": 4.0000000000000007e-10,
+          "basis": "Synthetic uniform wire; lumped R×C timescale excludes distributed geometry, drivers, vias, size effects and coupling."
+        },
+        "question": "Why does doubling length quadruple this uniform-wire RC timescale?",
+        "uiTarget": {
+          "lessonId": "interconnect-rc-materials"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "The wiring material/process can lower resistance at a specified geometry.",
+        "remaining": "Vias, dielectric coupling, routing congestion, reliability and driver behavior remain."
+      },
+      "sourceIds": [
+        "copper-1997"
+      ]
+    },
+    {
+      "id": "programmable-parallelism",
+      "order": 3,
+      "year": 2006,
+      "title": "Express a workload as many programmable threads",
+      "milestone": {
+        "year": 2006,
+        "title": "CUDA opens GPU execution to general computation",
+        "component": "cuda",
+        "sourceUrl": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
+      },
+      "lessonIds": [
+        "cuda",
+        "kernel",
+        "simt-active-lanes",
+        "gpu-occupancy-pipeline"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "CUDA introduced a way to program GPU computation outside graphics APIs in 2006.",
+      "mechanism": "Map independent output work to logical threads; instruction grouping and inactive lanes determine which issued work is useful.",
+      "experience": {
+        "functionName": "smallMatrixProduct",
+        "input": [],
+        "result": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "output": [
+            [
+              19,
+              22
+            ],
+            [
+              43,
+              50
+            ]
+          ],
+          "macCount": 8,
+          "products": [
+            {
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "a": 1,
+              "b": 5,
+              "product": 5,
+              "before": 0,
+              "after": 5
+            },
+            {
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "a": 2,
+              "b": 7,
+              "product": 14,
+              "before": 5,
+              "after": 19
+            },
+            {
+              "i": 0,
+              "j": 1,
+              "k": 0,
+              "a": 1,
+              "b": 6,
+              "product": 6,
+              "before": 0,
+              "after": 6
+            },
+            {
+              "i": 0,
+              "j": 1,
+              "k": 1,
+              "a": 2,
+              "b": 8,
+              "product": 16,
+              "before": 6,
+              "after": 22
+            },
+            {
+              "i": 1,
+              "j": 0,
+              "k": 0,
+              "a": 3,
+              "b": 5,
+              "product": 15,
+              "before": 0,
+              "after": 15
+            },
+            {
+              "i": 1,
+              "j": 0,
+              "k": 1,
+              "a": 4,
+              "b": 7,
+              "product": 28,
+              "before": 15,
+              "after": 43
+            },
+            {
+              "i": 1,
+              "j": 1,
+              "k": 0,
+              "a": 3,
+              "b": 6,
+              "product": 18,
+              "before": 0,
+              "after": 18
+            },
+            {
+              "i": 1,
+              "j": 1,
+              "k": 1,
+              "a": 4,
+              "b": 8,
+              "product": 32,
+              "before": 18,
+              "after": 50
+            }
+          ],
+          "basis": "Exact small integer result. Inspect R21 architecture-execution for synthetic scalar/vector/SIMT/systolic schedules; no vendor timing is inferred."
+        },
+        "question": "Which output/partial product is assigned to each active SIMT lane?",
+        "uiTarget": {
+          "studioId": "architecture-execution",
+          "scheme": "simt",
+          "lessonId": "simt-active-lanes"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "General workload expression can exploit parallel arithmetic hardware.",
+        "remaining": "Memory movement, inactive lanes, synchronization and software mapping can limit throughput."
+      },
+      "sourceIds": [
+        "cuda-2006"
+      ]
+    },
+    {
+      "id": "package-local-memory",
+      "order": 4,
+      "year": 2012,
+      "title": "Place logic and memory on dense package routes",
+      "milestone": {
+        "year": 2012,
+        "title": "TSMC CoWoS enters volume production",
+        "component": "interposer",
+        "sourceUrl": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      },
+      "lessonIds": [
+        "interposer",
+        "cowos-s-silicon-interposer",
+        "hbm-stack",
+        "compatible-supply-capacity"
+      ],
+      "investigationIds": [
+        "manufacturing",
+        "execution"
+      ],
+      "breakthrough": "TSMC dates CoWoS volume production to 2012.",
+      "mechanism": "An interposer connects logic and stacked memory through many short parallel routes; width and signaling rate together determine a link budget.",
+      "experience": {
+        "functionName": "parallelLinkBudget",
+        "input": [],
+        "result": {
+          "lanes": 256,
+          "bitsPerSecondPerLane": 2000000000,
+          "payloadFraction": 0.8,
+          "rawBytesPerSecond": 64000000000,
+          "payloadBytesPerSecond": 51200000000,
+          "basis": "Synthetic independent lanes at an assumed sustained payload fraction, not a CoWoS or HBM specification."
+        },
+        "question": "At the same lane rate and payload fraction, how does 64 versus 256 lanes change the byte-rate budget?",
+        "uiTarget": {
+          "lessonId": "hbm-base-phy-controller"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "Package routing supports wider memory interfaces than a narrow off-package route.",
+        "remaining": "HBM supply, known-good die, assembly/test capacity, signal integrity and heat now matter together."
+      },
+      "sourceIds": [
+        "cowos-2012"
+      ]
+    },
+    {
+      "id": "optimizer-state",
+      "order": 5,
+      "year": 2014,
+      "title": "Use gradient history when updating parameters",
+      "milestone": {
+        "year": 2014,
+        "title": "Adam combines momentum with adaptive scaling",
+        "component": "loss-optimizer",
+        "sourceUrl": "https://arxiv.org/abs/1412.6980"
+      },
+      "lessonIds": [
+        "loss-optimizer",
+        "training-memory-state",
+        "evaluation"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "Adam was first submitted in 2014 as a stochastic optimization method.",
+      "mechanism": "Track first and second gradient moments, correct their initialization bias and scale each parameter update.",
+      "experience": {
+        "functionName": "scalarAdamTrace",
+        "input": [],
+        "result": {
+          "steps": [
+            {
+              "index": 0,
+              "t": 1,
+              "gradient": 2,
+              "m": 0.19999999999999996,
+              "v": 0.0040000000000000036,
+              "correctedM": 2,
+              "correctedV": 4,
+              "update": 0.0999999995,
+              "before": 1,
+              "after": 0.9000000005
+            },
+            {
+              "index": 1,
+              "t": 2,
+              "gradient": 1,
+              "m": 0.2799999999999999,
+              "v": 0.004996000000000005,
+              "correctedM": 1.4736842105263157,
+              "correctedV": 2.4992496248124425,
+              "update": 0.09321796329148956,
+              "before": 0.9000000005,
+              "after": 0.8067820372085104
+            }
+          ],
+          "parameter": 0.8067820372085104,
+          "basis": "Authored scalar gradients demonstrate Adam moments and bias correction; not training loss, convergence evidence or the SGD classifier used in R26."
+        },
+        "question": "Why does the first second-moment estimate need a bias correction before it scales the update?",
+        "uiTarget": {
+          "lessonId": "loss-optimizer"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "Per-parameter adaptive scaling can change optimization behavior.",
+        "remaining": "Extra optimizer state consumes memory; progress still depends on data, objective and evaluation."
+      },
+      "sourceIds": [
+        "adam-2014"
+      ]
+    },
+    {
+      "id": "attention-workload",
+      "order": 6,
+      "year": 2017,
+      "title": "Weight values by query–key compatibility",
+      "milestone": {
+        "year": 2017,
+        "title": "Attention Is All You Need",
+        "component": "attention",
+        "sourceUrl": "https://arxiv.org/abs/1706.03762"
+      },
+      "lessonIds": [
+        "attention",
+        "embedding",
+        "positional-encoding",
+        "evaluation"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "The 2017 Transformer paper presented an attention-based sequence architecture.",
+      "mechanism": "Scaled query–key dot products become softmax weights over values; this creates structured matrix and memory work.",
+      "experience": {
+        "functionName": "streamingSoftmax",
+        "input": [],
+        "result": {
+          "scores": [
+            0.7071067811865475,
+            0
+          ],
+          "values": [
+            10,
+            20
+          ],
+          "weights": [
+            0.6697615493266569,
+            0.3302384506733431
+          ],
+          "reference": 13.302384506733432,
+          "streamed": 13.302384506733434,
+          "steps": [
+            {
+              "index": 0,
+              "score": 0.7071067811865475,
+              "value": 10,
+              "before": {
+                "maximum": null,
+                "mass": 0,
+                "numerator": 0
+              },
+              "rescale": 0,
+              "newWeight": 1,
+              "after": {
+                "maximum": 0.7071067811865475,
+                "mass": 1,
+                "numerator": 10
+              },
+              "partialOutput": 10
+            },
+            {
+              "index": 1,
+              "score": 0,
+              "value": 20,
+              "before": {
+                "maximum": 0.7071067811865475,
+                "mass": 1,
+                "numerator": 10
+              },
+              "rescale": 1,
+              "newWeight": 0.49306869139523984,
+              "after": {
+                "maximum": 0.7071067811865475,
+                "mass": 1.4930686913952398,
+                "numerator": 19.8613738279048
+              },
+              "partialOutput": 13.302384506733434
+            }
+          ],
+          "temporaryScoreWords": 1,
+          "fullScoreRowWords": 2,
+          "basis": "Scalar one-row online softmax illustrates rescaling and unchanged output. It is not a complete FlashAttention kernel or measured HBM traffic; Q/K/V, state, output and hardware storage are excluded from temporary-score counts."
+        },
+        "question": "With scores 1/√2 and 0, why is the weighted value between 10 and 20?",
+        "uiTarget": {
+          "lessonId": "attention"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "Attention supports content-dependent mixing across sequence positions.",
+        "remaining": "Dense pair interactions, activation storage, data quality and evaluation remain constraints."
+      },
+      "sourceIds": [
+        "attention-2017"
+      ]
+    },
+    {
+      "id": "matrix-dataflow",
+      "order": 7,
+      "year": 2017,
+      "title": "Move operands through a matrix datapath",
+      "milestone": {
+        "year": 2017,
+        "title": "First TPU performance paper published",
+        "component": "systolic-array-dataflow",
+        "sourceUrl": "https://arxiv.org/abs/1704.04760"
+      },
+      "lessonIds": [
+        "mac",
+        "systolic-array-dataflow",
+        "memory-hierarchy-route"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "The first TPU architecture paper appeared in 2017 and described an accelerator already deployed since 2015.",
+      "mechanism": "A matrix datapath reuses operands across processing elements; data arrival and fill/drain behavior determine useful activity.",
+      "experience": {
+        "functionName": "smallMatrixProduct",
+        "input": [],
+        "result": {
+          "a": [
+            [
+              1,
+              2
+            ],
+            [
+              3,
+              4
+            ]
+          ],
+          "b": [
+            [
+              5,
+              6
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "output": [
+            [
+              19,
+              22
+            ],
+            [
+              43,
+              50
+            ]
+          ],
+          "macCount": 8,
+          "products": [
+            {
+              "i": 0,
+              "j": 0,
+              "k": 0,
+              "a": 1,
+              "b": 5,
+              "product": 5,
+              "before": 0,
+              "after": 5
+            },
+            {
+              "i": 0,
+              "j": 0,
+              "k": 1,
+              "a": 2,
+              "b": 7,
+              "product": 14,
+              "before": 5,
+              "after": 19
+            },
+            {
+              "i": 0,
+              "j": 1,
+              "k": 0,
+              "a": 1,
+              "b": 6,
+              "product": 6,
+              "before": 0,
+              "after": 6
+            },
+            {
+              "i": 0,
+              "j": 1,
+              "k": 1,
+              "a": 2,
+              "b": 8,
+              "product": 16,
+              "before": 6,
+              "after": 22
+            },
+            {
+              "i": 1,
+              "j": 0,
+              "k": 0,
+              "a": 3,
+              "b": 5,
+              "product": 15,
+              "before": 0,
+              "after": 15
+            },
+            {
+              "i": 1,
+              "j": 0,
+              "k": 1,
+              "a": 4,
+              "b": 7,
+              "product": 28,
+              "before": 15,
+              "after": 43
+            },
+            {
+              "i": 1,
+              "j": 1,
+              "k": 0,
+              "a": 3,
+              "b": 6,
+              "product": 18,
+              "before": 0,
+              "after": 18
+            },
+            {
+              "i": 1,
+              "j": 1,
+              "k": 1,
+              "a": 4,
+              "b": 8,
+              "product": 32,
+              "before": 18,
+              "after": 50
+            }
+          ],
+          "basis": "Exact small integer result. Inspect R21 architecture-execution for synthetic scalar/vector/SIMT/systolic schedules; no vendor timing is inferred."
+        },
+        "question": "How can neighboring processing elements share operands while preserving exactly the same output?",
+        "uiTarget": {
+          "studioId": "architecture-execution",
+          "scheme": "systolic",
+          "lessonId": "systolic-array-dataflow"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs. The R21 output-stationary array is a different dataflow from the weight-stationary TPU described in this paper."
+      },
+      "changedBottleneck": {
+        "relieved": "Structured matrix work can reuse local data and amortize control.",
+        "remaining": "Array shape, padding, memory supply and workload compatibility still limit utilization."
+      },
+      "sourceIds": [
+        "tpu-2017"
+      ]
+    },
+    {
+      "id": "attention-io",
+      "order": 8,
+      "year": 2022,
+      "title": "Preserve the result while changing data movement",
+      "milestone": {
+        "year": 2022,
+        "title": "FlashAttention preprint published",
+        "component": "attention-io-tiling",
+        "sourceUrl": "https://arxiv.org/abs/2205.14135"
+      },
+      "lessonIds": [
+        "attention-io-tiling",
+        "shared-sram",
+        "kernel-locality-fusion"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "FlashAttention introduced an IO-aware exact-attention algorithm in 2022.",
+      "mechanism": "Tile inputs and update softmax statistics online so a full attention-score matrix need not be materialized in HBM.",
+      "experience": {
+        "functionName": "streamingSoftmax",
+        "input": [],
+        "result": {
+          "scores": [
+            0.7071067811865475,
+            0
+          ],
+          "values": [
+            10,
+            20
+          ],
+          "weights": [
+            0.6697615493266569,
+            0.3302384506733431
+          ],
+          "reference": 13.302384506733432,
+          "streamed": 13.302384506733434,
+          "steps": [
+            {
+              "index": 0,
+              "score": 0.7071067811865475,
+              "value": 10,
+              "before": {
+                "maximum": null,
+                "mass": 0,
+                "numerator": 0
+              },
+              "rescale": 0,
+              "newWeight": 1,
+              "after": {
+                "maximum": 0.7071067811865475,
+                "mass": 1,
+                "numerator": 10
+              },
+              "partialOutput": 10
+            },
+            {
+              "index": 1,
+              "score": 0,
+              "value": 20,
+              "before": {
+                "maximum": 0.7071067811865475,
+                "mass": 1,
+                "numerator": 10
+              },
+              "rescale": 1,
+              "newWeight": 0.49306869139523984,
+              "after": {
+                "maximum": 0.7071067811865475,
+                "mass": 1.4930686913952398,
+                "numerator": 19.8613738279048
+              },
+              "partialOutput": 13.302384506733434
+            }
+          ],
+          "temporaryScoreWords": 1,
+          "fullScoreRowWords": 2,
+          "basis": "Scalar one-row online softmax illustrates rescaling and unchanged output. It is not a complete FlashAttention kernel or measured HBM traffic; Q/K/V, state, output and hardware storage are excluded from temporary-score counts."
+        },
+        "question": "When the running maximum changes, why must old numerator and denominator be rescaled together?",
+        "uiTarget": {
+          "lessonId": "attention-io-tiling"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "Avoidable attention-score materialization and transfers can be reduced.",
+        "remaining": "Compute, on-chip storage, tile boundaries and other layer traffic still constrain execution."
+      },
+      "sourceIds": [
+        "flash-2022"
+      ]
+    },
+    {
+      "id": "kv-blocks",
+      "order": 9,
+      "year": 2023,
+      "title": "Allocate live KV state in blocks",
+      "milestone": {
+        "year": 2023,
+        "title": "PagedAttention",
+        "component": "kv-cache",
+        "sourceUrl": "https://arxiv.org/abs/2309.06180"
+      },
+      "lessonIds": [
+        "kv-cache",
+        "disaggregated-serving",
+        "serving"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "PagedAttention was published in 2023 with a block-based KV-cache management design.",
+      "mechanism": "A request maps logical token blocks to physical allocations instead of reserving a large contiguous maximum-sized region.",
+      "experience": {
+        "functionName": "pagedKvAllocation",
+        "input": [],
+        "result": {
+          "rows": [
+            {
+              "request": 0,
+              "liveTokens": 5,
+              "blocks": 2,
+              "physicalBlockIds": [
+                0,
+                1
+              ],
+              "allocatedTokens": 8,
+              "unusedTokens": 3
+            },
+            {
+              "request": 1,
+              "liveTokens": 7,
+              "blocks": 2,
+              "physicalBlockIds": [
+                2,
+                3
+              ],
+              "allocatedTokens": 8,
+              "unusedTokens": 1
+            },
+            {
+              "request": 2,
+              "liveTokens": 2,
+              "blocks": 1,
+              "physicalBlockIds": [
+                4
+              ],
+              "allocatedTokens": 4,
+              "unusedTokens": 2
+            }
+          ],
+          "liveTokens": 14,
+          "blocks": 5,
+          "pagedTokens": 20,
+          "contiguousTokens": 24,
+          "pagedUnusedTokens": 6,
+          "contiguousUnusedTokens": 10,
+          "savedReservedTokens": 4,
+          "basis": "Synthetic token-slot allocation with fixed-size blocks; no sharing, metadata cost, quantization, multiple layers, scheduler or physical token-byte claim. A negative saving is possible under a different reservation convention."
+        },
+        "question": "Why do 14 live token slots require 20 block-allocated slots here, and how does that compare with 24 reserved slots?",
+        "uiTarget": {
+          "lessonId": "kv-cache"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "A block allocation policy can reduce unused reserved KV space.",
+        "remaining": "Block metadata, fragmentation within the final block, bandwidth, batching and latency remain."
+      },
+      "sourceIds": [
+        "paged-2023"
+      ]
+    },
+    {
+      "id": "rack-operability",
+      "order": 10,
+      "year": 2024,
+      "title": "Integrate compute, fabric, power and cooling",
+      "milestone": {
+        "year": 2024,
+        "title": "GB200 NVL72 rack-scale architecture announced",
+        "component": "rack",
+        "sourceUrl": "https://developer.nvidia.com/blog/nvidia-gb200-nvl72-delivers-trillion-parameter-llm-training-and-real-time-inference/"
+      },
+      "lessonIds": [
+        "rack",
+        "rack-power-conversion",
+        "coolant-loop-separation",
+        "cluster-commissioning-gates",
+        "topology-job-admission"
+      ],
+      "investigationIds": [
+        "execution"
+      ],
+      "breakthrough": "The 2024 GB200 NVL72 announcement illustrates rack integration of compute trays, scale-up switching and liquid cooling.",
+      "mechanism": "Installed hardware supplies useful work only when electrical, cooling, fabric and operational requirements align.",
+      "experience": {
+        "functionName": "allocateHallCapacity",
+        "input": [],
+        "result": {
+          "modelVersion": "progress-evidence-2",
+          "options": {
+            "installedRacks": 12,
+            "commissionedRacks": 9,
+            "facilityInputMW": 1.2,
+            "pue": 1.2,
+            "itMWPerRack": 0.1,
+            "coolingITMW": 0.85,
+            "policy": "first-fit",
+            "demands": [
+              {
+                "id": "job-a",
+                "units": 5
+              },
+              {
+                "id": "job-b",
+                "units": 4
+              },
+              {
+                "id": "job-c",
+                "units": 3
+              }
+            ]
+          },
+          "basis": "Synthetic simultaneous admission of whole-rack jobs. PUE is a fixed scenario conversion factor, not a measured site value; all allocated IT power becomes heat. No network/memory compatibility, topology, priorities, job duration or wait times are modeled.",
+          "itPowerBudgetMW": 1,
+          "constraints": {
+            "installed": 12,
+            "commissioned": 9,
+            "power": 10,
+            "cooling": 8
+          },
+          "capacity": 8,
+          "bindingConstraints": [
+            "cooling"
+          ],
+          "allocation": {
+            "rows": [
+              {
+                "id": "job-a",
+                "requested": 5,
+                "allocated": 5,
+                "unmet": 0,
+                "remainingRacks": 3,
+                "reason": "Entire request fits."
+              },
+              {
+                "id": "job-b",
+                "requested": 4,
+                "allocated": 0,
+                "unmet": 4,
+                "remainingRacks": 3,
+                "reason": "Entire request does not fit remaining racks."
+              },
+              {
+                "id": "job-c",
+                "requested": 3,
+                "allocated": 3,
+                "unmet": 0,
+                "remainingRacks": 0,
+                "reason": "Entire request fits."
+              }
+            ],
+            "allocated": 8,
+            "unused": 0,
+            "unmet": 4
+          },
+          "loads": {
+            "itMW": 0.8,
+            "facilityMW": 0.96,
+            "overheadMW": 0.15999999999999998,
+            "rejectedITHeatMW": 0.8
+          },
+          "scope": "First-fit skips an oversized waiting request; strict-order stops admitting subsequent requests. Neither is asserted to be an actual public-computing or commercial scheduler policy."
+        },
+        "question": "Which condition limits admitted racks, and why can installed racks exceed concurrent useful capacity?",
+        "uiTarget": {
+          "studioId": "operating-hall",
+          "lessonId": "cluster-commissioning-gates"
+        },
+        "basis": "Authored worked arithmetic with explicit assumptions; the historical source supports the mechanism, not these invented inputs."
+      },
+      "changedBottleneck": {
+        "relieved": "Rack-level integration coordinates repeated compute and communication components.",
+        "remaining": "Site readiness, compatible resources, heat rejection, admission policy and recovery can become limiting."
+      },
+      "sourceIds": [
+        "rack-2024"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "kahng-1960",
+      "title": "Dawon Kahng, US3102230A",
+      "url": "https://patents.google.com/patent/US3102230A/en",
+      "locator": "Bibliographic filing date; Description, Figure 1A and dielectric/electrode discussion",
+      "sourceDate": "1960-05-31",
+      "scope": "Filing and insulated-field device mechanism; the toy capacitor is not its measured geometry or performance.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "copper-1997",
+      "title": "IBM authors: Full copper wiring in a sub-0.25 µm CMOS ULSI technology",
+      "url": "https://research.ibm.com/publications/full-copper-wiring-in-a-sub-025-mm-cmos-ulsi-technology",
+      "locator": "Publication date; Abstract paragraphs on integration and low-RC wiring",
+      "sourceDate": "1997-12-01",
+      "scope": "Integrated copper wiring report; synthetic RC inputs are not extracted paper measurements.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "cuda-2006",
+      "title": "NVIDIA CUDA Programming Guide",
+      "url": "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html",
+      "locator": "§1.1.1, paragraph beginning In 2006",
+      "sourceDate": null,
+      "scope": "CUDA introduction date and graphics-independent programmability; no historical speedup is imported.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "cowos-2012",
+      "title": "TSMC CoWoS technology overview",
+      "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+      "locator": "Overview, Since entering volume production in 2012; CoWoS-S section",
+      "sourceDate": null,
+      "scope": "Reported production history and logic/HBM interposer integration; lane example is synthetic.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "adam-2014",
+      "title": "Kingma and Ba: Adam",
+      "url": "https://arxiv.org/abs/1412.6980",
+      "locator": "First submission 22 December 2014; PDF Algorithm 1 and §2",
+      "sourceDate": "2014-12-22",
+      "scope": "First/second gradient moments and bias correction; no generic convergence or best-optimizer claim.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "attention-2017",
+      "title": "Vaswani et al.: Attention Is All You Need",
+      "url": "https://arxiv.org/abs/1706.03762",
+      "locator": "First submission 12 June 2017; §3.2.1 scaled dot-product attention",
+      "sourceDate": "2017-06-12",
+      "scope": "Scaled dot-product attention mechanism; two-key arithmetic is a new teaching example.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "tpu-2017",
+      "title": "Jouppi et al.: In-Datacenter Performance Analysis of a TPU",
+      "url": "https://arxiv.org/abs/1704.04760",
+      "locator": "First submission 5 April 2017; §2, printed p4, Figure 4 (systolic data flow)",
+      "sourceDate": "2017-04-05",
+      "scope": "Published weight-stationary TPU architecture. R21 uses a distinct output-stationary teaching array; 2017 is paper date, not the 2015 deployment date.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "flash-2022",
+      "title": "Dao et al.: FlashAttention",
+      "url": "https://arxiv.org/abs/2205.14135",
+      "locator": "First submission 27 May 2022; §3.1 and Algorithm 1",
+      "sourceDate": "2022-05-27",
+      "scope": "Tiling and online softmax avoid full attention-matrix materialization; toy row is not a full kernel.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "paged-2023",
+      "title": "Kwon et al.: PagedAttention",
+      "url": "https://arxiv.org/abs/2309.06180",
+      "locator": "First submission 12 September 2023; §4.1–4.2 and block-table figures",
+      "sourceDate": "2023-09-12",
+      "scope": "Block-based KV allocation mechanism; toy slot savings exclude metadata and measured throughput.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    },
+    {
+      "id": "rack-2024",
+      "title": "NVIDIA: GB200 NVL72 rack architecture",
+      "url": "https://developer.nvidia.com/blog/nvidia-gb200-nvl72-delivers-trillion-parameter-llm-training-and-real-time-inference/",
+      "locator": "18 March 2024 date; A rack scale design, paragraphs on compute trays, cold plates and switch trays",
+      "sourceDate": "2024-03-18",
+      "scope": "Announcement and rack integration features only; no vendor performance or power-number comparison.",
+      "sourceCheck": {
+        "actorType": "agent",
+        "date": "2026-09-07",
+        "action": "Read primary source for the stated locator and claim scope; not specialist certification."
+      }
+    }
+  ]
+}

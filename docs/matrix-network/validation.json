@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "matrix-network-transfer-1",
+  "checkedAt": "2026-09-07",
+  "actor": {
+    "type": "agent",
+    "id": "/root/curriculum_assessment"
+  },
+  "automated": {
+    "tests": 19,
+    "passed": 19,
+    "failed": 0,
+    "typecheck": "passed"
+  },
+  "notEstablished": [
+    "New network browser interaction review",
+    "Physical-device and assistive-technology observation",
+    "Human specialist and learner observation"
+  ],
+  "files": {
+    "src/lib/matrix-network.ts": "e6d5f181048406fc787de19cbad154873725c56958443c087e120f395451f08d",
+    "src/components/matrix-network.tsx": "492a10f2daed935ea3a90e6b87884e452adb7ca4a349b3453e7d00c6115b265b",
+    "src/components/matrix-network.css": "4a15f409743f12aabec8c642e267b0f922d2765e7b70393f4c577e5298884ec4",
+    "scripts/matrix-network.test.mjs": "ce1326234063617629e99b1626b1f6080e8ae97ed94794993667fd28bba049f0"
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:43:43.214Z",
+  "lessonId": "grid-interconnection-readiness",
+  "contentFingerprint": "90d3cf400e8f57437f2b7c18239ca92da6d7051345e69c9c3ac6f80dae36160d",
+  "record": {
+    "id": "grid-interconnection-readiness",
+    "level": "infrastructure",
+    "name": "Grid interconnection and deliverable electrical capacity",
+    "shortName": "Grid interconnection and deliverable electrical capacity",
+    "role": "Connects facility demand to location-specific network, equipment and operating readiness.",
+    "description": "A site’s proposed demand must fit a real electricity network at a real location. Interconnection planning examines service arrangements and required infrastructure rather than treating a national generation total as locally available power. Substations, transformers, transmission and distribution work have their own schedules, while load forecasts assess how much proposed demand is likely to materialize. PJM’s 2026 methodology discusses screening large-load requests and adjusting forecasts. A signed capacity agreement, completed electrical equipment and permission to operate are different states. Backup energy and demand response can support operation but do not automatically replace a continuous grid connection.",
+    "specs": [
+      {
+        "label": "Power versus energy",
+        "value": "MW capacity and MWh duration",
+        "context": "A backup device’s discharge rating does not establish how long it can support the site."
+      },
+      {
+        "label": "Geographic boundary",
+        "value": "Specific connection and service territory",
+        "context": "Regional generation totals cannot be assigned freely to a campus."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Facility load request",
+        "direction": "in",
+        "signal": "Demand profile, location and proposed operating date"
+      },
+      {
+        "name": "Electrical service readiness",
+        "direction": "out",
+        "signal": "Completed connection with defined capacity and operating conditions"
+      }
+    ],
+    "tradeoff": "A site with favorable land or fiber may need longer electrical upgrades; on-site support equipment adds cost and operational dependencies.",
+    "whyAI": "Accelerators cannot deliver sustained workload capacity until electrical service and the corresponding facility systems are actually ready.",
+    "related": [
+      "power-supply",
+      "ups",
+      "cluster-commissioning-gates"
+    ],
+    "sources": [
+      {
+        "title": "PJM’s Updated 20-Year Forecast Continues To See Significant Long-Term Load Growth",
+        "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/"
+      }
+    ],
+    "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+    "kind": "architecture",
+    "branch": "Data-center physical systems",
+    "subbranch": "Capacity, ramps and commissioning",
+    "mechanism": [
+      "Define the facility load boundary and the expected time-dependent demand.",
+      "Identify the required grid connection and screen the project against duplicate or speculative requests.",
+      "Track studies, service commitments and required network or substation work separately.",
+      "Verify equipment installation and operational acceptance before assigning deliverable capacity.",
+      "Model backup duration and demand-response constraints without treating them as unlimited continuous supply."
+    ],
+    "misconception": "An announced megawatt connection or generation project is not proof that a specific hall can draw that power today.",
+    "check": {
+      "question": "A battery can deliver 20 MWh of usable energy at the load-side boundary while supplying a constant 10 MW. What is its ideal duration?",
+      "options": [
+        "Two hours",
+        "Twenty hours",
+        "An unlimited period"
+      ],
+      "answer": 0,
+      "explanation": "20 MWh divided by 10 MW gives two hours. Conversion losses and reserved energy have already been accounted for in the stated load-side usable energy."
+    },
+    "science": [
+      {
+        "title": "Backup duration",
+        "equation": "t = Eusable / Pload",
+        "explanation": "Eusable is energy deliverable at the load-side boundary in MWh, Pload is constant output power in MW, and t is hours.",
+        "assumptions": "Positive constant load; usable energy already accounts for conversion losses, reserves and the stated battery condition. Changing load, temperature or degradation requires a revised usable-energy estimate."
+      }
+    ],
+    "prerequisites": [
+      "ups",
+      "power-supply"
+    ],
+    "learningObjective": "Separate proposed demand, local electrical service and backup duration.",
+    "workstream": "W09",
+    "visualFamily": "capacity-flow",
+    "engineeringExample": "Synthetic commissioning plan has racks arriving in March and a required transformer accepted in June. The electrical readiness gate can delay operation despite the earlier hardware delivery.",
+    "evidenceNotes": "PJM is one regional example, not global interconnection law. The source’s inconsistent winter headline is excluded; no unverified local queue position is claimed.",
+    "labId": "engineering",
+    "scope": "Propagate a stated facility power budget, PUE, readiness and utilization to illustrative work; detailed conversion, battery, cooling and grid models are not included.",
+    "deepLabId": "hall",
+    "investigationId": "manufacturing",
+    "labScope": "Propagate a stated facility power budget, PUE, readiness and utilization to illustrative work; detailed conversion, battery, cooling and grid models are not included."
+  },
+  "chapter": {
+    "id": "deep-capacity-readiness",
+    "domainId": "connected-infrastructure",
+    "read": "Separate processing, waiting, qualification, allocation and operation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "t=\\frac{E_{\\mathrm{usable}}}{P_{\\mathrm{load}}}",
+      "variables": [
+        {
+          "symbol": "t",
+          "meaning": "Duration supported by already-usable energy",
+          "unit": "h"
+        },
+        {
+          "symbol": "E_usable",
+          "meaning": "Energy usable at the declared load-side boundary",
+          "unit": "MWh"
+        },
+        {
+          "symbol": "P_load",
+          "meaning": "Constant supported real load power",
+          "unit": "MW"
+        }
+      ],
+      "text": "Backup duration is already-usable energy divided by constant load power.",
+      "note": "This load-side energy convention differs from a stored-energy input that still needs conversion efficiency."
+    }
+  ],
+  "manifestLesson": {
+    "id": "grid-interconnection-readiness",
+    "title": "Grid interconnection and deliverable electrical capacity",
+    "chapterId": "deep-capacity-readiness",
+    "domainId": "connected-infrastructure",
+    "workstream": "W09",
+    "contentFingerprint": "90d3cf400e8f57437f2b7c18239ca92da6d7051345e69c9c3ac6f80dae36160d",
+    "scope": {
+      "role": "Connects facility demand to location-specific network, equipment and operating readiness.",
+      "learningObjective": "Separate proposed demand, local electrical service and backup duration.",
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "evidenceNotes": "PJM is one regional example, not global interconnection law. The source’s inconsistent winter headline is excluded; no unverified local queue position is claimed.",
+      "workedExample": "Synthetic commissioning plan has racks arriving in March and a required transformer accepted in June. The electrical readiness gate can delay operation despite the earlier hardware delivery.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Backup duration",
+          "assumptions": "Positive constant load; usable energy already accounts for conversion losses, reserves and the stated battery condition. Changing load, temperature or degradation requires a revised usable-energy estimate.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Separate processing, waiting, qualification, allocation and operation."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-2b5f76658b39305d88e5",
+        "url": "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/",
+        "title": "PJM’s Updated 20-Year Forecast Continues To See Significant Long-Term Load Growth",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      }
+    ],
+    "claimIds": [],
+    "evidence": {
+      "status": "lesson-level-citations-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model"
+      ],
+      "inheritedClaimStatuses": [],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "status-sensitive",
+      "proposedIntervalDays": 30,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "infrastructure-engineering-reviewer",
+        "label": "Power, cooling and infrastructure reviewer",
+        "focus": "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Availability, readiness, allocation, forecast and announced specifications can change quickly; recheck on a status-changing event."
+      ],
+      "reviewFocus": [
+        "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "ups",
+        "power-supply"
+      ],
+      "dependentLessonIds": [],
+      "relatedLessonIds": [
+        "power-supply",
+        "ups",
+        "cluster-commissioning-gates"
+      ],
+      "journeyIds": [],
+      "lab": {
+        "labId": "engineering",
+        "deepLabId": "hall",
+        "scope": "Propagate a stated facility power budget, PUE, readiness and utilization to illustrative work; detailed conversion, battery, cooling and grid models are not included."
+      },
+      "primaryInvestigationId": "manufacturing",
+      "investigationIds": [
+        "manufacturing"
+      ],
+      "engineeringRelationIds": [
+        "engineering-limited-by-rack-grid-interconnection-readiness"
+      ],
+      "engineeringSourceRelationIds": [
+        "engineering-limited-by-rack-grid-interconnection-readiness"
+      ]
+    }
+  },
+  "claims": []
+}

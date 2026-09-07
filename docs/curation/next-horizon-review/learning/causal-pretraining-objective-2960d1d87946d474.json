@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:42:57.384Z",
+  "contentFingerprint": "2960d1d87946d474e92f7a4a1bdc616eeb43b603b04a435ca19529185baa76b2",
+  "record": {
+    "id": "causal-pretraining-objective",
+    "name": "Next-token supervision from raw sequences",
+    "shortName": "Next-token supervision from raw sequences",
+    "role": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+    "description": "Autoregressive pretraining asks a model to predict each next token from earlier inputs. The target is the shifted sequence, not the token already visible at the same position. Summing negative log probabilities gives a sequence score; averaging included targets gives the training objective. Exponentiating this mean yields perplexity under the same tokenization and mask. Answer accuracy is a different measurement: it observes selected decisions rather than every token probability. A model can become better at punctuation or repeated format markers while its answer decisions remain unchanged.",
+    "mechanism": [
+      "Pair input position t with token t+1 and mark valid targets.",
+      "Compute stable log-softmax and gather each target’s log probability.",
+      "Sum losses and divide by included targets across the batch.",
+      "Fit a simple baseline on training data only and compare the same reserved targets."
+    ],
+    "learningObjective": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+    "engineeringExample": "For three target probabilities [1/2,1/4,1/2], total NLL is ln2+ln4+ln2=ln16=2.772589 nats. Mean NLL is 0.924196 nats and perplexity is 16^(1/3)=2.519842. A uniform nine-token predictor has mean NLL ln9=2.197225 and perplexity 9. Feeding the answer token at the very position being scored would invalidate this comparison through target leakage.",
+    "evidenceNotes": "Mode: executable core. Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+    "specs": [
+      {
+        "label": "Learning mode",
+        "value": "executable core",
+        "context": "The executable decoder has 423 parameters; worked extensions do not imply an additional simulator."
+      },
+      {
+        "label": "Worked contract",
+        "value": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+        "context": "Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Inputs and state",
+        "direction": "in",
+        "signal": "Pair input position t with token t+1 and mark valid targets."
+      },
+      {
+        "name": "Result and check",
+        "direction": "out",
+        "signal": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy."
+      }
+    ],
+    "tradeoff": "Token likelihood supplies dense supervision but weights frequent formatting and rare task-critical targets according to their actual counts.",
+    "whyAI": "Turn an objective into a stable, restartable experiment with controlled budgets. Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+    "misconception": "It is a mistake to conclude: Model answer accuracy versus baseline perplexity.",
+    "check": {
+      "question": "Which comparison uses the same next-token objective?",
+      "options": [
+        "Training loss after showing the target at its own input position.",
+        "Model and baseline scored on identical shifted targets and masks.",
+        "Model answer accuracy versus baseline perplexity."
+      ],
+      "answer": 1,
+      "explanation": "Model and baseline scored on identical shifted targets and masks. Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable."
+    },
+    "prerequisites": [
+      "tiny-causal-decoder",
+      "sequence-packing-loss-denominators"
+    ],
+    "related": [
+      "tiny-causal-decoder",
+      "sequence-packing-loss-denominators",
+      "optimizer-schedule-stability",
+      "microbatch-equivalent-updates"
+    ],
+    "sources": [
+      {
+        "title": "2 OLMo 2 Furious",
+        "url": "https://arxiv.org/html/2501.00656v1"
+      },
+      {
+        "title": "Attention Is All You Need",
+        "url": "https://arxiv.org/html/1706.03762v7"
+      }
+    ],
+    "level": "model",
+    "scale": "Mathematical, data and behavior space; logical dimensions are not physical distance",
+    "kind": "model",
+    "branch": "model-lifecycle-pretraining",
+    "subbranch": "Next-token supervision from raw sequences",
+    "workstream": "W11",
+    "visualFamily": "mathematical",
+    "labId": "library",
+    "labScope": "Model lifecycle studio: executable core. Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable.",
+    "science": [
+      {
+        "title": "Next-token supervision from raw sequences · worked relation",
+        "equation": "L=-\\frac{1}{M}\\sum_{t:m_t=1}\\log p_\\theta(x_{t+1}\\mid x_{\\le t}),\\qquad \\operatorname{PPL}=e^L",
+        "explanation": "For three target probabilities [1/2,1/4,1/2], total NLL is ln2+ln4+ln2=ln16=2.772589 nats. Mean NLL is 0.924196 nats and perplexity is 16^(1/3)=2.519842. A uniform nine-token predictor has mean NLL ln9=2.197225 and perplexity 9. Feeding the answer token at the very position being scored would invalidate this comparison through target leakage.",
+        "assumptions": "Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable."
+      }
+    ],
+    "history": []
+  },
+  "chapter": {
+    "id": "model-lifecycle-pretraining",
+    "name": "Run, diagnose and reproduce pretraining",
+    "title": "Run, diagnose and reproduce pretraining",
+    "question": "Turn an objective into a stable, restartable experiment with controlled budgets.",
+    "band": 5,
+    "domainId": "learning-intelligence",
+    "parent": "Model learning lifecycle",
+    "scene": "learning-decoder",
+    "scale": "Data, objectives, representations and behavior; not a physical distance",
+    "summary": "Turn an objective into a stable, restartable experiment with controlled budgets.",
+    "ids": [
+      "causal-pretraining-objective",
+      "optimizer-schedule-stability",
+      "microbatch-equivalent-updates"
+    ],
+    "read": "Follow token-feature arrays into a triangular causal-attention pattern, projection matrices and a residual path. Array sizes here illustrate indexing and masking; the model experience shows the actual 423 parameters and all intermediate values. Layer spacing is conceptual."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "L=-\\frac{1}{M}\\sum_{t:m_t=1}\\log p_\\theta(x_{t+1}\\mid x_{\\le t}),\\qquad \\operatorname{PPL}=e^L",
+      "text": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+      "variables": [
+        {
+          "symbol": "L",
+          "meaning": "Mean included next-token NLL",
+          "unit": "nats per token"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Included target count",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "m_t",
+          "meaning": "Target inclusion flag",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p_theta",
+          "meaning": "Conditional target probability",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "PPL",
+          "meaning": "Perplexity under this tokenization",
+          "unit": "dimensionless"
+        }
+      ]
+    }
+  ],
+  "structuredClaims": [
+    {
+      "id": "ml-claim-olmo2",
+      "title": "2 OLMo 2 Furious · scoped mechanism",
+      "statement": "The disclosed recipe separates data curricula, continued pretraining and post-training stages; selected checkpoint averages are evaluated.",
+      "sourceId": "ml-source-olmo2",
+      "lessonIds": [
+        "data-mixture-sampling",
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "model-lifecycle-stage-contract",
+        "replay-retention-forgetting",
+        "checkpoint-averaging-boundaries",
+        "feed-forward",
+        "residual-normalization",
+        "loss-optimizer",
+        "checkpoint",
+        "training-memory-state"
+      ],
+      "status": "research",
+      "metric": "Mechanism and mathematical contract",
+      "value": "Qualitative scope; worked numbers are authored",
+      "unit": "",
+      "denominator": "The cited section and its declared assumptions",
+      "period": "Edition inspected 2026-09-07",
+      "scope": "Sections 2.3 and 4.2.2; mid-training soups/Table 14; Section 5",
+      "limitations": "No corpus, model size, optimizer schedule or empirical result from OLMo 2 is reproduced by the toy decoder.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "ml-claim-transformer",
+      "title": "Attention Is All You Need · scoped mechanism",
+      "statement": "The Transformer combines attention, position-wise nonlinear maps and positional information, with masking in its decoder.",
+      "sourceId": "ml-source-transformer",
+      "lessonIds": [
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "embedding",
+        "attention",
+        "feed-forward",
+        "output-head"
+      ],
+      "status": "research",
+      "metric": "Mechanism and mathematical contract",
+      "value": "Qualitative scope; worked numbers are authored",
+      "unit": "",
+      "denominator": "The cited section and its declared assumptions",
+      "period": "Edition inspected 2026-09-07",
+      "scope": "Sections 3.1–3.5, equations 1–2, causal masking and positions",
+      "limitations": "Core is an authored one-head pre-RMS/tanh decoder with separate head, not the original encoder–decoder architecture.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "manifestLesson": {
+    "id": "causal-pretraining-objective",
+    "title": "Next-token supervision from raw sequences",
+    "chapterId": "model-lifecycle-pretraining",
+    "domainId": "learning-intelligence",
+    "workstream": "W11",
+    "contentFingerprint": "2960d1d87946d474e92f7a4a1bdc616eeb43b603b04a435ca19529185baa76b2",
+    "scope": {
+      "role": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+      "learningObjective": "Construct shifted next-token targets and interpret token likelihood separately from answer accuracy.",
+      "scale": "Mathematical, data and behavior space; logical dimensions are not physical distance",
+      "evidenceNotes": "Mode: executable core. Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "workedExample": "For three target probabilities [1/2,1/4,1/2], total NLL is ln2+ln4+ln2=ln16=2.772589 nats. Mean NLL is 0.924196 nats and perplexity is 16^(1/3)=2.519842. A uniform nine-token predictor has mean NLL ln9=2.197225 and perplexity 9. Feeding the answer token at the very position being scored would invalidate this comparison through target leakage.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Next-token supervision from raw sequences · worked relation",
+          "assumptions": "Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Follow token-feature arrays into a triangular causal-attention pattern, projection matrices and a residual path. Array sizes here illustrate indexing and masking; the model experience shows the actual 423 parameters and all intermediate values. Layer spacing is conceptual."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-91e65f2aee755df9b416",
+        "url": "https://arxiv.org/html/2501.00656v1",
+        "title": "2 OLMo 2 Furious",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "ml-claim-olmo2",
+            "ledgerSourceId": "ml-source-olmo2"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-8a455ddf634c62b2a780",
+        "url": "https://arxiv.org/html/1706.03762v7",
+        "title": "Attention Is All You Need",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "ml-claim-transformer",
+            "ledgerSourceId": "ml-source-transformer"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "ml-claim-olmo2",
+      "ml-claim-transformer"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "research"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "ml-methods-reviewer",
+        "label": "ML methods and evaluation reviewer",
+        "focus": "Mathematical assumptions, training/inference distinctions, experimental scope and evaluation limits."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Research framing, model validity and replication status require explicit limitations and follow-up evidence."
+      ],
+      "reviewFocus": [
+        "Mathematical assumptions, training/inference distinctions, experimental scope and evaluation limits.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "tiny-causal-decoder",
+        "sequence-packing-loss-denominators"
+      ],
+      "dependentLessonIds": [
+        "domain-adaptive-continuation",
+        "sft-chat-loss-masks"
+      ],
+      "relatedLessonIds": [
+        "tiny-causal-decoder",
+        "sequence-packing-loss-denominators",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates"
+      ],
+      "journeyIds": [
+        "learn-a-model"
+      ],
+      "lab": {
+        "labId": "library",
+        "deepLabId": null,
+        "scope": "Model lifecycle studio: executable core. Natural logarithms, positive target probabilities and nonzero denominator. Perplexities with different tokenization/masks are not directly comparable."
+      },
+      "primaryInvestigationId": null,
+      "investigationIds": [],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": []
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "checkedOn": "2026-09-07",
+  "actorType": "agent",
+  "scope": "Primary-source mechanism research and authored implementation checks; no human specialist review or actual framework/model execution.",
+  "humanSpecialistReview": null,
+  "sources": [
+    {
+      "id": "temporal-activities",
+      "title": "Temporal Activities",
+      "url": "https://docs.temporal.io/activities",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "locator": "Activity retries, recommended idempotency, recorded result and restart behavior.",
+      "implementationBoundary": "The tools and receipt design are authored; the example is not Temporal.",
+      "recheckTriggers": [
+        "Source protocol/API changes",
+        "Tool/authority/journal semantics change",
+        "Claims of actual model or production behavior added"
+      ]
+    },
+    {
+      "id": "temporal-history",
+      "title": "Temporal Workflow Execution",
+      "url": "https://docs.temporal.io/workflow-execution",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "locator": "Replay of commands against recorded event history.",
+      "implementationBoundary": "Local synchronous storage is not a production distributed event-history service.",
+      "recheckTriggers": [
+        "Source protocol/API changes",
+        "Tool/authority/journal semantics change",
+        "Claims of actual model or production behavior added"
+      ]
+    },
+    {
+      "id": "mcp-tools",
+      "title": "MCP tools",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/server/tools",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "locator": "Tool name/input/output schema, calls, errors and trust limits on annotations.",
+      "implementationBoundary": "Tools are an authored local interface; no MCP wire adapter or conformity claim.",
+      "recheckTriggers": [
+        "Source protocol/API changes",
+        "Tool/authority/journal semantics change",
+        "Claims of actual model or production behavior added"
+      ]
+    },
+    {
+      "id": "mcp-authorization",
+      "title": "MCP authorization",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "locator": "Token audience, scope and server-side authorization boundaries.",
+      "implementationBoundary": "The fixture implements a bounded capability/role gate, not OAuth or cryptographic identity.",
+      "recheckTriggers": [
+        "Source protocol/API changes",
+        "Tool/authority/journal semantics change",
+        "Claims of actual model or production behavior added"
+      ]
+    },
+    {
+      "id": "tau-bench",
+      "title": "\u03c4-bench",
+      "url": "https://arxiv.org/abs/2406.12045",
+      "checkedOn": "2026-09-07",
+      "actorType": "agent",
+      "locator": "Abstract: tool/user/policy interactions and final database task-state evaluation.",
+      "implementationBoundary": "Independent goal-state checking is adopted as a teaching principle; no benchmark reproduction or performance claim.",
+      "recheckTriggers": [
+        "Source protocol/API changes",
+        "Tool/authority/journal semantics change",
+        "Claims of actual model or production behavior added"
+      ]
+    }
+  ]
+}

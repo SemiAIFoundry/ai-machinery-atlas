@@ -1,0 +1,25 @@
+{
+  "checkedOn": "2026-09-07",
+  "actor": {
+    "type": "AI agent",
+    "id": "/root/process_editor"
+  },
+  "nodeTests": {
+    "passed": 19,
+    "failed": 0,
+    "command": "node --experimental-strip-types --test scripts/ranking-application.test.mjs"
+  },
+  "strictScopedTypeScript": "passed",
+  "fixturesRecomputed": 8,
+  "mathRendering": {
+    "definitions": 4,
+    "strictKaTeX": "passed",
+    "HTMLAndMathML": "passed"
+  },
+  "localDocumentationLinks": "passed",
+  "humanSpecialistReview": null,
+  "humanLearnerObservation": null,
+  "physicalDeviceObservation": null,
+  "browserObservation": null,
+  "freezeStatus": "Eight complete input scenarios replay exactly; eight current source fingerprints checked after portable-storage limit integration."
+}

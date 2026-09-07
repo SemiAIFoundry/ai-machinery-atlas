@@ -1,0 +1,743 @@
+{
+  "id": "hardware-runtime-learning",
+  "version": "hardware-runtime-learning-1",
+  "title": "Commissioning and runtime boundaries",
+  "scope": "Five additive N12 lessons with exact commissioning-execution-1 cases. This bounded bridge leaves real firmware, OS, page-table, cache-protocol and device-signoff implementation outside its scope.",
+  "chapters": [
+    {
+      "id": "hardware-runtime-boundaries",
+      "band": 4,
+      "domainId": "executable-software",
+      "name": "Commissioning and runtime boundaries",
+      "parent": "Software / device readiness and accepted execution",
+      "scene": "software-flow",
+      "scale": "One process, three buffers and a device job; logical addresses and state",
+      "title": "Make a powered device a valid participant in computation",
+      "summary": "Inspect interface readiness, process and DMA address spaces, buffer identity, visibility, ownership and recovery epochs.",
+      "ids": [
+        "firmware-device-contract",
+        "process-dma-address-spaces",
+        "iommu-buffer-identity",
+        "dma-visibility-ownership",
+        "device-completion-reset-epochs"
+      ],
+      "question": "When do the right bytes become a once-accepted device result?",
+      "read": "Follow actual buffer values through ordered state transitions. Diagram coordinates show relationships, not physical geometry or timing."
+    }
+  ],
+  "lessons": [
+    {
+      "id": "firmware-device-contract",
+      "name": "Firmware handoff and device readiness",
+      "shortName": "From power to a usable device",
+      "role": "Separate device compatibility, driver discovery, resource ownership and queue readiness before any operand is consumed.",
+      "description": "A powered accelerator is not yet a usable participant in a computation. Its interface must be recognized, its required resources must be available, and a driver must complete the device-specific readiness contract. Firmware and boot software can establish initial device state, but a compatible interface string does not prove who produced an image or whether it is trustworthy. This lesson deliberately begins with an advertised teaching ABI and follows how that claim gates later actions. The process can already own and populate host buffers while the device remains unavailable. Rejected compatibility leaves those values intact and produces no DMA or numerical output. The distinction matters during bring-up: silicon, an installed driver, a discovered function and a running command are different milestones. The execution trace makes each gate inspectable while leaving firmware loading, secure boot, attestation and physical reset release outside its scope.",
+      "mechanism": [
+        "The host process creates identified input and output buffers before it attempts a device job.",
+        "The device handoff advertises matrix-int32-v1 or an incompatible version; the model does not execute firmware code.",
+        "A recognized teaching device identity binds to a driver, and the register resource is claimed.",
+        "The assumed DMA addressing capability and queue setup are accepted before publication.",
+        "An incompatible ABI stops commissioning before any submission, device read or multiply-accumulate.",
+        "A later acknowledged device reset clears readiness and requires the contract to be established again."
+      ],
+      "prerequisites": [
+        "runtime-device-dispatch",
+        "management-controller"
+      ],
+      "related": [
+        "process-dma-address-spaces",
+        "cluster-commissioning-gates",
+        "chip-tapeout-productization"
+      ],
+      "specs": [
+        {
+          "label": "Teaching ABI",
+          "value": "matrix-int32-v1",
+          "context": "String equality is a compatibility test, not cryptographic verification."
+        },
+        {
+          "label": "Scope of discovery",
+          "value": "One declared device/driver match",
+          "context": "No actual PCI configuration transactions or operating-system enumeration."
+        },
+        {
+          "label": "Readiness outcome",
+          "value": "Queue ready or commissioning blocked",
+          "context": "Installed hardware is not counted as a completed job."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Declared runtime inputs",
+          "direction": "in",
+          "signal": "Stable matrix job, buffer identities and the stated device/visibility contract"
+        },
+        {
+          "name": "Inspectable accepted or rejected result",
+          "direction": "out",
+          "signal": "Event trace, actual buffer values and bounded completion/work ledger"
+        }
+      ],
+      "science": [
+        {
+          "title": "The declared ABI gate",
+          "equation": "ABI gate equals one only when the advertised and required interface identifiers match.",
+          "explanation": "The model accepts one exact operation-interface identifier. Resource and queue gates remain separate after this comparison.",
+          "assumptions": "A declared symbolic interface contract, not image authentication, feature probing or proof of correct device behavior."
+        }
+      ],
+      "engineeringExample": "Keep A=[[1,2],[3,4]] and B=[[5,6],[7,8]]. With a compatible handoff, the later job can publish [[19,22],[43,50]]. Select incompatible ABI: the trace still shows the process input values, but submitted attempts, DMA read bytes and executed MACs are all zero. It publishes no C. Restoring compatibility permits the remaining gates to run; it does not by itself establish memory visibility, correct mappings or a correct completion.",
+      "learningObjective": "Distinguish the compatibility, discovery, resource and queue gates and identify the first gate that prevents a device job.",
+      "misconception": "Matching a device interface identifies a supported contract; it does not verify a firmware image or establish end-to-end correctness.",
+      "check": {
+        "question": "An ABI mismatch leaves host buffers populated. Has the device computed their matrix product?",
+        "options": [
+          "Yes, because the driver is installed",
+          "No: no job was submitted or operands consumed",
+          "Yes, because populated memory implies DMA completion"
+        ],
+        "answer": 1,
+        "explanation": "Host allocation and initialization do not execute the device command."
+      },
+      "checks": [],
+      "whyAI": "Accelerator bring-up joins physical hardware to supported execution. A model framework depends on this lower interface being usable before tensor work can run.",
+      "tradeoff": "Adding interface versions can preserve compatibility only when negotiation and failure behavior are explicit. The current model chooses an exact single-version gate instead of emulating feature negotiation.",
+      "evidenceNotes": "Primary sources establish the cited runtime mechanisms. Numerical values, address ranges, ABI strings, event schedule and reset/retry epochs are authored teaching contracts. No real device, firmware image, operating-system driver, page table, cache protocol or security verification is executed.",
+      "sourceIds": [
+        "runtime-linux-pci-616",
+        "runtime-virtio-13"
+      ],
+      "sources": [
+        {
+          "title": "Linux 6.16 — How To Write Linux PCI Drivers",
+          "url": "https://docs.kernel.org/6.16/PCI/pci.html"
+        },
+        {
+          "title": "OASIS — Virtual I/O Device (VIRTIO) Version 1.3",
+          "url": "https://docs.oasis-open.org/virtio/virtio/v1.3/virtio-v1.3.html"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "commissioning-execution-1",
+        "scenario": "abi-mismatch",
+        "expected": {
+          "status": "blocked",
+          "submittedAttempts": 0,
+          "readBytes": 0,
+          "executedMacs": 0,
+          "finalOutput": null
+        }
+      },
+      "level": "software",
+      "branch": "Executable software",
+      "subbranch": "Commissioning and runtime boundaries",
+      "scale": "One process and device job; logical states and byte addresses, no timing or physical geometry",
+      "kind": "system",
+      "workstream": "N12",
+      "visualFamily": "software-flow",
+      "labId": "library",
+      "investigationId": "execution",
+      "labScope": "The commissioning-execution-1 studio executes this bounded 2×2 matrix, buffer and completion contract. The surrounding atlas scene is conceptual; it is not a firmware emulator or system simulator.",
+      "history": []
+    },
+    {
+      "id": "process-dma-address-spaces",
+      "name": "Process, physical and device address spaces",
+      "shortName": "One buffer, three addresses",
+      "role": "Trace the same allocated bytes through separate CPU virtual and device-visible mappings.",
+      "description": "A matrix buffer has an identity and contents independent of the address used to reach it. The CPU executes in an address space that translates process virtual addresses into physical storage. A DMA-capable device issues its own addresses, which can pass through a separate translation. Confusing these namespaces can make a descriptor unusable even though its numerical value looks like a valid pointer. In the teaching trace, the CPU and device reach the same buffer by different base addresses while preserving the offset within the buffer. Each namespace has its own bounds. The inspection table records the process identity, virtual base, physical base, device base and current epoch, so a copied address can be checked against its intended interpreter. These are declared sixteen-byte regions rather than a real page-table layout. They illustrate translation without pretending to model page pinning, page faults, TLB walks or virtual-machine isolation.",
+      "mechanism": [
+        "The process owns A, B and C as stable sixteen-byte objects.",
+        "CPU writes use virtual addresses and translate to the corresponding physical region.",
+        "The driver supplies a device-visible IOVA in the command descriptor, not a process pointer.",
+        "A device translation selects physical storage and adds the byte offset within its declared region.",
+        "Each word occupies four bytes; the last word begins twelve bytes after the buffer base.",
+        "An address from the wrong namespace has no matching range in this specimen and is rejected."
+      ],
+      "prerequisites": [
+        "host-cpu",
+        "firmware-device-contract"
+      ],
+      "related": [
+        "iommu-buffer-identity",
+        "pcie-interface",
+        "pcie-cxl-semantics"
+      ],
+      "specs": [
+        {
+          "label": "A bases",
+          "value": "VA 0x1000 → PA 0x4000 ← IOVA 0x8000",
+          "context": "Chosen teaching addresses, expressed in bytes."
+        },
+        {
+          "label": "B bases",
+          "value": "VA 0x2000 → PA 0x5000 ← IOVA 0x9000",
+          "context": "A separate object even if equal values happen to be stored."
+        },
+        {
+          "label": "C bases",
+          "value": "VA 0x3000 → PA 0x6000 ← IOVA 0xA000",
+          "context": "Device write permission; sixteen allocated bytes."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Declared runtime inputs",
+          "direction": "in",
+          "signal": "Stable matrix job, buffer identities and the stated device/visibility contract"
+        },
+        {
+          "name": "Inspectable accepted or rejected result",
+          "direction": "out",
+          "signal": "Event trace, actual buffer values and bounded completion/work ledger"
+        }
+      ],
+      "science": [
+        {
+          "title": "Preserve the offset across address spaces",
+          "equation": "Physical address equals its buffer base plus the virtual or device byte offset.",
+          "explanation": "Under the correct two mappings, a CPU and a device address with the same in-buffer offset reach the same physical byte.",
+          "assumptions": "The virtual and device bases refer to the same declared object. The inequality bounds a single byte; a multi-byte access must fit completely."
+        }
+      ],
+      "engineeringExample": "For A[1,1], the row-major element index is 3 and its four-byte word starts at offset 12. CPU VA 0x100C and device IOVA 0x800C both resolve to PA 0x400C. Passing 0x100C directly to this device fails: its device table starts A at 0x8000, not 0x1000. Passing 0x800C to the process mapping likewise fails. Equal physical destination follows from two explicit mappings, not from numerical equality of the pointers.",
+      "learningObjective": "Resolve a matrix element from both virtual and device address spaces and identify which namespace a descriptor must contain.",
+      "misconception": "An address is interpreted within an address space; an application pointer is not automatically a DMA address.",
+      "check": {
+        "question": "Which device address reaches A’s fourth word in this declared map?",
+        "options": [
+          "0x100C",
+          "0x400C",
+          "0x800C"
+        ],
+        "answer": 2,
+        "explanation": "The descriptor uses the device base 0x8000 plus twelve bytes."
+      },
+      "checks": [],
+      "whyAI": "Tensor runtimes pass buffers through host and accelerator execution. Keeping object identity separate from pointers prevents mistakes when memory is remapped or devices have distinct addressing constraints.",
+      "tradeoff": "Translation enables placement and isolation but adds state that must remain valid for the whole access lifetime. Real page granularity can expose more storage than a small logical buffer, which this byte-range teaching model does not simulate.",
+      "evidenceNotes": "Primary sources establish the cited runtime mechanisms. Numerical values, address ranges, ABI strings, event schedule and reset/retry epochs are authored teaching contracts. No real device, firmware image, operating-system driver, page table, cache protocol or security verification is executed.",
+      "sourceIds": [
+        "runtime-linux-dma-616"
+      ],
+      "sources": [
+        {
+          "title": "Linux 6.16 — Dynamic DMA mapping Guide",
+          "url": "https://docs.kernel.org/6.16/core-api/dma-api-howto.html"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "commissioning-execution-1",
+        "scenario": "default",
+        "word": 3,
+        "offsetBytes": 12,
+        "virtual": 4108,
+        "iova": 32780,
+        "physical": 16396
+      },
+      "level": "software",
+      "branch": "Executable software",
+      "subbranch": "Commissioning and runtime boundaries",
+      "scale": "One process and device job; logical states and byte addresses, no timing or physical geometry",
+      "kind": "system",
+      "workstream": "N12",
+      "visualFamily": "software-flow",
+      "labId": "library",
+      "investigationId": "execution",
+      "labScope": "The commissioning-execution-1 studio executes this bounded 2×2 matrix, buffer and completion contract. The surrounding atlas scene is conceptual; it is not a firmware emulator or system simulator.",
+      "history": []
+    },
+    {
+      "id": "iommu-buffer-identity",
+      "name": "IOMMU permission and tensor identity",
+      "shortName": "A permitted address can still be wrong",
+      "role": "Distinguish protection validity from the semantic identity of a matrix operand.",
+      "description": "A translation unit can reject an absent or disallowed device address, but that check alone cannot establish that a driver supplied the intended tensor. The runtime must also preserve the association between a logical operand and its physical storage. This distinction is visible when the B descriptor points through a permitted mapping to A. Every transferred word is readable, arithmetic proceeds, and the device reports completion. Yet it has computed A squared rather than A times B. Removing B’s mapping instead yields a protection failure and supplies no B operand. Comparing the two cases prevents a common diagnostic shortcut: the absence of an address fault does not prove a computation used the right data. The teaching checker applies exact range, access-direction and epoch conditions; its semantic oracle separately compares the produced matrix with the declared operation.",
+      "mechanism": [
+        "Each device range has a base, byte length, physical target, read/write permission and current epoch.",
+        "A DMA request must fit completely within exactly one permitted range of the current epoch.",
+        "A missing B range rejects its first read after A has already transferred; arithmetic receives no B values.",
+        "The wrong-mapping specimen redirects B to A while preserving readable permissions.",
+        "Device MACs use those delivered words and therefore compute the operation implied by the wrong data.",
+        "Only a separate operand-identity or result check reveals the semantic mismatch; the protection mechanism is not a tensor verifier."
+      ],
+      "prerequisites": [
+        "process-dma-address-spaces"
+      ],
+      "related": [
+        "runtime-device-dispatch",
+        "dma-visibility-ownership",
+        "sharded-matmul-ownership"
+      ],
+      "specs": [
+        {
+          "label": "Protection checks",
+          "value": "Range, direction, current epoch",
+          "context": "A model of declared byte regions, not a real hardware page-table encoding."
+        },
+        {
+          "label": "Wrong alias",
+          "value": "Logical B → physical A",
+          "context": "Readable but not the intended tensor."
+        },
+        {
+          "label": "Missing range",
+          "value": "B read blocked before arithmetic",
+          "context": "The sixteen A bytes already transferred are still counted."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Declared runtime inputs",
+          "direction": "in",
+          "signal": "Stable matrix job, buffer identities and the stated device/visibility contract"
+        },
+        {
+          "name": "Inspectable accepted or rejected result",
+          "direction": "out",
+          "signal": "Event trace, actual buffer values and bounded completion/work ledger"
+        }
+      ],
+      "science": [
+        {
+          "title": "A complete access must fit its declared range",
+          "equation": "The request starts at or above the range base, ends within its byte length, has permission, and uses the active mapping epoch.",
+          "explanation": "The model requires exactly one matching translation. Ending at the upper boundary is valid; crossing it is rejected.",
+          "assumptions": "Positive integer request length, declared sixteen-byte ranges and a sixteen-bit device address mask. No physical IOMMU page granularity is inferred."
+        },
+        {
+          "title": "A wrong alias changes the computed operation",
+          "equation": "The default B-to-A alias computes [[7,10],[15,22]] instead of [[19,22],[43,50]].",
+          "explanation": "The outcome follows from actual device input arrays. All reads pass range and permission checks in this scenario.",
+          "assumptions": "Only the displayed default matrices and B-to-A mapping; some other matrices could coincidentally produce equal results."
+        }
+      ],
+      "engineeringExample": "With default A and B, correct mappings yield [[19,22],[43,50]]. The B→A alias transfers 32 input bytes and completes eight MACs, yielding [[7,10],[15,22]] without any protection rejection. The absent-B case instead transfers A’s 16 bytes, rejects B’s first word, executes zero MACs and publishes nothing. An ownership or mapping diagnostic should report these as distinct failures.",
+      "learningObjective": "Predict the different numerical and transfer outcomes of a permitted wrong alias and an absent device mapping.",
+      "misconception": "A successful translation proves only its stated address/permission contract; it does not prove tensor identity.",
+      "check": {
+        "question": "The B IOVA maps to readable A storage. What does this specimen do?",
+        "options": [
+          "Always faults because the logical names differ",
+          "Computes with A as both operands, then exposes a result mismatch",
+          "Automatically finds B from the mathematical reference"
+        ],
+        "answer": 1,
+        "explanation": "The translation unit checks its table. The device consumes the actual transferred A values."
+      },
+      "checks": [],
+      "whyAI": "Custom accelerator drivers and graph runtimes manage many buffers and aliases. Correct tensor shapes and valid addresses must remain associated with the right storage throughout lowering and dispatch.",
+      "tradeoff": "Permission checks constrain access while identity checks protect meaning. Stronger software tracking is useful, but this experiment does not establish malicious-device isolation, replay protection or an operating-system security boundary.",
+      "evidenceNotes": "Primary sources establish the cited runtime mechanisms. Numerical values, address ranges, ABI strings, event schedule and reset/retry epochs are authored teaching contracts. No real device, firmware image, operating-system driver, page table, cache protocol or security verification is executed.",
+      "sourceIds": [
+        "runtime-linux-dma-616"
+      ],
+      "sources": [
+        {
+          "title": "Linux 6.16 — Dynamic DMA mapping Guide",
+          "url": "https://docs.kernel.org/6.16/core-api/dma-api-howto.html"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "commissioning-execution-1",
+        "scenario": "wrong-mapping",
+        "expected": {
+          "finalOutput": [
+            [
+              7,
+              10
+            ],
+            [
+              15,
+              22
+            ]
+          ],
+          "readBytes": 32,
+          "executedMacs": 8,
+          "rejectedActions": 0
+        }
+      },
+      "level": "software",
+      "branch": "Executable software",
+      "subbranch": "Commissioning and runtime boundaries",
+      "scale": "One process and device job; logical states and byte addresses, no timing or physical geometry",
+      "kind": "system",
+      "workstream": "N12",
+      "visualFamily": "software-flow",
+      "labId": "library",
+      "investigationId": "execution",
+      "labScope": "The commissioning-execution-1 studio executes this bounded 2×2 matrix, buffer and completion contract. The surrounding atlas scene is conceptual; it is not a firmware emulator or system simulator.",
+      "history": []
+    },
+    {
+      "id": "dma-visibility-ownership",
+      "name": "DMA visibility, ordering and buffer lifetime",
+      "shortName": "Visible bits are not permission to reuse",
+      "role": "Separate coherent values, ordered descriptor publication and ownership of in-flight storage.",
+      "description": "A CPU and a device can refer to the same physical storage while observing different versions of its data. The noncoherent teaching mode makes that discrepancy explicit with a CPU-visible copy and a memory copy. Inputs start as dirty CPU values over zeroed memory; output begins with a sentinel in both copies. Visibility handoffs reconcile them at the chosen ownership boundary. Coherent mode keeps the values equal without these copies, but it does not authorize reuse of storage still owned by a running job. Nor does it remove the need to publish descriptor fields before making the descriptor valid. The model treats those as separate actions. This separation explains why replacing a cache flush with a completion wait, or replacing a lifetime check with coherence, addresses the wrong condition. A result can be mathematically correct in physical memory while the consumer still reads an old cached output.",
+      "mechanism": [
+        "CPU writes create input values; in noncoherent mode physical memory initially remains zero.",
+        "The input handoff makes those values visible before device consumption.",
+        "Descriptor fields are prepared before ordered publication makes the job available.",
+        "Publication transfers buffer ownership to the device; early host overwrite is rejected before mutation.",
+        "Device output writes update memory. The noncoherent CPU copy still contains the sentinel until its output handoff.",
+        "Completion, output visibility and ownership return precede the consumer read and subsequent buffer reuse."
+      ],
+      "prerequisites": [
+        "process-dma-address-spaces",
+        "l1-cache"
+      ],
+      "related": [
+        "iommu-buffer-identity",
+        "device-completion-reset-epochs",
+        "pcie-cxl-semantics"
+      ],
+      "specs": [
+        {
+          "label": "Noncoherent toy",
+          "value": "CPU copy and memory copy",
+          "context": "No line size, coherence state machine, cache replacement or ISA barriers are simulated."
+        },
+        {
+          "label": "Sentinel output",
+          "value": "−777 in each initial C word",
+          "context": "A chosen fixture value, not uninitialized real memory."
+        },
+        {
+          "label": "Ordering and lifetime",
+          "value": "Descriptor then valid; complete before reuse",
+          "context": "These conditions remain necessary with coherent values."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Declared runtime inputs",
+          "direction": "in",
+          "signal": "Stable matrix job, buffer identities and the stated device/visibility contract"
+        },
+        {
+          "name": "Inspectable accepted or rejected result",
+          "direction": "out",
+          "signal": "Event trace, actual buffer values and bounded completion/work ledger"
+        }
+      ],
+      "science": [
+        {
+          "title": "Input visibility changes the actual operand",
+          "equation": "The device reads A when values are coherent or synchronized; it reads the zeroed memory copy when the noncoherent input handoff is omitted.",
+          "explanation": "B follows the same rule in this fixture, so omitting both input handoffs yields a zero output even though the CPU matrices are populated.",
+          "assumptions": "The initial physical input copies are explicitly zero. This is not a universal prediction of stale cache contents."
+        },
+        {
+          "title": "Buffer reuse follows ownership",
+          "equation": "The reuse gate accepts a buffer only while its declared owner is the host.",
+          "explanation": "Device publication transfers ownership; validated completion and visibility handoff return it. A coherent value does not change this lifetime rule.",
+          "assumptions": "Single host and device, one in-flight job, explicit whole-buffer ownership; no shared-reader or fine-grained ownership protocol."
+        }
+      ],
+      "engineeringExample": "With default noncoherent mode, omitting input visibility produces [[0,0],[0,0]]. Omitting only output visibility lets memory contain [[19,22],[43,50]], but the consumer reads [[−777,−777],[−777,−777]]. Coherent mode removes these two-copy discrepancies. An early attempt to reuse B is still rejected in either mode; its CPU and memory values remain unchanged and the original job can complete correctly.",
+      "learningObjective": "Diagnose whether a failed job violated data visibility, descriptor ordering or buffer lifetime, using the actual copies and ownership trace.",
+      "misconception": "Coherence makes values visible; it does not grant permission to mutate an in-flight buffer or order every required control action.",
+      "check": {
+        "question": "Physical C is correct, but the noncoherent CPU output handoff was omitted. What does the fixture consumer read?",
+        "options": [
+          "The stale sentinel matrix",
+          "The independent mathematical reference",
+          "An automatically corrected version of C"
+        ],
+        "answer": 0,
+        "explanation": "The consumer reads its actual CPU-visible copy, which still contains −777 in this fixture."
+      },
+      "checks": [],
+      "whyAI": "Accelerator runtimes overlap transfers and execution. That overlap is useful only when completion and ownership make the next read or overwrite valid.",
+      "tradeoff": "Copies and synchronization have costs in real machines, but no such timing is assigned here. Removing a handoff is valid only when a different declared mechanism establishes visibility and lifetime.",
+      "evidenceNotes": "Primary sources establish the cited runtime mechanisms. Numerical values, address ranges, ABI strings, event schedule and reset/retry epochs are authored teaching contracts. No real device, firmware image, operating-system driver, page table, cache protocol or security verification is executed.",
+      "sourceIds": [
+        "runtime-linux-dma-616",
+        "runtime-virtio-13"
+      ],
+      "sources": [
+        {
+          "title": "Linux 6.16 — Dynamic DMA mapping Guide",
+          "url": "https://docs.kernel.org/6.16/core-api/dma-api-howto.html"
+        },
+        {
+          "title": "OASIS — Virtual I/O Device (VIRTIO) Version 1.3",
+          "url": "https://docs.oasis-open.org/virtio/virtio/v1.3/virtio-v1.3.html"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "commissioning-execution-1",
+        "scenarios": [
+          "skip-to-device",
+          "skip-to-cpu",
+          "early-reuse"
+        ],
+        "expected": {
+          "staleInputs": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "staleOutput": [
+            [
+              -777,
+              -777
+            ],
+            [
+              -777,
+              -777
+            ]
+          ],
+          "rejectedReuse": 1
+        }
+      },
+      "level": "software",
+      "branch": "Executable software",
+      "subbranch": "Commissioning and runtime boundaries",
+      "scale": "One process and device job; logical states and byte addresses, no timing or physical geometry",
+      "kind": "system",
+      "workstream": "N12",
+      "visualFamily": "software-flow",
+      "labId": "library",
+      "investigationId": "execution",
+      "labScope": "The commissioning-execution-1 studio executes this bounded 2×2 matrix, buffer and completion contract. The surrounding atlas scene is conceptual; it is not a firmware emulator or system simulator.",
+      "history": []
+    },
+    {
+      "id": "device-completion-reset-epochs",
+      "name": "Completion, reset and execution epochs",
+      "shortName": "One job across canceled attempts",
+      "role": "Separate physical work, accepted completion and useful output while a device is stopped and reinitialized.",
+      "description": "An asynchronous device job can have written some output without establishing an accepted completion. Reset makes that distinction consequential: the host must not assume that every in-flight request finished, or that none of its side effects occurred. The teaching recovery path first establishes quiescence, retires the old queue and mappings, and cancels the uncommitted attempt. It then optionally runs the same pure matrix job under a new epoch with intact host inputs. The stable job identity connects both attempts, while the epoch prevents an older host-side notification from authorizing the new result. Every executed multiply-accumulate remains counted, including work whose partial output is discarded. The accepted consumer result appears once after all current-attempt writes, matching completion identity and output visibility. This finite replay is safe only under the stated pure-operation contract; repeating external side effects would require a stronger application recovery design.",
+      "mechanism": [
+        "A descriptor carries the stable job ID and the current execution epoch.",
+        "Every output cell is written before the normal completion record is posted.",
+        "Reset-needed stops the host from treating the old attempt as successful; the device is then assumed quiescent only at reset acknowledgement.",
+        "The old attempt’s arithmetic becomes discarded work, and its queue/mappings are retired before reuse.",
+        "An optional retry reestablishes readiness and performs the same operation under a new epoch.",
+        "A previously queued host notification for the old epoch is rejected; only one matching current completion can authorize publication."
+      ],
+      "prerequisites": [
+        "dma-visibility-ownership",
+        "firmware-device-contract"
+      ],
+      "related": [
+        "retained-work-restart-boundary",
+        "checkpoint-retained-work",
+        "cluster-commissioning-gates"
+      ],
+      "specs": [
+        {
+          "label": "Job identity",
+          "value": "matrix-job-1",
+          "context": "Retained across attempts; completion also needs the active epoch."
+        },
+        {
+          "label": "Default reset position",
+          "value": "After two output cells",
+          "context": "Four MACs have executed and eight output bytes have been written."
+        },
+        {
+          "label": "Retry assumption",
+          "value": "Intact inputs and acknowledged quiescence",
+          "context": "No fault rate, repair latency or external side-effect recovery is inferred."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Declared runtime inputs",
+          "direction": "in",
+          "signal": "Stable matrix job, buffer identities and the stated device/visibility contract"
+        },
+        {
+          "name": "Inspectable accepted or rejected result",
+          "direction": "out",
+          "signal": "Event trace, actual buffer values and bounded completion/work ledger"
+        }
+      ],
+      "science": [
+        {
+          "title": "Account every executed MAC",
+          "equation": "Executed MACs equal active, discarded and committed MACs at every event.",
+          "explanation": "Reset moves the uncommitted attempt’s active count to discarded. Publication moves the accepted attempt’s active count to committed. Committed arithmetic is still separately checked for semantic correctness.",
+          "assumptions": "Exact finite ledger of this one pure 2×2 job, at most one reset and one retry. Reads and writes are accounted separately in bytes."
+        },
+        {
+          "title": "Completion must belong to the live attempt",
+          "equation": "Completion acceptance requires matching job and epoch, a live queue, all output cells written and no prior acceptance.",
+          "explanation": "The implementation additionally requires a published live descriptor. A repeated notification cannot cause a second accepted result.",
+          "assumptions": "A bounded local protocol. Epochs are identifiers here, not cryptographic tokens or a distributed exactly-once guarantee."
+        }
+      ],
+      "engineeringExample": "Reset the default job after its second output cell. The old memory contains [19,22,−777,−777], but no C is published. A retry performs eight more MACs, producing 12 executed = 4 discarded + 8 committed, with 64 input read bytes and 24 output write bytes across both attempts. It publishes [[19,22],[43,50]] once. Stop instead publishes nothing. Reset after all four writes still cancels eight uncommitted MACs when the completion boundary has not been crossed.",
+      "learningObjective": "Reconcile partial output, discarded arithmetic and one accepted result across a device reset, and reject an old or duplicate completion.",
+      "misconception": "Physical writes and notifications do not independently establish that an entire intended job is safe to publish.",
+      "check": {
+        "question": "A reset cancels four MACs, then a full retry executes eight. How much arithmetic was executed and committed?",
+        "options": [
+          "Eight executed, eight committed",
+          "Twelve executed, twelve committed",
+          "Twelve executed, eight committed"
+        ],
+        "answer": 2,
+        "explanation": "The canceled four MACs remain physical work but do not belong to the accepted attempt."
+      },
+      "checks": [],
+      "whyAI": "Long-running accelerator services need to separate retried execution from completed useful requests. Recovery correctness is part of delivered compute capacity, not merely an availability percentage.",
+      "tradeoff": "Keeping inputs and tracking generations enables this pure-job retry. The model does not restore corrupted input memory, repair firmware or make side-effecting requests safely replayable.",
+      "evidenceNotes": "Primary sources establish the cited runtime mechanisms. Numerical values, address ranges, ABI strings, event schedule and reset/retry epochs are authored teaching contracts. No real device, firmware image, operating-system driver, page table, cache protocol or security verification is executed.",
+      "sourceIds": [
+        "runtime-virtio-13"
+      ],
+      "sources": [
+        {
+          "title": "OASIS — Virtual I/O Device (VIRTIO) Version 1.3",
+          "url": "https://docs.oasis-open.org/virtio/virtio/v1.3/virtio-v1.3.html"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "commissioning-execution-1",
+        "scenario": "device-reset",
+        "expected": {
+          "executedMacs": 12,
+          "discardedMacs": 4,
+          "committedMacs": 8,
+          "readBytes": 64,
+          "writeBytes": 24,
+          "publishedResults": 1
+        }
+      },
+      "level": "software",
+      "branch": "Executable software",
+      "subbranch": "Commissioning and runtime boundaries",
+      "scale": "One process and device job; logical states and byte addresses, no timing or physical geometry",
+      "kind": "system",
+      "workstream": "N12",
+      "visualFamily": "software-flow",
+      "labId": "library",
+      "investigationId": "execution",
+      "labScope": "The commissioning-execution-1 studio executes this bounded 2×2 matrix, buffer and completion contract. The surrounding atlas scene is conceptual; it is not a firmware emulator or system simulator.",
+      "history": []
+    }
+  ],
+  "timeline": [],
+  "milestones": [],
+  "sources": [
+    {
+      "id": "runtime-linux-pci-616",
+      "title": "Linux 6.16 — How To Write Linux PCI Drivers",
+      "url": "https://docs.kernel.org/6.16/PCI/pci.html",
+      "publisher": "Linux kernel project",
+      "version": "Linux 6.16",
+      "locator": "1.2 pci_register_driver and probe; 1.4 Device Initialization Steps; introduction cleanup sequence",
+      "scope": "Discovery and driver/resource lifecycle context; no actual PCI device is operated.",
+      "published": "Edition identified; publication date not used as a model parameter",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "runtime-linux-dma-616",
+      "title": "Linux 6.16 — Dynamic DMA mapping Guide",
+      "url": "https://docs.kernel.org/6.16/core-api/dma-api-howto.html",
+      "publisher": "Linux kernel project",
+      "version": "Linux 6.16",
+      "locator": "CPU and DMA addresses; Types of DMA mappings; consistent-memory barriers; streaming dma_sync_* handoffs; Handling Errors",
+      "scope": "Address-space, visibility, ordering and lifetime boundaries. The model uses its own byte-range translation and two-copy semantics, not the Linux API.",
+      "published": "Edition identified; publication date not used as a model parameter",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "runtime-virtio-13",
+      "title": "OASIS — Virtual I/O Device (VIRTIO) Version 1.3",
+      "url": "https://docs.oasis-open.org/virtio/virtio/v1.3/virtio-v1.3.html",
+      "publisher": "OASIS",
+      "version": "Virtio 1.3",
+      "locator": "2.1 Device Status; 2.4 Device Reset; 3.1 Initialization; 3.3 Device Cleanup",
+      "scope": "Readiness, exposed-buffer lifetime and reset/quiescence context. No Virtio conformance or firmware authentication is claimed.",
+      "published": "Edition identified; publication date not used as a model parameter",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "sourceReviewManifest": "docs/commissioning-execution/source-review.json",
+  "claims": [
+    {
+      "id": "runtime-claim-pci-lifecycle",
+      "title": "Discovery and resources precede an enabled device job",
+      "statement": "The cited PCI driver guide separates matching/probing and device resource initialization from normal operation.",
+      "sourceId": "runtime-linux-pci-616",
+      "lessonIds": [
+        "firmware-device-contract"
+      ],
+      "status": "reported",
+      "metric": "Runtime mechanism contract",
+      "value": "Qualitative semantics",
+      "unit": "",
+      "denominator": "The cited version and scoped sections",
+      "period": "Source checked 2026-09-07",
+      "scope": "PCI driver initialization context",
+      "limitations": "The teaching ABI string and device identity are authored, not real PCI identifiers.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "runtime-claim-dma-addresses",
+      "title": "CPU and device address spaces can differ",
+      "statement": "The DMA guide distinguishes virtual, physical and bus addresses and describes translation between them.",
+      "sourceId": "runtime-linux-dma-616",
+      "lessonIds": [
+        "process-dma-address-spaces",
+        "iommu-buffer-identity"
+      ],
+      "status": "reported",
+      "metric": "Runtime mechanism contract",
+      "value": "Qualitative semantics",
+      "unit": "",
+      "denominator": "The cited version and scoped sections",
+      "period": "Source checked 2026-09-07",
+      "scope": "CPU and DMA addresses section",
+      "limitations": "The exact byte-range map and semantic wrong-alias fixture are authored.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "runtime-claim-dma-visibility",
+      "title": "Coherent values do not replace ordering or lifetime",
+      "statement": "The DMA guide distinguishes mapping types, visibility handoffs and the need for ordering even with consistent memory.",
+      "sourceId": "runtime-linux-dma-616",
+      "lessonIds": [
+        "dma-visibility-ownership"
+      ],
+      "status": "reported",
+      "metric": "Runtime mechanism contract",
+      "value": "Qualitative semantics",
+      "unit": "",
+      "denominator": "The cited version and scoped sections",
+      "period": "Source checked 2026-09-07",
+      "scope": "Types of DMA mappings and streaming synchronization sections",
+      "limitations": "No cache protocol or Linux API call is executed by the two-copy model.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "runtime-claim-reset-contract",
+      "title": "Reset requires a clear quiescence and reinitialization boundary",
+      "statement": "Virtio defines status/readiness, device reset behavior and restrictions on exposed buffers.",
+      "sourceId": "runtime-virtio-13",
+      "lessonIds": [
+        "firmware-device-contract",
+        "device-completion-reset-epochs"
+      ],
+      "status": "reported",
+      "metric": "Runtime mechanism contract",
+      "value": "Qualitative semantics",
+      "unit": "",
+      "denominator": "The cited version and scoped sections",
+      "period": "Source checked 2026-09-07",
+      "scope": "Sections 2.1, 2.4, 3.1 and 3.3",
+      "limitations": "The pure-job retry epoch and exact ledger are teaching policies, not mandated Virtio queue fields or a conformance result.",
+      "checkedOn": "2026-09-07"
+    }
+  ]
+}

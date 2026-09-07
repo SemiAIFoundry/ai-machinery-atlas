@@ -1,0 +1,36 @@
+{
+  "actor": "agent /root",
+  "recordedOn": "2026-09-07",
+  "method": "Independent direct dimensional and scalar calculations, not a simulator output",
+  "findings": {
+    "hbf-latency-prefetch": {
+      "arithmetic": "1e12 bytes/s × 20e-6 s = 20e6 bytes = 20 MB. 1024/16384 = 1/16 = 6.25%. Rates and request sizes are synthetic; page reuse invalidates the no-reuse efficiency assumption.",
+      "claims": [
+        "The internal simulation limitation and absence of general latency/page defaults remain explicit."
+      ],
+      "dependency": "Read-tier and hierarchy prerequisites preserve distinct transfer boundaries; placement permits a read-oriented scenario without asserting physically read-only NAND."
+    },
+    "hbf-read-tier-contract": {
+      "arithmetic": "100e9 bytes / 1e12 bytes/s = 0.1 s payload-only floor. A positive usable rate, single direction and compatible decimal units are required.",
+      "claims": [
+        "Announced capacity/grades/interface remain dated and qualified; neither the announcement nor a common link establishes a volume-shipping workload result."
+      ],
+      "dependency": "Interface-choice and link-compatibility prerequisites separate bandwidth arithmetic from negotiated compatibility. Geometry is an abstract topology, not a disclosed floorplan."
+    },
+    "hbm-base-phy-controller": {
+      "arithmetic": "1/(8e9 transfers/s) = 125e-12 s. 32 × 64 = 64 × 32 = 2048 data bits. Capacity does not enter the unit-interval calculation.",
+      "claims": [
+        "The named PHY datasheet directly supports its aggregate width and channel partition; no deployed performance is inferred.",
+        "The 2024 base-die collaboration is a dated announcement, not proof of current qualification or allocation."
+      ],
+      "dependency": "Controller and stack-assembly prerequisites preserve scheduling versus physical signaling versus storage ownership. The timing-margin expression is a declared illustrative additive budget, not a signoff equation."
+    },
+    "hbm-tc-ncf-route": {
+      "arithmetic": "Twelve strictly serial placements at (0.3+0.7) s plus 3 s handling = 15 s occupied time. Parallel stations or batch curing would invalidate this serial occupancy prediction.",
+      "claims": [
+        "The announced named route and sampling date are supported; production was a plan in that source."
+      ],
+      "dependency": "Bump-joint and stack-height prerequisites preserve metallic conduction, insulating film and counted interfaces. The enlarged bond-line drawing and synthetic occupancy are not a process window."
+    }
+  }
+}

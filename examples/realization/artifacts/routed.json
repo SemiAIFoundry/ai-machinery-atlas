@@ -1,0 +1,1733 @@
+{
+  "creator": "Next Generation Place and Route (Version )",
+  "modules": {
+    "top": {
+      "settings": {
+        "route": "00000000000000000000000000000001",
+        "router/tmg_ripup": "0 ",
+        "router1/useEstimate": "1 ",
+        "router1/fullCleanupReroute": "1 ",
+        "router1/cleanupReroute": "1 ",
+        "router1/maxIterCnt": "200",
+        "place": "00000000000000000000000000000001",
+        "placer1/startTemp": "1.000000",
+        "placer1/minBelsForGridPick": "64",
+        "placer1/netShareWeight": "0.000000",
+        "placer1/constraintWeight": "10.000000",
+        "placerHeap/cellPlacementTimeout": "8",
+        "placerHeap/noCtrlSet": "0 ",
+        "placerHeap/netShareWeight": "0.000000",
+        "placerHeap/parallelRefine": "0 ",
+        "pack": "00000000000000000000000000000001",
+        "synth": "00000000000000000000000000000001",
+        "placerHeap/timingWeight": "10 ",
+        "placerHeap/criticalityExponent": "2",
+        "placerHeap/beta": "0.900000",
+        "placerHeap/alpha": "0.100000",
+        "seed": "0001100001000011011100000000011100101000001101111011110010000101",
+        "arch.type": "hx1k",
+        "arch.name": "ice40",
+        "router": "router1",
+        "placer": "heap",
+        "auto_freq": "00000000000000000000000000000000",
+        "timing_driven": "00000000000000000000000000000001",
+        "target_freq": "100000000.000000",
+        "pcf_allow_unconstrained": "1",
+        "arch.package": "tq144"
+      },
+      "attributes": {
+        "top": "00000000000000000000000000000001",
+        "src": "adder.v:15.1-24.10"
+      },
+      "ports": {
+        "q": {
+          "direction": "output",
+          "bits": [ 714, 710, 702, 699, 722 ]
+        },
+        "clk": {
+          "direction": "input",
+          "bits": [ 656 ]
+        },
+        "b": {
+          "direction": "input",
+          "bits": [ 680, 684, 693, 688 ]
+        },
+        "a": {
+          "direction": "input",
+          "bits": [ 676, 672, 667, 661 ]
+        }
+      },
+      "cells": {
+        "$gbuf_clk$SB_IO_IN_$glb_clk": {
+          "hide_name": 1,
+          "type": "SB_GB",
+          "parameters": {
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y9/gb"
+          },
+          "port_directions": {
+            "GLOBAL_BUFFER_OUTPUT": "output",
+            "USER_SIGNAL_TO_GLOBAL_BUFFER": "input"
+          },
+          "connections": {
+            "GLOBAL_BUFFER_OUTPUT": [ 791 ],
+            "USER_SIGNAL_TO_GLOBAL_BUFFER": [ 774 ]
+          }
+        },
+        "a_sampled_SB_DFF_Q_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y3/lc7",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 663 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 755 ]
+          }
+        },
+        "a_sampled_SB_DFF_Q_1_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y5/lc3",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 669 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 757 ]
+          }
+        },
+        "a_sampled_SB_DFF_Q_2_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc1",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 674 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 759 ]
+          }
+        },
+        "a_sampled_SB_DFF_Q_3_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc4",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 678 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 761 ]
+          }
+        },
+        "b_sampled_SB_DFF_Q_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y3/lc1",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 681 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 753 ]
+          }
+        },
+        "b_sampled_SB_DFF_Q_1_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X11/Y4/lc7",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 685 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 751 ]
+          }
+        },
+        "b_sampled_SB_DFF_Q_2_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y3/lc3",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 689 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 747 ]
+          }
+        },
+        "b_sampled_SB_DFF_Q_3_DFFLC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y6/lc5",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 694 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [ 749 ]
+          }
+        },
+        "b[3]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y2/io0",
+            "src": "adder.v:15.46-15.47"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 747 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 688 ]
+          }
+        },
+        "b[1]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X0/Y4/io1",
+            "src": "adder.v:15.46-15.47"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 751 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 684 ]
+          }
+        },
+        "b[0]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y1/io1",
+            "src": "adder.v:15.46-15.47"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 753 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 680 ]
+          }
+        },
+        "a[3]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y3/io1",
+            "src": "adder.v:15.43-15.44"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 755 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 661 ]
+          }
+        },
+        "a[2]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y7/io0",
+            "src": "adder.v:15.43-15.44"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 757 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 667 ]
+          }
+        },
+        "$PACKER_GND": {
+          "hide_name": 1,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "0",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000000"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X5/Y9/lc5"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 742 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [  ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [  ]
+          }
+        },
+        "a[0]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y7/io1",
+            "src": "adder.v:15.43-15.44"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 761 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 676 ]
+          }
+        },
+        "q[4]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000011001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y4/io1",
+            "src": "adder.v:15.66-15.67"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [  ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [ 763 ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 722 ]
+          }
+        },
+        "q[3]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000011001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y2/io1",
+            "src": "adder.v:15.66-15.67"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [  ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [ 766 ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 699 ]
+          }
+        },
+        "q[2]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000011001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y8/io1",
+            "src": "adder.v:15.66-15.67"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [  ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [ 768 ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 702 ]
+          }
+        },
+        "q[1]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000011001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y6/io1",
+            "src": "adder.v:15.66-15.67"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [  ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [ 770 ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 710 ]
+          }
+        },
+        "$PACKER_VCC": {
+          "hide_name": 1,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "0",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X11/Y16/lc5"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 744 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [  ],
+            "CIN": [  ],
+            "I3": [  ],
+            "I2": [  ],
+            "I1": [  ],
+            "I0": [  ]
+          }
+        },
+        "q[0]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000011001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y6/io0",
+            "src": "adder.v:15.66-15.67"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [  ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [ 772 ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 714 ]
+          }
+        },
+        "clk$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y9/io0",
+            "src": "adder.v:15.26-15.29"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 774 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 656 ]
+          }
+        },
+        "a[1]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y4/io0",
+            "src": "adder.v:15.43-15.44"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 759 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 672 ]
+          }
+        },
+        "b[2]$sb_io": {
+          "hide_name": 0,
+          "type": "SB_IO",
+          "parameters": {
+            "IO_STANDARD": "SB_LVCMOS",
+            "NEG_TRIGGER": "0",
+            "PULLUP": "0",
+            "PIN_TYPE": "00000000000000000000000000000001"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X13/Y8/io0",
+            "src": "adder.v:15.46-15.47"
+          },
+          "port_directions": {
+            "D_IN_1": "output",
+            "D_IN_0": "output",
+            "D_OUT_1": "input",
+            "D_OUT_0": "input",
+            "OUTPUT_ENABLE": "input",
+            "OUTPUT_CLK": "input",
+            "INPUT_CLK": "input",
+            "CLOCK_ENABLE": "input",
+            "LATCH_INPUT_VALUE": "input",
+            "PACKAGE_PIN": "inout"
+          },
+          "connections": {
+            "D_IN_1": [  ],
+            "D_IN_0": [ 749 ],
+            "D_OUT_1": [  ],
+            "D_OUT_0": [  ],
+            "OUTPUT_ENABLE": [  ],
+            "OUTPUT_CLK": [  ],
+            "INPUT_CLK": [  ],
+            "CLOCK_ENABLE": [  ],
+            "LATCH_INPUT_VALUE": [  ],
+            "PACKAGE_PIN": [ 693 ]
+          }
+        },
+        "q_SB_DFF_Q_D_SB_LUT4_O_I3_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "0",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0011111100000011"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y5/lc0",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:22.34-23.52"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 726 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [  ],
+            "CIN": [  ],
+            "I3": [ 706 ],
+            "I2": [ 694 ],
+            "I1": [ 669 ],
+            "I0": [  ]
+          }
+        },
+        "q_SB_DFF_Q_4_D_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "1100000011111100"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc6",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 763 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [ 726 ],
+            "I2": [ 689 ],
+            "I1": [ 663 ],
+            "I0": [  ]
+          }
+        },
+        "q_SB_DFF_Q_D_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0011110011000011"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc5",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 766 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [ 726 ],
+            "I2": [ 689 ],
+            "I1": [ 663 ],
+            "I0": [  ]
+          }
+        },
+        "q_SB_DFF_Q_3_D_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0000111111110000"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc0",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 772 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [ 681 ],
+            "I2": [ 678 ],
+            "I1": [  ],
+            "I0": [  ]
+          }
+        },
+        "q_SB_DFF_Q_2_D_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "1001011001011010"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc3",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 770 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [ 681 ],
+            "I2": [ 685 ],
+            "I1": [ 678 ],
+            "I0": [ 674 ]
+          }
+        },
+        "q_SB_DFF_Q_1_D_SB_LUT4_O_I3_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "0",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0001011101011111"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y4/lc2",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:26.33-27.52"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 706 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [  ],
+            "CIN": [  ],
+            "I3": [ 681 ],
+            "I2": [ 685 ],
+            "I1": [ 678 ],
+            "I0": [ 674 ]
+          }
+        },
+        "q_SB_DFF_Q_1_D_SB_LUT4_O_LC": {
+          "hide_name": 0,
+          "type": "ICESTORM_LC",
+          "parameters": {
+            "CIN_SET": "0",
+            "CIN_CONST": "0",
+            "ASYNC_SR": "0",
+            "SET_NORESET": "0",
+            "DFF_ENABLE": "1",
+            "CARRY_ENABLE": "0",
+            "NEG_CLK": "0",
+            "LUT_INIT": "0011110011000011"
+          },
+          "attributes": {
+            "BEL_STRENGTH": "00000000000000000000000000000001",
+            "NEXTPNR_BEL": "X12/Y5/lc1",
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "adder.v:19.3-23.6|/opt/homebrew/bin/../share/yosys/ice40/ff_map.v:2.51-2.90"
+          },
+          "port_directions": {
+            "COUT": "output",
+            "O": "output",
+            "LO": "output",
+            "SR": "input",
+            "CEN": "input",
+            "CLK": "input",
+            "CIN": "input",
+            "I3": "input",
+            "I2": "input",
+            "I1": "input",
+            "I0": "input"
+          },
+          "connections": {
+            "COUT": [  ],
+            "O": [ 768 ],
+            "LO": [  ],
+            "SR": [  ],
+            "CEN": [  ],
+            "CLK": [ 791 ],
+            "CIN": [  ],
+            "I3": [ 706 ],
+            "I2": [ 694 ],
+            "I1": [ 669 ],
+            "I0": [  ]
+          }
+        }
+      },
+      "netnames": {
+        "clk$SB_IO_IN_$glb_clk": {
+          "hide_name": 0,
+          "bits": [ 791 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y3/lutff_global:clk;X12/Y3/0.1.glb_netwk_2.->.12.3.lutff_global:clk;1;X11/Y4/lutff_global:clk;X11/Y4/0.1.glb_netwk_2.->.11.4.lutff_global:clk;1;X12/Y6/lutff_global:clk;X12/Y6/0.1.glb_netwk_2.->.12.6.lutff_global:clk;1;X12/Y4/lutff_global:clk;X12/Y4/0.1.glb_netwk_2.->.12.4.lutff_global:clk;1;X0/Y1/glb_netwk_2;;1;X12/Y5/lutff_global:clk;X12/Y5/0.1.glb_netwk_2.->.12.5.lutff_global:clk;1"
+          }
+        },
+        "q[4]": {
+          "hide_name": 0,
+          "bits": [ 722 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "a[0]": {
+          "hide_name": 0,
+          "bits": [ 676 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "a[1]": {
+          "hide_name": 0,
+          "bits": [ 672 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "a[2]": {
+          "hide_name": 0,
+          "bits": [ 667 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "a[3]": {
+          "hide_name": 0,
+          "bits": [ 661 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "b[0]": {
+          "hide_name": 0,
+          "bits": [ 680 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "b[1]": {
+          "hide_name": 0,
+          "bits": [ 684 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "b[2]": {
+          "hide_name": 0,
+          "bits": [ 693 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "b[3]": {
+          "hide_name": 0,
+          "bits": [ 688 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "q[4]$SB_IO_OUT": {
+          "hide_name": 0,
+          "bits": [ 763 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_6:out;;1;X13/Y4/local_g1_6;X13/Y4/12.4.lutff_6:out.->.13.4.local_g1_6;1;X13/Y4/io_1:D_OUT_0;X13/Y4/13.4.local_g1_6.->.13.4.io_1:D_OUT_0;1",
+            "src": "adder.v:15.66-15.67"
+          }
+        },
+        "clk": {
+          "hide_name": 0,
+          "bits": [ 656 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "$PACKER_GND_NET": {
+          "hide_name": 1,
+          "bits": [ 742 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "q_SB_DFF_Q_D_SB_LUT4_O_I3[2]": {
+          "hide_name": 0,
+          "bits": [ 726 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_5:in_0;X12/Y4/12.4.local_g1_0.->.12.4.lutff_5:in_0;1;X12/Y4/lutff_5:in_3_lut;X12/Y4/12.4.lutff_5:in_0.->.12.4.lutff_5:in_3_lut;1;X12/Y5/lutff_0:out;;1;X12/Y4/local_g1_0;X12/Y4/12.5.lutff_0:out.->.12.4.local_g1_0;1;X12/Y4/lutff_6:in_1;X12/Y4/12.4.local_g1_0.->.12.4.lutff_6:in_1;1;X12/Y4/lutff_6:in_3_lut;X12/Y4/12.4.lutff_6:in_1.->.12.4.lutff_6:in_3_lut;1",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22",
+            "force_downto": "00000000000000000000000000000001"
+          }
+        },
+        "q[0]$SB_IO_OUT": {
+          "hide_name": 0,
+          "bits": [ 772 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_0:out;;1;X12/Y6/sp4_v_b_8;X12/Y4/12.4.lutff_0:out.->.12.6.sp4_v_b_8;1;X12/Y6/sp4_h_r_8;X12/Y6/12.6.sp4_v_b_8.->.12.6.sp4_h_r_8;1;X13/Y6/local_g0_0;X13/Y6/12.6.sp4_h_r_8.->.13.6.local_g0_0;1;X13/Y6/io_0:D_OUT_0;X13/Y6/13.6.local_g0_0.->.13.6.io_0:D_OUT_0;1",
+            "src": "adder.v:15.66-15.67"
+          }
+        },
+        "q[1]": {
+          "hide_name": 0,
+          "bits": [ 710 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "q[1]$SB_IO_OUT": {
+          "hide_name": 0,
+          "bits": [ 770 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_3:out;;1;X12/Y5/local_g0_3;X12/Y5/12.4.lutff_3:out.->.12.5.local_g0_3;1;X12/Y5/lutff_5:in_2;X12/Y5/12.5.local_g0_3.->.12.5.lutff_5:in_2;1;X12/Y5/lutff_5:in_3_lut;X12/Y5/12.5.lutff_5:in_2.->.12.5.lutff_5:in_3_lut;1;X12/Y5/lutff_5:out;X12/Y5/12.5.lutff_5:in_3_lut.->.12.5.lutff_5:out;1;X13/Y6/local_g0_5;X13/Y6/12.5.lutff_5:out.->.13.6.local_g0_5;1;X13/Y6/io_1:D_OUT_0;X13/Y6/13.6.local_g0_5.->.13.6.io_1:D_OUT_0;1",
+            "src": "adder.v:15.66-15.67"
+          }
+        },
+        "q[2]": {
+          "hide_name": 0,
+          "bits": [ 702 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "q_SB_DFF_Q_1_D_SB_LUT4_O_I3[2]": {
+          "hide_name": 0,
+          "bits": [ 706 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y5/lutff_1:in_3;X12/Y5/12.5.local_g0_2.->.12.5.lutff_1:in_3;1;X12/Y5/lutff_1:in_3_lut;X12/Y5/12.5.lutff_1:in_3.->.12.5.lutff_1:in_3_lut;1;X12/Y4/lutff_2:out;;1;X12/Y5/local_g0_2;X12/Y5/12.4.lutff_2:out.->.12.5.local_g0_2;1;X12/Y5/lutff_0:in_0;X12/Y5/12.5.local_g0_2.->.12.5.lutff_0:in_0;1;X12/Y5/lutff_0:in_3_lut;X12/Y5/12.5.lutff_0:in_0.->.12.5.lutff_0:in_3_lut;1",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22",
+            "force_downto": "00000000000000000000000000000001"
+          }
+        },
+        "$PACKER_VCC_NET": {
+          "hide_name": 1,
+          "bits": [ 744 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "q[2]$SB_IO_OUT": {
+          "hide_name": 0,
+          "bits": [ 768 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y5/lutff_1:out;;1;X12/Y6/sp4_v_b_7;X12/Y5/12.5.lutff_1:out.->.12.6.sp4_v_b_7;1;X12/Y6/sp4_h_r_7;X12/Y6/12.6.sp4_v_b_7.->.12.6.sp4_h_r_7;1;X13/Y10/span4_vert_b_1;X13/Y6/12.6.sp4_h_r_7.->.13.10.span4_vert_b_1;1;X13/Y8/local_g0_1;X13/Y8/13.10.span4_vert_b_1.->.13.8.local_g0_1;1;X13/Y8/io_1:D_OUT_0;X13/Y8/13.8.local_g0_1.->.13.8.io_1:D_OUT_0;1",
+            "src": "adder.v:15.66-15.67"
+          }
+        },
+        "q[3]": {
+          "hide_name": 0,
+          "bits": [ 699 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "q[3]$SB_IO_OUT": {
+          "hide_name": 0,
+          "bits": [ 766 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_5:out;;1;X12/Y3/local_g0_5;X12/Y3/12.4.lutff_5:out.->.12.3.local_g0_5;1;X12/Y3/lutff_4:in_1;X12/Y3/12.3.local_g0_5.->.12.3.lutff_4:in_1;1;X12/Y3/lutff_4:in_3_lut;X12/Y3/12.3.lutff_4:in_1.->.12.3.lutff_4:in_3_lut;1;X12/Y3/lutff_4:out;X12/Y3/12.3.lutff_4:in_3_lut.->.12.3.lutff_4:out;1;X13/Y2/local_g1_4;X13/Y2/12.3.lutff_4:out.->.13.2.local_g1_4;1;X13/Y2/io_1:D_OUT_0;X13/Y2/13.2.local_g1_4.->.13.2.io_1:D_OUT_0;1",
+            "src": "adder.v:15.66-15.67"
+          }
+        },
+        "q[0]": {
+          "hide_name": 0,
+          "bits": [ 714 ] ,
+          "attributes": {
+            "ROUTING": " "
+          }
+        },
+        "b_sampled[2]": {
+          "hide_name": 0,
+          "bits": [ 694 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y5/lutff_1:in_1;X12/Y5/12.5.local_g1_5.->.12.5.lutff_1:in_1;1;X12/Y5/lutff_1:in_2_lut;X12/Y5/12.5.lutff_1:in_1.->.12.5.lutff_1:in_2_lut;1;X12/Y6/lutff_5:out;;1;X12/Y5/local_g1_5;X12/Y5/12.6.lutff_5:out.->.12.5.local_g1_5;1;X12/Y5/lutff_0:in_2;X12/Y5/12.5.local_g1_5.->.12.5.lutff_0:in_2;1;X12/Y5/lutff_0:in_2_lut;X12/Y5/12.5.lutff_0:in_2.->.12.5.lutff_0:in_2_lut;1",
+            "force_downto": "00000000000000000000000000000001",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22",
+            "hdlname": "arithmetic b"
+          }
+        },
+        "b[2]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 749 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y8/io_0:D_IN_0;;1;X13/Y10/span4_vert_b_0;X13/Y8/13.8.io_0:D_IN_0.->.13.10.span4_vert_b_0;1;X12/Y6/sp4_h_r_1;X13/Y6/13.10.span4_vert_b_0.->.12.6.sp4_h_r_1;1;X12/Y6/local_g1_1;X12/Y6/12.6.sp4_h_r_1.->.12.6.local_g1_1;1;X12/Y6/lutff_5:in_1;X12/Y6/12.6.local_g1_1.->.12.6.lutff_5:in_1;1;X12/Y6/lutff_5:in_0_lut;X12/Y6/12.6.lutff_5:in_1.->.12.6.lutff_5:in_0_lut;1",
+            "src": "adder.v:15.46-15.47"
+          }
+        },
+        "b_sampled[3]": {
+          "hide_name": 0,
+          "bits": [ 689 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_6:in_2;X12/Y4/12.4.local_g1_3.->.12.4.lutff_6:in_2;1;X12/Y4/lutff_6:in_2_lut;X12/Y4/12.4.lutff_6:in_2.->.12.4.lutff_6:in_2_lut;1;X12/Y3/lutff_3:out;;1;X12/Y4/local_g1_3;X12/Y4/12.3.lutff_3:out.->.12.4.local_g1_3;1;X12/Y4/lutff_5:in_3;X12/Y4/12.4.local_g1_3.->.12.4.lutff_5:in_3;1;X12/Y4/lutff_5:in_2_lut;X12/Y4/12.4.lutff_5:in_3.->.12.4.lutff_5:in_2_lut;1",
+            "force_downto": "00000000000000000000000000000001",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22",
+            "hdlname": "arithmetic b"
+          }
+        },
+        "b[3]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 747 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y2/io_0:D_IN_0;;1;X12/Y3/local_g0_4;X12/Y3/13.2.io_0:D_IN_0.->.12.3.local_g0_4;1;X12/Y3/lutff_3:in_3;X12/Y3/12.3.local_g0_4.->.12.3.lutff_3:in_3;1;X12/Y3/lutff_3:in_0_lut;X12/Y3/12.3.lutff_3:in_3.->.12.3.lutff_3:in_0_lut;1",
+            "src": "adder.v:15.46-15.47"
+          }
+        },
+        "b_sampled[1]": {
+          "hide_name": 0,
+          "bits": [ 685 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_3:in_3;X12/Y4/12.4.local_g1_7.->.12.4.lutff_3:in_3;1;X12/Y4/lutff_3:in_2_lut;X12/Y4/12.4.lutff_3:in_3.->.12.4.lutff_3:in_2_lut;1;X11/Y4/lutff_7:out;;1;X12/Y4/local_g1_7;X12/Y4/11.4.lutff_7:out.->.12.4.local_g1_7;1;X12/Y4/lutff_2:in_2;X12/Y4/12.4.local_g1_7.->.12.4.lutff_2:in_2;1;X12/Y4/lutff_2:in_2_lut;X12/Y4/12.4.lutff_2:in_2.->.12.4.lutff_2:in_2_lut;1",
+            "src": "adder.v:16.24-16.33",
+            "hdlname": "arithmetic b"
+          }
+        },
+        "b[1]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 751 ] ,
+          "attributes": {
+            "ROUTING": "X0/Y4/io_1:D_IN_0;;1;X0/Y4/span12_horz_4;X0/Y4/0.4.io_1:D_IN_0.->.0.4.span12_horz_4;1;X10/Y4/sp12_h_r_0;X10/Y4/0.4.span12_horz_4.->.10.4.sp12_h_r_0;1;X11/Y4/local_g1_3;X11/Y4/10.4.sp12_h_r_0.->.11.4.local_g1_3;1;X11/Y4/lutff_7:in_3;X11/Y4/11.4.local_g1_3.->.11.4.lutff_7:in_3;1;X11/Y4/lutff_7:in_0_lut;X11/Y4/11.4.lutff_7:in_3.->.11.4.lutff_7:in_0_lut;1",
+            "src": "adder.v:15.46-15.47"
+          }
+        },
+        "b_sampled[0]": {
+          "hide_name": 0,
+          "bits": [ 681 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_0:in_1;X12/Y4/12.4.local_g0_1.->.12.4.lutff_0:in_1;1;X12/Y4/lutff_0:in_3_lut;X12/Y4/12.4.lutff_0:in_1.->.12.4.lutff_0:in_3_lut;1;X12/Y4/lutff_3:in_0;X12/Y4/12.4.local_g0_1.->.12.4.lutff_3:in_0;1;X12/Y4/lutff_3:in_3_lut;X12/Y4/12.4.lutff_3:in_0.->.12.4.lutff_3:in_3_lut;1;X12/Y3/lutff_1:out;;1;X12/Y4/local_g0_1;X12/Y4/12.3.lutff_1:out.->.12.4.local_g0_1;1;X12/Y4/lutff_2:in_1;X12/Y4/12.4.local_g0_1.->.12.4.lutff_2:in_1;1;X12/Y4/lutff_2:in_3_lut;X12/Y4/12.4.lutff_2:in_1.->.12.4.lutff_2:in_3_lut;1",
+            "src": "adder.v:16.24-16.33",
+            "hdlname": "arithmetic b"
+          }
+        },
+        "b[0]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 753 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y1/io_1:D_IN_0;;1;X12/Y0/span4_horz_r_2;X13/Y1/13.1.io_1:D_IN_0.->.12.0.span4_horz_r_2;1;X12/Y4/sp4_v_b_0;X12/Y0/12.0.span4_horz_r_2.->.12.4.sp4_v_b_0;1;X12/Y3/local_g1_5;X12/Y3/12.4.sp4_v_b_0.->.12.3.local_g1_5;1;X12/Y3/lutff_1:in_3;X12/Y3/12.3.local_g1_5.->.12.3.lutff_1:in_3;1;X12/Y3/lutff_1:in_0_lut;X12/Y3/12.3.lutff_1:in_3.->.12.3.lutff_1:in_0_lut;1",
+            "src": "adder.v:15.46-15.47"
+          }
+        },
+        "a_sampled[0]": {
+          "hide_name": 0,
+          "bits": [ 678 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_0:in_3;X12/Y4/12.4.local_g3_4.->.12.4.lutff_0:in_3;1;X12/Y4/lutff_0:in_2_lut;X12/Y4/12.4.lutff_0:in_3.->.12.4.lutff_0:in_2_lut;1;X12/Y4/lutff_3:in_2;X12/Y4/12.4.local_g3_4.->.12.4.lutff_3:in_2;1;X12/Y4/lutff_3:in_1_lut;X12/Y4/12.4.lutff_3:in_2.->.12.4.lutff_3:in_1_lut;1;X12/Y4/lutff_4:out;;1;X12/Y4/local_g3_4;X12/Y4/12.4.lutff_4:out.->.12.4.local_g3_4;1;X12/Y4/lutff_2:in_3;X12/Y4/12.4.local_g3_4.->.12.4.lutff_2:in_3;1;X12/Y4/lutff_2:in_1_lut;X12/Y4/12.4.lutff_2:in_3.->.12.4.lutff_2:in_1_lut;1",
+            "hdlname": "arithmetic a",
+            "src": "adder.v:2.27-2.28"
+          }
+        },
+        "a[0]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 761 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y7/io_1:D_IN_0;;1;X13/Y8/span4_vert_b_2;X13/Y7/13.7.io_1:D_IN_0.->.13.8.span4_vert_b_2;1;X11/Y4/sp4_h_r_0;X13/Y4/13.8.span4_vert_b_2.->.11.4.sp4_h_r_0;1;X12/Y4/local_g1_5;X12/Y4/11.4.sp4_h_r_0.->.12.4.local_g1_5;1;X12/Y4/lutff_4:in_2;X12/Y4/12.4.local_g1_5.->.12.4.lutff_4:in_2;1;X12/Y4/lutff_4:in_0_lut;X12/Y4/12.4.lutff_4:in_2.->.12.4.lutff_4:in_0_lut;1",
+            "src": "adder.v:15.43-15.44"
+          }
+        },
+        "a_sampled[1]": {
+          "hide_name": 0,
+          "bits": [ 674 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_3:in_1;X12/Y4/12.4.local_g1_1.->.12.4.lutff_3:in_1;1;X12/Y4/lutff_3:in_0_lut;X12/Y4/12.4.lutff_3:in_1.->.12.4.lutff_3:in_0_lut;1;X12/Y4/lutff_1:out;;1;X12/Y4/local_g1_1;X12/Y4/12.4.lutff_1:out.->.12.4.local_g1_1;1;X12/Y4/lutff_2:in_0;X12/Y4/12.4.local_g1_1.->.12.4.lutff_2:in_0;1;X12/Y4/lutff_2:in_0_lut;X12/Y4/12.4.lutff_2:in_0.->.12.4.lutff_2:in_0_lut;1",
+            "hdlname": "arithmetic a",
+            "src": "adder.v:2.27-2.28"
+          }
+        },
+        "a[1]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 759 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y4/io_0:D_IN_0;;1;X12/Y4/local_g3_0;X12/Y4/13.4.io_0:D_IN_0.->.12.4.local_g3_0;1;X12/Y4/lutff_1:in_0;X12/Y4/12.4.local_g3_0.->.12.4.lutff_1:in_0;1;X12/Y4/lutff_1:in_0_lut;X12/Y4/12.4.lutff_1:in_0.->.12.4.lutff_1:in_0_lut;1",
+            "src": "adder.v:15.43-15.44"
+          }
+        },
+        "a_sampled[2]": {
+          "hide_name": 0,
+          "bits": [ 669 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y5/lutff_1:in_2;X12/Y5/12.5.local_g2_3.->.12.5.lutff_1:in_2;1;X12/Y5/lutff_1:in_1_lut;X12/Y5/12.5.lutff_1:in_2.->.12.5.lutff_1:in_1_lut;1;X12/Y5/lutff_3:out;;1;X12/Y5/local_g2_3;X12/Y5/12.5.lutff_3:out.->.12.5.local_g2_3;1;X12/Y5/lutff_0:in_3;X12/Y5/12.5.local_g2_3.->.12.5.lutff_0:in_3;1;X12/Y5/lutff_0:in_1_lut;X12/Y5/12.5.lutff_0:in_3.->.12.5.lutff_0:in_1_lut;1",
+            "force_downto": "00000000000000000000000000000001",
+            "hdlname": "arithmetic a",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22"
+          }
+        },
+        "a[2]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 757 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y7/io_0:D_IN_0;;1;X13/Y9/span4_vert_b_0;X13/Y7/13.7.io_0:D_IN_0.->.13.9.span4_vert_b_0;1;X12/Y5/sp4_h_r_1;X13/Y5/13.9.span4_vert_b_0.->.12.5.sp4_h_r_1;1;X12/Y5/local_g0_1;X12/Y5/12.5.sp4_h_r_1.->.12.5.local_g0_1;1;X12/Y5/lutff_3:in_2;X12/Y5/12.5.local_g0_1.->.12.5.lutff_3:in_2;1;X12/Y5/lutff_3:in_0_lut;X12/Y5/12.5.lutff_3:in_2.->.12.5.lutff_3:in_0_lut;1",
+            "src": "adder.v:15.43-15.44"
+          }
+        },
+        "a_sampled[3]": {
+          "hide_name": 0,
+          "bits": [ 663 ] ,
+          "attributes": {
+            "ROUTING": "X12/Y4/lutff_6:in_3;X12/Y4/12.4.local_g0_7.->.12.4.lutff_6:in_3;1;X12/Y4/lutff_6:in_1_lut;X12/Y4/12.4.lutff_6:in_3.->.12.4.lutff_6:in_1_lut;1;X12/Y3/lutff_7:out;;1;X12/Y4/local_g0_7;X12/Y4/12.3.lutff_7:out.->.12.4.local_g0_7;1;X12/Y4/lutff_5:in_2;X12/Y4/12.4.local_g0_7.->.12.4.lutff_5:in_2;1;X12/Y4/lutff_5:in_1_lut;X12/Y4/12.4.lutff_5:in_2.->.12.4.lutff_5:in_1_lut;1",
+            "force_downto": "00000000000000000000000000000001",
+            "hdlname": "arithmetic a",
+            "src": "/opt/homebrew/bin/../share/yosys/ice40/cells_map.v:6.21-6.22"
+          }
+        },
+        "a[3]$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 755 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y3/io_1:D_IN_0;;1;X12/Y3/local_g2_6;X12/Y3/13.3.io_1:D_IN_0.->.12.3.local_g2_6;1;X12/Y3/lutff_7:in_1;X12/Y3/12.3.local_g2_6.->.12.3.lutff_7:in_1;1;X12/Y3/lutff_7:in_0_lut;X12/Y3/12.3.lutff_7:in_1.->.12.3.lutff_7:in_0_lut;1",
+            "src": "adder.v:15.43-15.44"
+          }
+        },
+        "clk$SB_IO_IN": {
+          "hide_name": 0,
+          "bits": [ 774 ] ,
+          "attributes": {
+            "ROUTING": "X13/Y9/io_0:D_IN_0;;1;X12/Y9/sp4_h_r_0;X13/Y9/13.9.io_0:D_IN_0.->.12.9.sp4_h_r_0;1;X13/Y9/local_g1_0;X13/Y9/12.9.sp4_h_r_0.->.13.9.local_g1_0;1;X13/Y9/fabout;X13/Y9/13.9.local_g1_0.->.13.9.fabout;1",
+            "src": "adder.v:15.26-15.29"
+          }
+        }
+      }
+    }
+  }
+}

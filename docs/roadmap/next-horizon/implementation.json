@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-09-07",
+  "actor": {
+    "kind": "agent",
+    "id": "/root"
+  },
+  "approvedPlan": "APPROVED-ROADMAP.csv",
+  "preservedOriginalClosure": "ORIGINAL-CLOSURE.csv",
+  "edition": "1.3.0",
+  "publication": "approved for publication on 2026-09-07",
+  "scope": "Additive implementation ledger; open acceptance work remains open even where a bounded mechanism is built. Candidate lesson counts are not completion criteria.",
+  "items": [
+    {
+      "id": "N01",
+      "status": "implemented; automated route and canonical-home checks passed",
+      "implemented": "Deliberate lifecycle and discipline facets, separate explanation/worked/executable/connected-artifact capability, 21 learning paths and stable lesson IDs.",
+      "evidence": [
+        "src/lib/data/learning-ontology.json",
+        "src/lib/data/experience-artifacts.json",
+        "src/components/learning-map.tsx",
+        "scripts/learning-map.test.mjs"
+      ],
+      "limit": "Coverage indicates available work, not human review or learner completion."
+    },
+    {
+      "id": "N02",
+      "status": "implemented; desktop narrow-viewport task observed",
+      "implemented": "Tensor/probability/numerical foundations plus actual train-only byte-BPE, document-family splits, duplicate diagnostics, packing and deterministic sampling.",
+      "evidence": [
+        "src/lib/foundation-models.ts",
+        "src/lib/data-lineage.ts",
+        "scripts/data-lineage.test.mjs",
+        "docs/data-lineage/source-review.json",
+        "docs/roadmap/next-horizon/BROWSER-OBSERVATIONS.json"
+      ],
+      "limit": "The byte-BPE corpus is a distinct specimen; the 423-parameter decoder retains its explicit nine-token contract."
+    },
+    {
+      "id": "N03",
+      "status": "implemented; connected browser task observed",
+      "implemented": "Seeded causal decoder with actual reverse-mode derivatives, optimizer updates, checkpoint state and reserved development/final evidence.",
+      "evidence": [
+        "src/lib/model-lifecycle.ts",
+        "scripts/model-lifecycle.test.mjs"
+      ],
+      "limit": "423 parameters, bounded symbolic tasks; no frontier architecture or general-language capability claim."
+    },
+    {
+      "id": "N04",
+      "status": "implemented within declared objectives",
+      "implemented": "Same-checkpoint continuation, response-only SFT, DPO and two-action reward learning, replay/forgetting, branch state and sticky final exposure.",
+      "evidence": [
+        "src/lib/model-lifecycle.ts",
+        "src/lib/model-lifecycle-workspace.ts"
+      ],
+      "limit": "The bounded REINFORCE exercise is not PPO/GRPO; LoRA, broader reward models and multimodal methods retain explicit lesson-level scope."
+    },
+    {
+      "id": "N05",
+      "status": "implemented; owned-shard barrier and reconstruction browser-checked",
+      "implemented": "Actual unequal-rank gradients reduce to owned slices; one global clipping factor precedes owner Adam/SGD updates and reconstructed replicas. Missing/stale shards and failures prevent a commit.",
+      "evidence": [
+        "src/lib/model-lifecycle-distributed.ts",
+        "scripts/model-lifecycle-distributed.test.mjs",
+        "src/lib/data/distributed-output-bridges.json",
+        "docs/model-lifecycle/distributed/validation.json",
+        "docs/roadmap/next-horizon/BROWSER-OBSERVATIONS.json"
+      ],
+      "limit": "Logical copies and authored transport timings are separate from measured networks or production memory savings."
+    },
+    {
+      "id": "N06",
+      "status": "implemented within identified reports",
+      "implemented": "Reproducible model/calibration/cohort/report identities, explicit metric denominators, source-family overlap and selective acceptance.",
+      "evidence": [
+        "src/lib/evaluation-report.ts",
+        "scripts/evaluation-report.test.mjs",
+        "src/lib/automation-learned-bridge.ts"
+      ],
+      "limit": "Synthetic exploratory audit, not population calibration or a secret benchmark; rubric agreement and source support remain separately labeled."
+    },
+    {
+      "id": "N07",
+      "status": "implemented; cache and verification browser task observed",
+      "implemented": "Actual KV reuse, per-request RNG, admission and logical batching, cache release, quantization and authored-draft target verification.",
+      "evidence": [
+        "src/lib/model-lifecycle-serving.ts",
+        "scripts/model-lifecycle-serving.test.mjs",
+        "src/lib/model-lifecycle-speculation.ts",
+        "scripts/model-lifecycle-speculation.test.mjs"
+      ],
+      "limit": "Synthetic scheduling iterations and cache payload accounting do not establish hardware throughput."
+    },
+    {
+      "id": "N08",
+      "status": "implemented; explicit reranking added and tested",
+      "implemented": "Fitted dual-encoder index, conditional token generation, explicit context interventions and a frozen proposal that enters the real local workflow.",
+      "evidence": [
+        "src/lib/automation-learning-model.ts",
+        "src/lib/automation-learned-bridge.ts",
+        "docs/automation-execution/learned-source-review.json"
+      ],
+      "limit": "Two fictional manuals and a narrow fitted decoder, not open-domain RAG or a general language model."
+    },
+    {
+      "id": "N09",
+      "status": "implemented; connected browser task observed",
+      "implemented": "Durable typed workflow, exact approvals, timeout-after-commit recovery, idempotency, cancellation and independently checked environment.",
+      "evidence": [
+        "src/lib/automation-execution.ts",
+        "src/lib/automation-journal.ts",
+        "scripts/automation-execution.test.mjs"
+      ],
+      "limit": "All side effects concern a fictional local environment. Authored outer workflow and learned proposal have separate provenance."
+    },
+    {
+      "id": "N10",
+      "status": "implemented within bounded protocol fixtures",
+      "implemented": "Schema, authority, untrusted references, caller observations, budgets and runtime/tool/task attribution.",
+      "evidence": [
+        "src/lib/automation-contracts.ts",
+        "src/lib/automation-tools.ts",
+        "src/lib/data/automation-learning.json"
+      ],
+      "limit": "MCP concepts are taught through versioned contracts; no live external MCP service is required."
+    },
+    {
+      "id": "N11",
+      "status": "implemented; cell load-to-timing intervention observed at 320 px",
+      "implemented": "INV-01 couples oxide geometry to electrical cell acceptance; tagged FIFO/reset and existing RTL-to-routed FPGA artifact extend design contracts.",
+      "evidence": [
+        "src/lib/process-cell-acceptance.ts",
+        "src/lib/hardware-reliability.ts",
+        "examples/realization/README.md"
+      ],
+      "limit": "Long-channel analytic teaching specimen; no SPICE execution, analog metastability model, measured board behavior or ASIC signoff."
+    },
+    {
+      "id": "N12",
+      "status": "implemented; network and learned-query machine bridge browser-checked at 320 px",
+      "implemented": "Exact selected arithmetic crosses CPU/device ownership, coalescing, buffers, DRAM and finite-credit network delivery. A full-checkpoint query slice enters two explicitly quantized machine tiles and retains an independent binary64 reference.",
+      "evidence": [
+        "src/lib/machine-execution.ts",
+        "src/lib/commissioning-execution.ts",
+        "src/lib/architecture-execution.ts",
+        "src/lib/matrix-network.ts",
+        "scripts/matrix-network.test.mjs",
+        "src/lib/decoder-projection.ts",
+        "scripts/decoder-projection.test.mjs"
+      ],
+      "limit": "Two bounded specimens: matrix network delivery and a selected learned query projection. The latter uses explicit per-tile integer conversion, excludes non-machine service and measures projection error only; no full GPU, packet protocol or whole-model quality claim."
+    },
+    {
+      "id": "N13",
+      "status": "implemented; joined memory task checked at desktop and 320 px",
+      "implemented": "Identified matrix words cross stack/interface admission, payload staging, actual DRAM and refresh events, separately injected SECDED faults and MAC consumption.",
+      "evidence": [
+        "src/lib/memory-interfaces.ts",
+        "src/lib/hardware-reliability.ts",
+        "src/lib/machine-execution.ts",
+        "src/lib/memory-workload-bridge.ts",
+        "docs/memory-workload/scenarios.json"
+      ],
+      "limit": "Synthetic package gates, two-bank schedule and nibble-wise ECC have separate validity boundaries. Geometry predicts no bit-error rate; emerging HBF remains assumption-bound."
+    },
+    {
+      "id": "N14",
+      "status": "implemented; current collective fixtures and large-workspace restoration verified",
+      "implemented": "Commissioning, resource admission, actual owned distributed updates, full-state atomic checkpoint/recovery, and an accepted checkpoint-to-serving handoff. A 320-update source saves and restores on-device.",
+      "evidence": [
+        "src/lib/operating-hall.ts",
+        "src/lib/factory-execution.ts",
+        "scripts/factory-execution.test.mjs",
+        "docs/factory-execution/README.md",
+        "docs/factory-execution/validation.json",
+        "scripts/portable-experiment-storage.test.mjs"
+      ],
+      "limit": "Factory time/energy and serving iterations are different modeled boundaries. No hardware performance, physical commissioning or learned answer quality follows from task completion."
+    },
+    {
+      "id": "N15",
+      "status": "implemented within contrasting specimens",
+      "implemented": "Dense decoder, fitted experts/authored gate, scalar recurrence, local image filters, DFT, fitted denoising, graph messages, boosted stumps and search.",
+      "evidence": [
+        "src/lib/ai-family-models.ts",
+        "src/lib/foundation-models.ts",
+        "src/lib/model-lifecycle.ts"
+      ],
+      "limit": "Scores are task-specific; symbolic/linear/nonparametric specimens do not claim full S4, CNN, ASR or image diffusion training."
+    },
+    {
+      "id": "N16",
+      "status": "implemented within declared application tasks; ranking mobile task observed",
+      "implemented": "Fitted sensor/retrieval systems, learned-proposal workflow, closed-loop control, rolling-origin forecasts, executable patch contracts and exposure-aware ranking with separate-user evaluation.",
+      "evidence": [
+        "src/lib/closed-loop.ts",
+        "src/lib/application-decisions.ts",
+        "src/lib/evaluation-report.ts",
+        "src/lib/ranking-application.ts",
+        "docs/ranking-application/validation.json"
+      ],
+      "limit": "No physical robot trials, field forecasts, code-generating model or scientific-discovery benchmark. Positive propensity correction does not guarantee a better finite fitted ranking."
+    },
+    {
+      "id": "N17",
+      "status": "review operations implemented; 16 additional complete source-scope reviews integrated; baseline and external review remain open",
+      "implemented": "Primary-source scope records, independent mathematical references, agent cross-review and preserved human-review protocols. The first next-horizon batch adds 16 complete effective-lesson source reviews, including recovered HBM attribution and corrected grid-energy accounting.",
+      "evidence": [
+        "docs/curation/CURATION-WORKFLOW.md",
+        "docs/learning-review/README.md",
+        "docs/curation/curation-review-queue.json",
+        "docs/curation/next-horizon-review/integration-validation.json"
+      ],
+      "limit": "290 of 311 lessons require a complete baseline source-scope review; 21 current agent reviews are within their proposed interval. The 23-event history preserves superseded findings and presentation revisions. Human specialists, physical devices, assistive technologies and 6\u20139 learner sessions remain unobserved."
+    },
+    {
+      "id": "N18",
+      "status": "implemented within dated evidence scope",
+      "implemented": "Seven added model-method milestones connect calibration, retrieval, diffusion, adaptation, recurrence and code evaluation to changed bottlenecks. Prior capacity, economics and orbital scenarios are preserved.",
+      "evidence": [
+        "src/lib/data/next-horizon-history.json",
+        "src/lib/progress-evidence.ts",
+        "src/lib/orbital-mission.ts"
+      ],
+      "limit": "No current private queue inference, overlapping capacity aggregation, flight qualification or guaranteed AGI extrapolation."
+    },
+    {
+      "id": "N19",
+      "status": "implemented; automated and selected narrow/keyboard tasks verified",
+      "implemented": "Responsive grouped navigation, preserved optional 3D, canonical mathematics, identified records, nine instructor contract groups and a new 60-second companion with 10 captured states, transcript and chapter links.",
+      "evidence": [
+        "src/components/engineering-studio.tsx",
+        "src/lib/portable-experiment-storage.ts",
+        "scripts/generate-equations.mjs",
+        "docs/instructor-kit/next-horizon/README.md",
+        "docs/instructor-kit/next-horizon/verify-contracts.mjs",
+        "docs/roadmap/next-horizon/BROWSER-OBSERVATIONS.json",
+        "public/connected.html",
+        "examples/connected-walkthrough/capture-manifest.json",
+        "scripts/connected-walkthrough.test.mjs"
+      ],
+      "limit": "Per-frame footage retains its captured build; current routes and media integrity are checked separately. Physical iOS/Android and human assistive-technology observations remain open."
+    },
+    {
+      "id": "N20",
+      "status": "local implementation and validation reconciled; source and external review gates open; publication paused",
+      "implemented": "Preserved original R01\u2013R30 closure, exact source/content/model identity and explicit distinction between code, automated evidence and external observation.",
+      "evidence": [
+        "scripts/build-identity.mjs",
+        "docs/roadmap/next-horizon/ORIGINAL-CLOSURE.csv",
+        "docs/roadmap/next-horizon/VALIDATION.json",
+        "docs/roadmap/next-horizon/VALIDATION.md"
+      ],
+      "limit": "No push, tag, deployment, release or version change. Publication remains a separate explicit decision."
+    }
+  ],
+  "reconciledAt": "2026-09-07T22:52:07.666Z",
+  "publicationRecord": "../../RELEASE-NOTES-v1.3.0.md"
+}

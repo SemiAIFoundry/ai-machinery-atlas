@@ -1,0 +1,282 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:42:57.384Z",
+  "contentFingerprint": "3c0cfe951befa203f898e134f5d3abc3186f2192ce930d36c36b6c8a3313d493",
+  "record": {
+    "id": "checkpoint-averaging-boundaries",
+    "name": "Compatible weight averaging and regressions",
+    "shortName": "Compatible weight averaging and regressions",
+    "role": "Check parameter alignment before averaging and evaluate the resulting function.",
+    "description": "Weight averaging combines numbers at matching parameter coordinates. Shape equality is necessary but does not prove semantic alignment: hidden units can be permuted while preserving the original function. Independently trained models can therefore disagree about which coordinate represents which feature. A shared initialization and compatible training recipe make an average more interpretable, but do not guarantee that every task is preserved. An averaged checkpoint also needs an explicit optimizer policy; averaging weights does not establish suitable Adam moments or a resume cursor.",
+    "mechanism": [
+      "Check architecture, tokenizer, parameter order and source checkpoint identities.",
+      "Form a declared weighted average only across compatible coordinates.",
+      "Evaluate both original checkpoints and the average on identical reserved cases.",
+      "Treat averaged weights as a new model identity and explicitly choose fresh or otherwise justified optimizer state."
+    ],
+    "learningObjective": "Check parameter alignment before averaging and evaluate the resulting function.",
+    "engineeringExample": "Two equivalent two-unit linear networks represent y=x with incoming vector [1,−1] and outgoing [0.5,−0.5], or with both vectors permuted to [−1,1] and [−0.5,0.5]. Each dot product is 1. Averaging corresponding incoming and outgoing entries gives zeros, so the averaged network produces y=0. By contrast, averaging compatible scalar weights 1 and 3 gives 2; that arithmetic alone still does not predict task quality.",
+    "evidenceNotes": "Mode: worked example. Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+    "specs": [
+      {
+        "label": "Learning mode",
+        "value": "worked example",
+        "context": "The executable decoder has 423 parameters; worked extensions do not imply an additional simulator."
+      },
+      {
+        "label": "Worked contract",
+        "value": "Check parameter alignment before averaging and evaluate the resulting function.",
+        "context": "Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Inputs and state",
+        "direction": "in",
+        "signal": "Check architecture, tokenizer, parameter order and source checkpoint identities."
+      },
+      {
+        "name": "Result and check",
+        "direction": "out",
+        "signal": "Check parameter alignment before averaging and evaluate the resulting function."
+      }
+    ],
+    "tradeoff": "Averaging may combine nearby solutions without storing an ensemble at inference, but it can also create a poor function and ambiguous optimizer history.",
+    "whyAI": "Adapt an existing checkpoint while measuring retained and acquired behavior. Check parameter alignment before averaging and evaluate the resulting function.",
+    "misconception": "It is a mistake to conclude: Equal shapes imply identical learned features.",
+    "check": {
+      "question": "Why do equal tensor shapes fail to guarantee a useful average?",
+      "options": [
+        "Equal shapes imply identical learned features.",
+        "Averaging always preserves each source prediction.",
+        "Equivalent functions can use different hidden-unit coordinate assignments."
+      ],
+      "answer": 2,
+      "explanation": "Equivalent functions can use different hidden-unit coordinate assignments. Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core."
+    },
+    "prerequisites": [
+      "checkpoint",
+      "evaluation"
+    ],
+    "related": [
+      "checkpoint",
+      "evaluation",
+      "model-lifecycle-stage-contract",
+      "domain-adaptive-continuation",
+      "replay-retention-forgetting",
+      "long-context-adaptation"
+    ],
+    "sources": [
+      {
+        "title": "2 OLMo 2 Furious",
+        "url": "https://arxiv.org/html/2501.00656v1"
+      }
+    ],
+    "level": "model",
+    "scale": "Mathematical, data and behavior space; logical dimensions are not physical distance",
+    "kind": "model",
+    "branch": "model-lifecycle-continuation",
+    "subbranch": "Compatible weight averaging and regressions",
+    "workstream": "W11",
+    "visualFamily": "mathematical",
+    "labId": "library",
+    "labScope": "Model lifecycle studio: worked example. Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core.",
+    "science": [
+      {
+        "title": "Compatible weight averaging and regressions · worked relation",
+        "equation": "\\bar\\theta=\\sum_k a_k\\theta_k,\\qquad \\sum_k a_k=1,\\quad a_k\\ge0",
+        "explanation": "Two equivalent two-unit linear networks represent y=x with incoming vector [1,−1] and outgoing [0.5,−0.5], or with both vectors permuted to [−1,1] and [−0.5,0.5]. Each dot product is 1. Averaging corresponding incoming and outgoing entries gives zeros, so the averaged network produces y=0. By contrast, averaging compatible scalar weights 1 and 3 gives 2; that arithmetic alone still does not predict task quality.",
+        "assumptions": "Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core."
+      }
+    ],
+    "history": []
+  },
+  "chapter": {
+    "id": "model-lifecycle-continuation",
+    "name": "Continued and mid-training",
+    "title": "Continued and mid-training",
+    "question": "Adapt an existing checkpoint while measuring retained and acquired behavior.",
+    "band": 5,
+    "domainId": "learning-intelligence",
+    "parent": "Model learning lifecycle",
+    "scene": "learning-adaptation",
+    "scale": "Data, objectives, representations and behavior; not a physical distance",
+    "summary": "Adapt an existing checkpoint while measuring retained and acquired behavior.",
+    "ids": [
+      "model-lifecycle-stage-contract",
+      "domain-adaptive-continuation",
+      "replay-retention-forgetting",
+      "long-context-adaptation",
+      "checkpoint-averaging-boundaries"
+    ],
+    "read": "A causal block sits beside a two-factor adaptation branch. The geometry locates parameters, state and possible update paths; it does not imply that every post-training technique uses low-rank adapters. Read the selected stage contract, then use the model experience for the actual objective and trainable state."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "\\bar\\theta=\\sum_k a_k\\theta_k,\\qquad \\sum_k a_k=1,\\quad a_k\\ge0",
+      "text": "Check parameter alignment before averaging and evaluate the resulting function.",
+      "variables": [
+        {
+          "symbol": "theta_k",
+          "meaning": "Coordinate-aligned candidate weights",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "a_k",
+          "meaning": "Averaging weights",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "bar theta",
+          "meaning": "New averaged checkpoint",
+          "unit": "parameters"
+        }
+      ]
+    }
+  ],
+  "structuredClaims": [
+    {
+      "id": "ml-claim-olmo2",
+      "title": "2 OLMo 2 Furious · scoped mechanism",
+      "statement": "The disclosed recipe separates data curricula, continued pretraining and post-training stages; selected checkpoint averages are evaluated.",
+      "sourceId": "ml-source-olmo2",
+      "lessonIds": [
+        "data-mixture-sampling",
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "model-lifecycle-stage-contract",
+        "replay-retention-forgetting",
+        "checkpoint-averaging-boundaries",
+        "feed-forward",
+        "residual-normalization",
+        "loss-optimizer",
+        "checkpoint",
+        "training-memory-state"
+      ],
+      "status": "research",
+      "metric": "Mechanism and mathematical contract",
+      "value": "Qualitative scope; worked numbers are authored",
+      "unit": "",
+      "denominator": "The cited section and its declared assumptions",
+      "period": "Edition inspected 2026-09-07",
+      "scope": "Sections 2.3 and 4.2.2; mid-training soups/Table 14; Section 5",
+      "limitations": "No corpus, model size, optimizer schedule or empirical result from OLMo 2 is reproduced by the toy decoder.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "manifestLesson": {
+    "id": "checkpoint-averaging-boundaries",
+    "title": "Compatible weight averaging and regressions",
+    "chapterId": "model-lifecycle-continuation",
+    "domainId": "learning-intelligence",
+    "workstream": "W11",
+    "contentFingerprint": "3c0cfe951befa203f898e134f5d3abc3186f2192ce930d36c36b6c8a3313d493",
+    "scope": {
+      "role": "Check parameter alignment before averaging and evaluate the resulting function.",
+      "learningObjective": "Check parameter alignment before averaging and evaluate the resulting function.",
+      "scale": "Mathematical, data and behavior space; logical dimensions are not physical distance",
+      "evidenceNotes": "Mode: worked example. Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "workedExample": "Two equivalent two-unit linear networks represent y=x with incoming vector [1,−1] and outgoing [0.5,−0.5], or with both vectors permuted to [−1,1] and [−0.5,0.5]. Each dot product is 1. Averaging corresponding incoming and outgoing entries gives zeros, so the averaged network produces y=0. By contrast, averaging compatible scalar weights 1 and 3 gives 2; that arithmetic alone still does not predict task quality.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Compatible weight averaging and regressions · worked relation",
+          "assumptions": "Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "A causal block sits beside a two-factor adaptation branch. The geometry locates parameters, state and possible update paths; it does not imply that every post-training technique uses low-rank adapters. Read the selected stage contract, then use the model experience for the actual objective and trainable state."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-91e65f2aee755df9b416",
+        "url": "https://arxiv.org/html/2501.00656v1",
+        "title": "2 OLMo 2 Furious",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "ml-claim-olmo2",
+            "ledgerSourceId": "ml-source-olmo2"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "ml-claim-olmo2"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "research"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "ml-methods-reviewer",
+        "label": "ML methods and evaluation reviewer",
+        "focus": "Mathematical assumptions, training/inference distinctions, experimental scope and evaluation limits."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Research framing, model validity and replication status require explicit limitations and follow-up evidence."
+      ],
+      "reviewFocus": [
+        "Mathematical assumptions, training/inference distinctions, experimental scope and evaluation limits.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "checkpoint",
+        "evaluation"
+      ],
+      "dependentLessonIds": [],
+      "relatedLessonIds": [
+        "checkpoint",
+        "evaluation",
+        "model-lifecycle-stage-contract",
+        "domain-adaptive-continuation",
+        "replay-retention-forgetting",
+        "long-context-adaptation"
+      ],
+      "journeyIds": [],
+      "lab": {
+        "labId": "library",
+        "deepLabId": null,
+        "scope": "Model lifecycle studio: worked example. Compatible parameter coordinates and tokenizer required. Permutation counterexample is an exact linear network; no averaging feature is executed by the lifecycle core."
+      },
+      "primaryInvestigationId": null,
+      "investigationIds": [],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": []
+    }
+  }
+}

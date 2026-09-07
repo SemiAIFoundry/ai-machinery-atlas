@@ -1,0 +1,607 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "process-cell-acceptance-1",
+  "scope": "Complete deterministic input records and calculated outputs; no measured devices.",
+  "scenarios": [
+    {
+      "id": "default",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 0,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 1,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 10,
+          "coxFpm2": 0.003453059999999999,
+          "gateCapF": 5.5248959999999983e-14,
+          "loadCapF": 6.524895999999998e-14,
+          "betaN": 0.0001553877,
+          "betaP": 0.00015538769999999996,
+          "thresholdNV": 0.34583928457657853,
+          "thresholdPV": 0.34583928457657853,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5364598211441447,
+          "vihV": 0.6635401788558553,
+          "vohV": 1.1364598211441446,
+          "volV": 0.06354017885585542,
+          "nmlV": 0.4729196422882893,
+          "nmhV": 0.4729196422882893
+        },
+        "timing": {
+          "fall50Seconds": 6.99775851668897e-10,
+          "rise50Seconds": 6.99775851668897e-10,
+          "fall90to10Seconds": 1.529750417658184e-9,
+          "rise10to90Seconds": 1.5297504176581843e-9
+        },
+        "accepted": true,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": true,
+            "actual": 0,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.23979706294076686,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": true,
+            "actual": 0.4729196422882893,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": true,
+            "actual": 0.699775851668897,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "thicker-oxide",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 20,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 1,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 12,
+          "coxFpm2": 0.002877549999999999,
+          "gateCapF": 4.604079999999999e-14,
+          "loadCapF": 5.604079999999999e-14,
+          "betaN": 0.00012948974999999998,
+          "betaP": 0.00012948974999999998,
+          "thresholdNV": 0.3690071414918942,
+          "thresholdPV": 0.3690071414918942,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5422517853729736,
+          "vihV": 0.6577482146270264,
+          "vohV": 1.1422517853729734,
+          "volV": 0.057748214627026506,
+          "nmlV": 0.4845035707459471,
+          "nmhV": 0.4845035707459471
+        },
+        "timing": {
+          "fall50Seconds": 7.598887600832811e-10,
+          "rise50Seconds": 7.598887600832811e-10,
+          "fall90to10Seconds": 1.6418947589233799e-9,
+          "rise10to90Seconds": 1.6418947589233799e-9
+        },
+        "accepted": false,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": false,
+            "actual": 20,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.24,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": true,
+            "actual": 0.4845035707459471,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": true,
+            "actual": 0.7598887600832811,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "thicker-oxide-relaxed-tolerance",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 20,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 1,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 20,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 12,
+          "coxFpm2": 0.002877549999999999,
+          "gateCapF": 4.604079999999999e-14,
+          "loadCapF": 5.604079999999999e-14,
+          "betaN": 0.00012948974999999998,
+          "betaP": 0.00012948974999999998,
+          "thresholdNV": 0.3690071414918942,
+          "thresholdPV": 0.3690071414918942,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5422517853729736,
+          "vihV": 0.6577482146270264,
+          "vohV": 1.1422517853729734,
+          "volV": 0.057748214627026506,
+          "nmlV": 0.4845035707459471,
+          "nmhV": 0.4845035707459471
+        },
+        "timing": {
+          "fall50Seconds": 7.598887600832811e-10,
+          "rise50Seconds": 7.598887600832811e-10,
+          "fall90to10Seconds": 1.6418947589233799e-9,
+          "rise10to90Seconds": 1.6418947589233799e-9
+        },
+        "accepted": true,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": true,
+            "actual": 20,
+            "limit": 20
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.24,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": true,
+            "actual": 0.4845035707459471,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": true,
+            "actual": 0.7598887600832811,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "thinner-oxide",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": -20,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 1,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 8,
+          "coxFpm2": 0.004316324999999999,
+          "gateCapF": 6.906119999999998e-14,
+          "loadCapF": 7.906119999999998e-14,
+          "betaN": 0.000194234625,
+          "betaP": 0.00019423462499999997,
+          "thresholdNV": 0.3226714276612628,
+          "thresholdPV": 0.3226714276612628,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5306678569153156,
+          "vihV": 0.6693321430846844,
+          "vohV": 1.1306678569153157,
+          "volV": 0.06933214308468422,
+          "nmlV": 0.4613357138306314,
+          "nmhV": 0.4613357138306313
+        },
+        "timing": {
+          "fall50Seconds": 6.449910802233562e-10,
+          "rise50Seconds": 6.449910802233563e-10,
+          "fall90to10Seconds": 1.4260613953040834e-9,
+          "rise10to90Seconds": 1.4260613953040836e-9
+        },
+        "accepted": false,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": false,
+            "actual": 20,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.2386514945681033,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": true,
+            "actual": 0.4613357138306313,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": true,
+            "actual": 0.6449910802233563,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "four-loads",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 0,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 4,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 10,
+          "coxFpm2": 0.003453059999999999,
+          "gateCapF": 5.5248959999999983e-14,
+          "loadCapF": 2.309958399999999e-13,
+          "betaN": 0.0001553877,
+          "betaP": 0.00015538769999999996,
+          "thresholdNV": 0.34583928457657853,
+          "thresholdPV": 0.34583928457657853,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5364598211441447,
+          "vihV": 0.6635401788558553,
+          "vohV": 1.1364598211441446,
+          "volV": 0.06354017885585542,
+          "nmlV": 0.4729196422882893,
+          "nmhV": 0.4729196422882893
+        },
+        "timing": {
+          "fall50Seconds": 2.4773622547849384e-9,
+          "rise50Seconds": 2.4773622547849384e-9,
+          "fall90to10Seconds": 5.4156569348737975e-9,
+          "rise10to90Seconds": 5.415656934873798e-9
+        },
+        "accepted": false,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": true,
+            "actual": 0,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.23979706294076686,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": true,
+            "actual": 0.4729196422882893,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": false,
+            "actual": 2.4773622547849383,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "asymmetric-corner",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 0,
+          "mobilityNScale": 0.5,
+          "thresholdNShiftMv": 120,
+          "fanout": 1,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 10,
+          "coxFpm2": 0.003453059999999999,
+          "gateCapF": 5.5248959999999983e-14,
+          "loadCapF": 6.524895999999998e-14,
+          "betaN": 0.00007769385,
+          "betaP": 0.00015538769999999996,
+          "thresholdNV": 0.4658392845765785,
+          "thresholdPV": 0.34583928457657853,
+          "mobilityNM2PerVs": 0.022500000000000003,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6933127122065331
+        },
+        "noise": {
+          "vilV": 0.6553953263974002,
+          "vihV": 0.7512900719776276,
+          "vohV": 1.1480063159421947,
+          "volV": 0.039854750254730974,
+          "nmlV": 0.6155405761426692,
+          "nmhV": 0.39671624396456706
+        },
+        "timing": {
+          "fall50Seconds": 1.8745095331791704e-9,
+          "rise50Seconds": 6.99775851668897e-10,
+          "fall90to10Seconds": 3.845012841846521e-9,
+          "rise10to90Seconds": 1.5297504176581843e-9
+        },
+        "accepted": false,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": true,
+            "actual": 0,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.23946368051929576,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": false,
+            "actual": 0.39671624396456706,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": false,
+            "actual": 1.8745095331791704,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "external-load-only",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 0,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 0,
+          "externalLoadFf": 100,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.4,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 10,
+          "coxFpm2": 0.003453059999999999,
+          "gateCapF": 5.5248959999999983e-14,
+          "loadCapF": 1e-13,
+          "betaN": 0.0001553877,
+          "betaP": 0.00015538769999999996,
+          "thresholdNV": 0.34583928457657853,
+          "thresholdPV": 0.34583928457657853,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5364598211441447,
+          "vihV": 0.6635401788558553,
+          "vohV": 1.1364598211441446,
+          "volV": 0.06354017885585542,
+          "nmlV": 0.4729196422882893,
+          "nmhV": 0.4729196422882893
+        },
+        "timing": {
+          "fall50Seconds": 1.072470506302165e-9,
+          "rise50Seconds": 1.072470506302165e-9,
+          "fall90to10Seconds": 2.3444824525297943e-9,
+          "rise10to90Seconds": 2.3444824525297947e-9
+        },
+        "accepted": false,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": true,
+            "actual": 0,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.23979706294076686,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": true,
+            "actual": 0.4729196422882893,
+            "limit": 0.4
+          },
+          {
+            "id": "timing",
+            "pass": false,
+            "actual": 1.0724705063021651,
+            "limit": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "strict-noise-target",
+      "record": {
+        "schemaVersion": 1,
+        "modelVersion": "process-cell-acceptance-1",
+        "input": {
+          "oxideNominalNm": 10,
+          "oxideOffsetPct": 0,
+          "mobilityNScale": 1,
+          "thresholdNShiftMv": 0,
+          "fanout": 1,
+          "externalLoadFf": 10,
+          "oxideTolerancePct": 5,
+          "noiseMinimumV": 0.5,
+          "delayMaximumNs": 1
+        }
+      },
+      "expected": {
+        "specimenId": "INV-01",
+        "parameters": {
+          "oxideNm": 10,
+          "coxFpm2": 0.003453059999999999,
+          "gateCapF": 5.5248959999999983e-14,
+          "loadCapF": 6.524895999999998e-14,
+          "betaN": 0.0001553877,
+          "betaP": 0.00015538769999999996,
+          "thresholdNV": 0.34583928457657853,
+          "thresholdPV": 0.34583928457657853,
+          "mobilityNM2PerVs": 0.045000000000000005,
+          "mobilityPM2PerVs": 0.015000000000000001,
+          "switchingV": 0.6
+        },
+        "noise": {
+          "vilV": 0.5364598211441447,
+          "vihV": 0.6635401788558553,
+          "vohV": 1.1364598211441446,
+          "volV": 0.06354017885585542,
+          "nmlV": 0.4729196422882893,
+          "nmhV": 0.4729196422882893
+        },
+        "timing": {
+          "fall50Seconds": 6.99775851668897e-10,
+          "rise50Seconds": 6.99775851668897e-10,
+          "fall90to10Seconds": 1.529750417658184e-9,
+          "rise10to90Seconds": 1.5297504176581843e-9
+        },
+        "accepted": false,
+        "gates": [
+          {
+            "id": "oxide",
+            "pass": true,
+            "actual": 0,
+            "limit": 5
+          },
+          {
+            "id": "logic",
+            "pass": true,
+            "actual": -0.23979706294076686,
+            "limit": 0
+          },
+          {
+            "id": "noise",
+            "pass": false,
+            "actual": 0.4729196422882893,
+            "limit": 0.5
+          },
+          {
+            "id": "timing",
+            "pass": true,
+            "actual": 0.699775851668897,
+            "limit": 1
+          }
+        ]
+      }
+    }
+  ]
+}

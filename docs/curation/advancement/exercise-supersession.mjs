@@ -1,0 +1,12 @@
+import path from 'node:path';
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {fileURLToPath} from 'node:url';
+import {readJSON,validateExerciseDocument} from './curation-advancement-common.mjs';
+const here=path.dirname(fileURLToPath(import.meta.url));
+const f=readJSON(path.join(here,'supersession-recheck-fixture.json'));assert.equal(f.fixture,true);
+const rows=f.steps.map(step=>{const r=validateExerciseDocument(step.document,step.asOf);assert.deepEqual(r.errors,[]);assert.deepEqual(r.queue,step.expected);return{step:step.id,...r};});
+const first=f.steps[0].document,edited=f.steps[1].document,final=f.steps[2].document;
+assert.equal(edited.claims.length,first.claims.length+1);assert.deepEqual(edited.events,first.events);assert.deepEqual(final.events.slice(0,-1),first.events);
+assert.equal(edited.claims[0].statement,first.claims[0].statement);assert.equal(edited.claims[0].fingerprint,first.claims[0].fingerprint);
+fs.writeFileSync(path.join(here,'exercise-results.json'),JSON.stringify({passed:true,fixture:true,realReviewEventsWritten:0,rows},null,2)+'\n');console.log(JSON.stringify({passed:true,fixture:true,states:rows.map(r=>({step:r.step,state:r.queue[0].status})),realReviewEventsWritten:0},null,2));

@@ -1,0 +1,307 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:43:43.211Z",
+  "lessonId": "capacity-phase-geography",
+  "contentFingerprint": "7ff32f6cc05b65612de250ace78dbea37f6430133117e5e589e7819ff3457ee9",
+  "record": {
+    "id": "capacity-phase-geography",
+    "level": "infrastructure",
+    "name": "Facility phases and geographical evidence",
+    "shortName": "Facility phases and geographical evidence",
+    "role": "Keeps physical sites, organizational names and development stages distinct before counting capacity.",
+    "description": "A cloud region, campus, building, availability zone and project phase are different entities. One campus can operate an early phase while constructing another and announcing a third. Different organizations may describe the same physical capacity as owner, operator, cloud provider or customer, creating double-counting risk. The Stargate and India hub announcements illustrate why dated status belongs to a specific phase and amount. Source date, checked date and power boundary distinguish the reported snapshot from later events; announced megawatts do not automatically count as operating capacity. Counts of factories or access centers require their own definitions and cannot be treated as equal-sized facilities.",
+    "specs": [
+      {
+        "label": "Status vocabulary",
+        "value": "Operating, commissioning, construction, planned and retired",
+        "context": "Apply status to a dated phase rather than an entire ambiguous name."
+      },
+      {
+        "label": "Entity identity",
+        "value": "Physical site versus service or organization",
+        "context": "Shared ownership and customer claims can refer to one installation."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Operator and public records",
+        "direction": "in",
+        "signal": "Dates, identities, capacities and explicit status statements"
+      },
+      {
+        "name": "Curated phase record",
+        "direction": "out",
+        "signal": "Comparable evidence with unknown boundaries retained"
+      }
+    ],
+    "tradeoff": "A smaller verified map is more interpretable than a large collection of incompatible announcements, though it must state its incomplete coverage.",
+    "whyAI": "Available AI service depends on the operating phase and access arrangement, not on the largest planned campus headline.",
+    "related": [
+      "production-ramp-allocation",
+      "regional-siting-access",
+      "cluster-commissioning-gates"
+    ],
+    "sources": [
+      {
+        "title": "Five new Stargate sites",
+        "url": "https://openai.com/index/five-new-stargate-sites/"
+      },
+      {
+        "title": "Google AI Hub construction milestone in India",
+        "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/"
+      },
+      {
+        "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en"
+      }
+    ],
+    "scale": "Facility phases to region and world; geography schematic",
+    "kind": "architecture",
+    "branch": "Global AI infrastructure",
+    "subbranch": "Global evidence and resource accounting",
+    "mechanism": [
+      "Resolve the physical site and identify any separately dated construction or operating phases.",
+      "Identify each organization’s role without counting the same hardware again under another name.",
+      "Attach capacity only to the phase and status directly supported by the source.",
+      "Preserve unspecified IT/facility boundaries and distinguish checked date from the reported event date.",
+      "Aggregate only compatible non-overlapping records and display the census’s coverage limits."
+    ],
+    "misconception": "A planned gigawatt campus is not a gigawatt of operating compute, and an access antenna is not an equivalent data-center building.",
+    "check": {
+      "question": "How should a partly operating campus with an announced expansion be recorded?",
+      "options": [
+        "As two unrelated copies of the same total",
+        "As separate phases with their own status and capacity",
+        "As fully operating at its final planned size"
+      ],
+      "answer": 1,
+      "explanation": "Phase records preserve real progress while preventing planned and operating quantities from being merged."
+    },
+    "science": [
+      {
+        "title": "Status-scoped aggregation",
+        "equation": "Cstatus(t) = Σp Cp(t)·1[statusp(t)=status]",
+        "explanation": "Cp is compatible capacity for non-overlapping phase p at time t; the indicator selects one status.",
+        "assumptions": "Only sum identical units and power boundaries; unknown amounts remain excluded or explicitly unresolved."
+      }
+    ],
+    "prerequisites": [
+      "cluster-commissioning-gates"
+    ],
+    "learningObjective": "Build a capacity record that preserves geography, identity, phase and evidence status.",
+    "workstream": "W10",
+    "visualFamily": "world-network",
+    "engineeringExample": "Synthetic campus has 20 MW operating and a separate 80 MW planned expansion. Its operating total remains 20 MW; 100 MW describes combined eventual scope only if both figures use the same boundary.",
+    "evidenceNotes": "This lesson supplies evidence methods and selected public cases, not a complete world census. The atlas’s facility records preserve the selected geographical examples.",
+    "labId": "library",
+    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "investigationId": "manufacturing",
+    "labScope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+  },
+  "chapter": {
+    "id": "deep-global-resources",
+    "domainId": "connected-infrastructure",
+    "read": "Use dated phase records and explicit denominators before aggregation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "C_s(t)=\\sum_p C_p(t)\\,\\mathbf1\\{\\mathrm{status}_p(t)=s\\}",
+      "variables": [
+        {
+          "symbol": "C_s(t)",
+          "meaning": "Compatible capacity with selected status s at time t",
+          "unit": "one declared capacity unit"
+        },
+        {
+          "symbol": "C_p(t)",
+          "meaning": "Capacity of nonoverlapping phase p at time t",
+          "unit": "same capacity unit"
+        },
+        {
+          "symbol": "status_p(t)",
+          "meaning": "Source-reported categorical status of phase p",
+          "unit": "category"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Selected status category",
+          "unit": "category"
+        },
+        {
+          "symbol": "1{…}",
+          "meaning": "Indicator: one when the stated status matches, zero otherwise",
+          "unit": "0 or 1"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Nonoverlapping phase index",
+          "unit": "index"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Snapshot time",
+          "unit": "date or consistent time coordinate"
+        }
+      ],
+      "text": "Status-scoped capacity sums each nonoverlapping phase’s compatible capacity only when its status matches the selected category.",
+      "note": "The subscript s replaces the repeated word status to distinguish a selected category from the phase’s status function. Unknown capacity is not silently treated as zero."
+    }
+  ],
+  "manifestLesson": {
+    "id": "capacity-phase-geography",
+    "title": "Facility phases and geographical evidence",
+    "chapterId": "deep-global-resources",
+    "domainId": "connected-infrastructure",
+    "workstream": "W10",
+    "contentFingerprint": "7ff32f6cc05b65612de250ace78dbea37f6430133117e5e589e7819ff3457ee9",
+    "scope": {
+      "role": "Keeps physical sites, organizational names and development stages distinct before counting capacity.",
+      "learningObjective": "Build a capacity record that preserves geography, identity, phase and evidence status.",
+      "scale": "Facility phases to region and world; geography schematic",
+      "evidenceNotes": "This lesson supplies evidence methods and selected public cases, not a complete world census. The atlas’s facility records preserve the selected geographical examples.",
+      "workedExample": "Synthetic campus has 20 MW operating and a separate 80 MW planned expansion. Its operating total remains 20 MW; 100 MW describes combined eventual scope only if both figures use the same boundary.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Status-scoped aggregation",
+          "assumptions": "Only sum identical units and power boundaries; unknown amounts remain excluded or explicitly unresolved.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Use dated phase records and explicit denominators before aggregation."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-775a7d4e10e6f3d6d135",
+        "url": "https://openai.com/index/five-new-stargate-sites/",
+        "title": "Five new Stargate sites",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-cd619e3d4531c3e08830",
+        "url": "https://blog.google/intl/en-in/google-ai-hub-scaling-indias-ai-infrastructure-and-community-impact/",
+        "title": "Google AI Hub construction milestone in India",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-c5e74c0f61b347fb8560",
+        "url": "https://www.eurohpc-ju.europa.eu/eurohpc-joint-undertaking-launches-ai-gigafactories-call-2026-07-30_en",
+        "title": "The EuroHPC Joint Undertaking launches the AI Gigafactories Call",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "infra-claim-euro-call",
+            "ledgerSourceId": "infra-src-eurohpc"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "infra-claim-euro-call"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "announced"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "status-sensitive",
+      "proposedIntervalDays": 30,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "infrastructure-engineering-reviewer",
+        "label": "Power, cooling and infrastructure reviewer",
+        "focus": "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Availability, readiness, allocation, forecast and announced specifications can change quickly; recheck on a status-changing event."
+      ],
+      "reviewFocus": [
+        "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "cluster-commissioning-gates"
+      ],
+      "dependentLessonIds": [
+        "regional-siting-access"
+      ],
+      "relatedLessonIds": [
+        "production-ramp-allocation",
+        "regional-siting-access",
+        "cluster-commissioning-gates"
+      ],
+      "journeyIds": [
+        "manufacturing-order"
+      ],
+      "lab": {
+        "labId": "library",
+        "deepLabId": null,
+        "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+      },
+      "primaryInvestigationId": "manufacturing",
+      "investigationIds": [
+        "manufacturing"
+      ],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": []
+    }
+  },
+  "claims": [
+    {
+      "id": "infra-claim-euro-call",
+      "title": "EuroHPC gigafactory procurement scope",
+      "statement": "The July 2026 EuroHPC call seeks up to seven AI gigafactories through a future selection process.",
+      "sourceId": "infra-src-eurohpc",
+      "lessonIds": [
+        "capacity-phase-geography",
+        "regional-siting-access"
+      ],
+      "status": "announced",
+      "metric": "Maximum call scope",
+      "value": 7,
+      "unit": "gigafactories",
+      "denominator": "procurement call",
+      "period": "30 July 2026 announcement",
+      "scope": "Proposed procurement scope, not operating facility count",
+      "limitations": "Do not combine with 19 AI factories being implemented or 13 access/support antennas as equivalent operating sites.",
+      "checkedOn": "2026-09-06"
+    }
+  ]
+}

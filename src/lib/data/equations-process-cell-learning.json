@@ -1,0 +1,212 @@
+{
+  "oxide-to-cell-acceptance": [
+    {
+      "latex": "t_{\\mathrm{ox}}=t_0(1+\\delta/100),\\qquad C_{\\mathrm{ox}}=\\frac{\\epsilon_0\\epsilon_r}{t_{\\mathrm{ox}}}",
+      "text": "Evaluated thickness is nominal thickness times one plus its percentage offset; oxide capacitance per area is permittivity divided by thickness.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "t0,tox",
+          "meaning": "Nominal and evaluated oxide thickness",
+          "unit": "m"
+        },
+        {
+          "symbol": "δ",
+          "meaning": "Chosen thickness offset",
+          "unit": "percent"
+        },
+        {
+          "symbol": "Cox",
+          "meaning": "Oxide capacitance per area",
+          "unit": "F/m²"
+        },
+        {
+          "symbol": "ε0,εr",
+          "meaning": "Vacuum permittivity and relative dielectric constant",
+          "unit": "F/m; dimensionless"
+        }
+      ]
+    },
+    {
+      "latex": "|V_{Tp}|=V_*+\\frac{Q_d}{C_{\\mathrm{ox}}},\\qquad V_{Tn}=|V_{Tp}|+\\Delta V_{Tn}",
+      "text": "The threshold magnitude contains a fixed intercept plus depletion charge per area divided by oxide capacitance per area; the nMOS receives an additional declared shift.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "VTn,|VTp|",
+          "meaning": "nMOS threshold and positive pMOS threshold magnitude",
+          "unit": "V"
+        },
+        {
+          "symbol": "V*",
+          "meaning": "Fixed flatband/surface-potential intercept",
+          "unit": "V"
+        },
+        {
+          "symbol": "Qd",
+          "meaning": "Chosen depletion-charge magnitude per area",
+          "unit": "C/m²"
+        },
+        {
+          "symbol": "Cox",
+          "meaning": "Evaluated oxide capacitance per area",
+          "unit": "F/m²"
+        },
+        {
+          "symbol": "ΔVTn",
+          "meaning": "Independent nMOS threshold perturbation",
+          "unit": "V"
+        }
+      ]
+    },
+    {
+      "latex": "\\beta_n=\\mu_n C_{\\mathrm{ox}}\\frac{W_n}{L},\\qquad\\beta_p=\\mu_p C_{\\mathrm{ox}}\\frac{W_p}{L}",
+      "text": "Current factors multiply mobility, oxide capacitance per area and width-to-length ratio.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "βn,βp",
+          "meaning": "Square-law current factors",
+          "unit": "A/V²"
+        },
+        {
+          "symbol": "μn,μp",
+          "meaning": "Carrier mobility magnitudes",
+          "unit": "m²/(V s)"
+        },
+        {
+          "symbol": "Wn,Wp,L",
+          "meaning": "Channel widths and common length",
+          "unit": "m"
+        },
+        {
+          "symbol": "Cox",
+          "meaning": "Oxide capacitance per area",
+          "unit": "F/m²"
+        }
+      ]
+    },
+    {
+      "latex": "G_{\\mathrm{cell}}=G_{\\mathrm{oxide}}\\land G_{\\mathrm{logic}}\\land G_{\\mathrm{noise}}\\land G_{\\mathrm{timing}}",
+      "text": "The specimen is accepted only if all four declared gates pass.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "Gcell",
+          "meaning": "Overall acceptance for this declared use",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Goxide,Glogic,Gnoise,Gtiming",
+          "meaning": "Independent geometry, static-logic, noise and timing gates",
+          "unit": "Boolean"
+        }
+      ]
+    }
+  ],
+  "loaded-inverter-transition": [
+    {
+      "latex": "I(\\beta,V_T,V_G,V_D)=\\begin{cases}0,&V_G\\leq V_T,\\\\\\beta[(V_G-V_T)V_D-V_D^2/2],&0\\leq V_D<V_G-V_T,\\\\\\beta(V_G-V_T)^2/2,&V_D\\geq V_G-V_T.\\end{cases}",
+      "text": "Current is zero below threshold, follows the triode expression below the overdrive drain voltage, and saturates at the square-law magnitude.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "I",
+          "meaning": "Drain-current magnitude",
+          "unit": "A"
+        },
+        {
+          "symbol": "β",
+          "meaning": "Current factor",
+          "unit": "A/V²"
+        },
+        {
+          "symbol": "VT,VG,VD",
+          "meaning": "Positive threshold magnitude and source-referenced gate/drain voltage magnitudes",
+          "unit": "V"
+        }
+      ]
+    },
+    {
+      "latex": "C_L=f\\,C_{\\mathrm{ox}}(W_n+W_p)L+C_{\\mathrm{extra}}",
+      "text": "Total load is fanout times the selected next-gate oxide-area capacitance plus an explicitly supplied extra load.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "CL",
+          "meaning": "Total constant output load",
+          "unit": "F"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Number of identical following inverters",
+          "unit": "count"
+        },
+        {
+          "symbol": "Cox",
+          "meaning": "Oxide capacitance per area",
+          "unit": "F/m²"
+        },
+        {
+          "symbol": "Wn,Wp,L",
+          "meaning": "Following gate geometry",
+          "unit": "m"
+        },
+        {
+          "symbol": "Cextra",
+          "meaning": "Supplied extra lumped capacitance",
+          "unit": "F"
+        }
+      ]
+    },
+    {
+      "latex": "t_{PHL}=C_L\\int_{V_{DD}/2}^{V_{DD}}\\frac{dv}{I_n(V_{DD},v)},\\qquad t_{PLH}=C_L\\int_{V_{DD}/2}^{V_{DD}}\\frac{dv}{|I_p(V_{DD},v)|}",
+      "text": "The 50% step delays integrate the constant load divided by the conducting transistor’s voltage-dependent current.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "tPHL,tPLH",
+          "meaning": "Output high-to-low and low-to-high 50% delays",
+          "unit": "s"
+        },
+        {
+          "symbol": "CL",
+          "meaning": "Constant output load",
+          "unit": "F"
+        },
+        {
+          "symbol": "v,VDD",
+          "meaning": "Drain-voltage magnitude integration variable and supply",
+          "unit": "V"
+        },
+        {
+          "symbol": "In,|Ip|",
+          "meaning": "Modeled nMOS and pMOS current magnitudes",
+          "unit": "A"
+        }
+      ]
+    },
+    {
+      "latex": "\\left.\\frac{dV_{out}}{dV_{in}}\\right|_{V_{IL},V_{IH}}=-1,\\qquad NM_L=V_{IL}-V_{OL},\\quad NM_H=V_{OH}-V_{IH}",
+      "text": "The two unity-gain inputs define corresponding output levels; low and high DC margins are their cross-stage differences.",
+      "kind": "math",
+      "variables": [
+        {
+          "symbol": "VIL,VIH",
+          "meaning": "Low and high unity-gain input voltages",
+          "unit": "V"
+        },
+        {
+          "symbol": "VOL,VOH",
+          "meaning": "Corresponding low and high output voltages",
+          "unit": "V"
+        },
+        {
+          "symbol": "NML,NMH",
+          "meaning": "Low and high static noise margins",
+          "unit": "V"
+        }
+      ]
+    }
+  ]
+}

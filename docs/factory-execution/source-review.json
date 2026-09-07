@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "models": {
+    "factory": "factory-actual-checkpoint-1",
+    "decoder": "causal-decoder-lifecycle-1",
+    "distributed": "distributed-causal-gradient-2",
+    "commissioning": "commissioning-execution-1",
+    "hall": 1
+  },
+  "maintenanceOwner": "Semi AI Foundry, LLC",
+  "actor": {
+    "type": "AI agent",
+    "id": "/root/process_editor"
+  },
+  "scope": "Bounded N14 actual decoder checkpoint → synthetic admitted factory job → whole-job fault/recovery bridge. Does not close all N14 or hardware tracks.",
+  "sourceChecks": [
+    {
+      "id": "torchrun-group-restart",
+      "title": "PyTorch 2.14 torchrun",
+      "url": "https://docs.pytorch.org/docs/2.14/elastic/run.html",
+      "edition": "2.14",
+      "locator": "Failure Modes; Membership Changes; Important Notices item 4",
+      "supports": "Group-level stop/restart and the loss of uncheckpointed work.",
+      "limits": "The example fixes two logical ranks, repairs one fault, and supplies its own schedule. No torchrun/NCCL process is executed.",
+      "status": "scoped-primary-text-or-equation-comparison",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "accessMethod": "Primary documentation text and applicable equation passage",
+      "reviewTriggers": [
+        "Relevant model equation, schedule, ownership or evidence-boundary changes",
+        "Source section moves or dependency version changes",
+        "Measured/vendor/production claims are proposed"
+      ],
+      "humanSpecialistReview": null
+    },
+    {
+      "id": "scr-complete-restart",
+      "title": "LLNL SCR integration",
+      "url": "https://scr.readthedocs.io/en/latest/users/integration.html",
+      "edition": "SCR 3.1.0 as displayed by the accessed documentation",
+      "locator": "Checkpoint: SCR_Start_output / SCR_Complete_output(valid), including collective file-set boundary; Restart with SCR: SCR_Have_restart and SCR_Start_restart",
+      "supports": "Distinguishing started, completely written/valid, and restart-available checkpoint sets.",
+      "limits": "Authored single-store atomic marker, intact earlier artifact and blocking writes; no SCR runtime or real filesystem durability guarantee.",
+      "status": "scoped-primary-text-or-equation-comparison",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "accessMethod": "Primary documentation text and applicable equation passage",
+      "reviewTriggers": [
+        "Relevant model equation, schedule, ownership or evidence-boundary changes",
+        "Source section moves or dependency version changes",
+        "Measured/vendor/production claims are proposed"
+      ],
+      "humanSpecialistReview": null
+    },
+    {
+      "id": "torch-general-checkpoint",
+      "title": "PyTorch Saving and Loading Models",
+      "url": "https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html",
+      "edition": "Tutorial page displayed 2.14.0+cu130 at this check; URL is unversioned",
+      "locator": "Saving & Loading a General Checkpoint for Inference and/or Resuming Training: Save, Load, and explanation of optimizer state",
+      "supports": "Retaining optimizer state in addition to model parameters when resuming training.",
+      "limits": "The factory adds its own exact sampler/RNG and source-history contract. The source does not validate assumed JSON byte sizes, throughput or power.",
+      "status": "scoped-primary-text-or-equation-comparison",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "accessMethod": "Primary documentation text and applicable equation passage",
+      "reviewTriggers": [
+        "Relevant model equation, schedule, ownership or evidence-boundary changes",
+        "Source section moves or dependency version changes",
+        "Measured/vendor/production claims are proposed"
+      ],
+      "humanSpecialistReview": null
+    },
+    {
+      "id": "lbl-metering-boundary",
+      "title": "DOE/LBNL Data Center Metering and Resource Guide",
+      "url": "https://datacenters.lbl.gov/sites/default/files/DataCenterMeteringandResourceGuide_02072017.pdf",
+      "edition": "February 2017",
+      "locator": "Section 2.1.1 PUE definition, section 2.1.2 limitations (PDF pages 3–4); section 3.2 Energy vs. Power (PDF page 6)",
+      "supports": "Consistent IT/facility boundaries, infrastructure overhead interpretation, and integrating power over time to obtain energy.",
+      "limits": "Fixed scenario PUE and all phase powers are authored assumptions. No annual measurement, productivity metric or source hardware forecast is imported.",
+      "status": "scoped-primary-text-or-equation-comparison",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "accessMethod": "PDF text extraction; no screenshot or diagram validation claimed",
+      "reviewTriggers": [
+        "Relevant model equation, schedule, ownership or evidence-boundary changes",
+        "Source section moves or dependency version changes",
+        "Measured/vendor/production claims are proposed"
+      ],
+      "humanSpecialistReview": null
+    },
+    {
+      "id": "openstax-dc-energy",
+      "title": "OpenStax University Physics Volume 2",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-5-electrical-energy-and-power",
+      "edition": "Section 9.5 as accessed; no new edition date inferred",
+      "locator": "Power in Electric Circuits, Eq. 9.12 P=IV; The Cost of Electricity, E=integral P dt and constant-power E=Pt",
+      "supports": "DC power relationships and phase-wise energy integration.",
+      "limits": "Equivalent package and rack voltages are explicitly distinct. Does not establish AC protection, real electrical design or chosen phase values.",
+      "status": "scoped-primary-text-or-equation-comparison",
+      "checkedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "accessMethod": "Primary documentation text and applicable equation passage",
+      "reviewTriggers": [
+        "Relevant model equation, schedule, ownership or evidence-boundary changes",
+        "Source section moves or dependency version changes",
+        "Measured/vendor/production claims are proposed"
+      ],
+      "humanSpecialistReview": null
+    }
+  ],
+  "sourceRechecks": [
+    {
+      "id": "nasa-hall-heat-balance",
+      "url": "https://ntrs.nasa.gov/api/citations/20110007103/downloads/20110007103.pdf",
+      "locator": "Existing operating-hall reference NASA/TM-2011-216962, heat-exchanger sizing Eq. 12 and page 12",
+      "attemptedOn": "2026-09-07",
+      "actor": {
+        "type": "AI agent",
+        "id": "/root/process_editor"
+      },
+      "status": "retrieval-blocked",
+      "observed": "Both the PDF URL and NTRS citation-page recheck returned an internal retrieval error in the web tool.",
+      "scope": "The unchanged ideal heat-balance contract has an actual earlier scoped primary-PDF check preserved in the established curation record. The latest web-reader retry failed; that is not represented as a newly completed source check.",
+      "lastSuccessfulReview": {
+        "record": "docs/curation/advancement/followup-source-checks.json",
+        "experienceId": "hall",
+        "sourceLocalId": "coolant-balance",
+        "checkedOn": "2026-09-07",
+        "actor": {
+          "kind": "agent",
+          "identifier": "/root/process_editor",
+          "role": "AI scoped primary-source reader"
+        },
+        "locators": [
+          "NASA/TM-2011-216962: printed p.3 equation (2); printed p.12 equation (12) and water specific-heat paragraph"
+        ],
+        "support": "supports-scoped-use",
+        "retrievalEvidence": {
+          "format": "PDF, 25 pages",
+          "sha256": "6c9145343c34106a72ca1217e75bddb56fb219f9565e168547f356794a127a9f",
+          "method": "Public HTTPS download and pypdf text extraction after web-reader failure",
+          "initialAttempts": [
+            "Web reader returned 403 for the download",
+            "Web reader could not read the citation page or attachment query"
+          ],
+          "readingScope": "Printed pages 3–4 and 12, not the complete spacecraft/fuel-cell design."
+        }
+      },
+      "humanSpecialistReview": null
+    }
+  ],
+  "dependencyReviews": [
+    {
+      "path": "docs/model-lifecycle/distributed/source-review-manifest.json",
+      "role": "Existing core gradient, optimizer and distributed objective checks; attributed to the recorded original actor. Do not replace with this integration audit."
+    },
+    {
+      "path": "docs/commissioning-execution/source-review.json",
+      "role": "Existing firmware/mapping/completion primary-spec checks."
+    },
+    {
+      "path": "docs/engineering/operating-hall/SCIENCE.md",
+      "role": "Inherited hall assumptions and primary-source locators; provenance remains in that experience."
+    }
+  ],
+  "integrationChecks": [
+    "Independent full-batch objective and Adam/SGD arithmetic matches actual carried source and final vectors.",
+    "Checkpoints contain actual compatible full state. No partial/marker-incomplete checkpoint becomes authoritative.",
+    "Every interval has one total-power coefficient and one wall-time owner; completed gradients and rank-seconds have separate denominators.",
+    "Source checkpoint and final-test exposure are retained; no learner completion or human review is fabricated.",
+    "Distributed v2 ownership slices and reconstructed replicas survive actual checkpoint serialization and recovery; factory central JSON teaching transport remains separate from physical collective traffic."
+  ],
+  "candidateFiles": [
+    {
+      "path": "src/lib/factory-execution.ts",
+      "sha256": "5c895ffd064f13fbb875dcf36af672032ffd46888430072875d1d7eded10c72d"
+    },
+    {
+      "path": "src/components/factory-execution.tsx",
+      "sha256": "8dd24790630b2b3337949b75e17d21e36ed7cc122549d3b578e892bc918261b5"
+    },
+    {
+      "path": "src/components/factory-execution.css",
+      "sha256": "f14195280ba25b864deddf48e2ddb06b4131a3b24536b4ae1bf8d494bf9cf81e"
+    },
+    {
+      "path": "scripts/factory-execution.test.mjs",
+      "sha256": "c3c55f3d5e8b2e63a15436ca89915734c55300812618abc0fba3e4ab8291daef"
+    },
+    {
+      "path": "src/lib/model-lifecycle.ts",
+      "sha256": "5b01cdd348e82e7855c205af7f4d4dbb71e21320e73a696a211b625615c8e91d"
+    },
+    {
+      "path": "src/lib/model-lifecycle-data.ts",
+      "sha256": "c3deefb00776c2c9d85d6409b7f163b80532048fefdeab0c534fc5a2d4ea3dee"
+    },
+    {
+      "path": "src/lib/model-lifecycle-distributed.ts",
+      "sha256": "8a9f571d800400ea0a8f5c06f8b57f6fe40cb63e29e604352a502795c66b26d5"
+    },
+    {
+      "path": "src/lib/model-lifecycle-workspace.ts",
+      "sha256": "dfd802d8919bce0222fd1787f73589e0f7a24600abcd6be8b7ae6ef64442b10c"
+    },
+    {
+      "path": "src/lib/commissioning-execution.ts",
+      "sha256": "8c7531db8cc4a8a75c8d11ce90aba5de5cdc7e0ef973c0a5b836c3b0db85cb83"
+    },
+    {
+      "path": "src/lib/operating-hall.ts",
+      "sha256": "789e5563e4ac2fe8ddd4f0fe838aa1b4fe5d318745149277ab370112eda43db0"
+    },
+    {
+      "path": "src/components/portable-experiment.tsx",
+      "sha256": "3acb9038050e2f0ce771dd9d523da300a7e23dddbc3dacada80293b795878074"
+    },
+    {
+      "path": "src/lib/portable-experiment-storage.ts",
+      "sha256": "4adab4a5129db3bf911c5da220ffbcd5c47694dc97d320bbb9c29ef00055a535"
+    },
+    {
+      "path": "src/components/equation.tsx",
+      "sha256": "5d5079cb851d0f5af835f99042e4265ce43360f8c7a9c3dc34aad197fcd68480"
+    }
+  ],
+  "pendingObservations": [
+    "Physical-device browser and assistive-technology observation",
+    "Human learner/instructor observation",
+    "Human specialist scientific review"
+  ],
+  "freezeStatus": "Current factory implementation, complete fixtures and dependency fingerprints validated after distributed-causal-gradient-2 ownership integration."
+}

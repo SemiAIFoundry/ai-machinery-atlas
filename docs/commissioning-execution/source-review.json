@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "modelVersion": "commissioning-execution-1",
+  "scope": "Bounded N12 powered-device to accepted-result bridge and five lessons; not closure of real firmware, OS, security or hardware signoff.",
+  "checks": [
+    {
+      "id": "runtime-linux-pci-616",
+      "title": "Linux 6.16 — How To Write Linux PCI Drivers",
+      "url": "https://docs.kernel.org/6.16/PCI/pci.html",
+      "publisher": "Linux kernel project",
+      "version": "Linux 6.16",
+      "locator": "1.2 pci_register_driver and probe; 1.4 Device Initialization Steps; introduction cleanup sequence",
+      "scope": "Discovery and driver/resource lifecycle context; no actual PCI device is operated.",
+      "published": "Edition identified; publication date not used as a model parameter",
+      "checkedOn": "2026-09-07",
+      "status": "scoped-source-comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source revision or locator changes",
+        "Model address, ownership, visibility or reset contract changes",
+        "Real firmware, operating-system, vendor or security claims are proposed"
+      ],
+      "lessonIds": [
+        "firmware-device-contract"
+      ],
+      "supports": "Discovery and driver/resource lifecycle context; no actual PCI device is operated.",
+      "limits": "The ABI string, identity and exact resource sequence are declared teaching inputs. No actual firmware, enumeration, MMIO, DMA-mask negotiation or PCI compliance check was run."
+    },
+    {
+      "id": "runtime-linux-dma-616",
+      "title": "Linux 6.16 — Dynamic DMA mapping Guide",
+      "url": "https://docs.kernel.org/6.16/core-api/dma-api-howto.html",
+      "publisher": "Linux kernel project",
+      "version": "Linux 6.16",
+      "locator": "CPU and DMA addresses; Types of DMA mappings; consistent-memory barriers; streaming dma_sync_* handoffs; Handling Errors",
+      "scope": "Address-space, visibility, ordering and lifetime boundaries. The model uses its own byte-range translation and two-copy semantics, not the Linux API.",
+      "published": "Edition identified; publication date not used as a model parameter",
+      "checkedOn": "2026-09-07",
+      "status": "scoped-source-comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source revision or locator changes",
+        "Model address, ownership, visibility or reset contract changes",
+        "Real firmware, operating-system, vendor or security claims are proposed"
+      ],
+      "lessonIds": [
+        "process-dma-address-spaces",
+        "iommu-buffer-identity",
+        "dma-visibility-ownership"
+      ],
+      "supports": "Address-space, visibility, ordering and lifetime boundaries. The model uses its own byte-range translation and two-copy semantics, not the Linux API.",
+      "limits": "The sixteen-byte translation ranges and two data copies are authored abstractions. They do not implement real page granularity, cache protocol or kernel DMA calls; map-time synchronization can be part of a real mapping API."
+    },
+    {
+      "id": "runtime-virtio-13",
+      "title": "OASIS — Virtual I/O Device (VIRTIO) Version 1.3",
+      "url": "https://docs.oasis-open.org/virtio/virtio/v1.3/virtio-v1.3.html",
+      "publisher": "OASIS",
+      "version": "Virtio 1.3",
+      "locator": "2.1 Device Status; 2.4 Device Reset; 3.1 Initialization; 3.3 Device Cleanup",
+      "scope": "Readiness, exposed-buffer lifetime and reset/quiescence context. No Virtio conformance or firmware authentication is claimed.",
+      "published": "Edition identified; publication date not used as a model parameter",
+      "checkedOn": "2026-09-07",
+      "status": "scoped-source-comparison",
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "humanSpecialistReview": null,
+      "triggers": [
+        "Source revision or locator changes",
+        "Model address, ownership, visibility or reset contract changes",
+        "Real firmware, operating-system, vendor or security claims are proposed"
+      ],
+      "lessonIds": [
+        "firmware-device-contract",
+        "dma-visibility-ownership",
+        "device-completion-reset-epochs"
+      ],
+      "supports": "Readiness, exposed-buffer lifetime and reset/quiescence context. No Virtio conformance or firmware authentication is claimed.",
+      "limits": "The model borrows readiness and quiescence boundaries only. Epoch-tagged pure-job retry is an authored policy, not a Virtio field or conformance claim. Firmware signatures, attestation and cryptography are absent."
+    }
+  ],
+  "candidateFiles": [
+    {
+      "path": "src/lib/commissioning-execution.ts",
+      "sha256": "8c7531db8cc4a8a75c8d11ce90aba5de5cdc7e0ef973c0a5b836c3b0db85cb83"
+    },
+    {
+      "path": "src/lib/commissioning-execution-record.ts",
+      "sha256": "a4999369d23c41ecece0b609fb2dde5efe9954c1ce480ff6795ec944e206815c"
+    },
+    {
+      "path": "src/components/commissioning-execution.tsx",
+      "sha256": "7d5f36232d1d1703755638e316f1e9c483daddc50bbd27a5cb9f578743e27031"
+    },
+    {
+      "path": "src/components/commissioning-execution.css",
+      "sha256": "67da78fe8432f77ef51be15e4108d57007303962653d8a09e89e9850c18b6a1c"
+    },
+    {
+      "path": "src/lib/data/hardware-runtime-learning.json",
+      "sha256": "9bb7d95d8ad032ea1b234ab39e0c224b67a11d3785e135858c7104ed8384fa8a"
+    },
+    {
+      "path": "src/lib/data/equations-hardware-runtime-learning.json",
+      "sha256": "290bb0869b31908412dc242f112f648da042e82ac05b6d35010e323dcba3c0a4"
+    },
+    {
+      "path": "scripts/commissioning-execution.test.mjs",
+      "sha256": "d6ab4539f79ea2fa29aad8986ea62d7237bf69371d399ed904ffc78db6d06c46"
+    },
+    {
+      "path": "src/lib/architecture-execution.ts",
+      "sha256": "6d3c396ba519adf0574a7db12c4d47125994bb38a242329bfb50fcf2b09dcf9a"
+    }
+  ],
+  "reviewDispositions": [
+    {
+      "actorType": "AI agent",
+      "actorId": "/root/process_editor",
+      "checkedOn": "2026-09-07",
+      "checks": [
+        "Compared cited versioned primary sections to explicit model mechanism and limits",
+        "Verified actual device arithmetic against independent binary-matrix references",
+        "Compared all five lesson worked traces to model outcomes",
+        "Parsed all eight canonical equations with KaTeX"
+      ],
+      "humanSpecialistReview": null
+    }
+  ],
+  "physicalMeasurement": null,
+  "externalSimulatorComparison": null,
+  "securityVerification": null
+}

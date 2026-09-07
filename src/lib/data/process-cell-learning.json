@@ -1,0 +1,459 @@
+{
+  "id": "process-cell-learning",
+  "version": "process-cell-learning-1",
+  "title": "Process to electrical cell acceptance",
+  "scope": "Two additive N11 lessons deepening existing oxide, transistor and standard-cell coverage with one bounded planar long-channel specimen.",
+  "chapters": [
+    {
+      "id": "process-cell-bridge",
+      "band": 1,
+      "name": "Process to electrical cell acceptance",
+      "parent": "Devices / material variation and useful cell behavior",
+      "scene": "transistor",
+      "scale": "Synthetic oxide and 2 μm long-channel inverter; geometry schematic",
+      "title": "Follow one specimen from material geometry to declared acceptance",
+      "summary": "Connect oxide capacitance, threshold, drive, transfer, load and distinct cell requirements.",
+      "ids": [
+        "oxide-to-cell-acceptance",
+        "loaded-inverter-transition"
+      ],
+      "question": "Which material or electrical boundary prevents this cell from serving its stated use?",
+      "read": "Inspect the same INV-01 parameters throughout. Limits are chosen for teaching and do not qualify a foundry process."
+    }
+  ],
+  "lessons": [
+    {
+      "level": "transistor",
+      "branch": "Devices and logic",
+      "subbranch": "Process to electrical cell acceptance",
+      "scale": "Declared 2 μm channel, nanometre oxide inputs and one lumped circuit; schematic geometry",
+      "kind": "component",
+      "workstream": "N11",
+      "visualFamily": "transistor",
+      "labId": "library",
+      "investigationId": "manufacturing",
+      "labScope": "The process-cell-acceptance-1 studio carries INV-01 through this exact mathematical specimen. It does not run fabrication, TCAD, a SPICE executable or a foundry model.",
+      "history": [],
+      "checks": [],
+      "evidenceNotes": "The physical equations and conventions are primary-source informed. The parameter values, corners, constraints and results are authored teaching choices; no commercial process or human specialist review is represented.",
+      "id": "oxide-to-cell-acceptance",
+      "name": "Oxide variation to electrical cell acceptance",
+      "shortName": "One oxide, several consequences",
+      "role": "Carry a named material specimen into electrical parameters and separate acceptance gates.",
+      "description": "A fabricated layer becomes useful through the electrical behavior it enables. Thickness therefore cannot remain only a geometry annotation in an atlas of computation. INV-01 carries one evaluated oxide value into capacitance per area, the fixed-depletion-charge contribution to threshold, transistor current factor and the next-gate portion of its output load. This coupling prevents changing drive strength while silently holding every related quantity fixed. The nMOS mobility factor and additional threshold shift are explicitly independent perturbations, rather than a claimed prediction from one manufacturing knob. The specimen then faces four different requirements: oxide tolerance, static logic interface, DC noise margin and loaded transition delay. Keeping these gates separate reveals when a material condition is unacceptable even though one electrical metric is favorable, and when nominal geometry still fails a use-dependent timing requirement. The result is a disciplined conceptual bridge from the existing oxidation and device lessons to one executable cell case.",
+      "mechanism": [
+        "The evaluated thickness is computed from the nominal oxide and a chosen percentage offset; both remain attached to INV-01.",
+        "Permittivity divided by evaluated thickness yields capacitance per area with explicit SI conversion.",
+        "A fixed electrostatic intercept and depletion-charge term give the chosen threshold magnitude; nMOS receives a separately declared shift.",
+        "Mobility and W/L combine with the same Cox to determine drive strength, while next-gate area determines the modeled capacitive load.",
+        "Current balance and a loaded transient produce electrical outputs without changing the original specimen identity.",
+        "Separate tolerance, logic, noise and delay gates determine acceptance under the chosen teaching use."
+      ],
+      "prerequisites": [
+        "thermal-oxidation-interface",
+        "gate-stack",
+        "mosfet"
+      ],
+      "related": [
+        "loaded-inverter-transition",
+        "standard-cell",
+        "inverter"
+      ],
+      "specs": [
+        {
+          "label": "Specimen",
+          "value": "INV-01",
+          "context": "Same evaluated material/electrical state through all views."
+        },
+        {
+          "label": "Geometry",
+          "value": "L=2 μm; Wn=2 μm; Wp=6 μm",
+          "context": "Declared planar long-channel dimensions; not a process-node label."
+        },
+        {
+          "label": "Supply",
+          "value": "1.2 V",
+          "context": "Fixed teaching input; no commercial operating point is implied."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Material and process scenario",
+          "direction": "in",
+          "signal": "Nominal/evaluated oxide, declared nMOS mobility/threshold perturbation and load"
+        },
+        {
+          "name": "Cell acceptance evidence",
+          "direction": "out",
+          "signal": "Current, transfer, noise, delay and independent pass/fail gates"
+        }
+      ],
+      "science": [
+        {
+          "title": "Oxide geometry becomes electrical capacitance",
+          "equation": "Evaluated thickness is nominal thickness times one plus its percentage offset; oxide capacitance per area is permittivity divided by thickness.",
+          "explanation": "The same evaluated oxide is used in all subsequent device and load calculations. Metrology is not simulated.",
+          "assumptions": "Planar dielectric with assumed εr=3.9 and ε0=8.854×10⁻¹² F/m; t is converted from nm to m. No high-k multilayer or quantum correction."
+        },
+        {
+          "title": "The fixed-charge threshold term",
+          "equation": "The threshold magnitude contains a fixed intercept plus depletion charge per area divided by oxide capacitance per area; the nMOS receives an additional declared shift.",
+          "explanation": "Increasing thickness reduces Cox and raises the fixed-charge contribution to threshold. Both polarities share chosen magnitudes before the independent nMOS shift.",
+          "assumptions": "V*=0.23 V and Qd=4×10⁻⁴ C/m² are specified assumptions with fixed body electrostatics, not values derived from a manufacturing recipe. No variation distribution or impurity profile is solved."
+        },
+        {
+          "title": "Geometry and mobility set drive strength",
+          "equation": "Current factors multiply mobility, oxide capacitance per area and width-to-length ratio.",
+          "explanation": "The default 450 versus 150 cm²/(V s) mobility magnitudes are balanced by 2 versus 6 μm widths at a common 2 μm length.",
+          "assumptions": "Constant mobilities, planar long channels; convert cm²/(V s) to m²/(V s) with 10⁻⁴. No mobility degradation or velocity saturation."
+        },
+        {
+          "title": "One acceptance conjunction preserves separate causes",
+          "equation": "The specimen is accepted only if all four declared gates pass.",
+          "explanation": "A geometry failure, poor static interface, insufficient noise margin and excessive loaded delay remain individually visible. A single success cannot substitute for the other requirements.",
+          "assumptions": "Only the stated synthetic tolerance and electrical constraints; no statistical yield, process qualification, field reliability or commercial-node signoff."
+        }
+      ],
+      "engineeringExample": "At nominal/evaluated oxide 10 nm, INV-01 has Cox=0.00345306 F/m², total load 65.24896 fF and equal threshold magnitudes 0.3458393 V. A +20% offset yields 12 nm, Cox=0.00287755 F/m² and threshold 0.3690071 V. Its default 50% delay becomes 0.7598888 ns and still meets the chosen 1 ns limit, but the 20% geometry offset fails the independently chosen 5% oxide tolerance. This is one deterministic specimen, not a distribution or a measured wafer yield.",
+      "learningObjective": "Trace oxide variation through at least three electrical quantities and explain which declared acceptance condition fails.",
+      "misconception": "A favorable electrical result does not waive a separate material requirement, and nominal material geometry does not establish timing closure.",
+      "check": {
+        "question": "The +20% oxide specimen meets the selected timing and noise limits but violates a 5% thickness tolerance. Is it accepted under all four gates?",
+        "options": [
+          "Yes, because timing is the only relevant metric",
+          "No, the independently declared geometry gate fails",
+          "Yes, because a digital output was produced"
+        ],
+        "answer": 1,
+        "explanation": "The stated acceptance contract requires all four gates. No metric silently replaces another."
+      },
+      "whyAI": "Every accelerator is assembled from physical devices whose behavior must satisfy cell-level requirements before higher-level arithmetic and system performance claims are meaningful.",
+      "tradeoff": "Geometry, current, capacitance and noise can move together or in opposite directions. The model exposes that coupling while keeping its deliberately ideal physics and chosen acceptance contract explicit.",
+      "sourceIds": [
+        "cell-mit-6012-l8",
+        "cell-mit-6012-l9",
+        "cell-mit-6012-l10"
+      ],
+      "sources": [
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 8",
+          "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/ba97ec0d4b75ff1049567a48e66b74a0_lec8.pdf"
+        },
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 9",
+          "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/5c5960f14ae37d0a65478c4f3f628d98_lec9.pdf"
+        },
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 10",
+          "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/0498bbf0f0e585507d9cfe5dc3bd54b1_lec10.pdf"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "process-cell-acceptance-1",
+        "scenario": "thicker-oxide",
+        "expected": {
+          "oxideNm": 12,
+          "coxFpm2": 0.00287755,
+          "thresholdNV": 0.3690071414918942,
+          "fall50Seconds": 7.598887600832811e-10,
+          "accepted": false
+        }
+      }
+    },
+    {
+      "level": "transistor",
+      "branch": "Devices and logic",
+      "subbranch": "Process to electrical cell acceptance",
+      "scale": "Declared 2 μm channel, nanometre oxide inputs and one lumped circuit; schematic geometry",
+      "kind": "component",
+      "workstream": "N11",
+      "visualFamily": "transistor",
+      "labId": "library",
+      "investigationId": "manufacturing",
+      "labScope": "The process-cell-acceptance-1 studio carries INV-01 through this exact mathematical specimen. It does not run fabrication, TCAD, a SPICE executable or a foundry model.",
+      "history": [],
+      "checks": [],
+      "evidenceNotes": "The physical equations and conventions are primary-source informed. The parameter values, corners, constraints and results are authored teaching choices; no commercial process or human specialist review is represented.",
+      "id": "loaded-inverter-transition",
+      "name": "Loaded CMOS transfer, noise and transition delay",
+      "shortName": "Static correctness is not timing closure",
+      "role": "Compare the same cell’s DC voltage-transfer contract with its explicitly loaded charging and discharging behavior.",
+      "description": "A CMOS inverter’s static transfer describes the output voltage after currents balance. Its transient response also depends on the charge that must move into or out of its load. These are related but distinct tests of a useful logic cell. The specimen solves the long-channel triode and saturation branches directly and locates the two unity-gain points that define its static noise margins. Because channel-length modulation is deliberately zero, the exact switching input admits an interval of balanced outputs; the graph shows that model boundary rather than fabricating a unique voltage. Loaded transitions use a separate rail-to-rail input-step experiment and integrate the same current law against a constant capacitance. Fanout therefore changes delay without moving the DC transfer. A weakened nMOS can instead shift the switching input, make the noise margins unequal and slow only one direction. These cases show why a library cell needs a declared load, input convention and numerical model before its timing can be meaningfully discussed.",
+      "mechanism": [
+        "The nMOS and pMOS current magnitudes use source-referenced voltages and positive threshold magnitudes.",
+        "The DC operating point balances pull-up and pull-down current within each valid long-channel regime.",
+        "The exact λ=0 transition remains set-valued; the model exposes its output interval and does not report a finite gain there.",
+        "The two separate slope-minus-one points define actual VOL, VOH, VIL and VIH for the static noise calculation.",
+        "Each ideal input step leaves one transistor charging or discharging the constant output load; the piecewise current is integrated to stated voltage thresholds.",
+        "Increasing fanout, changing electrical asymmetry or changing acceptance limits reveals different failure causes without equating static logic with timing."
+      ],
+      "prerequisites": [
+        "oxide-to-cell-acceptance",
+        "inverter"
+      ],
+      "related": [
+        "standard-cell",
+        "clock",
+        "gate-stack"
+      ],
+      "specs": [
+        {
+          "label": "Specimen",
+          "value": "INV-01",
+          "context": "Same evaluated material/electrical state through all views."
+        },
+        {
+          "label": "Geometry",
+          "value": "L=2 μm; Wn=2 μm; Wp=6 μm",
+          "context": "Declared planar long-channel dimensions; not a process-node label."
+        },
+        {
+          "label": "Supply",
+          "value": "1.2 V",
+          "context": "Fixed teaching input; no commercial operating point is implied."
+        }
+      ],
+      "interfaces": [
+        {
+          "name": "Material and process scenario",
+          "direction": "in",
+          "signal": "Nominal/evaluated oxide, declared nMOS mobility/threshold perturbation and load"
+        },
+        {
+          "name": "Cell acceptance evidence",
+          "direction": "out",
+          "signal": "Current, transfer, noise, delay and independent pass/fail gates"
+        }
+      ],
+      "science": [
+        {
+          "title": "Piecewise long-channel current magnitude",
+          "equation": "Current is zero below threshold, follows the triode expression below the overdrive drain voltage, and saturates at the square-law magnitude.",
+          "explanation": "DC transfer balances the two currents. pMOS uses VSG, VSD and |VTp| in the same positive-magnitude function. The exact λ=0 switching input admits an interval of output voltages.",
+          "assumptions": "Long-channel, strong-inversion, constant mobility, no channel-length modulation, leakage, body-bias changes or short-channel effects. Ideal cutoff is not real subthreshold behavior."
+        },
+        {
+          "title": "One output load connects to the following gates",
+          "equation": "Total load is fanout times the selected next-gate oxide-area capacitance plus an explicitly supplied extra load.",
+          "explanation": "The geometry used for the next inverter matches the specimen. Increasing fanout raises a positive constant capacitance without altering the DC current-balance curve.",
+          "assumptions": "Constant full oxide-area approximation, not voltage-dependent gate capacitance. The extra load is supplied, not an extracted wire/junction model; intrinsic and overlap parasitics are omitted."
+        },
+        {
+          "title": "Loaded delay from the current integral",
+          "equation": "The 50% step delays integrate the constant load divided by the conducting transistor’s voltage-dependent current.",
+          "explanation": "The implementation evaluates saturation and triode portions analytically. Independent numerical quadrature checks the integral, improving on a constant-current hand estimate within this same ideal model.",
+          "assumptions": "Instantaneous rail-to-rail input step, one conducting pull device, constant load and ideal initial rail. These are mathematical model times, not measured silicon delays. The output approaches its final rail asymptotically."
+        },
+        {
+          "title": "Use the actual unity-gain output levels",
+          "equation": "The two unity-gain inputs define corresponding output levels; low and high DC margins are their cross-stage differences.",
+          "explanation": "VOL is Vout(VIH) and VOH is Vout(VIL). The model uses those actual curve levels instead of substituting ideal zero and supply rails.",
+          "assumptions": "Static cascade convention for identical gates in the declared model; no noise spectrum, transient susceptibility, error rate or statistical distribution is predicted."
+        }
+      ],
+      "engineeringExample": "With default INV-01, VIL=0.5364598 V, VIH=0.6635402 V, VOL=0.0635402 V and VOH=1.1364598 V. Both noise margins are 0.4729196 V; the 50% step delay is 0.6997759 ns in each direction. Four following loads increase total capacitance to 230.99584 fF and delay to 2.4773623 ns, while all four static voltages and noise margins remain unchanged. The 1 ns timing gate fails. Reducing nMOS mobility to 0.5× and adding 120 mV to its threshold instead produces a 1.8745095 ns falling delay and 0.3967162 V high noise margin, failing the chosen 0.4 V noise requirement as well.",
+      "learningObjective": "Compute loaded delay and conservative DC noise margins, recognize the ideal model’s vertical transition, and distinguish load-induced timing failure from electrical asymmetry.",
+      "misconception": "Correct static output and positive noise margins do not prove a specified loaded transition deadline.",
+      "check": {
+        "question": "Fanout rises from one to four identical loads while device parameters stay fixed. Which result changes in this model?",
+        "options": [
+          "Only the switching threshold",
+          "The loaded delay changes; the DC transfer is unchanged",
+          "Neither delay nor DC transfer changes"
+        ],
+        "answer": 1,
+        "explanation": "The positive load multiplies transient charging time. It does not enter the static current-balance equation."
+      },
+      "whyAI": "Every accelerator is assembled from physical devices whose behavior must satisfy cell-level requirements before higher-level arithmetic and system performance claims are meaningful.",
+      "tradeoff": "Geometry, current, capacitance and noise can move together or in opposite directions. The model exposes that coupling while keeping its deliberately ideal physics and chosen acceptance contract explicit.",
+      "sourceIds": [
+        "cell-mit-6012-l9",
+        "cell-mit-6012-l10",
+        "cell-mit-6012-l12",
+        "cell-mit-6012-l14"
+      ],
+      "sources": [
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 9",
+          "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/5c5960f14ae37d0a65478c4f3f628d98_lec9.pdf"
+        },
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 10",
+          "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/0498bbf0f0e585507d9cfe5dc3bd54b1_lec10.pdf"
+        },
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 12",
+          "url": "https://www.ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/74c08e0cdcdab837d4eaceaf2384d646_lec12.pdf"
+        },
+        {
+          "title": "MIT 6.012 Fall 2005 — Lecture 14",
+          "url": "https://www.ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/6bec6dd1b07b02a1a84098b78f068cc3_lec14.pdf"
+        }
+      ],
+      "workedTrace": {
+        "modelVersion": "process-cell-acceptance-1",
+        "scenario": "four-loads",
+        "expected": {
+          "loadCapF": 2.3099584e-13,
+          "fall50Seconds": 2.4773622547849384e-09,
+          "nmlV": 0.4729196422882893,
+          "nmhV": 0.4729196422882893,
+          "accepted": false
+        }
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "cell-mit-6012-l8",
+      "title": "MIT 6.012 Fall 2005 — Lecture 8",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/ba97ec0d4b75ff1049567a48e66b74a0_lec8.pdf",
+      "publisher": "MIT OpenCourseWare / Jesús del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 8, pages 10–12: threshold potential drops and oxide-capacitance dependence; pages 13–15: inversion charge",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred."
+    },
+    {
+      "id": "cell-mit-6012-l9",
+      "title": "MIT 6.012 Fall 2005 — Lecture 9",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/5c5960f14ae37d0a65478c4f3f628d98_lec9.pdf",
+      "publisher": "MIT OpenCourseWare / Jesús del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 9, pages 12–14: gradual-channel triode current and its valid drain-bias range",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred."
+    },
+    {
+      "id": "cell-mit-6012-l10",
+      "title": "MIT 6.012 Fall 2005 — Lecture 10",
+      "url": "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/0498bbf0f0e585507d9cfe5dc3bd54b1_lec10.pdf",
+      "publisher": "MIT OpenCourseWare / Jesús del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 10, page 6: saturation current; pages 12–13: channel-length modulation as an additional effect",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred."
+    },
+    {
+      "id": "cell-mit-6012-l12",
+      "title": "MIT 6.012 Fall 2005 — Lecture 12",
+      "url": "https://www.ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/74c08e0cdcdab837d4eaceaf2384d646_lec12.pdf",
+      "publisher": "MIT OpenCourseWare / Jesús del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 12, pages 6–8: unity-gain definitions and low/high noise margins; pages 11–12: 50% and 10–90% transition conventions",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred."
+    },
+    {
+      "id": "cell-mit-6012-l14",
+      "title": "MIT 6.012 Fall 2005 — Lecture 14",
+      "url": "https://www.ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/6bec6dd1b07b02a1a84098b78f068cc3_lec14.pdf",
+      "publisher": "MIT OpenCourseWare / Jesús del Alamo",
+      "published": "Fall 2005 course edition",
+      "version": "6.012 Fall 2005",
+      "checkedOn": "2026-09-07",
+      "locator": "Lecture 14, pages 15–18: loaded pull-down/pull-up step-delay estimates; page 20: load-capacitance components",
+      "scope": "Primary teaching equations and conventions in the cited pages. Model constants, specimen constraints and evaluated numerical results are authored; no source hardware measurement is transferred."
+    }
+  ],
+  "claims": [
+    {
+      "id": "cell-claim-l8",
+      "title": "Fixed-charge electrostatic threshold dependence",
+      "statement": "The cited MIT 6.012 Lecture 8 provides the scoped physical relation or convention described in its locator.",
+      "sourceId": "cell-mit-6012-l8",
+      "lessonIds": [
+        "oxide-to-cell-acceptance"
+      ],
+      "status": "reported",
+      "metric": "Physical model relation",
+      "value": "Scoped equations and conventions",
+      "unit": "",
+      "denominator": "Declared long-channel or introductory circuit assumptions",
+      "period": "Fall 2005 course; checked 2026-09-07",
+      "scope": "Fixed-charge electrostatic threshold dependence",
+      "limitations": "Constants, numerical constraints and exact integrated outcomes are authored. The lecturer’s approximation or device example is not presented as measured validation of INV-01.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "cell-claim-l9",
+      "title": "Long-channel triode current",
+      "statement": "The cited MIT 6.012 Lecture 9 provides the scoped physical relation or convention described in its locator.",
+      "sourceId": "cell-mit-6012-l9",
+      "lessonIds": [
+        "oxide-to-cell-acceptance",
+        "loaded-inverter-transition"
+      ],
+      "status": "reported",
+      "metric": "Physical model relation",
+      "value": "Scoped equations and conventions",
+      "unit": "",
+      "denominator": "Declared long-channel or introductory circuit assumptions",
+      "period": "Fall 2005 course; checked 2026-09-07",
+      "scope": "Long-channel triode current",
+      "limitations": "Constants, numerical constraints and exact integrated outcomes are authored. The lecturer’s approximation or device example is not presented as measured validation of INV-01.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "cell-claim-l10",
+      "title": "Saturation current and explicitly omitted modulation",
+      "statement": "The cited MIT 6.012 Lecture 10 provides the scoped physical relation or convention described in its locator.",
+      "sourceId": "cell-mit-6012-l10",
+      "lessonIds": [
+        "loaded-inverter-transition"
+      ],
+      "status": "reported",
+      "metric": "Physical model relation",
+      "value": "Scoped equations and conventions",
+      "unit": "",
+      "denominator": "Declared long-channel or introductory circuit assumptions",
+      "period": "Fall 2005 course; checked 2026-09-07",
+      "scope": "Saturation current and explicitly omitted modulation",
+      "limitations": "Constants, numerical constraints and exact integrated outcomes are authored. The lecturer’s approximation or device example is not presented as measured validation of INV-01.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "cell-claim-l12",
+      "title": "Unity-gain static-noise definitions",
+      "statement": "The cited MIT 6.012 Lecture 12 provides the scoped physical relation or convention described in its locator.",
+      "sourceId": "cell-mit-6012-l12",
+      "lessonIds": [
+        "loaded-inverter-transition"
+      ],
+      "status": "reported",
+      "metric": "Physical model relation",
+      "value": "Scoped equations and conventions",
+      "unit": "",
+      "denominator": "Declared long-channel or introductory circuit assumptions",
+      "period": "Fall 2005 course; checked 2026-09-07",
+      "scope": "Unity-gain static-noise definitions",
+      "limitations": "Constants, numerical constraints and exact integrated outcomes are authored. The lecturer’s approximation or device example is not presented as measured validation of INV-01.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "cell-claim-l14",
+      "title": "Loaded CMOS step response and separate capacitance components",
+      "statement": "The cited MIT 6.012 Lecture 14 provides the scoped physical relation or convention described in its locator.",
+      "sourceId": "cell-mit-6012-l14",
+      "lessonIds": [
+        "loaded-inverter-transition"
+      ],
+      "status": "reported",
+      "metric": "Physical model relation",
+      "value": "Scoped equations and conventions",
+      "unit": "",
+      "denominator": "Declared long-channel or introductory circuit assumptions",
+      "period": "Fall 2005 course; checked 2026-09-07",
+      "scope": "Loaded CMOS step response and separate capacitance components",
+      "limitations": "Constants, numerical constraints and exact integrated outcomes are authored. The lecturer’s approximation or device example is not presented as measured validation of INV-01.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "timeline": [],
+  "milestones": [],
+  "sourceReviewManifest": "docs/process-cell-acceptance/source-review.json"
+}

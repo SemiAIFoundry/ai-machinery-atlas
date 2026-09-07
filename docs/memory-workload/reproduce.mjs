@@ -1,0 +1,6 @@
+import {writeFileSync} from 'node:fs';
+import {buildMemoryWorkload,memoryWorkloadDefaults,encodeMemoryWorkloadRecord} from '../../src/lib/memory-workload-bridge.ts';
+const cases=[['healthy',{fault:'none'}],['single-corrected',{}],['host-staged',{bTier:'host-stage'}],['read-tier-staged',{bTier:'read-tier-stage'}],['double-detected',{fault:'double-data'}],['double-unchecked',{fault:'double-data',protection:'unchecked'}],['triple-miscorrected',{fault:'triple'}],['qualification-pending',{qualification:'not-provided'}],['placement-blocked',{payloadBudgetBytes:96}],['no-refresh',{fault:'none',refreshEveryNs:0}],['high-nibble-narrowing',{fault:'double-data',protection:'unchecked',faultTensor:'A',faultWord:1,faultNibble:7}]];
+const result={schemaVersion:1,scope:'Authored deterministic software fixtures; not measured hardware.',cases:cases.map(([id,patch])=>{const input={...memoryWorkloadDefaults,...patch},r=buildMemoryWorkload(input);return {id,record:JSON.parse(encodeMemoryWorkloadRecord(input)),expected:{status:r.status,finalOutput:r.finalOutput,reference:r.reference,totals:r.totals,allocatedBytes:r.placement.allocatedBytes,remoteSourceReadBytes:r.placement.remoteSourceReadBytes}};})};
+writeFileSync(new URL('./scenarios.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
+console.log(`Recomputed ${result.cases.length} memory-workload scenario records.`);

@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:38:43.613Z",
+  "lessonId": "compatible-supply-capacity",
+  "contentFingerprint": "d3cb1abf1262ccc17d7c95fee795ee6385985df060d6fb8e860ce18275f57b7b",
+  "record": {
+    "id": "compatible-supply-capacity",
+    "level": "infrastructure",
+    "name": "Compatible supply and converging bottlenecks",
+    "shortName": "Compatible supply and converging bottlenecks",
+    "role": "Converts independently manufactured inputs into a common finished-system basis.",
+    "description": "Accelerator packages require compatible logic dies, memory stacks, substrates and integration capacity to arrive together. HBM is manufactured and assembled on its own path before package integration. Facility deployment adds boards, racks, electrical service, cooling and software readiness. Counts from these stages use different units and cannot simply be added. A bill of materials converts each usable input into a possible number of finished units. The smallest compatible supply then bounds output for the chosen interval. TSMC’s packaging descriptions illustrate the convergence, while the laboratory model must keep screening, assembly yield and qualification as distinct steps.",
+    "specs": [
+      {
+        "label": "Common denominator",
+        "value": "Finished units per stated interval",
+        "context": "Wafer starts, stacks and racks require conversion before comparison."
+      },
+      {
+        "label": "Input quality basis",
+        "value": "Raw, screened or qualified",
+        "context": "Applying an earlier yield again to screened inputs double-counts losses."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Compatible screened inputs",
+        "direction": "in",
+        "signal": "Logic, HBM stacks, substrates and assembly slots"
+      },
+      {
+        "name": "Finished system output",
+        "direction": "out",
+        "signal": "Packages or racks surviving the explicitly modeled stages"
+      }
+    ],
+    "tradeoff": "Building inventory of one input may reduce later delay but ties up capital and does not compensate for a missing compatible component.",
+    "whyAI": "Logic-wafer expansion cannot independently establish AI deployment capacity when memory, packaging or powered-rack readiness binds.",
+    "related": [
+      "hbm-stack",
+      "package-substrate",
+      "cluster-commissioning-gates"
+    ],
+    "sources": [
+      {
+        "title": "TSMC CoWoS technology",
+        "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      },
+      {
+        "title": "TSMC 2025 Annual Report",
+        "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf"
+      }
+    ],
+    "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+    "kind": "architecture",
+    "branch": "Data-center physical systems",
+    "subbranch": "Capacity, ramps and commissioning",
+    "mechanism": [
+      "Select a concrete bill of materials and finished-system boundary.",
+      "Convert each available qualified input into equivalent finished units.",
+      "Identify compatibility restrictions rather than pooling unrelated generations or package types.",
+      "Apply only the remaining assembly/test losses to already-screened input quantities.",
+      "Compare the resulting output with downstream rack and facility readiness during the same period."
+    ],
+    "misconception": "HBM does not appear after package manufacture; its own manufacturing branch converges with logic and package materials.",
+    "check": {
+      "question": "If each package needs four HBM stacks, what can 400 compatible good stacks support before later losses?",
+      "options": [
+        "400 complete packages regardless of design",
+        "1,600 packages",
+        "At most 100 packages"
+      ],
+      "answer": 2,
+      "explanation": "The bill of materials converts stack count into a compatible finished-package bound."
+    },
+    "science": [
+      {
+        "title": "Converging supply bound",
+        "equation": "Ncomplete ≤ mini ⌊Si / bi⌋",
+        "explanation": "Si is usable input-i units and bi input-i units per finished product; Ncomplete counts finished products.",
+        "assumptions": "Inputs are compatible and coavailable; later yield, timing and set overlap require additional treatment."
+      }
+    ],
+    "prerequisites": [
+      "hbm-stack",
+      "package-substrate"
+    ],
+    "learningObjective": "Convert supply quantities to one finished-unit basis without yield double counting.",
+    "workstream": "W09",
+    "visualFamily": "capacity-flow",
+    "engineeringExample": "Synthetic package needs one logic die, four HBM stacks and one substrate. Supplies of 150, 400 and 120 good units respectively bound assembly starts at 100, before any new assembly losses.",
+    "evidenceNotes": "No vendor capacity, queue or HBM wafer-intensity number is invented. Synthetic inputs are explicitly screened, avoiding repeated raw-die yield penalties.",
+    "labId": "engineering",
+    "scope": "Trace compatible component rates, a bounded qualification/ramp scenario and package backlog; this is not a detailed fab queue or operator-allocation simulator.",
+    "deepLabId": "capacity",
+    "investigationId": "manufacturing",
+    "labScope": "Trace compatible component rates, a bounded qualification/ramp scenario and package backlog; this is not a detailed fab queue or operator-allocation simulator."
+  },
+  "chapter": {
+    "id": "deep-capacity-readiness",
+    "domainId": "connected-infrastructure",
+    "read": "Separate processing, waiting, qualification, allocation and operation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "N_{\\mathrm{complete}}\\le\\min_i\\left\\lfloor\\frac{S_i}{b_i}\\right\\rfloor",
+      "variables": [
+        {
+          "symbol": "N_complete",
+          "meaning": "Complete products supportable from the coavailable inputs",
+          "unit": "products"
+        },
+        {
+          "symbol": "Sᵢ",
+          "meaning": "Usable compatible input-i quantity",
+          "unit": "input-i units"
+        },
+        {
+          "symbol": "bᵢ",
+          "meaning": "Positive input-i requirement per finished product",
+          "unit": "input-i units/product"
+        },
+        {
+          "symbol": "i",
+          "meaning": "Required input-type index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Complete products cannot exceed the smallest whole-number input count after each compatible supply is divided by its per-product requirement."
+    }
+  ],
+  "manifestLesson": {
+    "id": "compatible-supply-capacity",
+    "title": "Compatible supply and converging bottlenecks",
+    "chapterId": "deep-capacity-readiness",
+    "domainId": "connected-infrastructure",
+    "workstream": "W09",
+    "contentFingerprint": "d3cb1abf1262ccc17d7c95fee795ee6385985df060d6fb8e860ce18275f57b7b",
+    "scope": {
+      "role": "Converts independently manufactured inputs into a common finished-system basis.",
+      "learningObjective": "Convert supply quantities to one finished-unit basis without yield double counting.",
+      "scale": "Manufacturing supply to commissioned hall; time-dependent model",
+      "evidenceNotes": "No vendor capacity, queue or HBM wafer-intensity number is invented. Synthetic inputs are explicitly screened, avoiding repeated raw-die yield penalties.",
+      "workedExample": "Synthetic package needs one logic die, four HBM stacks and one substrate. Supplies of 150, 400 and 120 good units respectively bound assembly starts at 100, before any new assembly losses.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Converging supply bound",
+          "assumptions": "Inputs are compatible and coavailable; later yield, timing and set overlap require additional treatment.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Separate processing, waiting, qualification, allocation and operation."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-9310331128e535e41368",
+        "url": "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+        "title": "TSMC CoWoS technology",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-d060122a4bc0843887e6",
+        "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+        "title": "TSMC 2025 Annual Report",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      }
+    ],
+    "claimIds": [],
+    "evidence": {
+      "status": "lesson-level-citations-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model"
+      ],
+      "inheritedClaimStatuses": [],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "status-sensitive",
+      "proposedIntervalDays": 30,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "infrastructure-engineering-reviewer",
+        "label": "Power, cooling and infrastructure reviewer",
+        "focus": "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Availability, readiness, allocation, forecast and announced specifications can change quickly; recheck on a status-changing event."
+      ],
+      "reviewFocus": [
+        "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "hbm-stack",
+        "package-substrate"
+      ],
+      "dependentLessonIds": [
+        "production-ramp-allocation"
+      ],
+      "relatedLessonIds": [
+        "hbm-stack",
+        "package-substrate",
+        "cluster-commissioning-gates"
+      ],
+      "journeyIds": [],
+      "lab": {
+        "labId": "engineering",
+        "deepLabId": "capacity",
+        "scope": "Trace compatible component rates, a bounded qualification/ramp scenario and package backlog; this is not a detailed fab queue or operator-allocation simulator."
+      },
+      "primaryInvestigationId": "manufacturing",
+      "investigationIds": [
+        "manufacturing"
+      ],
+      "engineeringRelationIds": [
+        "engineering-limited-by-compatible-supply-capacity-hbm-stack",
+        "engineering-limited-by-compatible-supply-capacity-package-substrate"
+      ],
+      "engineeringSourceRelationIds": [
+        "engineering-limited-by-compatible-supply-capacity-hbm-stack",
+        "engineering-limited-by-compatible-supply-capacity-package-substrate"
+      ]
+    }
+  },
+  "claims": []
+}

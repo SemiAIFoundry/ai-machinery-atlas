@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:38:43.613Z",
+  "lessonId": "energy-forecast-boundaries",
+  "contentFingerprint": "f427e2aea801958c5dc42ce1ffc853ec70c9ee8f062f0ae9befa38a991d55660",
+  "record": {
+    "id": "energy-forecast-boundaries",
+    "level": "infrastructure",
+    "name": "Energy forecasts, geography and measurement boundaries",
+    "shortName": "Energy forecasts, geography and measurement boundaries",
+    "role": "Distinguishes estimated electricity use from conditional demand projections.",
+    "description": "Electricity demand reports combine observations, estimates and scenarios. A global all-data-center forecast includes many uses beyond AI, while an AI-focused subset requires its own definition. The IEA’s April 2026 update and LBNL’s June 2026 US report differ in geography, publication timing and methodology. Their totals cannot be added or treated as competing measurements of the same scope. Historical forecast revisions are useful evidence about changing assumptions, but an older projection should not silently replace a newer one. Power is an instantaneous rate; annual energy integrates changing load, including non-IT overhead when the report’s boundary includes it.",
+    "specs": [
+      {
+        "label": "Units",
+        "value": "MW power and MWh/TWh energy",
+        "context": "1 TWh equals one million MWh; time is essential."
+      },
+      {
+        "label": "Status",
+        "value": "Estimated baseline versus forecast scenario",
+        "context": "Both need source date, observation year and scope."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Metering, shipment and scenario inputs",
+        "direction": "in",
+        "signal": "Defined geography, device mix and operating assumptions"
+      },
+      {
+        "name": "Demand estimate or forecast",
+        "direction": "out",
+        "signal": "Scoped energy with period and uncertainty"
+      }
+    ],
+    "tradeoff": "Broader forecasts help planning but hide local grid and workload constraints; granular estimates need more uncertain input data.",
+    "whyAI": "AI buildout affects electricity systems, but no annual energy total provides a universal conversion into model throughput or capability.",
+    "related": [
+      "rack-dynamic-power",
+      "water-boundary-accounting",
+      "grid-interconnection-readiness"
+    ],
+    "sources": [
+      {
+        "title": "Key Questions on Energy and AI: Executive Summary",
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary"
+      },
+      {
+        "title": "United States Data Center Energy Usage Report: 2025 Update",
+        "url": "https://bies.lbl.gov/publications/united-states-data-center-energy-2025"
+      }
+    ],
+    "scale": "Facility phases to region and world; geography schematic",
+    "kind": "architecture",
+    "branch": "Global AI infrastructure",
+    "subbranch": "Global evidence and resource accounting",
+    "mechanism": [
+      "Identify the report date, geography and whether AI is the whole scope or a subset.",
+      "Separate estimated historical demand from projected future demand.",
+      "Check whether the measure includes cooling and other facility loads.",
+      "Compare revisions only after aligning definitions and explaining changed assumptions.",
+      "Keep local deliverability and useful workload capacity separate from broad annual electricity totals."
+    ],
+    "misconception": "A global data-center forecast is not an AI-only measurement, and a 2030 scenario is not observed consumption.",
+    "check": {
+      "question": "Why can a US report not be added to a global total?",
+      "options": [
+        "US electricity uses different physical units",
+        "Forecasts can never discuss regions",
+        "The global scope already includes the United States"
+      ],
+      "answer": 2,
+      "explanation": "The geographies overlap, so adding them double-counts the US contribution."
+    },
+    "science": [
+      {
+        "title": "Energy from average power",
+        "equation": "E = Pavg × Δt",
+        "explanation": "Pavg in GW and Δt in hours gives GWh; divide by 1,000 for TWh.",
+        "assumptions": "Average must cover the same interval and boundary; installed or contracted peak power is not Pavg."
+      }
+    ],
+    "prerequisites": [
+      "rack-dynamic-power"
+    ],
+    "learningObjective": "Read a dated demand forecast without confusing geography, AI scope or power and energy.",
+    "workstream": "W10",
+    "visualFamily": "world-network",
+    "engineeringExample": "Synthetic constant 1 GW load over 8,760 hours uses 8.76 TWh. A 1 GW nameplate facility does not necessarily use that energy because its average operating load can be lower.",
+    "evidenceNotes": "IEA baseline and projection are separate claim records. LBNL’s laboratory abstract was retrieved; inaccessible full-report methodology is not represented as independently rechecked.",
+    "labId": "library",
+    "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions.",
+    "investigationId": "manufacturing",
+    "labScope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+  },
+  "chapter": {
+    "id": "deep-global-resources",
+    "domainId": "connected-infrastructure",
+    "read": "Use dated phase records and explicit denominators before aggregation."
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "E=P_{\\mathrm{avg}}\\Delta t",
+      "variables": [
+        {
+          "symbol": "E",
+          "meaning": "Energy over the averaging interval",
+          "unit": "GWh"
+        },
+        {
+          "symbol": "P_avg",
+          "meaning": "Average real power over that same interval and boundary",
+          "unit": "GW"
+        },
+        {
+          "symbol": "Δt",
+          "meaning": "Interval duration",
+          "unit": "h"
+        }
+      ],
+      "text": "Energy is average power times the duration over which that average applies.",
+      "note": "GW times hours gives GWh; divide GWh by 1000 for TWh. Installed peak power is not an interval-average load."
+    }
+  ],
+  "manifestLesson": {
+    "id": "energy-forecast-boundaries",
+    "title": "Energy forecasts, geography and measurement boundaries",
+    "chapterId": "deep-global-resources",
+    "domainId": "connected-infrastructure",
+    "workstream": "W10",
+    "contentFingerprint": "f427e2aea801958c5dc42ce1ffc853ec70c9ee8f062f0ae9befa38a991d55660",
+    "scope": {
+      "role": "Distinguishes estimated electricity use from conditional demand projections.",
+      "learningObjective": "Read a dated demand forecast without confusing geography, AI scope or power and energy.",
+      "scale": "Facility phases to region and world; geography schematic",
+      "evidenceNotes": "IEA baseline and projection are separate claim records. LBNL’s laboratory abstract was retrieved; inaccessible full-report methodology is not represented as independently rechecked.",
+      "workedExample": "Synthetic constant 1 GW load over 8,760 hours uses 8.76 TWh. A 1 GW nameplate facility does not necessarily use that energy because its average operating load can be lower.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Energy from average power",
+          "assumptions": "Average must cover the same interval and boundary; installed or contracted peak power is not Pavg.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Use dated phase records and explicit denominators before aggregation."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-e71ee1cf63ee4c12b5e0",
+        "url": "https://www.iea.org/reports/key-questions-on-energy-and-ai/executive-summary",
+        "title": "Key Questions on Energy and AI: Executive Summary",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "infra-claim-iea-baseline",
+            "ledgerSourceId": "infra-src-iea"
+          },
+          {
+            "field": "claim",
+            "claimId": "infra-claim-iea-projection",
+            "ledgerSourceId": "infra-src-iea"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-00d2a95d1b2558230681",
+        "url": "https://bies.lbl.gov/publications/united-states-data-center-energy-2025",
+        "title": "United States Data Center Energy Usage Report: 2025 Update",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "infra-claim-iea-baseline",
+      "infra-claim-iea-projection"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "reported",
+        "forecast"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "status-sensitive",
+      "proposedIntervalDays": 30,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "infrastructure-engineering-reviewer",
+        "label": "Power, cooling and infrastructure reviewer",
+        "focus": "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Availability, readiness, allocation, forecast and announced specifications can change quickly; recheck on a status-changing event."
+      ],
+      "reviewFocus": [
+        "IT/facility boundaries, usable capacity, thermal paths, network topology and commissioning evidence.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "rack-dynamic-power"
+      ],
+      "dependentLessonIds": [],
+      "relatedLessonIds": [
+        "rack-dynamic-power",
+        "water-boundary-accounting",
+        "grid-interconnection-readiness"
+      ],
+      "journeyIds": [
+        "manufacturing-order"
+      ],
+      "lab": {
+        "labId": "library",
+        "deepLabId": null,
+        "scope": "No current calculator directly models this lesson’s main mechanism. Use the library for related bounds while retaining their stated omissions."
+      },
+      "primaryInvestigationId": "manufacturing",
+      "investigationIds": [
+        "manufacturing"
+      ],
+      "engineeringRelationIds": [],
+      "engineeringSourceRelationIds": []
+    }
+  },
+  "claims": [
+    {
+      "id": "infra-claim-iea-baseline",
+      "title": "IEA estimated 2025 electricity demand",
+      "statement": "IEA’s April 2026 report estimates 485 TWh of worldwide data-center electricity demand in 2025.",
+      "sourceId": "infra-src-iea",
+      "lessonIds": [
+        "energy-forecast-boundaries"
+      ],
+      "status": "reported",
+      "metric": "Estimated annual electricity demand",
+      "value": 485,
+      "unit": "TWh",
+      "denominator": "global all-data-center total",
+      "period": "2025 baseline; report 16 April 2026",
+      "scope": "All data centers, with AI-focused facilities a subset",
+      "limitations": "Estimated baseline, not an AI-only meter total or available power capacity.",
+      "checkedOn": "2026-09-06"
+    },
+    {
+      "id": "infra-claim-iea-projection",
+      "title": "IEA central 2030 projection",
+      "statement": "IEA’s April 2026 central projection is 950 TWh of worldwide data-center electricity demand in 2030.",
+      "sourceId": "infra-src-iea",
+      "lessonIds": [
+        "energy-forecast-boundaries"
+      ],
+      "status": "forecast",
+      "metric": "Projected annual electricity demand",
+      "value": 950,
+      "unit": "TWh",
+      "denominator": "global all-data-center total",
+      "period": "2030 central projection; report 16 April 2026",
+      "scope": "Same broad report scope as the separately labeled 2025 baseline",
+      "limitations": "Conditional projection, not observed consumption; not additive with US-only LBNL estimates.",
+      "checkedOn": "2026-09-06"
+    }
+  ]
+}

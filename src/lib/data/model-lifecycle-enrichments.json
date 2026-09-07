@@ -1,0 +1,660 @@
+{
+  "schemaVersion": 1,
+  "entries": {
+    "training-data": {
+      "appendDescription": "Advanced lifecycle practice retains source identity, transformation history, tokenizer version and document-family split assignment together. A train/development/final separation is meaningful only if near-identical families do not cross it. The executable symbol corpus records these fields, while its source is original synthetic material rather than a crawl or human conversation. Development answers support iteration; the first final report records the evaluated checkpoint and cannot be silently rewritten after another update.",
+      "appendMechanism": [
+        "Preserve raw-source and transformed-example identities.",
+        "Assign whole document families to splits before tokenization-dependent sampling.",
+        "Record final exposure as part of the experimental history, including after importing an older checkpoint."
+      ],
+      "appendEngineeringExample": "The executable corpus has 12 training, 8 development and 4 final examples per domain. Across copy and swap this is 24/16/8 example records, but only 12/8/4 distinct prompt families because each domain assigns its own answer to the same family. Treating all 48 records as independent prompt families would double-count the evidence.",
+      "appendEvidenceNotes": "Mode: executable corpus lineage. Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Why are there only 24 distinct prompt families across the 48 records?",
+          "options": [
+            "Each prompt family is represented once in copy and once in swap.",
+            "Half the records are secretly final-test examples.",
+            "Every source record is necessarily an independent task."
+          ],
+          "answer": 0,
+          "explanation": "Each prompt family is represented once in copy and once in swap. Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied."
+        }
+      ],
+      "additionalRelated": [
+        "data-quality-dedup-audit",
+        "data-mixture-sampling",
+        "sequence-packing-loss-denominators",
+        "synthetic-data-selection-feedback",
+        "data-coverage-language-slices"
+      ],
+      "additionalSources": [
+        {
+          "title": "The FineWeb Datasets",
+          "url": "https://arxiv.org/html/2406.17557v1"
+        },
+        {
+          "title": "Deduplicating Training Data Makes Language Models Better",
+          "url": "https://arxiv.org/html/2107.06499v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Dataset lineage and reproducible splits · worked relation",
+          "equation": "N_{records}=\\sum_s N_s,\\qquad N_{families}=|\\{\\operatorname{family}(x):x\\in D\\}|",
+          "explanation": "The executable corpus has 12 training, 8 development and 4 final examples per domain. Across copy and swap this is 24/16/8 example records, but only 12/8/4 distinct prompt families because each domain assigns its own answer to the same family. Treating all 48 records as independent prompt families would double-count the evidence.",
+          "assumptions": "Two intentionally conflicting domains share prompt families within the same split, never across splits. No external dataset license or privacy review is implied."
+        }
+      ]
+    },
+    "tokenizer": {
+      "appendDescription": "Advanced tokenization work treats merge learning as a data-dependent training step. Merge counts must come from training text, with a deterministic tie rule and an explicit fallback for unseen pieces. Encoding a held-out string with already learned merges is inference; updating merges from that string changes the tokenizer and leaks held-out information. The lifecycle core intentionally uses a fixed nine-symbol whitespace vocabulary, so it does not simulate BPE fitting.",
+      "appendMechanism": [
+        "Count adjacent symbol pairs only in the training corpus under the boundary convention.",
+        "Select the most frequent pair with a declared tie rule and apply merges consistently.",
+        "Freeze the learned tokenizer before encoding development and final text."
+      ],
+      "appendEngineeringExample": "Use training words “aa” twice and “ab” once, represented as character sequences with no cross-word pairs. Pair (a,a) has count 2 and (a,b) count 1, so the first merge forms aa. Encoding held-out “aab” yields [aa,b] under this toy merge list. Letting held-out “ab” occurrences change the winning pair would change both input IDs and evaluation token denominators.",
+      "appendEvidenceNotes": "Mode: worked example. Toy word boundaries and deterministic lexical tie rule; no byte fallback or production BPE trainer is executed by the core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Which operation would leak held-out information into the tokenizer?",
+          "options": [
+            "Recording the frozen vocabulary identity.",
+            "Counting held-out pairs when choosing the next merge.",
+            "Applying already frozen merges to held-out text."
+          ],
+          "answer": 1,
+          "explanation": "Counting held-out pairs when choosing the next merge. Toy word boundaries and deterministic lexical tie rule; no byte fallback or production BPE trainer is executed by the core."
+        }
+      ],
+      "additionalRelated": [
+        "data-quality-dedup-audit",
+        "data-mixture-sampling",
+        "sequence-packing-loss-denominators",
+        "synthetic-data-selection-feedback",
+        "data-coverage-language-slices"
+      ],
+      "additionalSources": [
+        {
+          "title": "Neural Machine Translation of Rare Words with Subword Units",
+          "url": "https://aclanthology.org/P16-1162.pdf"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Train a tokenizer, then encode unseen text · worked relation",
+          "equation": "(u^*,v^*)=\\arg\\max_{(u,v)}\\sum_{w\\in D_{train}}c_w(u,v)",
+          "explanation": "Use training words “aa” twice and “ab” once, represented as character sequences with no cross-word pairs. Pair (a,a) has count 2 and (a,b) count 1, so the first merge forms aa. Encoding held-out “aab” yields [aa,b] under this toy merge list. Letting held-out “ab” occurrences change the winning pair would change both input IDs and evaluation token denominators.",
+          "assumptions": "Toy word boundaries and deterministic lexical tie rule; no byte fallback or production BPE trainer is executed by the core."
+        }
+      ]
+    },
+    "embedding": {
+      "appendDescription": "A lookup row is a shared parameter whenever the same token occurs more than once. Reverse-mode gradients from every occurrence must accumulate into that row. If input embeddings and the output head are tied, the output path adds another contribution to the same parameters. The executable lifecycle model uses separate matrices, so tying is a worked extension rather than an implicit property of all decoders.",
+      "appendMechanism": [
+        "Identify all input positions that read the same token row.",
+        "Add each position’s backward contribution at matching feature coordinates.",
+        "If weights are explicitly tied, add output-path gradients before the optimizer update."
+      ],
+      "appendEngineeringExample": "Token a appears twice and receives row gradients [1,2] and [3,−1]. Its input-embedding gradient is [4,1]. A separate token b receives [0.5,0.5] and must not be added to a. If an explicitly tied output path contributes [−2,1] to a, the combined tied gradient becomes [2,2]. The core instead keeps the output contribution in its separate unembedding tensor.",
+      "appendEvidenceNotes": "Mode: executable lookup gradients; worked tying. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What is the input-only gradient for the repeated a row?",
+          "options": [
+            "[3,−1], because the second occurrence replaces the first.",
+            "[4.5,1.5], because every token shares one row.",
+            "[4,1]."
+          ],
+          "answer": 2,
+          "explanation": "[4,1]. Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate."
+        }
+      ],
+      "additionalRelated": [
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder"
+      ],
+      "additionalSources": [
+        {
+          "title": "Attention Is All You Need",
+          "url": "https://arxiv.org/html/1706.03762v7"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Learned lookup gradients and tied weights · worked relation",
+          "equation": "\\frac{\\partial L}{\\partial E_{v,:}}=\\sum_{t:x_t=v}\\frac{\\partial L}{\\partial e_t}+g^{tied\\ output}_{v,:}",
+          "explanation": "Token a appears twice and receives row gradients [1,2] and [3,−1]. Its input-embedding gradient is [4,1]. A separate token b receives [0.5,0.5] and must not be added to a. If an explicitly tied output path contributes [−2,1] to a, the combined tied gradient becomes [2,2]. The core instead keeps the output contribution in its separate unembedding tensor.",
+          "assumptions": "Matching coordinates, summed path derivatives and an explicit tied/separate convention. Core weights are separate."
+        }
+      ]
+    },
+    "attention": {
+      "appendDescription": "Attention learning differentiates both the value path and the probabilities controlling that mixture. A causal mask removes future positions from the allowed softmax support; it is not merely a visual annotation. The executable decoder exposes projected Q/K/V, scores, probabilities and the complete gradient graph. A small analytical example clarifies why changing one score can redistribute weight across all allowed values.",
+      "appendMechanism": [
+        "Form scores only for positions the query may attend to.",
+        "Normalize those scores together and mix their value vectors.",
+        "Backpropagate through both softmax probabilities and value projections; verify prefix invariance under future-token changes."
+      ],
+      "appendEngineeringExample": "With allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.",
+      "appendEvidenceNotes": "Mode: executable causal attention gradients. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What is the derivative of output with respect to the first score?",
+          "options": [
+            "−0.75.",
+            "+0.75.",
+            "Zero merely because attention probabilities sum to one."
+          ],
+          "answer": 0,
+          "explanation": "−0.75. Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections."
+        }
+      ],
+      "additionalRelated": [
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder"
+      ],
+      "additionalSources": [
+        {
+          "title": "Attention Is All You Need",
+          "url": "https://arxiv.org/html/1706.03762v7"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Trainable attention from Q/K/V through gradients · worked relation",
+          "equation": "o=\\sum_j a_jv_j,\\qquad \\frac{\\partial o}{\\partial s_j}=a_j(v_j-o)",
+          "explanation": "With allowed scores [0,ln3] and scalar values [2,6], attention probabilities are [0.25,0.75] and output is 5. For the output itself as the scalar objective, derivative with respect to score one is 0.25×(2−5)=−0.75 and score two is 0.75×(6−5)=0.75. At the first causal position only value 2 is allowed, so output is 2 regardless of future score or value.",
+          "assumptions": "Scalar value example, softmax over the allowed set, values held fixed for the shown score derivative. Full model also differentiates values and projections."
+        }
+      ]
+    },
+    "feed-forward": {
+      "appendDescription": "A feed-forward sublayer transforms features independently at each token position using shared weights. Nonlinearity is what prevents two linear maps from collapsing into one equivalent linear map. Activation choice changes derivative behavior and parameter convention; a tanh block is not a ReLU or gated SwiGLU block. The lifecycle core uses tanh and explicit biases, all included in its parameter ledger.",
+      "appendMechanism": [
+        "Compute the expanded affine features including bias.",
+        "Apply the declared nonlinearity coordinate by coordinate.",
+        "Project back to model width and accumulate shared weight gradients across tokens."
+      ],
+      "appendEngineeringExample": "For scalar h=tanh(wx+b), x=2, w=0 and b=0 give h=0 and dh/dw=(1−h²)x=2. At a saturated activation h≈0.99 the same derivative is about 0.0398. In the core, a 6→12→6 tanh block with both biases has 6×12+12+12×6+6=162 learned parameters. Its behavior must be evaluated through actual losses, not inferred from that count.",
+      "appendEvidenceNotes": "Mode: executable nonlinear block. The scalar activation symbol h and hidden-width ledger are explicitly separated by context. Core uses tanh, not the original Transformer ReLU or a gated variant. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Why does the derivative shrink near h=0.99?",
+          "options": [
+            "Two linear maps are always equivalent to a nonlinear one.",
+            "The tanh derivative 1−h² is close to zero.",
+            "The optimizer automatically freezes every feature."
+          ],
+          "answer": 1,
+          "explanation": "The tanh derivative 1−h² is close to zero. The scalar activation symbol h and hidden-width ledger are explicitly separated by context. Core uses tanh, not the original Transformer ReLU or a gated variant."
+        }
+      ],
+      "additionalRelated": [
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder"
+      ],
+      "additionalSources": [
+        {
+          "title": "Attention Is All You Need",
+          "url": "https://arxiv.org/html/1706.03762v7"
+        },
+        {
+          "title": "2 OLMo 2 Furious",
+          "url": "https://arxiv.org/html/2501.00656v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Nonlinear features and block-level learning · worked relation",
+          "equation": "a=\\tanh(wx+b),\\qquad \\frac{\\partial a}{\\partial w}=(1-a^2)x,\\qquad P=dm+m+md+d",
+          "explanation": "For scalar h=tanh(wx+b), x=2, w=0 and b=0 give h=0 and dh/dw=(1−h²)x=2. At a saturated activation h≈0.99 the same derivative is about 0.0398. In the core, a 6→12→6 tanh block with both biases has 6×12+12+12×6+6=162 learned parameters. Its behavior must be evaluated through actual losses, not inferred from that count.",
+          "assumptions": "The scalar activation symbol h and hidden-width ledger are explicitly separated by context. Core uses tanh, not the original Transformer ReLU or a gated variant."
+        }
+      ]
+    },
+    "residual-normalization": {
+      "appendDescription": "A residual addition passes an input directly to the output alongside a learned transformation, creating an identity term in the derivative. Normalization modifies feature scale before or after a sublayer according to the declared architecture. RMS normalization does not subtract the mean, and its learned gain and epsilon conventions must be stated. The lifecycle variant uses pre-RMS normalization with fixed gain one and epsilon 1e-5; it is not exactly the original Transformer normalization placement.",
+      "appendMechanism": [
+        "Trace the identity branch separately from the sublayer branch.",
+        "Compute mean square over the declared feature axis, with epsilon placed explicitly.",
+        "Compare actual activation and gradient values rather than assuming a residual guarantees stable learning."
+      ],
+      "appendEngineeringExample": "For y=x+f(x), local derivative is 1+f′(x); if f′(x)=−0.2 the total is 0.8. For vector [3,4], RMS without epsilon is sqrt((9+16)/2)=sqrt12.5=3.535534, giving normalized values [0.848528,1.131371]. Their mean is not zero. The core’s positive epsilon changes these numbers slightly and prevents division by zero.",
+      "appendEvidenceNotes": "Mode: executable residual and RMS paths. Fixed gain one; epsilon zero only for the explicitly labeled hand calculation. Core epsilon is 1e-5, so exact scale invariance is qualified. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Does RMS normalization force the output mean to zero?",
+          "options": [
+            "Yes, for every input.",
+            "Only when residual paths are absent.",
+            "No; it rescales by root mean square without subtracting the mean."
+          ],
+          "answer": 2,
+          "explanation": "No; it rescales by root mean square without subtracting the mean. Fixed gain one; epsilon zero only for the explicitly labeled hand calculation. Core epsilon is 1e-5, so exact scale invariance is qualified."
+        }
+      ],
+      "additionalRelated": [
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder"
+      ],
+      "additionalSources": [
+        {
+          "title": "2 OLMo 2 Furious",
+          "url": "https://arxiv.org/html/2501.00656v1"
+        },
+        {
+          "title": "Root Mean Square Layer Normalization",
+          "url": "https://arxiv.org/html/1910.07467v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Activation scale and gradient flow · worked relation",
+          "equation": "\\frac{dy}{dx}=1+f^{\\prime}(x),\\qquad \\operatorname{RMSNorm}(x)_i=\\frac{x_i}{\\sqrt{d^{-1}\\sum_j x_j^2+\\epsilon}}",
+          "explanation": "For y=x+f(x), local derivative is 1+f′(x); if f′(x)=−0.2 the total is 0.8. For vector [3,4], RMS without epsilon is sqrt((9+16)/2)=sqrt12.5=3.535534, giving normalized values [0.848528,1.131371]. Their mean is not zero. The core’s positive epsilon changes these numbers slightly and prevents division by zero.",
+          "assumptions": "Fixed gain one; epsilon zero only for the explicitly labeled hand calculation. Core epsilon is 1e-5, so exact scale invariance is qualified."
+        }
+      ]
+    },
+    "output-head": {
+      "appendDescription": "The output head supplies logits for a probability distribution. Negative log likelihood compares that distribution with the observed target and differentiates to probability minus target indicator. Greedy decoding and categorical sampling consume the same probabilities differently. Neither updates the model’s weights by itself. The lifecycle generator retains a separate inference RNG so that requesting a sampled answer cannot change later training draws.",
+      "appendMechanism": [
+        "Apply stable log-softmax to all vocabulary logits.",
+        "Gather the target probability and compute the logit derivative.",
+        "Select greedy or seeded categorical output, keeping generation state separate from optimizer state."
+      ],
+      "appendEngineeringExample": "For logits [0,ln2,ln3], probabilities are [1/6,1/3,1/2]. With target class three, loss is ln2=0.693147 and gradient is [1/6,1/3,−1/2]. Greedy decoding chooses class three, while one categorical sample can choose another class. A sample different from the greedy class is not evidence that the probabilities or gradient were incorrectly computed.",
+      "appendEvidenceNotes": "Mode: executable output probabilities and generation. Finite logits, natural logarithms and one categorical target. Stable implementation subtracts maximum logit; that shift preserves the distribution. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Why can a categorical sample differ from the greedy token?",
+          "options": [
+            "Sampling follows the whole distribution, including lower-probability outcomes.",
+            "Sampling performs a hidden optimizer update.",
+            "The largest logit is never used in sampling."
+          ],
+          "answer": 0,
+          "explanation": "Sampling follows the whole distribution, including lower-probability outcomes. Finite logits, natural logarithms and one categorical target. Stable implementation subtracts maximum logit; that shift preserves the distribution."
+        }
+      ],
+      "additionalRelated": [
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder"
+      ],
+      "additionalSources": [
+        {
+          "title": "Attention Is All You Need",
+          "url": "https://arxiv.org/html/1706.03762v7"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Likelihood, cross-entropy and sampled output · worked relation",
+          "equation": "p_i=\\frac{e^{z_i}}{\\sum_j e^{z_j}},\\qquad L=-\\log p_y,\\qquad \\frac{\\partial L}{\\partial z_i}=p_i-\\mathbf1[i=y]",
+          "explanation": "For logits [0,ln2,ln3], probabilities are [1/6,1/3,1/2]. With target class three, loss is ln2=0.693147 and gradient is [1/6,1/3,−1/2]. Greedy decoding chooses class three, while one categorical sample can choose another class. A sample different from the greedy class is not evidence that the probabilities or gradient were incorrectly computed.",
+          "assumptions": "Finite logits, natural logarithms and one categorical target. Stable implementation subtracts maximum logit; that shift preserves the distribution."
+        }
+      ]
+    },
+    "moe": {
+      "appendDescription": "An MoE router assigns tokens to selected experts, which changes both active computation and where gradients flow. A load-balancing auxiliary loss encourages use of experts under a particular formula; it is distinct from a hard capacity limit or dropping policy. The Switch top-one convention uses discrete dispatch fractions and mean router probabilities. Its dispatch counts are not differentiated through argmax. The lifecycle model is dense and does not execute expert routing or this auxiliary loss.",
+      "appendMechanism": [
+        "Route tokens under an explicit top-k and tie convention.",
+        "Count dispatch fractions and mean router probabilities separately.",
+        "Evaluate the chosen auxiliary formula and identify its differentiable path.",
+        "Apply expert capacity and account for accepted, dropped or bypassed tokens independently."
+      ],
+      "appendEngineeringExample": "Six tokens dispatch to three experts with counts [3,2,1], so f=[1/2,1/3,1/6]. Mean router probabilities are P=[1/2,1/3,1/6]. With alpha=0.01 and N=3, auxiliary loss is 0.01×3×(1/4+1/9+1/36)=0.011667. Uniform f=P=[1/3,1/3,1/3] gives 0.01. A hard capacity of two tokens per expert still rejects or bypasses one token from expert one under a declared policy.",
+      "appendEvidenceNotes": "Mode: worked example. Switch top-one auxiliary convention, before capacity handling. Discrete f is treated as nondifferentiable; P supplies a gradient path. Worked-only routing. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Does an auxiliary loss alone enforce the hard capacity of two?",
+          "options": [
+            "Only if all model parameters are dense.",
+            "No; dispatch capacity and overflow behavior need a separate rule.",
+            "Yes; auxiliary losses physically prevent every overflow."
+          ],
+          "answer": 1,
+          "explanation": "No; dispatch capacity and overflow behavior need a separate rule. Switch top-one auxiliary convention, before capacity handling. Discrete f is treated as nondifferentiable; P supplies a gradient path. Worked-only routing."
+        }
+      ],
+      "additionalRelated": [
+        "reverse-mode-autodiff",
+        "tiny-causal-decoder"
+      ],
+      "additionalSources": [
+        {
+          "title": "Switch Transformers",
+          "url": "https://arxiv.org/html/2101.03961v3"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Routing losses, sparse gradients and expert collapse · worked relation",
+          "equation": "L_{aux}=\\alpha N\\sum_i f_iP_i,\\quad f_i=\\frac1T\\sum_x\\mathbf1[\\arg\\max_j p_j(x)=i],\\quad P_i=\\frac1T\\sum_xp_i(x)",
+          "explanation": "Six tokens dispatch to three experts with counts [3,2,1], so f=[1/2,1/3,1/6]. Mean router probabilities are P=[1/2,1/3,1/6]. With alpha=0.01 and N=3, auxiliary loss is 0.01×3×(1/4+1/9+1/36)=0.011667. Uniform f=P=[1/3,1/3,1/3] gives 0.01. A hard capacity of two tokens per expert still rejects or bypasses one token from expert one under a declared policy.",
+          "assumptions": "Switch top-one auxiliary convention, before capacity handling. Discrete f is treated as nondifferentiable; P supplies a gradient path. Worked-only routing."
+        }
+      ]
+    },
+    "loss-optimizer": {
+      "appendDescription": "An optimizer consumes a derived gradient; a supplied-gradient calculator teaches only the last part of that chain. The lifecycle experience adds an actual decoder loss and reverse pass before applying either SGD or Adam. Adam’s moments and step counter are learning state, not display history. Global norm clipping occurs before those moments. Changing the objective changes the gradient even if the optimizer setting is held fixed.",
+      "appendMechanism": [
+        "Compute the gradient from the current batch loss and retain its denominator.",
+        "Apply the declared global clipping rule.",
+        "Update moments, bias-correct them and apply the chosen learning rate; save all resulting state."
+      ],
+      "appendEngineeringExample": "For a scalar gradient g=0.5, weight 2 and learning rate 0.1, SGD gives 1.95. For the first Adam step with zero moments, beta1=0.9 and beta2=0.999, m=0.05 and v=0.00025; bias-corrected values are 0.5 and 0.25. With epsilon=1e-8 the Adam result is approximately 1.900000002. It differs from SGD because Adam normalizes by the second-moment scale.",
+      "appendEvidenceNotes": "Mode: executable derived-gradient optimizer. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Why is the first Adam change about 0.1 rather than 0.05?",
+          "options": [
+            "Adam ignores gradients and always chooses random weights.",
+            "SGD and Adam use identical state equations.",
+            "The bias-corrected gradient is divided by its second-moment root."
+          ],
+          "answer": 2,
+          "explanation": "The bias-corrected gradient is divided by its second-moment root. No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5."
+        }
+      ],
+      "additionalRelated": [
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates"
+      ],
+      "additionalSources": [
+        {
+          "title": "2 OLMo 2 Furious",
+          "url": "https://arxiv.org/html/2501.00656v1"
+        },
+        {
+          "title": "PyTorch Adam algorithm",
+          "url": "https://docs.pytorch.org/docs/2.14/generated/torch.optim.Adam.html"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Compute gradients before applying the optimizer · worked relation",
+          "equation": "m_t=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\quad v_t=\\beta_2v_{t-1}+(1-\\beta_2)g_t^2,\\quad\\theta^+=\\theta-\\eta\\frac{m_t/(1-\\beta_1^t)}{\\sqrt{v_t/(1-\\beta_2^t)}+\\epsilon}",
+          "explanation": "For a scalar gradient g=0.5, weight 2 and learning rate 0.1, SGD gives 1.95. For the first Adam step with zero moments, beta1=0.9 and beta2=0.999, m=0.05 and v=0.00025; bias-corrected values are 0.5 and 0.25. With epsilon=1e-8 the Adam result is approximately 1.900000002. It differs from SGD because Adam normalizes by the second-moment scale.",
+          "assumptions": "No weight decay or AMSGrad; elementwise squares/division. First-step worked values use an unclipped scalar gradient of 0.5."
+        }
+      ]
+    },
+    "checkpoint": {
+      "appendDescription": "A full learning checkpoint must carry enough state to reproduce the next update. Weights-only files can reproduce a forward function while failing to reproduce training, because moments, random draws and data position differ. The lifecycle record also includes tokenizer/data/model versions, reference snapshots, stage contract and final-test exposure. Import validation checks compatibility and bounded sizes before replacing a current run. Its compact runtime fingerprint is an identifier for teaching, not an authenticated signature.",
+      "appendMechanism": [
+        "Serialize weights, moments, optimizer counter, training RNG, draw cursor and complete configuration.",
+        "Validate versions, finite values, shapes and cross-field invariants before committing an import.",
+        "Resume from the saved cursor and compare every subsequent state field with an uninterrupted reference."
+      ],
+      "appendEngineeringExample": "An automated fixture trains 17 updates, exports the complete checkpoint, restores it and performs 23 more. Its weights, moments, RNG, draw counter and history exactly match 40 uninterrupted updates in the same deterministic binary64 implementation. With two sampled examples per update, the final draw count is 80. Restoring only weights while resetting moments produces a different next trajectory.",
+      "appendEvidenceNotes": "Mode: executable full checkpoint. Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What is missing from a weights-only continuation record?",
+          "options": [
+            "Optimizer and sampling state needed to reproduce the next training update.",
+            "The ability to compute any forward prediction.",
+            "Only an optional chart title."
+          ],
+          "answer": 0,
+          "explanation": "Optimizer and sampling state needed to reproduce the next training update. Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract."
+        }
+      ],
+      "additionalRelated": [
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates"
+      ],
+      "additionalSources": [
+        {
+          "title": "2 OLMo 2 Furious",
+          "url": "https://arxiv.org/html/2501.00656v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Restart the same learning experiment · worked relation",
+          "equation": "S_{t+1}=F(S_t,D_t),\\qquad S_t=(\\theta_t,m_t,v_t,t,RNG_t,cursor_t,config)",
+          "explanation": "An automated fixture trains 17 updates, exports the complete checkpoint, restores it and performs 23 more. Its weights, moments, RNG, draw counter and history exactly match 40 uninterrupted updates in the same deterministic binary64 implementation. With two sampled examples per update, the final draw count is 80. Restoring only weights while resetting moments produces a different next trajectory.",
+          "assumptions": "Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract."
+        }
+      ]
+    },
+    "training-memory-state": {
+      "appendDescription": "Training memory includes persistent parameters and optimizer arrays plus temporary gradients and saved forward intermediates. Their lifetimes differ. A coefficient payload calculation is useful only when it names precision and excluded structures. Activation rematerialization trades recomputation for retained intermediates, but is not implemented merely because a UI shows an estimated memory total. The lifecycle core exposes actual scalar tape-node counts and parameter arrays; those nodes are not hardware FLOPs or a byte-accurate JavaScript heap measurement.",
+      "appendMechanism": [
+        "Count persistent weight and moment arrays under the chosen numerical representation.",
+        "Separate the current gradient, frozen reference and saved activations from those arrays.",
+        "Use a lifetime trace or measured heap evidence before claiming peak runtime memory."
+      ],
+      "appendEngineeringExample": "The core has 423 binary64 weights, requiring 3384 raw bytes. Two Adam moment arrays add 6768 bytes, so weights plus moments total 10152. Adding one equally sized gradient vector yields 13536 raw bytes. A frozen reference adds another 3384. These sums exclude the scalar tape’s graph objects, history, JSON encoding, React state and allocator overhead.",
+      "appendEvidenceNotes": "Mode: executable arrays; payload arithmetic. 423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What does 10152 bytes include?",
+          "options": [
+            "All future checkpoint JSON and activation history.",
+            "Weights and the two full Adam moment arrays only.",
+            "The complete browser heap at peak training."
+          ],
+          "answer": 1,
+          "explanation": "Weights and the two full Adam moment arrays only. 423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed."
+        }
+      ],
+      "additionalRelated": [
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates"
+      ],
+      "additionalSources": [
+        {
+          "title": "2 OLMo 2 Furious",
+          "url": "https://arxiv.org/html/2501.00656v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Training tensors with actual lifetimes · worked relation",
+          "equation": "B_{payload}=P\\sum_k b_k",
+          "explanation": "The core has 423 binary64 weights, requiring 3384 raw bytes. Two Adam moment arrays add 6768 bytes, so weights plus moments total 10152. Adding one equally sized gradient vector yields 13536 raw bytes. A frozen reference adds another 3384. These sums exclude the scalar tape’s graph objects, history, JSON encoding, React state and allocator overhead.",
+          "assumptions": "423 entries per full array, eight bytes per binary64 number; no claim that JavaScript object storage equals this payload. No rematerialization feature is executed."
+        }
+      ]
+    },
+    "scaling-laws": {
+      "appendDescription": "A scaling relation is an empirical fit with a metric, training recipe and observed range. It does not turn parameter count or compute into a universal capability guarantee. Compute-optimal allocation asks how a fixed budget is divided between model size and training data under the study’s cost model. The lifecycle’s one fixed architecture and short runs do not estimate frontier scaling exponents. Comparing several actual runs would require controlled token budgets, held-out fitting checks and residuals rather than a smooth curve drawn from assumptions.",
+      "appendMechanism": [
+        "Name the fitted loss metric, tokenizer and data mixture.",
+        "Separate parameter/data budgets from measured or modeled computation.",
+        "Hold evaluation out of fitting and report residuals and extrapolation boundaries."
+      ],
+      "appendEngineeringExample": "For an authored fit L(N,D)=1+4/sqrt(N)+2/sqrt(D), N=16,D=16 gives 2.5. Doubling both to 32 gives 2.060660. This is arithmetic from chosen coefficients, not measured learning. Under the illustrative dense-training cost C=6ND, the two settings cost 1536 and 6144 modeled operations, a fourfold ratio. A real fit requires observed runs and a justified operation convention.",
+      "appendEvidenceNotes": "Mode: worked example. Illustrative coefficients only. The 6ND heuristic omits architecture-specific terms and is not a measured cost of the scalar-tape core. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What would justify calling the displayed relation an empirical fit?",
+          "options": [
+            "Choosing coefficients that make a smooth curve.",
+            "One successful 423-parameter run alone.",
+            "Observed controlled runs, fitting procedure and held-out residual checks."
+          ],
+          "answer": 2,
+          "explanation": "Observed controlled runs, fitting procedure and held-out residual checks. Illustrative coefficients only. The 6ND heuristic omits architecture-specific terms and is not a measured cost of the scalar-tape core."
+        }
+      ],
+      "additionalRelated": [
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates"
+      ],
+      "additionalSources": [
+        {
+          "title": "Training Compute-Optimal Large Language Models",
+          "url": "https://arxiv.org/html/2203.15556v1"
+        },
+        {
+          "title": "The FineWeb Datasets",
+          "url": "https://arxiv.org/html/2406.17557v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Fit a bounded compute/data experiment · worked relation",
+          "equation": "L(N,D)=E+AN^{-\\alpha}+BD^{-\\beta},\\qquad C\\approx6ND",
+          "explanation": "For an authored fit L(N,D)=1+4/sqrt(N)+2/sqrt(D), N=16,D=16 gives 2.5. Doubling both to 32 gives 2.060660. This is arithmetic from chosen coefficients, not measured learning. Under the illustrative dense-training cost C=6ND, the two settings cost 1536 and 6144 modeled operations, a fourfold ratio. A real fit requires observed runs and a justified operation convention.",
+          "assumptions": "Illustrative coefficients only. The 6ND heuristic omits architecture-specific terms and is not a measured cost of the scalar-tape core."
+        }
+      ]
+    },
+    "post-training": {
+      "appendDescription": "Post-training encompasses multiple contracts rather than one universal loss. Demonstration targets support supervised likelihood training; labeled response pairs support preference objectives; a learned reward or a checker supplies a signal for sampled policy updates. The same decoder can undergo several of these stages while keeping its architecture. LoRA or full tuning specifies which parameters may change, not whether the signal is SFT, DPO or reward. The executable lifecycle includes one-turn SFT, DPO and a bounded verifier bandit, with exact scope shown beside each branch.",
+      "appendMechanism": [
+        "Identify whether the available evidence is a demonstration, pair label or scored sampled action.",
+        "State the exact loss and target/pair/rollout denominator.",
+        "Declare trainable state and the frozen reference separately from the objective."
+      ],
+      "appendEngineeringExample": "For a batch of two one-turn demonstrations with answer plus EOS, SFT averages four target losses. Two DPO comparisons instead average two pair losses. The core reward branch samples four answers for each of two prompts and averages eight rollout terms. Their numerical loss values have different denominators and meanings; a lower DPO number is not directly better than a higher SFT number.",
+      "appendEvidenceNotes": "Mode: executable SFT DPO and bandit. Core conventions: answer plus EOS SFT, response-pair DPO, one-action bandit rollouts. These are not a claim that every post-training implementation uses the same denominators. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "Which comparison is invalid without further interpretation?",
+          "options": [
+            "Ranking SFT and DPO quality by their raw scalar loss magnitudes.",
+            "Comparing the same task accuracy at both saved checkpoints.",
+            "Inspecting the response mask in SFT."
+          ],
+          "answer": 0,
+          "explanation": "Ranking SFT and DPO quality by their raw scalar loss magnitudes. Core conventions: answer plus EOS SFT, response-pair DPO, one-action bandit rollouts. These are not a claim that every post-training implementation uses the same denominators."
+        }
+      ],
+      "additionalRelated": [
+        "sft-chat-loss-masks",
+        "preference-reward-model",
+        "direct-preference-objective",
+        "policy-gradient-kl-control",
+        "verifiable-reward-group-updates",
+        "reward-proxy-overoptimization",
+        "low-rank-adaptation",
+        "teacher-student-distillation"
+      ],
+      "additionalSources": [
+        {
+          "title": "Training language models to follow instructions with human feedback",
+          "url": "https://arxiv.org/html/2203.02155v1"
+        },
+        {
+          "title": "Tülu 3: Pushing Frontiers in Open Language Model Post-Training",
+          "url": "https://arxiv.org/html/2411.15124v1"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "Choose supervision by the behavior being learned · worked relation",
+          "equation": "M_{SFT}=\\sum_i T_i^{response},\\qquad M_{DPO}=N_{pairs},\\qquad M_{RL}=N_{prompts}G",
+          "explanation": "For a batch of two one-turn demonstrations with answer plus EOS, SFT averages four target losses. Two DPO comparisons instead average two pair losses. The core reward branch samples four answers for each of two prompts and averages eight rollout terms. Their numerical loss values have different denominators and meanings; a lower DPO number is not directly better than a higher SFT number.",
+          "assumptions": "Core conventions: answer plus EOS SFT, response-pair DPO, one-action bandit rollouts. These are not a claim that every post-training implementation uses the same denominators."
+        }
+      ]
+    },
+    "evaluation": {
+      "appendDescription": "Evaluation attaches a scoring rule and denominator to a fixed checkpoint. Development cases guide iteration, while an independent final test assesses a choice made before its answers are inspected. Repeatedly consulting that final set while choosing changes weakens its independence. A small perfect result also leaves substantial uncertainty about future cases. The lifecycle’s seal is procedural: source files remain inspectable, and its first final report retains checkpoint identity rather than updating silently as training continues.",
+      "appendMechanism": [
+        "Choose the task and score before revealing final outcomes.",
+        "Preserve checkpoint, dataset, tokenizer and inference identities with each result.",
+        "Report counts and uncertainty rather than only percentages; mark exposed final data as previously seen."
+      ],
+      "appendEngineeringExample": "A result of 4/4 on the tiny final copy split is 100% observed accuracy, not proof of perfect population accuracy. A Wilson 95% interval with z=1.96 has lower bound about 0.510 and upper bound 1.000. The finite test supports only its declared toy task and split. Updating weights after the report changes model identity; the earlier 4/4 must remain attributed to the earlier checkpoint.",
+      "appendEvidenceNotes": "Mode: executable final report; worked uncertainty. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What should happen to a 4/4 report after the weights change?",
+          "options": [
+            "It proves every later model also succeeds.",
+            "It remains attached to the checkpoint that was actually evaluated.",
+            "It silently becomes a report about the new weights."
+          ],
+          "answer": 1,
+          "explanation": "It remains attached to the checkpoint that was actually evaluated. Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias."
+        }
+      ],
+      "additionalRelated": [
+        "probability-calibration-abstention",
+        "judge-rubric-agreement",
+        "retrieval-supported-generation",
+        "test-time-search-verification",
+        "model-system-regression-contract"
+      ],
+      "additionalSources": [
+        {
+          "title": "Holistic Evaluation of Language Models",
+          "url": "https://arxiv.org/html/2211.09110v1"
+        },
+        {
+          "title": "On Calibration of Modern Neural Networks",
+          "url": "https://arxiv.org/html/1706.04599v2"
+        },
+        {
+          "title": "NIST Dataplot: Wilson proportion interval",
+          "url": "https://www.itl.nist.gov/div898/software/dataplot/refman2/auxillar/agrecoul.htm"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "A development protocol and an independent final test · worked relation",
+          "equation": "CI=\\frac{\\hat p+z^2/(2n)\\ \\pm\\ z\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}+\\frac{z^2}{4n^2}}}{1+z^2/n}",
+          "explanation": "A result of 4/4 on the tiny final copy split is 100% observed accuracy, not proof of perfect population accuracy. A Wilson 95% interval with z=1.96 has lower bound about 0.510 and upper bound 1.000. The finite test supports only its declared toy task and split. Updating weights after the report changes model identity; the earlier 4/4 must remain attributed to the earlier checkpoint.",
+          "assumptions": "Independent Bernoulli sampling model for the illustrative interval; the authored four-case split is not demonstrated to be a representative population sample. Interval does not cure dataset selection bias."
+        }
+      ]
+    },
+    "tool-loop": {
+      "appendDescription": "A model policy can propose a structured action, but a separate environment contract determines whether it is valid and authorized. The tool response becomes an observation, not an instruction with authority over the system. A plausible final sentence does not establish that the requested state transition occurred. The connected automation experience supplies bounded actions and verifiable outcomes; the lifecycle decoder itself generates symbols and does not call external tools or receive extra training from a tool response.",
+      "appendMechanism": [
+        "Log the policy input and proposed structured action.",
+        "Validate schema, capability, preconditions and budget before any state mutation.",
+        "Record the actual observation and independently score the desired state change."
+      ],
+      "appendEngineeringExample": "In an authored inventory environment, stock starts at 3. A proposed reserve(2) passes a bound of available stock and commits stock=1. Retrying the same committed action with the same idempotency key returns its prior receipt rather than subtracting again. A fresh reserve(2) fails because only one remains. Saying “reserved” after that rejection is an answer failure even if its JSON syntax is valid.",
+      "appendEvidenceNotes": "Mode: worked example. Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "additionalChecks": [
+        {
+          "question": "What establishes successful reservation after a tool call?",
+          "options": [
+            "A fluent sentence saying the reservation succeeded.",
+            "The presence of a syntactically valid action proposal alone.",
+            "A validated committed receipt and the corresponding environment state."
+          ],
+          "answer": 2,
+          "explanation": "A validated committed receipt and the corresponding environment state. Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries."
+        }
+      ],
+      "additionalRelated": [
+        "probability-calibration-abstention",
+        "judge-rubric-agreement",
+        "retrieval-supported-generation",
+        "test-time-search-verification",
+        "model-system-regression-contract"
+      ],
+      "additionalSources": [
+        {
+          "title": "ReAct: Synergizing Reasoning and Acting in Language Models",
+          "url": "https://arxiv.org/html/2210.03629v3"
+        }
+      ],
+      "additionalScience": [
+        {
+          "title": "A model policy with validated observations and actions · worked relation",
+          "equation": "s_{t+1}=\\begin{cases}T(s_t,a_t)&V(s_t,a_t)=1\\\\s_t&V(s_t,a_t)=0\\end{cases}",
+          "explanation": "In an authored inventory environment, stock starts at 3. A proposed reserve(2) passes a bound of available stock and commits stock=1. Retrying the same committed action with the same idempotency key returns its prior receipt rather than subtracting again. A fresh reserve(2) fails because only one remains. Saying “reserved” after that rejection is an answer failure even if its JSON syntax is valid.",
+          "assumptions": "Authored finite inventory contract, not an actual external order. Model generation, validator execution and learning updates have separate state boundaries."
+        }
+      ]
+    }
+  }
+}

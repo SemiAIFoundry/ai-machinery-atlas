@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-09-07T22:42:57.384Z",
+  "contentFingerprint": "b2b2450347be734165a9b25da0350ffaf0ac68eda98fbc56c7abf9e4234f7c0a",
+  "record": {
+    "id": "checkpoint",
+    "level": "software",
+    "name": "Distributed checkpoint and recovery state",
+    "shortName": "Checkpoint",
+    "role": "Persists enough execution state to resume a model workflow after interruption.",
+    "description": "A checkpoint records a recoverable state of a training or inference workflow. Training recovery often needs more than model weights: optimizer state, step information, and other application state may be required to resume correctly. Distributed checkpoint systems can save shards from multiple workers and restore them through a coordinated load path. The atlas shows memory-state pieces leaving workers for durable storage, then returning to a new allocation. This separates a checkpoint from the transient attention KV cache and from a copy of the original dataset. Save frequency trades write overhead against potential lost work. A checkpoint is useful only when its contents, metadata, and compatibility are sufficient for the intended recovery procedure.\n\nA checkpoint restores the kind of state it actually contains. Training checkpoints may include weights, optimizer moments and random-number state; inference state can include sequence-specific KV; a workflow journal records decisions, intents and observations. An external receipt belongs to an effect that may already have committed outside the worker. These objects should have separate identities and restore rules.\n\nA full learning checkpoint must carry enough state to reproduce the next update. Weights-only files can reproduce a forward function while failing to reproduce training, because moments, random draws and data position differ. The lifecycle record also includes tokenizer/data/model versions, reference snapshots, stage contract and final-test exposure. Import validation checks compatibility and bounded sizes before replacing a current run. Its compact runtime fingerprint is an identifier for teaching, not an authenticated signature.",
+    "specs": [
+      {
+        "label": "Training state",
+        "value": "Weights + optimizer + application state",
+        "context": "Exact recovery requirements depend on the workload."
+      },
+      {
+        "label": "Distributed storage",
+        "value": "Sharded state",
+        "context": "Multiple workers can save and restore coordinated pieces."
+      },
+      {
+        "label": "Purpose",
+        "value": "Resume or reuse a saved state",
+        "context": "Not the same as a live KV cache."
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "Worker state and metadata",
+        "direction": "in",
+        "signal": "Recoverable execution snapshot"
+      },
+      {
+        "name": "Restarted workers",
+        "direction": "out",
+        "signal": "Restored compatible state"
+      }
+    ],
+    "tradeoff": "Frequent saves reduce potential lost progress. They add I/O and coordination overhead.",
+    "whyAI": "Long training runs must tolerate interruptions. Checkpointing protects accumulated work and enables controlled continuation.",
+    "related": [
+      "storage",
+      "scheduler",
+      "parallelism",
+      "ups",
+      "durable-actions-idempotency",
+      "context-memory-provenance",
+      "retained-work-restart-boundary",
+      "causal-pretraining-objective",
+      "optimizer-schedule-stability",
+      "microbatch-equivalent-updates"
+    ],
+    "sources": [
+      {
+        "title": "PyTorch — Distributed Checkpoint",
+        "url": "https://docs.pytorch.org/docs/stable/distributed.checkpoint.html"
+      },
+      {
+        "title": "Temporal Workflow Execution",
+        "url": "https://docs.temporal.io/workflow-execution"
+      },
+      {
+        "title": "Temporal Activities",
+        "url": "https://docs.temporal.io/activities"
+      },
+      {
+        "title": "2 OLMo 2 Furious",
+        "url": "https://arxiv.org/html/2501.00656v1"
+      }
+    ],
+    "scale": "Distributed software state persisted to storage",
+    "kind": "checkpoint",
+    "mechanism": [
+      "Identify the state required for the intended recovery.",
+      "Write its shards and metadata to durable storage.",
+      "Load and coordinate those pieces when the workflow resumes.",
+      "Restoration validates the saved object’s model/content or workflow identity before reusing it.",
+      "A workflow restart reconciles any external keyed effect whose response was not durably recorded rather than assuming restored computation rolls the effect back.",
+      "Serialize weights, moments, optimizer counter, training RNG, draw cursor and complete configuration.",
+      "Validate versions, finite values, shapes and cross-field invariants before committing an import.",
+      "Resume from the saved cursor and compare every subsequent state field with an uninterrupted reference."
+    ],
+    "misconception": "Saving model weights alone may not preserve the optimizer and other state needed for faithful training continuation.",
+    "check": {
+      "question": "Which statement about a training checkpoint is correct?",
+      "options": [
+        "It may need optimizer and application state in addition to weights",
+        "It is identical to the prompt’s KV cache",
+        "It guarantees infinite backup power"
+      ],
+      "answer": 0,
+      "explanation": "The required snapshot depends on what must be restored. Training state often extends beyond the parameter tensors."
+    },
+    "branch": "System operations",
+    "subbranch": "Recovery state",
+    "science": [
+      {
+        "title": "Checkpoint write-time floor",
+        "equation": "t_save ≥ S_checkpoint / B_sustained",
+        "explanation": "Checkpoint size includes the actual state being persisted, and the relevant rate is sustainable end-to-end storage throughput. Metadata and coordination add costs beyond this lower bound.",
+        "assumptions": "Ideal streaming lower bound over the chosen storage path; asynchronous saves may overlap work but do not eliminate traffic or consistency requirements."
+      },
+      {
+        "title": "Restart the same learning experiment · worked relation",
+        "equation": "S_{t+1}=F(S_t,D_t),\\qquad S_t=(\\theta_t,m_t,v_t,t,RNG_t,cursor_t,config)",
+        "explanation": "An automated fixture trains 17 updates, exports the complete checkpoint, restores it and performs 23 more. Its weights, moments, RNG, draw counter and history exactly match 40 uninterrupted updates in the same deterministic binary64 implementation. With two sampled examples per update, the final draw count is 80. Restoring only weights while resetting moments produces a different next trajectory.",
+        "assumptions": "Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract."
+      }
+    ],
+    "history": [],
+    "learningObjective": "Connect checkpoint size and sustained bandwidth to save time.",
+    "engineeringExample": "A 2 TB checkpoint at 20 GB/s has a lower-bound transfer time of 100 seconds before metadata, contention and consistency work.\n\nThe incident journal can end at a valid approved reservation intent while its environment already stores reservation-1. Restoring only that journal does not return the two consumed FILTER-A units. Recovery checks the one pending service against the environment receipt and returns the original outcome. In contrast, restoring a training checkpoint can repeat arithmetic from saved parameters but cannot by itself undo inventory in a separate service.\n\nAn automated fixture trains 17 updates, exports the complete checkpoint, restores it and performs 23 more. Its weights, moments, RNG, draw counter and history exactly match 40 uninterrupted updates in the same deterministic binary64 implementation. With two sampled examples per update, the final draw count is 80. Restoring only weights while resetting moments produces a different next trajectory.",
+    "evidenceNotes": "The bound is an I/O boundary, not a complete recovery policy.\n\nThe local E5 journal/receipt replay is executable. It is separate from the operating hall’s retained computational-work model and from actual distributed training checkpoint formats.\n\nMode: executable full checkpoint. Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+    "visualFamily": "model-workload",
+    "prerequisites": [
+      "storage"
+    ],
+    "checks": [
+      {
+        "question": "Does restoring a training checkpoint automatically undo a committed tool reservation?",
+        "options": [
+          "Yes, all saved state is interchangeable",
+          "No, the reservation is an external effect with a separate contract",
+          "Only if the checkpoint is recent"
+        ],
+        "answer": 1,
+        "explanation": "A training state restore does not reverse a separate external service’s committed state."
+      },
+      {
+        "question": "What is missing from a weights-only continuation record?",
+        "options": [
+          "Optimizer and sampling state needed to reproduce the next training update.",
+          "The ability to compute any forward prediction.",
+          "Only an optional chart title."
+        ],
+        "answer": 0,
+        "explanation": "Optimizer and sampling state needed to reproduce the next training update. Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract."
+      }
+    ],
+    "labId": "engineering",
+    "scope": "Compare checkpoint overhead, interruptions and retained progress; storage transfer behavior and full system qualification remain separate tests.",
+    "deepLabId": "recovery",
+    "investigationId": "execution",
+    "labScope": "Compare checkpoint overhead, interruptions and retained progress; storage transfer behavior and full system qualification remain separate tests."
+  },
+  "chapter": {
+    "id": "distributed",
+    "band": 4,
+    "name": "Distributed training",
+    "scene": "distributed",
+    "scale": "Across devices & nodes",
+    "title": "One computation, many machines",
+    "summary": "Partition, communicate, synchronize, and recover.",
+    "ids": [
+      "nccl",
+      "parallelism",
+      "checkpoint"
+    ],
+    "question": "How does a training step remain coherent across devices?",
+    "read": "Device tiles exchange blocks and reductions. The flow illustrates a collective operation; communication volume depends on the chosen parallel strategy.",
+    "domainId": "executable-software"
+  },
+  "formalEquations": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{save}}\\ge\\frac{S_{\\mathrm{checkpoint}}}{B_{\\mathrm{sustained}}}",
+      "variables": [
+        {
+          "symbol": "t_save",
+          "meaning": "Checkpoint write duration",
+          "unit": "s"
+        },
+        {
+          "symbol": "S_checkpoint",
+          "meaning": "Actual checkpoint state persisted",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_sustained",
+          "meaning": "Sustained end-to-end storage payload rate",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Checkpoint save time is at least persisted bytes divided by sustained storage bandwidth."
+    },
+    {
+      "kind": "math",
+      "latex": "S_{t+1}=F(S_t,D_t),\\qquad S_t=(\\theta_t,m_t,v_t,t,RNG_t,cursor_t,config)",
+      "text": "Resume weights, optimizer, RNG and data cursor as one experiment state.",
+      "variables": [
+        {
+          "symbol": "S_t",
+          "meaning": "Complete reproducible learning state",
+          "unit": "record"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Declared deterministic update given its saved state",
+          "unit": "function"
+        },
+        {
+          "symbol": "D_t",
+          "meaning": "Sampled training data selected by saved RNG/cursor policy",
+          "unit": "examples"
+        },
+        {
+          "symbol": "theta,m,v",
+          "meaning": "Weights and optimizer moment arrays",
+          "unit": "parameters and moments"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Optimizer counter",
+          "unit": "updates"
+        }
+      ]
+    }
+  ],
+  "structuredClaims": [
+    {
+      "id": "ml-claim-olmo2",
+      "title": "2 OLMo 2 Furious · scoped mechanism",
+      "statement": "The disclosed recipe separates data curricula, continued pretraining and post-training stages; selected checkpoint averages are evaluated.",
+      "sourceId": "ml-source-olmo2",
+      "lessonIds": [
+        "data-mixture-sampling",
+        "tiny-causal-decoder",
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "model-lifecycle-stage-contract",
+        "replay-retention-forgetting",
+        "checkpoint-averaging-boundaries",
+        "feed-forward",
+        "residual-normalization",
+        "loss-optimizer",
+        "checkpoint",
+        "training-memory-state"
+      ],
+      "status": "research",
+      "metric": "Mechanism and mathematical contract",
+      "value": "Qualitative scope; worked numbers are authored",
+      "unit": "",
+      "denominator": "The cited section and its declared assumptions",
+      "period": "Edition inspected 2026-09-07",
+      "scope": "Sections 2.3 and 4.2.2; mid-training soups/Table 14; Section 5",
+      "limitations": "No corpus, model size, optimizer schedule or empirical result from OLMo 2 is reproduced by the toy decoder.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "manifestLesson": {
+    "id": "checkpoint",
+    "title": "Distributed checkpoint and recovery state",
+    "chapterId": "distributed",
+    "domainId": "executable-software",
+    "workstream": "legacy",
+    "contentFingerprint": "b2b2450347be734165a9b25da0350ffaf0ac68eda98fbc56c7abf9e4234f7c0a",
+    "scope": {
+      "role": "Persists enough execution state to resume a model workflow after interruption.",
+      "learningObjective": "Connect checkpoint size and sustained bandwidth to save time.",
+      "scale": "Distributed software state persisted to storage",
+      "evidenceNotes": "The bound is an I/O boundary, not a complete recovery policy.\n\nThe local E5 journal/receipt replay is executable. It is separate from the operating hall’s retained computational-work model and from actual distributed training checkpoint formats.\n\nMode: executable full checkpoint. Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract. Numerical examples are authored calculations, except explicitly identified automated core fixtures. Primary sources support the scoped mechanism; no human specialist review or learner outcome is implied.",
+      "workedExample": "A 2 TB checkpoint at 20 GB/s has a lower-bound transfer time of 100 seconds before metadata, contention and consistency work.\n\nThe incident journal can end at a valid approved reservation intent while its environment already stores reservation-1. Restoring only that journal does not return the two consumed FILTER-A units. Recovery checks the one pending service against the environment receipt and returns the original outcome. In contrast, restoring a training checkpoint can repeat arithmetic from saved parameters but cannot by itself undo inventory in a separate service.\n\nAn automated fixture trains 17 updates, exports the complete checkpoint, restores it and performs 23 more. Its weights, moments, RNG, draw counter and history exactly match 40 uninterrupted updates in the same deterministic binary64 implementation. With two sampled examples per update, the final draw count is 80. Restoring only weights while resetting moments produces a different next trajectory.",
+      "scienceModels": [
+        {
+          "index": 0,
+          "title": "Checkpoint write-time floor",
+          "assumptions": "Ideal streaming lower bound over the chosen storage path; asynchronous saves may overlap work but do not eliminate traffic or consistency requirements.",
+          "formalKind": "math"
+        },
+        {
+          "index": 1,
+          "title": "Restart the same learning experiment · worked relation",
+          "assumptions": "Exact equality is tested within one numerical implementation and operation order. Cross-device floating-point kernels can require a tolerance or different reproducibility contract.",
+          "formalKind": "math"
+        }
+      ],
+      "visualInterpretation": "Device tiles exchange blocks and reductions. The flow illustrates a collective operation; communication volume depends on the chosen parallel strategy."
+    },
+    "sourceReferences": [
+      {
+        "sourceId": "url-284d853c6b8e814d96db",
+        "url": "https://docs.pytorch.org/docs/stable/distributed.checkpoint.html",
+        "title": "PyTorch — Distributed Checkpoint",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-23a0b3fa770742478d25",
+        "url": "https://docs.temporal.io/workflow-execution",
+        "title": "Temporal Workflow Execution",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-1743ee34e2118e1db2a4",
+        "url": "https://docs.temporal.io/activities",
+        "title": "Temporal Activities",
+        "contexts": [
+          {
+            "field": "sources"
+          }
+        ]
+      },
+      {
+        "sourceId": "url-91e65f2aee755df9b416",
+        "url": "https://arxiv.org/html/2501.00656v1",
+        "title": "2 OLMo 2 Furious",
+        "contexts": [
+          {
+            "field": "sources"
+          },
+          {
+            "field": "claim",
+            "claimId": "ml-claim-olmo2",
+            "ledgerSourceId": "ml-source-olmo2"
+          }
+        ]
+      }
+    ],
+    "claimIds": [
+      "ml-claim-olmo2"
+    ],
+    "evidence": {
+      "status": "linked-source-claims-present",
+      "contentKinds": [
+        "cited-explanation",
+        "worked-example",
+        "scoped-science-model",
+        "structured-source-claim"
+      ],
+      "inheritedClaimStatuses": [
+        "research"
+      ],
+      "sourceSupportAssessedInThisTask": false,
+      "independentSpecialistReview": "not-recorded",
+      "reviewCompletionDate": null,
+      "statement": "This manifest inventories inherited content and proposed review work. Citations and inherited claim labels do not certify source support, measured performance or specialist review."
+    },
+    "curation": {
+      "status": "baseline-review-required",
+      "priority": "high",
+      "updateSensitivity": "research-sensitive",
+      "proposedIntervalDays": 90,
+      "intervalBasis": "Proposed editorial policy; not an evidence-derived guarantee of freshness.",
+      "proposedReviewRole": {
+        "id": "ml-systems-reviewer",
+        "label": "ML systems and compiler reviewer",
+        "focus": "Software/version scope, tensor and memory semantics, workload conditions and performance denominators."
+      },
+      "assignedReviewer": null,
+      "lastCompletedSourceReviewOn": null,
+      "lastCompletedSpecialistReviewOn": null,
+      "nextReviewDueOn": null,
+      "reviewEventIds": [],
+      "triggers": [
+        "Any change to a scientific statement, source, assumption, equation, worked example or conceptual visual requires review of that change.",
+        "A new contradiction, corrected source, changed specification or reported learner misconception requires triage.",
+        "Research framing, model validity and replication status require explicit limitations and follow-up evidence."
+      ],
+      "reviewFocus": [
+        "Software/version scope, tensor and memory semantics, workload conditions and performance denominators.",
+        "Check each cited assertion against an exact source locator; preserve source-reported, announced, forecast, research and unresolved qualifiers.",
+        "Classify numerical values as teaching inputs, derived examples or source-reported measurements/specifications; retain units, denominators and conditions.",
+        "Trace at least one dependency and downstream effect and check that lab/visual abstractions preserve the lesson scope."
+      ]
+    },
+    "links": {
+      "prerequisiteLessonIds": [
+        "storage"
+      ],
+      "dependentLessonIds": [
+        "checkpoint-retained-work",
+        "orbital-radiation-recovery",
+        "domain-adaptive-continuation",
+        "checkpoint-averaging-boundaries",
+        "model-system-regression-contract"
+      ],
+      "relatedLessonIds": [
+        "storage",
+        "scheduler",
+        "parallelism",
+        "ups",
+        "durable-actions-idempotency",
+        "context-memory-provenance",
+        "retained-work-restart-boundary",
+        "causal-pretraining-objective",
+        "optimizer-schedule-stability",
+        "microbatch-equivalent-updates"
+      ],
+      "journeyIds": [
+        "training",
+        "learn-a-model",
+        "waiting"
+      ],
+      "lab": {
+        "labId": "engineering",
+        "deepLabId": "recovery",
+        "scope": "Compare checkpoint overhead, interruptions and retained progress; storage transfer behavior and full system qualification remain separate tests."
+      },
+      "primaryInvestigationId": "execution",
+      "investigationIds": [
+        "execution"
+      ],
+      "engineeringRelationIds": [
+        "engineering-stores-storage-checkpoint",
+        "engineering-stores-checkpoint-loss-optimizer"
+      ],
+      "engineeringSourceRelationIds": [
+        "engineering-stores-storage-checkpoint",
+        "engineering-stores-checkpoint-loss-optimizer"
+      ]
+    }
+  }
+}

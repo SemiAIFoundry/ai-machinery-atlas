@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "fixture": true,
+  "purpose": "Demonstrate a qualifier change, reciprocal supersession, blocked review reuse and explicit recheck. These are complete isolated workflow documents, not actual current review events or a claim that NIST changed.",
+  "sourceUrl": "https://www.itl.nist.gov/div898/handbook/eda/section3/eda366j.htm",
+  "steps": [
+    {
+      "id": "before",
+      "asOf": "2026-09-01",
+      "document": {
+        "schemaVersion": 1,
+        "kind": "isolated-supersession-exercise",
+        "fixture": true,
+        "claims": [
+          {
+            "id": "fixture:poisson:1",
+            "revision": 1,
+            "sourceId": "url-ae8fbc8994610142a96c",
+            "locators": [
+              "Probability mass function"
+            ],
+            "statement": "For a Poisson event count with mean lambda, the zero-event probability is exp(-lambda).",
+            "exclusions": "The numerical density and die area are synthetic; no modern semiconductor yield curve is calibrated.",
+            "status": "current",
+            "supersedesClaimId": null,
+            "supersededByClaimId": null,
+            "fingerprint": "b14bdabb483354878a038fe2d99fc92ce5f4d21b51fc2e5d23fc54f0cb55b77a"
+          }
+        ],
+        "events": [
+          {
+            "id": "fixture-review-1",
+            "fixture": true,
+            "claimId": "fixture:poisson:1",
+            "scopeFingerprint": "b14bdabb483354878a038fe2d99fc92ce5f4d21b51fc2e5d23fc54f0cb55b77a",
+            "actor": {
+              "kind": "agent",
+              "identifier": "fixture-ai-reviewer",
+              "role": "Simulated source checker in an isolated exercise"
+            },
+            "checkedOn": "2026-09-01",
+            "completedOn": "2026-09-01",
+            "outcome": "accepted",
+            "notes": "FICTIONAL workflow event. No primary source was retrieved or specialist review conducted by this fixture."
+          }
+        ]
+      },
+      "expected": [
+        {
+          "claimId": "fixture:poisson:1",
+          "status": "agent-recheck-recorded",
+          "checkedOn": "2026-09-01"
+        }
+      ]
+    },
+    {
+      "id": "qualifier-change",
+      "asOf": "2026-09-02",
+      "trigger": "The teaching scope now states spatial assumptions and the area conversion explicitly.",
+      "document": {
+        "schemaVersion": 1,
+        "kind": "isolated-supersession-exercise",
+        "fixture": true,
+        "claims": [
+          {
+            "id": "fixture:poisson:1",
+            "revision": 1,
+            "sourceId": "url-ae8fbc8994610142a96c",
+            "locators": [
+              "Probability mass function"
+            ],
+            "statement": "For a Poisson event count with mean lambda, the zero-event probability is exp(-lambda).",
+            "exclusions": "The numerical density and die area are synthetic; no modern semiconductor yield curve is calibrated.",
+            "status": "superseded",
+            "supersedesClaimId": null,
+            "supersededByClaimId": "fixture:poisson:2",
+            "fingerprint": "b14bdabb483354878a038fe2d99fc92ce5f4d21b51fc2e5d23fc54f0cb55b77a"
+          },
+          {
+            "id": "fixture:poisson:2",
+            "revision": 2,
+            "sourceId": "url-ae8fbc8994610142a96c",
+            "locators": [
+              "Probability mass function"
+            ],
+            "statement": "For a Poisson event count with mean lambda, the zero-event probability is exp(-lambda).",
+            "exclusions": "Uniform independent spatial defects and lambda = D0 A / 100 for D0 in cm^-2 and A in mm^2 are explicit synthetic assumptions. The geometric screening and Poisson survival factors remain separate denominators; the cited source does not calibrate modern semiconductor yield.",
+            "status": "current",
+            "supersedesClaimId": "fixture:poisson:1",
+            "supersededByClaimId": null,
+            "fingerprint": "f1db4198e1ce028252520e8ab7e72478cac0908306dddd8b5ef052343aeecd56"
+          }
+        ],
+        "events": [
+          {
+            "id": "fixture-review-1",
+            "fixture": true,
+            "claimId": "fixture:poisson:1",
+            "scopeFingerprint": "b14bdabb483354878a038fe2d99fc92ce5f4d21b51fc2e5d23fc54f0cb55b77a",
+            "actor": {
+              "kind": "agent",
+              "identifier": "fixture-ai-reviewer",
+              "role": "Simulated source checker in an isolated exercise"
+            },
+            "checkedOn": "2026-09-01",
+            "completedOn": "2026-09-01",
+            "outcome": "accepted",
+            "notes": "FICTIONAL workflow event. No primary source was retrieved or specialist review conducted by this fixture."
+          }
+        ]
+      },
+      "expected": [
+        {
+          "claimId": "fixture:poisson:2",
+          "status": "recheck-required",
+          "checkedOn": null
+        }
+      ]
+    },
+    {
+      "id": "after-explicit-recheck",
+      "asOf": "2026-09-03",
+      "document": {
+        "schemaVersion": 1,
+        "kind": "isolated-supersession-exercise",
+        "fixture": true,
+        "claims": [
+          {
+            "id": "fixture:poisson:1",
+            "revision": 1,
+            "sourceId": "url-ae8fbc8994610142a96c",
+            "locators": [
+              "Probability mass function"
+            ],
+            "statement": "For a Poisson event count with mean lambda, the zero-event probability is exp(-lambda).",
+            "exclusions": "The numerical density and die area are synthetic; no modern semiconductor yield curve is calibrated.",
+            "status": "superseded",
+            "supersedesClaimId": null,
+            "supersededByClaimId": "fixture:poisson:2",
+            "fingerprint": "b14bdabb483354878a038fe2d99fc92ce5f4d21b51fc2e5d23fc54f0cb55b77a"
+          },
+          {
+            "id": "fixture:poisson:2",
+            "revision": 2,
+            "sourceId": "url-ae8fbc8994610142a96c",
+            "locators": [
+              "Probability mass function"
+            ],
+            "statement": "For a Poisson event count with mean lambda, the zero-event probability is exp(-lambda).",
+            "exclusions": "Uniform independent spatial defects and lambda = D0 A / 100 for D0 in cm^-2 and A in mm^2 are explicit synthetic assumptions. The geometric screening and Poisson survival factors remain separate denominators; the cited source does not calibrate modern semiconductor yield.",
+            "status": "current",
+            "supersedesClaimId": "fixture:poisson:1",
+            "supersededByClaimId": null,
+            "fingerprint": "f1db4198e1ce028252520e8ab7e72478cac0908306dddd8b5ef052343aeecd56"
+          }
+        ],
+        "events": [
+          {
+            "id": "fixture-review-1",
+            "fixture": true,
+            "claimId": "fixture:poisson:1",
+            "scopeFingerprint": "b14bdabb483354878a038fe2d99fc92ce5f4d21b51fc2e5d23fc54f0cb55b77a",
+            "actor": {
+              "kind": "agent",
+              "identifier": "fixture-ai-reviewer",
+              "role": "Simulated source checker in an isolated exercise"
+            },
+            "checkedOn": "2026-09-01",
+            "completedOn": "2026-09-01",
+            "outcome": "accepted",
+            "notes": "FICTIONAL workflow event. No primary source was retrieved or specialist review conducted by this fixture."
+          },
+          {
+            "id": "fixture-review-2",
+            "fixture": true,
+            "claimId": "fixture:poisson:2",
+            "scopeFingerprint": "f1db4198e1ce028252520e8ab7e72478cac0908306dddd8b5ef052343aeecd56",
+            "actor": {
+              "kind": "agent",
+              "identifier": "fixture-ai-reviewer",
+              "role": "Simulated source checker in an isolated exercise"
+            },
+            "checkedOn": "2026-09-03",
+            "completedOn": "2026-09-03",
+            "outcome": "accepted",
+            "notes": "FICTIONAL workflow event. No primary source was retrieved or specialist review conducted by this fixture."
+          }
+        ]
+      },
+      "expected": [
+        {
+          "claimId": "fixture:poisson:2",
+          "status": "agent-recheck-recorded",
+          "checkedOn": "2026-09-03"
+        }
+      ]
+    }
+  ]
+}

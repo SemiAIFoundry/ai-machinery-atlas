@@ -1,0 +1,35 @@
+✔ fixed corpus lineage splits precede fitting and contain disjoint prompt families (1.418375ms)
+✔ complete decoder forward matches an independent numerical implementation (5.654167ms)
+✔ all parameter groups have checked supervised gradients, including shared embedding paths (7.961292ms)
+✔ SFT masks remove prompt targets, use the correct denominator and retain response gradients (3.6145ms)
+✔ causal prefix outputs are invariant to later token changes and extension (1.065ms)
+✔ zero output weights produce uniform probabilities and cross-entropy ln vocabulary (0.59825ms)
+✔ first SGD and Adam updates follow independently calculated update rules after clipping (2.875458ms)
+✔ same seed and checkpointed RNG/optimizer/cursor reproduce uninterrupted training exactly (69.470291ms)
+✔ pretraining learns reserved context compositions and beats a training-fitted unigram baseline (201.258708ms)
+✔ actual SFT changes weights and acquires the deliberately incompatible rule, exposing retention loss (104.666ms)
+✔ continuation keeps all-token supervision and replay samples both declared training domains (31.913959ms)
+✔ DPO loss and gradient match independent response likelihood-ratio calculation (10.643375ms)
+✔ DPO trains actual policy parameters while preserving its frozen reference; objective improvement is not task equivalence (157.807666ms)
+✔ reward samples come from the current policy with explicit checked outcomes and detached baselines (2.321292ms)
+✔ reward continuation is checkpoint reproducible with rollout RNG and finite updates (67.237292ms)
+✔ sampled score-function and exact KL gradients match an independent frozen-rollout surrogate (3.517792ms)
+✔ generation is actual autoregressive inference with a separate RNG and no weight updates (21.79475ms)
+✔ sealed-final reports require explicit opening, retain evaluated identity and are not recomputed after learning (49.05875ms)
+✔ checkpoint validation rejects unknown fields, nonfinite/oversized state, invalid source IDs and inconsistent counters (6.514042ms)
+✔ bounded CPU and invalid operation failures preserve the previous workspace (0.529959ms)
+✔ component workspace boundary retains final exposure across an older import and a new initialized run (2.56675ms)
+✔ imported exposed checkpoint persists independent disclosure before any explicit save (2.236917ms)
+✔ invalid and stale asynchronous imports preserve both the run and exposure journal (2.286625ms)
+✔ unavailable storage retains exposure within the mounted workspace and exported checkpoint (2.153584ms)
+✔ corrupt saved bytes remain recoverable while an independent exposure marker survives load (0.101458ms)
+✔ fresh workspace stays procedurally unopened and does not manufacture an exposure write (0.226208ms)
+✔ an already mounted journal incorporates exposure recorded by another workspace before importing old state (0.298041ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 842.3185
