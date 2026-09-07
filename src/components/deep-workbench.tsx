@@ -27,8 +27,8 @@ export const deepLabs:Lab[]=[
 ];
 const defaults:Record<string,number>={diameter:300,edge:3,die:600,defects:.1,wavelength:13.5,na:.33,film:500,removal:100,polish:3,variation:.15,incoming:1000,bondYield:.98,stages:4,finalYield:.95,bits:4,relative:2.5,stackYield:.8,logic:12000,hbm:40000,interposers:7000,substrates:8000,assemblyRate:6500,yield:.95,qualification:3,ramp:3,demand:4000,n:1024,tile:64,params:70,weightBits:16,batch:8,context:8192,layers:80,kvHeads:8,payload:1,ranks:32,bandwidth:100,latency:5,facility:20,pue:1.2,rackPower:100,ready:.8,utilization:.65,rate:4000,payloadKW:100,temperature:325,emissivity:.9,absorbed:100,sun:.66,solarEfficiency:.3,link:50,duty:.2,dataTB:50,altitude:650,nre:100,software:50,volume:100000,waferPrice:15000,goodDies:100,packageCost:1000,packageYield:.9,interval:30,checkpoint:2,mtbf:24,restart:5,years:6};
 const fmt=(n:number)=>n.toLocaleString(undefined,{maximumFractionDigits:2});
-export default function DeepWorkbench(){
- const [mode,setMode]=useState('capacity'),[v,setV]=useState(defaults),[empirical,setEmpirical]=useState(true),[training,setTraining]=useState(false);const lab=deepLabs.find(l=>l.id===mode)!;
+export default function DeepWorkbench({initial='capacity'}:{initial?:string}){
+ const [mode,setMode]=useState(initial),[v,setV]=useState(defaults),[empirical,setEmpirical]=useState(true),[training,setTraining]=useState(false);const lab=deepLabs.find(l=>l.id===mode)!;
  const labTabs=<div className="deep-lab-tabs" aria-label="Engineering labs">{[...deepLabs,...numericLabs].map(l=><Button type="button" key={l.id} variant={mode===l.id?'default':'ghost'} onClick={()=>setMode(l.id)}>{l.name}</Button>)}</div>;
  if(isNumericLab(mode))return <div className="deep-workbench">{labTabs}<NumericWorkbench id={mode}/></div>;
  let results:[string,number|string,string][]=[],bars:{name:string;value:number}[]=[],table:{month:number;produced:number;delivered:number;inventory:number;backlog:number}[]=[];

@@ -8,3 +8,8 @@ dist/
 *.log
 
 /node_modules
+
+# Rebuilt from the authored corpus before development and production builds.
+src/lib/generated/
+public/lesson-data/
+.validation/

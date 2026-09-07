@@ -1,0 +1,706 @@
+{
+  "silicon-atom": {
+    "prerequisites": []
+  },
+  "crystal-lattice": {
+    "prerequisites": [
+      "silicon-atom"
+    ]
+  },
+  "energy-bands": {
+    "prerequisites": [
+      "crystal-lattice"
+    ]
+  },
+  "doping": {
+    "prerequisites": [
+      "energy-bands"
+    ]
+  },
+  "pn-junction": {
+    "prerequisites": [
+      "doping"
+    ]
+  },
+  "silicon-wafer": {
+    "prerequisites": [
+      "crystal-lattice"
+    ]
+  },
+  "copper-conductor": {
+    "prerequisites": [
+      "energy-bands"
+    ]
+  },
+  "dielectric": {
+    "prerequisites": [
+      "energy-bands"
+    ]
+  },
+  "lithography": {
+    "prerequisites": [
+      "silicon-wafer"
+    ]
+  },
+  "cmp": {
+    "prerequisites": [
+      "silicon-wafer",
+      "copper-conductor"
+    ]
+  },
+  "mosfet": {
+    "prerequisites": [
+      "pn-junction",
+      "dielectric"
+    ]
+  },
+  "gate-stack": {
+    "prerequisites": [
+      "mosfet",
+      "dielectric"
+    ]
+  },
+  "channel": {
+    "prerequisites": [
+      "mosfet",
+      "energy-bands"
+    ]
+  },
+  "source-drain": {
+    "prerequisites": [
+      "mosfet",
+      "doping"
+    ]
+  },
+  "contact": {
+    "prerequisites": [
+      "source-drain",
+      "copper-conductor"
+    ]
+  },
+  "spacer": {
+    "prerequisites": [
+      "gate-stack",
+      "source-drain"
+    ]
+  },
+  "finfet": {
+    "prerequisites": [
+      "mosfet",
+      "gate-stack"
+    ]
+  },
+  "gaa": {
+    "prerequisites": [
+      "finfet",
+      "gate-stack"
+    ]
+  },
+  "inverter": {
+    "prerequisites": [
+      "mosfet"
+    ],
+    "learningObjective": "Predict the output state and estimate the dynamic switching power of a loaded CMOS inverter.",
+    "engineeringExample": "Synthetic node: with charging activity α = 0.25 per cycle, C = 10 fF, V = 1 V and f = 1 GHz, αCV²f = 2.5 μW. Raising V to 1.2 V gives 3.6 μW, a 44% increase before leakage and short-circuit power.",
+    "evidenceNotes": "The switching model and complementary topology follow the linked CMOS lecture. Values are synthetic; valid logic levels, transfer gain and noise margins require a device and load model."
+  },
+  "nand": {
+    "prerequisites": [
+      "inverter"
+    ],
+    "learningObjective": "Use the series pull-down and parallel pull-up networks to construct a two-input NAND truth table.",
+    "engineeringExample": "Worked ideal truth table: inputs 00, 01 and 10 each leave at least one pull-up conducting and produce Y = 1. Input 11 enables the complete series pull-down and produces Y = 0. Thus three of the four input combinations produce a high output.",
+    "evidenceNotes": "This is ideal Boolean reasoning within valid voltage ranges, using the linked computation-structures treatment. It does not predict transition current, delay or simultaneous conduction."
+  },
+  "flipflop": {
+    "prerequisites": [
+      "inverter",
+      "nand"
+    ],
+    "learningObjective": "Combine register and logic delays into a setup timing budget while keeping hold checks separate.",
+    "engineeringExample": "Synthetic path: 40 ps clock-to-Q + 120 ps logic + 30 ps setup + 10 ps uncertainty requires a period of at least 200 ps. Its setup-only frequency ceiling is 1/(200 ps) = 5 GHz. A passing setup sum does not establish that the hold constraint passes.",
+    "evidenceNotes": "The timing budget follows the linked sequential-logic lecture. These are synthetic maximum-delay values for one synchronous path; clock skew, hold timing, variation and path exceptions need separate checks."
+  },
+  "sram": {
+    "prerequisites": [
+      "inverter",
+      "mosfet"
+    ],
+    "learningObjective": "Explain powered feedback in a 6T SRAM cell and separate cell count from a complete memory macro.",
+    "engineeringExample": "Synthetic 1 KiB payload contains 1,024 × 8 = 8,192 bits. At six transistors per canonical cell, the cell array contains 49,152 transistors before decoders, sense amplifiers, write drivers, redundancy and control are added.",
+    "evidenceNotes": "The six-transistor topology follows the linked SRAM lecture. The arithmetic is an ideal payload count, not a physical macro area, transistor total or proof of read/write stability."
+  },
+  "adder": {
+    "prerequisites": [
+      "nand"
+    ],
+    "learningObjective": "Trace sum and carry bits through a finite-width binary addition and identify unsigned overflow.",
+    "engineeringExample": "Worked four-bit addition: 0111₂ + 0011₂ = 1010₂, or 7 + 3 = 10. For 1111₂ + 0001₂, the stored four-bit sum is 0000₂ and carry-out is 1; discarding that carry changes the represented unsigned result from 16 to 0.",
+    "evidenceNotes": "The carry relations follow the linked digital-design lecture. Examples are unsigned four-bit arithmetic; signed overflow is a different condition, and gate delay is outside the truth-table calculation."
+  },
+  "multiplier": {
+    "prerequisites": [
+      "adder"
+    ],
+    "learningObjective": "Assemble an unsigned binary product from shifted partial products.",
+    "engineeringExample": "Worked multiplication: 0101₂ × 0011₂ forms 00000101₂ and 00001010₂ from the two set bits of the multiplier. Adding them gives 00001111₂ = 15. Four-bit unsigned operands need up to eight result bits because 15 × 15 = 225.",
+    "evidenceNotes": "This is the unsigned partial-product construction in the linked multiplier lecture. Signed encodings, floating-point normalization and circuit timing require additional rules."
+  },
+  "mac": {
+    "prerequisites": [
+      "multiplier",
+      "adder"
+    ],
+    "learningObjective": "Compute a dot product as successive multiply–accumulate updates and declare the arithmetic format.",
+    "engineeringExample": "Worked exact integer dot product: [2, −1, 3] · [4, 5, 2] = 8 − 5 + 6 = 9. Starting at zero, the accumulator holds 8, then 3, then 9. This requires three multiplications and two nontrivial additions; a hardware convention may count three MACs as six operations.",
+    "evidenceNotes": "The dot-product identity is exact; the linked floating-point discussion explains why FMA and separately rounded operations can differ. This integer example assumes enough range and does not demonstrate floating-point error."
+  },
+  "interconnect": {
+    "prerequisites": [
+      "copper-conductor",
+      "dielectric"
+    ],
+    "learningObjective": "Use a distributed RC approximation to explain why a longer unbuffered wire can have more than a proportional delay cost.",
+    "engineeringExample": "Synthetic wire: r = 0.1 Ω/μm and c = 0.2 fF/μm over 100 μm give R = 10 Ω, C = 20 fF and RC = 200 fs. At 200 μm, R = 20 Ω and C = 40 fF, so RC = 800 fs. The product quadruples; the actual delay includes the model-dependent coefficient and driver.",
+    "evidenceNotes": "The linked interconnect work motivates resistance/capacitance scaling. Synthetic values illustrate an unbuffered uniform RC line, not a node-specific delay prediction; repeaters, coupling and inductance can change the result."
+  },
+  "clock": {
+    "prerequisites": [
+      "flipflop",
+      "interconnect"
+    ]
+  },
+  "standard-cell": {
+    "prerequisites": [
+      "nand",
+      "clock"
+    ]
+  },
+  "streaming-multiprocessor": {
+    "prerequisites": [
+      "tensor-core",
+      "register-file",
+      "clock"
+    ]
+  },
+  "tensor-core": {
+    "prerequisites": [
+      "mac"
+    ],
+    "description": "A Tensor Core implements matrix multiply and accumulate: D equals A times B plus C. It does not contain a neural network, words, or a complete attention head. Software divides larger tensors into compatible tiles, arranges their layout, and feeds these units repeatedly. Different instructions accept different input formats and accumulation rules. Low precision reduces the bits moved and processed, while scale factors help represent useful numerical ranges. A peak throughput figure assumes suitable operations, shapes, clocks, and a continuous supply of operands. A matrix tile combines row and column elements into partial products, accumulates their sums, and contributes results to a larger matrix. That arithmetic relationship describes the operation, not a literal photograph of a Tensor Core layout."
+  },
+  "register-file": {
+    "prerequisites": [
+      "flipflop",
+      "sram"
+    ],
+    "description": "Registers hold the addresses, counters, partial results, and scalar operands that threads need immediately. The compiler assigns program values to a finite physical pool. A value in a register does not need a fresh trip to off-chip memory for every instruction. If a kernel asks for too many registers, fewer blocks may fit at once; some values may also spill into local memory, which is backed by device memory and cached. Registers are private to a thread in the programming model, although explicit warp shuffle instructions can exchange values between participating threads. Local register reuse keeps operands near arithmetic lanes; a spill adds memory traffic and can lengthen the path to the same result."
+  },
+  "shared-sram": {
+    "prerequisites": [
+      "sram",
+      "register-file"
+    ],
+    "description": "Shared memory is a software-managed scratchpad allocated to a thread block. Threads cooperate to load a tile, synchronize when required, and reuse it for several operations before replacing it. Its underlying storage is SRAM, which retains state while powered without the periodic refresh needed by DRAM. Shared memory is banked, so the access pattern matters: requests to different words in the same bank can serialize. Padding or rearranging a tile can remove those conflicts. The capacity is small compared with HBM, but a small tile can be reused many times. Requests that land on the same memory bank can serialize; changing a tile’s layout, for example by padding a matrix transpose, can reduce conflicts without changing its mathematical result."
+  },
+  "l1-cache": {
+    "prerequisites": [
+      "sram"
+    ],
+    "description": "The L1 cache is the first automatic cache close to an SM’s execution units. When threads request memory, hardware checks whether useful data are already nearby. Hits can avoid a longer journey; misses continue toward lower levels of the hierarchy. Consecutive thread addresses can be coalesced into fewer memory transactions, while scattered addresses may move many unused bytes. Blackwell shares a physical capacity budget among L1, texture functionality, and the shared-memory carveout. This differs from the explicit ownership and lifetime of software-managed shared memory. A cache hit serves a load locally, while a miss requests data farther down the hierarchy. Reshaping a warp’s addresses can change transferred bytes even when it computes the same values."
+  },
+  "l2-cache": {
+    "prerequisites": [
+      "l1-cache"
+    ]
+  },
+  "on-chip-network": {
+    "prerequisites": [
+      "interconnect",
+      "l2-cache"
+    ],
+    "description": "The on-chip fabric is the communication system within the silicon. Requests carry addresses, operation types, and data between blocks; arbitration decides which request uses a contested path. Wires have capacitance and resistance, so longer journeys consume time and energy even before leaving the package. A GPU can expose a unified address space while still having internal locality domains. An illustrative routing graph is distinct from an undisclosed physical topology: a tidy mesh is a teaching model, not evidence that Blackwell uses that exact network. Shared routes can create contention, and local versus remote cache access can use different paths; the chip’s communication behavior matters alongside its arithmetic."
+  },
+  "hbm-controller": {
+    "prerequisites": [
+      "dram-die",
+      "interconnect"
+    ],
+    "description": "A memory controller turns requests for addresses into commands that the DRAM organization can execute. It coordinates reads, writes, timing constraints, and maintenance such as refresh. The PHY is the physical interface circuitry that drives and receives signals across package wires. These are distinct jobs: the controller manages the protocol and schedule, while the PHY makes the bits electrically reliable. Many parallel wires provide aggregate HBM bandwidth without demanding that each wire run at the highest possible rate. A request passes through controller queues and bank selection before its data crosses the memory interface and package wiring. Read responses return through that path to the requesting work. Published stack bandwidth is an upper-bound interface capability, not the sustained bandwidth of every access pattern."
+  },
+  "nvlink-port": {
+    "prerequisites": [
+      "on-chip-network"
+    ],
+    "description": "A model can be partitioned across GPUs because one device may not provide enough memory or enough compute. NVLink supplies a fast path for those devices to exchange tensor pieces and partial results. Physical links connect GPUs to peers or switches; software still chooses a parallel strategy and schedules the required communication. A connected group is not automatically one ordinary GPU with uniform access costs. Collective operations, message size, synchronization, and topology all affect useful performance. When a tensor is partitioned across devices, its local computations and any required reduction create separate arithmetic and communication costs. NVLink is distinct from the internal die-to-die interface and from the network that joins racks."
+  },
+  "tensor-memory": {
+    "prerequisites": [
+      "tensor-core",
+      "shared-sram"
+    ],
+    "learningObjective": "Convert a documented logical Tensor Memory allocation into bytes without confusing it with HBM or TMA.",
+    "engineeringExample": "Using the lesson’s documented 128-row, 32-bit-cell address view, a hypothetical allocation of 32 columns reserves 128 × 32 × 32 / 8 = 16,384 bytes = 16 KiB. The full 512-column view is 256 KiB; that does not grant every resident block an independent full array.",
+    "evidenceNotes": "The logical dimensions are those cited from PTX ISA 8.8 for sm_100a/sm_100f. The 32-column allocation is an arithmetic example, subject to actual allocation and residency rules; it is not a physical-cell layout or a portable GPU feature.",
+    "description": "Tensor Memory is a Blackwell storage space specialized for Tensor Core operations. It is neither HBM nor the Tensor Memory Accelerator. Supported instructions allocate columns, move suitable fragments, launch matrix operations, and later retrieve results. Giving tensor operations their own storage changes how software pipelines matrix multiplication and manages register pressure. The programming model has explicit access and allocation rules, so the whole array is not a freely interchangeable replacement for ordinary shared memory. Column allocation and instruction layouts determine which tensor fragments can remain in this storage across successive matrix operations. The documented shape is an architectural address view, not a photograph or map of physical memory cells."
+  },
+  "tensor-memory-accelerator": {
+    "prerequisites": [
+      "shared-sram",
+      "hbm-controller"
+    ],
+    "learningObjective": "Calculate ideal tile-pipeline latency and explain why asynchronous copying still requires completion and synchronization.",
+    "engineeringExample": "Synthetic four-tile pipeline: each load takes 3 μs and each compute stage 5 μs. Serial execution takes 4 × (3 + 5) = 32 μs. Ideal double buffering takes 3 + 5 + 3 × max(3, 5) = 23 μs, before synchronization and contention.",
+    "evidenceNotes": "The overlap model is the lesson’s ideal two-stage pipeline, supported by the linked asynchronous-copy guidance. TMA moves data; Tensor Memory stores it. Adequate buffering and independent resources are assumptions, not guaranteed speedup.",
+    "description": "TMA is a data movement engine. Software describes a tensor and its layout, then requests transfers while other work proceeds. This reduces the need for threads to compute every address and issue every individual load during tile staging. The result is not instantaneous memory: the transfer still uses bandwidth, must complete, and needs the correct synchronization before consumers use its data. Pipelines can stage the next tile while the current tile is being multiplied. First introduced with Hopper and extended on Blackwell, this mechanism is separate from Blackwell Tensor Memory, which stores tensor operands and accumulators. The copy engine, destination buffer and completion signal have distinct roles: initiating a transfer does not make its destination ready for consumers."
+  },
+  "gpu-die": {
+    "prerequisites": [
+      "streaming-multiprocessor",
+      "on-chip-network"
+    ],
+    "description": "A logic die is a piece cut from a processed silicon wafer. Its surface carries layers of transistors and metal interconnect that implement arithmetic, memories, control, and interfaces. Datacenter Blackwell combines two large logic dies into one GPU, crossing the boundary with a dedicated high-bandwidth interface. This permits more circuitry than one exposure-sized die while preserving a single accelerator programming view. The package must connect those dies to each other, to memory stacks, and to power and cooling structures. Functional regions explain the die’s roles, but schematic proportions are not a verified proprietary floorplan. The die-to-die connection carries many parallel transfers, making package communication part of the architecture rather than merely a protective enclosure."
+  },
+  "hbm-stack": {
+    "prerequisites": [
+      "dram-die",
+      "through-silicon-via"
+    ],
+    "description": "An HBM stack places several thin DRAM dies above a base interface and connects them vertically. It stores model weights, activations, optimizer state, and attention caches while the system is powered. The stack sits near the GPU on an advanced package, shortening the routes for a broad parallel interface. More layers generally add capacity; bandwidth also depends on interface width and per-pin transfer rate, so doubling stack height does not automatically double bandwidth. DRAM layers connect through vertical vias and package wiring to the processor, combining storage density with a wide nearby interface. Capacity, interface bandwidth and system-exposed usable memory are separate quantities because they describe different boundaries of the product."
+  },
+  "dram-die": {
+    "prerequisites": [
+      "mosfet",
+      "dielectric"
+    ],
+    "description": "A DRAM die is mostly an organized landscape of memory cells. In the common one-transistor, one-capacitor cell, stored charge represents a bit and the transistor controls access to it. Word lines select rows; bit lines carry the small electrical changes that sense amplifiers detect and restore. The charge leaks, so refresh is part of normal operation. Banks provide opportunities for overlapping work, but timing constraints mean that an arbitrary stream of addresses does not behave like one continuous pipe. A memory bank organizes rows of cells; the stored bits collectively encode the weight and activation arrays that software reads and writes."
+  },
+  "through-silicon-via": {
+    "prerequisites": [
+      "interconnect",
+      "silicon-wafer"
+    ],
+    "description": "A TSV is a conductive route that passes through the thickness of silicon. In a memory stack, many such routes provide data, control, and power connections between levels and the base. This avoids forcing all communication around the outside edge of each die. The via needs electrical isolation from the surrounding silicon, and its processing must coexist with the circuits and mechanical stresses of thin dies. A TSV is an interconnect through silicon, not a memory bit or a column of stored data. Its conductor is insulated from surrounding silicon, while keep-out and layout constraints separate the connection from nearby circuitry. Connections between surfaces still require bonding structures, so TSVs and microbumps are related but distinct parts."
+  },
+  "interposer": {
+    "prerequisites": [
+      "interconnect",
+      "through-silicon-via"
+    ],
+    "description": "The interposer is the wiring platform between fine-pitch die connections and the larger package substrate. It lets a GPU sit close to several memory stacks with many parallel connections. Advanced packaging does not always use a single uniform slab of silicon: TSMC’s CoWoS family includes silicon interposers, redistribution-layer approaches, and local silicon interconnects embedded where higher connection density is needed. A GPU-to-HBM route passes through selected conductors and connections in the routing platform. A generic routing construction does not establish the exact unpublished package cross-section of a named accelerator. Dense local wiring makes the package function like a small system assembled from dies optimized for different jobs."
+  },
+  "microbump": {
+    "prerequisites": [
+      "contact",
+      "interconnect"
+    ],
+    "description": "Microbumps are small conductive joints arranged in dense arrays. They connect one surface to another, such as a die to an interposer or adjacent memory layers. The surrounding underfill helps support the assembly and manage stress from materials expanding differently with temperature. A bump joins mating surfaces, while a TSV routes through silicon; the two can meet at a joint but remain different structures. Finer pitch supports more connections in a given area, yet raises demands on alignment, planarity, cleanliness, and defect control. A signal crosses a joint between matching pads, and an array of such joints supplies many connections when the mating components are assembled."
+  },
+  "package-substrate": {
+    "prerequisites": [
+      "interconnect",
+      "microbump"
+    ],
+    "description": "The package substrate is a multilayer wiring and support structure beneath the dies and their dense interconnect platform. It carries signals, power, and ground through patterned copper, insulating layers, and vias. The connection spacing grows as routes move from the die side toward the board side. Power and signal integrity depend on routing geometry and return paths, not simply on how many wires fit. The substrate also helps manage mechanical loads and must cope with different thermal expansion among silicon, copper, and organic materials. Signal traces and broad power planes have different electrical roles even when they share the same laminated substrate. This shows why the green or brown platform under a processor is an engineered electrical structure rather than passive packaging."
+  },
+  "thermal-interface": {
+    "prerequisites": [
+      "gpu-die"
+    ],
+    "description": "Two apparently flat solids touch only at small high points. Air trapped between them creates a poor thermal path. A thermal interface material conforms to those gaps and helps heat flow from the die or heat spreader toward the cooler. Performance depends on conductivity, thickness, contact pressure, surface finish, and long-term stability; a high conductivity number alone does not describe the complete joint. Some materials soften or change phase during operation, while others are greases, pads, or specialized bonded interfaces. Interface material fills some surface gaps so heat can cross the contact more effectively before continuing along the package heat path. A listed material example is a comparison anchor, not an assertion about NVIDIA’s proprietary thermal stack."
+  },
+  "heat-spreader": {
+    "prerequisites": [
+      "thermal-interface"
+    ],
+    "learningObjective": "Add serial thermal resistances to estimate a junction-to-coolant rise and explain what a spreader changes.",
+    "engineeringExample": "Synthetic series path: 0.02 K/W at the die interface, 0.01 K/W through a spreader and 0.03 K/W through the remaining cooler path total 0.06 K/W. At 400 W, the estimated rise is 24 K. Removing the spreader does not automatically remove 4 K because contact area and the remaining resistances can change.",
+    "evidenceNotes": "The linked package/thermal references distinguish lidded and lidless constructions. The numbers describe a lumped steady-state teaching model with common heat flow; real spreading, parallel paths and mechanical constraints require configuration-specific analysis.",
+    "description": "A heat spreader is a thermally conductive cover used in many processor packages. It redistributes heat from a concentrated die region across a larger area and provides a robust mating surface for cooling hardware. Its presence adds another material and usually another interface to the heat path. Some high-performance designs instead use a lidless or direct-die arrangement, making contact closer to the silicon but demanding careful mechanical control. Lidded and direct-die stackups are alternative thermal and mechanical constructions; one is not a universal accelerator design. A heat spreader does not dispose of energy by itself: the heat still has to pass into a cooler and eventually leave the facility. Its shape and mounting are part of a complete thermal and mechanical design."
+  },
+  "coldplate": {
+    "prerequisites": [
+      "thermal-interface",
+      "heat-spreader"
+    ],
+    "description": "A coldplate places a network of channels close to the heat source. Heat conducts through its metal base and enters coolant moving across the internal surfaces. Increasing contact area with small channels can improve heat transfer, but those channels also resist flow. The plate, pump, plumbing, coolant, and allowed temperatures therefore have to be designed together. Coolant travels from the inlet through channels near hot regions and leaves through the outlet, carrying the absorbed heat. Coolant temperature describes thermal energy transport; the flowing liquid is separate from the electrical power path. The warmed coolant still carries energy that must be transferred through the rack and facility cooling chain; the plate is only the point where that journey begins."
+  },
+  "host-cpu": {
+    "prerequisites": [
+      "clock",
+      "register-file",
+      "l2-cache"
+    ],
+    "description": "The CPU is the general-purpose processor that organizes the system’s work. It runs operating-system services, prepares tasks, launches GPU kernels, handles control-heavy code, and coordinates data and networking. GPUs accelerate many numerical operations, but a full AI service still needs request handling, tokenization, orchestration, memory management, and failure recovery. In a Grace Blackwell system, the CPU and GPUs have a coherent high-bandwidth connection; in other servers, the host path commonly uses PCIe. Neither arrangement makes software coordination free. The CPU can issue a workload, carry on with other work while the GPU executes, and react to the reported completion; coordination and data preparation still cost time. Separate control traffic from the much larger movement of tensor data so the division of labor becomes clear."
+  },
+  "ddr-memory": {
+    "prerequisites": [
+      "dram-die",
+      "host-cpu"
+    ],
+    "description": "DDR memory modules connect to a CPU’s memory channels and hold the working state of programs while powered. They provide substantially more capacity than small processor caches and are commonly socketed for service or expansion. DDR5 divides a module’s data interface into independent subchannels and introduces reliability features within the DRAM. On-die error correction is not the same as end-to-end protection of the complete memory link. This atlas includes DDR5 as the conventional server branch: the Grace CPU in the GB200 reference system uses LPDDR5X instead. A DDR DIMM supplies the CPU memory path in that conventional server branch; its role and interface differ from a GPU’s nearby HBM. Bandwidth depends on channel count, transfer rate, ranks, and the supported population of the motherboard."
+  },
+  "lpddr-memory": {
+    "prerequisites": [
+      "ddr-memory",
+      "hbm-stack"
+    ],
+    "learningObjective": "Identify the limiting bandwidth along a remote CPU-memory path instead of treating coherent capacity as local HBM.",
+    "engineeringExample": "Synthetic one-way path: effective source memory, link and destination limits of 300, 200 and 500 GB/s give a ceiling of min(300, 200, 500) = 200 GB/s. Moving 20 GB therefore takes at least 0.1 s before access startup or contention. Raising only destination bandwidth cannot improve that bound.",
+    "evidenceNotes": "These rates are synthetic, not Grace specifications. The linked architecture documents establish distinct CPU memory and HBM paths; payload direction, configuration, cache effects and attained bandwidth must be specified.",
+    "description": "LPDDR5X is dynamic memory designed with strong attention to power efficiency. Grace uses it for CPU main memory, giving the host processor a local store distinct from the GPU’s HBM. Coherent CPU–GPU connectivity can simplify access to a shared address space, but it does not erase the physical difference between these memories or their paths. CPU memory and HBM are distinct reservoirs connected by an interconnect, so remote access still incurs data movement and path costs. Capacity options and rated bandwidth vary by module configuration. An early architecture estimate and a later product capacity describe different disclosures unless their configuration and conditions are explicitly reconciled. The useful question is which memory contains each part of the workload and how often that part must travel."
+  },
+  "pcie-interface": {
+    "prerequisites": [
+      "interconnect",
+      "host-cpu"
+    ],
+    "description": "PCIe is a general-purpose component interconnect built from serial lanes. A link can use several lanes in parallel, and switches can connect multiple devices into a hierarchy. Transactions carry commands and data; software uses drivers and device capabilities to arrange transfers. The generation and lane count must both be stated when comparing bandwidth. A faster endpoint may operate at a lower rate when the host, switch, or board path supports less. Transmit and receive paths contribute to different directional rates; packet overhead also separates a link rating from one-way application throughput. PCIe is one part of the AI system’s connectivity, alongside specialized coherent links, GPU scale-up fabrics, and the network between servers."
+  },
+  "network-adapter": {
+    "prerequisites": [
+      "pcie-interface"
+    ],
+    "learningObjective": "Separate fixed message startup time from payload transfer time on a network path.",
+    "engineeringExample": "Synthetic uncontended transfer: α = 5 μs and payload bandwidth = 25 GB/s. A 1 MB message needs 40 μs of serialization, giving about 45 μs total. A 1 kB message needs only 0.04 μs of serialization but still about 5.04 μs total, so startup dominates.",
+    "evidenceNotes": "The lesson’s latency-plus-payload model uses decimal bytes and one direction. These are synthetic rates; the linked network references do not make this a promise about RDMA, GPU access, congestion or any deployed adapter.",
+    "description": "A NIC converts server memory transfers into network packets and receives packets from other machines. High-performance adapters can perform remote direct memory access, allowing registered buffers to be transferred with less involvement from the remote CPU. GPU-aware paths can also reduce unnecessary staging through host memory when the platform and software support them. These capabilities do not eliminate synchronization, congestion, or network topology. On a supported path, a tensor fragment leaves a GPU buffer, passes through the adapter and reaches a remote buffer; control and synchronization govern when the transfer is usable. The NIC belongs to the scale-out path between systems; it should not be confused with NVLink’s local GPU fabric or with the ordinary management network."
+  },
+  "nvme-storage": {
+    "prerequisites": [
+      "pcie-interface"
+    ],
+    "learningObjective": "Use Little’s law to relate average outstanding I/O, throughput and latency within one storage boundary.",
+    "engineeringExample": "Synthetic stable workload: 100,000 IOPS at 200 μs average latency implies 100,000 × 0.0002 = 20 average outstanding operations. Doubling submitted queue depth does not imply double IOPS, because latency and the limiting resource may also change.",
+    "evidenceNotes": "This is a steady-state queueing identity applied to the storage boundary, as explained by the lesson. I/O size, read/write mix, persistence requirements and latency definition must match; no product performance is inferred.",
+    "description": "An NVMe SSD combines nonvolatile NAND flash, a controller, firmware, and a fast host interface. It stores data persistently rather than providing the byte-addressable working memory used directly by arithmetic units. The controller maps logical blocks to flash locations, handles error management, and schedules reads and writes across internal parallelism. Large sequential transfers and small random accesses stress different parts of the device, so one speed number cannot describe every workload. Loading a checkpoint moves persistent data into working memory; repeated tensor computation then uses that working state, with different access and lifetime requirements. Supported direct-storage paths can reduce extra copies, but the storage device still has its own latency, bandwidth, and endurance limits."
+  },
+  "voltage-regulator": {
+    "prerequisites": [
+      "mosfet",
+      "dielectric"
+    ],
+    "learningObjective": "Estimate the duty cycle and inductor ripple of an ideal buck converter while keeping the power-stage assumptions explicit.",
+    "engineeringExample": "Synthetic buck stage: 12 V input and 1 V output imply D = 1/12. With L = 1 μH and switching frequency 1 MHz, ΔI ≈ (12 − 1) × (1/12)/(1 μH × 1 MHz) ≈ 0.917 A peak-to-peak. These values describe one hypothetical stage, not a GPU regulator.",
+    "evidenceNotes": "The relation is the lesson’s ideal continuous-conduction model. Switch losses, control dynamics, phase cancellation, saturation and discontinuous conduction are excluded; the cited power-conversion sources supply the physical context.",
+    "description": "A VRM sits electrically between the power distribution system and the chip. Switching stages, inductors, capacitors, and a controller turn an incoming supply into the rail the load needs. Multiple phases share current and can reduce ripple while responding to rapid changes in demand. GPU activity changes quickly as kernels start, synchronize, or wait for data, so stable voltage requires more than matching average power. Phases share the conversion work, while capacitors temporarily support changes in load; the controller must restore the regulated voltage after a disturbance. Use illustrative voltages where product values are not public. A large current is compatible with a modest voltage because power is their product; this explains why short, low-resistance connections matter so much near the silicon."
+  },
+  "power-supply": {
+    "prerequisites": [
+      "voltage-regulator"
+    ],
+    "learningObjective": "Account for input power and conversion loss at a stated supply efficiency.",
+    "engineeringExample": "Synthetic supply delivering 3 kW at 96% efficiency draws 3/0.96 = 3.125 kW and loses 0.125 kW = 125 W. That heat belongs to the supply boundary; it is additional to the 3 kW delivered downstream.",
+    "evidenceNotes": "The efficiency identity is independent of brand. Values are synthetic, and real efficiency varies with input, load and temperature; distribution, regulator and facility losses must be accounted for at their own boundaries.",
+    "description": "A power supply converts incoming electrical power into a form the equipment can distribute and use. Rack systems combine several supplies in shelves, sharing load and providing redundancy. A shelf’s installed nameplate capacity is not the same as the power continuously consumed by the rack, especially when redundant capacity is reserved. Efficiency also varies with load, and conversion loss becomes heat that must be removed. Facility input passes through supplies into DC distribution and then downstream regulation, with losses and capacity limits at each boundary. A failure scenario can remove one supply path while the remaining capacity carries the load, making reliability tangible. Supply counts and redundancy arrangements belong to the named rack configuration, not to a universal power-chain diagram."
+  },
+  "compute-baseboard": {
+    "prerequisites": [
+      "gpu-die",
+      "package-substrate",
+      "pcie-interface"
+    ],
+    "learningObjective": "Use an impedance discontinuity to explain why a logically connected board trace can distort a signal.",
+    "engineeringExample": "Synthetic resistive termination: a 50 Ω line meeting a 75 Ω load has reflection coefficient Γ = (75 − 50)/(75 + 50) = 0.2. A 1 V incident wave therefore has a 0.2 V reflected wave at that boundary. A matched 50 Ω load gives Γ = 0.",
+    "evidenceNotes": "This is the lesson’s single-termination linear transmission-line model. Values are synthetic; differential geometry, frequency response, loss, multiple reflections and receiver behavior need a complete channel model.",
+    "description": "The baseboard is where separate components become a coordinated machine. Its traces and connectors join processors, memory, storage, network adapters, management, and power circuits. A compute tray adds mechanical support, cooling connections, and interfaces that let the assembly slide into a rack. Topology matters: which GPU reaches which NIC, which devices share a PCIe path, and where CPU memory sits can all affect performance. Board signal routes, power distribution and cooling connections impose different constraints on the same operating assembly. This view is a logical reconstruction based on published block diagrams, not a manufacturing drawing. The serviceable tray is the bridge between package-scale engineering and rack-scale operations."
+  },
+  "management-controller": {
+    "prerequisites": [
+      "host-cpu"
+    ],
+    "learningObjective": "Relate polling interval to ideal fault-detection delay without confusing monitoring with the model data path.",
+    "engineeringExample": "Synthetic monitor polls every 10 s. If a persistent, immediately visible fault starts uniformly between polls, average time to the next poll is 5 s and the delay approaches at most one 10 s interval before collection and alert transport are added.",
+    "evidenceNotes": "This is an ideal detection-time model, not a BMC service guarantee. Transient faults, missed polls, thresholds, retries and alert processing alter detection; the model and management networks remain separate functions.",
+    "description": "The BMC is a small management computer that remains useful when the main operating system is unavailable. It collects sensor readings, exposes hardware status, and supports operations such as power control and remote maintenance through a separate network. In large AI installations, this out-of-band view helps operators locate failing components and coordinate recovery. It should not be confused with the CPU running the model service or a NIC carrying training tensors. Management connections reach equipment such as compute trays, power devices and switches to report health and coordinate control, separately from workload data traffic. A healthy management path does not mean the workload is healthy, but it provides the observations and controls needed to diagnose the physical system."
+  },
+  "grace-blackwell-superchip": {
+    "prerequisites": [
+      "host-cpu",
+      "gpu-die",
+      "lpddr-memory"
+    ],
+    "learningObjective": "Budget compute, transfers and launch overhead for a CPU–GPU workload at a declared execution boundary.",
+    "engineeringExample": "Synthetic non-overlapped job: 2 TFLOP at an attained 100 TFLOP/s takes 20 ms; 1 GB in and 0.5 GB out at 100 GB/s take 10 and 5 ms. Adding 0.1 ms dispatch gives 35.1 ms. This example uses invented attained rates, not product peaks.",
+    "evidenceNotes": "The linked module sources establish CPU, GPU and memory boundaries. The calculation assumes serial phases and fixed precision; overlap, coherent accesses, caches and contention require a different execution model.",
+    "description": "The Grace Blackwell Superchip is a system integration unit, not one monolithic piece of silicon. It combines one CPU and two GPUs, with separate CPU memory and GPU HBM connected through a coherent interconnect. The GPUs also participate in a larger NVLink domain when installed in an NVL72 rack. This creates several nested scales: transistors form dies, dies and HBM form GPU packages, packages join the CPU in a module, and modules join a rack. The GPU’s internal die-to-die link, CPU–GPU coherence path and GPU-to-GPU scale-up communication serve different boundaries and cannot be treated as one interchangeable connection. This published reference explains a modern architecture; it is not evidence about the hardware used by any specific proprietary model service."
+  },
+  "rack": {
+    "prerequisites": [
+      "compute-baseboard",
+      "power-shelf"
+    ]
+  },
+  "compute-tray": {
+    "prerequisites": [
+      "compute-baseboard"
+    ],
+    "learningObjective": "Translate a named rack’s tray configuration into component counts without treating packaging levels as interchangeable.",
+    "engineeringExample": "For the cited GB200 NVL72 reference, 18 compute trays × 4 GPUs per tray = 72 GPUs, while 18 × 2 CPUs per tray = 36 CPUs. The 18 trays are not 18 GPUs, and the GPU count is not a count of all underlying logic dies.",
+    "evidenceNotes": "These counts apply to the documented one-rack GB200 NVL72 configuration already cited in the lesson. They do not describe every rack product or predict installed, available or productive capacity."
+  },
+  "nvlink-switch": {
+    "prerequisites": [
+      "nvlink-port"
+    ],
+    "learningObjective": "Bound a specified transfer using its effective path bandwidth rather than the rack’s aggregate headline.",
+    "engineeringExample": "Synthetic transfer: sending 4 GB over a path sustaining 200 GB/s takes at least 4/200 = 0.02 s = 20 ms. Doubling the sum of unrelated rack ports leaves this bound unchanged if that transfer still has the same 200 GB/s path.",
+    "evidenceNotes": "The transfer bound uses decimal payload bytes and one specified direction. Values are synthetic; routing, competing flows, collective algorithms and measured effective bandwidth determine the applicable path."
+  },
+  "cable-cartridge": {
+    "prerequisites": [
+      "nvlink-port",
+      "interconnect"
+    ],
+    "learningObjective": "Separate propagation delay from serialization time on a physical link.",
+    "engineeringExample": "Synthetic one-hop link: 2 m at an assumed propagation speed of 2 × 10⁸ m/s adds 10 ns. Serializing a 1 kB payload at 25 GB/s adds 40 ns. Their sum is 50 ns before coding, connectors, buffering or retransmission.",
+    "evidenceNotes": "Length, speed and payload rate are teaching assumptions rather than specifications for a cable cartridge. A physical cable route is distinct from the logical collective or network topology that uses it."
+  },
+  "cdu": {
+    "prerequisites": [
+      "coldplate"
+    ]
+  },
+  "power-shelf": {
+    "prerequisites": [
+      "power-supply"
+    ],
+    "learningObjective": "Track conversion power and resistive distribution loss as distinct terms.",
+    "engineeringExample": "Synthetic shelf: 100 kW AC input at 97% conversion efficiency yields 97 kW DC and 3 kW conversion loss. A separate conductor carrying 1,000 A with resistance 0.1 mΩ dissipates I²R = 100 W. That conductor loss must not be counted as useful downstream power.",
+    "evidenceNotes": "The example uses steady real-power accounting and a separate resistive segment. Values are synthetic; current limits, protection, voltage drop, AC power factor and transients require additional engineering checks."
+  },
+  "leaf-switch": {
+    "prerequisites": [
+      "network-adapter"
+    ],
+    "learningObjective": "Calculate a directional oversubscription ratio and state what traffic pattern exposes it.",
+    "engineeringExample": "Synthetic leaf has eight 100 GB/s downlinks and four 100 GB/s uplinks. Downlink capacity totals 800 GB/s and uplink capacity 400 GB/s, giving 2:1 oversubscription. All attached endpoints cannot simultaneously send their full 800 GB/s through those uplinks.",
+    "evidenceNotes": "These are hypothetical comparable one-direction payload capacities. The ratio is a port-budget bound, not a prediction of local traffic, collective completion time, congestion control or application throughput."
+  },
+  "spine-switch": {
+    "prerequisites": [
+      "leaf-switch"
+    ],
+    "learningObjective": "Use a network cut to bound traffic between groups of machines.",
+    "engineeringExample": "Synthetic cut between two groups contains four usable 100 GB/s links, for 400 GB/s aggregate directional capacity. Moving 800 GB across that cut takes at least 2 s if the whole capacity is available. Losing one link lowers the ceiling to 300 GB/s and raises the bound to about 2.67 s.",
+    "evidenceNotes": "The cut-capacity argument is a bound on the specified topology and traffic direction. Synthetic values assume usable independent links; other traffic, routing and protocol overhead can reduce attainable throughput."
+  },
+  "optics": {
+    "prerequisites": [
+      "network-adapter"
+    ],
+    "learningObjective": "Convert optical lane rates into a payload byte rate while retaining direction and overhead.",
+    "engineeringExample": "Synthetic optical interface: eight lanes at 50 Gbit/s each provide 400 Gbit/s raw aggregate rate. At assumed 90% payload efficiency, useful rate is 360 Gbit/s, or 45 GB/s after dividing by eight bits per byte.",
+    "evidenceNotes": "The lane rates and efficiency are synthetic. Lane/port grouping, modulation, encoding and direction must match the actual module; electrical-to-optical conversion does not remove serialization or protocol overhead."
+  },
+  "storage": {
+    "prerequisites": [
+      "nvme-storage"
+    ]
+  },
+  "ups": {
+    "prerequisites": [
+      "power-supply"
+    ],
+    "learningObjective": "Estimate an ideal backup runtime from usable energy, conversion efficiency and load.",
+    "engineeringExample": "Synthetic UPS: 100 kWh usable stored energy, 90% conversion efficiency and constant 300 kW load give 100 × 0.9/300 = 0.3 h = 18 min. A 600 kW load would give 9 min under the same ideal assumptions.",
+    "evidenceNotes": "This is a constant-load energy estimate, not battery sizing or a vendor runtime guarantee. Discharge curves, reserve, temperature, aging, transient load and power-delivery limits require configuration-specific data."
+  },
+  "cooling-plant": {
+    "prerequisites": [
+      "cdu"
+    ],
+    "learningObjective": "Distinguish cooling-system COP from full-facility power accounting.",
+    "engineeringExample": "Synthetic plant removes 1 MW of heat with 0.2 MW of cooling electricity, so COP = 5. If IT load is 1 MW and other support uses 0.1 MW, facility input is 1 + 0.2 + 0.1 = 1.3 MW at that boundary; COP is not the facility/IT ratio.",
+    "evidenceNotes": "The example uses steady matched boundaries and invented loads. Heat-rejection method, environmental conditions and other support equipment affect actual power and water use; circulating water is not automatically consumed water."
+  },
+  "scheduler": {
+    "prerequisites": [
+      "host-cpu"
+    ]
+  },
+  "cuda": {
+    "prerequisites": [
+      "host-cpu",
+      "streaming-multiprocessor"
+    ],
+    "learningObjective": "Apply Amdahl’s bound to distinguish acceleration of device work from whole-program speedup.",
+    "engineeringExample": "Synthetic program spends 90% of its original time in work accelerated by 10×, with the other 10% unchanged. Ideal speedup is 1/(0.1 + 0.9/10) ≈ 5.26×. Even unlimited acceleration of that 90% would cap the same fixed workload at 10×.",
+    "evidenceNotes": "This applies the lesson’s fixed-workload model, not a guaranteed CUDA speedup. Transfers, launches, changed algorithms, problem size and CPU contention can change both the parallel fraction and overhead."
+  },
+  "kernel": {
+    "prerequisites": [
+      "cuda",
+      "tensor-core",
+      "shared-sram"
+    ],
+    "learningObjective": "Use arithmetic intensity to decide which roofline bound controls a specified kernel.",
+    "engineeringExample": "Synthetic kernel does 2 GFLOP and moves 1 GB at the selected memory boundary, so intensity is 2 FLOP/byte. A 10 TFLOP/s arithmetic peak and 1 TB/s memory rate yield min(10, 2) = 2 TFLOP/s; the optimistic execution lower bound is 1 ms.",
+    "evidenceNotes": "Numbers are synthetic and share a precision and byte boundary. The roofline is an upper bound on rate, not a measured runtime; dependencies, occupancy, launch overhead and cache behavior can reduce performance."
+  },
+  "compiler": {
+    "prerequisites": [
+      "kernel"
+    ]
+  },
+  "nccl": {
+    "prerequisites": [
+      "nvlink-port",
+      "network-adapter"
+    ],
+    "learningObjective": "Normalize conventional all-reduce throughput while distinguishing algorithm bandwidth from traffic on links.",
+    "engineeringExample": "Synthetic four-rank all-reduce: each rank contributes 1 GB and completion takes 20 ms. Algorithm bandwidth is 50 GB/s. Applying 2(P − 1)/P = 1.5 gives normalized bus bandwidth of 75 GB/s for the stated accounting convention.",
+    "evidenceNotes": "The factor is the conventional all-reduce model in the linked NCCL bandwidth note. It is not a universal per-link traffic law for every algorithm or hardware-assisted reduction; ranks, message bytes and completion boundary must match."
+  },
+  "parallelism": {
+    "prerequisites": [
+      "mac",
+      "nccl"
+    ]
+  },
+  "checkpoint": {
+    "prerequisites": [
+      "storage"
+    ]
+  },
+  "serving": {
+    "prerequisites": [
+      "scheduler",
+      "kernel",
+      "kv-cache"
+    ]
+  },
+  "quantization": {
+    "prerequisites": [
+      "mac"
+    ],
+    "learningObjective": "Calculate a scalar reconstruction and apply the unclipped nearest-rounding error bound.",
+    "engineeringExample": "Synthetic symmetric quantizer with step s = 0.25 maps x = 0.62 to round(0.62/0.25) = 2 and reconstructs 0.5. Absolute error is 0.12, below s/2 = 0.125. A value outside the allowed integer range can be clipped and need not satisfy this bound.",
+    "evidenceNotes": "The linked quantization references supply the representation context. This example assumes positive fixed scale and nearest rounding without clipping; it does not bound model accuracy or describe every low-bit floating-point format."
+  },
+  "tokenizer": {
+    "prerequisites": [],
+    "learningObjective": "Compare token counts for identical text and explain how they affect a sequence budget.",
+    "engineeringExample": "Synthetic text has 24 UTF-8 bytes. Tokenizer A returns 6 IDs and tokenizer B returns 8, giving 4 and 3 bytes/token respectively. At fixed per-token cached state, B needs 8/6 ≈ 1.33× as much cache for this text; the ratio is about encoding, not understanding.",
+    "evidenceNotes": "Counts are invented to illustrate the lesson’s identity, not outputs of a named tokenizer. Real comparisons require the identical text, tokenizer version and control-token rules; languages and code do not share a universal bytes/token ratio."
+  },
+  "embedding": {
+    "prerequisites": [
+      "tokenizer"
+    ],
+    "learningObjective": "Compute table storage and explain how an ID selects a vector without creating meaning from its numeric value.",
+    "engineeringExample": "Synthetic table with 1,000 vocabulary rows, width 8 and two bytes per element uses 1,000 × 8 × 2 = 16,000 bytes. Looking up ID 17 returns one eight-element row, a 16-byte logical vector; it does not mean the token has semantic magnitude 17.",
+    "evidenceNotes": "This is dense logical storage and lookup as described by the linked embedding references. Padding, quantization metadata, tied output weights and training optimizer state are separate; no particular model vocabulary or width is assumed."
+  },
+  "positional-encoding": {
+    "prerequisites": [
+      "embedding"
+    ],
+    "learningObjective": "Use a two-coordinate rotation to distinguish vector position encoding from physical movement.",
+    "engineeringExample": "Synthetic rotary pair starts with q = k = [1, 0]. Leave q at angle 0 and rotate k by π/2, giving [0, 1]; the dot product changes from 1 to 0. Rotating both pairs by the same angle preserves their relative-angle dot product.",
+    "evidenceNotes": "The example illustrates the orthogonal-rotation identity in the linked RoFormer paper. Angles are teaching choices; frequency schedules, dimension pairing and context extension depend on the specified positional method."
+  },
+  "attention": {
+    "prerequisites": [
+      "embedding",
+      "positional-encoding",
+      "mac"
+    ]
+  },
+  "feed-forward": {
+    "prerequisites": [
+      "embedding",
+      "mac"
+    ],
+    "learningObjective": "Count the weight matrices and intermediate dimensions of a bias-free SwiGLU block.",
+    "engineeringExample": "Synthetic block with model width d = 4 and intermediate width dff = 12 has two 4 × 12 input projections and one 12 × 4 output projection. It stores 144 weights, or 288 bytes at two bytes per weight, before optimizer state, activations or metadata.",
+    "evidenceNotes": "This uses the bias-free three-matrix SwiGLU form in the cited GLU paper. It is not a universal feed-forward architecture; activation work and runtime memory are not included in the parameter-byte count."
+  },
+  "residual-normalization": {
+    "prerequisites": [
+      "embedding",
+      "feed-forward"
+    ],
+    "learningObjective": "Compute a small LayerNorm example and distinguish normalization from a residual addition.",
+    "engineeringExample": "Synthetic vector [1, 3] has mean 2 and population variance 1. With unit scale, zero shift and ε = 0.00001, LayerNorm gives approximately [−0.999995, 0.999995]. Separately, adding an update [0.5, −0.5] to the original vector gives [1.5, 2.5]; the two operations do different work.",
+    "evidenceNotes": "The example uses the linked LayerNorm definition over two features. RMSNorm, pre/post-normalization placement and learned parameters differ; the residual operands must have matching shapes, and neither operation guarantees stable training."
+  },
+  "output-head": {
+    "prerequisites": [
+      "attention",
+      "feed-forward",
+      "residual-normalization"
+    ],
+    "learningObjective": "Convert a small logit vector to next-token probabilities and distinguish selection probability from truth.",
+    "engineeringExample": "Synthetic logits [0, ln 2, ln 3] exponentiate to [1, 2, 3], so softmax gives [1/6, 1/3, 1/2]. Greedy decoding chooses the third candidate; sampling can choose any of the three. A two-token sequence with conditional probabilities 1/2 then 1/4 has probability 1/8.",
+    "evidenceNotes": "This is the standard categorical autoregressive calculation already stated in the lesson. Toy logits are not model observations, and generation probability is not factual confidence or a claim about a private system’s decoding controls."
+  },
+  "kv-cache": {
+    "prerequisites": [
+      "attention"
+    ]
+  },
+  "moe": {
+    "prerequisites": [
+      "feed-forward"
+    ],
+    "learningObjective": "Separate total stored expert parameters from parameters selected for one token.",
+    "engineeringExample": "Synthetic layer has eight experts with 1 million parameters each, plus 2 million shared parameters, and selects two experts per token. Stored parameters total 10 million; the simplified selected count is 4 million. At two bytes per stored parameter, weights occupy 20 MB before metadata.",
+    "evidenceNotes": "This is the lesson’s equal-size top-k accounting example. Selected parameter count is not a complete FLOP, latency or quality model; shared experts, router work, imbalance, capacity limits and communication change actual execution."
+  },
+  "training-data": {
+    "prerequisites": [
+      "tokenizer"
+    ],
+    "learningObjective": "Calculate a mixture-weighted loss and explain why changing the data mix changes the learning objective.",
+    "engineeringExample": "Synthetic source losses are 2 and 4 under the same loss definition. Sampling weights 0.75 and 0.25 give mixture loss 2.5; changing to 0.5 and 0.5 gives 3. The calculation changes source influence even when total example count is unchanged.",
+    "evidenceNotes": "The fixed-mixture expectation is the relation stated in the lesson. Values are synthetic; deduplication, representativeness, contamination and provenance require independent checks and cannot be inferred from this weighted average."
+  },
+  "loss-optimizer": {
+    "prerequisites": [
+      "training-data",
+      "output-head"
+    ],
+    "learningObjective": "Trace one Adam update from a gradient through moment state to a changed parameter.",
+    "engineeringExample": "Synthetic first Adam step: θ = 1, gradient g = 2, zero initial moments, β₁ = 0.9, β₂ = 0.999 and learning rate 0.01 give m₁ = 0.2 and v₁ = 0.004. Bias correction gives m̂₁ = 2 and v̂₁ = 4; with ε = 10⁻⁸, θ becomes approximately 0.99.",
+    "evidenceNotes": "This follows the ordinary Adam equations in the linked paper. The gradient is supplied rather than derived here; clipping, weight decay, loss scaling and sharded optimizer state are excluded. Computing a gradient and applying an update remain separate steps."
+  },
+  "post-training": {
+    "prerequisites": [
+      "loss-optimizer",
+      "evaluation"
+    ],
+    "learningObjective": "Evaluate a reward-minus-reference-penalty objective and distinguish that score from broad model quality.",
+    "engineeringExample": "Synthetic comparison with β = 0.5: response policy A has expected reward 2 and KL divergence 0.4 nats, giving objective 1.8. Policy B has reward 1.9 and KL 0.1 nats, giving 1.85. The penalized objective favors B even though its raw reward is lower.",
+    "evidenceNotes": "This illustrates the idealized RLHF objective in the cited InstructGPT work, using invented expected rewards and KL values. Reward quality, the chosen reference, auxiliary objectives and deployment evaluation are separate; no private training recipe is assumed."
+  },
+  "tool-loop": {
+    "prerequisites": [
+      "output-head",
+      "serving"
+    ],
+    "learningObjective": "Track which state changes in a tool-assisted inference loop and account for its sequential latency.",
+    "engineeringExample": "Synthetic loop: first model call takes 0.8 s, a permitted tool takes 0.3 s, and the follow-up model call takes 0.7 s. With sequential execution, elapsed time is 1.8 s before overhead. Tool output changes the next call’s context; it does not by itself update the model’s learned weights.",
+    "evidenceNotes": "The model–action–observation pattern follows the linked Toolformer/ReAct context. Times are synthetic; parallel tools, failure, retries and context management alter timing. The runtime validates permissions and results rather than treating a proposal as completed work."
+  },
+  "scaling-laws": {
+    "prerequisites": [
+      "loss-optimizer",
+      "evaluation"
+    ]
+  },
+  "evaluation": {
+    "prerequisites": [
+      "output-head"
+    ]
+  },
+  "astra": {
+    "prerequisites": [
+      "tool-loop",
+      "evaluation"
+    ],
+    "learningObjective": "Apply a declared service token budget without inferring undisclosed model architecture or hardware.",
+    "engineeringExample": "Synthetic service example, unrelated to Astra’s published limits: context allowance C = 32,000 tokens, output cap Omax = 8,000 and counted input I = 28,000 leave at most 4,000 generated tokens. If reasoning uses 1,500 and other counted output uses 100, at most 2,400 remain for visible output in this simplified segment.",
+    "evidenceNotes": "The example applies the token-accounting relation already stated in the lesson. These are invented limits, not a current OpenAI specification. Actual service accounting, tools and multimodal inputs require the cited interface documentation; no parameter count, training cluster or private design is inferred."
+  }
+}

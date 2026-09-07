@@ -1,0 +1,32 @@
+[
+  {
+    "id": "matter-fabrication",
+    "name": "Matter & fabrication",
+    "band": 0
+  },
+  {
+    "id": "circuits-architecture",
+    "name": "Circuits & architecture",
+    "band": 1
+  },
+  {
+    "id": "packaging-machines",
+    "name": "Packaging & machines",
+    "band": 2
+  },
+  {
+    "id": "connected-infrastructure",
+    "name": "Connected infrastructure",
+    "band": 3
+  },
+  {
+    "id": "executable-software",
+    "name": "Executable software",
+    "band": 4
+  },
+  {
+    "id": "learning-intelligence",
+    "name": "Learning & intelligence",
+    "band": 5
+  }
+]

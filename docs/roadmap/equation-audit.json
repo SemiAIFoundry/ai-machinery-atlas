@@ -1,0 +1,2093 @@
+[
+  {
+    "id": "silicon-atom",
+    "index": 0,
+    "title": "Charge bookkeeping",
+    "authored": false,
+    "source": "Q = (Z − Nₑ)e",
+    "latex": "Q = (Z − N_{e})e",
+    "renders": true
+  },
+  {
+    "id": "crystal-lattice",
+    "index": 0,
+    "title": "Diamond-cubic nearest neighbors",
+    "authored": false,
+    "source": "dₙₙ = (√3 / 4)a; n_atoms = 8 / a³",
+    "latex": "d_{n}_{n} = (\\sqrt{3} / 4)a; n_{atoms} = 8 / a^{3}",
+    "renders": false,
+    "error": "KaTeX parse error: Double subscript at position 6: d_{n}_̲{n} = (\\sqrt{3}…"
+  },
+  {
+    "id": "energy-bands",
+    "index": 0,
+    "title": "Thermal carrier generation",
+    "authored": false,
+    "source": "nᵢ = √(N_C N_V) exp[−E_g / (2k_B T)]",
+    "latex": "n_{i} = \\sqrt{N_{C}} N_{V}) \\exp\\left[−E_{g} / (2k_{B} T)\\right]",
+    "renders": true
+  },
+  {
+    "id": "doping",
+    "index": 0,
+    "title": "Mass action and donor control",
+    "authored": false,
+    "source": "np = nᵢ²; n ≈ N_D; p ≈ nᵢ² / N_D",
+    "latex": "np = n_{i}^{2}; n \\approx  N_{D}; p \\approx  n_{i}^{2} / N_{D}",
+    "renders": true
+  },
+  {
+    "id": "pn-junction",
+    "index": 0,
+    "title": "Built-in junction potential",
+    "authored": false,
+    "source": "V_bi = (k_B T / q) ln(N_A N_D / nᵢ²)",
+    "latex": "V_{bi} = (k_{B} T / q) ln(N_{A} N_{D} / n_{i}^{2})",
+    "renders": true
+  },
+  {
+    "id": "silicon-wafer",
+    "index": 0,
+    "title": "A first defect-yield model",
+    "authored": false,
+    "source": "Y ≈ exp(−D₀ A_die)",
+    "latex": "Y \\approx  exp(−D_{0} A_{die})",
+    "renders": true
+  },
+  {
+    "id": "copper-conductor",
+    "index": 0,
+    "title": "Wire resistance",
+    "authored": false,
+    "source": "R ≈ ρ_eff L / A_Cu",
+    "latex": "R \\approx  \\rho _eff L / A_{Cu}",
+    "renders": true
+  },
+  {
+    "id": "dielectric",
+    "index": 0,
+    "title": "Capacitive coupling",
+    "authored": false,
+    "source": "C ≈ ε₀ k A / d",
+    "latex": "C \\approx  \\epsilon _{0} k A / d",
+    "renders": true
+  },
+  {
+    "id": "lithography",
+    "index": 0,
+    "title": "Rayleigh resolution relation",
+    "authored": false,
+    "source": "CD = k₁ λ / NA",
+    "latex": "CD = k_{1} \\lambda  / NA",
+    "renders": true
+  },
+  {
+    "id": "cmp",
+    "index": 0,
+    "title": "Preston removal relation",
+    "authored": false,
+    "source": "RR ≈ k_P P v_rel",
+    "latex": "RR \\approx  k_{P} P v_{rel}",
+    "renders": true
+  },
+  {
+    "id": "mosfet",
+    "index": 0,
+    "title": "Long-channel linear-region current",
+    "authored": false,
+    "source": "I_D ≈ μₙ C′_ox (W/L)[(V_GS − V_T)V_DS − V_DS²/2]",
+    "latex": "I_{D} \\approx  \\mu _{n} C′_ox (W/L)[(V_{GS} − V_{T})V_{DS} − V_{DS}^{2}/2\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unrecognized Unicode character \"′\" (8242) [unknownSymbol] at position 26: …rox  \\mu _{n} C′̲_ox (W/L)[(V_{G…"
+  },
+  {
+    "id": "gate-stack",
+    "index": 0,
+    "title": "Capacitance and equivalent oxide thickness",
+    "authored": false,
+    "source": "C′ = ε₀ k / t; EOT ≈ t_HK (k_SiO₂ / k_HK)",
+    "latex": "C′ = \\epsilon _{0} k / t; EOT \\approx  t_{HK} (k_{SiO}_{2} / k_{HK})",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unrecognized Unicode character \"′\" (8242) [unknownSymbol] at position 2: C′̲ = \\epsilon _{0…"
+  },
+  {
+    "id": "channel",
+    "index": 0,
+    "title": "Inversion-sheet charge",
+    "authored": false,
+    "source": "Q′_inv(x) ≈ −C′_ox[V_GS − V_T − V(x)]",
+    "latex": "Q′_inv(x) \\approx  −C′_ox[V_{GS} − V_{T} − V(x)\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unrecognized Unicode character \"′\" (8242) [unknownSymbol] at position 2: Q′̲_inv(x) \\approx…"
+  },
+  {
+    "id": "source-drain",
+    "index": 0,
+    "title": "Series resistance budget",
+    "authored": false,
+    "source": "R_on ≈ R_channel + R_source + R_drain + R_contacts",
+    "latex": "R_{on} \\approx  R_{channel} + R_{source} + R_{drain} + R_{contacts}",
+    "renders": true
+  },
+  {
+    "id": "contact",
+    "index": 0,
+    "title": "Specific contact resistivity",
+    "authored": false,
+    "source": "R_c ≈ ρ_c / A; L_T = √(ρ_c / R_sheet)",
+    "latex": "R_{c} \\approx  \\rho _c / A; L_{T} = \\sqrt{}(\\rho _c / R_{sheet})",
+    "renders": true
+  },
+  {
+    "id": "spacer",
+    "index": 0,
+    "title": "Parasitic capacitance and transition charge",
+    "authored": false,
+    "source": "Q_par = C_par ΔV; C_par ∝ ε_eff A_eff / d_eff",
+    "latex": "Q_{par} = C_{par} \\Delta V; C_{par} \\propto  \\epsilon _eff A_{eff} / d_{eff}",
+    "renders": true
+  },
+  {
+    "id": "finfet",
+    "index": 0,
+    "title": "Effective gated width",
+    "authored": false,
+    "source": "W_eff ≈ N_fin(2H_fin + W_fin)",
+    "latex": "W_{eff} \\approx  N_{fin}(2H_{fin} + W_{fin})",
+    "renders": true
+  },
+  {
+    "id": "gaa",
+    "index": 0,
+    "title": "Nanosheet gated perimeter",
+    "authored": false,
+    "source": "W_eff ≈ 2N_sheet(W_sheet + T_sheet)",
+    "latex": "W_{eff} \\approx  2N_{sheet}(W_{sheet} + T_{sheet})",
+    "renders": true
+  },
+  {
+    "id": "inverter",
+    "index": 0,
+    "title": "Switching power",
+    "authored": false,
+    "source": "P_dynamic ≈ α C_load V_DD² f",
+    "latex": "P_{dynamic} \\approx  α C_{load} V_{DD}^{2} f",
+    "renders": true
+  },
+  {
+    "id": "nand",
+    "index": 0,
+    "title": "Boolean function from topology",
+    "authored": false,
+    "source": "Y = ¬(A ∧ B)",
+    "latex": "Y = \\lnot (A \\land  B)",
+    "renders": true
+  },
+  {
+    "id": "flipflop",
+    "index": 0,
+    "title": "Setup-constrained clock period",
+    "authored": false,
+    "source": "T_clock ≥ t_CQ,max + t_logic,max + t_setup + t_uncertainty",
+    "latex": "T_{clock} \\geq  t_{CQ},max + t_{logic},max + t_{setup} + t_{uncertainty}",
+    "renders": true
+  },
+  {
+    "id": "sram",
+    "index": 0,
+    "title": "Feedback equilibria",
+    "authored": false,
+    "source": "x = f(y); y = g(x)",
+    "latex": "x = f(y); y = g(x)",
+    "renders": true
+  },
+  {
+    "id": "adder",
+    "index": 0,
+    "title": "Generate and propagate",
+    "authored": false,
+    "source": "G_i = A_i B_i; P_i = A_i ⊕ B_i; C_(i+1) = G_i ∨ (P_i C_i)",
+    "latex": "G_{i} = A_{i} B_{i}; P_{i} = A_{i} \\oplus  B_{i}; C_(i+1) = G_{i} \\lor  (P_{i} C_{i})",
+    "renders": true
+  },
+  {
+    "id": "multiplier",
+    "index": 0,
+    "title": "Binary product expansion",
+    "authored": false,
+    "source": "A × B = Σ_i Σ_j (a_i b_j) 2^(i+j)",
+    "latex": "A \\times  B = \\sum _i \\sum _j (a_{i} b_{j}) 2^(i+j)",
+    "renders": true
+  },
+  {
+    "id": "mac",
+    "index": 0,
+    "title": "Dot product and matrix entry",
+    "authored": false,
+    "source": "y = Σ_k a_k b_k; C_ij = Σ_k A_ik B_kj",
+    "latex": "y = \\sum _k a_{k} b_{k}; C_{ij} = \\sum _k A_{ik} B_{kj}",
+    "renders": true
+  },
+  {
+    "id": "interconnect",
+    "index": 0,
+    "title": "Distributed wire-delay scaling",
+    "authored": false,
+    "source": "R = rL; C = cL; τ_wire ∝ rcL²",
+    "latex": "R = rL; C = cL; \\tau _wire \\propto  rcL^{2}",
+    "renders": true
+  },
+  {
+    "id": "clock",
+    "index": 0,
+    "title": "Frequency and timing margin",
+    "authored": false,
+    "source": "f_clock = 1 / T_clock; margin = T_clock − T_required",
+    "latex": "f_{clock} = 1 / T_{clock}; margin = T_{clock} − T_{required}",
+    "renders": true
+  },
+  {
+    "id": "standard-cell",
+    "index": 0,
+    "title": "Placement utilization",
+    "authored": false,
+    "source": "U = Σ A_cell / A_placeable",
+    "latex": "U = \\sum  A_{cell} / A_{placeable}",
+    "renders": true
+  },
+  {
+    "id": "streaming-multiprocessor",
+    "index": 0,
+    "title": "Compute and data supply must balance",
+    "authored": false,
+    "source": "Pattainable ≤ min(Pcompute, Bmemory × I)",
+    "latex": "Pattainable \\leq  min(Pcompute, Bmemory \\times  I)",
+    "renders": true
+  },
+  {
+    "id": "tensor-core",
+    "index": 0,
+    "title": "Why matrix size and reuse matter",
+    "authored": false,
+    "source": "F ≈ 2mnk; Iideal ≈ 2mnk / [b(mk + kn + mn)]",
+    "latex": "F \\approx  2mnk; Iideal \\approx  2mnk / [b(mk + kn + mn)\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 57: …b(mk + kn + mn)\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "register-file",
+    "index": 0,
+    "title": "Register allocation limits resident work",
+    "authored": false,
+    "source": "Bresident ≤ floor(RSM / (rthread × Tblock))",
+    "latex": "Bresident \\leq  floor(RSM / (rthread \\times  Tblock))",
+    "renders": true
+  },
+  {
+    "id": "shared-sram",
+    "index": 0,
+    "title": "Address layout determines bank conflicts",
+    "authored": false,
+    "source": "bank(a) = floor(a / 4) mod 32",
+    "latex": "bank(a) = floor(a / 4) mod 32",
+    "renders": true
+  },
+  {
+    "id": "l1-cache",
+    "index": 0,
+    "title": "Useful bytes versus bytes actually moved",
+    "authored": false,
+    "source": "ηuseful = Museful / Mtransferred; Buseful = ηuseful × Btransferred",
+    "latex": "\\eta useful = Museful / Mtransferred; Buseful = \\eta useful \\times  Btransferred",
+    "renders": true
+  },
+  {
+    "id": "l2-cache",
+    "index": 0,
+    "title": "Average access cost across two cache levels",
+    "authored": false,
+    "source": "AMAT = tL1 + mL1 × (tL2 + mL2 × tHBM)",
+    "latex": "AMAT = tL1 + mL1 \\times  (tL2 + mL2 \\times  tHBM)",
+    "renders": true
+  },
+  {
+    "id": "on-chip-network",
+    "index": 0,
+    "title": "Enough requests must be in flight",
+    "authored": false,
+    "source": "Ninflight = λ × L; Minflight ≈ B × L",
+    "latex": "Ninflight = \\lambda  \\times  L; Minflight \\approx  B \\times  L",
+    "renders": true
+  },
+  {
+    "id": "hbm-controller",
+    "index": 0,
+    "title": "Concurrent requests cover memory latency",
+    "authored": false,
+    "source": "Nneeded ≈ Btarget × L / s",
+    "latex": "Nneeded \\approx  Btarget \\times  L / s",
+    "renders": true
+  },
+  {
+    "id": "nvlink-port",
+    "index": 0,
+    "title": "Communication has volume and startup costs",
+    "authored": false,
+    "source": "Tring ≈ 2(p − 1)α + [2(p − 1)/p] × M/β",
+    "latex": "Tring \\approx  2(p − 1)α + [2(p − 1)/p\\right] \\times  M/β",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 39: …α + [2(p − 1)/p\\̲r̲i̲g̲h̲t̲] \\times  M/β"
+  },
+  {
+    "id": "tensor-memory",
+    "index": 0,
+    "title": "Logical shape determines storage capacity",
+    "authored": false,
+    "source": "C = 128 × 512 × 32 / 8 = 262,144 bytes = 256 KiB",
+    "latex": "C = 128 \\times  512 \\times  32 / 8 = 262,144 bytes = 256 KiB",
+    "renders": true
+  },
+  {
+    "id": "tensor-memory-accelerator",
+    "index": 0,
+    "title": "Overlap changes a sum into a bottleneck",
+    "authored": false,
+    "source": "Tpipeline ≈ tload + tcompute + (N − 1) × max(tload, tcompute)",
+    "latex": "Tpipeline \\approx  tload + tcompute + (N − 1) \\times  max(tload, tcompute)",
+    "renders": true
+  },
+  {
+    "id": "gpu-die",
+    "index": 0,
+    "title": "Switching activity becomes heat",
+    "authored": false,
+    "source": "Pdynamic ≈ α × Cswitched × V² × f",
+    "latex": "Pdynamic \\approx  α \\times  Cswitched \\times  V^{2} \\times  f",
+    "renders": true
+  },
+  {
+    "id": "hbm-stack",
+    "index": 0,
+    "title": "Parallel width creates aggregate bandwidth",
+    "authored": false,
+    "source": "Bpeak = Wdata × rpin / 8",
+    "latex": "Bpeak = Wdata \\times  rpin / 8",
+    "renders": true
+  },
+  {
+    "id": "dram-die",
+    "index": 0,
+    "title": "A stored bit begins as a tiny voltage perturbation",
+    "authored": false,
+    "source": "ΔVbitline = [Ccell / (Ccell + Cbitline)] × (Vcell − Vprecharge)",
+    "latex": "\\Delta Vbitline = [Ccell / (Ccell + Cbitline)\\right] \\times  (Vcell − Vprecharge)",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 46: …ell + Cbitline)\\̲r̲i̲g̲h̲t̲] \\times  (Vcel…"
+  },
+  {
+    "id": "through-silicon-via",
+    "index": 0,
+    "title": "Via geometry affects electrical resistance",
+    "authored": false,
+    "source": "Rvia ≈ ρ × ℓ / (πr²)",
+    "latex": "Rvia \\approx  \\rho  \\times  ℓ / (\\pi r^{2})",
+    "renders": true
+  },
+  {
+    "id": "interposer",
+    "index": 0,
+    "title": "Long resistive routes can become disproportionately slow",
+    "authored": false,
+    "source": "tdelay ∝ R′ × C′ × ℓ²",
+    "latex": "tdelay \\propto  R′ \\times  C′ \\times  ℓ^{2}",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unrecognized Unicode character \"′\" (8242) [unknownSymbol] at position 18: …elay \\propto  R′̲ \\times  C′ \\ti…"
+  },
+  {
+    "id": "microbump",
+    "index": 0,
+    "title": "Pitch controls the connection budget",
+    "authored": false,
+    "source": "Nsites ≈ Ainterface / p²",
+    "latex": "Nsites \\approx  Ainterface / p^{2}",
+    "renders": true
+  },
+  {
+    "id": "package-substrate",
+    "index": 0,
+    "title": "The supply path must stay below a target impedance",
+    "authored": false,
+    "source": "Ztarget = ΔVallowed / ΔIstep",
+    "latex": "Ztarget = \\Delta Vallowed / \\Delta Istep",
+    "renders": true
+  },
+  {
+    "id": "thermal-interface",
+    "index": 0,
+    "title": "Geometry converts conductivity into resistance",
+    "authored": false,
+    "source": "Rθ,bulk = t / (kA); ΔT = Q̇ × Rθ",
+    "latex": "R\\theta ,bulk = t / (kA); \\Delta T = Q̇ \\times  R\\theta ",
+    "renders": true
+  },
+  {
+    "id": "heat-spreader",
+    "index": 0,
+    "title": "Every layer contributes to the thermal path",
+    "authored": false,
+    "source": "Tjunction − Tcoolant ≈ Q̇ × ΣRθ,i",
+    "latex": "Tjunction − Tcoolant \\approx  Q̇ \\times  \\sum R\\theta ,i",
+    "renders": true
+  },
+  {
+    "id": "coldplate",
+    "index": 0,
+    "title": "Flow and temperature rise account for captured heat",
+    "authored": false,
+    "source": "Q̇ = ṁ × cp × (Tout − Tin)",
+    "latex": "Q̇ = ṁ \\times  cp \\times  (Tout − Tin)",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Accented Unicode text character \"ṁ\" used in math mode [unicodeTextInMathMode] at position 6: Q̇ = ṁ̲ \\times  cp \\ti…"
+  },
+  {
+    "id": "host-cpu",
+    "index": 0,
+    "title": "The unaccelerated fraction limits total speedup",
+    "authored": false,
+    "source": "Speedup = 1 / [(1 − f) + f/s]",
+    "latex": "Speedup = 1 / [(1 − f) + f/s\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 29: … [(1 − f) + f/s\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "ddr-memory",
+    "index": 0,
+    "title": "Clock cycles and transfer rate are different units",
+    "authored": false,
+    "source": "tCAS(ns) = 2,000 × CL / rMT/s",
+    "latex": "tCAS(ns) = 2,000 \\times  CL / rMT/s",
+    "renders": true
+  },
+  {
+    "id": "lpddr-memory",
+    "index": 0,
+    "title": "Coherence does not remove path bottlenecks",
+    "authored": false,
+    "source": "Bremote ≤ min(Bsource-memory, Binterconnect, Bdestination)",
+    "latex": "Bremote \\leq  min(Bsource-memory, Binterconnect, Bdestination)",
+    "renders": true
+  },
+  {
+    "id": "pcie-interface",
+    "index": 0,
+    "title": "Encoding and protocol reduce raw lane bandwidth",
+    "authored": false,
+    "source": "BGen5,one-way = lanes × 32×10⁹ × (128/130) / 8",
+    "latex": "BGen5,one-way = lanes \\times  32\\times 10^{9} \\times  (128/130) / 8",
+    "renders": true
+  },
+  {
+    "id": "network-adapter",
+    "index": 0,
+    "title": "Small messages and large transfers have different bottlenecks",
+    "authored": false,
+    "source": "Tmessage ≈ α + M/Bpayload",
+    "latex": "Tmessage \\approx  α + M/Bpayload",
+    "renders": true
+  },
+  {
+    "id": "nvme-storage",
+    "index": 0,
+    "title": "High IOPS requires enough outstanding work",
+    "authored": false,
+    "source": "QDaverage ≈ IOPS × Laverage",
+    "latex": "QDaverage \\approx  IOPS \\times  Laverage",
+    "renders": true
+  },
+  {
+    "id": "voltage-regulator",
+    "index": 0,
+    "title": "Inductor volt-seconds set the ideal buck ratio",
+    "authored": false,
+    "source": "Vout ≈ D × Vin; ΔIL ≈ (Vin − Vout)D / (Lfs)",
+    "latex": "Vout \\approx  D \\times  Vin; \\Delta IL \\approx  (Vin − Vout)D / (Lfs)",
+    "renders": true
+  },
+  {
+    "id": "power-supply",
+    "index": 0,
+    "title": "Conversion loss becomes a cooling load",
+    "authored": false,
+    "source": "η = Pout/Pin; Ploss = Pout × (1/η − 1)",
+    "latex": "\\eta  = Pout/Pin; Ploss = Pout \\times  (1/\\eta  − 1)",
+    "renders": true
+  },
+  {
+    "id": "compute-baseboard",
+    "index": 0,
+    "title": "Impedance discontinuities reflect fast signals",
+    "authored": false,
+    "source": "Γ = (Zload − Z0) / (Zload + Z0)",
+    "latex": "\\Gamma  = (Zload − Z0) / (Zload + Z0)",
+    "renders": true
+  },
+  {
+    "id": "management-controller",
+    "index": 0,
+    "title": "Polling cadence limits fault detection delay",
+    "authored": false,
+    "source": "E[Tdetect] = Δt/2; Tmax-detect < Δt",
+    "latex": "E[Tdetect\\right] = \\Delta t/2; Tmax-detect < \\Delta t",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 10: E[Tdetect\\̲r̲i̲g̲h̲t̲] = \\Delta t/2;…"
+  },
+  {
+    "id": "grace-blackwell-superchip",
+    "index": 0,
+    "title": "Offload is useful only when saved compute exceeds movement cost",
+    "authored": false,
+    "source": "TGPU-path ≈ F/PGPU + Min/Bin + Mout/Bout + Tlaunch",
+    "latex": "TGPU-path \\approx  F/PGPU + Min/Bin + Mout/Bout + Tlaunch",
+    "renders": true
+  },
+  {
+    "id": "rack",
+    "index": 0,
+    "title": "Communication-aware throughput ceiling",
+    "authored": false,
+    "source": "R ≤ min(P_peak, B_mem I_mem, B_net I_net)",
+    "latex": "R \\leq  min(P_{peak}, B_{mem} I_{mem}, B_{net} I_{net})",
+    "renders": true
+  },
+  {
+    "id": "compute-tray",
+    "index": 0,
+    "title": "Reference-system composition",
+    "authored": false,
+    "source": "18 trays × 4 GPUs/tray = 72 GPUs; 18 × 2 CPUs/tray = 36 CPUs",
+    "latex": "18 trays \\times  4 GPUs/tray = 72 GPUs; 18 \\times  2 CPUs/tray = 36 CPUs",
+    "renders": true
+  },
+  {
+    "id": "nvlink-switch",
+    "index": 0,
+    "title": "Transfer-time floor",
+    "authored": false,
+    "source": "t_transfer ≥ S / B_effective",
+    "latex": "t_{transfer} \\geq  S / B_{effective}",
+    "renders": true
+  },
+  {
+    "id": "cable-cartridge",
+    "index": 0,
+    "title": "Propagation and serialization",
+    "authored": false,
+    "source": "t_link ≳ L / v_prop + S / B_payload",
+    "latex": "t_{link} ≳ L / v_{prop} + S / B_{payload}",
+    "renders": true
+  },
+  {
+    "id": "cdu",
+    "index": 0,
+    "title": "Sensible heat transport",
+    "authored": false,
+    "source": "Q̇ = ṁ c_p (T_return − T_supply)",
+    "latex": "Q̇ = ṁ c_{p} (T_{return} − T_{supply})",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Accented Unicode text character \"ṁ\" used in math mode [unicodeTextInMathMode] at position 6: Q̇ = ṁ̲ c_{p} (T_{retu…"
+  },
+  {
+    "id": "power-shelf",
+    "index": 0,
+    "title": "Power conversion and conductor loss",
+    "authored": false,
+    "source": "P_DC = η P_AC; P_wire = I²R",
+    "latex": "P_{DC} = \\eta  P_{AC}; P_{wire} = I^{2}R",
+    "renders": true
+  },
+  {
+    "id": "leaf-switch",
+    "index": 0,
+    "title": "Oversubscription ratio",
+    "authored": false,
+    "source": "O = Σ B_downlinks / Σ B_uplinks",
+    "latex": "O = \\sum  B_{downlinks} / \\sum  B_{uplinks}",
+    "renders": true
+  },
+  {
+    "id": "spine-switch",
+    "index": 0,
+    "title": "Cut capacity",
+    "authored": false,
+    "source": "T_cross-cut ≤ Σ B_links crossing the cut",
+    "latex": "T_{cross}-cut \\leq  \\sum  B_{links} crossing the cut",
+    "renders": true
+  },
+  {
+    "id": "optics",
+    "index": 0,
+    "title": "Lane aggregation and units",
+    "authored": false,
+    "source": "B_bytes = (N_lanes × R_lane,bits × η_payload) / 8",
+    "latex": "B_{bytes} = (N_{lanes} \\times  R_{lane},bits \\times  \\eta _payload) / 8",
+    "renders": true
+  },
+  {
+    "id": "storage",
+    "index": 0,
+    "title": "Bandwidth and I/O operations",
+    "authored": false,
+    "source": "B ≈ IOPS × S_IO",
+    "latex": "B \\approx  IOPS \\times  S_{IO}",
+    "renders": true
+  },
+  {
+    "id": "ups",
+    "index": 0,
+    "title": "Finite backup duration",
+    "authored": false,
+    "source": "t_runtime ≈ E_usable η / P_load",
+    "latex": "t_{runtime} \\approx  E_{usable} \\eta  / P_{load}",
+    "renders": true
+  },
+  {
+    "id": "cooling-plant",
+    "index": 0,
+    "title": "Cooling energy boundary",
+    "authored": false,
+    "source": "COP = Q̇_removed / P_cooling; P_facility = P_IT + P_support",
+    "latex": "COP = Q̇_removed / P_{cooling}; P_{facility} = P_{IT} + P_{support}",
+    "renders": true
+  },
+  {
+    "id": "scheduler",
+    "index": 0,
+    "title": "Little’s law",
+    "authored": false,
+    "source": "L = λ W",
+    "latex": "L = \\lambda  W",
+    "renders": true
+  },
+  {
+    "id": "cuda",
+    "index": 0,
+    "title": "Amdahl speedup bound",
+    "authored": false,
+    "source": "S(N) = 1 / [(1 − p) + p/N]",
+    "latex": "S(N) = 1 / [(1 − p) + p/N\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 26: … [(1 − p) + p/N\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "kernel",
+    "index": 0,
+    "title": "Roofline model",
+    "authored": false,
+    "source": "I = FLOPs / bytes moved; R ≤ min(P_peak, B_memory I)",
+    "latex": "I = FLOPs / bytes moved; R \\leq  min(P_{peak}, B_{memory} I)",
+    "renders": true
+  },
+  {
+    "id": "compiler",
+    "index": 0,
+    "title": "Sequential execution-time decomposition",
+    "authored": false,
+    "source": "T ≈ Σ t_launch + Σ t_kernel + Σ t_transfer",
+    "latex": "T \\approx  \\sum  t_{launch} + \\sum  t_{kernel} + \\sum  t_{transfer}",
+    "renders": true
+  },
+  {
+    "id": "nccl",
+    "index": 0,
+    "title": "All-reduce traffic normalization",
+    "authored": false,
+    "source": "B_bus = (S / t) × 2(P − 1)/P",
+    "latex": "B_{bus} = (S / t) \\times  2(P − 1)/P",
+    "renders": true
+  },
+  {
+    "id": "parallelism",
+    "index": 0,
+    "title": "Global batch accounting",
+    "authored": false,
+    "source": "B_global = B_micro × N_accumulation × N_data-parallel",
+    "latex": "B_{global} = B_{micro} \\times  N_{accumulation} \\times  N_{data}-parallel",
+    "renders": true
+  },
+  {
+    "id": "checkpoint",
+    "index": 0,
+    "title": "Checkpoint write-time floor",
+    "authored": false,
+    "source": "t_save ≥ S_checkpoint / B_sustained",
+    "latex": "t_{save} \\geq  S_{checkpoint} / B_{sustained}",
+    "renders": true
+  },
+  {
+    "id": "serving",
+    "index": 0,
+    "title": "Generation latency decomposition",
+    "authored": false,
+    "source": "T_response ≈ TTFT + (N_output − 1) × mean_ITL",
+    "latex": "T_{response} \\approx  TTFT + (N_{output} − 1) \\times  mean_{ITL}",
+    "renders": true
+  },
+  {
+    "id": "quantization",
+    "index": 0,
+    "title": "Unclipped rounding-error bound",
+    "authored": false,
+    "source": "x̂ = s × round(x/s); |x − x̂| ≤ s/2",
+    "latex": "x̂ = s \\times  round(x/s); |x − x̂| \\leq  s/2",
+    "renders": true
+  },
+  {
+    "id": "tokenizer",
+    "index": 0,
+    "title": "Sequence length is an engineering variable",
+    "authored": false,
+    "source": "T = |encode(text)|; bytes per token = UTF8_bytes(text) / T",
+    "latex": "T = |encode(text)|; bytes per token = UTF8_bytes(text) / T",
+    "renders": true
+  },
+  {
+    "id": "embedding",
+    "index": 0,
+    "title": "Lookup is a sparse matrix multiplication",
+    "authored": false,
+    "source": "e_i = one_hot(i)ᵀ E; E ∈ ℝ^(V×d); ∂ℒ/∂E_j = Σ[t: token_t=j] ∂ℒ/∂e_t",
+    "latex": "e_{i} = one_{hot}(i)^{T} E; E \\in  \\mathbb{R}^(V\\times d); \\partial ℒ/\\partial E_{j} = \\sum [t: token_{t}=j\\right] \\partial ℒ/\\partial e_{t}",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 108: …[t: token_{t}=j\\̲r̲i̲g̲h̲t̲] \\partial ℒ/\\p…"
+  },
+  {
+    "id": "positional-encoding",
+    "index": 0,
+    "title": "Relative position from paired rotations",
+    "authored": false,
+    "source": "(R(m)q)ᵀ(R(n)k) = qᵀR(n−m)k",
+    "latex": "(R(m)q)^{T}(R(n)k) = q^{T}R(n−m)k",
+    "renders": true
+  },
+  {
+    "id": "attention",
+    "index": 0,
+    "title": "Scaled dot-product attention",
+    "authored": false,
+    "source": "A = softmax_rows(QKᵀ / √dₖ + M); Y = AV; Var(qᵀk) ≈ dₖ",
+    "latex": "A = softmax_{rows}(QK^{T} / \\sqrt{d_{k}} + M); Y = AV; Var(q^{T}k) \\approx  d_{k}",
+    "renders": true
+  },
+  {
+    "id": "feed-forward",
+    "index": 0,
+    "title": "SwiGLU and matrix cost",
+    "authored": false,
+    "source": "FFN(x) = [SiLU(xWg) ⊙ (xWu)]Wd; SiLU(z) = z·sigmoid(z); parameters ≈ 3d·dff",
+    "latex": "FFN(x) = [SiLU(xWg) \\odot  (xWu)\\right]Wd; SiLU(z) = z\\cdot sigmoid(z); parameters \\approx  3d\\cdot dff",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 33: …g) \\odot  (xWu)\\̲r̲i̲g̲h̲t̲]Wd; SiLU(z) = …"
+  },
+  {
+    "id": "residual-normalization",
+    "index": 0,
+    "title": "Normalization and a direct gradient route",
+    "authored": false,
+    "source": "LN(x) = γ ⊙ (x−μ)/√(σ²+ε) + β; y = x + F(x); ∂y/∂x = I + J_F(x)",
+    "latex": "LN(x) = γ \\odot  (x−\\mu )/\\sqrt{}(\\sigma ^{2}+\\epsilon ) + β; y = x + F(x); \\partial y/\\partial x = I + J_{F}(x)",
+    "renders": true
+  },
+  {
+    "id": "output-head",
+    "index": 0,
+    "title": "A sequence probability factors into conditional predictions",
+    "authored": false,
+    "source": "p(x₁,…,xT) = ∏ₜ p(xₜ | x<t); p(xₜ=i | x<t) = exp(z_i)/Σⱼexp(z_j)",
+    "latex": "p(x_{1},…,xT) = \\prod _{t} p(x_{t} | x<t); p(x_{t}=i | x<t) = exp(z_{i})/\\sum _{j}exp(z_{j})",
+    "renders": true
+  },
+  {
+    "id": "kv-cache",
+    "index": 0,
+    "title": "The cache grows with every retained position",
+    "authored": false,
+    "source": "M_KV = 2·B·L·T·Hkv·Dh·s bytes; ΔM per token per sequence = 2·L·Hkv·Dh·s",
+    "latex": "M_{KV} = 2\\cdot B\\cdot L\\cdot T\\cdot Hkv\\cdot Dh\\cdot s bytes; \\Delta M per token per sequence = 2\\cdot L\\cdot Hkv\\cdot Dh\\cdot s",
+    "renders": true
+  },
+  {
+    "id": "moe",
+    "index": 0,
+    "title": "Stored capacity versus activated computation",
+    "authored": false,
+    "source": "y = Σ[i∈S(x)] g_i(x)E_i(x); N_total = N_shared + E·N_expert; N_active ≈ N_shared + k·N_expert",
+    "latex": "y = \\sum [i\\in S(x)\\right] g_{i}(x)E_{i}(x); N_{total} = N_{shared} + E\\cdot N_{expert}; N_{active} \\approx  N_{shared} + k\\cdot N_{expert}",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 20: …\\sum [i\\in S(x)\\̲r̲i̲g̲h̲t̲] g_{i}(x)E_{i}…"
+  },
+  {
+    "id": "training-data",
+    "index": 0,
+    "title": "The mixture defines the expected learning signal",
+    "authored": false,
+    "source": "ℒ_mix(θ) = Σⱼ w_j·E[x∼D_j][ℓ(θ;x)]; w_j ≥ 0; Σⱼw_j = 1",
+    "latex": "ℒ_mix(\\theta ) = \\sum _{j} w_{j}\\cdot E[x∼D_{j}\\right][ℓ(\\theta ;x)\\right]; w_{j} \\geq  0; \\sum _{j}w_{j} = 1",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 48: …\\cdot E[x∼D_{j}\\̲r̲i̲g̲h̲t̲][ℓ(\\theta ;x)\\…"
+  },
+  {
+    "id": "loss-optimizer",
+    "index": 0,
+    "title": "Adam adapts updates using gradient moments",
+    "authored": false,
+    "source": "gₜ = ∇θℒₜ; mₜ = β₁mₜ₋₁+(1−β₁)gₜ; vₜ = β₂vₜ₋₁+(1−β₂)gₜ²; θₜ₊₁ = θₜ−η·m̂ₜ/(√v̂ₜ+ε)",
+    "latex": "g_{t} = \\nabla \\theta ℒ_{t}; m_{t} = β_{1}m_{t}₋_{1}+(1−β_{1})g_{t}; v_{t} = β_{2}v_{t}₋_{1}+(1−β_{2})g_{t}^{2}; \\theta _{t}₊_{1} = \\theta _{t}−\\eta \\cdot m̂_{t}/(\\sqrt{v}̂_{t}+\\epsilon )",
+    "renders": false,
+    "error": "KaTeX parse error: Double subscript at position 49: …} = β_{1}m_{t}₋_̲{1}+(1−β_{1})g_…"
+  },
+  {
+    "id": "post-training",
+    "index": 0,
+    "title": "Reward optimization with a reference penalty",
+    "authored": false,
+    "source": "max_θ E[x∼D, y∼πθ(·|x)][r(x,y)] − β·E[x∼D][D_KL(πθ(·|x) ∥ π_ref(·|x))]",
+    "latex": "max_\\theta  E[x∼D, y∼\\pi \\theta (\\cdot |x)\\right][r(x,y)\\right] − β\\cdot E[x∼D\\right][D_{KL}(\\pi \\theta (\\cdot |x) ∥ \\pi _ref(\\cdot |x))\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 43: …heta (\\cdot |x)\\̲r̲i̲g̲h̲t̲][r(x,y)\\right]…"
+  },
+  {
+    "id": "tool-loop",
+    "index": 0,
+    "title": "A closed loop changes context and the environment",
+    "authored": false,
+    "source": "aₜ ∼ πθ(·|hₜ); oₜ = Tool(aₜ); hₜ₊₁ = Update(hₜ,aₜ,oₜ)",
+    "latex": "a_{t} ∼ \\pi \\theta (\\cdot |h_{t}); o_{t} = Tool(a_{t}); h_{t}₊_{1} = Update(h_{t},a_{t},o_{t})",
+    "renders": false,
+    "error": "KaTeX parse error: Double subscript at position 63: …(a_{t}); h_{t}₊_̲{1} = Update(h_…"
+  },
+  {
+    "id": "scaling-laws",
+    "index": 0,
+    "title": "Compute-optimal balance is an empirical fit",
+    "authored": false,
+    "source": "ℒ(N,D) ≈ ℒ∞ + A/Nᵅ + B/Dᵝ; C ≈ 6ND; N_opt ∝ C^[β/(α+β)]; D_opt ∝ C^[α/(α+β)]",
+    "latex": "ℒ(N,D) \\approx  ℒ\\infty  + A/Nᵅ + B/Dᵝ; C \\approx  6ND; N_{opt} \\propto  C^[β/(α+β)\\right]; D_{opt} \\propto  C^[α/(α+β)\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Unrecognized Unicode character \"ᵅ\" (7493) [unknownSymbol] at position 31: … ℒ\\infty  + A/Nᵅ̲ + B/Dᵝ; C \\app…"
+  },
+  {
+    "id": "evaluation",
+    "index": 0,
+    "title": "Benchmark success has sampling uncertainty",
+    "authored": false,
+    "source": "p̂ = k/n; SE(p̂) ≈ √[p̂(1−p̂)/n]",
+    "latex": "p̂ = k/n; SE(p̂) \\approx  \\sqrt{}[p̂(1−p̂)/n\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 45: …rt{}[p̂(1−p̂)/n\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "astra",
+    "index": 0,
+    "title": "Visible output shares a generated-token budget",
+    "authored": false,
+    "source": "G = R + V + F; I + G ≤ C; G ≤ O_max",
+    "latex": "G = R + V + F; I + G \\leq  C; G \\leq  O_{max}",
+    "renders": true
+  },
+  {
+    "id": "electronic-silicon-crystal-growth",
+    "index": 0,
+    "title": "Resistivity and mobile charge",
+    "authored": false,
+    "source": "ρ ≈ 1 / [q(μₙn + μₚp)]",
+    "latex": "\\rho  \\approx  1 / [q(\\mu _{n}n + \\mu _{p}p)\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 45: …}n + \\mu _{p}p)\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "wafer-finishing-geometry",
+    "index": 0,
+    "title": "Usable circular area",
+    "authored": false,
+    "source": "Aᵤ = π(R − e)²",
+    "latex": "A_{u} = \\pi (R − e)^{2}",
+    "renders": true
+  },
+  {
+    "id": "epitaxial-material-stack",
+    "index": 0,
+    "title": "Lattice mismatch",
+    "authored": false,
+    "source": "f = (a_f − a_s) / a_s",
+    "latex": "f = (a_{f} − a_{s}) / a_{s}",
+    "renders": true
+  },
+  {
+    "id": "contamination-and-surface-state",
+    "index": 0,
+    "title": "Exposure bookkeeping",
+    "authored": false,
+    "source": "D = ∫ c(t) dt",
+    "latex": "D = ∫ c(t) dt",
+    "renders": true
+  },
+  {
+    "id": "cleanroom-subfab-utilities",
+    "index": 0,
+    "title": "Dependency availability",
+    "authored": false,
+    "source": "A_path = P(all required services available)",
+    "latex": "A_{path} = P(all required services available)",
+    "renders": true
+  },
+  {
+    "id": "process-chamber-control",
+    "index": 0,
+    "title": "Simple chamber gas balance",
+    "authored": false,
+    "source": "V dp/dt = Q_in − S_eff p",
+    "latex": "V dp/dt = Q_{in} − S_{eff} p",
+    "renders": true
+  },
+  {
+    "id": "wafer-handling-genealogy",
+    "index": 0,
+    "title": "Coordinate transformation",
+    "authored": false,
+    "source": "r_package = R r_wafer + t",
+    "latex": "r_{package} = R r_{wafer} + t",
+    "renders": true
+  },
+  {
+    "id": "manufacturing-execution-dispatch",
+    "index": 0,
+    "title": "Flow conservation",
+    "authored": false,
+    "source": "WIP_next = WIP_now + arrivals − departures",
+    "latex": "WIP_{next} = WIP_{now} + arrivals − departures",
+    "renders": true
+  },
+  {
+    "id": "thermal-oxidation-interface",
+    "index": 0,
+    "title": "Deal–Grove growth model",
+    "authored": false,
+    "source": "x² + A x = B(t + τ)",
+    "latex": "x^{2} + A x = B(t + \\tau )",
+    "renders": true
+  },
+  {
+    "id": "cvd-pvd-film-transport",
+    "index": 0,
+    "title": "Coverage ratio",
+    "authored": false,
+    "source": "C_bottom = t_bottom / t_top",
+    "latex": "C_{bottom} = t_{bottom} / t_{top}",
+    "renders": true
+  },
+  {
+    "id": "ald-self-limiting-growth",
+    "index": 0,
+    "title": "Steady-cycle thickness estimate",
+    "authored": false,
+    "source": "t ≈ g(N − N₀)",
+    "latex": "t \\approx  g(N − N_{0})",
+    "renders": true
+  },
+  {
+    "id": "resist-track-development",
+    "index": 0,
+    "title": "Pattern-transfer bias",
+    "authored": false,
+    "source": "b = CD_after-etch − CD_after-develop",
+    "latex": "b = CD_{after}-etch − CD_{after}-develop",
+    "renders": true
+  },
+  {
+    "id": "mask-opc-layout",
+    "index": 0,
+    "title": "Edge-error objective",
+    "authored": false,
+    "source": "E = Σᵢ wᵢ[eᵢ(predicted) − eᵢ(target)]²",
+    "latex": "E = \\sum _{i} w_{i}[e_{i}(predicted) − e_{i}(target)\\right]^{2}",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 53: …− e_{i}(target)\\̲r̲i̲g̲h̲t̲]^{2}"
+  },
+  {
+    "id": "lithography-resolution-focus",
+    "index": 0,
+    "title": "Optical scaling",
+    "authored": false,
+    "source": "R = k₁λ/NA; DOF = k₂λ/NA²",
+    "latex": "R = k_{1}\\lambda /NA; DOF = k_{2}\\lambda /NA^{2}",
+    "renders": true
+  },
+  {
+    "id": "plasma-wet-etch-transfer",
+    "index": 0,
+    "title": "Mask-consumption estimate",
+    "authored": false,
+    "source": "Δh_mask ≈ h_target / S",
+    "latex": "\\Delta h_{mask} \\approx  h_{target} / S",
+    "renders": true
+  },
+  {
+    "id": "implantation-anneal-diffusion",
+    "index": 0,
+    "title": "Diffusion length scale",
+    "authored": false,
+    "source": "L ≈ √(2Dt)",
+    "latex": "L \\approx  \\sqrt{2Dt}",
+    "renders": true
+  },
+  {
+    "id": "clean-planarize-surface",
+    "index": 0,
+    "title": "Preston-type removal model",
+    "authored": false,
+    "source": "RR = K P V",
+    "latex": "RR = K P V",
+    "renders": true
+  },
+  {
+    "id": "wells-isolation-integration",
+    "index": 0,
+    "title": "Parasitic junction capacitance trend",
+    "authored": false,
+    "source": "C_j ≈ εA/W",
+    "latex": "C_{j} \\approx  \\epsilon A/W",
+    "renders": true
+  },
+  {
+    "id": "fin-formation-integration",
+    "index": 0,
+    "title": "Geometric effective-width estimate",
+    "authored": false,
+    "source": "W_eff ≈ N_f(2H_f + W_f)",
+    "latex": "W_{eff} \\approx  N_{f}(2H_{f} + W_{f})",
+    "renders": true
+  },
+  {
+    "id": "nanosheet-gate-last-integration",
+    "index": 0,
+    "title": "Channel-loss budget",
+    "authored": false,
+    "source": "Δt_channel ≈ h_removed / S",
+    "latex": "\\Delta t_{channel} \\approx  h_{removed} / S",
+    "renders": true
+  },
+  {
+    "id": "source-drain-contact-integration",
+    "index": 0,
+    "title": "First-order contact scaling",
+    "authored": false,
+    "source": "R_c ≈ ρ_c/A; R_path ≈ R_channel + R_access + R_contacts",
+    "latex": "R_{c} \\approx  \\rho _c/A; R_{path} \\approx  R_{channel} + R_{access} + R_{contacts}",
+    "renders": true
+  },
+  {
+    "id": "beol-damascene-vias",
+    "index": 0,
+    "title": "Series interconnect resistance",
+    "authored": false,
+    "source": "R_path = ΣR_wire + ΣR_via",
+    "latex": "R_{path} = \\sum R_{wire} + \\sum R_{via}",
+    "renders": true
+  },
+  {
+    "id": "interconnect-rc-materials",
+    "index": 0,
+    "title": "Wire and distributed-RC scaling",
+    "authored": false,
+    "source": "R = ρL/A; t_RC ∝ r c L²",
+    "latex": "R = \\rho L/A; t_{RC} \\propto  r c L^{2}",
+    "renders": true
+  },
+  {
+    "id": "backside-power-dtco",
+    "index": 0,
+    "title": "Supply-path budget",
+    "authored": false,
+    "source": "ΔV ≈ I R + L dI/dt",
+    "latex": "\\Delta V \\approx  I R + L dI/dt",
+    "renders": true
+  },
+  {
+    "id": "fab-metrology-process-window",
+    "index": 0,
+    "title": "Observed variance model",
+    "authored": false,
+    "source": "σ_obs² = σ_process² + σ_measurement²",
+    "latex": "\\sigma _obs^{2} = \\sigma _process^{2} + \\sigma _measurement^{2}",
+    "renders": true
+  },
+  {
+    "id": "yield-wafer-defect-model",
+    "index": 0,
+    "title": "Random killer-defect model",
+    "authored": false,
+    "source": "Y = exp(−D₀A)",
+    "latex": "Y = exp(−D_{0}A)",
+    "renders": true
+  },
+  {
+    "id": "known-good-die-test",
+    "index": 0,
+    "title": "Screened defect probability",
+    "authored": false,
+    "source": "P(defect | pass) = p(1−c) / [1−pc]",
+    "latex": "P(defect | pass) = p(1−c) / [1−pc\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 34: … p(1−c) / [1−pc\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "fab-ramp-cycle-time",
+    "index": 0,
+    "title": "Little’s law",
+    "authored": false,
+    "source": "WIP = throughput × cycle time",
+    "latex": "WIP = throughput \\times  cycle time",
+    "renders": true
+  },
+  {
+    "id": "flip-chip-abf-substrate",
+    "index": 0,
+    "title": "Routing resource estimate",
+    "authored": false,
+    "source": "N_tracks ≈ W_route / p",
+    "latex": "N_{tracks} \\approx  W_{route} / p",
+    "renders": true
+  },
+  {
+    "id": "rdl-fanout-integration",
+    "index": 0,
+    "title": "Registration budget",
+    "authored": false,
+    "source": "e_total² ≈ e_place² + e_pattern² + e_distortion²",
+    "latex": "e_{total}^{2} \\approx  e_{place}^{2} + e_{pattern}^{2} + e_{distortion}^{2}",
+    "renders": true
+  },
+  {
+    "id": "cowos-s-silicon-interposer",
+    "index": 0,
+    "title": "Convergent assembly ceiling",
+    "authored": false,
+    "source": "N_packages ≤ min(N_logic/l, N_HBM/h, N_interposer, N_substrate, C_assembly)",
+    "latex": "N_{packages} \\leq  min(N_{logic}/l, N_{HBM}/h, N_{interposer}, N_{substrate}, C_{assembly})",
+    "renders": true
+  },
+  {
+    "id": "cowos-r-l-routing",
+    "index": 0,
+    "title": "Dense-routing footprint accounting",
+    "authored": false,
+    "source": "A_dense = ΣA_local; fraction = A_dense/A_package",
+    "latex": "A_{dense} = \\sum A_{local}; fraction = A_{dense}/A_{package}",
+    "renders": true
+  },
+  {
+    "id": "emib-local-bridge",
+    "index": 0,
+    "title": "Connection-yield sensitivity",
+    "authored": false,
+    "source": "Y_links ≈ (1−p)^N",
+    "latex": "Y_{links} \\approx  (1−p)^N",
+    "renders": true
+  },
+  {
+    "id": "soic-foveros-vertical-routes",
+    "index": 0,
+    "title": "Unscreened pair yield",
+    "authored": false,
+    "source": "Y_pair = P(top good ∩ bottom good) ≈ Y_top Y_bottom",
+    "latex": "Y_{pair} = P(top good ∩ bottom good) \\approx  Y_{top} Y_{bottom}",
+    "renders": true
+  },
+  {
+    "id": "bump-thermocompression-assembly",
+    "index": 0,
+    "title": "Current-density bookkeeping",
+    "authored": false,
+    "source": "J = I/A_joint",
+    "latex": "J = I/A_{joint}",
+    "renders": true
+  },
+  {
+    "id": "hybrid-bond-surface-alignment",
+    "index": 0,
+    "title": "Square-pad overlap model",
+    "authored": false,
+    "source": "A_overlap = max(0,w−|δx|) max(0,w−|δy|)",
+    "latex": "A_{overlap} = max(0,w−|δx|) max(0,w−|δy|)",
+    "renders": true
+  },
+  {
+    "id": "temporary-carrier-thinning",
+    "index": 0,
+    "title": "Plate bending stiffness",
+    "authored": false,
+    "source": "D_plate = E t³ / [12(1−ν²)]",
+    "latex": "D_{plate} = E t^{3} / [12(1−ν^{2})\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 35: … / [12(1−ν^{2})\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "package-thermomechanical-reliability",
+    "index": 0,
+    "title": "Thermal expansion mismatch",
+    "authored": false,
+    "source": "Δε ≈ (α₁−α₂)ΔT",
+    "latex": "\\Delta \\epsilon  \\approx  (α_{1}−α_{2})\\Delta T",
+    "renders": true
+  },
+  {
+    "id": "dram-cell-array-fabrication",
+    "index": 0,
+    "title": "Initial charge-sharing signal",
+    "authored": false,
+    "source": "ΔV_bitline ≈ [C_cell/(C_cell+C_bitline)](V_cell−V_precharge)",
+    "latex": "\\Delta V_{bitline} \\approx  [C_{cell}/(C_{cell}+C_{bitline})\\right](V_{cell}−V_{precharge})",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 61: …l}+C_{bitline})\\̲r̲i̲g̲h̲t̲](V_{cell}−V_{p…"
+  },
+  {
+    "id": "hbm-tsv-reveal",
+    "index": 0,
+    "title": "Via resistance and exclusion area",
+    "authored": false,
+    "source": "R_via ≈ ρL/(πr²); A_exclusion ≈ π(r+k)²",
+    "latex": "R_{via} \\approx  \\rho L/(\\pi r^{2}); A_{exclusion} \\approx  \\pi (r+k)^{2}",
+    "renders": true
+  },
+  {
+    "id": "hbm-stack-assembly-test",
+    "index": 0,
+    "title": "Assembly-stage yield",
+    "authored": false,
+    "source": "N_out = N_ready × ∏ᵢ y_i",
+    "latex": "N_{out} = N_{ready} \\times  \\prod _{i} y_{i}",
+    "renders": true
+  },
+  {
+    "id": "hbm-base-phy-controller",
+    "index": 0,
+    "title": "Interface timing budget",
+    "authored": false,
+    "source": "T_UI = 1/r; margin ≈ T_UI − timing_uncertainty − required_window",
+    "latex": "T_{UI} = 1/r; margin \\approx  T_{UI} − timing_{uncertainty} − required_{window}",
+    "renders": true
+  },
+  {
+    "id": "hbm-channel-generation-ras",
+    "index": 0,
+    "title": "Raw and useful bandwidth",
+    "authored": false,
+    "source": "B_raw = W r/8; B_useful = η B_raw",
+    "latex": "B_{raw} = W r/8; B_{useful} = \\eta  B_{raw}",
+    "renders": true
+  },
+  {
+    "id": "hbm-silicon-intensity",
+    "index": 0,
+    "title": "Two alternative demand models",
+    "authored": false,
+    "source": "Geometric: W ≈ B_target a_bit/(A_usable Y); empirical: W = B_target I_emp",
+    "latex": "Geometric: W \\approx  B_{target} a_{bit}/(A_{usable} Y); empirical: W = B_{target} I_{emp}",
+    "renders": true
+  },
+  {
+    "id": "cpu-out-of-order",
+    "index": 0,
+    "title": "Dependency bound",
+    "authored": false,
+    "source": "T ≥ Lcritical / f",
+    "latex": "T \\geq  Lcritical / f",
+    "renders": true
+  },
+  {
+    "id": "cpu-vector-matrix",
+    "index": 0,
+    "title": "Lane utilization",
+    "authored": false,
+    "source": "u = n / (w⌈n/w⌉)",
+    "latex": "u = n / (w⌈n/w⌉)",
+    "renders": true
+  },
+  {
+    "id": "coherence-numa",
+    "index": 0,
+    "title": "Average access path",
+    "authored": false,
+    "source": "Lavg = pLlocal + (1−p)Lremote",
+    "latex": "Lavg = pLlocal + (1−p)Lremote",
+    "renders": true
+  },
+  {
+    "id": "simt-active-lanes",
+    "index": 0,
+    "title": "Masked execution efficiency",
+    "authored": false,
+    "source": "u = Σ active_lanes / Σ issued_lane_slots",
+    "latex": "u = \\sum  active_{lanes} / \\sum  issued_{lane}_slots",
+    "renders": false,
+    "error": "KaTeX parse error: Double subscript at position 47: …  issued_{lane}_̲slots"
+  },
+  {
+    "id": "gpu-occupancy-pipeline",
+    "index": 0,
+    "title": "Overlapped tile lower bound",
+    "authored": false,
+    "source": "Ttile ≥ max(Tload, Tcompute)",
+    "latex": "Ttile \\geq  max(Tload, Tcompute)",
+    "renders": true
+  },
+  {
+    "id": "gpu-chiplet-locality",
+    "index": 0,
+    "title": "Cut bandwidth bound",
+    "authored": false,
+    "source": "T ≥ Qcut / Bcut",
+    "latex": "T \\geq  Qcut / Bcut",
+    "renders": true
+  },
+  {
+    "id": "systolic-array-dataflow",
+    "index": 0,
+    "title": "Dense matrix work",
+    "authored": false,
+    "source": "F ≈ 2mnk",
+    "latex": "F \\approx  2mnk",
+    "renders": true
+  },
+  {
+    "id": "aws-neuron-dataflow",
+    "index": 0,
+    "title": "Engine schedule bound",
+    "authored": false,
+    "source": "Tstep ≥ max(Ttensor, Tvector, Ttransfer)",
+    "latex": "Tstep \\geq  max(Ttensor, Tvector, Ttransfer)",
+    "renders": true
+  },
+  {
+    "id": "inference-custom-silicon",
+    "index": 0,
+    "title": "Weighted service cost",
+    "authored": false,
+    "source": "Cresult = Ctime / (Ruseful × availability)",
+    "latex": "Cresult = Ctime / (Ruseful \\times  availability)",
+    "renders": true
+  },
+  {
+    "id": "fpga-dsp-pipelines",
+    "index": 0,
+    "title": "Pipeline throughput",
+    "authored": false,
+    "source": "R ≤ f / II",
+    "latex": "R \\leq  f / II",
+    "renders": true
+  },
+  {
+    "id": "dpu-infrastructure-offload",
+    "index": 0,
+    "title": "Offload speedup bound",
+    "authored": false,
+    "source": "S = 1 / ((1−p) + p/s)",
+    "latex": "S = 1 / ((1−p) + p/s)",
+    "renders": true
+  },
+  {
+    "id": "wafer-scale-routing",
+    "index": 0,
+    "title": "Distributed storage budget",
+    "authored": false,
+    "source": "Mlocal = Σi Mi; Ttransfer ≥ Qexternal / Bexternal",
+    "latex": "Mlocal = \\sum i Mi; Ttransfer \\geq  Qexternal / Bexternal",
+    "renders": true
+  },
+  {
+    "id": "analog-photonic-research",
+    "index": 0,
+    "title": "Ideal conductance accumulation",
+    "authored": false,
+    "source": "Ij = Σi Gij Vi",
+    "latex": "Ij = \\sum i Gij Vi",
+    "renders": true
+  },
+  {
+    "id": "chip-workload-contract",
+    "index": 0,
+    "title": "Workload-weighted demand",
+    "authored": false,
+    "source": "Dresource = Σk λk qk",
+    "latex": "Dresource = \\sum k \\lambda k qk",
+    "renders": true
+  },
+  {
+    "id": "chip-rtl-verification",
+    "index": 0,
+    "title": "State-space growth",
+    "authored": false,
+    "source": "Nstates = 2^b",
+    "latex": "Nstates = 2^{b}",
+    "renders": true
+  },
+  {
+    "id": "chip-physical-closure",
+    "index": 0,
+    "title": "Timing closure model",
+    "authored": false,
+    "source": "Slack = Trequired − (Tcell + Twire)",
+    "latex": "Slack = Trequired − (Tcell + Twire)",
+    "renders": true
+  },
+  {
+    "id": "chip-tapeout-productization",
+    "index": 0,
+    "title": "Dependency readiness",
+    "authored": false,
+    "source": "Ready = ∧i RequiredGatei",
+    "latex": "Ready = \\land i RequiredGatei",
+    "renders": true
+  },
+  {
+    "id": "chip-volume-economics",
+    "index": 0,
+    "title": "Simplified break-even volume",
+    "authored": false,
+    "source": "Nbreak = ΔNRE / Δc",
+    "latex": "Nbreak = \\Delta NRE / \\Delta c",
+    "renders": true
+  },
+  {
+    "id": "memory-hierarchy-route",
+    "index": 0,
+    "title": "Boundary transfer floor",
+    "authored": false,
+    "source": "Tj ≥ Qj / Bj",
+    "latex": "Tj \\geq  Qj / Bj",
+    "renders": true
+  },
+  {
+    "id": "memory-interface-choice",
+    "index": 0,
+    "title": "Raw interface rate",
+    "authored": false,
+    "source": "Braw = w r / 8",
+    "latex": "Braw = w r / 8",
+    "renders": true
+  },
+  {
+    "id": "memory-wall-trends",
+    "index": 0,
+    "title": "Roofline bound",
+    "authored": false,
+    "source": "P ≤ min(Ppeak, B × I)",
+    "latex": "P \\leq  min(Ppeak, B \\times  I)",
+    "renders": true
+  },
+  {
+    "id": "graph-tensor-ir",
+    "index": 0,
+    "title": "Logical tensor size",
+    "authored": false,
+    "source": "Mlogical = s × Πi di",
+    "latex": "Mlogical = s \\times  Πi di",
+    "renders": true
+  },
+  {
+    "id": "compiler-layout-lowering",
+    "index": 0,
+    "title": "Dense stride mapping",
+    "authored": false,
+    "source": "address(i,j) = base + s(i·stride0 + j·stride1)",
+    "latex": "address(i,j) = base + s(i\\cdot stride0 + j\\cdot stride1)",
+    "renders": true
+  },
+  {
+    "id": "kernel-locality-fusion",
+    "index": 0,
+    "title": "Intermediate traffic saving",
+    "authored": false,
+    "source": "ΔQ = 2Ns",
+    "latex": "\\Delta Q = 2Ns",
+    "renders": true
+  },
+  {
+    "id": "runtime-device-dispatch",
+    "index": 0,
+    "title": "Launch-bound useful time",
+    "authored": false,
+    "source": "Ttotal ≥ Nlaunch·Llaunch + Tserial",
+    "latex": "Ttotal \\geq  Nlaunch\\cdot Llaunch + Tserial",
+    "renders": true
+  },
+  {
+    "id": "training-memory-state",
+    "index": 0,
+    "title": "Training capacity ledger",
+    "authored": false,
+    "source": "Mpeak = Mweights + Mgradients + Moptimizer + Mlive_activations + Mworkspace",
+    "latex": "Mpeak = Mweights + Mgradients + Moptimizer + Mlive_{activations} + Mworkspace",
+    "renders": true
+  },
+  {
+    "id": "prefill-resource-trace",
+    "index": 0,
+    "title": "Projection work",
+    "authored": false,
+    "source": "Fprojection ≈ 2Tdin dout",
+    "latex": "Fprojection \\approx  2Tdin dout",
+    "renders": true
+  },
+  {
+    "id": "decode-bandwidth-trace",
+    "index": 0,
+    "title": "Weight-streaming decode floor",
+    "authored": false,
+    "source": "Tstep ≥ Wread / Bmemory",
+    "latex": "Tstep \\geq  Wread / Bmemory",
+    "renders": true
+  },
+  {
+    "id": "attention-io-tiling",
+    "index": 0,
+    "title": "Score storage",
+    "authored": false,
+    "source": "Mscore = Tquery Tkey s",
+    "latex": "Mscore = Tquery Tkey s",
+    "renders": true
+  },
+  {
+    "id": "expert-routing-budget",
+    "index": 0,
+    "title": "Simple dispatch volume",
+    "authored": false,
+    "source": "Qdispatch = T k d s fremote",
+    "latex": "Qdispatch = T k d s fremote",
+    "renders": true
+  },
+  {
+    "id": "parallelism-communication-budget",
+    "index": 0,
+    "title": "Communication approximation",
+    "authored": false,
+    "source": "Tcomm ≈ n α + Q / Beff",
+    "latex": "Tcomm \\approx  n α + Q / Beff",
+    "renders": true
+  },
+  {
+    "id": "disaggregated-serving",
+    "index": 0,
+    "title": "KV handoff floor",
+    "authored": false,
+    "source": "Thandoff ≥ MKV / Blink",
+    "latex": "Thandoff \\geq  MKV / Blink",
+    "renders": true
+  },
+  {
+    "id": "die-link-compatibility",
+    "index": 0,
+    "title": "Usable link rate",
+    "authored": false,
+    "source": "Buseful = Nlane r η / 8",
+    "latex": "Buseful = Nlane r \\eta  / 8",
+    "renders": true
+  },
+  {
+    "id": "pcie-cxl-semantics",
+    "index": 0,
+    "title": "Two-tier access estimate",
+    "authored": false,
+    "source": "Lavg = pLnear + (1−p)Lfar",
+    "latex": "Lavg = pLnear + (1−p)Lfar",
+    "renders": true
+  },
+  {
+    "id": "interface-signal-eye",
+    "index": 0,
+    "title": "Unit interval",
+    "authored": false,
+    "source": "UI = 1 / Rsymbol",
+    "latex": "UI = 1 / Rsymbol",
+    "renders": true
+  },
+  {
+    "id": "power-integrity-budget",
+    "index": 0,
+    "title": "Transient droop terms",
+    "authored": false,
+    "source": "ΔV ≈ I R + L(dI/dt)",
+    "latex": "\\Delta V \\approx  I R + L(dI/dt)",
+    "renders": true
+  },
+  {
+    "id": "rack-reference-anatomy",
+    "index": 0,
+    "title": "Component consistency",
+    "authored": false,
+    "source": "Ngpu = Ntray × Ngpu/tray",
+    "latex": "Ngpu = Ntray \\times  Ngpu/tray",
+    "renders": true
+  },
+  {
+    "id": "scaleup-scaleout-boundaries",
+    "index": 0,
+    "title": "Topology cut bound",
+    "authored": false,
+    "source": "T ≥ Qcut / Bcut",
+    "latex": "T \\geq  Qcut / Bcut",
+    "renders": true
+  },
+  {
+    "id": "fabric-collective-traffic",
+    "index": 0,
+    "title": "Ideal ring all-reduce",
+    "authored": false,
+    "source": "T ≈ 2(n−1)α + 2(n−1)S/(nB)",
+    "latex": "T \\approx  2(n−1)α + 2(n−1)S/(nB)",
+    "renders": true
+  },
+  {
+    "id": "optical-cpo-placement",
+    "index": 0,
+    "title": "Simple optical margin",
+    "authored": false,
+    "source": "Margin_dB = Ptx_dBm − Loss_dB − Prequired_dBm",
+    "latex": "Margin_{dB} = Ptx_{dBm} − Loss_{dB} − Prequired_{dBm}",
+    "renders": true
+  },
+  {
+    "id": "rack-power-conversion",
+    "index": 0,
+    "title": "Conversion accounting",
+    "authored": false,
+    "source": "Pout = ηPin; I = P/V",
+    "latex": "Pout = \\eta Pin; I = P/V",
+    "renders": true
+  },
+  {
+    "id": "rack-dynamic-power",
+    "index": 0,
+    "title": "Energy integral",
+    "authored": false,
+    "source": "E = ∫P(t)dt",
+    "latex": "E = ∫P(t)dt",
+    "renders": true
+  },
+  {
+    "id": "coolant-loop-separation",
+    "index": 0,
+    "title": "Single-phase heat transport",
+    "authored": false,
+    "source": "Q̇ = ṁ cp ΔT",
+    "latex": "Q̇ = ṁ cp \\Delta T",
+    "renders": false,
+    "error": "KaTeX parse error: LaTeX-incompatible input and strict mode is set to 'error': Accented Unicode text character \"ṁ\" used in math mode [unicodeTextInMathMode] at position 6: Q̇ = ṁ̲ cp \\Delta T"
+  },
+  {
+    "id": "facility-heat-rejection",
+    "index": 0,
+    "title": "Chiller performance",
+    "authored": false,
+    "source": "COP = Q̇removed / Pelec",
+    "latex": "COP = Q̇removed / Pelec",
+    "renders": true
+  },
+  {
+    "id": "grid-interconnection-readiness",
+    "index": 0,
+    "title": "Backup duration",
+    "authored": false,
+    "source": "t = Eusable / Pload",
+    "latex": "t = Eusable / Pload",
+    "renders": true
+  },
+  {
+    "id": "cluster-commissioning-gates",
+    "index": 0,
+    "title": "Readiness conjunction",
+    "authored": false,
+    "source": "Ready = Electrical ∧ Thermal ∧ Fabric ∧ Software ∧ Operations",
+    "latex": "Ready = Electrical \\land  Thermal \\land  Fabric \\land  Software \\land  Operations",
+    "renders": true
+  },
+  {
+    "id": "compatible-supply-capacity",
+    "index": 0,
+    "title": "Converging supply bound",
+    "authored": false,
+    "source": "Ncomplete ≤ mini ⌊Si / bi⌋",
+    "latex": "Ncomplete \\leq  mini ⌊Si / bi⌋",
+    "renders": true
+  },
+  {
+    "id": "production-ramp-allocation",
+    "index": 0,
+    "title": "Inventory conservation",
+    "authored": false,
+    "source": "I(t+1) = I(t) + arrivals(t) − consumption(t)",
+    "latex": "I(t+1) = I(t) + arrivals(t) − consumption(t)",
+    "renders": true
+  },
+  {
+    "id": "topology-job-admission",
+    "index": 0,
+    "title": "Allocation feasibility",
+    "authored": false,
+    "source": "Feasible(job) = count ∧ memory ∧ compatibility ∧ topology ∧ policy",
+    "latex": "Feasible(job) = count \\land  memory \\land  compatibility \\land  topology \\land  policy",
+    "renders": true
+  },
+  {
+    "id": "checkpoint-retained-work",
+    "index": 0,
+    "title": "Simple checkpoint loss fraction",
+    "authored": false,
+    "source": "L ≈ C/τ + λτ/2 + λR",
+    "latex": "L \\approx  C/\\tau  + \\lambda \\tau /2 + \\lambda R",
+    "renders": true
+  },
+  {
+    "id": "storage-input-checkpoint-path",
+    "index": 0,
+    "title": "Input pipeline rate",
+    "authored": false,
+    "source": "Ruseful ≤ min(Rstorage, Rdecode, Rprepare, Rtransfer)",
+    "latex": "Ruseful \\leq  min(Rstorage, Rdecode, Rprepare, Rtransfer)",
+    "renders": true
+  },
+  {
+    "id": "capacity-phase-geography",
+    "index": 0,
+    "title": "Status-scoped aggregation",
+    "authored": false,
+    "source": "Cstatus(t) = Σp Cp(t)·1[statusp(t)=status]",
+    "latex": "Cstatus(t) = \\sum p Cp(t)\\cdot 1[statusp(t)=status\\right]",
+    "renders": false,
+    "error": "KaTeX parse error: Expected 'EOF', got '\\right' at position 51: …atusp(t)=status\\̲r̲i̲g̲h̲t̲]"
+  },
+  {
+    "id": "energy-forecast-boundaries",
+    "index": 0,
+    "title": "Energy from average power",
+    "authored": false,
+    "source": "E = Pavg × Δt",
+    "latex": "E = Pavg \\times  \\Delta t",
+    "renders": true
+  },
+  {
+    "id": "water-boundary-accounting",
+    "index": 0,
+    "title": "Consumption-based WUE",
+    "authored": false,
+    "source": "WUE = Vconsumed / EIT",
+    "latex": "WUE = Vconsumed / EIT",
+    "renders": true
+  },
+  {
+    "id": "regional-siting-access",
+    "index": 0,
+    "title": "Conditional site score",
+    "authored": false,
+    "source": "Score = Σi wi zi",
+    "latex": "Score = \\sum i wi zi",
+    "renders": true
+  },
+  {
+    "id": "orbital-evidence-status",
+    "index": 0,
+    "title": "Service readiness model",
+    "authored": false,
+    "source": "ServiceReady = Compute ∧ Energy ∧ Thermal ∧ Links ∧ Reliability ∧ Operations",
+    "latex": "ServiceReady = Compute \\land  Energy \\land  Thermal \\land  Links \\land  Reliability \\land  Operations",
+    "renders": true
+  },
+  {
+    "id": "orbital-solar-storage",
+    "index": 0,
+    "title": "Solar power budget",
+    "authored": false,
+    "source": "Psolar = S A η g",
+    "latex": "Psolar = S A \\eta  g",
+    "renders": true
+  },
+  {
+    "id": "orbital-radiator-budget",
+    "index": 0,
+    "title": "Ideal radiative balance",
+    "authored": false,
+    "source": "Q̇net = εσA(Tr⁴−Ts⁴) − Q̇absorbed",
+    "latex": "Q̇net = \\epsilon \\sigma A(Tr^{4}−Ts^{4}) − Q̇absorbed",
+    "renders": true
+  },
+  {
+    "id": "orbital-link-contacts",
+    "index": 0,
+    "title": "Contact payload and propagation",
+    "authored": false,
+    "source": "Q ≤ η R tcontact / 8; Tprop = d/c",
+    "latex": "Q \\leq  \\eta  R tcontact / 8; Tprop = d/c",
+    "renders": true
+  },
+  {
+    "id": "orbital-radiation-recovery",
+    "index": 0,
+    "title": "Simple fleet event expectation",
+    "authored": false,
+    "source": "Nevents = Ndevices λ t",
+    "latex": "Nevents = Ndevices \\lambda  t",
+    "renders": true
+  },
+  {
+    "id": "orbital-replacement-mass",
+    "index": 0,
+    "title": "Replacement-flow model",
+    "authored": false,
+    "source": "Mfleet = Ppayload m; Mreplace/year ≈ Mfleet / L",
+    "latex": "Mfleet = Ppayload m; Mreplace/year \\approx  Mfleet / L",
+    "renders": true
+  },
+  {
+    "id": "orbital-lifecycle-economics",
+    "index": 0,
+    "title": "Launch-only annualization",
+    "authored": false,
+    "source": "Claunch = plaunch m / L",
+    "latex": "Claunch = plaunch m / L",
+    "renders": true
+  },
+  {
+    "id": "crg-problem-statement",
+    "index": 0,
+    "title": "A realization contract",
+    "authored": false,
+    "source": "C_{physical} = (R, I, B, E, V)",
+    "latex": "C_{physical} = (R, I, B, E, V)",
+    "renders": true
+  },
+  {
+    "id": "crg-communication-graph",
+    "index": 0,
+    "title": "A communication edge",
+    "authored": false,
+    "source": "t_{edge} = α + M/\\beta,\\qquad E_{edge}=M e_{bit}",
+    "latex": "t_{edge} = α + M/\\beta,\\qquad E_{edge}=M e_{bit}",
+    "renders": true
+  },
+  {
+    "id": "crg-architecture-contract",
+    "index": 0,
+    "title": "Workload-bound rate",
+    "authored": false,
+    "source": "R \\leq \\min\\!\\left(P_{compute},\\;B_{memory}I,\\;B_{network}I_{net}\\right)",
+    "latex": "R \\leq \\min\\!\\left(P_{compute},\\;B_{memory}I,\\;B_{network}I_{net}\\right)",
+    "renders": true
+  },
+  {
+    "id": "crg-chip-design-realization",
+    "index": 0,
+    "title": "Timing closure boundary",
+    "authored": false,
+    "source": "T_{clock} \\geq t_{CQ}+t_{logic}+t_{setup}+t_{uncertainty}",
+    "latex": "T_{clock} \\geq t_{CQ}+t_{logic}+t_{setup}+t_{uncertainty}",
+    "renders": true
+  },
+  {
+    "id": "crg-package-system-closure",
+    "index": 0,
+    "title": "Useful-work boundary",
+    "authored": false,
+    "source": "W_{useful}=W_{executed}\\,q\\,(1-f_{lost})",
+    "latex": "W_{useful}=W_{executed}\\,q\\,(1-f_{lost})",
+    "renders": true
+  },
+  {
+    "id": "crg-55-year-resolution",
+    "index": 0,
+    "title": "Claim and evidence separation",
+    "authored": false,
+    "source": "\\mathrm{claim}\\;\\neq\\;\\mathrm{evidence}\\;\\neq\\;\\mathrm{qualification}",
+    "latex": "\\mathrm{claim}\\;\\neq\\;\\mathrm{evidence}\\;\\neq\\;\\mathrm{qualification}",
+    "renders": true
+  },
+  {
+    "id": "crg-verification-loop",
+    "index": 0,
+    "title": "Observed margin",
+    "authored": false,
+    "source": "m = x_{observed}-x_{required}",
+    "latex": "m = x_{observed}-x_{required}",
+    "renders": true
+  },
+  {
+    "id": "hbm-stack-height-budget",
+    "index": 0,
+    "title": "Stack-height budget",
+    "authored": true,
+    "source": "H = tbase + N tdie + J tbond + tcap",
+    "latex": "H=t_{\\mathrm{base}}+N t_{\\mathrm{die}}+J t_{\\mathrm{bond}}+t_{\\mathrm{cap}}",
+    "renders": true
+  },
+  {
+    "id": "hbm-stack-height-budget",
+    "index": 1,
+    "title": "Capacity is not bandwidth",
+    "authored": true,
+    "source": "C = N Cdie; B = w r η / 8",
+    "latex": "C=N C_{\\mathrm{die}},\\qquad B=\\frac{w r\\eta}{8}",
+    "renders": true
+  },
+  {
+    "id": "hbm-stack-thermal-yield",
+    "index": 0,
+    "title": "Multiple heat sources",
+    "authored": true,
+    "source": "Ti − Tcoolant = Σj Rij Pj",
+    "latex": "T_i-T_{\\mathrm{coolant}}=\\sum_j R_{ij}P_j",
+    "renders": true
+  },
+  {
+    "id": "hbm-stack-thermal-yield",
+    "index": 1,
+    "title": "Conditional assembly yield",
+    "authored": true,
+    "source": "Yassembly ≈ yjoint^J",
+    "latex": "Y_{\\mathrm{assembly}}\\approx y_{\\mathrm{joint}}^{J}",
+    "renders": true
+  },
+  {
+    "id": "hbm-tc-ncf-route",
+    "index": 0,
+    "title": "Serial tool occupancy",
+    "authored": true,
+    "source": "tstack ≈ N (talign + tbond) + thandling",
+    "latex": "t_{\\mathrm{stack}}\\approx N(t_{\\mathrm{align}}+t_{\\mathrm{bond}})+t_{\\mathrm{handling}}",
+    "renders": true
+  },
+  {
+    "id": "hbm-mr-muf-route",
+    "index": 0,
+    "title": "Batch-limited station rate",
+    "authored": true,
+    "source": "Q = K a / tcycle",
+    "latex": "Q=\\frac{K a}{t_{\\mathrm{cycle}}}",
+    "renders": true
+  },
+  {
+    "id": "hbm-hybrid-bond-route",
+    "index": 0,
+    "title": "Geometric pad-overlap example",
+    "authored": true,
+    "source": "Aoverlap = max(0,w−|dx|) max(0,w−|dy|)",
+    "latex": "A_{\\mathrm{overlap}}=\\max(0,w-|d_x|)\\max(0,w-|d_y|)",
+    "renders": true
+  },
+  {
+    "id": "hbm-bonding-process-selection",
+    "index": 0,
+    "title": "Cost per accepted stack",
+    "authored": true,
+    "source": "cgood = (cinput + cprocess + ctest) / Y",
+    "latex": "c_{\\mathrm{good}}=\\frac{c_{\\mathrm{input}}+c_{\\mathrm{process}}+c_{\\mathrm{test}}}{Y}",
+    "renders": true
+  },
+  {
+    "id": "hbf-read-tier-contract",
+    "index": 0,
+    "title": "Minimum bulk-read transfer time",
+    "authored": true,
+    "source": "ttransfer ≥ V / B",
+    "latex": "t_{\\mathrm{transfer}}\\geq\\frac{V}{B}",
+    "renders": true
+  },
+  {
+    "id": "hbf-latency-prefetch",
+    "index": 0,
+    "title": "Useful-byte efficiency",
+    "authored": true,
+    "source": "Buseful ≤ Bphysical u/g",
+    "latex": "B_{\\mathrm{useful}}\\leq B_{\\mathrm{physical}}\\frac{u}{g}",
+    "renders": true
+  },
+  {
+    "id": "hbf-latency-prefetch",
+    "index": 1,
+    "title": "Concurrency to cover latency",
+    "authored": true,
+    "source": "Qflight ≥ Btarget L",
+    "latex": "Q_{\\mathrm{flight}}\\geq B_{\\mathrm{target}}L",
+    "renders": true
+  },
+  {
+    "id": "memory-working-set-placement",
+    "index": 0,
+    "title": "Tier-capacity constraint",
+    "authored": true,
+    "source": "Σi xi,k Si + Ok ≤ Ck",
+    "latex": "\\sum_i x_{i,k}S_i+O_k\\leq C_k",
+    "renders": true
+  },
+  {
+    "id": "training-tier-placement",
+    "index": 0,
+    "title": "State inventory before sharding",
+    "authored": true,
+    "source": "Mstate = P (bw + bg + bm + bo) + A + O",
+    "latex": "M_{\\mathrm{state}}=P(b_w+b_g+b_m+b_o)+A+O",
+    "renders": true
+  },
+  {
+    "id": "prefill-decode-tier-placement",
+    "index": 0,
+    "title": "Conventional KV payload",
+    "authored": true,
+    "source": "MKV = 2 L Hkv d b Σs Ts",
+    "latex": "M_{\\mathrm{KV}}=2LH_{\\mathrm{KV}}db\\sum_s T_s",
+    "renders": true
+  },
+  {
+    "id": "prefill-decode-tier-placement",
+    "index": 1,
+    "title": "Restore or recompute",
+    "authored": true,
+    "source": "trestore ≥ Lpath + V/Bpath",
+    "latex": "t_{\\mathrm{restore}}\\geq L_{\\mathrm{path}}+\\frac{V}{B_{\\mathrm{path}}}",
+    "renders": true
+  },
+  {
+    "id": "moe-expert-tier-placement",
+    "index": 0,
+    "title": "Expert-weight miss traffic",
+    "authored": true,
+    "source": "Vmiss = Σe∈M Pe be",
+    "latex": "V_{\\mathrm{miss}}=\\sum_{e\\in\\mathcal{M}}P_e b_e",
+    "renders": true
+  },
+  {
+    "id": "memory-to-hall-propagation",
+    "index": 0,
+    "title": "Resource-normalized service bound",
+    "authored": true,
+    "source": "R ≤ min(F/f, Bmem/vmem, Bnet/vnet)",
+    "latex": "R\\leq\\min\\left(\\frac{F}{f},\\frac{B_{\\mathrm{mem}}}{v_{\\mathrm{mem}}},\\frac{B_{\\mathrm{net}}}{v_{\\mathrm{net}}}\\right)",
+    "renders": true
+  },
+  {
+    "id": "memory-to-hall-propagation",
+    "index": 1,
+    "title": "Energy per accepted work",
+    "authored": true,
+    "source": "e = PIT PUE / Raccepted",
+    "latex": "e=\\frac{P_{\\mathrm{IT}}\\,\\mathrm{PUE}}{R_{\\mathrm{accepted}}}",
+    "renders": true
+  },
+  {
+    "id": "memory-system-qualification",
+    "index": 0,
+    "title": "Retained work accounting",
+    "authored": true,
+    "source": "Wretained = Wexecuted − Wdiscarded",
+    "latex": "W_{\\mathrm{retained}}=W_{\\mathrm{executed}}-W_{\\mathrm{discarded}}",
+    "renders": true
+  }
+]

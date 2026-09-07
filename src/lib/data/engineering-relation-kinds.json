@@ -1,0 +1,66 @@
+{
+  "part-of": {
+    "label": "part of",
+    "meaning": "The source is a physical or explicitly scoped functional constituent of the target; this is not a supplier relationship."
+  },
+  "assembled-into": {
+    "label": "assembled into",
+    "meaning": "The source enters the target assembly through the stated integration hierarchy; scope identifies any intervening package."
+  },
+  "processed-into": {
+    "label": "processed into",
+    "meaning": "Material at the source stage can become the target through the stated process stream; this is transformation, not physical containment."
+  },
+  "integrated-with": {
+    "label": "integrated with",
+    "meaning": "Compatible source and target components can join the stated system; the relation does not claim arbitrary interoperability."
+  },
+  "executes": {
+    "label": "executes",
+    "meaning": "A compute engine or executable implementation performs the target operation or dispatched work under the stated architecture."
+  },
+  "limited-by": {
+    "label": "can be limited by",
+    "meaning": "The target resource, condition or acceptance requirement can constrain the source in the stated scenario; binding is conditional."
+  },
+  "stores": {
+    "label": "stores state for",
+    "meaning": "The source retains data represented by or associated with the target lesson; software algorithms themselves are not physical stored components."
+  },
+  "transfers": {
+    "label": "transfers data for or to",
+    "meaning": "The source interface or copy engine moves data/control to the target endpoint or for the target operation, as made explicit in the edge label."
+  },
+  "powers": {
+    "label": "supplies power to",
+    "meaning": "The source provides electrical power through the stated distribution and conversion path; this is not necessarily a direct chip-rail connection."
+  },
+  "cools": {
+    "label": "removes heat from",
+    "meaning": "The source helps remove target heat through the specified thermal path; scope retains the required interfaces and operating boundaries."
+  },
+  "transfers-heat-to": {
+    "label": "transfers heat to",
+    "meaning": "Thermal energy proceeds from source to target through the scoped material or fluid path; fluid mixing is not implied."
+  },
+  "controls": {
+    "label": "controls timing of",
+    "meaning": "The source timing/control signal governs the stated target event; it does not erase setup, hold or other physical constraints."
+  },
+  "produces": {
+    "label": "produces",
+    "meaning": "A transformation produces the target executable artifact while preserving the stated semantics and numerical requirements."
+  },
+  "supplies": {
+    "label": "supplies data to",
+    "meaning": "The source representation or storage service provides information consumed by the target; this does not necessarily assert an immediate physical wire or fixed layer order."
+  },
+  "updates": {
+    "label": "updates parameters of",
+    "meaning": "The source training procedure changes the target's learned parameter state under its gradient/update rules."
+  },
+  "evaluated-by": {
+    "label": "evaluated by",
+    "meaning": "The target assessment process tests the source system under explicit tasks, resources and success criteria; the edge is not evidence that it passed."
+  }
+}

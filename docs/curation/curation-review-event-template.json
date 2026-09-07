@@ -1,0 +1,41 @@
+{
+  "id": null,
+  "lessonId": null,
+  "type": "source-scope",
+  "contentFingerprint": null,
+  "contentSnapshotLocation": null,
+  "reviewedSourceIds": [],
+  "reviewedClaimIds": [],
+  "completedOn": null,
+  "reviewer": {
+    "kind": null,
+    "identifier": null,
+    "role": null
+  },
+  "outcome": null,
+  "sourceChecks": [
+    {
+      "sourceId": null,
+      "url": null,
+      "checkedOn": null,
+      "access": null,
+      "support": null,
+      "locators": [],
+      "notes": null
+    }
+  ],
+  "claimChecks": [
+    {
+      "claimId": null,
+      "outcome": null,
+      "notes": null
+    }
+  ],
+  "checks": {
+    "unitsAndDenominators": null,
+    "modelAssumptions": null,
+    "claimQualifiers": null,
+    "dependencyAndVisualScope": null
+  },
+  "notes": null
+}

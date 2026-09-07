@@ -1,0 +1,250 @@
+{
+  "atomic": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "materials": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "fabrication": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "devices": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "logic": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "arithmetic": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "bit-memory": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "compute": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "memory-hierarchy": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "on-chip": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "integration": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "stacked-memory": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "thermal": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "host": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "io": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "power": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "rack": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "fabric": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "facility": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "runtime": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "distributed": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "serving": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "representation": {
+    "domainId": "learning-intelligence",
+    "band": 5
+  },
+  "transformer": {
+    "domainId": "learning-intelligence",
+    "band": 5
+  },
+  "learning": {
+    "domainId": "learning-intelligence",
+    "band": 5
+  },
+  "agent": {
+    "domainId": "learning-intelligence",
+    "band": 5
+  },
+  "deep-wafer-materials": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-inside-the-fab": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-film-formation": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-pattern-transfer": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-device-integration": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-interconnect-power-integration": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-yield-test-ramp": {
+    "domainId": "matter-fabrication",
+    "band": 0
+  },
+  "deep-package-foundations": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-advanced-package-routes": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-bonding-and-reliability": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-hbm-manufacturing": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-hbm-interface-supply": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-cpu-control": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-gpu-execution": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-dataflow-machines": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-offload-frontiers": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-silicon-design": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-memory-economics": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-software-execution": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "deep-workload-memory": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "deep-distributed-work": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "deep-interface-budgets": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-rack-fabrics": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "deep-power-heat": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "deep-capacity-readiness": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "deep-useful-operation": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "deep-global-resources": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "deep-orbital-physics": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "deep-orbital-service": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  },
+  "crg-computation-realization": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "crg-physical-closure": {
+    "domainId": "circuits-architecture",
+    "band": 1
+  },
+  "deep-hbm-height-closure": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-hbm-bond-route-closure": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-hbf-access-contract": {
+    "domainId": "packaging-machines",
+    "band": 2
+  },
+  "deep-working-set-placement": {
+    "domainId": "executable-software",
+    "band": 4
+  },
+  "deep-memory-system-realization": {
+    "domainId": "connected-infrastructure",
+    "band": 3
+  }
+}

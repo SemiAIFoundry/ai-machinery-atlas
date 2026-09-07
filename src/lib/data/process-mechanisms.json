@@ -1,0 +1,1416 @@
+{
+  "version": "process-mechanisms-1",
+  "sources": [
+    {
+      "id": "sumco-process",
+      "title": "SUMCO: Production Processes",
+      "url": "https://www.sumcosi.com/english/products/process/",
+      "support": "CZ uses an oriented seed and melt; wafer forming separates slicing, lapping, damage-removal etch, polishing and inspection. Epitaxy adds crystalline film.",
+      "scopeLimit": "Supplier overview; no tolerances, complete purification chemistry or production recipe is adopted.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "asm-epi",
+      "title": "ASM: Epitaxy",
+      "url": "https://www.asm.com/our-technology-products/epitaxy",
+      "support": "Identifies Si/SiGe/Si:P films, crystal/strain roles, selective growth and prepared surface requirements.",
+      "scopeLimit": "No layer recipe, defect prediction, strain limit or guaranteed material selectivity is adopted.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "asm-ald",
+      "title": "ASM: Atomic Layer Deposition",
+      "url": "https://www.asm.com/our-technology-products/ald",
+      "support": "Separated exposures and purges support saturated surface reactions and cycle-controlled films.",
+      "scopeLimit": "A schematic cycle does not promise one complete atomic plane, complete saturation in all features or a universal growth rate.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "lam-deposition",
+      "title": "Lam Research: Deposition",
+      "url": "https://www.lamresearch.com/products/our-processes/deposition/",
+      "support": "CVD/ALD and physical deposition supply different films and applications.",
+      "scopeLimit": "Not a quantitative predictor of profile, chemistry or coverage.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "lam-etch",
+      "title": "Lam Research: Etch",
+      "url": "https://www.lamresearch.com/products/our-processes/etch/",
+      "support": "Material removal can be directional or selective, with process-specific geometry.",
+      "scopeLimit": "Do not label every plasma etch anisotropic or every wet etch isotropic.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "lam-clean",
+      "title": "Lam Research: Strip & Clean",
+      "url": "https://www.lamresearch.com/products/our-processes/strip-clean/",
+      "support": "Strip/clean are separate surface-preparation and residue-removal operations.",
+      "scopeLimit": "Clean appearance and particle reduction alone do not establish chemistry, damage or readiness.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "entegris-amc",
+      "title": "Entegris: Understanding AMC",
+      "url": "https://blog.entegris.com/understanding-amc-the-invisible-threat-to-semiconductor-yield-and-reliability",
+      "support": "Gas-phase molecular contamination differs from particles and requires species-relevant measurement.",
+      "scopeLimit": "No contamination acceptance level or relation between ambient exposure and deposited dose is inferred.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "deal-grove",
+      "title": "Deal and Grove: General Relationship for the Thermal Oxidation of Silicon",
+      "url": "https://www.columbia.edu/~leonard/TISSSite/mvbd.html",
+      "support": "Oxidation couples oxidant transport and interfacial reaction; x\u00b2+Ax=B(t+tau) is a bounded model.",
+      "scopeLimit": "University-hosted excerpt of the original paper; complete experimental results are not reproduced. No recipe coefficients adopted.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "asml-photoresist",
+      "title": "ASML: Six crucial steps in semiconductor manufacturing",
+      "url": "https://www.asml.com/en/company/stories/2021/semiconductor-manufacturing-process-steps",
+      "support": "Exposure changes resist solubility and positive/negative tones retain different regions.",
+      "scopeLimit": "Use only these named sections. The overview blurs develop and etch in its Etch paragraph; this asset keeps them separate. No purity or current product metrics adopted.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "asml-opc",
+      "title": "ASML: Computational lithography",
+      "url": "https://www.asml.com/en/products/computational-lithography",
+      "support": "Calibrated process models modify mask patterns to improve the printed target.",
+      "scopeLimit": "Our geometric toy uses prescribed contours; it is not ASML OPC, an optical field solver or a qualified mask.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "asml-optics",
+      "title": "ASML: Lenses & mirrors",
+      "url": "https://www.asml.com/en/technology/lithography-principles/lenses-and-mirrors",
+      "support": "DUV lenses and EUV mirrors are distinct; numerical aperture participates in resolution scaling.",
+      "scopeLimit": "No universal process window, exact scanner architecture or current product availability is inferred.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "mit-course",
+      "title": "MIT 6.152J: Micro/Nano Processing Technology",
+      "url": "https://ocw.mit.edu/courses/6-152j-micro-nano-processing-technology-fall-2005/pages/lecture-notes/",
+      "support": "Existing atlas foundation reference for oxidation, CVD/PVD, lithography and wet/dry etch.",
+      "scopeLimit": "Index page checked; not cited as freshly revalidated lecture-detail evidence.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "samsung-tcncf",
+      "title": "Samsung: HBM3E 12H announcement",
+      "url": "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram",
+      "support": "Confirms the thermocompression/non-conductive-film route and metal bumps between dies.",
+      "scopeLimit": "Dated supplier product announcement; its gap, thermal and performance figures are not adopted as simulation inputs or universal bounds.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "sk-mrmuf",
+      "title": "SK hynix: Small Size, Big Impact",
+      "url": "https://news.skhynix.com/en/small-size-big-impact/",
+      "support": "MR forms metallic joints; MUF fills inter-die/external regions. Advanced variants can stabilize dies during placement before final reflow.",
+      "scopeLimit": "Supplier route overview. Do not infer exact alloy from informal wording, a proprietary thermal profile, zero pre-reflow bonding or a universal productivity gain.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "imec-w2w",
+      "title": "imec: Wafer-to-wafer hybrid bonding",
+      "url": "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch",
+      "support": "Local Cu/dielectric preparation, CMP, alignment/contact, then anneal are distinct. Electrical test structures have a stated population.",
+      "scopeLimit": "W2W research vehicle, not a shipping HBM process. Numeric pitch/recess/overlay/yield results must not become HBM pass limits.",
+      "checkedOn": "2026-09-07"
+    },
+    {
+      "id": "imec-d2w",
+      "title": "imec: Die-to-wafer hybrid bonding demonstration",
+      "url": "https://www.imec-int.com/en/press/imec-demonstrates-die-wafer-hybrid-bonding-cu-interconnect-pad-pitch-2mm",
+      "support": "D2W must preserve surface quality through singulation and placement; test structures establish limited electrical evidence.",
+      "scopeLimit": "D2W research is distinct from W2W; no demonstrated vehicle metric is transferred to a complete HBM product.",
+      "checkedOn": "2026-09-07"
+    }
+  ],
+  "routes": [
+    {
+      "id": "hbm-tc-ncf",
+      "lessonIds": [
+        "hbm-tc-ncf-route"
+      ],
+      "name": "TC-NCF bump-and-film interface",
+      "scientificScope": "Representative local interface in a screened-die stack. Polymer and metallic paths remain separate; film application and finishing order are implementation-dependent.",
+      "sourceRefs": [
+        "samsung-tcncf"
+      ],
+      "steps": [
+        {
+          "id": "screened-inputs",
+          "title": "Screened dies and receiving pads",
+          "input": "Screened bumped dies; receiving pads",
+          "transform": "Incoming dies have bumps and receiving pads but no completed joint. Prior screening establishes only the functions and defects covered by those tests.",
+          "output": "Identified inputs",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What was tested before assembly?",
+            "scopeLimit": "Known-good status is coverage-limited.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "film-ready",
+          "title": "Non-conductive film at the interface",
+          "input": "Bumped surface and compatible NCF",
+          "transform": "Non-conductive film occupies the mating interface before thermocompression. The film supports and insulates the interface; metallic bumps provide the electrical path.",
+          "output": "Film-bearing interface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Is the film thickness/state uniform?",
+            "scopeLimit": "No assumed supplier film application recipe.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "aligned",
+          "title": "Aligned surfaces near contact",
+          "input": "Prepared die and receiving interface",
+          "transform": "The bumped die approaches the receiving pads with the film already present. Placement registration and die shape influence the interface, but this schematic does not calculate alignment yield or deformation.",
+          "output": "Placed pair",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What are placement offset and die bow?",
+            "scopeLimit": "Static bow markers do not solve mechanics.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "thermocompressed",
+          "title": "Metal joints and polymer support",
+          "input": "Aligned bumped/film pair",
+          "transform": "Thermocompression forms the schematic metallic connections while the polymer supports the bonded interface. The resulting geometry does not predict yield from temperature, force, or time.",
+          "output": "Bonded pair",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What continuity, bond-line and void evidence exists?",
+            "scopeLimit": "No temperature/force/time-to-yield function.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "repeated",
+          "title": "Repeated interfaces form a stack",
+          "input": "Bonded pair plus remaining screened dies",
+          "transform": "The same interface sequence connects three illustrative DRAM layers. Each added die and bond gap increases stack height; this layer count does not establish product capacity or bandwidth.",
+          "output": "Assembled teaching stack",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "How do interface count and thickness affect stack height?",
+            "scopeLimit": "Drawing count and measured capacity/bandwidth are separate.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "verified",
+          "title": "Stack inspection and qualification",
+          "input": "Assembled stack",
+          "transform": "The assembled geometry stays unchanged during inspection. Electrical continuity, structural inspection, and reliability qualification answer different questions about the stack and its process population.",
+          "output": "Scoped results",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which evidence concerns this unit and which concerns the process population?",
+            "scopeLimit": "Initial pass is not field lifetime.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hbm-mr-muf",
+      "lessonIds": [
+        "hbm-mr-muf-route"
+      ],
+      "name": "Mass reflow and molded underfill",
+      "scientificScope": "Representative solder-bearing stack, final joint-reflow step and subsequent inter-die/external mold filling. Advanced variants may use per-die stabilization; this is not universal zero-contact-before-reflow.",
+      "sourceRefs": [
+        "sk-mrmuf"
+      ],
+      "steps": [
+        {
+          "id": "screened-inputs",
+          "title": "Bumped dies before assembly",
+          "input": "Thinned screened dies",
+          "transform": "Screened dies enter assembly with metallic bumps and receiving pads. Their thickness, bow, and test coverage matter independently; a screening pass does not imply a defect-free die.",
+          "output": "Traceable parts",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Are thickness, bow and test scope known?",
+            "scopeLimit": "No perfect-die inference.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "placed",
+          "title": "Stack placement before final reflow",
+          "input": "Bumped parts",
+          "transform": "The illustrative dies occupy their stack positions before final reflow. Some advanced implementations use local stabilization during placement, so this stage is not a universal picture of unbonded dies.",
+          "output": "Pre-final-reflow stack",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Is pre-reflow registration retained?",
+            "scopeLimit": "Some advanced routes have local prior joints.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "reflowed",
+          "title": "Metallic connections after reflow",
+          "input": "Placed stack",
+          "transform": "The reflow sequence forms metallic joints across the stack. Molded underfill is still absent, keeping electrical joining distinct from the subsequent filling operation.",
+          "output": "Joined stack before molding",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Do joint shape and continuity agree?",
+            "scopeLimit": "Source overview does not establish alloy chemistry.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "molded",
+          "title": "Inter-die filling and encapsulation",
+          "input": "Reflowed stack",
+          "transform": "Molding compound fills the joined stack\u2019s inter-die spaces and surrounds its edges. The marked void is a synthetic inspection example, not a predicted defect rate or automatic failure.",
+          "output": "Encapsulated stack",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Where is fill incomplete and how was it inspected?",
+            "scopeLimit": "A drawn void is not calibrated likelihood or automatic failure.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "screened",
+          "title": "Structural and electrical inspection",
+          "input": "Encapsulated stack",
+          "transform": "Inspection leaves the encapsulated geometry intact. A void marker and an electrical symptom require corroborating evidence before either can establish the other\u2019s cause.",
+          "output": "Scoped per-unit evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which observed symptom has which physical evidence?",
+            "scopeLimit": "Electrical open alone does not prove molding void cause.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "released",
+          "title": "Compatible stack inventory",
+          "input": "Tested stack with qualification record",
+          "transform": "A tested stack becomes useful inventory only when its acceptance criteria and package compatibility are satisfied. The unchanged cross-section does not establish manufacturing throughput or field lifetime.",
+          "output": "Qualified compatible inventory",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What denominator and compatibility define available output?",
+            "scopeLimit": "No universal throughput multiplier from batch reflow.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hbm-hybrid",
+      "lessonIds": [
+        "hbm-hybrid-bond-route"
+      ],
+      "name": "Cu/dielectric hybrid interface",
+      "scientificScope": "Research-grounded local Cu/dielectric interface. Default overview is a W2W test vehicle; D2W changes handling context explicitly. Neither mode claims an HBM production-qualified implementation.",
+      "sourceRefs": [
+        "imec-w2w",
+        "imec-d2w"
+      ],
+      "steps": [
+        {
+          "id": "pad-structure",
+          "title": "Copper and dielectric before planarization",
+          "input": "Completed wafer circuitry and routing",
+          "transform": "Copper pads and surrounding dielectric form the two materials of this local bonding interface. The uneven precursor surface precedes planarization; no solder bump or non-conductive film is present.",
+          "output": "Bonding surface precursor",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Which material/pad layout is present?",
+            "scopeLimit": "Use Cu/SiCN or Cu/SiO2 explicitly, not an unlabeled blend.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "planarized",
+          "title": "Local topography after planarization",
+          "input": "Pad/overburden structure",
+          "transform": "Planarization exposes the dielectric reference surface and the copper pad tops. The illustrative copper recess is 4 nm; its exaggerated appearance is not a production acceptance limit.",
+          "output": "Measured planarized interface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What are local recess, roughness and spatial variation?",
+            "scopeLimit": "One average thickness does not certify readiness.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "prepared",
+          "title": "Prepared mating surfaces",
+          "input": "Measured bonding faces",
+          "transform": "Surface preparation establishes the chemical state needed for bonding while preserving local topography. The surface-site marks represent preparation, not added particles or a measured cleanliness result.",
+          "output": "Prepared mating faces",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Was surface state maintained through handling?",
+            "scopeLimit": "Cleaning does not repair arbitrary topography; D2W needs separate handling evidence.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "contacted",
+          "title": "Initial dielectric contact",
+          "input": "Prepared mating faces",
+          "transform": "Aligned dielectric surfaces meet while copper sites retain a local residual gap in the schematic. Initial contact alone does not establish a continuous metallic connection or a reliable bond.",
+          "output": "Initially contacted interface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What are overlay and unbonded regions?",
+            "scopeLimit": "No solder reflow or solder self-alignment.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "annealed",
+          "title": "Bonded copper and dielectric interface",
+          "input": "Initially contacted interface",
+          "transform": "The schematic final state joins both dielectric and copper across the interface. It illustrates the role of the subsequent bonding treatment without predicting closure or reliability from a thermal recipe.",
+          "output": "Bonded interface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What supports electrical continuity and mechanical bonding?",
+            "scopeLimit": "No temperature slider predicting copper closure or reliability.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "evidence",
+          "title": "Evidence from a research interface",
+          "input": "Bonded structure",
+          "transform": "Cross-sections and electrical test structures can support different claims about a bonded interface. This research-grounded example does not establish the yield or qualification of a complete HBM product.",
+          "output": "Scoped research evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What has this structure demonstrated and what remains untested?",
+            "scopeLimit": "Test-structure yield is not full-stack/product yield.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cz-crystal",
+      "lessonIds": [
+        "electronic-silicon-crystal-growth"
+      ],
+      "name": "Feedstock to oriented CZ crystal",
+      "scientificScope": "Distinct purification and crystallization concepts. Starts at identified electronic-grade feedstock; purification appears as an upstream evidence gate, not a chemical plant simulation.",
+      "sourceRefs": [
+        "sumco-process"
+      ],
+      "steps": [
+        {
+          "id": "feed",
+          "title": "Polycrystalline silicon feedstock",
+          "input": "Polycrystalline silicon",
+          "transform": "The solid feedstock precedes melting and crystal growth. Chemical purity and crystal structure are separate properties: high-purity feedstock can still contain many differently oriented grains.",
+          "output": "Identified feed",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What purity measurement supports the feed?",
+            "scopeLimit": "Purity does not mean single crystal.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "melt",
+          "title": "Silicon in the liquid phase",
+          "input": "Qualified feed",
+          "transform": "Melting replaces the solid feed with liquid silicon. The liquid has no fixed crystal lattice; the vessel and liquid surface here provide process context rather than operating conditions.",
+          "output": "Melt",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What incoming material and melt context are recorded?",
+            "scopeLimit": "No real temperature or atmosphere settings.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "seed",
+          "title": "An oriented seed meets the melt",
+          "input": "Melt and oriented seed",
+          "transform": "A solid seed contacts the silicon melt and supplies a crystallographic orientation for subsequent growth. The liquid itself remains distinct from that ordered solid.",
+          "output": "Seeded interface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Which orientation does the seed establish?",
+            "scopeLimit": "Drawing arrows are crystal directions, not carrier motion.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "growth-front",
+          "title": "Solidification at the growth front",
+          "input": "Seeded interface",
+          "transform": "Silicon joins the solid crystal at the interface with the melt as the ingot grows. The successive geometries represent process order, not a calculated pull rate or defect density.",
+          "output": "Growing single crystal",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "How is the solid region distinguished from melt?",
+            "scopeLimit": "Motion is ordinal process playback, not pull rate.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "ingot",
+          "title": "An illustrative single-crystal ingot",
+          "input": "Growing ingot",
+          "transform": "The ingot retains the orientation established during growth. Lattice marks denote the solid crystal; an ordered schematic does not imply the absence of defects or chemical impurities.",
+          "output": "Traceable ingot",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Does uniform appearance establish defect-free material?",
+            "scopeLimit": "Do not generate defect density from draw speed.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "characterize",
+          "title": "Independent measures of crystal quality",
+          "input": "Ingot sample locations",
+          "transform": "The completed ingot\u2019s geometry remains unchanged while purity, electrical properties, and crystal quality require separate evidence. None of these properties follows from its external shape alone.",
+          "output": "Material disposition evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Can equal resistivity hide different defect populations?",
+            "scopeLimit": "No numerical production acceptance criteria.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "wafer-finishing",
+      "lessonIds": [
+        "wafer-finishing-geometry"
+      ],
+      "name": "Wafer geometry through finishing",
+      "scientificScope": "Same wafer through slicing, geometric conditioning, damaged-layer removal, polishing and inspection. Lapping/grinding route varies; not the copper interconnect CMP sequence.",
+      "sourceRefs": [
+        "sumco-process"
+      ],
+      "steps": [
+        {
+          "id": "sliced",
+          "title": "Surface condition after slicing",
+          "input": "Oriented ingot",
+          "transform": "A slice begins with surface relief, possible damage, and geometry that require further conditioning. The highlighted damaged region is illustrative rather than a measured damage depth.",
+          "output": "As-sliced wafer",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What thickness and surface damage remain?",
+            "scopeLimit": "Drawn damage depth is not a measured value.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "conditioned",
+          "title": "Thickness and parallelism conditioning",
+          "input": "As-sliced disk",
+          "transform": "Geometric conditioning addresses thickness and face parallelism before final finishing. Total thickness variation and midplane bow remain distinct quantities even when the external outline looks similar.",
+          "output": "Conditioned wafer",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "How do face spacing and global bending differ?",
+            "scopeLimit": "Do not conflate TTV with bow.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "damage-removed",
+          "title": "Removal of damaged surface material",
+          "input": "Conditioned wafer",
+          "transform": "Material removal reduces the highlighted damaged surface layer while leaving a rougher profile for later polishing. This schematic does not establish complete damage removal or an etch recipe.",
+          "output": "Damage-reduced surfaces",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What evidence supports damaged-layer removal?",
+            "scopeLimit": "No etchant, concentration, rate or guaranteed damage-free state.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "polished",
+          "title": "A finer surface profile",
+          "input": "Damage-reduced wafer",
+          "transform": "Polishing reduces the surface relief represented in this cross-section. A smoother surface alone does not establish chemical cleanliness, crystalline integrity, or readiness for the next process.",
+          "output": "Polished surface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Is local roughness independent of global shape?",
+            "scopeLimit": "Mirror finish does not establish cleanliness.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "cleaned",
+          "title": "Surface condition after cleaning",
+          "input": "Polished wafer",
+          "transform": "The sampled particle markers are absent after the illustrative cleaning stage. Their removal does not establish the absence of molecular contamination, residual damage, or unmeasured particles.",
+          "output": "Cleaned wafer",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What particle and chemical evidence is available?",
+            "scopeLimit": "No perfect-clean claim.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "inspected",
+          "title": "Thickness, shape, and finish evidence",
+          "input": "Finished wafer",
+          "transform": "The five synthetic thickness samples give a total thickness variation of 6 \u00b5m. The separate midplane-displacement samples concern wafer shape and do not constitute an official bow or warp measurement.",
+          "output": "Scoped inspection",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which metric limits the next tool interface?",
+            "scopeLimit": "No official bow/warp calculation from one 2D trace.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "epitaxial-stack",
+      "lessonIds": [
+        "epitaxial-material-stack"
+      ],
+      "name": "Crystalline film and interface registry",
+      "scientificScope": "Representative Si or Si/SiGe crystalline overgrowth. Not every epitaxial layer is alternating Si/SiGe, and thickness does not establish composition or structural quality.",
+      "sourceRefs": [
+        "asm-epi",
+        "sumco-process"
+      ],
+      "steps": [
+        {
+          "id": "surface",
+          "title": "Incoming crystalline template",
+          "input": "Crystalline substrate with surface film/residue",
+          "transform": "The silicon surface provides the template for epitaxial growth. Its simple outline does not establish the chemical state, cleanliness, or defect structure needed for that growth.",
+          "output": "Surface context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Is the intended crystal surface exposed?",
+            "scopeLimit": "Do not infer cleanliness from smoothness.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "prepared",
+          "title": "A prepared growth surface",
+          "input": "Incoming substrate",
+          "transform": "Surface preparation precedes incorporation of new crystalline material. The unchanged template geometry emphasizes that chemical readiness cannot be inferred from surface shape alone.",
+          "output": "Prepared template",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What verifies oxide/contamination state?",
+            "scopeLimit": "No preclean recipe.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "nucleating",
+          "title": "Initial crystalline growth regions",
+          "input": "Prepared template",
+          "transform": "The partial layer represents material incorporation on the prepared template. These regions explain the start of growth without tracing individual molecules or predicting nucleation kinetics.",
+          "output": "Early crystalline film",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Are composition and nucleation appropriate?",
+            "scopeLimit": "Arrival markers are not tracked molecules or kinetics.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "layer-grown",
+          "title": "A completed illustrative layer",
+          "input": "Early film",
+          "transform": "A continuous epitaxial layer now covers the template. Its assigned thickness describes this example; equal thickness in two films would not establish equal composition, strain, or defect density.",
+          "output": "Crystalline layer",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What are thickness, composition and defects?",
+            "scopeLimit": "Equal thickness does not imply equal strain.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "stack-grown",
+          "title": "Alternating Si and SiGe layers",
+          "input": "Completed layer",
+          "transform": "The example extends into an alternating stack with synthetic 10 nm SiGe and 8 nm Si layers. The material colors identify composition, not a measured strain field or guaranteed etch selectivity.",
+          "output": "Specified film/stack",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What later selective step depends on material differences?",
+            "scopeLimit": "No universal etch selectivity from color.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "characterize",
+          "title": "Separate measures of film quality",
+          "input": "Film or stack",
+          "transform": "The completed stack retains its geometry while thickness, composition, and crystal quality require independent characterization. A regular layer pattern does not establish defect-free growth or downstream process performance.",
+          "output": "Scoped material evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which measurement could distinguish equal-thickness but different films?",
+            "scopeLimit": "No defect-free or future-process guarantee.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "surface-contamination",
+      "lessonIds": [
+        "contamination-and-surface-state"
+      ],
+      "name": "Surface exposure, cleaning and evidence",
+      "scientificScope": "A comparison of sampled surface states and inspection choices, not a cleaning recipe or contamination diagnosis. Ambient molecules, deposited material and visible particles are different populations.",
+      "sourceRefs": [
+        "entegris-amc",
+        "lam-clean"
+      ],
+      "steps": [
+        {
+          "id": "reference",
+          "title": "Reference surface state",
+          "input": "Identified exposed material",
+          "transform": "The initial surface establishes a synthetic baseline for comparison. Its bare appearance carries no measured claim about contamination level or readiness for processing.",
+          "output": "Baseline context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What was observed before exposure?",
+            "scopeLimit": "Baseline is synthetic unless imported measurement.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "exposure",
+          "title": "Particle exposure at the surface",
+          "input": "Exposed surface",
+          "transform": "Three illustrative particle markers identify one possible exposure population. Airborne molecular contamination is a different population; the marker count is neither a flux measurement nor a surface-dose estimate.",
+          "output": "Exposure context",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "What ambient population was sampled?",
+            "scopeLimit": "Arrow count is not flux or surface dose.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "surface-state",
+          "title": "Particles and adsorbates",
+          "input": "Exposed material",
+          "transform": "Large particle markers and smaller adsorbate markers distinguish two possible surface populations. This constructed surface state does not prove that a particular ambient exposure caused it.",
+          "output": "Different sampled surface state",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "What actually changed on the wafer?",
+            "scopeLimit": "This is a possible state, not causal proof from exposure.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "method",
+          "title": "Evidence matched to the population",
+          "input": "Candidate surface mechanisms",
+          "transform": "The measurement context changes while the represented sample remains the same. Particle inspection and species-sensitive surface analysis answer different questions and require their own sampling limits.",
+          "output": "Measurement plan",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Can the selected method discriminate these possibilities?",
+            "scopeLimit": "No invented detector limit or instrument reading.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "clean-comparison",
+          "title": "An illustrative post-clean surface",
+          "input": "Recorded before state",
+          "transform": "The post-clean comparison removes the selected particle and adsorbate markers. The cleaner geometry is not a calculation of cleaning efficacy or evidence that all relevant residues and damage are absent.",
+          "output": "Post-clean comparison",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "Did removal occur without relevant damage?",
+            "scopeLimit": "Recipe and cleaning efficacy are not simulated.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "preserve",
+          "title": "Surface state at process handoff",
+          "input": "Post-clean state",
+          "transform": "A surface remains acceptable for a later operation only under that operation\u2019s requirements and a documented handling history. The unchanged outline alone cannot determine wafer disposition.",
+          "output": "Scoped handoff",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What evidence is still missing before the next operation?",
+            "scopeLimit": "No automatic wafer disposition.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "thermal-oxidation",
+      "lessonIds": [
+        "thermal-oxidation-interface"
+      ],
+      "name": "Oxide growth consumes silicon",
+      "scientificScope": "Planar illustrative oxidation with moving Si/oxide interface. Distinguish grown oxide from deposited coating. Stage geometry is illustrative; any Deal\u2013Grove calculation needs separately disclosed coefficients and validity.",
+      "sourceRefs": [
+        "deal-grove"
+      ],
+      "steps": [
+        {
+          "id": "initial",
+          "title": "The original silicon surface",
+          "input": "Prepared silicon",
+          "transform": "The reference line locates the original silicon surface before oxide growth. Zero initial oxide is a teaching assumption rather than a claim about an exposed production wafer.",
+          "output": "Initial substrate",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What initial oxide exists?",
+            "scopeLimit": "Default zero oxide is a teaching choice.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "early",
+          "title": "Oxide growth consumes silicon",
+          "input": "Silicon and oxidant context",
+          "transform": "The first synthetic sample contains 4 nm of oxide and 1.7 nm of consumed silicon. The oxide extends above the original surface while its lower boundary moves into the silicon.",
+          "output": "Thin grown oxide",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Did substrate material contribute to the oxide?",
+            "scopeLimit": "No molecule-accurate count or real oxidation settings.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "transport",
+          "title": "Oxidant transport to the interface",
+          "input": "Existing oxide",
+          "transform": "Further oxidation requires oxidant transport through existing oxide and reaction at the silicon interface. This 12 nm oxide sample illustrates the changing geometry without calculating diffusion or reaction rates.",
+          "output": "Growing interface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Where does oxidant travel and react?",
+            "scopeLimit": "Arrow speed is not diffusion coefficient.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "thicker",
+          "title": "Two boundaries move during growth",
+          "input": "Growing oxide",
+          "transform": "The synthetic oxide thickness reaches 24 nm as consumed silicon reaches 10.2 nm. Tracking both boundaries distinguishes grown oxide from a coating deposited entirely above the original surface.",
+          "output": "Thicker film",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "How can thicker oxide change rate limitations?",
+            "scopeLimit": "No universal ultrathin or stressed-film prediction.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "final",
+          "title": "Final illustrative oxide and interface",
+          "input": "Illustrated final growth state",
+          "transform": "The final sample pairs 40 nm of oxide with 17 nm of consumed silicon. These matched geometry values illustrate material consumption; they are not a fitted oxidation recipe or electrical-quality measurement.",
+          "output": "Grown film",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Are thickness and interface properties separately known?",
+            "scopeLimit": "Appearance does not establish electrical quality.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "inspect",
+          "title": "Thickness and electrical quality",
+          "input": "Grown film",
+          "transform": "Inspection preserves the final oxide geometry. Thickness, interface charge, and leakage require different measurements; a continuous-looking oxide does not establish its electrical performance.",
+          "output": "Scoped evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which evidence tests the required film function?",
+            "scopeLimit": "No fabricated electrical measurement or pass limit.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cvd-pvd",
+      "lessonIds": [
+        "cvd-pvd-film-transport"
+      ],
+      "name": "Transport and local deposited coverage",
+      "scientificScope": "Two explicitly illustrative coverage cases on the same trench. Directional PVD and conformal CVD are examples, not universal classifications; CVD may be transport-limited and PVD may be engineered for improved coverage.",
+      "sourceRefs": [
+        "lam-deposition",
+        "mit-course"
+      ],
+      "steps": [
+        {
+          "id": "feature",
+          "title": "A common trench geometry",
+          "input": "Clean trench",
+          "transform": "Both deposition cases begin with the same synthetic 100 nm-wide, 200 nm-deep feature. Holding the feature constant makes their prescribed coverage profiles easier to compare.",
+          "output": "Shared starting feature",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which surfaces need coating?",
+            "scopeLimit": "Geometry is synthetic.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "supply",
+          "title": "Initial deposited coverage",
+          "input": "Prepared feature",
+          "transform": "An initial film begins to occupy the exposed surfaces. PVD supplies material physically, while CVD depends on precursor transport and surface reactions; neither pathway\u2019s actual flux field is simulated here.",
+          "output": "Supply context",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "What reaches the feature entrance?",
+            "scopeLimit": "No true gas/particle trajectories or flux field.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "local-growth",
+          "title": "Unequal growth on local surfaces",
+          "input": "Supplied material",
+          "transform": "The top, sidewall, and bottom films develop different thicknesses in the selected example. The profiles are prescribed illustrations, not universal conformality rules for CVD or PVD.",
+          "output": "Partly coated trench",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Where is access or reaction limited?",
+            "scopeLimit": "No universal conformality from method name.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "coverage",
+          "title": "Synthetic target coverage",
+          "input": "Partly coated feature",
+          "transform": "The completed examples share a 10 nm top film, with a 3 nm PVD-case or 8 nm CVD-case bottom film. These values support a local coverage ratio without predicting adhesion or electrical continuity.",
+          "output": "Coated feature",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Does blanket top thickness hide weak bottom coverage?",
+            "scopeLimit": "No predicted adhesion or electrical continuity.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "access-limit",
+          "title": "Access through the remaining opening",
+          "input": "Coated feature",
+          "transform": "The deposited sidewall film narrows the feature opening while the completed profile stays fixed. This geometry identifies an access concern without predicting a pinch-off threshold or void probability.",
+          "output": "Geometric coverage context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Can film growth reduce later access?",
+            "scopeLimit": "No automatic pinch-off threshold or void yield.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "measure",
+          "title": "Coverage ratio and material quality",
+          "input": "Deposited film",
+          "transform": "Bottom thickness divided by top thickness gives the selected example\u2019s coverage ratio. Film composition, continuity, and other quality measures remain separate from this synthetic geometric comparison.",
+          "output": "Scoped deposition evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which checks establish film function beyond thickness?",
+            "scopeLimit": "Synthetic ratios are not process capabilities.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ald-cycle",
+      "lessonIds": [
+        "ald-self-limiting-growth"
+      ],
+      "name": "Separated ALD half-reactions",
+      "scientificScope": "Generic temporal ALD on a prepared feature; precursor A and co-reactant B are placeholders with no chemistry implied. Site occupancy is schematic and does not represent one complete crystal plane per cycle.",
+      "sourceRefs": [
+        "asm-ald"
+      ],
+      "steps": [
+        {
+          "id": "prepared",
+          "title": "Surface before the ALD cycle",
+          "input": "Prepared feature",
+          "transform": "A prepared surface precedes the separated exposures to precursor A and reactant B. The letters stand for generic half-reactions rather than a specified chemistry or site density.",
+          "output": "Initial reactive state",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Is the surface ready for the assumed reaction?",
+            "scopeLimit": "Site density is schematic.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "a-exposure",
+          "title": "Precursor A exposure",
+          "input": "Available sites",
+          "transform": "Precursor A occupies the gas phase and reacts at the surface. Bound surface species and excess gas remain separate populations; saturation is an assumed process condition, not a guarantee from elapsed time.",
+          "output": "A-terminated surface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Did exposure reach deep surfaces?",
+            "scopeLimit": "Saturation is a model condition, not a timer guarantee.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "purge-a",
+          "title": "First purge with bound species retained",
+          "input": "A-terminated surface plus excess A",
+          "transform": "The first purge removes excess gas-phase A while the reacted surface remains. This separation prevents the illustration from treating purging as removal of the intended surface chemistry.",
+          "output": "Separated half-cycle",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What should purge remove and preserve?",
+            "scopeLimit": "No purge duration or efficiency calculation.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "b-exposure",
+          "title": "The complementary B reaction",
+          "input": "A-terminated surface",
+          "transform": "Reactant B enters after the A purge and changes the surface termination. The generic color change marks a complementary reaction without specifying stoichiometry or the resulting film\u2019s crystalline structure.",
+          "output": "Reacted film surface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What material remains after reaction?",
+            "scopeLimit": "Generic chemistry does not establish stoichiometry.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "purge-b",
+          "title": "Second purge and a completed cycle",
+          "input": "Reacted surface and excess B",
+          "transform": "Gas-phase B clears while the new film increment remains. A completed ALD cycle need not deposit one full atomic plane, and an initial nucleation delay can affect accumulated thickness.",
+          "output": "Repeat-ready surface",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What counts as one cycle?",
+            "scopeLimit": "A cycle need not equal one atomic plane.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "inspect-film",
+          "title": "Accumulated film with a growth delay",
+          "input": "Repeated cycles",
+          "transform": "In the synthetic thickness example, 100 cycles with a 10-cycle delay and 0.08 nm per subsequent cycle produce 7.2 nm. This accumulation model applies only within its assumed steady-growth regime.",
+          "output": "Scoped growth evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Does cycle count alone prove conformality or purity?",
+            "scopeLimit": "No extrapolation outside stable growth regime.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "resist-track",
+      "lessonIds": [
+        "resist-track-development"
+      ],
+      "name": "Positive-tone resist image and development",
+      "scientificScope": "Named positive-tone teaching route. Exposure changes a latent chemical state; development removes resist; later pattern-transfer etch removes target material. Bake details depend on resist chemistry.",
+      "sourceRefs": [
+        "asml-photoresist",
+        "mit-course"
+      ],
+      "steps": [
+        {
+          "id": "surface",
+          "title": "The intact target film",
+          "input": "Target layer on substrate",
+          "transform": "The target film rests on silicon before resist coating. It is the material intended for later pattern transfer, a separate operation from resist development.",
+          "output": "Prepared stack",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which material will later be etched?",
+            "scopeLimit": "No detailed adhesion treatment.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "coated",
+          "title": "A continuous positive-resist layer",
+          "input": "Prepared target film",
+          "transform": "A continuous resist layer covers the target film. This schematic establishes the material order without predicting coating uniformity from spin or dispense conditions.",
+          "output": "Resist-coated wafer",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What are resist thickness and uniformity?",
+            "scopeLimit": "No spinner settings.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "baked",
+          "title": "Conditioned resist before exposure",
+          "input": "Coated wafer",
+          "transform": "Pre-exposure conditioning changes the resist\u2019s state while its schematic geometry remains continuous. The chemistry-dependent conditioning step does not require a visible thickness change in this representation.",
+          "output": "Conditioned resist",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "Which recorded conditioning stage applies?",
+            "scopeLimit": "Do not force a visible shrinkage or universal bake recipe.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "exposed",
+          "title": "A latent chemical image",
+          "input": "Conditioned resist",
+          "transform": "Exposure identifies regions of this positive resist that become more soluble after the applicable processing. The latent image changes chemistry; it has not yet removed resist or etched the target film.",
+          "output": "Latent chemical pattern",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Where did the resist chemistry change?",
+            "scopeLimit": "No photoresist removal during exposure.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "developed",
+          "title": "An opening in the resist",
+          "input": "Latent positive pattern",
+          "transform": "Development removes the selected soluble resist and leaves a relief pattern. The target film beneath the opening remains intact until a separate pattern-transfer operation.",
+          "output": "After-develop resist profile",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "What CD/profile exists after develop?",
+            "scopeLimit": "Development is not target-film etching.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "compare-transfer",
+          "title": "Development and etch measurements",
+          "input": "Developed resist and separately identified etched sample",
+          "transform": "The primary cross-section remains in the developed state. A separate synthetic comparison pairs a 24 nm after-develop dimension with a 21 nm after-etch dimension, giving a \u22123 nm transfer bias without identifying its cause.",
+          "output": "Pattern-transfer context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What does the measured bias establish?",
+            "scopeLimit": "Bias does not identify etch cause or electrical width.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "mask-opc",
+      "lessonIds": [
+        "mask-opc-layout"
+      ],
+      "name": "Target, corrected mask and predicted contour",
+      "scientificScope": "A geometry/optimization explanation with supplied synthetic wafer contours. Top-down target/mask/image views are primary; a 3D context locates the same reticle and wafer field. No full imaging/OPC solver.",
+      "sourceRefs": [
+        "asml-opc"
+      ],
+      "steps": [
+        {
+          "id": "target",
+          "title": "The desired wafer pattern",
+          "input": "Desired feature",
+          "transform": "The target defines the intended wafer geometry. Its lane is separate from the mask lane; their apparent sizes do not imply a physical reticle-to-wafer magnification.",
+          "output": "Target contour",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which contour is the target?",
+            "scopeLimit": "Normalize mask/wafer coordinates explicitly.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "uncorrected",
+          "title": "An initial mask candidate",
+          "input": "Target and initial mask",
+          "transform": "The initial mask provides a pattern intended to produce the wafer target. Similarity between those two drawings alone does not establish the wafer image after optical and resist effects.",
+          "output": "Initial mask",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "How does mask geometry differ from wafer coordinates?",
+            "scopeLimit": "Reticle magnification is not implied by visual size.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "prediction",
+          "title": "A prescribed uncorrected contour",
+          "input": "Mask plus declared synthetic contour",
+          "transform": "The synthetic wafer contour differs from the target edges. The supplied edge values give a squared error of 8 nm\u00b2; the contour is a constructed example rather than an optical calculation or wafer measurement.",
+          "output": "Visible edge error",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "Which errors change with local pattern context?",
+            "scopeLimit": "A supplied contour is not a measured wafer.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "candidate",
+          "title": "A corrected mask candidate",
+          "input": "Initial mismatch",
+          "transform": "The candidate mask includes local edge and corner adjustments. Such mask changes can compensate imaging effects, but this example does not predict which features print or solve an OPC optimization.",
+          "output": "Corrected mask candidate",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "What is changed on the mask?",
+            "scopeLimit": "Do not automatically print every assist feature.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "verify-context",
+          "title": "The prescribed corrected contour",
+          "input": "Corrected candidate and supplied comparison",
+          "transform": "The supplied corrected contour reduces the squared edge error to 0.5 nm\u00b2 for this example. That improvement belongs to the stated synthetic contours and does not establish a dose, focus, or process window.",
+          "output": "Candidate comparison",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "Is improvement shared by all contexts?",
+            "scopeLimit": "No invented optical dose/focus model.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "evidence",
+          "title": "Validation beyond the contour example",
+          "input": "Candidate and verification context",
+          "transform": "The target, candidate mask, and prescribed wafer contour remain separate. Production use would require calibrated imaging behavior, mask inspection, and wafer evidence beyond this geometric comparison.",
+          "output": "Scoped OPC explanation",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What evidence would validate the model?",
+            "scopeLimit": "No full-chip or production-ready claim.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "lithography-optics",
+      "lessonIds": [
+        "lithography-resolution-focus"
+      ],
+      "name": "Finite aperture and focus scaling",
+      "scientificScope": "Optical scaling comparison, not a scanner model. Separate ray/image schematic from actual spatial wafer section. DUV and EUV optical classes are distinct; presets are not node labels or shipping claims.",
+      "sourceRefs": [
+        "asml-optics",
+        "mit-course"
+      ],
+      "steps": [
+        {
+          "id": "system",
+          "title": "An abstract imaging boundary",
+          "input": "Mask, optics and resist wafer",
+          "transform": "The source-to-image schematic locates an optical boundary and an image plane. It is neither a DUV lens assembly nor an EUV mirror prescription, and it carries no marketed node dimension.",
+          "output": "Named imaging context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which variables define the optical model?",
+            "scopeLimit": "Do not use marketed node name as dimension.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "aperture",
+          "title": "A finite numerical aperture",
+          "input": "Selected optics",
+          "transform": "The aperture marker represents the finite range of accepted light directions. Relative numerical aperture controls the stated scaling bounds; the schematic does not solve the optical field.",
+          "output": "Aperture context",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "What changes when NA increases?",
+            "scopeLimit": "Schematic angular cone is not full vector imaging.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "resolution",
+          "title": "Relative resolution scaling",
+          "input": "Declared relative NA",
+          "transform": "With wavelength and process coefficients fixed, the relative resolution bound varies inversely with numerical aperture. The bound is not a prediction of the developed resist profile or final device dimension.",
+          "output": "Resolution ratio",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "How does resolution scale under fixed assumptions?",
+            "scopeLimit": "Actual k1/process effects omitted.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "focus",
+          "title": "Relative depth-of-focus scaling",
+          "input": "Same NA and wavelength assumptions",
+          "transform": "Under the same fixed assumptions, relative depth of focus varies inversely with numerical aperture squared. The marked focus range illustrates this scaling without certifying a usable resist process window.",
+          "output": "Focus context",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "Why does DOF change faster than resolution?",
+            "scopeLimit": "Envelope does not certify resist process window.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "resist-check",
+          "title": "After-develop evidence",
+          "input": "Exposed/developed sample context",
+          "transform": "The optical geometry stays fixed while critical dimension, roughness, and defect measurements address the resist result. Numerical aperture alone cannot establish acceptable patterning across focus and exposure.",
+          "output": "Measurement context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which measurements go beyond optical bounds?",
+            "scopeLimit": "Cannot infer accepted geometry from NA alone.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "transfer-check",
+          "title": "Evidence after pattern transfer",
+          "input": "After-develop evidence plus downstream sample",
+          "transform": "Transferred dimensions and alignment require evidence beyond the optical bounds. The unchanged aperture schematic does not establish etch bias, overlay performance, or the final transistor geometry.",
+          "output": "Scoped imaging/integration evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What has been checked at which stage?",
+            "scopeLimit": "Optical bound does not establish final transistor dimension.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    },
+    {
+      "id": "etch-transfer",
+      "lessonIds": [
+        "plasma-wet-etch-transfer"
+      ],
+      "name": "Target removal, mask loss and profile",
+      "scientificScope": "A representative directional target-removal cross-section with an explicit finite-mask thickness budget. Plasma and wet etch can have process-specific profiles; this view does not model an isotropic wet-etch case.",
+      "sourceRefs": [
+        "lam-etch",
+        "mit-course"
+      ],
+      "steps": [
+        {
+          "id": "mask",
+          "title": "Mask and exposed target",
+          "input": "Patterned temporary mask on target",
+          "transform": "The developed mask separates protected and exposed target regions before removal begins. The initial 40 nm mask is a finite material budget, not an infinitely durable boundary.",
+          "output": "Initial etch stack",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Which material is target and which is protected?",
+            "scopeLimit": "Positive resist development has already occurred.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "interaction",
+          "title": "Initial target and mask removal",
+          "input": "Masked target",
+          "transform": "The first illustrative removal stage consumes both exposed target and some mask. Selectivity relates their removed thicknesses without simulating reaction kinetics, transport, or profile evolution.",
+          "output": "Removal context",
+          "transitionKind": "evidence-state",
+          "measurement": {
+            "question": "What makes this profile case directional or lateral?",
+            "scopeLimit": "Arrows do not solve transport or crystal etch rates.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "partial",
+          "title": "A partially transferred profile",
+          "input": "Exposed target",
+          "transform": "The requested target depth reaches 100 nm, with mask loss calculated as depth divided by selectivity. The geometry is conditional on the thickness budget and does not establish a universal linear etch rate.",
+          "output": "Partial feature",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "How much mask budget remains?",
+            "scopeLimit": "No universal linear profile kinetics.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "depth",
+          "title": "Requested depth and mask budget",
+          "input": "Partial feature",
+          "transform": "At the illustrative 200 nm target depth, selectivity determines the calculated remaining mask. An exhausted budget makes the requested profile unqualified; nonuniformity and overetch allowances are outside this simple calculation.",
+          "output": "Transferred feature",
+          "transitionKind": "material-transform",
+          "measurement": {
+            "question": "Would the starting mask leave any margin?",
+            "scopeLimit": "No overetch/nonuniformity allowance in simple equation.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "residue",
+          "title": "Inspection after transfer",
+          "input": "Transferred feature",
+          "transform": "The etched geometry stays fixed while synthetic markers identify locations for inspection. Residue, profile, and damage require separate evidence; a marker does not establish a damage mechanism or cleaning recipe.",
+          "output": "After-etch context",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "Are depth, profile, residue and damage all acceptable for the next step?",
+            "scopeLimit": "No modeled damage mechanism or automatic clean recipe.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        },
+        {
+          "id": "compare",
+          "title": "Transferred geometry and remaining mask",
+          "input": "After-develop opening and etched feature",
+          "transform": "The final profile and its remaining mask describe different outcomes of transfer. A dimensional change between development and etching would still need matched measurements and further evidence to establish a cause.",
+          "output": "Scoped transfer evidence",
+          "transitionKind": "inspection",
+          "measurement": {
+            "question": "What changed between resist and target material?",
+            "scopeLimit": "AE-AD alone does not establish a root cause.",
+            "dataStatus": "measurement to explain; numerical traces, if supplied, are synthetic unless separately sourced"
+          }
+        }
+      ]
+    }
+  ]
+}

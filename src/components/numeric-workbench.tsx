@@ -18,10 +18,10 @@ function Metric({name,value,unit}:{name:string;value:string;unit?:string}){retur
 function Fields<T extends object>({fields,value,change}:{fields:Field<T>[];value:T;change:(patch:Partial<T>)=>void}){return <div className="numeric-fields">{fields.map(([key,name,min,max,step,unit])=><Range key={String(key)} name={name} value={value[key] as number} min={min} max={max} step={step} unit={unit} onChange={n=>change({[key]:n} as Partial<T>)}/>)}</div>;}
 function Details({name,children,open=false}:{name:string;children:ReactNode;open?:boolean}){return <details className="numeric-details" open={open}><summary>{name}</summary><div>{children}</div></details>;}
 function Result({children,error=false}:{children:ReactNode;error?:boolean}){return <p className={`numeric-status ${error?'numeric-status-error':''}`} role="status">{children}</p>;}
-function SourceFooter({id}:{id:NumericLabId}){const lab=numericLabs.find(l=>l.id===id)!;return <><Equation latex={lab.latex} text={lab.formula}/><div className="numeric-sources">{lab.sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</div></>;}
+function SourceFooter({id,initialRoute}:{id:NumericLabId;initialRoute?:M.BondRoute}){const lab=numericLabs.find(l=>l.id===id)!;return <><Equation latex={lab.latex} text={lab.formula}/><div className="numeric-sources">{lab.sources.map(s=><a key={s.url} href={s.url} target="_blank" rel="noreferrer">{s.name} ↗</a>)}</div></>;}
 
-function StackLab(){
- const [v,setV]=useState(M.hbmStackDefaults),[route,setRoute]=useState<M.BondRoute>('tc-ncf'),[layer,setLayer]=useState(8);const patch=(p:Partial<M.HbmStackInput>)=>setV(s=>({...s,...p})),r=M.hbmStack(v),selected=Math.min(layer,v.dies);
+function StackLab({initialRoute='tc-ncf'}:{initialRoute?:M.BondRoute}){
+ const [v,setV]=useState<M.HbmStackInput>({...M.hbmStackDefaults,gapUm:M.bondRoutes[initialRoute].gapUm,interfaceKW:M.bondRoutes[initialRoute].interfaceKW}),[route,setRoute]=useState<M.BondRoute>(initialRoute),[layer,setLayer]=useState(8);const patch=(p:Partial<M.HbmStackInput>)=>setV(s=>({...s,...p})),r=M.hbmStack(v),selected=Math.min(layer,v.dies);
  return <>
   <div className="numeric-layout"><div>
    <Fields value={v} change={patch} fields={[
@@ -107,4 +107,4 @@ function TokenLab(){
  </>;
 }
 
-export default function NumericWorkbench({id}:{id:NumericLabId}){const lab=numericLabs.find(l=>l.id===id)!;return <section className="numeric-workbench" data-numeric-lab={id}><h3>{lab.title}</h3><p className="numeric-intro">{lab.intro}</p>{id==='hbm-stack-build'?<StackLab/>:id==='inference-placement'?<PlacementLab/>:<TokenLab/>}<SourceFooter id={id}/></section>;}
+export default function NumericWorkbench({id,initialRoute}:{id:NumericLabId;initialRoute?:M.BondRoute}){const lab=numericLabs.find(l=>l.id===id)!;return <section className="numeric-workbench" data-numeric-lab={id}><h3>{lab.title}</h3><p className="numeric-intro">{lab.intro}</p>{id==='hbm-stack-build'?<StackLab initialRoute={initialRoute}/>:id==='inference-placement'?<PlacementLab/>:<TokenLab/>}<SourceFooter id={id}/></section>;}

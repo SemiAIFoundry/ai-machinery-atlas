@@ -1,0 +1,1889 @@
+[
+  {
+    "id": "engineering-part-of-gate-stack-mosfet",
+    "from": "gate-stack",
+    "to": "mosfet",
+    "kind": "part-of",
+    "label": "The insulated gate stack controls the channel electrostatically.",
+    "scope": "Representative MOSFET anatomy; materials and dimensions depend on the device route.",
+    "sourceLessonId": "gate-stack",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.intel.com/pressroom/kits/advancedtech/doodle/ref_HiK-MG/high-k.htm"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-channel-mosfet",
+    "from": "channel",
+    "to": "mosfet",
+    "kind": "part-of",
+    "label": "The channel carries the gate-controlled source–drain current.",
+    "scope": "Physical channel region, not a stream of tokens or an ideal mechanical switch.",
+    "sourceLessonId": "channel",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/ba97ec0d4b75ff1049567a48e66b74a0_lec8.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-source-drain-mosfet",
+    "from": "source-drain",
+    "to": "mosfet",
+    "kind": "part-of",
+    "label": "Source and drain provide carrier reservoirs and terminal regions.",
+    "scope": "Terminal roles and bias depend on the device; this is the lesson’s MOS teaching boundary.",
+    "sourceLessonId": "source-drain",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.imec-int.com/en/articles/imec-achieves-record-low-contact-resistivity-on-ga-doped-ge-source-drain-contacts-for-pmos-transistors"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-contact-mosfet",
+    "from": "contact",
+    "to": "mosfet",
+    "kind": "part-of",
+    "label": "Contacts connect device terminal regions to the wiring.",
+    "scope": "The contacted device assembly includes interfaces outside the intrinsic transistor model.",
+    "sourceLessonId": "contact",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.imec-int.com/drupal/sites/default/files/2017-04/Stagegids%202017_04_07.pdf",
+        "https://ieeexplore.ieee.org/document/1485338/"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-spacer-mosfet",
+    "from": "spacer",
+    "to": "mosfet",
+    "kind": "part-of",
+    "label": "Spacers separate the gate region from nearby device structures.",
+    "scope": "Representative integrated device; spacer role and geometry are route-specific.",
+    "sourceLessonId": "spacer",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.imec-int.com/en/articles/entering-nanosheet-transistor-era-0"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-mosfet-inverter",
+    "from": "mosfet",
+    "to": "inverter",
+    "kind": "part-of",
+    "label": "Complementary MOSFETs form the pull-up and pull-down paths.",
+    "scope": "Conventional static CMOS inverter, not every possible inverter implementation.",
+    "sourceLessonId": "inverter",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/b5c8c475943132703a6dd50c479f9714_lec13.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-mosfet-nand",
+    "from": "mosfet",
+    "to": "nand",
+    "kind": "part-of",
+    "label": "Series nMOS and parallel pMOS paths implement the NAND topology.",
+    "scope": "Conventional two-input static CMOS NAND.",
+    "sourceLessonId": "nand",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://6191.mit.edu/_static/fall24/resources/references/6004_student_notes_FA20.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-inverter-sram",
+    "from": "inverter",
+    "to": "sram",
+    "kind": "part-of",
+    "label": "Two cross-coupled inverters retain the SRAM state while powered.",
+    "scope": "Canonical 6T SRAM cell, with two additional access devices and external read/write circuitry.",
+    "sourceLessonId": "sram",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/6-152j-micro-nano-processing-technology-fall-2005/57460d7d1e3ffe8e245f4f2eb3d8f845_lecture18.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-part-of-sram-shared-sram",
+    "from": "sram",
+    "to": "shared-sram",
+    "kind": "part-of",
+    "label": "SRAM cells provide the scratchpad’s local storage.",
+    "scope": "Cell mechanism versus complete banked shared-memory array; peripheral circuitry and bank organization remain separate.",
+    "sourceLessonId": "shared-sram",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/archive/13.2.0/cuda-programming-guide/02-basics/writing-cuda-kernels.html",
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html"
+      ]
+    },
+    "investigationIds": [
+      "switching",
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-l1-cache-streaming-multiprocessor",
+    "from": "l1-cache",
+    "to": "streaming-multiprocessor",
+    "kind": "supplies",
+    "label": "A local cache hit supplies requested data to the execution group.",
+    "scope": "A logical service relationship through the architecture’s load path; a miss instead requires service farther down the hierarchy.",
+    "sourceLessonId": "l1-cache",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://docs.nvidia.com/cuda/cuda-c-best-practices-guide/index.html"
+      ]
+    },
+    "investigationIds": [
+      "switching",
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-l2-cache-streaming-multiprocessor",
+    "from": "l2-cache",
+    "to": "streaming-multiprocessor",
+    "kind": "supplies",
+    "label": "The shared cache supplies data to requesting execution groups.",
+    "scope": "Service may traverse on-chip routing; shared capacity, traffic and memory misses affect cost.",
+    "sourceLessonId": "l2-cache",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://developer.nvidia.com/blog/accelerating-data-processing-with-nvidia-multi-instance-gpu-and-numa-node-localization/",
+        "https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/pages/c14/c14s1/"
+      ]
+    },
+    "investigationIds": [
+      "switching",
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-part-of-adder-multiplier",
+    "from": "adder",
+    "to": "multiplier",
+    "kind": "part-of",
+    "label": "Addition combines weighted partial products into the result.",
+    "scope": "Functional arithmetic composition; exact reduction network and physical layout depend on implementation.",
+    "sourceLessonId": "multiplier",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www-inst.eecs.berkeley.edu/~eecs151/fa21/files/lectures/Lecture18-Adders2-2up.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-executes-tensor-core-mac",
+    "from": "tensor-core",
+    "to": "mac",
+    "kind": "executes",
+    "label": "Matrix instructions evaluate repeated multiply–accumulate work.",
+    "scope": "Instruction format, tile shape, precision and accumulation rules are implementation-specific.",
+    "sourceLessonId": "tensor-core",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cutlass/4.5.1/media/docs/cpp/blackwell.html",
+        "https://www.nvidia.com/en-us/data-center/gb200-nvl72/",
+        "https://docs.nvidia.com/deeplearning/performance/dl-performance-matrix-multiplication/index.html",
+        "https://nvidianews.nvidia.com/news/nvidia-launches-revolutionary-volta-gpu-platform-fueling-next-era-of-ai-and-high-performance-computing"
+      ]
+    },
+    "investigationIds": [
+      "switching",
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-controls-clock-flipflop",
+    "from": "clock",
+    "to": "flipflop",
+    "kind": "controls",
+    "label": "Clock edges determine when the register captures its data.",
+    "scope": "An edge-triggered synchronous path; setup, hold and clock-to-Q constraints still apply.",
+    "sourceLessonId": "flipflop",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/6-111-introductory-digital-systems-laboratory-spring-2006/31134a27ec1bedf570a26922790dfbec_lec11.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-clock-flipflop",
+    "from": "clock",
+    "to": "flipflop",
+    "kind": "limited-by",
+    "label": "Register timing contributes to the minimum feasible clock period.",
+    "scope": "Setup-limited single-cycle budget; this is distinct from the clock’s control relationship to the register.",
+    "sourceLessonId": "flipflop",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/6-111-introductory-digital-systems-laboratory-spring-2006/31134a27ec1bedf570a26922790dfbec_lec11.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-inverter-mosfet",
+    "from": "inverter",
+    "to": "mosfet",
+    "kind": "limited-by",
+    "label": "Device current limits how quickly the output load changes voltage.",
+    "scope": "A first-order switching relationship with a declared load; not a complete timing or noise-margin model.",
+    "sourceLessonId": "inverter",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://ocw.mit.edu/courses/6-012-microelectronic-devices-and-circuits-fall-2005/b5c8c475943132703a6dd50c479f9714_lec13.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-transfers-interconnect-standard-cell",
+    "from": "interconnect",
+    "to": "standard-cell",
+    "kind": "transfers",
+    "label": "Metal routes deliver signals between cell pins.",
+    "scope": "Physical electrical interconnection; a logical connection does not imply zero delay or no parasitic coupling.",
+    "sourceLessonId": "standard-cell",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.cerc.utexas.edu/~jaa/projects/library/",
+        "https://www.southampton.ac.uk/~bim/notes/icd/lecture/pdf4/icd07.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching"
+    ]
+  },
+  {
+    "id": "engineering-stores-register-file-mac",
+    "from": "register-file",
+    "to": "mac",
+    "kind": "stores",
+    "label": "Registers retain operands and partial results used by arithmetic.",
+    "scope": "The target denotes arithmetic-associated state, not storage of an operation or a guarantee that every accumulator resides in registers.",
+    "sourceLessonId": "register-file",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://developer.nvidia.com/blog/register-cache-warp-cuda/"
+      ]
+    },
+    "investigationIds": [
+      "switching",
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-processed-into-silicon-wafer-gpu-die",
+    "from": "silicon-wafer",
+    "to": "gpu-die",
+    "kind": "processed-into",
+    "label": "A logic wafer is processed, tested and separated into logic dies.",
+    "scope": "One manufacturing stream; starting wafers do not become qualified GPUs without device, wiring, test and packaging steps.",
+    "sourceLessonId": "gpu-die",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://nvidianews.nvidia.com/news/nvidia-blackwell-platform-arrives-to-power-a-new-era-of-computing",
+        "https://www.ti.com/lit/pdf/sprac07"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-processed-into-silicon-wafer-dram-die",
+    "from": "silicon-wafer",
+    "to": "dram-die",
+    "kind": "processed-into",
+    "label": "A memory wafer process produces dies containing DRAM arrays.",
+    "scope": "A separate memory-production stream, not the same wafer becoming both logic and memory.",
+    "sourceLessonId": "dram-cell-array-fabrication",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.micron.com/content/dam/micron/educatorhub/intro-to-memory/micron-intro-to-memory-presentation.pdf",
+        "https://www.synopsys.com/articles/hbm3-ip-dwtb.html"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-assembled-into-dram-die-hbm-stack",
+    "from": "dram-die",
+    "to": "hbm-stack",
+    "kind": "assembled-into",
+    "label": "Tested DRAM dies become layers in an HBM stack.",
+    "scope": "Compatible die/base configuration with route-specific assembly and test; die count and interface bandwidth remain distinct.",
+    "sourceLessonId": "hbm-stack",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.micron.com/products/memory/hbm/hbm3e",
+        "https://assets.micron.com/adobe/assets/urn%3Aaaid%3Aaem%3Ab710d8f2-7f66-44c1-a234-456e2b986347/renditions/original/as/hbm3e-product-brief.pdf",
+        "https://nvidianews.nvidia.com/news/nvidia-delivers-massive-performance-leap-for-deep-learning-hpc-applications-with-nvidia-tesla-p100-accelerators-6622437"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-part-of-through-silicon-via-hbm-stack",
+    "from": "through-silicon-via",
+    "to": "hbm-stack",
+    "kind": "part-of",
+    "label": "Vertical vias carry connections through the stack’s silicon layers.",
+    "scope": "Representative TSV-connected HBM; a TSV is an interconnect, not a storage cell.",
+    "sourceLessonId": "through-silicon-via",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/",
+        "https://assets.micron.com/adobe/assets/urn%3Aaaid%3Aaem%3Ab710d8f2-7f66-44c1-a234-456e2b986347/renditions/original/as/hbm3e-product-brief.pdf",
+        "https://ocw.mit.edu/courses/6-973-communication-system-design-spring-2006/44d1cff68d0f994cca25442de3e1ac78_lecture_5.pdf"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-integrated-with-hbm-stack-gpu-die",
+    "from": "hbm-stack",
+    "to": "gpu-die",
+    "kind": "integrated-with",
+    "label": "Compatible HBM and logic are co-packaged for a wide memory path.",
+    "scope": "Representative accelerator package; no claim that arbitrary stacks and dies are interchangeable or that one company supplies another.",
+    "sourceLessonId": "hbm-stack",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.micron.com/products/memory/hbm/hbm3e",
+        "https://assets.micron.com/adobe/assets/urn%3Aaaid%3Aaem%3Ab710d8f2-7f66-44c1-a234-456e2b986347/renditions/original/as/hbm3e-product-brief.pdf",
+        "https://nvidianews.nvidia.com/news/nvidia-delivers-massive-performance-leap-for-deep-learning-hpc-applications-with-nvidia-tesla-p100-accelerators-6622437"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing",
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-part-of-interposer-cowos-s-silicon-interposer",
+    "from": "interposer",
+    "to": "cowos-s-silicon-interposer",
+    "kind": "part-of",
+    "label": "A silicon interposer supplies routing within the CoWoS-S family.",
+    "scope": "Named public family description; exact generation, dimensions and customer stackup are not inferred.",
+    "sourceLessonId": "cowos-s-silicon-interposer",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-part-of-microbump-bump-thermocompression-assembly",
+    "from": "microbump",
+    "to": "bump-thermocompression-assembly",
+    "kind": "part-of",
+    "label": "Microbump joints connect the mating assembly interfaces.",
+    "scope": "Bump-based thermocompression route; hybrid bonding is a different interface construction.",
+    "sourceLessonId": "bump-thermocompression-assembly",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://amkor.com/technology/flip-chip/",
+        "https://www.besi.com/scientific-publications/",
+        "https://news.skhynix.com/en/small-size-big-impact/"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-part-of-package-substrate-flip-chip-abf-substrate",
+    "from": "package-substrate",
+    "to": "flip-chip-abf-substrate",
+    "kind": "part-of",
+    "label": "The organic substrate routes between the die-side assembly and board connections.",
+    "scope": "Representative flip-chip package stack; layer count, material stack and pitch depend on the product.",
+    "sourceLessonId": "flip-chip-abf-substrate",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://amkor.com/technology/flip-chip/",
+        "https://www.ajinomoto.co.jp/company/en/presscenter/press/detail/g2016_04_13.html"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-hbm-stack-hbm-stack-height-budget",
+    "from": "hbm-stack",
+    "to": "hbm-stack-height-budget",
+    "kind": "limited-by",
+    "label": "Layer count must fit the complete stack-height budget.",
+    "scope": "Mechanical envelope includes dies, counted bond lines, base and allowances; it is not an automatic bandwidth limit.",
+    "sourceLessonId": "hbm-stack-height-budget",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/",
+        "https://news.samsung.com/global/samsung-develops-industry-first-36gb-hbm3e-12h-dram"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-hbm-stack-hbm-stack-thermal-yield",
+    "from": "hbm-stack",
+    "to": "hbm-stack-thermal-yield",
+    "kind": "limited-by",
+    "label": "Heat paths and conditional assembly survival constrain usable stacks.",
+    "scope": "Separate thermal and yield gates; a higher layer count does not by itself specify supplier yield.",
+    "sourceLessonId": "hbm-stack-thermal-yield",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.imec-int.com/en/press/imec-mitigates-thermal-bottleneck-3d-hbm-gpu-architectures-using-system-technology-co",
+        "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/",
+        "https://news.skhynix.com/en/meet-the-sk-hynix-team-behind-the-worlds-first-12-layer-hbm3/"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-hybrid-bond-surface-alignment-clean-planarize-surface",
+    "from": "hybrid-bond-surface-alignment",
+    "to": "clean-planarize-surface",
+    "kind": "limited-by",
+    "label": "Surface topography is one input to bond-interface readiness.",
+    "scope": "CMP is necessary context, not a sufficient prediction of bonding: cleaning, chemistry, alignment and thermal sequence also matter.",
+    "sourceLessonId": "hybrid-bond-surface-alignment",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch",
+        "https://www.besi.com/scientific-publications/"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-hbm-hybrid-bond-route-hybrid-bond-surface-alignment",
+    "from": "hbm-hybrid-bond-route",
+    "to": "hybrid-bond-surface-alignment",
+    "kind": "limited-by",
+    "label": "Hybrid interfaces require suitable surfaces and aligned metal/dielectric features.",
+    "scope": "Geometry and surface preparation are not themselves proof of electrical continuity or reliability.",
+    "sourceLessonId": "hbm-hybrid-bond-route",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.imec-int.com/en/articles/wafer-wafer-hybrid-bonding-pushing-boundaries-400nm-interconnect-pitch",
+        "https://www.imec-int.com/en/press/imec-demonstrates-die-wafer-hybrid-bonding-cu-interconnect-pad-pitch-2mm"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-assembled-into-gpu-die-compute-baseboard",
+    "from": "gpu-die",
+    "to": "compute-baseboard",
+    "kind": "assembled-into",
+    "label": "Packaged GPU dies enter the compute-board assembly.",
+    "scope": "Assembly hierarchy through an appropriate package and connections; this does not claim that bare logic dies mount directly to the board.",
+    "sourceLessonId": "compute-baseboard",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-gb200/latest/dgx-superpod-components.html",
+        "https://docs.nvidia.com/multi-node-nvlink-systems/multi-node-tuning-guide/system.html",
+        "https://www.ti.com/lit/pdf/SCAA082A"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-assembled-into-compute-baseboard-compute-tray",
+    "from": "compute-baseboard",
+    "to": "compute-tray",
+    "kind": "assembled-into",
+    "label": "Compute-board assemblies form part of a serviceable tray.",
+    "scope": "Named reference-system hierarchy; the exact board and tray counts depend on configuration.",
+    "sourceLessonId": "compute-tray",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-gb200/latest/dgx-superpod-components.html"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-part-of-compute-tray-rack",
+    "from": "compute-tray",
+    "to": "rack",
+    "kind": "part-of",
+    "label": "Compute trays provide the rack’s repeated computing assemblies.",
+    "scope": "Reference rack construction; a tray is not a single GPU or an entire rack.",
+    "sourceLessonId": "compute-tray",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx-superpod/reference-architecture-scalable-infrastructure-gb200/latest/dgx-superpod-components.html"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-part-of-power-supply-power-shelf",
+    "from": "power-supply",
+    "to": "power-shelf",
+    "kind": "part-of",
+    "label": "Conversion modules form the modular power shelf.",
+    "scope": "Applicable modular rack-power architecture; other system power arrangements can differ.",
+    "sourceLessonId": "power-shelf",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-powers-power-shelf-compute-tray",
+    "from": "power-shelf",
+    "to": "compute-tray",
+    "kind": "powers",
+    "label": "Rack DC distribution supplies the compute trays.",
+    "scope": "Power is delivered through the specified bus and downstream conversion/protection, not an implied direct chip rail.",
+    "sourceLessonId": "power-shelf",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-powers-voltage-regulator-gpu-die",
+    "from": "voltage-regulator",
+    "to": "gpu-die",
+    "kind": "powers",
+    "label": "Local regulation supplies low-voltage current to the chip.",
+    "scope": "Voltage, current, control and transient requirements belong to the platform configuration.",
+    "sourceLessonId": "voltage-regulator",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.ti.com/product-category/power-management/multiphase.html",
+        "https://www.ti.com/lit/ug/tiduff3/tiduff3.pdf",
+        "https://www.ti.com/lit/an/slva477b/slva477b.pdf"
+      ]
+    },
+    "investigationIds": [
+      "switching",
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-transfers-heat-to-thermal-interface-heat-spreader",
+    "from": "thermal-interface",
+    "to": "heat-spreader",
+    "kind": "transfers-heat-to",
+    "label": "The interface conducts heat into the spreader in a lidded stack.",
+    "scope": "Conditional on the selected lidded construction; a direct-die arrangement omits this intermediate path.",
+    "sourceLessonId": "heat-spreader",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.amd.com/r/en-US/ds946-xqr-versal-ai-core/Lidless-Flip-Chip-Packages",
+        "https://amkor.com/technology/flip-chip/",
+        "https://www.ti.com/download/trng/docs/seminar/Topic%2010%20-%20Thermal%20Design%20Consideration%20for%20Surface%20Mount%20Layouts%20.pdf"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-transfers-heat-to-heat-spreader-coldplate",
+    "from": "heat-spreader",
+    "to": "coldplate",
+    "kind": "transfers-heat-to",
+    "label": "A lidded stack conducts its heat onward to the cooler.",
+    "scope": "Requires the appropriate mating interface; the spreader redistributes heat rather than rejecting it by itself.",
+    "sourceLessonId": "heat-spreader",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.amd.com/r/en-US/ds946-xqr-versal-ai-core/Lidless-Flip-Chip-Packages",
+        "https://amkor.com/technology/flip-chip/",
+        "https://www.ti.com/download/trng/docs/seminar/Topic%2010%20-%20Thermal%20Design%20Consideration%20for%20Surface%20Mount%20Layouts%20.pdf"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-cools-coldplate-gpu-die",
+    "from": "coldplate",
+    "to": "gpu-die",
+    "kind": "cools",
+    "label": "Coolant carries away heat received from the chip’s thermal path.",
+    "scope": "Indirectly through the applicable interfaces or lid; local resistance, flow and allowed temperatures determine the result.",
+    "sourceLessonId": "coldplate",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.coolitsystems.com/wp-content/uploads/2024/05/Split-Flow-Technology-CoolIT-Tech-Brief.pdf",
+        "https://www.coolitsystems.com/coldplate-technology/"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-transfers-heat-to-coldplate-cdu",
+    "from": "coldplate",
+    "to": "cdu",
+    "kind": "transfers-heat-to",
+    "label": "The technology-cooling circuit carries captured heat to its CDU.",
+    "scope": "Representative separated-loop arrangement; heat transfer is not the same as mixing the two fluids.",
+    "sourceLessonId": "coolant-loop-separation",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html",
+        "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-transfers-heat-to-cdu-cooling-plant",
+    "from": "cdu",
+    "to": "cooling-plant",
+    "kind": "transfers-heat-to",
+    "label": "The facility circuit carries exchanged heat toward final rejection.",
+    "scope": "Plant boundary and heat-rejection method vary; a CDU moves heat and does not make it disappear.",
+    "sourceLessonId": "coolant-loop-separation",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html",
+        "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-rack-grid-interconnection-readiness",
+    "from": "rack",
+    "to": "grid-interconnection-readiness",
+    "kind": "limited-by",
+    "label": "Operating racks require released electrical service at the site boundary.",
+    "scope": "Installed equipment and announced power are not equivalent to commissioned, available supply.",
+    "sourceLessonId": "grid-interconnection-readiness",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://insidelines.pjm.com/pjms-updated-20-year-forecast-continues-to-see-significant-long-term-load-growth/"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-rack-cooling-plant",
+    "from": "rack",
+    "to": "cooling-plant",
+    "kind": "limited-by",
+    "label": "Sustained rack operation requires an adequate final heat sink.",
+    "scope": "A system heat-rejection constraint, not a universal ratio between electrical capacity and usable tokens.",
+    "sourceLessonId": "cooling-plant",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.energy.gov/cmei/femp/cooling-water-efficiency-opportunities-federal-data-centers"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-compatible-supply-capacity-hbm-stack",
+    "from": "compatible-supply-capacity",
+    "to": "hbm-stack",
+    "kind": "limited-by",
+    "label": "Good compatible HBM supply can bind package output.",
+    "scope": "Conditional bottleneck after normalizing all inputs to the same package/time boundary; raw wafer losses must not be counted again.",
+    "sourceLessonId": "compatible-supply-capacity",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+        "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-compatible-supply-capacity-package-substrate",
+    "from": "compatible-supply-capacity",
+    "to": "package-substrate",
+    "kind": "limited-by",
+    "label": "Substrate availability can limit complete package input sets.",
+    "scope": "Conditional bottleneck among compatible components; not a live supplier queue or a vendor-allocation claim.",
+    "sourceLessonId": "compatible-supply-capacity",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://3dfabric.tsmc.com/english/dedicatedFoundry/technology/cowos.htm",
+        "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-memory-system-qualification-cluster-commissioning-gates",
+    "from": "memory-system-qualification",
+    "to": "cluster-commissioning-gates",
+    "kind": "limited-by",
+    "label": "System readiness requires integrated site and recovery evidence.",
+    "scope": "A component specification or passing stack test does not establish system commissioning.",
+    "sourceLessonId": "memory-system-qualification",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/dgx/dgxgb200-user-guide/hardware.html",
+        "https://www.uciexpress.org/post/introduction-to-ucie-webinar-q-a-recap",
+        "https://investor.sandisk.com/node/8126/pdf",
+        "https://semiaifoundry.com/updates/communication-theory-of-computation-realization/"
+      ]
+    },
+    "investigationIds": [
+      "manufacturing"
+    ]
+  },
+  {
+    "id": "engineering-part-of-streaming-multiprocessor-gpu-die",
+    "from": "streaming-multiprocessor",
+    "to": "gpu-die",
+    "kind": "part-of",
+    "label": "Execution groups repeat within the accelerator die.",
+    "scope": "NVIDIA-style GPU teaching organization; neither drawn group count nor proportions disclose a private floorplan.",
+    "sourceLessonId": "streaming-multiprocessor",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://developer.nvidia.com/blog/using-cuda-warp-level-primitives/",
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://docs.nvidia.com/nsight-compute/ProfilingGuide/",
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-part-of-tensor-core-streaming-multiprocessor",
+    "from": "tensor-core",
+    "to": "streaming-multiprocessor",
+    "kind": "part-of",
+    "label": "Matrix engines serve work scheduled within the execution group.",
+    "scope": "Applicable NVIDIA architecture; not every processor family uses this organization.",
+    "sourceLessonId": "streaming-multiprocessor",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://developer.nvidia.com/blog/using-cuda-warp-level-primitives/",
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://docs.nvidia.com/nsight-compute/ProfilingGuide/",
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/introduction.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-part-of-register-file-streaming-multiprocessor",
+    "from": "register-file",
+    "to": "streaming-multiprocessor",
+    "kind": "part-of",
+    "label": "The register pool supports resident thread state and operands.",
+    "scope": "Logical thread ownership and physical allocation limits are distinct.",
+    "sourceLessonId": "register-file",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://developer.nvidia.com/blog/register-cache-warp-cuda/"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-part-of-shared-sram-streaming-multiprocessor",
+    "from": "shared-sram",
+    "to": "streaming-multiprocessor",
+    "kind": "part-of",
+    "label": "Software-managed local memory supports cooperative thread work.",
+    "scope": "Shared-memory scope and bank/capacity rules are architecture-specific.",
+    "sourceLessonId": "shared-sram",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/archive/13.2.0/cuda-programming-guide/02-basics/writing-cuda-kernels.html",
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-stores-hbm-stack-kv-cache",
+    "from": "hbm-stack",
+    "to": "kv-cache",
+    "kind": "stores",
+    "label": "HBM can retain active sequences’ key/value state.",
+    "scope": "A common GPU serving placement; KV is logical tensor state and may be placed differently by another system.",
+    "sourceLessonId": "kv-cache",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/2309.06180",
+        "https://arxiv.org/abs/2305.13245"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-stores-hbm-stack-embedding",
+    "from": "hbm-stack",
+    "to": "embedding",
+    "kind": "stores",
+    "label": "HBM can retain model embedding weights for accelerator access.",
+    "scope": "A working-set placement example, not a requirement that every embedding table is entirely HBM-resident.",
+    "sourceLessonId": "hbm-stack",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.micron.com/products/memory/hbm/hbm3e",
+        "https://assets.micron.com/adobe/assets/urn%3Aaaid%3Aaem%3Ab710d8f2-7f66-44c1-a234-456e2b986347/renditions/original/as/hbm3e-product-brief.pdf",
+        "https://nvidianews.nvidia.com/news/nvidia-delivers-massive-performance-leap-for-deep-learning-hpc-applications-with-nvidia-tesla-p100-accelerators-6622437"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-transfers-tensor-memory-accelerator-shared-sram",
+    "from": "tensor-memory-accelerator",
+    "to": "shared-sram",
+    "kind": "transfers",
+    "label": "Asynchronous copies stage tensor tiles into shared-memory buffers.",
+    "scope": "Supported copy direction and instruction layout; consumers still require correct completion/synchronization.",
+    "sourceLessonId": "tensor-memory-accelerator",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/archive/12.1.0/pdf/Hopper_Tuning_Guide.pdf",
+        "https://github.com/NVIDIA/cutlass/discussions/2125",
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/04-special-topics/async-copies.html",
+        "https://developer.nvidia.com/blog/nvidia-hopper-architecture-in-depth/"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-transfers-hbm-controller-hbm-stack",
+    "from": "hbm-controller",
+    "to": "hbm-stack",
+    "kind": "transfers",
+    "label": "The controller issues memory work through the stack interface.",
+    "scope": "Request/control direction is shown; returned data uses the corresponding interface path, and scheduling affects service.",
+    "sourceLessonId": "hbm-controller",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://assets.micron.com/adobe/assets/urn%3Aaaid%3Aaem%3Ab710d8f2-7f66-44c1-a234-456e2b986347/renditions/original/as/hbm3e-product-brief.pdf",
+        "https://www.nvidia.com/en-us/data-center/gb200-nvl72/",
+        "https://www.intel.com/content/www/us/en/developer/articles/technical/memory-performance-in-a-nutshell.html",
+        "https://pubsonline.informs.org/doi/abs/10.1287/opre.9.3.383"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-produces-compiler-kernel",
+    "from": "compiler",
+    "to": "kernel",
+    "kind": "produces",
+    "label": "Lowering and code generation produce target kernels and buffer plans.",
+    "scope": "A program may become several kernels or compiled regions; semantic and numerical requirements remain.",
+    "sourceLessonId": "compiler",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/cuda-compiler-driver-nvcc/index.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-executes-streaming-multiprocessor-kernel",
+    "from": "streaming-multiprocessor",
+    "to": "kernel",
+    "kind": "executes",
+    "label": "Execution groups carry out the kernel’s dispatched thread work.",
+    "scope": "Thread blocks are software work units, not physical processors; scheduling and residency constraints apply.",
+    "sourceLessonId": "kernel",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/cuda-programming-guide/01-introduction/programming-model.html",
+        "https://crd.lbl.gov/assets/Uploads/ECP19-Roofline-1-intro.pdf"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-executes-kernel-attention",
+    "from": "kernel",
+    "to": "attention",
+    "kind": "executes",
+    "label": "One or more kernels implement attention’s tensor operations.",
+    "scope": "An implementation relationship, not a claim that one whole attention head occupies one hardware block.",
+    "sourceLessonId": "attention-io-tiling",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/2205.14135"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-kernel-shared-sram",
+    "from": "kernel",
+    "to": "shared-sram",
+    "kind": "limited-by",
+    "label": "A tile’s local working set is constrained by available scratchpad capacity.",
+    "scope": "The binding resource depends on kernel shape and allocation; capacity and bank conflicts are different issues.",
+    "sourceLessonId": "shared-sram",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/archive/13.2.0/cuda-programming-guide/02-basics/writing-cuda-kernels.html",
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-kernel-register-file",
+    "from": "kernel",
+    "to": "register-file",
+    "kind": "limited-by",
+    "label": "Register allocation can constrain residency or introduce spill traffic.",
+    "scope": "Compilation, allocation granularity and scheduling affect the result; more registers per thread do not imply a universal slowdown.",
+    "sourceLessonId": "register-file",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/cuda/blackwell-tuning-guide/index.html",
+        "https://developer.nvidia.com/blog/register-cache-warp-cuda/"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-gpu-die-hbm-controller",
+    "from": "gpu-die",
+    "to": "hbm-controller",
+    "kind": "limited-by",
+    "label": "The memory-service path can limit supplied operands and useful rate.",
+    "scope": "Conditional on the workload and locality; compute and other resources can instead be binding.",
+    "sourceLessonId": "hbm-controller",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://assets.micron.com/adobe/assets/urn%3Aaaid%3Aaem%3Ab710d8f2-7f66-44c1-a234-456e2b986347/renditions/original/as/hbm3e-product-brief.pdf",
+        "https://www.nvidia.com/en-us/data-center/gb200-nvl72/",
+        "https://www.intel.com/content/www/us/en/developer/articles/technical/memory-performance-in-a-nutshell.html",
+        "https://pubsonline.informs.org/doi/abs/10.1287/opre.9.3.383"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-tokenizer-embedding",
+    "from": "tokenizer",
+    "to": "embedding",
+    "kind": "supplies",
+    "label": "Token IDs select rows in the learned embedding table.",
+    "scope": "IDs are indices, not semantic magnitudes; the tokenizer and table vocabulary must agree.",
+    "sourceLessonId": "embedding",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/2.14/generated/torch.nn.Embedding.html",
+        "https://www.jmlr.org/papers/v3/bengio03a.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-embedding-attention",
+    "from": "embedding",
+    "to": "attention",
+    "kind": "supplies",
+    "label": "Token representations feed the learned query, key and value projections.",
+    "scope": "Positional treatment and preceding blocks affect the representation in a full transformer.",
+    "sourceLessonId": "attention",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/1706.03762",
+        "https://arxiv.org/abs/2205.14135"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-kv-cache-attention",
+    "from": "kv-cache",
+    "to": "attention",
+    "kind": "supplies",
+    "label": "Cached keys and values provide earlier positions’ reusable attention state.",
+    "scope": "Autoregressive cached execution; cache layout and attention architecture determine which positions are retained.",
+    "sourceLessonId": "kv-cache",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/2309.06180",
+        "https://arxiv.org/abs/2305.13245"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-attention-residual-normalization",
+    "from": "attention",
+    "to": "residual-normalization",
+    "kind": "supplies",
+    "label": "Attention output contributes an update to the residual computation.",
+    "scope": "Representative transformer block; pre/post-normalization order and exact sublayer structure are model choices.",
+    "sourceLessonId": "residual-normalization",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/2.14/generated/torch.nn.LayerNorm.html",
+        "https://arxiv.org/abs/1512.03385",
+        "https://arxiv.org/abs/1607.06450"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-feed-forward-residual-normalization",
+    "from": "feed-forward",
+    "to": "residual-normalization",
+    "kind": "supplies",
+    "label": "The feature transformation contributes another residual update.",
+    "scope": "Matching representation shapes are required; normalization placement is not fixed by this edge.",
+    "sourceLessonId": "residual-normalization",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/2.14/generated/torch.nn.LayerNorm.html",
+        "https://arxiv.org/abs/1512.03385",
+        "https://arxiv.org/abs/1607.06450"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-residual-normalization-output-head",
+    "from": "residual-normalization",
+    "to": "output-head",
+    "kind": "supplies",
+    "label": "The final representation feeds vocabulary-logit projection.",
+    "scope": "A representative decoder readout; the edge does not assert one universal normalization or output architecture.",
+    "sourceLessonId": "output-head",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/2005.14165"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-serving-kv-cache",
+    "from": "serving",
+    "to": "kv-cache",
+    "kind": "limited-by",
+    "label": "Active context state constrains how many requests can fit.",
+    "scope": "Capacity depends on sequence lengths, layers, KV heads, format, allocation and placement.",
+    "sourceLessonId": "kv-cache",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/2309.06180",
+        "https://arxiv.org/abs/2305.13245"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-serving-scheduler",
+    "from": "serving",
+    "to": "scheduler",
+    "kind": "limited-by",
+    "label": "Admission and batching choices affect latency and useful throughput.",
+    "scope": "A service-level relationship under defined request and quality requirements, not an optimal-scheduler claim.",
+    "sourceLessonId": "serving",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.vllm.ai/en/latest/",
+        "https://arxiv.org/abs/2309.06180"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-limited-by-parallelism-nccl",
+    "from": "parallelism",
+    "to": "nccl",
+    "kind": "limited-by",
+    "label": "Required collective communication can reduce scaling efficiency.",
+    "scope": "Only distributed strategies that require these collectives; topology, algorithm and overlap determine the cost.",
+    "sourceLessonId": "parallelism",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.nvidia.com/megatron-core/developer-guide/latest/user-guide/parallelism-guide.html",
+        "https://arxiv.org/abs/2104.04473"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-transfers-network-adapter-nccl",
+    "from": "network-adapter",
+    "to": "nccl",
+    "kind": "transfers",
+    "label": "Adapters carry the tensor traffic used by scale-out collectives.",
+    "scope": "The target denotes collective-associated data; this is not a claim that NCCL software is a physical network endpoint.",
+    "sourceLessonId": "network-adapter",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://www.nvidia.com/en-us/networking/ethernet-adapters/",
+        "https://networking-docs.nvidia.com/connectx7hw/introduction"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-stores-storage-checkpoint",
+    "from": "storage",
+    "to": "checkpoint",
+    "kind": "stores",
+    "label": "Persistent storage holds recoverable checkpoint data.",
+    "scope": "Durability, completeness, versioning and restoration compatibility are required for a usable checkpoint.",
+    "sourceLessonId": "checkpoint",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/stable/distributed.checkpoint.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-stores-checkpoint-loss-optimizer",
+    "from": "checkpoint",
+    "to": "loss-optimizer",
+    "kind": "stores",
+    "label": "A training checkpoint can preserve optimizer and parameter state.",
+    "scope": "The target denotes saved training state, not the optimizer algorithm itself; exact restart state depends on the training system.",
+    "sourceLessonId": "checkpoint",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/stable/distributed.checkpoint.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-supplies-training-data-loss-optimizer",
+    "from": "training-data",
+    "to": "loss-optimizer",
+    "kind": "supplies",
+    "label": "Prepared batches supply examples from which the training loss is evaluated.",
+    "scope": "Data mixture and split boundaries influence the objective; data volume alone does not guarantee learning quality.",
+    "sourceLessonId": "loss-optimizer",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/1412.6980",
+        "https://docs.pytorch.org/docs/2.14/generated/torch.nn.CrossEntropyLoss.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-updates-loss-optimizer-embedding",
+    "from": "loss-optimizer",
+    "to": "embedding",
+    "kind": "updates",
+    "label": "Training updates can change the embedding weights.",
+    "scope": "Gradient contributions depend on lookup occurrences and other parameter uses such as a tied output head.",
+    "sourceLessonId": "embedding",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://docs.pytorch.org/docs/2.14/generated/torch.nn.Embedding.html",
+        "https://www.jmlr.org/papers/v3/bengio03a.html"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  },
+  {
+    "id": "engineering-evaluated-by-tool-loop-evaluation",
+    "from": "tool-loop",
+    "to": "evaluation",
+    "kind": "evaluated-by",
+    "label": "The complete tool-assisted system needs task-specific outcome checks.",
+    "scope": "Tool permissions, observations, failures, latency and allowed human assistance belong to the evaluation conditions.",
+    "sourceLessonId": "evaluation",
+    "provenance": {
+      "basis": "Relationship synthesized from the cited lesson, with its stated scope.",
+      "sourceFields": [
+        "description",
+        "mechanism",
+        "interfaces",
+        "science"
+      ],
+      "sourceUrls": [
+        "https://arxiv.org/abs/2311.02462",
+        "https://itl.nist.gov/div898/handbook/eda/section3/eda366i.htm",
+        "https://itl.nist.gov/div898/software/dataplot/refman2/auxillar/exacbici.htm"
+      ]
+    },
+    "investigationIds": [
+      "execution"
+    ]
+  }
+]

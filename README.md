@@ -12,6 +12,14 @@ The atlas pairs a component field guide with selectable, procedural 3D assemblie
 
 **Current scope:** 224 lessons · 62 branches · 15 guided paths · 24 numerical labs · 76 historical and dated milestones.
 
+## Development preview
+
+The next candidate retains the full reference curriculum and adds three connected investigations: **a switch becomes arithmetic**, **two wafers become an accelerator**, and **a request becomes a result**. Shared inputs connect charge and timing, exact arithmetic, wafer and package yield, HBM placement, and bounded execution estimates. A four-token attention calculation makes its intermediate values inspectable. Predictions, explanations and transfer answers can be saved, exported and imported; shared scenario links contain inputs only.
+
+Fourteen manufacturing routes now expose 84 authored material states through matching cross-sections and optional 3D inspection. The science catalog uses explicit formal expressions or prose relationships. Lesson detail loads on demand, and each build includes its source/content identity.
+
+This candidate is undergoing [device, specialist and learner review](docs/learning-review/README.md). Browser viewport checks and automated tests are recorded separately from physical-device and learner evidence. See the [implementation ledger](docs/roadmap/IMPLEMENTATION.md), [complete approved roadmap](docs/roadmap/ROADMAP.csv), and [curation workflow](docs/curation/CURATION-WORKFLOW.md). The published demo and v1.2.0 release remain the reference edition until a reviewed successor is released.
+
 ## What the atlas covers
 
 | Resource | Coverage |
@@ -67,7 +75,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` first builds the application, then checks curriculum integrity, scene coverage, numerical invariants, and portable asset references. `npm run build` runs TypeScript checking and creates a static production build in `dist/`. Preview serves that build locally.
+`npm test` first builds the application, then checks curriculum integrity, canonical mathematics, scene coverage, numerical invariants, saved-record contracts, source-ledger consistency, delivery budgets, and portable asset references. `npm run build` runs TypeScript checking and creates a static production build in `dist/`. Preview serves that build locally.
 
 ## Host the build
 
@@ -75,7 +83,7 @@ Upload the **contents** of `dist/` to a static web host. The Vite base is `./`, 
 
 Serve the files over HTTP or HTTPS. Opening `index.html` directly through `file://` is not a supported deployment. Component navigation uses URL fragments, so the host does not need a server-side route for each lesson.
 
-All runtime scripts, fonts, and narration ship locally; reference links still lead to their external sources. Retain the generated asset paths and license notices. Check your host’s content security policy against the atlas, its generated style attributes, and the companion film. A policy inherited from a text-only page can block these features. See [release instructions](docs/RELEASING.md) for the verification checklist.
+All runtime scripts, fonts, and narration ship locally; reference links still lead to their external sources. Retain the generated asset paths, the complete `lesson-data/` directory, `build-info.json`, and license notices. Check your host’s content security policy against the atlas, its generated style attributes, and the companion film. A policy inherited from a text-only page can block these features. See [release instructions](docs/RELEASING.md) for the verification checklist.
 
 ## Releases and updates
 

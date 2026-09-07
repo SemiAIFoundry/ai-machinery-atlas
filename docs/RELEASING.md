@@ -32,7 +32,7 @@ npm test
 npm run preview
 ```
 
-Automated checks cover curriculum and scene consistency, numerical invariants, TypeScript, and portable asset references. Record the commands and actual outcomes in the release notes. Do not describe automated checks as browser UI QA.
+Automated checks cover curriculum and scene consistency, canonical mathematical structure, numerical invariants, saved-record versions, curation fingerprints, TypeScript, readable-entry size, and portable asset references. `prebuild` generates the navigation catalog and content-addressed lesson files from `src/lib/atlas-authoring.ts`. Commit source data and the refreshed curation manifest together; generated lesson files are build outputs. Record the commands and actual outcomes in the release notes. Do not describe automated checks as browser UI QA.
 
 Before calling a deployment browser-verified, manually inspect a served production build at both `/` and a representative subdirectory such as `/ai-atlas/`. Check:
 
@@ -43,14 +43,14 @@ Before calling a deployment browser-verified, manually inspect a served producti
 - The film opens and its controls, generated narration, and full-screen behavior work under the deployment’s content security policy.
 - Keyboard navigation, narrow layouts, and the motion controls remain usable.
 
-Record the browser and device used, any limitations, and whether optional WebMCP registration was exercised. If no browser check was performed, state that clearly.
+Use the [review kit](learning-review/README.md) for the three pilot investigations. Preserve its physical-device, specialist and learner gates before broader rollout. Record the browser and device used, any limitations, and whether optional WebMCP registration was exercised. If no browser check was performed, state that clearly.
 
 ## 3. Prepare release artifacts
 
 Create two separate archives:
 
 1. A **source archive**, including the lockfile, documentation, licenses, and test sources, but excluding `node_modules/`, `dist/`, private hosting configuration, and caches.
-2. A **static-site archive**, containing the built `dist/` files and the notices needed for the bundled assets. Its entry point should be `index.html` at the archive root.
+2. A **static-site archive**, containing the built `dist/` files and the notices needed for the bundled assets. Its entry point should be `index.html` at the archive root. Include the complete `lesson-data/` directory and `build-info.json`; the latter records source commit, dirty-tree status, source/content digests and model versions. A dirty preview must not be described as a clean tagged release.
 
 Use versioned names such as `ai-machinery-atlas-<version>-source.zip` and `ai-machinery-atlas-<version>-static.zip`. Produce SHA-256 checksums for the final archives and verify them after copying. Include the exact source commit once the release repository exists.
 

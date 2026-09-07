@@ -2,7 +2,17 @@
 
 ## Unreleased
 
-Future corrections and compatible additions will be recorded here.
+Development candidate; public release and live deployment are unchanged.
+
+- Connect three investigations across switching and arithmetic, manufacturing and powered systems, and an inspectable attention calculation with memory and execution accounting.
+- Add versioned prediction/explanation/transfer records, separate first attempts and practice, JSON import/export and input-only scenario sharing.
+- Add 14 mechanism-specific process routes with 84 material states, matching cross-section and optional 3D inspection, bounded controls, and scoped equations.
+- Classify all 229 science cards as 223 formal expressions and six prose relationships; validate canonical notation and known grouping defects.
+- Complete original-lesson scaffolds and prerequisite dispositions, stabilize six domains, map every lesson to a relevant lab or explicit library choice, and add typed engineering relationships.
+- Load lesson detail on demand, defer optional destinations, enforce a 350 kB gzip entry budget, and include source/content/model identity in builds.
+- Add curation inventories and review-event contracts, continuous validation, an additive roadmap ledger and a reusable device/learner review kit.
+
+Automated validation and browser observations are recorded in the review kit. Physical-device, specialist, assistive-technology and learner gates remain open; no learning-efficacy claim is made.
 
 ## 1.2.0 — 2026-09-06
 

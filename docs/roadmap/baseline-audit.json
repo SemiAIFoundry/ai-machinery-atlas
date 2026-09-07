@@ -1,0 +1,29 @@
+{
+  "audited_on": "2026-09-06",
+  "release": "v1.0.0",
+  "lesson_count": 97,
+  "navigation_bands": 6,
+  "branches": 26,
+  "guided_paths": 5,
+  "numerical_labs": 7,
+  "historical_milestones": 41,
+  "records_per_legacy_level": {
+    "matter": 10,
+    "transistor": 8,
+    "logic": 10,
+    "die": 11,
+    "package": 10,
+    "server": 11,
+    "rack": 6,
+    "datacenter": 7,
+    "software": 8,
+    "model": 16
+  },
+  "source_references": 162,
+  "notes": [
+    "Existing IDs and local learning-progress keys must remain resolvable.",
+    "Current record fields already contain branch/subbranch, but exported RecordEntry omits them.",
+    "Current source links have title and URL; individual claims lack provenance, validity dates and structured numeric units.",
+    "Current hierarchy uses bands, chapter lists and record IDs; related edges have no relationship type."
+  ]
+}

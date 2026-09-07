@@ -14,7 +14,11 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "npm run build && node --experimental-strip-types scripts/validate-atlas.mjs && node --experimental-strip-types --test scripts/deep-math.test.mjs scripts/numeric-math.test.mjs scripts/infrastructure-depth.test.mjs && node --test scripts/portable.test.mjs"
+    "test": "npm run build && npm run validate:content && node --experimental-strip-types --test scripts/deep-math.test.mjs scripts/numeric-math.test.mjs scripts/infrastructure-depth.test.mjs scripts/investigations.test.mjs scripts/learning-progress.test.mjs scripts/process-mechanisms.test.mjs scripts/delivery.test.mjs scripts/portable.test.mjs",
+    "predev": "node scripts/generate-catalog.mjs",
+    "prebuild": "node scripts/generate-catalog.mjs",
+    "validate:content": "node --experimental-strip-types scripts/validate-atlas.mjs && node scripts/validate-science.mjs && node docs/curation/validate-curation-manifest.mjs",
+    "curation:refresh": "node docs/curation/build-curation-manifest.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

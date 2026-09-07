@@ -6,12 +6,12 @@
         {
           "symbol": "H",
           "meaning": "Modeled stack height",
-          "unit": "µm"
+          "unit": "\u00b5m"
         },
         {
           "symbol": "tbase",
           "meaning": "Base structure thickness",
-          "unit": "µm"
+          "unit": "\u00b5m"
         },
         {
           "symbol": "N",
@@ -21,7 +21,7 @@
         {
           "symbol": "tdie",
           "meaning": "Memory die thickness",
-          "unit": "µm"
+          "unit": "\u00b5m"
         },
         {
           "symbol": "J",
@@ -31,14 +31,16 @@
         {
           "symbol": "tbond",
           "meaning": "Thickness per bond line",
-          "unit": "µm"
+          "unit": "\u00b5m"
         },
         {
           "symbol": "tcap",
           "meaning": "Top allowance in this model",
-          "unit": "µm"
+          "unit": "\u00b5m"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "H = tbase + N tdie + J tbond + tcap"
     },
     {
       "latex": "C=N C_{\\mathrm{die}},\\qquad B=\\frac{w r\\eta}{8}",
@@ -64,7 +66,7 @@
           "unit": "transfers/s"
         },
         {
-          "symbol": "η",
+          "symbol": "\u03b7",
           "meaning": "Payload efficiency",
           "unit": "fraction"
         },
@@ -72,8 +74,15 @@
           "symbol": "B",
           "meaning": "Usable interface bandwidth",
           "unit": "bytes/s"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Number of memory dies",
+          "unit": "count"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "C = N Cdie; B = w r \u03b7 / 8"
     }
   ],
   "hbm-stack-thermal-yield": [
@@ -83,12 +92,12 @@
         {
           "symbol": "Ti",
           "meaning": "Temperature at inspected location i",
-          "unit": "°C"
+          "unit": "\u00b0C"
         },
         {
           "symbol": "Tcoolant",
           "meaning": "Specified coolant boundary temperature",
-          "unit": "°C"
+          "unit": "\u00b0C"
         },
         {
           "symbol": "Rij",
@@ -100,7 +109,9 @@
           "meaning": "Heat dissipated at source j",
           "unit": "W"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Ti \u2212 Tcoolant = \u03a3j Rij Pj"
     },
     {
       "latex": "Y_{\\mathrm{assembly}}\\approx y_{\\mathrm{joint}}^{J}",
@@ -120,7 +131,9 @@
           "meaning": "Modeled interfaces",
           "unit": "count"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Yassembly \u2248 yjoint^J"
     }
   ],
   "hbm-tc-ncf-route": [
@@ -152,7 +165,9 @@
           "meaning": "Other occupied handling time per stack",
           "unit": "s"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "tstack \u2248 N (talign + tbond) + thandling"
     }
   ],
   "hbm-mr-muf-route": [
@@ -179,7 +194,9 @@
           "meaning": "Occupied batch cycle time",
           "unit": "s"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Q = K a / tcycle"
     }
   ],
   "hbm-hybrid-bond-route": [
@@ -189,24 +206,26 @@
         {
           "symbol": "Aoverlap",
           "meaning": "Geometric overlap area",
-          "unit": "µm²"
+          "unit": "\u00b5m\u00b2"
         },
         {
           "symbol": "w",
           "meaning": "Square pad side length",
-          "unit": "µm"
+          "unit": "\u00b5m"
         },
         {
           "symbol": "dx",
           "meaning": "Relative offset in x",
-          "unit": "µm"
+          "unit": "\u00b5m"
         },
         {
           "symbol": "dy",
           "meaning": "Relative offset in y",
-          "unit": "µm"
+          "unit": "\u00b5m"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Aoverlap = max(0,w\u2212|dx|) max(0,w\u2212|dy|)"
     }
   ],
   "hbm-bonding-process-selection": [
@@ -238,7 +257,9 @@
           "meaning": "Accepted stacks per starting set",
           "unit": "fraction"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "cgood = (cinput + cprocess + ctest) / Y"
     }
   ],
   "hbf-read-tier-contract": [
@@ -260,7 +281,9 @@
           "meaning": "Assumed usable read bandwidth",
           "unit": "bytes/s"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "ttransfer \u2265 V / B"
     }
   ],
   "hbf-latency-prefetch": [
@@ -287,7 +310,9 @@
           "meaning": "Fetched bytes per transaction",
           "unit": "bytes"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Buseful \u2264 Bphysical u/g"
     },
     {
       "latex": "Q_{\\mathrm{flight}}\\geq B_{\\mathrm{target}}L",
@@ -307,7 +332,9 @@
           "meaning": "Request-to-completion latency",
           "unit": "s"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Qflight \u2265 Btarget L"
     }
   ],
   "memory-working-set-placement": [
@@ -334,7 +361,9 @@
           "meaning": "Usable tier capacity",
           "unit": "bytes"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "\u03a3i xi,k Si + Ok \u2264 Ck"
     }
   ],
   "training-tier-placement": [
@@ -381,7 +410,9 @@
           "meaning": "Other live workspace and metadata",
           "unit": "bytes"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Mstate = P (bw + bg + bm + bo) + A + O"
     }
   ],
   "prefill-decode-tier-placement": [
@@ -418,7 +449,9 @@
           "meaning": "Stored tokens in sequence s",
           "unit": "tokens"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "MKV = 2 L Hkv d b \u03a3s Ts"
     },
     {
       "latex": "t_{\\mathrm{restore}}\\geq L_{\\mathrm{path}}+\\frac{V}{B_{\\mathrm{path}}}",
@@ -443,7 +476,9 @@
           "meaning": "Sustained path payload bandwidth",
           "unit": "bytes/s"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "trestore \u2265 Lpath + V/Bpath"
     }
   ],
   "moe-expert-tier-placement": [
@@ -470,7 +505,9 @@
           "meaning": "Stored bytes per parameter",
           "unit": "bytes/parameter"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Vmiss = \u03a3e\u2208M Pe be"
     }
   ],
   "memory-to-hall-propagation": [
@@ -512,7 +549,9 @@
           "meaning": "Network bytes per work unit",
           "unit": "bytes/work"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "R \u2264 min(F/f, Bmem/vmem, Bnet/vnet)"
     },
     {
       "latex": "e=\\frac{P_{\\mathrm{IT}}\\,\\mathrm{PUE}}{R_{\\mathrm{accepted}}}",
@@ -537,7 +576,9 @@
           "meaning": "Accepted work rate",
           "unit": "work/s"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "e = PIT PUE / Raccepted"
     }
   ],
   "memory-system-qualification": [
@@ -559,7 +600,9 @@
           "meaning": "Executed work not retained as valid output",
           "unit": "work units"
         }
-      ]
+      ],
+      "kind": "math",
+      "text": "Wretained = Wexecuted \u2212 Wdiscarded"
     }
   ]
 }

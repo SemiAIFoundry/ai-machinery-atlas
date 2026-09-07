@@ -1,0 +1,239 @@
+{
+  "method": "Manual review of all 224 descriptions flagged candidates by should/must/view/diagram and imperative verbs. Count includes direct visual-authoring directions, excludes ordinary model-reading caveats and descriptive atlas-shows sentences. Prevalence is minimum confirmed, not a classifier quality estimate.",
+  "totalDescriptions": 224,
+  "confirmed": 38,
+  "baselineConfirmed": 29,
+  "baselineDenominator": 97,
+  "expansionConfirmed": 9,
+  "expansionDenominator": 127,
+  "rows": [
+    {
+      "id": "tensor-core",
+      "file": "src/lib/data/records.json",
+      "line": 2474,
+      "description": "A Tensor Core implements matrix multiply and accumulate: D equals A times B plus C. It does not contain a neural network, words, or a complete attention head. Software divides larger tensors into compatible tiles, arranges their layout, and feeds these units repeatedly. Different instructions accept different input formats and accumulation rules. Low precision reduces the bits moved and processed, while scale factors help represent useful numerical ranges. A peak throughput figure assumes suitable operations, shapes, clocks, and a continuous supply of operands. The visualization should show a row meeting a column, partial products accumulating, and the resulting tile joining a larger matrix. This makes the arithmetic visible without pretending the rendered grid is a literal chip photograph."
+    },
+    {
+      "id": "register-file",
+      "file": "src/lib/data/records.json",
+      "line": 2584,
+      "description": "Registers hold the addresses, counters, partial results, and scalar operands that threads need immediately. The compiler assigns program values to a finite physical pool. A value in a register does not need a fresh trip to off-chip memory for every instruction. If a kernel asks for too many registers, fewer blocks may fit at once; some values may also spill into local memory, which is backed by device memory and cached. Registers are private to a thread in the programming model, although explicit warp shuffle instructions can exchange values between participating threads. The atlas should depict narrow banks feeding arithmetic lanes, then contrast a short local reuse loop with the longer path caused by a spill."
+    },
+    {
+      "id": "shared-sram",
+      "file": "src/lib/data/records.json",
+      "line": 2674,
+      "description": "Shared memory is a software-managed scratchpad allocated to a thread block. Threads cooperate to load a tile, synchronize when required, and reuse it for several operations before replacing it. Its underlying storage is SRAM, which retains state while powered without the periodic refresh needed by DRAM. Shared memory is banked, so the access pattern matters: requests to different words in the same bank can serialize. Padding or rearranging a tile can remove those conflicts. The capacity is small compared with HBM, but a small tile can be reused many times. The visual should expose a banked array with a selectable conflict pattern, showing why an extra column of padding can accelerate an otherwise unchanged matrix transpose."
+    },
+    {
+      "id": "l1-cache",
+      "file": "src/lib/data/records.json",
+      "line": 2763,
+      "description": "The L1 cache is the first automatic cache close to an SM\u2019s execution units. When threads request memory, hardware checks whether useful data are already nearby. Hits can avoid a longer journey; misses continue toward lower levels of the hierarchy. Consecutive thread addresses can be coalesced into fewer memory transactions, while scattered addresses may move many unused bytes. Blackwell shares a physical capacity budget among L1, texture functionality, and the shared-memory carveout. This differs from the explicit ownership and lifetime of software-managed shared memory. The atlas should trace the same load with a hit and a miss, then reveal how reshaping a warp\u2019s addresses changes traffic without changing the values the program computes."
+    },
+    {
+      "id": "on-chip-network",
+      "file": "src/lib/data/records.json",
+      "line": 2944,
+      "description": "The on-chip fabric is the communication system within the silicon. Requests carry addresses, operation types, and data between blocks; arbitration decides which request uses a contested path. Wires have capacitance and resistance, so longer journeys consume time and energy even before leaving the package. A GPU can expose a unified address space while still having internal locality domains. The atlas should distinguish an illustrative routing graph from an undisclosed physical topology: a tidy mesh is a teaching model, not a claim that Blackwell uses that exact network. Animate contention at shared routes and show local versus remote cache access, making it clear that the chip is a coordinated system rather than an undifferentiated slab of arithmetic."
+    },
+    {
+      "id": "hbm-controller",
+      "file": "src/lib/data/records.json",
+      "line": 3039,
+      "description": "A memory controller turns requests for addresses into commands that the DRAM organization can execute. It coordinates reads, writes, timing constraints, and maintenance such as refresh. The PHY is the physical interface circuitry that drives and receives signals across package wires. These are distinct jobs: the controller manages the protocol and schedule, while the PHY makes the bits electrically reliable. Many parallel wires provide aggregate HBM bandwidth without demanding that each wire run at the highest possible rate. The atlas should expose queues, bank selection, and read responses, then follow them across the interposer into the stacked memory. Published stack bandwidth is an upper-bound interface capability, not the sustained bandwidth of every access pattern."
+    },
+    {
+      "id": "nvlink-port",
+      "file": "src/lib/data/records.json",
+      "line": 3136,
+      "description": "A model can be partitioned across GPUs because one device may not provide enough memory or enough compute. NVLink supplies a fast path for those devices to exchange tensor pieces and partial results. Physical links connect GPUs to peers or switches; software still chooses a parallel strategy and schedules the required communication. A connected group is not automatically one ordinary GPU with uniform access costs. Collective operations, message size, synchronization, and topology all affect useful performance. The atlas should show a tensor being divided, processed, and reduced across devices, with communication time visible alongside arithmetic. NVLink is distinct from the internal die-to-die interface and from the network that joins racks."
+    },
+    {
+      "id": "tensor-memory-accelerator",
+      "file": "src/lib/data/records.json",
+      "line": 3342,
+      "description": "TMA is a data movement engine. Software describes a tensor and its layout, then requests transfers while other work proceeds. This reduces the need for threads to compute every address and issue every individual load during tile staging. The result is not instantaneous memory: the transfer still uses bandwidth, must complete, and needs the correct synchronization before consumers use its data. Pipelines can stage the next tile while the current tile is being multiplied. First introduced with Hopper and extended on Blackwell, this mechanism is separate from Blackwell Tensor Memory, which stores tensor operands and accumulators. The atlas should make the copy engine and its destination buffer separate objects, joined by an animated completion signal."
+    },
+    {
+      "id": "gpu-die",
+      "file": "src/lib/data/records.json",
+      "line": 3449,
+      "description": "A logic die is a piece cut from a processed silicon wafer. Its surface carries layers of transistors and metal interconnect that implement arithmetic, memories, control, and interfaces. Datacenter Blackwell combines two large logic dies into one GPU, crossing the boundary with a dedicated high-bandwidth interface. This permits more circuitry than one exposure-sized die while preserving a single accelerator programming view. The package must connect those dies to each other, to memory stacks, and to power and cooling structures. In the exploded view, show functional regions without presenting their proportions as a verified proprietary floorplan. The two dies should reconnect through many short parallel routes, illustrating why packaging is part of the architecture rather than merely a protective box."
+    },
+    {
+      "id": "hbm-stack",
+      "file": "src/lib/data/records.json",
+      "line": 3550,
+      "description": "An HBM stack places several thin DRAM dies above a base interface and connects them vertically. It stores model weights, activations, optimizer state, and attention caches while the system is powered. The stack sits near the GPU on an advanced package, shortening the routes for a broad parallel interface. More layers generally add capacity; bandwidth also depends on interface width and per-pin transfer rate, so doubling stack height does not automatically double bandwidth. The atlas should explode one stack into its DRAM layers, then reconnect it through vertical vias and package wiring to the processor. Capacity, interface bandwidth, and the system\u2019s exposed usable memory should remain separate readouts because they describe different parts of the product."
+    },
+    {
+      "id": "dram-die",
+      "file": "src/lib/data/records.json",
+      "line": 3656,
+      "description": "A DRAM die is mostly an organized landscape of memory cells. In the common one-transistor, one-capacitor cell, stored charge represents a bit and the transistor controls access to it. Word lines select rows; bit lines carry the small electrical changes that sense amplifiers detect and restore. The charge leaks, so refresh is part of normal operation. Banks provide opportunities for overlapping work, but timing constraints mean that an arbitrary stream of addresses does not behave like one continuous pipe. The atlas should descend from a memory bank into a row and finally one cell, then pull back to show how billions of these tiny storage sites become the weight and activation tensors visible to software."
+    },
+    {
+      "id": "through-silicon-via",
+      "file": "src/lib/data/records.json",
+      "line": 3767,
+      "description": "A TSV is a conductive route that passes through the thickness of silicon. In a memory stack, many such routes provide data, control, and power connections between levels and the base. This avoids forcing all communication around the outside edge of each die. The via needs electrical isolation from the surrounding silicon, and its processing must coexist with the circuits and mechanical stresses of thin dies. A TSV is not itself a memory bit and should not be drawn as a data storage column. The cutaway should show a conductor, surrounding insulation, and nearby circuitry, then zoom out to many repeated connections. Connections between surfaces still require bonding structures, so TSVs and microbumps are related but distinct parts."
+    },
+    {
+      "id": "interposer",
+      "file": "src/lib/data/records.json",
+      "line": 3859,
+      "description": "The interposer is the wiring platform between fine-pitch die connections and the larger package substrate. It lets a GPU sit close to several memory stacks with many parallel connections. Advanced packaging does not always use a single uniform slab of silicon: TSMC\u2019s CoWoS family includes silicon interposers, redistribution-layer approaches, and local silicon interconnects embedded where higher connection density is needed. The atlas should let viewers peel back the layers and trace one GPU-to-HBM route. It should label the generic construction being shown and avoid assigning an exact unpublished package cross-section to a named accelerator. Dense local wiring makes the package function like a small system assembled from dies optimized for different jobs."
+    },
+    {
+      "id": "microbump",
+      "file": "src/lib/data/records.json",
+      "line": 3963,
+      "description": "Microbumps are small conductive joints arranged in dense arrays. They connect one surface to another, such as a die to an interposer or adjacent memory layers. The surrounding underfill helps support the assembly and manage stress from materials expanding differently with temperature. A bump is a connection, while a TSV is a route through silicon; the two can meet but should not be drawn as the same object. Finer pitch supports more connections in a given area, yet raises demands on alignment, planarity, cleanliness, and defect control. The atlas should separate two mating surfaces, reveal the array of joints, and animate one signal crossing the interface before the package closes again."
+    },
+    {
+      "id": "package-substrate",
+      "file": "src/lib/data/records.json",
+      "line": 4052,
+      "description": "The package substrate is a multilayer wiring and support structure beneath the dies and their dense interconnect platform. It carries signals, power, and ground through patterned copper, insulating layers, and vias. The connection spacing grows as routes move from the die side toward the board side. Power and signal integrity depend on routing geometry and return paths, not simply on how many wires fit. The substrate also helps manage mechanical loads and must cope with different thermal expansion among silicon, copper, and organic materials. In the atlas, peel its layers apart and distinguish signal traces from broad power planes. This shows why the green or brown platform under a processor is an engineered electrical structure rather than passive packaging."
+    },
+    {
+      "id": "thermal-interface",
+      "file": "src/lib/data/records.json",
+      "line": 4145,
+      "description": "Two apparently flat solids touch only at small high points. Air trapped between them creates a poor thermal path. A thermal interface material conforms to those gaps and helps heat flow from the die or heat spreader toward the cooler. Performance depends on conductivity, thickness, contact pressure, surface finish, and long-term stability; a high conductivity number alone does not describe the complete joint. Some materials soften or change phase during operation, while others are greases, pads, or specialized bonded interfaces. The atlas should magnify the rough surfaces and show heat crossing the filled gap, then zoom out to the package heat path. A listed material example is a comparison anchor, not an assertion about NVIDIA\u2019s proprietary thermal stack."
+    },
+    {
+      "id": "heat-spreader",
+      "file": "src/lib/data/records.json",
+      "line": 4233,
+      "description": "A heat spreader is a thermally conductive cover used in many processor packages. It redistributes heat from a concentrated die region across a larger area and provides a robust mating surface for cooling hardware. Its presence adds another material and usually another interface to the heat path. Some high-performance designs instead use a lidless or direct-die arrangement, making contact closer to the silicon but demanding careful mechanical control. The atlas should provide both conceptual stackups rather than imply that every accelerator has the same lid. A heat spreader does not dispose of energy by itself: the heat still has to pass into a cooler and eventually leave the facility. Its shape and mounting are part of a complete thermal and mechanical design."
+    },
+    {
+      "id": "coldplate",
+      "file": "src/lib/data/records.json",
+      "line": 4326,
+      "description": "A coldplate places a network of channels close to the heat source. Heat conducts through its metal base and enters coolant moving across the internal surfaces. Increasing contact area with small channels can improve heat transfer, but those channels also resist flow. The plate, pump, plumbing, coolant, and allowed temperatures therefore have to be designed together. The atlas should make the metal partly transparent so viewers can follow coolant from the inlet across hot regions to the outlet. Use a color change for coolant temperature rather than implying that blue liquid is electricity. The warmed coolant still carries energy that must be transferred through the rack and facility cooling chain; the plate is only the point where that journey begins."
+    },
+    {
+      "id": "host-cpu",
+      "file": "src/lib/data/records.json",
+      "line": 4416,
+      "description": "The CPU is the general-purpose processor that organizes the system\u2019s work. It runs operating-system services, prepares tasks, launches GPU kernels, handles control-heavy code, and coordinates data and networking. GPUs accelerate many numerical operations, but a full AI service still needs request handling, tokenization, orchestration, memory management, and failure recovery. In a Grace Blackwell system, the CPU and GPUs have a coherent high-bandwidth connection; in other servers, the host path commonly uses PCIe. Neither arrangement makes software coordination free. The atlas should show the CPU issuing a workload, allowing the GPU to run in parallel, and responding to completion. Separate control traffic from the much larger movement of tensor data so the division of labor becomes clear."
+    },
+    {
+      "id": "ddr-memory",
+      "file": "src/lib/data/records.json",
+      "line": 4528,
+      "description": "DDR memory modules connect to a CPU\u2019s memory channels and hold the working state of programs while powered. They provide substantially more capacity than small processor caches and are commonly socketed for service or expansion. DDR5 divides a module\u2019s data interface into independent subchannels and introduces reliability features within the DRAM. On-die error correction is not the same as end-to-end protection of the complete memory link. This atlas includes DDR5 as the conventional server branch: the Grace CPU in the GB200 reference system uses LPDDR5X instead. Show the DIMM feeding the CPU rather than placing it beside a GPU as an HBM substitute. Bandwidth depends on channel count, transfer rate, ranks, and the supported population of the motherboard."
+    },
+    {
+      "id": "lpddr-memory",
+      "file": "src/lib/data/records.json",
+      "line": 4617,
+      "description": "LPDDR5X is dynamic memory designed with strong attention to power efficiency. Grace uses it for CPU main memory, giving the host processor a local store distinct from the GPU\u2019s HBM. Coherent CPU\u2013GPU connectivity can simplify access to a shared address space, but it does not erase the physical difference between these memories or their paths. The atlas should show CPU memory and HBM as separate reservoirs linked through an interconnect, with costs visible when data moves between them. Capacity options and rated bandwidth vary by module configuration. Avoid combining an early architecture estimate with a later product capacity as if they were one guaranteed operating point. The useful question is which memory contains each part of the workload and how often that part must travel."
+    },
+    {
+      "id": "pcie-interface",
+      "file": "src/lib/data/records.json",
+      "line": 4720,
+      "description": "PCIe is a general-purpose component interconnect built from serial lanes. A link can use several lanes in parallel, and switches can connect multiple devices into a hierarchy. Transactions carry commands and data; software uses drivers and device capabilities to arrange transfers. The generation and lane count must both be stated when comparing bandwidth. A faster endpoint may operate at a lower rate when the host, switch, or board path supports less. The atlas should show separate transmit and receive lanes and reveal packet overhead, so an advertised bidirectional number is not mistaken for one-way application throughput. PCIe is one part of the AI system\u2019s connectivity, alongside specialized coherent links, GPU scale-up fabrics, and the network between servers."
+    },
+    {
+      "id": "network-adapter",
+      "file": "src/lib/data/records.json",
+      "line": 4813,
+      "description": "A NIC converts server memory transfers into network packets and receives packets from other machines. High-performance adapters can perform remote direct memory access, allowing registered buffers to be transferred with less involvement from the remote CPU. GPU-aware paths can also reduce unnecessary staging through host memory when the platform and software support them. These capabilities do not eliminate synchronization, congestion, or network topology. The atlas should show a tensor fragment leaving a GPU buffer, passing through the adapter, and joining a remote buffer, while a separate small control path manages the operation. The NIC belongs to the scale-out path between systems; it should not be confused with NVLink\u2019s local GPU fabric or with the ordinary management network."
+    },
+    {
+      "id": "nvme-storage",
+      "file": "src/lib/data/records.json",
+      "line": 4903,
+      "description": "An NVMe SSD combines nonvolatile NAND flash, a controller, firmware, and a fast host interface. It stores data persistently rather than providing the byte-addressable working memory used directly by arithmetic units. The controller maps logical blocks to flash locations, handles error management, and schedules reads and writes across internal parallelism. Large sequential transfers and small random accesses stress different parts of the device, so one speed number cannot describe every workload. The atlas should follow a model checkpoint from persistent storage into host or GPU memory, then distinguish that loading phase from repeated tensor computation. Supported direct-storage paths can reduce extra copies, but the storage device still has its own latency, bandwidth, and endurance limits."
+    },
+    {
+      "id": "voltage-regulator",
+      "file": "src/lib/data/records.json",
+      "line": 4996,
+      "description": "A VRM sits electrically between the power distribution system and the chip. Switching stages, inductors, capacitors, and a controller turn an incoming supply into the rail the load needs. Multiple phases share current and can reduce ripple while responding to rapid changes in demand. GPU activity changes quickly as kernels start, synchronize, or wait for data, so stable voltage requires more than matching average power. The atlas should animate current through alternating phases and show capacitors supporting a sudden load step. Use illustrative voltages where product values are not public. A large current is compatible with a modest voltage because power is their product; this explains why short, low-resistance connections matter so much near the silicon."
+    },
+    {
+      "id": "power-supply",
+      "file": "src/lib/data/records.json",
+      "line": 5089,
+      "description": "A power supply converts incoming electrical power into a form the equipment can distribute and use. Rack systems combine several supplies in shelves, sharing load and providing redundancy. A shelf\u2019s installed nameplate capacity is not the same as the power continuously consumed by the rack, especially when redundant capacity is reserved. Efficiency also varies with load, and conversion loss becomes heat that must be removed. The atlas should show facility input splitting across supplies, joining the DC distribution path, and continuing toward board regulators. A failure scenario can remove one supply path while the remaining capacity carries the load, making reliability tangible. Exact supply counts and redundancy arrangements should remain tied to the named rack design."
+    },
+    {
+      "id": "compute-baseboard",
+      "file": "src/lib/data/records.json",
+      "line": 5178,
+      "description": "The baseboard is where separate components become a coordinated machine. Its traces and connectors join processors, memory, storage, network adapters, management, and power circuits. A compute tray adds mechanical support, cooling connections, and interfaces that let the assembly slide into a rack. Topology matters: which GPU reaches which NIC, which devices share a PCIe path, and where CPU memory sits can all affect performance. The atlas should peel the board into signal, power, and cooling views, then allow one tensor or watt to be followed through the assembly. This view is a logical reconstruction based on published block diagrams, not a manufacturing drawing. The serviceable tray is the bridge between package-scale engineering and rack-scale operations."
+    },
+    {
+      "id": "management-controller",
+      "file": "src/lib/data/records.json",
+      "line": 5276,
+      "description": "The BMC is a small management computer that remains useful when the main operating system is unavailable. It collects sensor readings, exposes hardware status, and supports operations such as power control and remote maintenance through a separate network. In large AI installations, this out-of-band view helps operators locate failing components and coordinate recovery. It should not be confused with the CPU running the model service or a NIC carrying training tensors. The atlas should draw management connections with a distinct color and show them reaching compute trays, power equipment, and switches. A healthy management path does not mean the workload is healthy, but it provides the observations and controls needed to diagnose the physical system."
+    },
+    {
+      "id": "grace-blackwell-superchip",
+      "file": "src/lib/data/records.json",
+      "line": 5361,
+      "description": "The Grace Blackwell Superchip is a system integration unit, not one monolithic piece of silicon. It combines one CPU and two GPUs, with separate CPU memory and GPU HBM connected through a coherent interconnect. The GPUs also participate in a larger NVLink domain when installed in an NVL72 rack. This creates several nested scales: transistors form dies, dies and HBM form GPU packages, packages join the CPU in a module, and modules join a rack. The atlas should preserve these boundaries so viewers can distinguish a GPU\u2019s internal die-to-die link from CPU\u2013GPU coherence and GPU-to-GPU scale-up communication. This published reference explains a modern architecture; it is not evidence about the hardware used by any specific proprietary model service."
+    },
+    {
+      "id": "wafer-scale-routing",
+      "file": "src/lib/data/architecture.json",
+      "line": 1112,
+      "description": "A wafer-scale processor uses a connected area much larger than a conventional reticle-sized logic die. Cerebras WSE-3 provides a public example with many compute elements and distributed on-chip SRAM, integrated into a purpose-built system. The attraction is fine-grained local communication and a large aggregate memory fabric. It also demands mechanisms for defect tolerance, routing around unavailable resources, power delivery and heat removal. A wafer-scale drawing should retain these constraints instead of presenting one unlimited memory. Large models may still need external state movement or system-level streaming, so aggregate local SRAM bandwidth cannot be substituted for external memory bandwidth."
+    },
+    {
+      "id": "memory-wall-trends",
+      "file": "src/lib/data/architecture.json",
+      "line": 1894,
+      "description": "The memory wall is a mismatch between useful computation and the ability to store or move its operands. A 2024 paper by Gholami and colleagues reports historical fitted trends for peak compute, DRAM bandwidth and single-GPU capacity. Its Figure 1 and Figure 2 use different samples and normalization; they should remain separate evidence cards. Such fits motivate investigating memory constraints but do not predict a particular future chip or prove that every AI kernel is memory-bound. A workload diagnosis instead measures operation count, transferred bytes, resident state and dependent-access latency at a clearly chosen boundary."
+    },
+    {
+      "id": "pcie-cxl-semantics",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 232,
+      "description": "PCI Express provides a widely used physical and protocol foundation for host devices. CXL builds on a PCIe physical foundation while adding defined cache and memory semantics alongside I/O. This enables supported devices to participate in coherent access or expose memory through specific host/device roles. It does not make distant memory equivalent to local DRAM: requests still cross links, queues and controllers. Software, firmware and device generation determine what is actually enabled. A diagram should show both the physical route and the ownership or coherence behavior, because equal link rates do not imply identical programming semantics."
+    },
+    {
+      "id": "rack-reference-anatomy",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 488,
+      "description": "A rack-scale accelerator system contains more than GPUs. Compute trays hold CPUs, accelerators, local memory and peripheral devices; switches connect an acceleration domain; management controllers support configuration and recovery. Power shelves and busbars distribute electricity, while manifolds deliver coolant to selected components. NVIDIA\u2019s DGX GB rack guide supplies a concrete NVL72 reference with distinct compute and switch trays. The reference is useful because its interfaces are documented, not because every AI installation uses this design. Selecting a tray should preserve its identity while the view changes between physical assembly, network communication, electricity and heat."
+    },
+    {
+      "id": "rack-power-conversion",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 830,
+      "description": "Facility electricity reaches a rack through distribution equipment and power supplies, then travels through busbars, board connections and local voltage regulators. Each stage has a voltage, current, capacity and conversion efficiency. The DGX GB reference describes power shelves converting AC to nominal rack DC, but other racks use different arrangements. Nameplate capacity includes redundancy and does not equal measured consumption. At the chip, low voltage implies high current for a given power, increasing the importance of short, low-resistance paths. A power-flow view must label its measurement location before turning watts into an estimate of available compute resources."
+    },
+    {
+      "id": "production-ramp-allocation",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 1435,
+      "description": "A capacity announcement describes a plan or installed capability, while output ramps as equipment, process performance and qualification mature. Inventory can buffer delays, but repeated visits and queued work make factory cycle time longer than processing time. A finished product may then be reserved, contracted or allocated to a different customer. TSMC\u2019s annual report describes customer-linked capacity planning without revealing private allocation shares. An educational model should therefore show physical output and access as separate ledgers. Increasing a nominal monthly capacity input must not instantly create finished inventory before its lead time and qualification gates have elapsed."
+    },
+    {
+      "id": "capacity-phase-geography",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 1770,
+      "description": "A cloud region, campus, building, availability zone and project phase are different entities. One campus can operate an early phase while constructing another and announcing a third. Different organizations may describe the same physical capacity as owner, operator, cloud provider or customer, creating double-counting risk. The Stargate and India hub announcements illustrate why dated status belongs to a specific phase and amount. A global map should preserve source date, checked date and power boundary rather than converting every headline into operating megawatts. Counts of factories or access centers require their own definitions and cannot be treated as equal-sized facilities."
+    },
+    {
+      "id": "regional-siting-access",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 2031,
+      "description": "Data-center siting combines electricity readiness, fiber routes, latency, climate, water, staffing and the needs of its users. A project can improve connectivity or electrical infrastructure while remaining under construction. Google\u2019s India hub announcement explicitly links the site with surrounding infrastructure work, while EuroHPC\u2019s gigafactory call describes a public access and procurement mechanism. These are different evidence categories from private installed hardware. A regional comparison should distinguish owner, operator and access model, then show tradeoffs without assuming that announced investment equals completed equipment or that nearby compute is automatically available to every local user."
+    },
+    {
+      "id": "orbital-lifecycle-economics",
+      "file": "src/lib/data/infrastructure.json",
+      "line": 2643,
+      "description": "An orbital computing proposal must pay for spacecraft, payloads, launch, ground infrastructure, operations, replacements and lost work. Solar energy availability can change operating inputs but does not erase those costs. Suncatcher\u2019s launch-price analysis is explicitly conditional and incomplete as a total economic study; its projected future launch input must not be presented as a current quote. A fair terrestrial comparison uses the same accepted workload, quality and service targets. Space-generated data reduction and ground-user interactive services can produce very different communication costs. A scenario should show which assumptions make the budget close and which unresolved constraint prevents a useful service."
+    }
+  ]
+}

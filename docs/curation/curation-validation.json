@@ -1,0 +1,52 @@
+{
+  "status": "pass",
+  "validatedAt": "2026-09-07T16:22:40.823Z",
+  "asOf": "2026-09-07",
+  "repositoryRead": "SemiAIFoundry/ai-machinery-atlas",
+  "lessons": 224,
+  "distinctSourceUrls": 271,
+  "uniqueLessonSourcePairs": 467,
+  "inheritedLedgerRecords": 122,
+  "structuredClaims": 39,
+  "claimLinkedLessons": 34,
+  "lessonScopesWithNumericWorkedExample": 169,
+  "sourceVerificationDatesCreated": 0,
+  "reviewCompletionDatesCreated": 0,
+  "recordedReviewEvents": 0,
+  "bySensitivity": {
+    "implementation-sensitive": 88,
+    "product-generation-sensitive": 59,
+    "research-sensitive": 20,
+    "stable-principle": 41,
+    "status-sensitive": 16
+  },
+  "byPriority": {
+    "high": 35,
+    "normal": 188,
+    "urgent": 1
+  },
+  "byRole": {
+    "computation-realization-research-reviewer": 7,
+    "computer-architecture-reviewer": 43,
+    "infrastructure-engineering-reviewer": 31,
+    "ml-methods-reviewer": 15,
+    "ml-systems-reviewer": 25,
+    "packaging-systems-reviewer": 50,
+    "semiconductor-process-reviewer": 31,
+    "solid-state-device-reviewer": 15,
+    "space-systems-reviewer": 7
+  },
+  "validations": [
+    "Exact 224-ID coverage; unique URL identifiers and inherited ledger/claim identities.",
+    "Current merged content and formal equation fingerprints; exact copied scope, dates, references and claim qualifiers.",
+    "Stable domain, chapter, prerequisite, related, journey, lab, deep-lab, investigation and engineering relation links match current atlas.",
+    "Complete reverse source-use index and acyclic prerequisite graph.",
+    "All assigned reviewers, new verification dates and completed-review dates remain null.",
+    "Freshness distinguishes unreviewed content, elapsed review interval, changed content and changes required; rejects future review dates."
+  ],
+  "limitations": [
+    "No live link accessibility or source-support verification was performed.",
+    "Proposed roles and intervals are editorial planning choices, not assignments or specialist approval.",
+    "Structured claim coverage is counted at lesson level and does not certify every numerical specification."
+  ]
+}

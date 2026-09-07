@@ -1,1 +1,3418 @@
-{}
+{
+  "silicon-atom": [
+    {
+      "kind": "math",
+      "latex": "Q=(Z-N_e)e",
+      "variables": [
+        {
+          "symbol": "Q",
+          "meaning": "Net atomic or ionic charge",
+          "unit": "C"
+        },
+        {
+          "symbol": "Z",
+          "meaning": "Proton count (atomic number)",
+          "unit": "count"
+        },
+        {
+          "symbol": "Nₑ",
+          "meaning": "Electron count",
+          "unit": "count"
+        },
+        {
+          "symbol": "e",
+          "meaning": "Positive elementary charge",
+          "unit": "C"
+        }
+      ],
+      "text": "Net charge equals the proton count minus the electron count, multiplied by the positive elementary charge."
+    }
+  ],
+  "crystal-lattice": [
+    {
+      "kind": "math",
+      "latex": "d_{\\mathrm{nn}}=\\frac{\\sqrt{3}}{4}a,\\qquad n_{\\mathrm{atoms}}=\\frac{8}{a^3}",
+      "variables": [
+        {
+          "symbol": "dₙₙ",
+          "meaning": "Nearest-neighbor distance",
+          "unit": "nm"
+        },
+        {
+          "symbol": "a",
+          "meaning": "Conventional cubic lattice parameter",
+          "unit": "nm"
+        },
+        {
+          "symbol": "nₐₜₒₘₛ",
+          "meaning": "Number density of atoms",
+          "unit": "nm⁻³ (convert to cm⁻³ if required)"
+        }
+      ],
+      "text": "The nearest-neighbor distance is square root of three times the cubic lattice parameter divided by four. Eight atoms per conventional cell give number density eight divided by the cube of that parameter.",
+      "note": "Use the same length unit throughout; 1 nm⁻³ equals 10²¹ cm⁻³."
+    }
+  ],
+  "energy-bands": [
+    {
+      "kind": "math",
+      "latex": "n_i=\\sqrt{N_C N_V}\\exp\\!\\left(-\\frac{E_g}{2k_B T}\\right)",
+      "variables": [
+        {
+          "symbol": "nᵢ",
+          "meaning": "Intrinsic carrier density",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "N_C",
+          "meaning": "Effective conduction-band density of states",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "N_V",
+          "meaning": "Effective valence-band density of states",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "E_g",
+          "meaning": "Band-gap energy",
+          "unit": "eV"
+        },
+        {
+          "symbol": "k_B",
+          "meaning": "Boltzmann constant in matching energy units",
+          "unit": "eV/K"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Absolute temperature",
+          "unit": "K"
+        }
+      ],
+      "text": "Intrinsic carrier density equals the square root of the product of the two effective state densities, multiplied by the exponential of minus the band gap divided by twice Boltzmann constant times absolute temperature.",
+      "note": "The radical covers the complete product N_C N_V. Joules may replace eV only if both E_g and k_B use joules consistently."
+    }
+  ],
+  "doping": [
+    {
+      "kind": "math",
+      "latex": "np=n_i^2,\\qquad n\\approx N_D,\\qquad p\\approx\\frac{n_i^2}{N_D}",
+      "variables": [
+        {
+          "symbol": "n",
+          "meaning": "Electron density",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Hole density",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "nᵢ",
+          "meaning": "Intrinsic carrier density",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "N_D",
+          "meaning": "Ionized donor density under the stated assumptions",
+          "unit": "cm⁻³"
+        }
+      ],
+      "text": "At equilibrium the electron–hole density product equals intrinsic density squared. In the donor-dominated limit, electron density follows donor density and hole density is intrinsic density squared divided by donor density."
+    }
+  ],
+  "pn-junction": [
+    {
+      "kind": "math",
+      "latex": "V_{\\mathrm{bi}}=\\frac{k_B T}{q}\\ln\\!\\left(\\frac{N_A N_D}{n_i^2}\\right)",
+      "variables": [
+        {
+          "symbol": "V_bi",
+          "meaning": "Built-in potential",
+          "unit": "V"
+        },
+        {
+          "symbol": "k_B",
+          "meaning": "Boltzmann constant",
+          "unit": "J/K"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Absolute temperature",
+          "unit": "K"
+        },
+        {
+          "symbol": "q",
+          "meaning": "Positive elementary charge",
+          "unit": "C"
+        },
+        {
+          "symbol": "N_A",
+          "meaning": "Effective ionized acceptor density",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "N_D",
+          "meaning": "Effective ionized donor density",
+          "unit": "cm⁻³"
+        },
+        {
+          "symbol": "nᵢ",
+          "meaning": "Intrinsic carrier density",
+          "unit": "cm⁻³"
+        }
+      ],
+      "text": "Built-in potential equals thermal voltage times the natural logarithm of the acceptor–donor density product divided by intrinsic carrier density squared."
+    }
+  ],
+  "silicon-wafer": [
+    {
+      "kind": "math",
+      "latex": "Y\\approx\\exp(-D_0 A_{\\mathrm{die}})",
+      "variables": [
+        {
+          "symbol": "Y",
+          "meaning": "Die survival probability in the Poisson model",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "D₀",
+          "meaning": "Uniform fatal-defect density",
+          "unit": "cm⁻²"
+        },
+        {
+          "symbol": "A_die",
+          "meaning": "Effective die area exposed to those defects",
+          "unit": "cm²"
+        }
+      ],
+      "text": "Poisson die survival is approximately the exponential of minus fatal-defect density times die area."
+    }
+  ],
+  "copper-conductor": [
+    {
+      "kind": "math",
+      "latex": "R\\approx\\rho_{\\mathrm{eff}}\\frac{L}{A_{\\mathrm{Cu}}}",
+      "variables": [
+        {
+          "symbol": "R",
+          "meaning": "Line resistance",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "ρ_eff",
+          "meaning": "Effective resistivity at the selected scale and temperature",
+          "unit": "Ω·m"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Conductor length",
+          "unit": "m"
+        },
+        {
+          "symbol": "A_Cu",
+          "meaning": "Usable copper cross-sectional area",
+          "unit": "m²"
+        }
+      ],
+      "text": "Wire resistance is approximately effective resistivity times length divided by the usable copper cross-sectional area."
+    }
+  ],
+  "dielectric": [
+    {
+      "kind": "math",
+      "latex": "C\\approx\\frac{\\varepsilon_0 k A}{d}",
+      "variables": [
+        {
+          "symbol": "C",
+          "meaning": "Capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "ε₀",
+          "meaning": "Vacuum permittivity",
+          "unit": "F/m"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Relative dielectric permittivity",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Facing plate area",
+          "unit": "m²"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Plate separation",
+          "unit": "m"
+        }
+      ],
+      "text": "Parallel-plate capacitance is approximately vacuum permittivity times relative permittivity times facing area, divided by separation."
+    }
+  ],
+  "lithography": [
+    {
+      "kind": "math",
+      "latex": "\\mathrm{CD}=k_1\\frac{\\lambda}{\\mathrm{NA}}",
+      "variables": [
+        {
+          "symbol": "CD",
+          "meaning": "Critical dimension in the selected resolution definition",
+          "unit": "nm"
+        },
+        {
+          "symbol": "k₁",
+          "meaning": "Process-dependent imaging factor",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "λ",
+          "meaning": "Exposure wavelength",
+          "unit": "nm"
+        },
+        {
+          "symbol": "NA",
+          "meaning": "Numerical aperture",
+          "unit": "dimensionless"
+        }
+      ],
+      "text": "Critical dimension equals the process factor times exposure wavelength divided by numerical aperture."
+    }
+  ],
+  "cmp": [
+    {
+      "kind": "math",
+      "latex": "\\mathrm{RR}\\approx k_P P v_{\\mathrm{rel}}",
+      "variables": [
+        {
+          "symbol": "RR",
+          "meaning": "Material removal rate",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "k_P",
+          "meaning": "Calibrated Preston coefficient for these units",
+          "unit": "Pa⁻¹"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Contact pressure in the model",
+          "unit": "Pa"
+        },
+        {
+          "symbol": "v_rel",
+          "meaning": "Relative sliding speed",
+          "unit": "m/s"
+        }
+      ],
+      "text": "Removal rate is approximately the calibrated Preston coefficient times pressure times relative speed."
+    }
+  ],
+  "mosfet": [
+    {
+      "kind": "math",
+      "latex": "I_D\\approx\\mu_n C^{\\prime}_{\\mathrm{ox}}\\frac{W}{L}\\left[(V_{GS}-V_T)V_{DS}-\\frac{V_{DS}^2}{2}\\right]",
+      "variables": [
+        {
+          "symbol": "I_D",
+          "meaning": "Drain current",
+          "unit": "A"
+        },
+        {
+          "symbol": "μₙ",
+          "meaning": "Electron mobility",
+          "unit": "m²/(V·s)"
+        },
+        {
+          "symbol": "C′_ox",
+          "meaning": "Gate oxide capacitance per area",
+          "unit": "F/m²"
+        },
+        {
+          "symbol": "W",
+          "meaning": "Channel width",
+          "unit": "m"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Channel length",
+          "unit": "m"
+        },
+        {
+          "symbol": "V_GS",
+          "meaning": "Gate-to-source voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "V_T",
+          "meaning": "Threshold voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "V_DS",
+          "meaning": "Drain-to-source voltage",
+          "unit": "V"
+        }
+      ],
+      "text": "Long-channel triode current is mobility times oxide capacitance per area times width-to-length ratio, multiplied by gate overdrive times drain voltage minus half the squared drain voltage.",
+      "note": "Applicable here for strong inversion and 0 ≤ V_DS < V_GS − V_T; it is not a modern short-channel device predictor."
+    }
+  ],
+  "gate-stack": [
+    {
+      "kind": "math",
+      "latex": "C^{\\prime}=\\frac{\\varepsilon_0 k}{t},\\qquad \\mathrm{EOT}\\approx t_{\\mathrm{HK}}\\frac{k_{\\mathrm{SiO_2}}}{k_{\\mathrm{HK}}}",
+      "variables": [
+        {
+          "symbol": "C′",
+          "meaning": "Dielectric capacitance per area",
+          "unit": "F/m²"
+        },
+        {
+          "symbol": "ε₀",
+          "meaning": "Vacuum permittivity",
+          "unit": "F/m"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Relative permittivity of the layer",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Physical layer thickness",
+          "unit": "m"
+        },
+        {
+          "symbol": "EOT",
+          "meaning": "Equivalent silicon-dioxide thickness",
+          "unit": "m"
+        },
+        {
+          "symbol": "t_HK",
+          "meaning": "Physical high-k layer thickness",
+          "unit": "m"
+        },
+        {
+          "symbol": "k_SiO₂",
+          "meaning": "Relative permittivity of silicon dioxide",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "k_HK",
+          "meaning": "Relative permittivity of the high-k layer",
+          "unit": "dimensionless"
+        }
+      ],
+      "text": "Capacitance per area equals permittivity divided by thickness. Equivalent oxide thickness is high-k thickness times the silicon-dioxide to high-k permittivity ratio."
+    }
+  ],
+  "channel": [
+    {
+      "kind": "math",
+      "latex": "Q^{\\prime}_{\\mathrm{inv}}(x)\\approx-C^{\\prime}_{\\mathrm{ox}}[V_{GS}-V_T-V(x)]",
+      "variables": [
+        {
+          "symbol": "Q′_inv(x)",
+          "meaning": "Local inversion-sheet charge per area",
+          "unit": "C/m²"
+        },
+        {
+          "symbol": "C′_ox",
+          "meaning": "Oxide capacitance per area",
+          "unit": "F/m²"
+        },
+        {
+          "symbol": "V_GS",
+          "meaning": "Gate-to-source voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "V_T",
+          "meaning": "Threshold voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "V(x)",
+          "meaning": "Local channel potential relative to source",
+          "unit": "V"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Position along the channel",
+          "unit": "m"
+        }
+      ],
+      "text": "Local inversion charge per area is minus oxide capacitance per area times the remaining gate overdrive after subtracting the local channel potential."
+    }
+  ],
+  "source-drain": [
+    {
+      "kind": "math",
+      "latex": "R_{\\mathrm{on}}\\approx R_{\\mathrm{channel}}+R_{\\mathrm{source}}+R_{\\mathrm{drain}}+R_{\\mathrm{contacts}}",
+      "variables": [
+        {
+          "symbol": "R_on",
+          "meaning": "Total on-state path resistance in the selected regime",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_channel",
+          "meaning": "Channel resistance contribution",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_source",
+          "meaning": "Source access resistance contribution",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_drain",
+          "meaning": "Drain access resistance contribution",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "R_contacts",
+          "meaning": "Combined contact resistance contribution",
+          "unit": "Ω"
+        }
+      ],
+      "text": "Total on-state resistance is approximately the sum of channel, source access, drain access and contact contributions."
+    }
+  ],
+  "contact": [
+    {
+      "kind": "math",
+      "latex": "R_c\\approx\\frac{\\rho_c}{A},\\qquad L_T=\\sqrt{\\frac{\\rho_c}{R_{\\mathrm{sheet}}}}",
+      "variables": [
+        {
+          "symbol": "R_c",
+          "meaning": "Contact resistance",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "ρ_c",
+          "meaning": "Specific contact resistivity",
+          "unit": "Ω·m²"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Nominal contact area",
+          "unit": "m²"
+        },
+        {
+          "symbol": "L_T",
+          "meaning": "Transfer length in the transmission-line model",
+          "unit": "m"
+        },
+        {
+          "symbol": "R_sheet",
+          "meaning": "Sheet resistance of the contacted conductor",
+          "unit": "Ω/square"
+        }
+      ],
+      "text": "Uniform-injection contact resistance is specific contact resistivity divided by area. Transfer length is the square root of specific contact resistivity divided by sheet resistance."
+    }
+  ],
+  "spacer": [
+    {
+      "kind": "math",
+      "latex": "Q_{\\mathrm{par}}=C_{\\mathrm{par}}\\Delta V,\\qquad C_{\\mathrm{par}}\\propto\\frac{\\varepsilon_{\\mathrm{eff}}A_{\\mathrm{eff}}}{d_{\\mathrm{eff}}}",
+      "variables": [
+        {
+          "symbol": "Q_par",
+          "meaning": "Charge moved into parasitic capacitance",
+          "unit": "C"
+        },
+        {
+          "symbol": "C_par",
+          "meaning": "Parasitic capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "ΔV",
+          "meaning": "Voltage change",
+          "unit": "V"
+        },
+        {
+          "symbol": "ε_eff",
+          "meaning": "Effective absolute permittivity",
+          "unit": "F/m"
+        },
+        {
+          "symbol": "A_eff",
+          "meaning": "Effective facing area",
+          "unit": "m²"
+        },
+        {
+          "symbol": "d_eff",
+          "meaning": "Effective separation",
+          "unit": "m"
+        }
+      ],
+      "text": "Transition charge equals parasitic capacitance times voltage change. A qualitative capacitance model scales with effective permittivity and area, and inversely with separation."
+    }
+  ],
+  "finfet": [
+    {
+      "kind": "math",
+      "latex": "W_{\\mathrm{eff}}\\approx N_{\\mathrm{fin}}(2H_{\\mathrm{fin}}+W_{\\mathrm{fin}})",
+      "variables": [
+        {
+          "symbol": "W_eff",
+          "meaning": "Total geometric gated width",
+          "unit": "nm"
+        },
+        {
+          "symbol": "N_fin",
+          "meaning": "Number of fins",
+          "unit": "count"
+        },
+        {
+          "symbol": "H_fin",
+          "meaning": "Gated fin sidewall height",
+          "unit": "nm"
+        },
+        {
+          "symbol": "W_fin",
+          "meaning": "Gated fin top width",
+          "unit": "nm"
+        }
+      ],
+      "text": "Effective tri-gate width is approximately fin count times twice the fin height plus its top width."
+    }
+  ],
+  "gaa": [
+    {
+      "kind": "math",
+      "latex": "W_{\\mathrm{eff}}\\approx2N_{\\mathrm{sheet}}(W_{\\mathrm{sheet}}+T_{\\mathrm{sheet}})",
+      "variables": [
+        {
+          "symbol": "W_eff",
+          "meaning": "Total geometric gated perimeter",
+          "unit": "nm"
+        },
+        {
+          "symbol": "N_sheet",
+          "meaning": "Number of gated sheets",
+          "unit": "count"
+        },
+        {
+          "symbol": "W_sheet",
+          "meaning": "Rectangular sheet width",
+          "unit": "nm"
+        },
+        {
+          "symbol": "T_sheet",
+          "meaning": "Rectangular sheet thickness",
+          "unit": "nm"
+        }
+      ],
+      "text": "Total gated perimeter is approximately twice the sheet count times the sum of sheet width and thickness."
+    }
+  ],
+  "inverter": [
+    {
+      "kind": "math",
+      "latex": "P_{\\mathrm{dynamic}}\\approx\\alpha C_{\\mathrm{load}}V_{DD}^2 f",
+      "variables": [
+        {
+          "symbol": "P_dynamic",
+          "meaning": "Dynamic switching power",
+          "unit": "W"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Effective charging events per clock period",
+          "unit": "events/cycle"
+        },
+        {
+          "symbol": "C_load",
+          "meaning": "Switched load capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "V_DD",
+          "meaning": "Supply voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Clock frequency",
+          "unit": "cycles/s"
+        }
+      ],
+      "text": "Dynamic power is approximately charging activity times load capacitance times supply voltage squared times clock frequency."
+    }
+  ],
+  "nand": [
+    {
+      "kind": "math",
+      "latex": "Y=\\neg(A\\land B)",
+      "variables": [
+        {
+          "symbol": "Y",
+          "meaning": "NAND output logic value",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "A",
+          "meaning": "First input logic value",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Second input logic value",
+          "unit": "Boolean"
+        }
+      ],
+      "text": "The output is the logical negation of A AND B: it is low only when both inputs are high."
+    }
+  ],
+  "flipflop": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{clock}}\\ge t_{CQ,\\max}+t_{\\mathrm{logic},\\max}+t_{\\mathrm{setup}}+t_{\\mathrm{uncertainty}}",
+      "variables": [
+        {
+          "symbol": "T_clock",
+          "meaning": "Available clock period",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_CQ,max",
+          "meaning": "Maximum launch register clock-to-Q delay",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_logic,max",
+          "meaning": "Maximum combinational path delay",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_setup",
+          "meaning": "Capture register setup time",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_uncertainty",
+          "meaning": "Conservative nonnegative clock uncertainty budget",
+          "unit": "s"
+        }
+      ],
+      "text": "The clock period must cover maximum clock-to-Q delay, maximum logic delay, setup time and the uncertainty budget."
+    }
+  ],
+  "sram": [
+    {
+      "kind": "math",
+      "latex": "x=f(y),\\qquad y=g(x)",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "First storage-node voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Second storage-node voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "f",
+          "meaning": "First inverter static voltage-transfer function",
+          "unit": "V → V"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Second inverter static voltage-transfer function",
+          "unit": "V → V"
+        }
+      ],
+      "text": "At equilibrium, each storage-node voltage equals its inverter response to the other node voltage."
+    }
+  ],
+  "adder": [
+    {
+      "kind": "math",
+      "latex": "G_i=A_i\\land B_i,\\quad P_i=A_i\\oplus B_i,\\quad C_{i+1}=G_i\\lor(P_i\\land C_i)",
+      "variables": [
+        {
+          "symbol": "Aᵢ",
+          "meaning": "First operand bit at position i",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Bᵢ",
+          "meaning": "Second operand bit at position i",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Gᵢ",
+          "meaning": "Carry-generate bit",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Pᵢ",
+          "meaning": "Carry-propagate bit under XOR convention",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Cᵢ",
+          "meaning": "Incoming carry bit",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "Cᵢ₊₁",
+          "meaning": "Outgoing carry bit",
+          "unit": "Boolean"
+        },
+        {
+          "symbol": "i",
+          "meaning": "Bit-position index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "A position generates a carry when both operand bits are one. It propagates the incoming carry when their XOR is one. Outgoing carry is generate OR propagate-AND-incoming-carry."
+    }
+  ],
+  "multiplier": [
+    {
+      "kind": "math",
+      "latex": "A B=\\sum_i\\sum_j(a_i b_j)2^{i+j}",
+      "variables": [
+        {
+          "symbol": "A",
+          "meaning": "First unsigned binary operand",
+          "unit": "integer"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Second unsigned binary operand",
+          "unit": "integer"
+        },
+        {
+          "symbol": "aᵢ",
+          "meaning": "Bit i of A",
+          "unit": "0 or 1"
+        },
+        {
+          "symbol": "bⱼ",
+          "meaning": "Bit j of B",
+          "unit": "0 or 1"
+        },
+        {
+          "symbol": "i,j",
+          "meaning": "Finite operand bit positions",
+          "unit": "nonnegative integer indices"
+        }
+      ],
+      "text": "An unsigned binary product is the sum of every bit-pair product weighted by two raised to the sum of the bit positions."
+    }
+  ],
+  "mac": [
+    {
+      "kind": "math",
+      "latex": "y=\\sum_k a_k b_k,\\qquad C_{ij}=\\sum_k A_{ik}B_{kj}",
+      "variables": [
+        {
+          "symbol": "y",
+          "meaning": "Dot-product output",
+          "unit": "product of operand units"
+        },
+        {
+          "symbol": "aₖ,bₖ",
+          "meaning": "Paired dot-product operands",
+          "unit": "declared operand units"
+        },
+        {
+          "symbol": "Cᵢⱼ",
+          "meaning": "Matrix-product entry at row i and column j",
+          "unit": "product of A and B element units"
+        },
+        {
+          "symbol": "Aᵢₖ",
+          "meaning": "Left-matrix element",
+          "unit": "A element units"
+        },
+        {
+          "symbol": "Bₖⱼ",
+          "meaning": "Right-matrix element",
+          "unit": "B element units"
+        },
+        {
+          "symbol": "i,j,k",
+          "meaning": "Valid row, column and reduction indices",
+          "unit": "integer indices"
+        }
+      ],
+      "text": "A dot product sums pairwise products. A matrix-product entry sums left-matrix row i times right-matrix column j over their shared index k."
+    }
+  ],
+  "interconnect": [
+    {
+      "kind": "math",
+      "latex": "R=rL,\\qquad C=cL,\\qquad\\tau_{\\mathrm{wire}}\\propto rcL^2",
+      "variables": [
+        {
+          "symbol": "R",
+          "meaning": "Wire resistance",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "C",
+          "meaning": "Wire capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Resistance per length",
+          "unit": "Ω/m"
+        },
+        {
+          "symbol": "c",
+          "meaning": "Capacitance per length",
+          "unit": "F/m"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Unbuffered wire length",
+          "unit": "m"
+        },
+        {
+          "symbol": "τ_wire",
+          "meaning": "Characteristic RC wire delay",
+          "unit": "s"
+        }
+      ],
+      "text": "Uniform-wire resistance and capacitance each scale with length. Their distributed-RC delay scales with resistance per length times capacitance per length times length squared."
+    }
+  ],
+  "clock": [
+    {
+      "kind": "math",
+      "latex": "f_{\\mathrm{clock}}=\\frac{1}{T_{\\mathrm{clock}}},\\qquad m=T_{\\mathrm{clock}}-T_{\\mathrm{required}}",
+      "variables": [
+        {
+          "symbol": "f_clock",
+          "meaning": "Clock frequency",
+          "unit": "Hz"
+        },
+        {
+          "symbol": "T_clock",
+          "meaning": "Clock period",
+          "unit": "s"
+        },
+        {
+          "symbol": "m",
+          "meaning": "Available timing margin",
+          "unit": "s"
+        },
+        {
+          "symbol": "T_required",
+          "meaning": "Required path time under the selected constraints",
+          "unit": "s"
+        }
+      ],
+      "text": "Clock frequency is the reciprocal of the period. Timing margin is the available period minus required path time."
+    }
+  ],
+  "standard-cell": [
+    {
+      "kind": "math",
+      "latex": "U=\\frac{\\sum_i A_{\\mathrm{cell},i}}{A_{\\mathrm{placeable}}}",
+      "variables": [
+        {
+          "symbol": "U",
+          "meaning": "Placement utilization",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "A_cell,i",
+          "meaning": "Area of placed standard cell i",
+          "unit": "μm²"
+        },
+        {
+          "symbol": "A_placeable",
+          "meaning": "Area available for legal placement",
+          "unit": "μm²"
+        },
+        {
+          "symbol": "i",
+          "meaning": "Placed-cell index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Placement utilization is total placed-cell area divided by legally placeable area."
+    }
+  ],
+  "streaming-multiprocessor": [
+    {
+      "kind": "math",
+      "latex": "P_{\\mathrm{attainable}}\\le\\min(P_{\\mathrm{compute}},B_{\\mathrm{memory}}I)",
+      "variables": [
+        {
+          "symbol": "P_attainable",
+          "meaning": "Attainable arithmetic throughput",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "P_compute",
+          "meaning": "Arithmetic throughput ceiling for the selected format",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "B_memory",
+          "meaning": "Useful bandwidth at the selected memory boundary",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "I",
+          "meaning": "Arithmetic intensity at that boundary",
+          "unit": "operations/byte"
+        }
+      ],
+      "text": "Attainable throughput cannot exceed either arithmetic capacity or memory bandwidth times arithmetic intensity."
+    }
+  ],
+  "tensor-core": [
+    {
+      "kind": "math",
+      "latex": "F\\approx2mnk,\\qquad I_{\\mathrm{ideal}}\\approx\\frac{2mnk}{b(mk+kn+mn)}",
+      "variables": [
+        {
+          "symbol": "F",
+          "meaning": "Dense matrix-product arithmetic count",
+          "unit": "FLOP"
+        },
+        {
+          "symbol": "m",
+          "meaning": "Rows of A and C",
+          "unit": "elements"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Columns of B and C",
+          "unit": "elements"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Shared reduction dimension",
+          "unit": "elements"
+        },
+        {
+          "symbol": "b",
+          "meaning": "Stored size per matrix element",
+          "unit": "bytes/element"
+        },
+        {
+          "symbol": "I_ideal",
+          "meaning": "Intensity when A and B are read once and C written once",
+          "unit": "FLOP/byte"
+        }
+      ],
+      "text": "Dense matrix work is approximately two times m times n times k. Ideal intensity divides that work by the bytes needed to read both inputs once and write the output once."
+    }
+  ],
+  "register-file": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{resident}}\\le\\left\\lfloor\\frac{R_{\\mathrm{SM}}}{r_{\\mathrm{thread}}T_{\\mathrm{block}}}\\right\\rfloor",
+      "variables": [
+        {
+          "symbol": "B_resident",
+          "meaning": "Blocks permitted by the register-only budget",
+          "unit": "blocks/SM"
+        },
+        {
+          "symbol": "R_SM",
+          "meaning": "Available 32-bit register slots per SM",
+          "unit": "registers/SM"
+        },
+        {
+          "symbol": "r_thread",
+          "meaning": "Register slots requested by one thread",
+          "unit": "registers/thread"
+        },
+        {
+          "symbol": "T_block",
+          "meaning": "Threads in one block",
+          "unit": "threads/block"
+        }
+      ],
+      "text": "Resident blocks cannot exceed the floor of available registers divided by registers per thread times threads per block."
+    }
+  ],
+  "shared-sram": [
+    {
+      "kind": "math",
+      "latex": "\\operatorname{bank}(a)=\\left\\lfloor\\frac{a}{4\\,\\mathrm{bytes}}\\right\\rfloor\\bmod32",
+      "variables": [
+        {
+          "symbol": "a",
+          "meaning": "Byte-address offset within the mapped shared-memory address space",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "bank(a)",
+          "meaning": "Bank index for the addressed word",
+          "unit": "integer 0–31"
+        },
+        {
+          "symbol": "4 bytes",
+          "meaning": "Word width used by this mapping",
+          "unit": "bytes/word"
+        },
+        {
+          "symbol": "32",
+          "meaning": "Number of shared-memory banks",
+          "unit": "count"
+        }
+      ],
+      "text": "Divide the byte address by four bytes, take the floor, then take the remainder modulo 32 to obtain the bank index.",
+      "note": "The explicit four-byte divisor makes the original address-unit convention visible; this mapping is configuration-specific."
+    }
+  ],
+  "l1-cache": [
+    {
+      "kind": "math",
+      "latex": "\\eta_{\\mathrm{useful}}=\\frac{M_{\\mathrm{useful}}}{M_{\\mathrm{transferred}}},\\qquad B_{\\mathrm{useful}}=\\eta_{\\mathrm{useful}}B_{\\mathrm{transferred}}",
+      "variables": [
+        {
+          "symbol": "η_useful",
+          "meaning": "Useful-byte fraction for the declared traffic accounting",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "M_useful",
+          "meaning": "Useful bytes in the counted transfers",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "M_transferred",
+          "meaning": "All bytes physically moved for those transfers",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_useful",
+          "meaning": "Useful byte rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "B_transferred",
+          "meaning": "Transferred byte rate over the same interval",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Useful-byte efficiency is useful bytes divided by transferred bytes. Multiplying transferred bandwidth by that efficiency gives useful bandwidth."
+    }
+  ],
+  "l2-cache": [
+    {
+      "kind": "math",
+      "latex": "\\mathrm{AMAT}=t_{L1}+m_{L1}(t_{L2}+m_{L2}t_{\\mathrm{HBM}})",
+      "variables": [
+        {
+          "symbol": "AMAT",
+          "meaning": "Average memory access time in the sequential model",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_L1",
+          "meaning": "L1 lookup time",
+          "unit": "s"
+        },
+        {
+          "symbol": "m_L1",
+          "meaning": "Fraction of accesses missing L1",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "t_L2",
+          "meaning": "Additional L2 lookup time after an L1 miss",
+          "unit": "s"
+        },
+        {
+          "symbol": "m_L2",
+          "meaning": "L2 miss fraction conditional on an L1 miss",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "t_HBM",
+          "meaning": "Additional service time after an L2 miss",
+          "unit": "s"
+        }
+      ],
+      "text": "Average access time equals L1 lookup time plus the L1 miss fraction times L2 lookup time and its conditional HBM miss penalty."
+    }
+  ],
+  "on-chip-network": [
+    {
+      "kind": "math",
+      "latex": "N_{\\mathrm{inflight}}=\\lambda L,\\qquad M_{\\mathrm{inflight}}\\approx BL",
+      "variables": [
+        {
+          "symbol": "N_inflight",
+          "meaning": "Average outstanding request count",
+          "unit": "requests"
+        },
+        {
+          "symbol": "λ",
+          "meaning": "Completed request rate",
+          "unit": "requests/s"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Mean request time within the same boundary",
+          "unit": "s"
+        },
+        {
+          "symbol": "M_inflight",
+          "meaning": "Mean in-flight data amount under consistent payload accounting",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Sustained payload byte rate",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Average in-flight requests equal request rate times latency. The corresponding in-flight byte amount is approximately byte throughput times latency."
+    }
+  ],
+  "hbm-controller": [
+    {
+      "kind": "math",
+      "latex": "N_{\\mathrm{needed}}\\approx\\frac{B_{\\mathrm{target}}L}{s}",
+      "variables": [
+        {
+          "symbol": "N_needed",
+          "meaning": "Average independent requests needed in flight",
+          "unit": "requests"
+        },
+        {
+          "symbol": "B_target",
+          "meaning": "Target useful byte rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Mean request latency",
+          "unit": "s"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Useful bytes per completed request",
+          "unit": "bytes/request"
+        }
+      ],
+      "text": "Required request concurrency is approximately target bandwidth times latency divided by useful bytes per request."
+    }
+  ],
+  "nvlink-port": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{ring}}\\approx2(p-1)\\alpha+\\frac{2(p-1)}{p}\\frac{M}{\\beta}",
+      "variables": [
+        {
+          "symbol": "T_ring",
+          "meaning": "Modeled ring all-reduce time",
+          "unit": "s"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Participating ranks",
+          "unit": "positive integer count"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Startup latency per ring step",
+          "unit": "s/step"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Input payload per rank",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "β",
+          "meaning": "Effective one-direction payload bandwidth per rank",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Ring time is approximately two times ranks minus one startup costs, plus two times ranks minus one divided by ranks times payload divided by bandwidth."
+    }
+  ],
+  "tensor-memory": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}C&=128\\times512\\times32\\,\\mathrm{bits}\\\\&=262{,}144\\,\\mathrm{bytes}=256\\,\\mathrm{KiB}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "C",
+          "meaning": "Capacity of the documented logical Tensor Memory array",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "128",
+          "meaning": "Logical row count",
+          "unit": "rows"
+        },
+        {
+          "symbol": "512",
+          "meaning": "Logical column count",
+          "unit": "columns"
+        },
+        {
+          "symbol": "32 bits",
+          "meaning": "Storage per logical cell",
+          "unit": "bits/cell"
+        },
+        {
+          "symbol": "KiB",
+          "meaning": "Binary kibibyte",
+          "unit": "1024 bytes"
+        }
+      ],
+      "text": "The documented array has 128 rows by 512 columns with 32 bits per cell: 2,097,152 bits, or 262,144 bytes, or 256 KiB.",
+      "note": "Eight bits make one byte. This is the architectural array capacity, not a per-block allocation guarantee."
+    }
+  ],
+  "tensor-memory-accelerator": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{pipeline}}\\approx t_{\\mathrm{load}}+t_{\\mathrm{compute}}+(N-1)\\max(t_{\\mathrm{load}},t_{\\mathrm{compute}})",
+      "variables": [
+        {
+          "symbol": "T_pipeline",
+          "meaning": "Total two-stage pipeline time including fill and drain",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_load",
+          "meaning": "Load time for one equal tile",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_compute",
+          "meaning": "Compute time for one equal tile",
+          "unit": "s"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Number of tiles",
+          "unit": "positive integer count"
+        }
+      ],
+      "text": "Pipeline time is the first load plus first compute, followed by N minus one tile intervals, each set by the slower stage."
+    }
+  ],
+  "gpu-die": [
+    {
+      "kind": "math",
+      "latex": "P_{\\mathrm{dynamic}}\\approx\\alpha C_{\\mathrm{switched}}V^2f",
+      "variables": [
+        {
+          "symbol": "P_dynamic",
+          "meaning": "Dynamic switching power",
+          "unit": "W"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Effective charging activity per clock period",
+          "unit": "events/cycle"
+        },
+        {
+          "symbol": "C_switched",
+          "meaning": "Effective switched capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Supply voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Clock frequency",
+          "unit": "cycles/s"
+        }
+      ],
+      "text": "Dynamic power is approximately activity times switched capacitance times voltage squared times clock frequency."
+    }
+  ],
+  "hbm-stack": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{peak}}=\\frac{W_{\\mathrm{data}}r_{\\mathrm{pin}}}{8}",
+      "variables": [
+        {
+          "symbol": "B_peak",
+          "meaning": "Peak interface byte rate before losses",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "W_data",
+          "meaning": "Number of active parallel data wires",
+          "unit": "wires"
+        },
+        {
+          "symbol": "r_pin",
+          "meaning": "Effective bit rate on each data wire",
+          "unit": "bits/(s·wire)"
+        },
+        {
+          "symbol": "8",
+          "meaning": "Bits per byte",
+          "unit": "bits/byte"
+        }
+      ],
+      "text": "Peak bandwidth equals active data-wire count times effective bit rate per wire divided by eight bits per byte."
+    }
+  ],
+  "dram-die": [
+    {
+      "kind": "math",
+      "latex": "\\Delta V_{\\mathrm{bitline}}=\\frac{C_{\\mathrm{cell}}}{C_{\\mathrm{cell}}+C_{\\mathrm{bitline}}}(V_{\\mathrm{cell}}-V_{\\mathrm{precharge}})",
+      "variables": [
+        {
+          "symbol": "ΔV_bitline",
+          "meaning": "Initial bit-line voltage change",
+          "unit": "V"
+        },
+        {
+          "symbol": "C_cell",
+          "meaning": "Selected cell capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "C_bitline",
+          "meaning": "Precharged bit-line capacitance",
+          "unit": "F"
+        },
+        {
+          "symbol": "V_cell",
+          "meaning": "Cell voltage before charge sharing",
+          "unit": "V"
+        },
+        {
+          "symbol": "V_precharge",
+          "meaning": "Bit-line precharge voltage",
+          "unit": "V"
+        }
+      ],
+      "text": "Initial bit-line voltage change is the cell share of total capacitance times the initial cell-to-precharge voltage difference."
+    }
+  ],
+  "through-silicon-via": [
+    {
+      "kind": "math",
+      "latex": "R_{\\mathrm{via}}\\approx\\frac{\\rho\\ell}{\\pi r^2}",
+      "variables": [
+        {
+          "symbol": "R_via",
+          "meaning": "DC via resistance",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "ρ",
+          "meaning": "Effective conductor resistivity",
+          "unit": "Ω·m"
+        },
+        {
+          "symbol": "ℓ",
+          "meaning": "Conductor length through silicon",
+          "unit": "m"
+        },
+        {
+          "symbol": "r",
+          "meaning": "Conducting via radius",
+          "unit": "m"
+        }
+      ],
+      "text": "Via resistance is approximately resistivity times length divided by its circular conducting area."
+    }
+  ],
+  "interposer": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{delay}}\\propto R^{\\prime}C^{\\prime}\\ell^2",
+      "variables": [
+        {
+          "symbol": "t_delay",
+          "meaning": "Characteristic unbuffered route delay",
+          "unit": "s"
+        },
+        {
+          "symbol": "R′",
+          "meaning": "Resistance per route length",
+          "unit": "Ω/m"
+        },
+        {
+          "symbol": "C′",
+          "meaning": "Capacitance per route length",
+          "unit": "F/m"
+        },
+        {
+          "symbol": "ℓ",
+          "meaning": "Route length",
+          "unit": "m"
+        }
+      ],
+      "text": "Distributed-RC route delay scales with resistance per length times capacitance per length times route length squared."
+    }
+  ],
+  "microbump": [
+    {
+      "kind": "math",
+      "latex": "N_{\\mathrm{sites}}\\approx\\frac{A_{\\mathrm{interface}}}{p^2}",
+      "variables": [
+        {
+          "symbol": "N_sites",
+          "meaning": "Potential joint sites in an ideal square array",
+          "unit": "sites"
+        },
+        {
+          "symbol": "A_interface",
+          "meaning": "Usable bonding area",
+          "unit": "μm²"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Square-array pitch",
+          "unit": "μm"
+        }
+      ],
+      "text": "The ideal joint-site count is usable interface area divided by pitch squared."
+    }
+  ],
+  "package-substrate": [
+    {
+      "kind": "math",
+      "latex": "Z_{\\mathrm{target}}=\\frac{\\Delta V_{\\mathrm{allowed}}}{\\Delta I_{\\mathrm{step}}}",
+      "variables": [
+        {
+          "symbol": "Z_target",
+          "meaning": "Target power-distribution impedance magnitude",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "ΔV_allowed",
+          "meaning": "Allowed voltage-excursion magnitude",
+          "unit": "V"
+        },
+        {
+          "symbol": "ΔI_step",
+          "meaning": "Specified nonzero current-step magnitude",
+          "unit": "A"
+        }
+      ],
+      "text": "The impedance target is allowed voltage excursion divided by current-step magnitude."
+    }
+  ],
+  "thermal-interface": [
+    {
+      "kind": "math",
+      "latex": "R_{\\theta,\\mathrm{bulk}}=\\frac{t}{kA},\\qquad\\Delta T=\\dot Q R_\\theta",
+      "variables": [
+        {
+          "symbol": "R_θ,bulk",
+          "meaning": "Uniform-layer bulk thermal resistance",
+          "unit": "K/W"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Layer thickness",
+          "unit": "m"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Thermal conductivity",
+          "unit": "W/(m·K)"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Conduction area",
+          "unit": "m²"
+        },
+        {
+          "symbol": "ΔT",
+          "meaning": "Temperature rise along the modeled path",
+          "unit": "K"
+        },
+        {
+          "symbol": "Q̇",
+          "meaning": "Heat-flow rate",
+          "unit": "W"
+        },
+        {
+          "symbol": "R_θ",
+          "meaning": "Thermal resistance of that path, including any separately modeled contacts",
+          "unit": "K/W"
+        }
+      ],
+      "text": "Bulk thermal resistance is thickness divided by conductivity times area. Temperature rise equals heat-flow rate times the selected total thermal resistance."
+    }
+  ],
+  "heat-spreader": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{junction}}-T_{\\mathrm{coolant}}\\approx\\dot Q\\sum_i R_{\\theta,i}",
+      "variables": [
+        {
+          "symbol": "T_junction",
+          "meaning": "Junction temperature",
+          "unit": "°C"
+        },
+        {
+          "symbol": "T_coolant",
+          "meaning": "Coolant-boundary temperature",
+          "unit": "°C"
+        },
+        {
+          "symbol": "Q̇",
+          "meaning": "Common heat-flow rate through the series path",
+          "unit": "W"
+        },
+        {
+          "symbol": "R_θ,i",
+          "meaning": "Serial thermal resistance of layer or interface i",
+          "unit": "K/W"
+        },
+        {
+          "symbol": "i",
+          "meaning": "Thermal-path element index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Junction-to-coolant temperature rise is approximately common heat flow times the sum of serial thermal resistances.",
+      "note": "A Celsius temperature difference has the same numerical value as a kelvin difference."
+    }
+  ],
+  "coldplate": [
+    {
+      "kind": "math",
+      "latex": "\\dot Q=\\dot m c_p(T_{\\mathrm{out}}-T_{\\mathrm{in}})",
+      "variables": [
+        {
+          "symbol": "Q̇",
+          "meaning": "Heat transported by the coolant",
+          "unit": "W"
+        },
+        {
+          "symbol": "ṁ",
+          "meaning": "Coolant mass flow rate",
+          "unit": "kg/s"
+        },
+        {
+          "symbol": "c_p",
+          "meaning": "Coolant specific heat capacity",
+          "unit": "J/(kg·K)"
+        },
+        {
+          "symbol": "T_out",
+          "meaning": "Coolant outlet temperature",
+          "unit": "°C"
+        },
+        {
+          "symbol": "T_in",
+          "meaning": "Coolant inlet temperature",
+          "unit": "°C"
+        }
+      ],
+      "text": "Transported heat equals mass flow times specific heat times outlet-to-inlet temperature rise."
+    }
+  ],
+  "host-cpu": [
+    {
+      "kind": "math",
+      "latex": "S=\\frac{1}{(1-f)+f/s}",
+      "variables": [
+        {
+          "symbol": "S",
+          "meaning": "Overall fixed-workload speedup",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "f",
+          "meaning": "Baseline execution-time fraction accelerated",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Speedup applied to that fraction",
+          "unit": "positive dimensionless ratio"
+        }
+      ],
+      "text": "Overall speedup is the reciprocal of the unaccelerated fraction plus the accelerated fraction divided by its speedup."
+    }
+  ],
+  "ddr-memory": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{CAS}}=\\frac{2000\\,\\mathrm{CL}}{r_{\\mathrm{MT/s}}}\\,\\mathrm{ns}",
+      "variables": [
+        {
+          "symbol": "t_CAS",
+          "meaning": "CAS column-read timing interval",
+          "unit": "ns"
+        },
+        {
+          "symbol": "CL",
+          "meaning": "CAS latency count",
+          "unit": "memory clock cycles"
+        },
+        {
+          "symbol": "r_MT/s",
+          "meaning": "Numerical effective DDR transfer rate expressed in MT/s",
+          "unit": "MT/s numerical value"
+        },
+        {
+          "symbol": "2000",
+          "meaning": "Conversion factor for two transfers per clock and MT/s to ns",
+          "unit": "conversion factor"
+        }
+      ],
+      "text": "CAS timing in nanoseconds is 2000 times the CAS latency count divided by the numerical DDR transfer rate in megatransfers per second.",
+      "note": "Insert the rate number in MT/s, not transfers/s. This is CAS timing rather than complete CPU memory-access latency."
+    }
+  ],
+  "lpddr-memory": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{remote}}\\le\\min(B_{\\mathrm{source\\ memory}},B_{\\mathrm{interconnect}},B_{\\mathrm{destination}})",
+      "variables": [
+        {
+          "symbol": "B_remote",
+          "meaning": "Sustained remote-access payload rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "B_source memory",
+          "meaning": "Effective source-memory rate in the selected direction",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "B_interconnect",
+          "meaning": "Effective intervening-link rate in that direction",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "B_destination",
+          "meaning": "Effective receiving-boundary rate",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Remote-access bandwidth cannot exceed the smallest effective bandwidth of the source memory, interconnect and destination."
+    }
+  ],
+  "pcie-interface": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{Gen5,one\\ way}}=N_{\\mathrm{lanes}}\\,(32\\times10^9\\,\\mathrm{bits/s})\\frac{128}{130}\\frac{1\\,\\mathrm{byte}}{8\\,\\mathrm{bits}}",
+      "variables": [
+        {
+          "symbol": "B_Gen5,one way",
+          "meaning": "Gen5 directional bandwidth after 128b/130b encoding",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "N_lanes",
+          "meaning": "Negotiated active lane count",
+          "unit": "lanes"
+        },
+        {
+          "symbol": "32 × 10⁹ bits/s",
+          "meaning": "Raw per-lane NRZ bit rate corresponding to 32 GT/s",
+          "unit": "bits/(s·lane)"
+        },
+        {
+          "symbol": "128/130",
+          "meaning": "Encoding payload fraction before transaction overhead",
+          "unit": "fraction"
+        }
+      ],
+      "text": "Gen5 one-way bandwidth equals lane count times 32 billion raw bits per second per lane, times the 128-over-130 encoding fraction, divided by eight bits per byte."
+    }
+  ],
+  "network-adapter": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{message}}\\approx\\alpha+\\frac{M}{B_{\\mathrm{payload}}}",
+      "variables": [
+        {
+          "symbol": "T_message",
+          "meaning": "Message completion time in the path model",
+          "unit": "s"
+        },
+        {
+          "symbol": "α",
+          "meaning": "Fixed software/adapter/path startup latency",
+          "unit": "s"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Payload size",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_payload",
+          "meaning": "Sustained directional payload bandwidth",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Message time is approximately fixed startup latency plus payload size divided by sustained payload bandwidth."
+    }
+  ],
+  "nvme-storage": [
+    {
+      "kind": "math",
+      "latex": "\\mathrm{QD}_{\\mathrm{average}}\\approx\\mathrm{IOPS}\\,L_{\\mathrm{average}}",
+      "variables": [
+        {
+          "symbol": "QD_average",
+          "meaning": "Average operations in flight",
+          "unit": "operations"
+        },
+        {
+          "symbol": "IOPS",
+          "meaning": "Completed I/O operation rate",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "L_average",
+          "meaning": "Mean operation latency at the same boundary",
+          "unit": "s"
+        }
+      ],
+      "text": "Average queue depth is approximately completed operations per second times average operation latency."
+    }
+  ],
+  "voltage-regulator": [
+    {
+      "kind": "math",
+      "latex": "V_{\\mathrm{out}}\\approx D V_{\\mathrm{in}},\\qquad\\Delta I_L\\approx\\frac{(V_{\\mathrm{in}}-V_{\\mathrm{out}})D}{L f_s}",
+      "variables": [
+        {
+          "symbol": "V_out",
+          "meaning": "Output voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Switch-on duty fraction",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "V_in",
+          "meaning": "Input voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "ΔI_L",
+          "meaning": "Peak-to-peak phase-inductor current ripple",
+          "unit": "A"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Phase inductance",
+          "unit": "H"
+        },
+        {
+          "symbol": "f_s",
+          "meaning": "Switching frequency",
+          "unit": "Hz"
+        }
+      ],
+      "text": "Ideal buck output is duty fraction times input voltage. Inductor current ripple is approximately input-minus-output voltage times duty fraction divided by inductance times switching frequency."
+    }
+  ],
+  "power-supply": [
+    {
+      "kind": "math",
+      "latex": "\\eta=\\frac{P_{\\mathrm{out}}}{P_{\\mathrm{in}}},\\qquad P_{\\mathrm{loss}}=P_{\\mathrm{out}}\\left(\\frac{1}{\\eta}-1\\right)",
+      "variables": [
+        {
+          "symbol": "η",
+          "meaning": "Conversion efficiency",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "P_out",
+          "meaning": "Delivered output power",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_in",
+          "meaning": "Input power",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_loss",
+          "meaning": "Power dissipated inside the conversion boundary",
+          "unit": "W"
+        }
+      ],
+      "text": "Efficiency is output power divided by input power. Conversion loss is output power times reciprocal efficiency minus one."
+    }
+  ],
+  "compute-baseboard": [
+    {
+      "kind": "math",
+      "latex": "\\Gamma=\\frac{Z_{\\mathrm{load}}-Z_0}{Z_{\\mathrm{load}}+Z_0}",
+      "variables": [
+        {
+          "symbol": "Γ",
+          "meaning": "Voltage reflection coefficient",
+          "unit": "dimensionless (potentially complex)"
+        },
+        {
+          "symbol": "Z_load",
+          "meaning": "Termination impedance",
+          "unit": "Ω"
+        },
+        {
+          "symbol": "Z₀",
+          "meaning": "Transmission-line characteristic impedance",
+          "unit": "Ω"
+        }
+      ],
+      "text": "The voltage reflection coefficient is load impedance minus characteristic impedance divided by their sum."
+    }
+  ],
+  "management-controller": [
+    {
+      "kind": "math",
+      "latex": "\\mathbb E[T_{\\mathrm{detect}}]=\\frac{\\Delta t}{2},\\qquad0\\le T_{\\mathrm{detect}}<\\Delta t",
+      "variables": [
+        {
+          "symbol": "T_detect",
+          "meaning": "Waiting time from persistent fault onset to the next poll",
+          "unit": "s"
+        },
+        {
+          "symbol": "Δt",
+          "meaning": "Fixed interval between ideal polls",
+          "unit": "s"
+        },
+        {
+          "symbol": "E[T_detect]",
+          "meaning": "Mean detection wait over uniformly distributed onset phase",
+          "unit": "s"
+        }
+      ],
+      "text": "With uniform fault-onset phase, mean wait to the next poll is half the polling interval; the ideal wait lies between zero and one interval.",
+      "note": "The source writes a strict maximum below the interval. A continuous uniform wait has supremum Δt, so this states the intended per-event range (almost surely) rather than an unattained maximum. Actual observation/transport delays are excluded."
+    }
+  ],
+  "grace-blackwell-superchip": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{GPU\\ path}}\\approx\\frac{F}{P_{\\mathrm{GPU}}}+\\frac{M_{\\mathrm{in}}}{B_{\\mathrm{in}}}+\\frac{M_{\\mathrm{out}}}{B_{\\mathrm{out}}}+T_{\\mathrm{launch}}",
+      "variables": [
+        {
+          "symbol": "T_GPU path",
+          "meaning": "Sequential GPU execution-and-transfer time",
+          "unit": "s"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Arithmetic work for the specified operation and format",
+          "unit": "operations"
+        },
+        {
+          "symbol": "P_GPU",
+          "meaning": "Attained arithmetic throughput",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "M_in",
+          "meaning": "Bytes transferred into the device",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_in",
+          "meaning": "Effective incoming path bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "M_out",
+          "meaning": "Bytes transferred out of the device",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_out",
+          "meaning": "Effective outgoing path bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "T_launch",
+          "meaning": "Exposed launch overhead",
+          "unit": "s"
+        }
+      ],
+      "text": "Sequential GPU-path time is arithmetic work divided by attained throughput, plus incoming transfer time, outgoing transfer time and launch overhead."
+    }
+  ],
+  "rack": [
+    {
+      "kind": "math",
+      "latex": "R\\le\\min(P_{\\mathrm{peak}},B_{\\mathrm{mem}}I_{\\mathrm{mem}},B_{\\mathrm{net}}I_{\\mathrm{net}})",
+      "variables": [
+        {
+          "symbol": "R",
+          "meaning": "Useful arithmetic throughput under the declared work convention",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "P_peak",
+          "meaning": "Compatible arithmetic throughput ceiling",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "B_mem",
+          "meaning": "Useful memory bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "I_mem",
+          "meaning": "Useful operations per byte crossing the memory boundary",
+          "unit": "operations/byte"
+        },
+        {
+          "symbol": "B_net",
+          "meaning": "Useful network bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "I_net",
+          "meaning": "Useful operations per byte crossing the network boundary",
+          "unit": "operations/byte"
+        }
+      ],
+      "text": "Rack throughput is bounded by arithmetic capacity, memory bandwidth times memory intensity, and network bandwidth times network intensity; the smallest bound applies."
+    }
+  ],
+  "compute-tray": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}18\\,\\mathrm{trays}\\times4\\,\\mathrm{GPUs/tray}&=72\\,\\mathrm{GPUs}\\\\18\\,\\mathrm{trays}\\times2\\,\\mathrm{CPUs/tray}&=36\\,\\mathrm{CPUs}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "18 trays",
+          "meaning": "Compute-tray count in the named GB200 NVL72 reference",
+          "unit": "trays"
+        },
+        {
+          "symbol": "4 GPUs/tray",
+          "meaning": "GPU count per reference compute tray",
+          "unit": "GPUs/tray"
+        },
+        {
+          "symbol": "2 CPUs/tray",
+          "meaning": "CPU count per reference compute tray",
+          "unit": "CPUs/tray"
+        }
+      ],
+      "text": "In the stated reference, 18 trays with four GPUs each contain 72 GPUs. The same 18 trays with two CPUs each contain 36 CPUs."
+    }
+  ],
+  "nvlink-switch": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{transfer}}\\ge\\frac{S}{B_{\\mathrm{effective}}}",
+      "variables": [
+        {
+          "symbol": "t_transfer",
+          "meaning": "Transfer completion time",
+          "unit": "s"
+        },
+        {
+          "symbol": "S",
+          "meaning": "Payload bytes moved",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_effective",
+          "meaning": "Sustained bandwidth usable by that transfer",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Transfer time is at least payload size divided by the sustained bandwidth available to that transfer."
+    }
+  ],
+  "cable-cartridge": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{link}}\\gtrsim\\frac{L}{v_{\\mathrm{prop}}}+\\frac{S}{B_{\\mathrm{payload}}}",
+      "variables": [
+        {
+          "symbol": "t_link",
+          "meaning": "One-hop link time in the simplified model",
+          "unit": "s"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Path length",
+          "unit": "m"
+        },
+        {
+          "symbol": "v_prop",
+          "meaning": "Signal propagation speed along the medium",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "S",
+          "meaning": "Payload size",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_payload",
+          "meaning": "Payload serialization bandwidth",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Link time is approximately bounded below by propagation distance divided by propagation speed, plus payload bytes divided by payload bandwidth."
+    }
+  ],
+  "cdu": [
+    {
+      "kind": "math",
+      "latex": "\\dot Q=\\dot m c_p(T_{\\mathrm{return}}-T_{\\mathrm{supply}})",
+      "variables": [
+        {
+          "symbol": "Q̇",
+          "meaning": "Heat transported at the selected coolant-loop boundary",
+          "unit": "W"
+        },
+        {
+          "symbol": "ṁ",
+          "meaning": "Coolant mass flow",
+          "unit": "kg/s"
+        },
+        {
+          "symbol": "c_p",
+          "meaning": "Coolant specific heat capacity",
+          "unit": "J/(kg·K)"
+        },
+        {
+          "symbol": "T_return",
+          "meaning": "Return-fluid temperature",
+          "unit": "°C"
+        },
+        {
+          "symbol": "T_supply",
+          "meaning": "Supply-fluid temperature",
+          "unit": "°C"
+        }
+      ],
+      "text": "Heat transport equals mass flow times specific heat times the return-to-supply temperature rise."
+    }
+  ],
+  "power-shelf": [
+    {
+      "kind": "math",
+      "latex": "P_{DC}=\\eta P_{AC},\\qquad P_{\\mathrm{wire}}=I^2R",
+      "variables": [
+        {
+          "symbol": "P_DC",
+          "meaning": "Delivered direct-current power",
+          "unit": "W"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Conversion efficiency",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "P_AC",
+          "meaning": "Input real alternating-current power",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_wire",
+          "meaning": "Resistive conductor heating",
+          "unit": "W"
+        },
+        {
+          "symbol": "I",
+          "meaning": "Conductor current (DC or appropriate RMS)",
+          "unit": "A"
+        },
+        {
+          "symbol": "R",
+          "meaning": "Conductor resistance",
+          "unit": "Ω"
+        }
+      ],
+      "text": "Delivered DC power is conversion efficiency times real AC input power. Conductor heating is current squared times resistance."
+    }
+  ],
+  "leaf-switch": [
+    {
+      "kind": "math",
+      "latex": "O=\\frac{\\sum_i B_{\\mathrm{downlink},i}}{\\sum_j B_{\\mathrm{uplink},j}}",
+      "variables": [
+        {
+          "symbol": "O",
+          "meaning": "Directional oversubscription ratio",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "B_downlink,i",
+          "meaning": "Comparable payload capacity of downlink i",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "B_uplink,j",
+          "meaning": "Comparable payload capacity of uplink j",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "i,j",
+          "meaning": "Included directional port indices",
+          "unit": "integer indices"
+        }
+      ],
+      "text": "Oversubscription is summed downlink capacity divided by summed uplink capacity, using the same direction and bandwidth convention."
+    }
+  ],
+  "spine-switch": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{cross\\ cut}}\\le\\sum_{\\ell\\in\\mathcal C}B_\\ell",
+      "variables": [
+        {
+          "symbol": "T_cross cut",
+          "meaning": "Traffic throughput crossing the defined cut",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "B_ℓ",
+          "meaning": "Usable directional capacity of crossing link ℓ",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "𝒞",
+          "meaning": "Set of links crossing the selected cut",
+          "unit": "set of links"
+        },
+        {
+          "symbol": "ℓ",
+          "meaning": "Crossing-link index",
+          "unit": "index"
+        }
+      ],
+      "text": "Throughput across a network cut cannot exceed the sum of usable capacities of links crossing it.",
+      "note": "T denotes throughput here, not time."
+    }
+  ],
+  "optics": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{bytes}}=\\frac{N_{\\mathrm{lanes}}R_{\\mathrm{lane,bits}}\\eta_{\\mathrm{payload}}}{8}",
+      "variables": [
+        {
+          "symbol": "B_bytes",
+          "meaning": "Aggregate directional payload byte rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "N_lanes",
+          "meaning": "Included active lane count",
+          "unit": "lanes"
+        },
+        {
+          "symbol": "R_lane,bits",
+          "meaning": "Raw bit rate per lane",
+          "unit": "bits/(s·lane)"
+        },
+        {
+          "symbol": "η_payload",
+          "meaning": "Fraction of physical bits carrying counted payload",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "8",
+          "meaning": "Bits per byte",
+          "unit": "bits/byte"
+        }
+      ],
+      "text": "Aggregate payload bandwidth equals lane count times raw per-lane bit rate times payload efficiency, divided by eight."
+    }
+  ],
+  "storage": [
+    {
+      "kind": "math",
+      "latex": "B\\approx\\mathrm{IOPS}\\,S_{\\mathrm{IO}}",
+      "variables": [
+        {
+          "symbol": "B",
+          "meaning": "Average transferred byte rate",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "IOPS",
+          "meaning": "Completed I/O rate over the selected workload",
+          "unit": "operations/s"
+        },
+        {
+          "symbol": "S_IO",
+          "meaning": "Mean transferred size per counted operation",
+          "unit": "bytes/operation"
+        }
+      ],
+      "text": "Average bandwidth is approximately I/O operations per second times mean bytes per operation."
+    }
+  ],
+  "ups": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{runtime}}\\approx\\frac{E_{\\mathrm{usable}}\\eta}{P_{\\mathrm{load}}}",
+      "variables": [
+        {
+          "symbol": "t_runtime",
+          "meaning": "Estimated backup runtime",
+          "unit": "h"
+        },
+        {
+          "symbol": "E_usable",
+          "meaning": "Usable stored energy before the separately modeled output conversion loss",
+          "unit": "Wh"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Remaining conversion efficiency from that energy boundary to load",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "P_load",
+          "meaning": "Constant supported load power",
+          "unit": "W"
+        }
+      ],
+      "text": "Backup runtime is approximately usable stored energy times remaining conversion efficiency divided by load power.",
+      "note": "If usable energy is already measured at the load boundary, do not apply the same conversion loss again; set the remaining efficiency to one."
+    }
+  ],
+  "cooling-plant": [
+    {
+      "kind": "math",
+      "latex": "\\mathrm{COP}=\\frac{\\dot Q_{\\mathrm{removed}}}{P_{\\mathrm{cooling}}},\\qquad P_{\\mathrm{facility}}=P_{IT}+P_{\\mathrm{support}}",
+      "variables": [
+        {
+          "symbol": "COP",
+          "meaning": "Cooling coefficient of performance",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Q̇_removed",
+          "meaning": "Heat removed within the specified cooling boundary",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_cooling",
+          "meaning": "Electrical input to that cooling boundary",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_facility",
+          "meaning": "Total facility real power",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_IT",
+          "meaning": "IT equipment real power",
+          "unit": "W"
+        },
+        {
+          "symbol": "P_support",
+          "meaning": "All non-IT support real power within the facility boundary",
+          "unit": "W"
+        }
+      ],
+      "text": "Cooling COP is heat removed divided by cooling electrical power. Facility power is IT power plus support power."
+    }
+  ],
+  "scheduler": [
+    {
+      "kind": "math",
+      "latex": "L=\\lambda W",
+      "variables": [
+        {
+          "symbol": "L",
+          "meaning": "Mean admitted jobs inside the selected system",
+          "unit": "jobs"
+        },
+        {
+          "symbol": "λ",
+          "meaning": "Stable admitted arrival/completion rate",
+          "unit": "jobs/s"
+        },
+        {
+          "symbol": "W",
+          "meaning": "Mean time each admitted job spends in the system",
+          "unit": "s"
+        }
+      ],
+      "text": "Little’s law states that mean in-system jobs equal the admitted job rate times mean time in the system."
+    }
+  ],
+  "cuda": [
+    {
+      "kind": "math",
+      "latex": "S(N)=\\frac{1}{(1-p)+p/N}",
+      "variables": [
+        {
+          "symbol": "S(N)",
+          "meaning": "Overall speedup with N-fold acceleration of the selected fraction",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "p",
+          "meaning": "Accelerable fraction of baseline execution time",
+          "unit": "fraction"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Acceleration factor for that fraction",
+          "unit": "positive dimensionless ratio"
+        }
+      ],
+      "text": "Overall speedup is the reciprocal of unaccelerated time fraction plus the accelerated fraction divided by its N-fold speedup."
+    }
+  ],
+  "kernel": [
+    {
+      "kind": "math",
+      "latex": "I=\\frac{F}{M},\\qquad R\\le\\min(P_{\\mathrm{peak}},B_{\\mathrm{memory}}I)",
+      "variables": [
+        {
+          "symbol": "I",
+          "meaning": "Arithmetic intensity at the selected memory boundary",
+          "unit": "FLOP/byte"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Work in the declared floating-point convention",
+          "unit": "FLOP"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Bytes moved at that boundary",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "R",
+          "meaning": "Attainable arithmetic throughput",
+          "unit": "FLOP/s"
+        },
+        {
+          "symbol": "P_peak",
+          "meaning": "Compatible arithmetic peak",
+          "unit": "FLOP/s"
+        },
+        {
+          "symbol": "B_memory",
+          "meaning": "Useful memory bandwidth",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Arithmetic intensity is floating-point work divided by bytes moved. Throughput is bounded by the smaller of arithmetic peak and memory bandwidth times intensity."
+    }
+  ],
+  "compiler": [
+    {
+      "kind": "math",
+      "latex": "T\\approx\\sum_i t_{\\mathrm{launch},i}+\\sum_j t_{\\mathrm{kernel},j}+\\sum_k t_{\\mathrm{transfer},k}",
+      "variables": [
+        {
+          "symbol": "T",
+          "meaning": "Sequential baseline execution time",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_launch,i",
+          "meaning": "Exposed time of launch i",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_kernel,j",
+          "meaning": "Execution time of kernel j",
+          "unit": "s"
+        },
+        {
+          "symbol": "t_transfer,k",
+          "meaning": "Exposed time of transfer k",
+          "unit": "s"
+        },
+        {
+          "symbol": "i,j,k",
+          "meaning": "Events in the respective nonoverlapping baseline sums",
+          "unit": "integer indices"
+        }
+      ],
+      "text": "A sequential baseline sums launch times, kernel times and transfer times without overlap."
+    }
+  ],
+  "nccl": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{bus}}=\\frac{S}{t}\\frac{2(P-1)}{P}",
+      "variables": [
+        {
+          "symbol": "B_bus",
+          "meaning": "Conventionally normalized all-reduce bus bandwidth",
+          "unit": "bytes/s"
+        },
+        {
+          "symbol": "S",
+          "meaning": "Input payload per rank",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Measured all-reduce duration",
+          "unit": "s"
+        },
+        {
+          "symbol": "P",
+          "meaning": "Participating rank count",
+          "unit": "positive integer count"
+        }
+      ],
+      "text": "Conventional all-reduce bus bandwidth is payload divided by elapsed time, multiplied by two times ranks minus one divided by ranks."
+    }
+  ],
+  "parallelism": [
+    {
+      "kind": "math",
+      "latex": "B_{\\mathrm{global}}=B_{\\mathrm{micro}}N_{\\mathrm{accumulation}}N_{\\mathrm{data\\ parallel}}",
+      "variables": [
+        {
+          "symbol": "B_global",
+          "meaning": "Examples per global optimizer update",
+          "unit": "examples/update"
+        },
+        {
+          "symbol": "B_micro",
+          "meaning": "Examples per microbatch per data-parallel replica",
+          "unit": "examples/microbatch"
+        },
+        {
+          "symbol": "N_accumulation",
+          "meaning": "Accumulated microbatches per replica per update",
+          "unit": "microbatches/update"
+        },
+        {
+          "symbol": "N_data parallel",
+          "meaning": "Data-parallel replica count",
+          "unit": "count"
+        }
+      ],
+      "text": "Global batch equals per-replica microbatch size times accumulated microbatches times data-parallel replicas."
+    }
+  ],
+  "checkpoint": [
+    {
+      "kind": "math",
+      "latex": "t_{\\mathrm{save}}\\ge\\frac{S_{\\mathrm{checkpoint}}}{B_{\\mathrm{sustained}}}",
+      "variables": [
+        {
+          "symbol": "t_save",
+          "meaning": "Checkpoint write duration",
+          "unit": "s"
+        },
+        {
+          "symbol": "S_checkpoint",
+          "meaning": "Actual checkpoint state persisted",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B_sustained",
+          "meaning": "Sustained end-to-end storage payload rate",
+          "unit": "bytes/s"
+        }
+      ],
+      "text": "Checkpoint save time is at least persisted bytes divided by sustained storage bandwidth."
+    }
+  ],
+  "serving": [
+    {
+      "kind": "math",
+      "latex": "T_{\\mathrm{response}}\\approx\\mathrm{TTFT}+(N_{\\mathrm{output}}-1)\\overline{\\mathrm{ITL}}",
+      "variables": [
+        {
+          "symbol": "T_response",
+          "meaning": "Time through the final output token of one streamed request",
+          "unit": "s"
+        },
+        {
+          "symbol": "TTFT",
+          "meaning": "Time to first token",
+          "unit": "s"
+        },
+        {
+          "symbol": "N_output",
+          "meaning": "Number of output tokens, at least one",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "mean ITL",
+          "meaning": "Mean gap between successive output tokens",
+          "unit": "s/token gap"
+        }
+      ],
+      "text": "Response time is approximately time to first token plus the remaining token gaps times their mean inter-token latency."
+    }
+  ],
+  "quantization": [
+    {
+      "kind": "math",
+      "latex": "\\hat x=s\\operatorname{round}(x/s),\\qquad|x-\\hat x|\\le\\frac{s}{2}",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Original scalar value",
+          "unit": "declared value units"
+        },
+        {
+          "symbol": "x̂",
+          "meaning": "Reconstructed quantized scalar",
+          "unit": "same units as x"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Positive quantization step",
+          "unit": "same units as x"
+        },
+        {
+          "symbol": "round",
+          "meaning": "Nearest-integer rounding operator",
+          "unit": "dimensionless integer output"
+        }
+      ],
+      "text": "Reconstruction multiplies the nearest integer to x divided by step size by that step size. Without clipping, absolute scalar error is at most half a step."
+    }
+  ],
+  "tokenizer": [
+    {
+      "kind": "math",
+      "latex": "T=|\\operatorname{encode}(\\mathrm{text})|,\\qquad b_{\\mathrm{token}}=\\frac{\\operatorname{UTF8\\_bytes}(\\mathrm{text})}{T}",
+      "variables": [
+        {
+          "symbol": "T",
+          "meaning": "Number of produced token IDs",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "encode",
+          "meaning": "Specified tokenizer and control-token convention",
+          "unit": "text → token-ID sequence"
+        },
+        {
+          "symbol": "text",
+          "meaning": "Identical input string being compared",
+          "unit": "text"
+        },
+        {
+          "symbol": "UTF8_bytes(text)",
+          "meaning": "UTF-8 byte count for that string",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "b_token",
+          "meaning": "Encoding compactness for nonzero T",
+          "unit": "bytes/token"
+        }
+      ],
+      "text": "Token count is the length of the encoded token-ID sequence. Bytes per token divides the original string’s UTF-8 byte count by that token count.",
+      "note": "The ratio requires T > 0 and is not a semantic-information measure."
+    }
+  ],
+  "embedding": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}e_i&=\\operatorname{onehot}(i)^{\\mathsf T}E,\\quad E\\in\\mathbb R^{V\\times d}\\\\\\frac{\\partial\\mathcal L}{\\partial E_{j,:}}&=\\sum_{t:\\,\\mathrm{token}_t=j}\\frac{\\partial\\mathcal L}{\\partial e_t}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "E",
+          "meaning": "Embedding table with one row per vocabulary item",
+          "unit": "real V × d array"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Vocabulary size",
+          "unit": "count"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Embedding width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "eᵢ",
+          "meaning": "Row vector retrieved for token ID i in the lookup identity",
+          "unit": "real 1 × d vector"
+        },
+        {
+          "symbol": "onehot(i)",
+          "meaning": "Column selector containing one at token ID i",
+          "unit": "real V × 1 vector"
+        },
+        {
+          "symbol": "E_j,:",
+          "meaning": "Embedding row for vocabulary ID j",
+          "unit": "real 1 × d vector"
+        },
+        {
+          "symbol": "ℒ",
+          "meaning": "Scalar training loss",
+          "unit": "dimensionless model loss"
+        },
+        {
+          "symbol": "eₜ",
+          "meaning": "Embedding occurrence at sequence position t in the gradient sum",
+          "unit": "real 1 × d vector"
+        },
+        {
+          "symbol": "tokenₜ",
+          "meaning": "Token ID at sequence position t",
+          "unit": "integer ID"
+        },
+        {
+          "symbol": "i,j,t",
+          "meaning": "Vocabulary or sequence indices as locally indicated",
+          "unit": "integer indices"
+        }
+      ],
+      "text": "A one-hot row selects its embedding-table row. The lookup-path gradient for a shared vocabulary row sums gradients from every sequence position using that token.",
+      "note": "The first e index names a vocabulary item; the gradient-sum e index names a sequence occurrence. The table explicitly distinguishes them. All values are model coordinates, not physical distances."
+    }
+  ],
+  "positional-encoding": [
+    {
+      "kind": "math",
+      "latex": "(R(m)q)^{\\mathsf T}(R(n)k)=q^{\\mathsf T}R(n-m)k",
+      "variables": [
+        {
+          "symbol": "R(p)",
+          "meaning": "Block-diagonal orthogonal rotary transform at position p",
+          "unit": "dimensionless d × d matrix"
+        },
+        {
+          "symbol": "q",
+          "meaning": "Query column vector before rotary transformation",
+          "unit": "real d × 1 vector"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Key column vector before rotary transformation",
+          "unit": "real d × 1 vector"
+        },
+        {
+          "symbol": "m,n",
+          "meaning": "Query and key position indices",
+          "unit": "integer positions"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Even rotary-vector dimension",
+          "unit": "coordinates"
+        }
+      ],
+      "text": "The dot product of a query rotated at m and key rotated at n equals the original query dotted with the key rotated by the relative offset n minus m."
+    }
+  ],
+  "attention": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}A&=\\operatorname{softmax}_{\\mathrm{rows}}\\!\\left(\\frac{QK^{\\mathsf T}}{\\sqrt{d_k}}+M\\right),\\qquad Y=AV\\\\\\operatorname{Var}(q^{\\mathsf T}k)&\\approx d_k\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "Q",
+          "meaning": "Query matrix for one attention head",
+          "unit": "real T_q × d_k array"
+        },
+        {
+          "symbol": "K",
+          "meaning": "Key matrix",
+          "unit": "real T_k × d_k array"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Value matrix",
+          "unit": "real T_k × d_v array"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Row-normalized attention weights",
+          "unit": "dimensionless T_q × T_k array"
+        },
+        {
+          "symbol": "Y",
+          "meaning": "Mixed value output",
+          "unit": "real T_q × d_v array"
+        },
+        {
+          "symbol": "M",
+          "meaning": "Additive attention mask: zero or negative infinity",
+          "unit": "dimensionless score array"
+        },
+        {
+          "symbol": "d_k",
+          "meaning": "Query/key width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "d_v",
+          "meaning": "Value width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "T_q,T_k",
+          "meaning": "Query and key position counts",
+          "unit": "counts"
+        },
+        {
+          "symbol": "q,k",
+          "meaning": "Individual query/key vectors in the variance argument",
+          "unit": "dimensionless d_k-coordinate vectors"
+        },
+        {
+          "symbol": "Var",
+          "meaning": "Variance under the stated coordinate distribution",
+          "unit": "squared score units"
+        }
+      ],
+      "text": "Attention weights are a row-wise softmax of query–key scores divided by the square root of head width, plus a mask. Multiplying weights by values gives the output. Under the stated independent unit-variance coordinate assumptions, the unscaled dot-product variance is approximately head width."
+    }
+  ],
+  "feed-forward": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}\\operatorname{FFN}(x)&=[\\operatorname{SiLU}(xW_g)\\odot(xW_u)]W_d\\\\\\operatorname{SiLU}(z)&=z\\,\\operatorname{sigmoid}(z),\\qquad N_{\\mathrm{parameters}}\\approx3d\\,d_{\\mathrm{ff}}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Input row vector",
+          "unit": "real 1 × d vector"
+        },
+        {
+          "symbol": "W_g,W_u",
+          "meaning": "Gate and up-projection weights",
+          "unit": "real d × d_ff matrices"
+        },
+        {
+          "symbol": "W_d",
+          "meaning": "Down-projection weights",
+          "unit": "real d_ff × d matrix"
+        },
+        {
+          "symbol": "d",
+          "meaning": "Model representation width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "d_ff",
+          "meaning": "Intermediate feed-forward width",
+          "unit": "coordinates"
+        },
+        {
+          "symbol": "z",
+          "meaning": "Scalar or elementwise nonlinear input",
+          "unit": "dimensionless model coordinates"
+        },
+        {
+          "symbol": "⊙",
+          "meaning": "Elementwise multiplication",
+          "unit": "operator"
+        },
+        {
+          "symbol": "N_parameters",
+          "meaning": "Bias-free three-matrix parameter count",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "FFN(x)",
+          "meaning": "Output of the selected SwiGLU block",
+          "unit": "real 1 × d vector"
+        }
+      ],
+      "text": "SwiGLU multiplies the SiLU gate projection elementwise by the up projection, then applies the down projection. SiLU is z times sigmoid of z. The three bias-free matrices contain approximately three times model width times feed-forward width parameters."
+    }
+  ],
+  "residual-normalization": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}\\operatorname{LN}(x)&=\\gamma\\odot\\frac{x-\\mu}{\\sqrt{\\sigma^2+\\varepsilon}}+\\beta\\\\y&=x+F(x),\\qquad\\frac{\\partial y}{\\partial x}=I+J_F(x)\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Input representation over the normalized feature set",
+          "unit": "real d-coordinate vector"
+        },
+        {
+          "symbol": "μ",
+          "meaning": "Mean of x over those features",
+          "unit": "same coordinate units as x"
+        },
+        {
+          "symbol": "σ²",
+          "meaning": "Population variance over those features",
+          "unit": "squared coordinate units"
+        },
+        {
+          "symbol": "ε",
+          "meaning": "Positive normalization stabilizer",
+          "unit": "same units as σ²"
+        },
+        {
+          "symbol": "γ",
+          "meaning": "Learned elementwise output scale",
+          "unit": "output-coordinate units"
+        },
+        {
+          "symbol": "β",
+          "meaning": "Learned elementwise output shift",
+          "unit": "output-coordinate units"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Residual-block output",
+          "unit": "same shape and coordinate units as x"
+        },
+        {
+          "symbol": "F(x)",
+          "meaning": "Residual transformation with matching output shape",
+          "unit": "same shape and coordinate units as x"
+        },
+        {
+          "symbol": "I",
+          "meaning": "Identity Jacobian for the skip path",
+          "unit": "dimensionless d × d matrix"
+        },
+        {
+          "symbol": "J_F(x)",
+          "meaning": "Jacobian of F with respect to x",
+          "unit": "dimensionless d × d matrix"
+        },
+        {
+          "symbol": "⊙",
+          "meaning": "Elementwise multiplication",
+          "unit": "operator"
+        }
+      ],
+      "text": "LayerNorm subtracts the feature mean and divides by the square root of variance plus stabilizer, then applies learned scale and shift. Separately, an identity residual add has Jacobian equal to the identity plus the transformation Jacobian.",
+      "note": "Normalization and residual addition are separate relations, not a claim that every architecture uses this combined block. Model coordinates are usually represented as dimensionless numbers."
+    }
+  ],
+  "output-head": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}p(x_1,\\ldots,x_T)&=\\prod_{t=1}^{T}p(x_t\\mid x_{<t})\\\\p(x_t=i\\mid x_{<t})&=\\frac{\\exp(z_i)}{\\sum_j\\exp(z_j)}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "p",
+          "meaning": "Joint or conditional model probability as indicated",
+          "unit": "probability"
+        },
+        {
+          "symbol": "xₜ",
+          "meaning": "Token at sequence position t",
+          "unit": "categorical token ID"
+        },
+        {
+          "symbol": "x_<t",
+          "meaning": "Tokens preceding position t",
+          "unit": "token-ID sequence"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Sequence length",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "zᵢ",
+          "meaning": "Vocabulary logit for token ID i at this step",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "i,j",
+          "meaning": "Vocabulary-item indices",
+          "unit": "integer IDs"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Sequence position",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Joint sequence probability factors into conditional next-token probabilities. At each step the probability of a vocabulary item is its exponentiated logit divided by the sum of exponentiated vocabulary logits."
+    }
+  ],
+  "kv-cache": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}M_{KV}&=2BLTH_{KV}D_hs\\\\\\Delta M_{\\mathrm{per\\ token,per\\ sequence}}&=2LH_{KV}D_hs\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "M_KV",
+          "meaning": "Raw key/value cache payload",
+          "unit": "bytes"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Concurrent sequences",
+          "unit": "sequences"
+        },
+        {
+          "symbol": "L",
+          "meaning": "Cached attention layers",
+          "unit": "layers"
+        },
+        {
+          "symbol": "T",
+          "meaning": "Retained positions per sequence",
+          "unit": "tokens/sequence"
+        },
+        {
+          "symbol": "H_KV",
+          "meaning": "Key/value heads per layer",
+          "unit": "heads/layer"
+        },
+        {
+          "symbol": "D_h",
+          "meaning": "Values per head for each key or value",
+          "unit": "values/head"
+        },
+        {
+          "symbol": "s",
+          "meaning": "Stored size per scalar value",
+          "unit": "bytes/value"
+        },
+        {
+          "symbol": "ΔM_per token,per sequence",
+          "meaning": "Additional raw KV payload for one retained token in one sequence",
+          "unit": "bytes"
+        }
+      ],
+      "text": "Raw KV bytes equal two for keys and values times sequences, cached layers, retained positions, KV heads, head width and bytes per scalar. One additional token in one sequence adds the same product without sequence count or context length."
+    }
+  ],
+  "moe": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}y&=\\sum_{i\\in S(x)}g_i(x)E_i(x)\\\\N_{\\mathrm{total}}&=N_{\\mathrm{shared}}+E N_{\\mathrm{expert}}\\\\N_{\\mathrm{active}}&\\approx N_{\\mathrm{shared}}+kN_{\\mathrm{expert}}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "x",
+          "meaning": "Input token representation",
+          "unit": "model-coordinate vector"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Combined expert output",
+          "unit": "model-coordinate vector"
+        },
+        {
+          "symbol": "S(x)",
+          "meaning": "Selected expert IDs for x",
+          "unit": "set of k experts"
+        },
+        {
+          "symbol": "gᵢ(x)",
+          "meaning": "Routing weight for selected expert i",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "Eᵢ(x)",
+          "meaning": "Output of expert function i",
+          "unit": "same shape and units as y"
+        },
+        {
+          "symbol": "E",
+          "meaning": "Total expert count (distinct from function Eᵢ)",
+          "unit": "count"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Experts selected per token",
+          "unit": "count"
+        },
+        {
+          "symbol": "N_shared",
+          "meaning": "Shared parameters included in this bookkeeping",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "N_expert",
+          "meaning": "Parameters per equally sized expert",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "N_total",
+          "meaning": "Total stored parameter count",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "N_active",
+          "meaning": "Approximate parameters activated for one token",
+          "unit": "parameters"
+        }
+      ],
+      "text": "The output sums selected expert outputs weighted by the router. Stored parameters include all experts; approximate active parameters include only the selected k experts plus shared parameters."
+    }
+  ],
+  "training-data": [
+    {
+      "kind": "math",
+      "latex": "\\mathcal L_{\\mathrm{mix}}(\\theta)=\\sum_j w_j\\,\\mathbb E_{x\\sim D_j}[\\ell(\\theta;x)],\\qquad w_j\\ge0,\\quad\\sum_jw_j=1",
+      "variables": [
+        {
+          "symbol": "ℒ_mix",
+          "meaning": "Expected loss under the selected source mixture",
+          "unit": "loss units"
+        },
+        {
+          "symbol": "θ",
+          "meaning": "Model parameter vector",
+          "unit": "model coordinates"
+        },
+        {
+          "symbol": "wⱼ",
+          "meaning": "Sampling weight of source j",
+          "unit": "probability fraction"
+        },
+        {
+          "symbol": "Dⱼ",
+          "meaning": "Data distribution for source j",
+          "unit": "probability distribution"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Example sampled from Dⱼ",
+          "unit": "example"
+        },
+        {
+          "symbol": "ℓ(θ,x)",
+          "meaning": "Per-example loss",
+          "unit": "same loss units as ℒ_mix"
+        },
+        {
+          "symbol": "j",
+          "meaning": "Source index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Mixture loss is the weighted sum of expected per-example loss for each source. Sampling weights are nonnegative and sum to one."
+    }
+  ],
+  "loss-optimizer": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}g_t&=\\nabla_\\theta\\mathcal L_t,\\\\m_t&=\\beta_1m_{t-1}+(1-\\beta_1)g_t,\\\\v_t&=\\beta_2v_{t-1}+(1-\\beta_2)g_t^{\\odot2},\\\\\\hat m_t&=\\frac{m_t}{1-\\beta_1^t},\\qquad\\hat v_t=\\frac{v_t}{1-\\beta_2^t},\\\\\\theta_{t+1}&=\\theta_t-\\eta\\frac{\\hat m_t}{\\sqrt{\\hat v_t}+\\varepsilon}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "θₜ",
+          "meaning": "Parameter vector before update t",
+          "unit": "parameter-coordinate units"
+        },
+        {
+          "symbol": "ℒₜ",
+          "meaning": "Step-t loss evaluated at the current parameters",
+          "unit": "loss units"
+        },
+        {
+          "symbol": "gₜ",
+          "meaning": "Gradient of step loss with respect to parameters",
+          "unit": "loss units per parameter-coordinate unit"
+        },
+        {
+          "symbol": "mₜ,m̂ₜ",
+          "meaning": "First moment and its zero-initialization bias correction",
+          "unit": "same units as gₜ"
+        },
+        {
+          "symbol": "vₜ,v̂ₜ",
+          "meaning": "Second raw moment and its bias correction",
+          "unit": "squared gradient units"
+        },
+        {
+          "symbol": "β₁,β₂",
+          "meaning": "Moment decay coefficients",
+          "unit": "fractions less than one"
+        },
+        {
+          "symbol": "η",
+          "meaning": "Step size applied to the normalized direction",
+          "unit": "parameter-coordinate units"
+        },
+        {
+          "symbol": "ε",
+          "meaning": "Positive denominator stabilizer",
+          "unit": "same units as square root of v̂ₜ"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Positive update index for moment bias correction",
+          "unit": "integer index"
+        },
+        {
+          "symbol": "⊙2",
+          "meaning": "Elementwise square",
+          "unit": "operator"
+        }
+      ],
+      "text": "Adam smooths gradients and their elementwise squares, corrects zero-initialization bias, then subtracts the step size times corrected first moment divided elementwise by square root of corrected second moment plus a stabilizer.",
+      "note": "All squares, roots and divisions are elementwise. The two bias-correction relations are made explicit from the original assumptions. Parameter labels retain the source convention of updating θ_t to θ_(t+1)."
+    }
+  ],
+  "post-training": [
+    {
+      "kind": "math",
+      "latex": "\\max_\\theta\\left\\{\\mathbb E_{\\substack{x\\sim D\\\\y\\sim\\pi_\\theta(\\cdot\\mid x)}}[r(x,y)]-\\beta\\,\\mathbb E_{x\\sim D}\\!\\left[D_{\\mathrm{KL}}\\!\\left(\\pi_\\theta(\\cdot\\mid x)\\,\\Vert\\,\\pi_{\\mathrm{ref}}(\\cdot\\mid x)\\right)\\right]\\right\\}",
+      "variables": [
+        {
+          "symbol": "θ",
+          "meaning": "Parameters being optimized",
+          "unit": "model coordinates"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Prompt distribution",
+          "unit": "probability distribution"
+        },
+        {
+          "symbol": "x",
+          "meaning": "Prompt sampled from D",
+          "unit": "prompt"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Response sampled from the policy",
+          "unit": "response"
+        },
+        {
+          "symbol": "π_θ",
+          "meaning": "Trainable conditional response policy",
+          "unit": "probability distribution"
+        },
+        {
+          "symbol": "π_ref",
+          "meaning": "Fixed reference response policy",
+          "unit": "probability distribution"
+        },
+        {
+          "symbol": "r(x,y)",
+          "meaning": "Reward for prompt and response",
+          "unit": "declared reward units"
+        },
+        {
+          "symbol": "β",
+          "meaning": "Nonnegative reference-penalty coefficient",
+          "unit": "reward units per nat"
+        },
+        {
+          "symbol": "D_KL",
+          "meaning": "KL divergence using natural logarithms",
+          "unit": "nats"
+        }
+      ],
+      "text": "Choose parameters to maximize expected reward minus a nonnegative coefficient times expected KL divergence from the reference policy.",
+      "note": "This preserves the source core objective, omitting the separate auxiliary pretraining term used in some InstructGPT variants."
+    }
+  ],
+  "tool-loop": [
+    {
+      "kind": "math",
+      "latex": "a_t\\sim\\pi_\\theta(\\cdot\\mid h_t),\\qquad o_t=\\operatorname{Tool}(a_t),\\qquad h_{t+1}=\\operatorname{Update}(h_t,a_t,o_t)",
+      "variables": [
+        {
+          "symbol": "aₜ",
+          "meaning": "Proposed action sampled from the policy",
+          "unit": "action object"
+        },
+        {
+          "symbol": "π_θ",
+          "meaning": "Policy conditional on supplied history",
+          "unit": "probability distribution"
+        },
+        {
+          "symbol": "θ",
+          "meaning": "Fixed inference-time trained parameters",
+          "unit": "model coordinates"
+        },
+        {
+          "symbol": "hₜ",
+          "meaning": "Supplied history or context at step t",
+          "unit": "structured state"
+        },
+        {
+          "symbol": "oₜ",
+          "meaning": "Returned tool observation",
+          "unit": "observation object"
+        },
+        {
+          "symbol": "Tool",
+          "meaning": "Allowed tool execution in this sequential abstraction",
+          "unit": "action → observation"
+        },
+        {
+          "symbol": "Update",
+          "meaning": "Context update operation",
+          "unit": "state/action/observation → state"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Interaction-step index",
+          "unit": "integer index"
+        }
+      ],
+      "text": "Sample an action from the policy given current history, execute the permitted tool to obtain an observation, then update history with the action and observation.",
+      "note": "These are typed state-transition relations, not physical scalar equations. Tool failures, permissions and asynchronous execution remain runtime conditions."
+    }
+  ],
+  "scaling-laws": [
+    {
+      "kind": "math",
+      "latex": "\\begin{aligned}\\mathcal L(N,D)&\\approx\\mathcal L_\\infty+\\frac{A}{N^\\alpha}+\\frac{B}{D^\\beta},\\qquad C\\approx6ND\\\\N_{\\mathrm{opt}}&\\propto C^{\\beta/(\\alpha+\\beta)},\\qquad D_{\\mathrm{opt}}\\propto C^{\\alpha/(\\alpha+\\beta)}\\end{aligned}",
+      "variables": [
+        {
+          "symbol": "ℒ(N,D)",
+          "meaning": "Fitted final training loss",
+          "unit": "declared loss units"
+        },
+        {
+          "symbol": "ℒ∞",
+          "meaning": "Fitted irreducible loss floor",
+          "unit": "same loss units"
+        },
+        {
+          "symbol": "N",
+          "meaning": "Dense model parameter count",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "D",
+          "meaning": "Training-token count",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "A",
+          "meaning": "Fitted model-size loss coefficient for the chosen count convention",
+          "unit": "loss units × parameter-count^α"
+        },
+        {
+          "symbol": "B",
+          "meaning": "Fitted data-size loss coefficient for the chosen count convention",
+          "unit": "loss units × token-count^β"
+        },
+        {
+          "symbol": "α,β",
+          "meaning": "Positive fitted loss exponents",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "C",
+          "meaning": "Approximate parameter-dominated training compute",
+          "unit": "FLOP"
+        },
+        {
+          "symbol": "N_opt",
+          "meaning": "Loss-minimizing parameter count at fixed C in this model",
+          "unit": "parameters"
+        },
+        {
+          "symbol": "D_opt",
+          "meaning": "Loss-minimizing training-token count at fixed C in this model",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "6",
+          "meaning": "Approximate forward/backward work coefficient",
+          "unit": "FLOP/(parameter·token)"
+        }
+      ],
+      "text": "The fitted loss is a floor plus inverse-power model-size and data-size terms. With compute approximately six times parameters times training tokens, the optimal parameter and data allocations follow the stated complementary compute exponents.",
+      "note": "Powers use fixed numerical count conventions. Their fitted coefficients carry the corresponding normalization. This is an empirical planning model, not an intelligence law."
+    }
+  ],
+  "evaluation": [
+    {
+      "kind": "math",
+      "latex": "\\hat p=\\frac{k}{n},\\qquad\\operatorname{SE}(\\hat p)\\approx\\sqrt{\\frac{\\hat p(1-\\hat p)}{n}}",
+      "variables": [
+        {
+          "symbol": "p̂",
+          "meaning": "Observed success fraction",
+          "unit": "probability fraction"
+        },
+        {
+          "symbol": "k",
+          "meaning": "Successful independent trials",
+          "unit": "trials"
+        },
+        {
+          "symbol": "n",
+          "meaning": "Total independent trials, greater than zero",
+          "unit": "trials"
+        },
+        {
+          "symbol": "SE(p̂)",
+          "meaning": "Plug-in standard error of the success-fraction estimator",
+          "unit": "probability fraction"
+        }
+      ],
+      "text": "Estimated success probability is successes divided by trials. Its plug-in standard error is the square root of estimated probability times one minus that probability divided by trial count."
+    }
+  ],
+  "astra": [
+    {
+      "kind": "math",
+      "latex": "G=R+V+F,\\qquad I+G\\le C,\\qquad G\\le O_{\\max}",
+      "variables": [
+        {
+          "symbol": "G",
+          "meaning": "All counted generated tokens in one sampling segment",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "R",
+          "meaning": "Counted generated reasoning tokens",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "V",
+          "meaning": "Counted visible output tokens",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "F",
+          "meaning": "Other counted generated formatting tokens",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "I",
+          "meaning": "Counted fixed input context for that segment",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "C",
+          "meaning": "Applicable context-token limit",
+          "unit": "tokens"
+        },
+        {
+          "symbol": "O_max",
+          "meaning": "Effective configured output-token cap",
+          "unit": "tokens"
+        }
+      ],
+      "text": "Counted generated tokens include reasoning, visible output and other counted formatting. Input plus generated tokens must fit context, and generated tokens must fit the effective output cap.",
+      "note": "This retains the source bookkeeping abstraction and does not assert current product limits or hidden architecture. Use actual provider accounting for the specified segment."
+    }
+  ]
+}
