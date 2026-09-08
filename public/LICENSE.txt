@@ -1,5 +1,7 @@
 # AI Machinery Atlas Research and Noncommercial License 1.0
 
+Distribution: AI Machinery Atlas v1.3.0.
+
 Copyright (c) 2026 Semi AI Foundry, LLC.
 
 AI Machinery Atlas is source-available under the PolyForm Noncommercial

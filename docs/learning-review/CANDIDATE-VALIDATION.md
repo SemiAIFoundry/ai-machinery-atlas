@@ -1,5 +1,7 @@
 # Candidate validation record
 
+> Historical validation record. This document preserves the candidate identity and checks recorded before publication. See the [v1.3.0 release notes](../RELEASE-NOTES-v1.3.0.md) for the published release and release preflight.
+
 Recorded 7 September 2026. Scope: the three connected investigations, selected process mechanisms, scientific/content repairs, saved-work contracts, and portable delivery. The published v1.2.0 demo is unchanged. This record is evidence of implementation checks, not a specialist approval or learner study.
 
 ## Automated checks

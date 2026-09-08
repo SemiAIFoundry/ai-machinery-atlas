@@ -1,5 +1,7 @@
 # Third-party notices
 
+Distribution: AI Machinery Atlas v1.3.0. Dependency versions in this document identify upstream packages separately from the Atlas release version.
+
 AI Machinery Atlas includes or uses the following third-party components. The project's Research and Noncommercial License applies to atlas-owned material; it does not replace or restrict any upstream license. Preserve this file and the linked `licenses/` directory when distributing source or a compiled release containing these components.
 
 The versions below were checked against the final portable release lockfile. The bundled JavaScript module inventory was also verified with an in-memory Vite production build. `package-lock.json` is the authoritative dependency lockfile. `license-inventory.json` records the origin and SHA-256 of each preserved license text. Refresh this inventory when changing dependencies.

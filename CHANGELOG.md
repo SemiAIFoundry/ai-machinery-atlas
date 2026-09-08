@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Make factory checkpoint validation portable across JavaScript runtimes by independently counting serialized transport records and retaining exact recovery and schedule checks.
+- Refresh v1.3.0 distribution notices, contribution guidance and published-status references; alphabetize the unchanged third-party license inventory.
+
 ## 1.3.0 — 2026-09-07
 
 - Added finite-credit matrix delivery and an actual learned-query projection through two machine tiles, with explicit quantization error and incomplete-work guards.

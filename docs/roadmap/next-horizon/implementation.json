@@ -8,7 +8,7 @@
   "approvedPlan": "APPROVED-ROADMAP.csv",
   "preservedOriginalClosure": "ORIGINAL-CLOSURE.csv",
   "edition": "1.3.0",
-  "publication": "approved for publication on 2026-09-07",
+  "publication": "published as v1.3.0 on 2026-09-07",
   "scope": "Additive implementation ledger; open acceptance work remains open even where a bounded mechanism is built. Candidate lesson counts are not completion criteria.",
   "items": [
     {
@@ -244,7 +244,7 @@
     },
     {
       "id": "N20",
-      "status": "local implementation and validation reconciled; source and external review gates open; publication paused",
+      "status": "implementation and validation reconciled; v1.3.0 published; source and external review gates remain open",
       "implemented": "Preserved original R01\u2013R30 closure, exact source/content/model identity and explicit distinction between code, automated evidence and external observation.",
       "evidence": [
         "scripts/build-identity.mjs",
@@ -252,7 +252,7 @@
         "docs/roadmap/next-horizon/VALIDATION.json",
         "docs/roadmap/next-horizon/VALIDATION.md"
       ],
-      "limit": "No push, tag, deployment, release or version change. Publication remains a separate explicit decision."
+      "limit": "Version 1.3.0 was pushed, tagged, released and deployed with the remaining source-review and external-observation limits disclosed in the release notes."
     }
   ],
   "reconciledAt": "2026-09-07T22:52:07.666Z",

@@ -25,7 +25,7 @@ Transfer task: choose a route crossing at least three boundaries. State which ar
 
 ## Joined factory and memory extensions
 
-Choose one extension route for an additional 30–45 minutes; the existing tasks remain available. Record exact model/dependency identities and all changed settings. The factory answers below start with **Use seed 7**, not a previously trained or imported checkpoint. A carried checkpoint is a useful later transfer exercise, but its byte sizes and numerical values need a new record.
+Choose one extension route for an additional 30–45 minutes; the existing tasks remain available. Record exact model/dependency identities, runtime or browser version, and all changed settings. The factory answers below start with **Use seed 7**, not a previously trained or imported checkpoint. Calculate byte boundaries from your actual artifacts: runtime differences can change the length of serialized floating-point values even with the same seed. A carried checkpoint is a useful later transfer exercise, but its byte sizes and numerical values need a new record.
 
 | Task | Route and experiment | Prediction and evidence to record |
 | --- | --- | --- |

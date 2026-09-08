@@ -1,8 +1,8 @@
-# Roadmap implementation and remaining evidence · working build
+# Roadmap implementation and remaining evidence · earlier expansion
 
 The approved roadmap is additive: all 30 original commitments remain in scope, and the full reference atlas, film, CRG bridge, lessons and calculators remain available. This ledger supersedes the **construction status** in the earlier pilot snapshot; that snapshot remains as historical validation evidence.
 
-The maintainer approved proceeding with implementation on 7 September 2026. Version remains 1.2.0; publication, GitHub pushes, release creation and deployment are paused. Approval is not recorded as a physical-device observation, learner session or human specialist review.
+This ledger records the earlier 229-lesson implementation stage. The expanded platform was published as [v1.3.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.3.0) on 7 September 2026; see the [current implementation](next-horizon/README.md) and [release notes](../RELEASE-NOTES-v1.3.0.md). Publication does not establish physical-device observations, learner sessions or human specialist review.
 
 ## Implementation map
 
@@ -51,4 +51,4 @@ The instructor contracts can be run without a browser or account. The hardware a
 
 ## Remaining observations and publication
 
-Complete the user-coordinated physical iOS/Android checks and 6–9 learner sessions using docs/learning-review. Record actual assistance, failure points and sample/device conditions; revise any discovered defects. Record human specialist and assistive-technology review when available. These observations govern empirical claims and rollout confidence; they do not erase or pause the implemented engineering scope. Publication remains a separate next action following the user's instruction to complete the build first.
+Complete the user-coordinated physical iOS/Android checks and 6–9 learner sessions using docs/learning-review. Record actual assistance, failure points and sample/device conditions; revise any discovered defects. Record human specialist and assistive-technology review when available. These observations govern empirical claims and rollout confidence; they do not erase or pause the implemented engineering scope. The subsequent v1.3.0 release retains these outstanding observation requirements.

@@ -1,13 +1,35 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {Buffer} from 'node:buffer';
 import {buildFactoryExecution,factoryDefaults,factoryConstants,factoryHallAdapter,factoryHallScenario,factoryUtf8Bytes,sampleFactoryExecution,normalizeFactoryInput,serializeFactoryInputs,readFactoryInputs,serializeFactoryWorkspace,readFactoryWorkspace,factoryModels} from '../src/lib/factory-execution.ts';
 import {simulateOperatingHall} from '../src/lib/operating-hall.ts';
 import {createLifecycleRun,advanceLifecycleRun,lifecycleExamples,lifecycleRandom,lifecycleSupervisedObjective,lifecycleFingerprint,openLifecycleFinalTest} from '../src/lib/model-lifecycle.ts';
-import {readDistributedTrainingRun} from '../src/lib/model-lifecycle-distributed.ts';
+import {createDistributedTrainingRun,beginDistributedRound,computeRankContribution,submitRankContribution,commitDistributedRound,readDistributedTrainingRun} from '../src/lib/model-lifecycle-distributed.ts';
 import {createLifecycleExposureJournal} from '../src/lib/model-lifecycle-workspace.ts';
 const close=(a,b,tol=1e-9)=>assert.ok(Math.abs(a-b)<=tol*Math.max(1,Math.abs(b)),`${a} != ${b}`);
 const vectorClose=(a,b,tol=1e-10)=>{assert.equal(a.length,b.length);a.forEach((x,i)=>close(x,b[i],tol));};
 const noFault=buildFactoryExecution({...factoryDefaults,fault:'none'}),recovered=buildFactoryExecution();
+
+/** Build transport artifacts from the numerical core, without factory scheduling or accounting.
+ * Math transcendental results may differ in their last bits across JS runtimes, changing
+ * JSON decimal lengths. Count the actual UTF-8 records; a byte/time golden is not portable.
+ */
+function baselineArtifacts(){
+ let run=createDistributedTrainingRun(createLifecycleRun({seed:7}));
+ const checkpoints=[{updates:0,raw:JSON.stringify(run)}],payloadBytes=[];
+ for(let updates=1;updates<=3;updates++){
+  run=beginDistributedRound(run);
+  const contributions=run.round.ranks.map(rank=>computeRankContribution(run,rank.rank));
+  for(const contribution of contributions){
+   payloadBytes.push(Buffer.byteLength(JSON.stringify(contribution),'utf8'));
+   run=submitRankContribution(run,contribution);
+  }
+  run=commitDistributedRound(run);
+  if(updates===2||updates===3)checkpoints.push({updates,raw:JSON.stringify(run)});
+ }
+ return {checkpoints:checkpoints.map(cp=>({...cp,bytes:Buffer.byteLength(cp.raw,'utf8')})),payloadBytes};
+}
+const baseline=baselineArtifacts();
 
 /** Independent full-batch objective, Adam arithmetic and RNG reservation: no factory/distributed scheduler helpers. */
 function central(source,n){let weights=[...source.weights],moments=[...source.moments],squares=[...source.squares],rng=source.rng,step=source.optimizerStep;const pool=lifecycleExamples('train','copy'),lengths=pool.map(e=>e.tokens.length),short=pool.filter(e=>e.tokens.length===Math.min(...lengths)),long=pool.filter(e=>e.tokens.length===Math.max(...lengths));for(let round=0;round<n;round++){const examples=[];for(let i=0;i<4;i++){const draw=lifecycleRandom(rng);rng=draw.state;const choices=i===0?short:long;examples.push(choices[Math.floor(draw.value*choices.length)]);}const objective=lifecycleSupervisedObjective(weights,examples,false),scale=Math.min(1,source.config.clipNorm/Math.max(Math.hypot(...objective.gradient),1e-30));step++;weights=weights.map((w,i)=>{const g=objective.gradient[i]*scale;moments[i]=.9*moments[i]+.1*g;squares[i]=.999*squares[i]+.001*g*g;const direction=source.config.optimizer==='sgd'?g:(moments[i]/(1-.9**step))/(Math.sqrt(squares[i]/(1-.999**step))+1e-8);return w-source.config.learningRate*direction;});}return {weights,moments,squares,rng,step};}
@@ -16,8 +38,25 @@ function invariants(r){let time=0,it=0,facility=0,network=0,write=0,read=0,sourc
 test('actual three-update result agrees with independent centralized objective and optimizer',()=>{const expected=central(createLifecycleRun(),3);vectorClose(noFault.finalRun.state.weights,expected.weights);vectorClose(noFault.finalRun.state.moments,expected.moments);vectorClose(noFault.finalRun.state.squares,expected.squares);assert.equal(noFault.finalRun.rng,expected.rng);assert.equal(noFault.finalRun.state.optimizerStep,expected.step);assert.notEqual(lifecycleFingerprint(expected.weights),noFault.sourceIdentity);invariants(noFault);});
 test('carried trained source retains actual optimizer, RNG and exposure with no mutation',()=>{for(const optimizer of ['adam','sgd']){const source=openLifecycleFinalTest(advanceLifecycleRun(createLifecycleRun({seed:11,optimizer}),3)),before=JSON.stringify(source),r=buildFactoryExecution({...factoryDefaults,rounds:2},source),expected=central(source,2);assert.equal(JSON.stringify(source),before);assert.equal(r.sourceIdentity,lifecycleFingerprint(source.weights));assert.equal(r.finalRun.state.optimizerStep,5);assert.equal(r.finalRun.sourceCheckpoint.finalOpened,true);vectorClose(r.finalRun.state.weights,expected.weights);vectorClose(r.finalRun.state.moments,expected.moments);assert.equal(r.finalRun.rng,expected.rng);invariants(r);}});
 test('hall power adapter matches existing model at all three physical power boundaries',()=>{const adapter=factoryHallAdapter(factoryDefaults),scenario=factoryHallScenario(factoryDefaults);scenario.service.computeOpsPerPackageS=.5;scenario.checkpoint.intervalRunS=1;scenario.faults=[{id:'probe',atS:1.2,recoveryDelayS:.2,cause:'worker-stop'}];scenario.durationS=3;const hall=simulateOperatingHall(scenario);assert.deepEqual(adapter.admission,hall.admission);for(const [name,phase] of [['run','run'],['checkpoint','checkpoint-write'],['recovery','recovery-read']]){const seg=hall.segments.find(s=>s.phase===phase);assert.ok(seg,phase);for(const key of ['itW','facilityW','coolantHeatW','facilityOverheadW','coolantRiseK'])close(adapter.powers[name][key],seg.rates[key]);}close(adapter.powers.run.facilityW,160);close(adapter.powers.checkpoint.facilityW,160/3);close(adapter.powers.recovery.facilityW,40);});
-test('baseline wall time and energy follow a hand-derived exclusive schedule',()=>{const initial=noFault.checkpoints[0].bytes,bytes=noFault.checkpoints.slice(1).reduce((s,c)=>s+c.bytes,0),compute=3*(24*.01+.3),network=noFault.final.networkBytes/8192+6*.02,optimizer=3*.02,storage=bytes/65536,markers=2*.05,source=initial/65536;close(noFault.final.elapsedS,.2+source+compute+network+optimizer+storage+markers);close(noFault.final.facilityEnergyJ,40*source+160*(compute+network+optimizer)+(160/3)*(storage+markers));close(noFault.final.elapsedS,14.322457885742187);close(noFault.final.networkBytes,51274);});
-test('default partial-write recovery replays exactly two lost optimizer updates',()=>{assert.equal(recovered.status,'complete');assert.equal(recovered.final.executedUpdates,5);assert.equal(recovered.final.rolledBackUpdates,2);assert.equal(recovered.final.rankComputations,10);assert.equal(recovered.final.rolledBackRankComputations,4);assert.equal(recovered.final.abortedCheckpointBytes,90553);vectorClose(recovered.finalRun.state.weights,noFault.finalRun.state.weights,0);assert.equal(recovered.finalRun.rng,noFault.finalRun.rng);invariants(recovered);});
+test('baseline wall time and energy follow a hand-derived exclusive schedule',()=>{
+ assert.deepEqual(noFault.checkpoints.map(({updates,raw,bytes})=>({updates,raw,bytes})),baseline.checkpoints);
+ assert.deepEqual(noFault.segments.filter(s=>s.phase==='network').map(s=>s.networkBytes),baseline.payloadBytes);
+ const initial=baseline.checkpoints[0].bytes,bytes=baseline.checkpoints.slice(1).reduce((s,c)=>s+c.bytes,0),networkBytes=baseline.payloadBytes.reduce((sum,bytes)=>sum+bytes,0);
+ const compute=3*(24*.01+.3),network=networkBytes/8192+6*.02,optimizer=3*.02,storage=bytes/65536,markers=2*.05,source=initial/65536;
+ assert.equal(noFault.final.sourceReadBytes,initial);
+ assert.equal(noFault.final.checkpointWriteBytes,bytes);
+ assert.equal(noFault.final.networkBytes,networkBytes);
+ close(noFault.final.elapsedS,.2+source+compute+network+optimizer+storage+markers);
+ close(noFault.final.facilityEnergyJ,40*source+160*(compute+network+optimizer)+(160/3)*(storage+markers));
+});
+test('default partial-write recovery replays exactly two lost optimizer updates',()=>{
+ const checkpoint=baseline.checkpoints.find(cp=>cp.updates===2),partialBytes=Math.floor(checkpoint.bytes/2);
+ assert.equal(recovered.status,'complete');assert.equal(recovered.final.executedUpdates,5);assert.equal(recovered.final.rolledBackUpdates,2);assert.equal(recovered.final.rankComputations,10);assert.equal(recovered.final.rolledBackRankComputations,4);
+ assert.deepEqual(recovered.abortedCheckpoints,[{updates:2,expectedBytes:checkpoint.bytes,writtenBytes:partialBytes,status:'aborted'}]);
+ assert.equal(recovered.final.abortedCheckpointBytes,partialBytes);
+ assert.equal(recovered.final.checkpointWriteBytes,partialBytes+baseline.checkpoints.slice(1).reduce((sum,cp)=>sum+cp.bytes,0));
+ vectorClose(recovered.finalRun.state.weights,noFault.finalRun.state.weights,0);assert.equal(recovered.finalRun.rng,noFault.finalRun.rng);invariants(recovered);
+});
 test('all fault modes and checkpoint cadences preserve accounting and exact replay',()=>{for(const fault of ['none','rank-stop','after-update','checkpoint-write','checkpoint-commit'])for(const checkpointEvery of [1,2,3])for(const rounds of [2,3]){const r=buildFactoryExecution({...factoryDefaults,fault,checkpointEvery,rounds});invariants(r);assert.equal(r.faultTriggered,fault!=='none');}});
 test('whole-job stop leaves only the earlier valid artifact and never publishes',()=>{for(const fault of ['rank-stop','after-update','checkpoint-write','checkpoint-commit']){const r=buildFactoryExecution({...factoryDefaults,fault,recover:false});assert.equal(r.status,'stopped');assert.equal(r.finalRun,null);assert.equal(r.durableRun.commits,0);assert.equal(r.final.checkpointReadBytes,0);assert.equal(r.final.durableUpdates,0);assert.ok(!r.events.some(e=>e.kind==='published'));invariants(r);}});
 test('partial checkpoint bytes and a fully written uncommitted checkpoint cannot replace old state',()=>{const partial=buildFactoryExecution({...factoryDefaults,recover:false}),written=buildFactoryExecution({...factoryDefaults,fault:'checkpoint-commit',recover:false}),full=noFault.checkpoints.find(c=>c.updates===2).bytes;assert.equal(partial.final.checkpointWriteBytes,Math.floor(full/2));assert.equal(written.final.checkpointWriteBytes,full);assert.equal(partial.abortedCheckpoints[0].writtenBytes,Math.floor(full/2));assert.equal(written.abortedCheckpoints[0].writtenBytes,full);assert.equal(written.checkpoints.length,1);assert.equal(partial.checkpoints[0].raw,written.checkpoints[0].raw);assert.ok(written.events.find(e=>e.kind==='checkpoint-written').snapshot.durableUpdates===0);});

@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {Buffer} from 'node:buffer';
 import fs from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {resolve,dirname} from 'node:path';
@@ -8,6 +9,8 @@ import {runForecast,decisionDefaults,runCodeContract} from '../../../src/lib/app
 import {buildEccRecovery,eccDefaults} from '../../../src/lib/hardware-reliability.ts';
 import {runClosedLoop,defaultControlInput} from '../../../src/lib/closed-loop.ts';
 import {buildFactoryExecution,factoryDefaults,factoryModels} from '../../../src/lib/factory-execution.ts';
+import {createLifecycleRun} from '../../../src/lib/model-lifecycle.ts';
+import {createDistributedTrainingRun,beginDistributedRound,computeRankContribution,submitRankContribution,commitDistributedRound} from '../../../src/lib/model-lifecycle-distributed.ts';
 import {buildMemoryWorkload,memoryWorkloadDefaults,memoryWorkloadVersion,observedRefreshBusyNs} from '../../../src/lib/memory-workload-bridge.ts';
 const close=(x,y)=>assert.ok(Math.abs(x-y)<1e-9*Math.max(1,Math.abs(y)),`${x} differs from ${y}`);
 const nominal=buildCellAcceptance(cellDefaults),loaded=buildCellAcceptance({...cellDefaults,fanout:4}),oxide=buildCellAcceptance({...cellDefaults,oxideOffsetPct:20});
@@ -28,11 +31,23 @@ assert.equal(factoryClean.status,'complete');assert.equal(factoryClean.final.ran
 close(slowRank.final.elapsedS-fastRank.final.elapsedS,3*1);close(slowRank.final.facilityEnergyJ-fastRank.final.facilityEnergyJ,160*3);assert.deepEqual(slowRank.finalRun,fastRank.finalRun);assert.equal(slowRank.final.networkBytes,fastRank.final.networkBytes);
 assert.equal(factoryReplay.final.executedUpdates,2+3);assert.equal(factoryReplay.final.rolledBackUpdates,2);assert.equal(factoryReplay.final.retainedUpdates,3);assert.equal(factoryReplay.final.durableUpdates,3);assert.equal(factoryReplay.final.rankComputations,2*(2+3));assert.equal(factoryReplay.final.rolledBackRankComputations,2*2);assert.deepEqual(factoryReplay.finalRun,factoryClean.finalRun);
 const cp0=factoryClean.checkpoints.find(c=>c.updates===0),cp2=factoryClean.checkpoints.find(c=>c.updates===2);
-// Byte lengths are observations of the identified serialization, not a training-memory estimate.
-assert.equal(new TextEncoder().encode(cp0.raw).length,28562);assert.equal(new TextEncoder().encode(cp2.raw).length,181106);assert.equal(cp0.bytes,28562);assert.equal(cp2.bytes,181106);const capacity=28562+181106;assert.equal(capacity,209668);assert.equal(capacity-120000,89668);
+// Reconstruct the two artifacts through the numerical core without factory scheduling,
+// storage or accounting. Last-bit Math differences can change JSON lengths across runtimes.
+let referenceRun=createDistributedTrainingRun(createLifecycleRun({seed:7}));
+const initialRaw=JSON.stringify(referenceRun);
+for(let updates=0;updates<2;updates++){
+ referenceRun=beginDistributedRound(referenceRun);
+ const contributions=referenceRun.round.ranks.map(rank=>computeRankContribution(referenceRun,rank.rank));
+ for(const contribution of contributions)referenceRun=submitRankContribution(referenceRun,contribution);
+ referenceRun=commitDistributedRound(referenceRun);
+}
+const replacementRaw=JSON.stringify(referenceRun),initialBytes=Buffer.byteLength(initialRaw,'utf8'),replacementBytes=Buffer.byteLength(replacementRaw,'utf8');
+assert.equal(cp0.raw,initialRaw);assert.equal(cp2.raw,replacementRaw);assert.equal(cp0.bytes,initialBytes);assert.equal(cp2.bytes,replacementBytes);
+const capacity=initialBytes+replacementBytes;assert.ok(capacity>120000);
 const fitting=buildFactoryExecution({...factoryDefaults,rounds:2,fault:'none',storageLimitBytes:capacity}),short=buildFactoryExecution({...factoryDefaults,rounds:2,fault:'none',storageLimitBytes:capacity-1});
 assert.equal(fitting.status,'complete');assert.equal(fitting.final.durableUpdates,2);assert.equal(short.status,'blocked');assert.equal(short.final.retainedUpdates,2);assert.equal(short.final.durableUpdates,0);assert.equal(short.final.checkpointWriteBytes,0);assert.equal(short.checkpoints.length,1);assert.equal(short.checkpoints[0].raw,cp0.raw);
-const writtenOnly=buildFactoryExecution({...factoryDefaults,fault:'checkpoint-commit',recover:false});assert.equal(writtenOnly.final.durableUpdates,0);assert.equal(writtenOnly.final.checkpointWriteBytes,181106);assert.equal(writtenOnly.checkpoints[0].raw,cp0.raw);assert.equal(writtenOnly.checkpoints.length,1);
+const insufficient=buildFactoryExecution({...factoryDefaults,fault:'none',storageLimitBytes:120000});assert.equal(insufficient.status,'blocked');assert.equal(insufficient.final.retainedUpdates,2);assert.equal(insufficient.final.durableUpdates,0);assert.equal(insufficient.final.checkpointWriteBytes,0);assert.equal(insufficient.checkpoints.length,1);assert.equal(insufficient.checkpoints[0].raw,initialRaw);
+const writtenOnly=buildFactoryExecution({...factoryDefaults,fault:'checkpoint-commit',recover:false});assert.equal(writtenOnly.final.durableUpdates,0);assert.equal(writtenOnly.final.checkpointWriteBytes,replacementBytes);assert.equal(writtenOnly.checkpoints[0].raw,cp0.raw);assert.equal(writtenOnly.checkpoints.length,1);
 for(const replica of factoryReplay.finalRun.round.collective.replicas)assert.deepEqual(replica.weights,factoryReplay.finalRun.state.weights);
 
 // Added group 9: joined memory. Hand dot products, bit changes, allocation arithmetic and
@@ -54,4 +69,4 @@ const refreshed=memoryRun({fault:'triple',refreshEveryNs:96}),notRefreshed=memor
 assert.equal(observedRefreshBusyNs([{kind:'REF',startNs:20,endNs:32}],25),5);
 
 const dir=dirname(fileURLToPath(import.meta.url));for(const name of fs.readdirSync(dir).filter(x=>x.endsWith('.md'))){const text=fs.readFileSync(resolve(dir,name),'utf8');assert.ok(!text.includes('/Users/'));for(const [,link]of text.matchAll(/\]\(([^)]+)\)/g))if(!/^https?:/.test(link))assert.ok(fs.existsSync(resolve(dir,link)),link);}
-console.log(JSON.stringify({status:'pass',contractGroups:9,preservedContractGroups:7,addedContractGroups:['joined-factory','joined-memory'],models:{factory:factoryModels,memoryWorkload:memoryWorkloadVersion},checkedAt:'2026-09-07',actor:{type:'agent',id:'/root/curriculum_assessment'},scope:'Existing seven groups preserved; added independent count, delta-time/energy, byte-capacity, dot-product, bit-change, staging and admission contracts. No learner, physical-device, assistive-technology or specialist observations.'},null,2));
+console.log(JSON.stringify({status:'pass',contractGroups:9,preservedContractGroups:7,addedContractGroups:['joined-factory','joined-memory'],models:{factory:factoryModels,memoryWorkload:memoryWorkloadVersion},factoryCheckpointObservation:{runtime:process.version,platform:process.platform,architecture:process.arch,initialBytes,replacementBytes,capacityBytes:capacity,shortfallAt120000Bytes:capacity-120000},checkedAt:'2026-09-07',actor:{type:'agent',id:'/root/curriculum_assessment'},scope:'Existing seven groups preserved; added independent count, delta-time/energy, byte-capacity, dot-product, bit-change, staging and admission contracts. No learner, physical-device, assistive-technology or specialist observations.'},null,2));

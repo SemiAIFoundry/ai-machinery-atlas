@@ -1,12 +1,12 @@
-# Active implementation authorization · 7 September 2026
+# Historical pilot implementation ledger
 
-The maintainer approved proceeding with the complete, additive roadmap and instructed that the review be assumed approved for continued implementation. All 30 requirements below remain in scope. The phase-gate language in the earlier candidate snapshot records its prior status; it no longer pauses construction. This authorization is not a claim that physical-device tests, learner sessions, specialist observations or instructor reuse occurred. GitHub release and deployment remain paused while the build is completed.
+This ledger preserves the earlier pilot implementation and its acceptance boundaries. The platform subsequently advanced to [v1.3.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.3.0), published on 7 September 2026. See the [current implementation](next-horizon/README.md) and [release notes](../RELEASE-NOTES-v1.3.0.md) for the expanded scope. Earlier candidate counts, identities and observations below remain historical records. Publication does not establish physical-device tests, learner sessions, specialist observations or instructor reuse.
 
-Current extension work and verification are recorded in [ADVANCEMENT.md](ADVANCEMENT.md).
+The intervening expansion and its verification are recorded in [ADVANCEMENT.md](ADVANCEMENT.md). All 30 original requirements remain in scope.
 
 ---
 
-# Implementation ledger — current pilot candidate
+# Implementation ledger — earlier pilot candidate
 
 Prepared 7 September 2026 against the working candidate. This ledger maps **all 30 original ROADMAP.csv rows**, preserving their phases and dependency gates. It records implementation separately from scientific, accessible-task, physical-device and formative-learner acceptance. It does not authorize deployment or mark a phase-3 expansion complete.
 

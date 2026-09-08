@@ -1,5 +1,7 @@
 # Engineering and learning expansion — validation record
 
+> Historical validation record. This document preserves the candidate identity and checks recorded before publication. See the [v1.3.0 release notes](../RELEASE-NOTES-v1.3.0.md) for the published release and release preflight.
+
 Working build reviewed on 7 September 2026. The application version remains 1.2.0. This record describes local implementation and validation; it is not a GitHub release or production deployment.
 
 The [implementation map](ADVANCEMENT.md) retains all 30 original commitments. Construction now includes eight engineering experiences, three connected investigations, 14 process routes with 84 authored stages, a reproducible FPGA realization, source-maintenance contracts, instructor materials and the navigation companion. Four additive distributed-output lessons bring the working corpus to 229 lessons, 63 branches and 16 paths. The 239 science cards comprise 233 formal expressions and six explicitly classified prose relationships.

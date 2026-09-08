@@ -1,5 +1,7 @@
 # Local implementation validation — 7 September 2026
 
+> Historical validation record. This document preserves the candidate identity and checks recorded before publication. See the [v1.3.0 release notes](../../RELEASE-NOTES-v1.3.0.md) for the published release and release preflight.
+
 The candidate contains **311 lessons, 82 branches, 21 paths, 24 numerical labs, 83 milestones and 28 grouped engineering experiences**. This records implemented mechanisms and observed checks; N17 source and human acceptance remain open. The working version stays **1.2.0**, with publication paused.
 
 ## Build and automated evidence

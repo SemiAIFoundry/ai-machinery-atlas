@@ -28,6 +28,8 @@ Preserve keyboard access, visible focus, readable contrast, and informative cont
 
 ## Development and review
 
+The current edition is [v1.3.0](https://github.com/SemiAIFoundry/ai-machinery-atlas/releases/tag/v1.3.0). Changes to its connected engineering experiences must preserve carried model state, checkpoint recovery, explicit resource boundaries and reproducible numerical results. Update the corresponding [teaching contracts](docs/instructor-kit/next-horizon/README.md) when a supported learning task changes.
+
 Use Node.js 22.13 or later.
 
 ```sh
